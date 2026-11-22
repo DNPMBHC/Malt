@@ -140,14 +140,30 @@ public struct BottleDXVKConfig: Codable, Equatable {
     var dxvk: Bool = false
     var dxvkAsync: Bool = true
     var dxvkHud: DXVKHUD = .off
+    var graphicsBackendMode: WineGraphicsBackendMode = .auto
+    var directXAPIRequirement: HostDirectXAPIRequirement = .unknown
+    var graphicsRoutingPreference: HostGraphicsRoutingPreference = .performanceFirst
 
     public init() {}
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.dxvk = try container.decodeIfPresent(Bool.self, forKey: .dxvk) ?? false
+        let legacyDXVK = try container.decodeIfPresent(Bool.self, forKey: .dxvk) ?? false
+        if let mode = try container.decodeIfPresent(WineGraphicsBackendMode.self, forKey: .graphicsBackendMode) {
+            self.graphicsBackendMode = mode
+            self.dxvk = mode == .dxvk
+        } else {
+            self.graphicsBackendMode = legacyDXVK ? .dxvk : .auto
+            self.dxvk = legacyDXVK
+        }
         self.dxvkAsync = try container.decodeIfPresent(Bool.self, forKey: .dxvkAsync) ?? true
         self.dxvkHud = try container.decodeIfPresent(DXVKHUD.self, forKey: .dxvkHud) ?? .off
+        self.directXAPIRequirement = try container.decodeIfPresent(
+            HostDirectXAPIRequirement.self, forKey: .directXAPIRequirement
+        ) ?? .unknown
+        self.graphicsRoutingPreference = try container.decodeIfPresent(
+            HostGraphicsRoutingPreference.self, forKey: .graphicsRoutingPreference
+        ) ?? .performanceFirst
     }
 }
 
@@ -249,8 +265,33 @@ public struct BottleSettings: Codable, Equatable {
     }
 
     public var dxvk: Bool {
-        get { return dxvkConfig.dxvk }
-        set { dxvkConfig.dxvk = newValue }
+        get { return dxvkConfig.graphicsBackendMode == .dxvk }
+        set {
+            dxvkConfig.dxvk = newValue
+            if newValue {
+                dxvkConfig.graphicsBackendMode = .dxvk
+            } else if dxvkConfig.graphicsBackendMode == .dxvk {
+                dxvkConfig.graphicsBackendMode = .d3dMetal
+            }
+        }
+    }
+
+    public var wineGraphicsBackendMode: WineGraphicsBackendMode {
+        get { return dxvkConfig.graphicsBackendMode }
+        set {
+            dxvkConfig.graphicsBackendMode = newValue
+            dxvkConfig.dxvk = newValue == .dxvk
+        }
+    }
+
+    public var directXAPIRequirement: HostDirectXAPIRequirement {
+        get { return dxvkConfig.directXAPIRequirement }
+        set { dxvkConfig.directXAPIRequirement = newValue }
+    }
+
+    public var graphicsRoutingPreference: HostGraphicsRoutingPreference {
+        get { return dxvkConfig.graphicsRoutingPreference }
+        set { dxvkConfig.graphicsRoutingPreference = newValue }
     }
 
     public var dxvkAsync: Bool {
@@ -305,62 +346,7 @@ public struct BottleSettings: Codable, Equatable {
         try data.write(to: metadataUrl)
     }
 
-    // swiftlint:disable:next cyclomatic_complexity
     public func environmentVariables(wineEnv: inout [String: String]) {
-        if dxvk {
-            wineEnv.updateValue("dxgi,d3d9,d3d10core,d3d11=n,b", forKey: "WINEDLLOVERRIDES")
-            switch dxvkHud {
-            case .full:
-                wineEnv.updateValue("full", forKey: "DXVK_HUD")
-            case .partial:
-                wineEnv.updateValue("devinfo,fps,frametimes", forKey: "DXVK_HUD")
-            case .fps:
-                wineEnv.updateValue("fps", forKey: "DXVK_HUD")
-            case .off:
-                break
-            }
-        }
-
-        if dxvkAsync {
-            wineEnv.updateValue("1", forKey: "DXVK_ASYNC")
-        }
-
-        switch enhancedSync {
-        case .none:
-            break
-        case .esync:
-            wineEnv.updateValue("1", forKey: "WINEESYNC")
-        case .msync:
-            wineEnv.updateValue("1", forKey: "WINEMSYNC")
-            // D3DM detects ESYNC and changes behaviour accordingly
-            // so we have to lie to it so that it doesn't break
-            // under MSYNC. Values hardcoded in lid3dshared.dylib
-            wineEnv.updateValue("1", forKey: "WINEESYNC")
-        }
-
-        if metalHud {
-            wineEnv.updateValue("1", forKey: "MTL_HUD_ENABLED")
-        }
-
-        if metalTrace {
-            wineEnv.updateValue("1", forKey: "METAL_CAPTURE_ENABLED")
-        }
-
-        if avxEnabled {
-            wineEnv.updateValue("1", forKey: "ROSETTA_ADVERTISE_AVX")
-        }
-
-        if dxrEnabled {
-            wineEnv.updateValue("1", forKey: "D3DM_SUPPORT_DXR")
-        }
-
-        if adaptiveResourcePolicyEnabled {
-            let policy = HostWineLaunchPolicy(
-                snapshot: HostCapabilityProvider.current(),
-                graphicsBackend: dxvk ? .dxvk : .d3dMetal,
-                enabled: true
-            )
-            wineEnv = policy.applyingNonDestructively(to: wineEnv)
-        }
+        environmentVariables(wineEnv: &wineEnv, bottleURL: nil)
     }
 }

@@ -24098,19 +24098,349 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Under thermal pressure or Low Power Mode, non-destructively caps DXVK frame rate and shader compiler threads without overriding your custom environment variables. D3DMetal has no public throttling variables and stays unchanged."
+            "value": "Under thermal pressure or Low Power Mode, non-destructively applies frame-rate caps for DXMT (DXMT_CONFIG / DXMT_METALFX_SPATIAL_SWAPCHAIN) and DXVK (DXVK_FRAME_RATE / DXVK_NUM_COMPILER_THREADS) plus lower Wine QoS without overriding your custom environment variables. D3DMetal has no public throttling variables."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "在发热受限或低电量模式下，以非破坏性方式为 DXVK 设置帧率与着色器编译线程上限，不会覆盖你手动配置的环境变量；D3DMetal 无公开限帧变量，保持原样。"
+            "value": "在发热受限或低电量模式下，以非破坏性方式为 DXMT（DXMT_CONFIG / DXMT_METALFX_SPATIAL_SWAPCHAIN）与 DXVK（DXVK_FRAME_RATE / DXVK_NUM_COMPILER_THREADS）施加限帧策略并降低 Wine 进程 QoS，不会覆盖你手动配置的环境变量；D3DMetal 无公开限帧变量，保持原样。"
           }
         },
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "在發熱受限或低電量模式下，以非破壞性方式為 DXVK 設定影格率與著色器編譯執行緒上限，不會覆蓋你手動設定的環境變數；D3DMetal 無公開限幀變數，保持原樣。"
+            "value": "在發熱受限或低電量模式下，以非破壞性方式為 DXMT（DXMT_CONFIG / DXMT_METALFX_SPATIAL_SWAPCHAIN）與 DXVK（DXVK_FRAME_RATE / DXVK_NUM_COMPILER_THREADS）套用限影格策略並降低 Wine 進程 QoS，不會覆蓋你手動設定的環境變數；D3DMetal 無公開限影格變數，保持原樣。"
+          }
+        }
+      }
+    },
+    "config.graphicsBackend.mode": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Graphics Backend"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图形翻译引擎"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "圖形轉譯引擎"
+          }
+        }
+      }
+    },
+    "config.graphicsBackend.mode.auto": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automatic (by DirectX API)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动路由（按 DirectX 版本）"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自動路由（依 DirectX 版本）"
+          }
+        }
+      }
+    },
+    "config.graphicsBackend.mode.dxmt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DXMT (D3D11 → Metal)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DXMT（D3D11 直译 Metal）"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DXMT（D3D11 直譯 Metal）"
+          }
+        }
+      }
+    },
+    "config.graphicsBackend.mode.d3dMetal": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "D3DMetal (DX11 / DX12)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "D3DMetal（DX11 / DX12）"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "D3DMetal（DX11 / DX12）"
+          }
+        }
+      }
+    },
+    "config.graphicsBackend.mode.dxvk": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DXVK (Vulkan / MoltenVK)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DXVK（Vulkan / MoltenVK）"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DXVK（Vulkan / MoltenVK）"
+          }
+        }
+      }
+    },
+    "config.graphicsBackend.api": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Target DirectX API"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目标 DirectX 版本"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目標 DirectX 版本"
+          }
+        }
+      }
+    },
+    "config.graphicsBackend.api.unknown": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unspecified / Auto"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未指定 / 自动"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未指定 / 自動"
+          }
+        }
+      }
+    },
+    "config.graphicsBackend.api.directX12": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DirectX 12"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DirectX 12"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DirectX 12"
+          }
+        }
+      }
+    },
+    "config.graphicsBackend.api.directX11": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DirectX 11"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DirectX 11"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DirectX 11"
+          }
+        }
+      }
+    },
+    "config.graphicsBackend.api.directX10OrEarlier": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DirectX 10 or Earlier"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DirectX 10 及更早"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DirectX 10 及更早"
+          }
+        }
+      }
+    },
+    "config.graphicsBackend.preference": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Routing Preference"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "路由偏好"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "路由偏好"
+          }
+        }
+      }
+    },
+    "config.graphicsBackend.preference.performanceFirst": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Performance First"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "性能优先"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "效能優先"
+          }
+        }
+      }
+    },
+    "config.graphicsBackend.preference.compatibilityFallback": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Compatibility Fallback"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "兼容兜底优先"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "相容備援優先"
+          }
+        }
+      }
+    },
+    "config.graphicsBackend.selected": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resolved Graphics Backend"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前解析图形引擎"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目前解析圖形引擎"
+          }
+        }
+      }
+    },
+    "config.graphicsBackend.fallback": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Used Fallback Backend"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "是否触发降级"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "是否觸發降級"
           }
         }
       }
