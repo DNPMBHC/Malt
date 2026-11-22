@@ -20,8 +20,6 @@ import Foundation
 import os.log
 
 public class Wine {
-    /// URL to the installed `DXVK` folder
-    private static let dxvkFolder: URL = WhiskyWineInstaller.libraryFolder.appending(path: "DXVK")
     /// Path to the `wine64` binary
     public static let wineBinary: URL = WhiskyWineInstaller.binFolder.appending(path: "wine64")
     private static let wineserverBinary: URL = WhiskyWineInstaller.binFolder.appending(path: "wineserver")
@@ -106,10 +104,13 @@ public class Wine {
     static func startProgramInWine(_ request: RuntimeLaunchRequest) throws -> RuntimeSession {
         guard let bottle = request.bottle else { throw RuntimeLaunchError.issue(.bottleUnavailable) }
         try Task.checkCancellation()
-        if bottle.settings.dxvk {
-            try enableDXVK(bottle: bottle)
-        }
-
+        let selectedBackend = bottle.settings.effectiveGraphicsBackend()
+        if selectedBackend == .dxvk { try enableDXVK(bottle: bottle) }
+        if selectedBackend == .dxmt { try enableDXMT(bottle: bottle) }
+        let winePolicy = HostWineLaunchPolicy(
+            snapshot: request.host, graphicsBackend: selectedBackend,
+            enabled: bottle.settings.adaptiveResourcePolicyEnabled
+        )
         let log = try makeFileHandle()
         defer { try? log.close() }
         let process = Process()
@@ -117,8 +118,9 @@ public class Wine {
         process.arguments = ["start", "/wait", "/unix", request.executableURL.path(percentEncoded: false)]
             + request.arguments
         process.currentDirectoryURL = request.executableURL.deletingLastPathComponent()
-        process.environment = constructWineEnvironment(for: bottle, environment: request.environment)
-        process.qualityOfService = .userInitiated
+        let env = constructWineEnvironment(for: bottle, environment: request.environment, host: request.host)
+        process.environment = env
+        process.qualityOfService = winePolicy.processQualityOfService
         process.standardOutput = log
         process.standardError = log
         return try process.startRuntimeSession()
@@ -219,24 +221,20 @@ public class Wine {
     public static func enableDXVK(bottle: Bottle) throws {
         try FileManager.default.replaceDLLs(
             in: bottle.url.appending(path: "drive_c").appending(path: "windows").appending(path: "system32"),
-            withContentsIn: Wine.dxvkFolder.appending(path: "x64")
+            withContentsIn: WhiskyWineInstaller.dxvkFolder.appending(path: "x64")
         )
         try FileManager.default.replaceDLLs(
             in: bottle.url.appending(path: "drive_c").appending(path: "windows").appending(path: "syswow64"),
-            withContentsIn: Wine.dxvkFolder.appending(path: "x32")
+            withContentsIn: WhiskyWineInstaller.dxvkFolder.appending(path: "x32")
         )
     }
 
     /// Construct an environment merging the bottle values with the given values
     private static func constructWineEnvironment(
-        for bottle: Bottle, environment: [String: String] = [:]
+        for bottle: Bottle, environment: [String: String] = [:], host: RuntimeHostSnapshot? = nil
     ) -> [String: String] {
-        var result: [String: String] = [
-            "WINEPREFIX": bottle.url.path,
-            "WINEDEBUG": "fixme-all",
-            "GST_DEBUG": "1"
-        ]
-        bottle.settings.environmentVariables(wineEnv: &result)
+        var result: [String: String] = ["WINEPREFIX": bottle.url.path, "WINEDEBUG": "fixme-all", "GST_DEBUG": "1"]
+        bottle.settings.environmentVariables(wineEnv: &result, bottleURL: bottle.url, hostSnapshot: host)
         guard !environment.isEmpty else { return result }
         result.merge(environment, uniquingKeysWith: { $1 })
         return result
@@ -380,21 +378,18 @@ extension Wine {
 
     @discardableResult
     public static func control(bottle: Bottle) async throws -> String {
-        return try await Wine.runWine(["control"], bottle: bottle)
+        try await Wine.runWine(["control"], bottle: bottle)
     }
-
     @discardableResult
     public static func regedit(bottle: Bottle) async throws -> String {
-        return try await Wine.runWine(["regedit"], bottle: bottle)
+        try await Wine.runWine(["regedit"], bottle: bottle)
     }
-
     @discardableResult
     public static func cfg(bottle: Bottle) async throws -> String {
-        return try await Wine.runWine(["winecfg"], bottle: bottle)
+        try await Wine.runWine(["winecfg"], bottle: bottle)
     }
-
     @discardableResult
     public static func changeWinVersion(bottle: Bottle, win: WinVersion) async throws -> String {
-        return try await Wine.runWine(["winecfg", "-v", win.rawValue], bottle: bottle)
+        try await Wine.runWine(["winecfg", "-v", win.rawValue], bottle: bottle)
     }
 }

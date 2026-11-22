@@ -122,20 +122,7 @@ struct ConfigView: View {
                 }
             }
             Section("config.title.dxvk", isExpanded: $dxvkSectionExpanded) {
-                Toggle(isOn: $bottle.settings.dxvk) {
-                    Text("config.dxvk")
-                }
-                Toggle(isOn: $bottle.settings.dxvkAsync) {
-                    Text("config.dxvk.async")
-                }
-                .disabled(!bottle.settings.dxvk)
-                Picker("config.dxvkHud", selection: $bottle.settings.dxvkHud) {
-                    Text("config.dxvkHud.full").tag(DXVKHUD.full)
-                    Text("config.dxvkHud.partial").tag(DXVKHUD.partial)
-                    Text("config.dxvkHud.fps").tag(DXVKHUD.fps)
-                    Text("config.dxvkHud.off").tag(DXVKHUD.off)
-                }
-                .disabled(!bottle.settings.dxvk)
+                BottleGraphicsBackendSection(bottle: bottle)
             }
             Section("config.title.metal", isExpanded: $metalSectionExpanded) {
                 Toggle(isOn: $bottle.settings.metalHud) {
@@ -367,5 +354,46 @@ struct SettingItemView<Content: View>: View {
                 }
             }.animation(.default, value: loadingState)
         }
+    }
+}
+
+private struct BottleGraphicsBackendSection: View {
+    @ObservedObject var bottle: Bottle
+
+    var body: some View {
+        let route = bottle.settings.resolveGraphicsBackendRoute()
+        let selectedLabel = route.selectedBackend.map {
+            String(localized: String.LocalizationValue("config.graphicsBackend.mode.\($0.rawValue)"))
+        } ?? String(localized: "runtime.unavailable")
+        let dxvkConfigurable = bottle.settings.wineGraphicsBackendMode == .dxvk
+            || bottle.settings.wineGraphicsBackendMode == .auto
+        Picker("config.graphicsBackend.mode", selection: $bottle.settings.wineGraphicsBackendMode) {
+            ForEach(WineGraphicsBackendMode.allCases, id: \.self) { mode in
+                Text(String(localized: String.LocalizationValue(mode.localizationKey))).tag(mode)
+            }
+        }
+        if bottle.settings.wineGraphicsBackendMode == .auto {
+            Picker("config.graphicsBackend.api", selection: $bottle.settings.directXAPIRequirement) {
+                Text("config.graphicsBackend.api.unknown").tag(HostDirectXAPIRequirement.unknown)
+                Text("config.graphicsBackend.api.directX12").tag(HostDirectXAPIRequirement.directX12)
+                Text("config.graphicsBackend.api.directX11").tag(HostDirectXAPIRequirement.directX11)
+                Text("config.graphicsBackend.api.directX10OrEarlier").tag(HostDirectXAPIRequirement.directX10OrEarlier)
+            }
+            Picker("config.graphicsBackend.preference", selection: $bottle.settings.graphicsRoutingPreference) {
+                Text("config.graphicsBackend.preference.performanceFirst")
+                    .tag(HostGraphicsRoutingPreference.performanceFirst)
+                Text("config.graphicsBackend.preference.compatibilityFallback")
+                    .tag(HostGraphicsRoutingPreference.compatibilityFallback)
+            }
+        }
+        LabeledContent("config.graphicsBackend.selected", value: selectedLabel)
+        LabeledContent("config.graphicsBackend.fallback",
+                       value: String(localized: route.usedFallback ? "runtime.on" : "runtime.off"))
+        Text(route.reason).font(.footnote).foregroundStyle(.secondary)
+        Toggle("config.dxvk.async", isOn: $bottle.settings.dxvkAsync).disabled(!dxvkConfigurable)
+        Picker("config.dxvkHud", selection: $bottle.settings.dxvkHud) {
+            Text("config.dxvkHud.full").tag(DXVKHUD.full); Text("config.dxvkHud.partial").tag(DXVKHUD.partial)
+            Text("config.dxvkHud.fps").tag(DXVKHUD.fps); Text("config.dxvkHud.off").tag(DXVKHUD.off)
+        }.disabled(!dxvkConfigurable)
     }
 }

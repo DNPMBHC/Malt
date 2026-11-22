@@ -59,6 +59,16 @@ struct ProgramView: View {
             if let runtimePlan {
                 Section("runtime.section") {
                     RuntimeStatusRows(plan: runtimePlan)
+                    if runtimePlan.preferredBackend == .wine {
+                        let route = runtimePlan.wineGraphicsRoute(for: program.bottle.settings)
+                        let selectedLabel = route.selectedBackend.map {
+                            localized("config.graphicsBackend.mode.\($0.rawValue)")
+                        } ?? localized("runtime.unavailable")
+                        LabeledContent("config.graphicsBackend.selected", value: selectedLabel)
+                        LabeledContent("config.graphicsBackend.fallback",
+                                       value: localized(route.usedFallback ? "runtime.on" : "runtime.off"))
+                        Text(route.reason).font(.footnote).foregroundStyle(.secondary)
+                    }
                     let host = runtimePlan.host
                     let spatial = host.metalFXSpatialScalingAvailable ? "runtime.available" : "runtime.unavailable"
                     let temporal = host.metalFXTemporalScalingAvailable ? "runtime.available" : "runtime.unavailable"

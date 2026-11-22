@@ -161,14 +161,28 @@ public struct WineRuntimeBackend: RuntimeBackend {
                                  evidence: evidence(kind, profile), issues: issues)
     }
 
-    public func resolvedRequest(for request: RuntimeLaunchRequest) -> RuntimeLaunchRequest {
+    public func resolvedRequest(
+        for request: RuntimeLaunchRequest,
+        availableBackends: HostAvailableWineBackends = WhiskyWineInstaller.availableGraphicsBackends()
+    ) -> RuntimeLaunchRequest {
         guard let bottle = request.bottle else { return request }
+        let selectedBackend = bottle.settings.effectiveGraphicsBackend(available: availableBackends)
         let policy = HostWineLaunchPolicy(
             snapshot: request.host,
-            graphicsBackend: bottle.settings.dxvk ? .dxvk : .d3dMetal,
+            graphicsBackend: selectedBackend,
             enabled: bottle.settings.adaptiveResourcePolicyEnabled
         )
-        let mergedEnvironment = policy.applyingNonDestructively(to: request.environment)
+        var mergedEnvironment = policy.applyingNonDestructively(to: request.environment)
+        if selectedBackend == .dxmt {
+            if mergedEnvironment["DXMT_SHADER_CACHE"] == nil {
+                mergedEnvironment["DXMT_SHADER_CACHE"] = "1"
+            }
+            if mergedEnvironment["DXMT_SHADER_CACHE_PATH"] == nil {
+                mergedEnvironment["DXMT_SHADER_CACHE_PATH"] = BottleSettings
+                    .dxmtShaderCacheDirectory(for: bottle.url)
+                    .path(percentEncoded: false)
+            }
+        }
         guard mergedEnvironment != request.environment else { return request }
         return RuntimeLaunchRequest(
             executableURL: request.executableURL,

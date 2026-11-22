@@ -365,7 +365,18 @@ public struct RuntimePlan: Equatable, Sendable {
     }
 
     public func wineResourcePolicy(dxvk: Bool, enabled: Bool) -> HostWineLaunchPolicy {
-        HostWineLaunchPolicy(snapshot: host, graphicsBackend: dxvk ? .dxvk : .d3dMetal, enabled: enabled)
+        wineResourcePolicy(backend: dxvk ? .dxvk : .d3dMetal, enabled: enabled)
+    }
+
+    public func wineResourcePolicy(backend: HostWineGraphicsBackend, enabled: Bool) -> HostWineLaunchPolicy {
+        HostWineLaunchPolicy(snapshot: host, graphicsBackend: backend, enabled: enabled)
+    }
+
+    public func wineGraphicsRoute(
+        for settings: BottleSettings,
+        available: HostAvailableWineBackends = WhiskyWineInstaller.availableGraphicsBackends()
+    ) -> HostWineBackendRoute {
+        settings.resolveGraphicsBackendRoute(available: available)
     }
 
     public func guestResourcePolicy(enabled: Bool) -> HostGuestLaunchPolicy {

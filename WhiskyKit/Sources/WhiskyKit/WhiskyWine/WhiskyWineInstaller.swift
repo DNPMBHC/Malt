@@ -31,6 +31,72 @@ public class WhiskyWineInstaller {
     /// URL to the installed `wine` `bin` directory
     public static let binFolder: URL = libraryFolder.appending(path: "Wine").appending(path: "bin")
 
+    /// URL to the installed `DXVK` directory
+    public static let dxvkFolder: URL = libraryFolder.appending(path: "DXVK")
+
+    /// URL to the installed `DXMT` directory
+    public static let dxmtFolder: URL = libraryFolder.appending(path: "DXMT")
+
+    /// Returns the DXMT `wine` directory (containing `x86_64-windows` and `x86_64-unix`) when installed.
+    public static func dxmtWineFolder(
+        in libraryFolder: URL = WhiskyWineInstaller.libraryFolder,
+        fileManager: FileManager = .default
+    ) -> URL? {
+        let root = libraryFolder.appending(path: "DXMT")
+        let wineDir = root.appending(path: "wine")
+        let win64 = wineDir.appending(path: "x86_64-windows")
+        let unix64 = wineDir.appending(path: "x86_64-unix")
+        let hasStandard = fileManager.fileExists(atPath: win64.appending(path: "d3d11.dll").path(percentEncoded: false))
+            && fileManager.fileExists(atPath: win64.appending(path: "dxgi.dll").path(percentEncoded: false))
+            && fileManager.fileExists(atPath: unix64.appending(path: "winemetal.so").path(percentEncoded: false))
+        if hasStandard {
+            return wineDir
+        }
+        return nil
+    }
+
+    /// Returns the directory containing DXMT x86_64 Windows DLLs (`d3d11.dll`, `dxgi.dll`, etc.).
+    public static func dxmtPEFolder(
+        in dxmtFolder: URL = WhiskyWineInstaller.dxmtFolder,
+        fileManager: FileManager = .default
+    ) -> URL? {
+        let candidates = [
+            dxmtFolder.appending(path: "wine").appending(path: "x86_64-windows"),
+            dxmtFolder.appending(path: "x64")
+        ]
+        for candidate in candidates {
+            let probe = candidate.appending(path: "d3d11.dll").path(percentEncoded: false)
+            if fileManager.fileExists(atPath: probe) {
+                return candidate
+            }
+        }
+        return nil
+    }
+
+    /// Probes which Wine DirectX translation backends are installed under the given library folder.
+    public static func availableGraphicsBackends(
+        fileManager: FileManager = .default,
+        libraryFolder: URL = WhiskyWineInstaller.libraryFolder
+    ) -> HostAvailableWineBackends {
+        let hasDXMT = dxmtWineFolder(in: libraryFolder, fileManager: fileManager) != nil
+        let dxvkCandidates = [
+            libraryFolder.appending(path: "DXVK/x64/d3d11.dll"),
+            libraryFolder.appending(path: "DXVK/wine/x86_64-windows/d3d11.dll")
+        ]
+        let hasDXVK = dxvkCandidates.contains {
+            fileManager.fileExists(atPath: $0.path(percentEncoded: false))
+        }
+        let d3dMetalCandidates = [
+            libraryFolder.appending(path: "Wine/lib/external/libd3dshared.dylib"),
+            libraryFolder.appending(path: "GPTK/external/libd3dshared.dylib"),
+            libraryFolder.appending(path: "Wine/lib/wine/x86_64-windows/d3d11.dll")
+        ]
+        let hasD3DMetal = d3dMetalCandidates.contains {
+            fileManager.fileExists(atPath: $0.path(percentEncoded: false))
+        }
+        return HostAvailableWineBackends(hasD3DMetal: hasD3DMetal, hasDXMT: hasDXMT, hasDXVK: hasDXVK)
+    }
+
     public static func isWhiskyWineInstalled() -> Bool {
         return whiskyWineVersion() != nil
     }
