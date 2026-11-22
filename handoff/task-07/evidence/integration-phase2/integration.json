@@ -4,25 +4,25 @@
     "performance-tools": {
       "exitCode": 0,
       "state": "passed",
-      "durationSeconds": 0.454,
+      "durationSeconds": 0.499,
       "diagnostics": []
     },
     "graphics-tools": {
       "exitCode": 0,
       "state": "passed",
-      "durationSeconds": 2.27,
+      "durationSeconds": 2.808,
       "diagnostics": []
     },
     "graphics-typecheck": {
       "exitCode": 0,
       "state": "passed",
-      "durationSeconds": 0.63,
+      "durationSeconds": 0.695,
       "diagnostics": []
     },
     "graphics-build": {
       "exitCode": 0,
       "state": "passed",
-      "durationSeconds": 1.716,
+      "durationSeconds": 1.803,
       "diagnostics": [
         "<workspace>/graphics-lab/metal_host.swift:686:22: warning: 'line' mutated after capture by sendable closure",
         "|                      `- warning: 'line' mutated after capture by sendable closure"
@@ -31,25 +31,25 @@
     "vendor-evidence": {
       "exitCode": 0,
       "state": "passed",
-      "durationSeconds": 0.043,
+      "durationSeconds": 0.048,
       "diagnostics": []
     },
     "driver-abi-configure": {
       "exitCode": 0,
       "state": "passed",
-      "durationSeconds": 0.307,
+      "durationSeconds": 0.483,
       "diagnostics": []
     },
     "driver-abi-build": {
       "exitCode": 0,
       "state": "passed",
-      "durationSeconds": 0.142,
+      "durationSeconds": 0.145,
       "diagnostics": []
     },
     "driver-abi-test": {
       "exitCode": 0,
       "state": "passed",
-      "durationSeconds": 0.082,
+      "durationSeconds": 0.297,
       "diagnostics": [
         "100% tests passed out of 1"
       ]
@@ -84,7 +84,7 @@
         "artifacts": [
           {
             "file": "window-b/real-windows-probe-report.json",
-            "fileSHA256": "8bd230b2cc8de21c8ab199af2d13aa2cea1289ca0782674d590349cf997e9332",
+            "fileSHA256": "d167f9d6857fc683cced016869d23b3a1f1e80bb35e9d27ce1b9ef69feab5a24",
             "schema": null,
             "requiresDigestBinding": false,
             "hasValidSourceSHA256": false,
@@ -107,8 +107,8 @@
       },
       "window-c": {
         "status": "real_evidence_validated",
-        "artifactCount": 28,
-        "realExecutionArtifacts": 2,
+        "artifactCount": 41,
+        "realExecutionArtifacts": 3,
         "artifacts": [
           {
             "file": "window-c/gamemode-and-offload/observation-manifest.json",
@@ -133,6 +133,136 @@
           {
             "file": "window-c/metal-host-policy-ab/manifest.json",
             "fileSHA256": "c562f726fb36cf8f6b174667c25e29c30df72f8a4cdfc97f5e051f9112f10b14",
+            "schema": null,
+            "requiresDigestBinding": true,
+            "hasValidSourceSHA256": true,
+            "hasValidBinarySHA256": true,
+            "passed": true,
+            "errors": []
+          },
+          {
+            "file": "window-c/wine-dxmt-three-engine/dxmt-r1-cold-startup.json",
+            "fileSHA256": "560a01c350774546c25773f965df9fd8e5ffdcdbaa85f1bf271a7ac3b943099e",
+            "schema": null,
+            "requiresDigestBinding": false,
+            "hasValidSourceSHA256": false,
+            "hasValidBinarySHA256": false,
+            "passed": true,
+            "errors": []
+          },
+          {
+            "file": "window-c/wine-dxmt-three-engine/dxmt-r1-cold-summary.json",
+            "fileSHA256": "41b0bc9b5d29c963b2769fcf14f539f97256ef667665ccb1ffdb3b6e23ddc44a",
+            "schema": null,
+            "requiresDigestBinding": false,
+            "hasValidSourceSHA256": false,
+            "hasValidBinarySHA256": false,
+            "passed": true,
+            "errors": []
+          },
+          {
+            "file": "window-c/wine-dxmt-three-engine/dxmt-r1-hot-startup.json",
+            "fileSHA256": "f1ce1ddb73826053bc29ac53f422b0d0c87c96ab1fe829446e1bcb472a29c12c",
+            "schema": null,
+            "requiresDigestBinding": false,
+            "hasValidSourceSHA256": false,
+            "hasValidBinarySHA256": false,
+            "passed": true,
+            "errors": []
+          },
+          {
+            "file": "window-c/wine-dxmt-three-engine/dxmt-r1-hot-summary.json",
+            "fileSHA256": "ff7b02151d870f1f027626a5cc11026ef5a1574ec57784b5da75dca98392dca3",
+            "schema": null,
+            "requiresDigestBinding": false,
+            "hasValidSourceSHA256": false,
+            "hasValidBinarySHA256": false,
+            "passed": true,
+            "errors": []
+          },
+          {
+            "file": "window-c/wine-dxmt-three-engine/dxmt-r2-cold-startup.json",
+            "fileSHA256": "c359e1e6da98fe35e27d64367af336c2ff1e6d42274bdd3bdf98488383af285a",
+            "schema": null,
+            "requiresDigestBinding": false,
+            "hasValidSourceSHA256": false,
+            "hasValidBinarySHA256": false,
+            "passed": true,
+            "errors": []
+          },
+          {
+            "file": "window-c/wine-dxmt-three-engine/dxmt-r2-cold-summary.json",
+            "fileSHA256": "6fb1b76d42c8d8c0965108d5d378eb6bfd6500120978d6f2485f9681dff01c17",
+            "schema": null,
+            "requiresDigestBinding": false,
+            "hasValidSourceSHA256": false,
+            "hasValidBinarySHA256": false,
+            "passed": true,
+            "errors": []
+          },
+          {
+            "file": "window-c/wine-dxmt-three-engine/dxmt-r2-hot-startup.json",
+            "fileSHA256": "903805f72d08f7b8e2e48c0e476b42663ece272cad41bee39e4b117ed74cec0d",
+            "schema": null,
+            "requiresDigestBinding": false,
+            "hasValidSourceSHA256": false,
+            "hasValidBinarySHA256": false,
+            "passed": true,
+            "errors": []
+          },
+          {
+            "file": "window-c/wine-dxmt-three-engine/dxmt-r2-hot-summary.json",
+            "fileSHA256": "23425ad9a7ef65ee46b83e80f6725ef589bc4e8be8940896808a2684e2848ed2",
+            "schema": null,
+            "requiresDigestBinding": false,
+            "hasValidSourceSHA256": false,
+            "hasValidBinarySHA256": false,
+            "passed": true,
+            "errors": []
+          },
+          {
+            "file": "window-c/wine-dxmt-three-engine/dxmt-r3-cold-startup.json",
+            "fileSHA256": "7cfb841f190b314fdbc95b36f8c339874132394a2ca07e68e651f2844fedc3af",
+            "schema": null,
+            "requiresDigestBinding": false,
+            "hasValidSourceSHA256": false,
+            "hasValidBinarySHA256": false,
+            "passed": true,
+            "errors": []
+          },
+          {
+            "file": "window-c/wine-dxmt-three-engine/dxmt-r3-cold-summary.json",
+            "fileSHA256": "2ed5c4712ef9280737e49a0f14b55c597efce88ece3b0520d818f7d4936812a2",
+            "schema": null,
+            "requiresDigestBinding": false,
+            "hasValidSourceSHA256": false,
+            "hasValidBinarySHA256": false,
+            "passed": true,
+            "errors": []
+          },
+          {
+            "file": "window-c/wine-dxmt-three-engine/dxmt-r3-hot-startup.json",
+            "fileSHA256": "3e823a0f187da2ed81aa3e1dde6944cffbbf482f355f899c65a5e7b4ab08516e",
+            "schema": null,
+            "requiresDigestBinding": false,
+            "hasValidSourceSHA256": false,
+            "hasValidBinarySHA256": false,
+            "passed": true,
+            "errors": []
+          },
+          {
+            "file": "window-c/wine-dxmt-three-engine/dxmt-r3-hot-summary.json",
+            "fileSHA256": "6a761ad2cc4441bef11e50e676e4a42b03cd35c82c7f48acf9c441c04e66983f",
+            "schema": null,
+            "requiresDigestBinding": false,
+            "hasValidSourceSHA256": false,
+            "hasValidBinarySHA256": false,
+            "passed": true,
+            "errors": []
+          },
+          {
+            "file": "window-c/wine-dxmt-three-engine/manifest.json",
+            "fileSHA256": "55cbba0bcfe9f0d68de66ce0d6bb4bdc6a5b17e7b433f5b377c7b4c6e0dc8912",
             "schema": null,
             "requiresDigestBinding": true,
             "hasValidSourceSHA256": true,
@@ -415,17 +545,17 @@
     "graphics-lab/analyze.py": "ee71db86dc7db499d4997343489b341062b51220e547fe6443ace2e2218e1f25",
     "graphics-lab/metal_host.swift": "43159ad0f49076f28c1b6180c01636d0ffda09e3f4bb4f1aa94e78a474ea1784",
     "graphics-lab/run_probe.py": "0b5ca9ba36815675e7c724f7c58deec793567d5cdb552af662272c17c4261889",
-    "graphics-lab/run_wine_benchmark.py": "fcac240eb69ce74058ac2a4e6c7475039155d441c65a6df12e24ea1d4e8623b7",
+    "graphics-lab/run_wine_benchmark.py": "cae15b3f21bec647957ecade111e27256f1428048594f26d5a8e161c4a95ae6b",
     "graphics-lab/test_analyze.py": "0b00192e63e5f1d74769e44bc53f16365d5dbf7202917c5505a3b25873ffc336",
     "graphics-lab/test_metalfx_sdk_compile.py": "495f511d8ed1ed875a9df520b434eaddd1135359ca839f93deddaa48c8d274fb",
     "graphics-lab/test_run_probe.py": "d8e20e14fc32f12477682d0907291300a2ebc7358ea078dc7236f7d132843b60",
-    "graphics-lab/test_wine_benchmark.py": "1b54b6d41e5db9dbff39f946abc89ea12141703b225f65dfba36ca42038fc4fa",
-    "handoff/module-f/README.md": "58152c240ec0aedf162e72760941f4232a4e53b7600c2e7219a6635a827abe8f",
-    "handoff/module-f/engineering-input.md": "265a1bb7a7ed99909f1489835bc0381dac5d9f7eb0e04aae2eb9ca3da6127544",
-    "handoff/module-f/evidence-matrix.md": "2dcba61e2f0ddf36081feefb7aa57cd9ab6dc08f39159dbd4b8f15733f66e8da",
-    "handoff/module-f/evidence.json": "03d4c1fd19b309a871cc8a20c51d4c4e495de1bcf9f26f9b1e1faa540fc0d1c7",
+    "graphics-lab/test_wine_benchmark.py": "4a173b3acb49dced28f9c3218a577f6c12f901312f661e3b4c2b02a4e44da8b4",
+    "handoff/module-f/README.md": "8d3f28c492e70ec6a9f90a88b591b54345b4608396c3b8c7657b7a8efb5a2f85",
+    "handoff/module-f/engineering-input.md": "e232ca35e1ad57a39096661674653f900c70b95f41d95122c153be83a646e950",
+    "handoff/module-f/evidence-matrix.md": "15122f4eb38bb2ac59c31f8da37b95abadddf087d184d79fda55b96d7b209010",
+    "handoff/module-f/evidence.json": "e554fb57615c2cd3407bbff001306e2a0f169d98a3113e28624b5fa563a44857",
     "handoff/module-f/evidence.schema.json": "ce8b63a79aefb579d75c54dc4fa93c17e5e24ce8e9207d5d088c43f0ba8cc399",
-    "handoff/module-f/validate_evidence.py": "576d300599b1a824dd57db0df5c06d996c160927a11e9cdc0df55e4f2c1f4315",
+    "handoff/module-f/validate_evidence.py": "e2f4a63de01d68577038baa59db33ff18a25fdf0604ef6af4c38c02c4cd352e6",
     "handoff/task-07/cli_smoke.py": "ed63b65ffbd14d10196d467eaf6e751d6ce4789a2f8bcd65e6e36484f00d5547",
     "handoff/task-07/integration.py": "01484adf884318f9a823416d60b1529b18873ae7d963044b9beee0b0fc707ba9",
     "handoff/task-07/performance.py": "4a8fdb4300c6cf5820da02fee7089d5ac73bdbeb6b325d1eba44dccdd633ca23",
@@ -439,7 +569,7 @@
     "handoff/task-07/test_verify.py": "3ddcd489a188df312129c2d95bf118a661a9484712f928cc6f71dc8828be9953",
     "handoff/task-07/verify.py": "9cb97f39fb9da57db0b26bf6989cc434929916df46dcfe74b4dd05c495086c97"
   },
-  "inputFingerprintSHA256": "c917b59de4a48e34c203ba755054f4f99ffd119b720cde766e6b34ec2856fa82",
+  "inputFingerprintSHA256": "749d105c8f1f42f39afabd9b22af18d72ac2563148167d32d2fd425d0f69961c",
   "inputCount": 32,
   "inputsStableDuringRun": true,
   "changedInputs": [],

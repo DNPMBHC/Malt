@@ -9,7 +9,7 @@
 | `evidence.json` | 中性标识、独立区域、逐条来源及更新时间的机器可读快照 |
 | `evidence.schema.json` | JSON Schema 2020-12；仅描述本目录的数据交换格式 |
 | `evidence-matrix.md` | 人工审阅矩阵、矛盾、未知项和一手来源目录 |
-| `engineering-input.md` | 任务 01、02（窗口 A、窗口 B）的资格检查、国服安装器只读静态取证输入、采样要求和阻塞条件 |
+| `engineering-input.md` | 任务 01、02（窗口 A、窗口 B）的资格检查、裸金属 WoA 与虚拟化 ARM64 Guest 正交拆分矩阵、国服安装器只读静态取证输入、采样要求和阻塞条件 |
 | `validate_evidence.py` | 无第三方依赖的结构、引用、状态和隐私校验 |
 
 产品研究对象使用 target-a、target-b、target-c。公开产品名称只用于映射和官方来源标题；本地项目、路径、账号和内部标识不进入交付数据。
@@ -24,11 +24,13 @@ python3 validate_evidence.py --self-test
 
 消费者首先按 `scope_id` 选择发行区域及客户端平台，再通过 `claim_id` 读取结论及证据。每条 `evidence` 包含来源引用、页面定位和中文释义，原文不作长段复制。`sources` 保存官方标题、公开 URL、访问日期、页面日期类型及版本适用范围。
 
-`page_display` 只代表页面显示的日期（包括已注明类型的 Last Review 或接口 `verDate`），未将其猜测为发布或更新日期；没有日期的来源保留 `null`。公开补丁公告是检索当日的版本参考，不能用来填充安装 build、驱动版本或实际区域部署版本。
+`page_display` 只代表页面显示的日期（包括已注明类型的 Last Review、`ms.date` 或接口 `verDate`），未将其猜测为发布或更新日期；没有日期的来源保留 `null`。公开补丁公告是检索当日的版本参考，不能用来填充安装 build、驱动版本或实际区域部署版本。
 
 ## 状态语义
 
 四类结论分别为：发行方立场、驱动实际加载、游戏实际启动、实际受保护在线会话。发行方立场进一步拆成 `publisher_permission` 与 `publisher_support`。前者记录许可或条款立场，后者记录官方支持；VAN 9100 的软件运行拒绝与腾讯游戏安全中心 [S-T01] 的 CPU 虚拟化占用冲突指引均另记为官方文档描述，不自动等同许可禁止或本机实测。
+
+针对 ARM64 架构，本证据集通过 `P-WOA-PRISM`、`A-WOA-SPLIT`（国际服 VALORANT Vanguard / On-Demand）与 `A-CN-WOA-SPLIT`（国服《无畏契约》ACE）将 **「裸金属 Windows on ARM 驱动可用性（Windows 11 24H2+ Prism 用户态 AVX/AVX2 转译 + 原生 ARM64 内核驱动分发状态）」** 与 **「虚拟化 ARM64 Guest 策略（Hypervisor 暴露 / vTPM / IOMMU / VBS / CPU 虚拟化独占冲突）」** 正交拆开记录，避免混为一谈。
 
 `evidence.json` 只收录公开官方文档核验，因此后三项全部 `unknown` / `not_tested`。未使用真实账号、未加载商业内核组件、未启动游戏、未联系厂商、未提交申请或发送消息。工作区 `VALORANT_CN_installer_v2.17.4.510.exe` 的纯只读静态 PE/Authenticode 取证独立交付于 `handoff/phase-2/evidence/window-b/valorant-cn-installer-static.json` 并在 `engineering-input.md` 中引用，不混同于已安装内核驱动实测。
 
@@ -40,9 +42,9 @@ python3 validate_evidence.py --self-test
 
 ## 本次校验记录
 
-2026-11-22（Phase 2 窗口 B 更新后）：39 条一手来源记录、42 条独立结论、11 个发行／平台范围、7 条 VM 状态记录。38 条来源在 2026-11-22 成功读取；S-B04 保留 2026-11-21 的成功日期。
+2026-11-22（Phase 2 窗口 B 增量更新后）：42 条一手来源记录、45 条独立结论、11 个发行／平台范围、7 条 VM 状态记录。41 条来源在 2026-11-22 成功读取；S-B04 保留 2026-11-21 的成功日期。
 
 - JSON Schema 2020-12 自身和实例检查、日期／URI 格式检查通过。
 - 独立校验器及 9 个负向反例通过，覆盖未观测成功、悬空来源、跨区域政策、支持提升为禁止、未知驱动架构、错误架构引用、政策反转和跨产品来源挪用。
-- 补齐国服一手官方来源 9 条（`S-A06`、`S-A07`、`S-A08`、`S-T01`、`S-B10`、`S-B11`、`S-B12`、`S-C10`、`S-C11`）与独立国服结论 5 条（`A-CN-REQ`、`A-CN-VER`、`A-CN-SEC`、`B-CN-REQ`、`B-CN-VER`），并更新 `A-CN`、`B-CN`、`C-CN` 及研究日志 `L-08` ~ `L-10`。
-- 人工矩阵全部 claim、来源及数据 SHA-256（`03d4c1fd19b309a871cc8a20c51d4c4e495de1bcf9f26f9b1e1faa540fc0d1c7`）匹配，交付隐私检查通过。
+- 补齐国服一手官方来源 9 条（`S-A06`、`S-A07`、`S-A08`、`S-T01`、`S-B10`、`S-B11`、`S-B12`、`S-C10`、`S-C11`）与 Windows on ARM Prism 官方来源 3 条（`S-P04`、`S-P05`、`S-P06`），新增结论 8 条（`A-CN-REQ`、`A-CN-VER`、`A-CN-SEC`、`B-CN-REQ`、`B-CN-VER`、`P-WOA-PRISM`、`A-WOA-SPLIT`、`A-CN-WOA-SPLIT`），并更新 `A-CN`、`B-CN`、`C-CN` 及研究日志 `L-08` ~ `L-11`。
+- 人工矩阵全部 claim、来源及数据 SHA-256（`e554fb57615c2cd3407bbff001306e2a0f169d98a3113e28624b5fa563a44857`）匹配，交付隐私检查通过。

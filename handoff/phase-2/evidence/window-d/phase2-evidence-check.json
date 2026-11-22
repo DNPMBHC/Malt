@@ -27,7 +27,7 @@
       "artifacts": [
         {
           "file": "window-b/real-windows-probe-report.json",
-          "fileSHA256": "8bd230b2cc8de21c8ab199af2d13aa2cea1289ca0782674d590349cf997e9332",
+          "fileSHA256": "d167f9d6857fc683cced016869d23b3a1f1e80bb35e9d27ce1b9ef69feab5a24",
           "schema": null,
           "requiresDigestBinding": false,
           "hasValidSourceSHA256": false,
@@ -50,8 +50,8 @@
     },
     "window-c": {
       "status": "real_evidence_validated",
-      "artifactCount": 28,
-      "realExecutionArtifacts": 2,
+      "artifactCount": 41,
+      "realExecutionArtifacts": 3,
       "artifacts": [
         {
           "file": "window-c/gamemode-and-offload/observation-manifest.json",
@@ -76,6 +76,136 @@
         {
           "file": "window-c/metal-host-policy-ab/manifest.json",
           "fileSHA256": "c562f726fb36cf8f6b174667c25e29c30df72f8a4cdfc97f5e051f9112f10b14",
+          "schema": null,
+          "requiresDigestBinding": true,
+          "hasValidSourceSHA256": true,
+          "hasValidBinarySHA256": true,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxmt-three-engine/dxmt-r1-cold-startup.json",
+          "fileSHA256": "560a01c350774546c25773f965df9fd8e5ffdcdbaa85f1bf271a7ac3b943099e",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxmt-three-engine/dxmt-r1-cold-summary.json",
+          "fileSHA256": "41b0bc9b5d29c963b2769fcf14f539f97256ef667665ccb1ffdb3b6e23ddc44a",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxmt-three-engine/dxmt-r1-hot-startup.json",
+          "fileSHA256": "f1ce1ddb73826053bc29ac53f422b0d0c87c96ab1fe829446e1bcb472a29c12c",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxmt-three-engine/dxmt-r1-hot-summary.json",
+          "fileSHA256": "ff7b02151d870f1f027626a5cc11026ef5a1574ec57784b5da75dca98392dca3",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxmt-three-engine/dxmt-r2-cold-startup.json",
+          "fileSHA256": "c359e1e6da98fe35e27d64367af336c2ff1e6d42274bdd3bdf98488383af285a",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxmt-three-engine/dxmt-r2-cold-summary.json",
+          "fileSHA256": "6fb1b76d42c8d8c0965108d5d378eb6bfd6500120978d6f2485f9681dff01c17",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxmt-three-engine/dxmt-r2-hot-startup.json",
+          "fileSHA256": "903805f72d08f7b8e2e48c0e476b42663ece272cad41bee39e4b117ed74cec0d",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxmt-three-engine/dxmt-r2-hot-summary.json",
+          "fileSHA256": "23425ad9a7ef65ee46b83e80f6725ef589bc4e8be8940896808a2684e2848ed2",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxmt-three-engine/dxmt-r3-cold-startup.json",
+          "fileSHA256": "7cfb841f190b314fdbc95b36f8c339874132394a2ca07e68e651f2844fedc3af",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxmt-three-engine/dxmt-r3-cold-summary.json",
+          "fileSHA256": "2ed5c4712ef9280737e49a0f14b55c597efce88ece3b0520d818f7d4936812a2",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxmt-three-engine/dxmt-r3-hot-startup.json",
+          "fileSHA256": "3e823a0f187da2ed81aa3e1dde6944cffbbf482f355f899c65a5e7b4ab08516e",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxmt-three-engine/dxmt-r3-hot-summary.json",
+          "fileSHA256": "6a761ad2cc4441bef11e50e676e4a42b03cd35c82c7f48acf9c441c04e66983f",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxmt-three-engine/manifest.json",
+          "fileSHA256": "55cbba0bcfe9f0d68de66ce0d6bb4bdc6a5b17e7b433f5b377c7b4c6e0dc8912",
           "schema": null,
           "requiresDigestBinding": true,
           "hasValidSourceSHA256": true,

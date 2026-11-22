@@ -4,6 +4,7 @@
   "captured_on": "2026-11-22",
   "timezone": "Asia/Shanghai",
   "status": "blocked_by_guest_os_and_wdk_provisioning",
+  "primary_focus": "VALORANT (CN ACE + Global Vanguard / On-Demand)",
   "canonical_probe_source": "<workspace>/Whisky/Modules/module-a/WindowsProbe",
   "host_and_vm_handover_snapshot": {
     "host_architecture": "arm64",
@@ -26,11 +27,23 @@
     "swift_anticheat_probe_tests_result": "passed (30/30)",
     "verify_lifecycle_ps1_sha256": "639ad94c0ba1ff52a84250a28daef0025633658a5db1e8919c3701513ef4840a"
   },
+  "orthogonal_diagnostic_split": {
+    "axis_1_bare_metal_woa_driver_availability": {
+      "description": "Whether the anti-cheat distributor provides a native ARM64 (IMAGE_FILE_MACHINE_ARM64 / 0xaa64) kernel driver (.sys) alongside Windows 11 24H2+ Prism user-mode x86/x64 (SSE4.2/AVX/AVX2) emulation.",
+      "valorant_cn_ace": "Outer installer is 32-bit x86 NSIS (2.17.4.510); embedded/downloaded ACE kernel driver PE Machine is unknown_pending_authorized_dynamic_sampling.",
+      "valorant_global_vanguard_on_demand": "Public specs (S-A01) state ARM not supported; On-Demand (Pre-Check, Win11 25H2+, S-R02) actual ARM64 driver binary distribution is unknown_pending_guest_sampling."
+    },
+    "axis_2_virtualized_arm64_guest_policy": {
+      "description": "Independent of native ARM64 driver binary availability, whether the anti-cheat blocks execution due to Hypervisor presence, vTPM/IOMMU/VBS/HVCI hardware trust root requirements, or host CPU virtualization ownership.",
+      "valorant_cn_ace": "Tencent Game Security Center (S-T01) requires physical BIOS VT-x/VT-d or SVM/IOMMU and blocks when Hyper-V, VBS (hypervisorlaunchtype), HVCI, or hypervisors occupy CPU virtualization.",
+      "valorant_global_vanguard_on_demand": "VAN 9100 (S-R03) disallows VM execution; On-Demand (S-R02) requires Secure Boot, TPM 2.0, IOMMU, VBS, and HVCI."
+    }
+  },
   "environment_blockers": [
     {
       "blocker_id": "B2-BLK-01",
       "component": "Windows 11 ARM64 Guest OS & QEMU Guest Agent",
-      "current_state": "VM shell B107A021-E60C-426B-BB62-626122CE44BE created on external volume by Window A, awaiting Windows 11 ARM64 ISO/VHDX installation and spice-guest-tools (qemu-ga) startup.",
+      "current_state": "VM shell B107A021-E60C-426B-BB62-626122CE44BE created on external volume by Window A, awaiting Windows 11 ARM64 (24H2+) ISO/VHDX installation and spice-guest-tools (qemu-ga) startup.",
       "resolution_step": "Install Windows 11 ARM64 into VM B107A021-E60C-426B-BB62-626122CE44BE, install spice-guest-tools, and confirm 'QEMU Guest Agent' service is Running and C:\\whisky-guest-share is mapped."
     },
     {
@@ -47,9 +60,9 @@
     },
     {
       "blocker_id": "B2-BLK-04",
-      "component": "Explicit User Secondary Authorization for Commercial Installer Dynamic Sampling",
+      "component": "Explicit User Secondary Authorization for VALORANT Commercial Installer Dynamic Sampling",
       "current_state": "Static read-only forensics completed on host; dynamic installer execution in Guest awaits Guest readiness and explicit user secondary authorization.",
-      "resolution_step": "After Guest is ready and user grants secondary authorization, execute VALORANT_CN_installer_v2.17.4.510.exe along standard vendor path without any spoofing or virtualization hiding."
+      "resolution_step": "After Guest is ready and user grants secondary authorization, execute VALORANT_CN_installer_v2.17.4.510.exe (and inspect Vanguard On-Demand distribution if authorized) along standard vendor paths, classifying any failure strictly into Axis 1 (missing ARM64 driver binary / error 193) vs Axis 2 (Hypervisor / vTPM / virtualization conflict rejection)."
     }
   ],
   "stage_b2_ready_execution_plan": {
@@ -78,7 +91,7 @@
       "publisher_stance": {
         "publisher_permission": "unknown",
         "publisher_support": "unknown",
-        "note": "Tencent Game Security Center S-T01 documents CPU virtualization and Hyper-V/VBS/HVCI conflict troubleshooting, while standalone CN VM license/support policy remains unknown."
+        "note": "Orthogonally split in A-CN-WOA-SPLIT: CN specs (S-A06) do not explicitly ban ARM, while Tencent Game Security Center (S-T01) documents CPU virtualization and Hyper-V/VBS/HVCI conflict troubleshooting."
       },
       "actual_driver_load": "unknown (not_tested)",
       "actual_game_start": "unknown (not_tested)",
@@ -87,7 +100,8 @@
     "a-riot-win": {
       "publisher_stance": {
         "publisher_permission": "unknown",
-        "publisher_support": "not_supported"
+        "publisher_support": "not_supported",
+        "note": "Orthogonally split in A-WOA-SPLIT: bare-metal WoA driver availability (S-A01 vs S-R02 On-Demand) is tracked separately from VAN 9100 VM rejection (S-R03) and IOMMU/VBS/HVCI requirements."
       },
       "actual_driver_load": "unknown (not_tested)",
       "actual_game_start": "unknown (not_tested)",

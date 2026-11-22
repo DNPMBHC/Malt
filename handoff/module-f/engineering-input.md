@@ -1,4 +1,4 @@
-# 任务 01、02 工程输入（Phase 2 窗口 B 更新版）
+# 任务 01、02 工程输入（Phase 2 窗口 B 更新版：含裸金属 WoA 与虚拟化 ARM64 Guest 正交拆分）
 
 证据快照：2026-11-22（Asia/Shanghai）。事实和出处以 `evidence.json` 的 claim / source ID 及 `handoff/phase-2/evidence/window-b/valorant-cn-installer-static.json` 为准。来源成功读取日逐项保留；所有路径示例只使用合成标识（`<workspace>`），不代表当前机器私有路径配置。
 
@@ -6,15 +6,28 @@
 
 | 范围 | 官方环境输入 | 任务 01 / 窗口 B | 任务 02 / 窗口 A |
 | --- | --- | --- | --- |
-| target-a / Riot Windows (`a-riot-win`) | VM 不支持；ARM 不支持；Win10 构建号有官方内部矛盾（A-REQ、A-BUILD、A-VM） | 保留商业驱动具体 Machine、签名、加载、保护范围未知；不能标记适配成功 | 普通 guest 仍可用于自有诊断；VM 就绪不升级官方支持。按表格 19041+ 做候选筛选只是保守工程选择，矛盾仍未解决 |
-| target-a / 中国 Windows (`a-cn-win`) | 主下载页要求 Win10/11 64位、i3-540 / Athlon 200GE、SSE4.2 或 AVX、4GB RAM（旧 aclos 页仍列 Win7-11 与 E8400）；公开游戏版本 13.09、登录器 2.17.4；腾讯游戏安全中心提供 BIOS VT-x/VT-d/SVM/IOMMU 开启及关闭 Hyper-V/VBS/HVCI/虚拟机监控程序冲突排障指引（A-CN、A-CN-REQ、A-CN-VER、A-CN-SEC） | 已完成官方安装包 `VALORANT_CN_installer_v2.17.4.510.exe` 只读 PE/Authenticode 静态取证（外层为 32 位 x86 NSIS 引导器）；**外层引导器架构不等于内核反作弊驱动架构**，内核驱动二进制与加载结果待 Windows Guest 授权采样 | 国服独立 VM 许可与支持状态在公开文档中仍为 `unknown`；宿主虚拟化冲突指引表明商业反作弊对 Hyper-V/VBS/虚拟机环境存在硬件虚拟化占用检测，不得预判 Guest 可通过 |
+| target-a / Riot Windows (`a-riot-win`) | VM 不支持；公开规格页标 ARM 不支持；Win10 构建号有官方内部矛盾；Vanguard On-Demand（Pre-Check）针对 Win11 25H2+ 提供按需启动（A-REQ、A-BUILD、A-MODE、A-VM、A-WOA-SPLIT） | 拆分「裸金属 WoA 驱动可用性（On-Demand 是否分发原生 ARM64 驱动待核）」与「虚拟化 ARM64 Guest 策略（VAN 9100 拒绝 VM + On-Demand 要求 IOMMU/VBS/HVCI）」；不能标记适配成功 | 普通 guest 仍可用于自有诊断；VM 就绪不升级官方支持。按表格 19041+ 做候选筛选只是保守工程选择，矛盾仍未解决 |
+| target-a / 中国 Windows (`a-cn-win`) | 主下载页要求 Win10/11 64位、i3-540 / Athlon 200GE、SSE4.2 或 AVX、4GB RAM（未在规格表明文写死 ARM 不支持；旧 aclos 页仍列 Win7-11 与 E8400）；公开游戏版本 13.09、登录器 2.17.4；腾讯游戏安全中心提供 BIOS VT-x/VT-d/SVM/IOMMU 开启及关闭 Hyper-V/VBS/HVCI/虚拟机监控程序冲突排障指引（A-CN、A-CN-REQ、A-CN-VER、A-CN-SEC、A-CN-WOA-SPLIT） | 已完成官方安装包 `VALORANT_CN_installer_v2.17.4.510.exe` 只读 PE/Authenticode 静态取证（外层为 32 位 x86 NSIS 引导器）；拆分「裸金属 WoA 驱动可用性（ACE 是否释放原生 ARM64 `.sys`）」与「虚拟化 Guest 策略（Hyper-V/VBS/虚拟机监控程序占用拦截）」 | 国服独立 VM 许可与支持状态在公开文档中仍为 `unknown`；宿主虚拟化冲突指引表明商业反作弊对 Hyper-V/VBS/虚拟机环境存在硬件虚拟化占用检测，不得预判 Guest 可通过 |
 | target-b / Riot Windows (`b-riot-win`) | x64、Win10 19041+ 或 Win11；ARM 不支持；VM 不支持（B-REQ、B-VM） | 依正规安装和诊断路径采集；Pre-Check 与通常开机模式分别记录 | OS 版本、架构、发行版资格独立检查；Enterprise / Server 不符合公开要求 |
 | target-b / 中国 Windows (`b-cn-win`) | 下载页官方配置图片要求 64位、i5-4460（SSE2）、GTX 750 Ti、1GB 显存、30GB HDD、4G 内存（图片内“win10”与“Win10\Win11”、推荐内存 16G 与 4G 存在行间矛盾）；当前公开版本 Ver 26.23（B-CN、B-CN-REQ、B-CN-VER） | 2024 历史 FAQ 曾将中国排除在当时的 Vanguard 计划外；当前国服内核反作弊驱动二进制、签名与加载状态未知 | 不继承国际系统要求或允许状态；最低存储按国服图片 30GB 预检（高于国际服 16GB） |
 | target-c / 国际 Windows (`c-steam-win`) | 64 位 Win10+、DX12；VM 明确禁止（C-REQ、C-VM） | 完整反作弊组合及商业驱动 Machine 未知；不得仅凭 Steam 或 EAC 名称推定加载结果 | 记录发行方许可阻塞；不把该禁止改写成本机已观测到技术失败 |
 | target-c / 日本 FAQ (`c-jp-win`) | 官方声明虚拟 OS 无法连接（C-JP） | 属官方连接限制，不是本机测试 | 支持状态不支持；单凭该日文句子不推定许可条款禁止 |
 | target-c / 中国 Windows (`c-cn-win`) | 腾讯运营国服《终极角逐》S3 赛季官网与官方安全站在线运行（S-C08、S-C10、S-C11、C-CN） | 官方安全站展示 10 年封禁处罚公示，但未公开内核反作弊驱动名称或 PE 架构 | 官网提供客户端下载器、WeGame 入口与腾讯 START 云游戏入口，未公开本地 PC 硬件最低配置表或 VM 政策，保持 `unknown` |
 
-微软平台规则 P-ARM：ARM Windows 内核驱动必须是原生 Arm64。用户态 x64/x86 转译、游戏进程出现或 VM 启动均不能证明内核驱动可加载。对于 `a-riot-win`、`b-riot-win`，官方本身已明确不支持 ARM；`c-steam-win` 及中国发行（`a-cn-win`、`b-cn-win`、`c-cn-win`）的 ARM 支持没有直接官方声明，保持未知，不能自行断言受支持或不支持。
+---
+
+## 核心架构拆分：裸金属 Windows on ARM 驱动可用性 vs 虚拟化 ARM64 Guest 策略（VALORANT 首要焦点）
+
+结合微软官方 Prism 转译文档（`S-P04`、`S-P05`、`S-P06`，对应 `P-WOA-PRISM`）及 Windows on ARM 游戏硬件生态（Snapdragon X 与 NVIDIA N1/N1X 平台推动主流反作弊原生 ARM64 驱动普及），本工程输入严格禁止将“ARM 架构驱动问题”与“虚拟机 Hypervisor/vTPM 拒绝”混为一谈，必须按以下两个正交轴独立建档与诊断：
+
+| 诊断维度 | 国际服 VALORANT（Riot Vanguard / On-Demand，`A-WOA-SPLIT`） | 国服 VALORANT《无畏契约》（腾讯 ACE，`A-CN-WOA-SPLIT`） |
+| --- | --- | --- |
+| **用户态指令集（Prism 转译层）** | 要求 SSE4.2 或 AVX（`A-REQ`）。Windows 11 24H2+ 的 **Prism** 已在用户态原生支持 x64 AVX/AVX2/BMI/FMA/F16C 转译（`S-P05`），用户态指令集不再构成硬阻塞。 | 主下载页要求 `Win10、11 (64位)` 及 `SSE4.2 或 打开AVX Support设置`（`S-A06`）。外层 32 位 x86 安装引导器（`2.17.4.510`）通过 WOW64 运行；注意 Prism 对 32 位 x86 应用默认隐藏 AVX/AVX2，必要时可在属性中开启 `Show newer emulated CPU features`（`S-P05`）。 |
+| **轴 1：裸金属 Windows on ARM 内核驱动可用性** | 内核无转译，驱动须为原生 `ARM64`（`0xaa64`，`P-ARM` / `P-WOA-PRISM`）。虽然 `S-A01` 公开页面仍写 `ARM: Not Supported`，但需在 Windows 11 24H2/25H2+ ARM64 下核查 Vanguard On-Demand（`S-R02`）分发通道是否已包含原生 `ARM64` 驱动二进制。 | 国服公开规格表未明文禁止 ARM。外层安装器为 32 位 x86 引导器，内嵌或下载释放的腾讯 ACE 内核驱动是否已随 WoA / NVIDIA N1/N1X 生态包含原生 `ARM64`（`0xaa64`）驱动二进制，须在阶段 B2 授权安装时直接检查 `.sys` 的 PE Machine。 |
+| **轴 2：虚拟化 ARM64 Guest 策略（Hypervisor / vTPM 硬件信任根）** | 即使存在或未来推出裸金属 `ARM64` 驱动，`S-R03`（`VAN 9100`）明确拒绝 VM 环境；且 On-Demand（`S-R02`）与安全页（`S-R04`）要求 `Secure Boot + TPM 2.0 + IOMMU + VBS + HVCI`。Apple Silicon 上的 ARM64 VM（UTM QEMU / Parallels）暴露 Hypervisor 且缺乏嵌套虚拟化/VBS/Guest IOMMU（`P-PDARM`）。 | 腾讯游戏安全中心（`S-T01`）明确要求开启物理主板 BIOS `VT-x/VT-d` 或 `SVM/IOMMU`，并在检测到 Windows `HVCI`、`VBS`（要求 `bcdedit /set hypervisorlaunchtype off`）、`Hyper-V` 或虚拟机监控程序（Hypervisor）占用时弹窗阻断。在 ARM64 Guest VM 中，Hypervisor 标志天然存在且硬件虚拟化由宿主机独占。 |
+| **阶段 B2 动态采样错误归因准则** | 若驱动文件 PE Machine 为 `0x8664 (AMD64)` 或加载报 `ERROR_BAD_EXE_FORMAT (193)` → 归因于 **轴 1（无原生 ARM64 驱动二进制）**；<br>若驱动为 `0xaa64 (ARM64)` 或客户端报 `VAN 9100` / TPM / IOMMU / VBS 错误 → 归因于 **轴 2（虚拟化 Guest / 硬件信任根策略拒绝）**。 | 若释放的 ACE `.sys` 驱动 PE Machine 为 `0x8664 (AMD64)` 且内核加载报 `193` → 归因于 **轴 1（无原生 ARM64 驱动二进制）**；<br>若安装/启动报“未开启或有其他软件占用CPU虚拟化功能”或 Hypervisor 冲突 → 归因于 **轴 2（虚拟化 Guest Hypervisor 占用策略拒绝）**。 |
+
+> **辅助对照试金石（阶段 B2 可选补充）**：在不分散 VALORANT 首要焦点的前提下，可在同一 Windows 11 24H2+ ARM64 Guest 中辅以 1 款已提供官方原生 ARM64 驱动且不封杀 VM 的组件样本，用于验证「Prism x64 用户态 + 原生 ARM64 内核驱动」基础链路正常，从而将 Guest 环境配置问题与 VALORANT 反作弊策略/架构阻塞彻底隔离。
 
 ---
 
@@ -48,7 +61,7 @@
 2. 记录 host / guest / 游戏 executable / 驱动四种架构，明确 CPU 指令执行域；驱动单独采集 PE Machine、文件版本、SHA-256、合法签名和签名验证结果。
 3. 使用自有、合法签名、无侵入功能的诊断驱动（唯一真源 `<workspace>/Whisky/Modules/module-a/WindowsProbe`）验证正常加载、请求响应、退出、重启和失败路径；报告只能证明该执行环境。
 4. 保护范围必须证明驱动看到的是实际运行测试负载的进程及其执行域。服务 running、设备句柄打开或安装完成均不足以证明保护有效。
-5. 商业组件只能沿厂商正常安装和诊断路径采样，记录真实拒绝和原始错误。此交付不授权规避已知 VM 禁止，不伪造环境或完整性状态。
+5. 商业组件只能沿厂商正常安装和诊断路径采样，记录真实拒绝和原始错误（精确区分“无 ARM64 驱动”与“Hypervisor / vTPM 拒绝”）。此交付不授权规避已知 VM 禁止，不伪造环境或完整性状态。
 6. 四类状态分别附证据：发行方立场、实际驱动加载、实际游戏启动、实际受保护在线会话。一个成功结果不能补写其他结果。
 
 ---
@@ -77,6 +90,7 @@ TPM、Secure Boot、IOMMU、VBS、HVCI 应分别记录“不存在／存在未�
 | --- | --- | --- |
 | target-a 国际服 Win10 构建号 19041+ / 10904+ 哪个正确？ | 最低 OS 资格 | A-BUILD conflict |
 | target-a 国服主下载页 Win10/11 + i3-540 与旧 aclos 页 Win7-11 + E8400 哪个为准？ | 国服最低 OS/CPU 资格 | A-CN-REQ conflict（工程预检优先采用主下载页 Win10/11 + SSE4.2/AVX） |
+| target-a 国际服 Vanguard On-Demand 与国服 ACE 是否已分发原生 ARM64 内核驱动二进制？ | 裸金属 WoA 驱动可用性（轴 1） | A-WOA-SPLIT / A-CN-WOA-SPLIT unknown_pending_sampling |
 | target-b 原生 Mac 的 Intel-only 开头与 Apple Silicon 表格如何解释？ | 原生 Mac 平台边界 | B-MAC conflict；不影响已明确的 Windows 行 |
 | target-b 国服配置图片内“win10”与“Win10\Win11”、推荐内存“16G”与“4G”哪个为准？ | 国服推荐内存与 Win11 标注 | B-CN-REQ conflict |
 | 各区域当前内核反作弊驱动（`.sys`）的确切名称、PE Machine、签名及版本？ | 驱动兼容 | A-BIN、B-BIN、C-BIN 及国服内核驱动均 unknown（国服外层安装引导器 x86 PE32 已完成只读静态采样） |

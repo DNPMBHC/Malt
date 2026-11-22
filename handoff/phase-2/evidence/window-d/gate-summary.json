@@ -1,14 +1,14 @@
 {
-  "schema": "phase-2-window-d-gate-summary-v1",
-  "capturedAt": "2026-11-22T10:35:03+08:00",
+  "schema": "phase-2-window-d-gate-summary-v2",
+  "capturedAt": "2026-11-22T11:42:01+08:00",
   "window": "window-d",
   "overallLocalGatePassed": true,
   "overallPhase2RealWorldStatus": "incomplete",
   "fiveDimensionStatus": {
     "codeImplementation": "passed",
     "localSyntheticAndIsolatedVerification": "passed",
-    "realGuestOrWineVerification": "partial (real Wine DXVK vs D3DMetal and metal_host A/B validated; real UTM QEMU shell lifecycle validated; Windows 11 ARM64 Guest OS image and WDK pending)",
-    "vendorSupport": "unknown (CN) / not_supported (Riot global VM)",
+    "realGuestOrWineVerification": "partial (real Wine three-engine DXMT/D3DMetal/DXVK 18 runs / 16,200 frames and metal_host A/B validated; real UTM QEMU shell lifecycle validated; Windows 11 ARM64 Guest OS image and WDK pending)",
+    "vendorSupport": "unknown (CN) / not_supported (Riot global VM); module-f 42 sources / 45 claims with WoA/VM dual-axis split",
     "realCommercialGameVerification": "not_tested"
   },
   "gates": {
@@ -22,25 +22,25 @@
         "codeOrBuildBlocked": false
       },
       "swiftTests": {
-        "total": 108,
+        "total": 115,
         "failures": 0,
         "errors": 0,
         "skipped": 1,
-        "executed": 107,
-        "passed": 107
+        "executed": 114,
+        "passed": 114
       },
       "globalGitUnchanged": true,
       "lockfilesUnchanged": true,
       "sourcesStableDuringRun": true,
-      "artifactSHA256": "c861f48ae07a0457059e060e0c9433ce51099e15b417dd8e78d0895c19515787"
+      "artifactSHA256": "a656e8f7a07330ccd8dfd1b12238a7ce12e2150b3c40d8b6659d4fc00063db4b"
     },
     "cli": {
       "passed": true,
       "schema": "task-07-cli-v2",
-      "binarySHA256": "51c204075ff3d5519f69f8b6dc3a4dd3b9bcce1176273d1b2e6690c07aeccbaf",
+      "binarySHA256": "db8d18aed8fb05a024ac7f22eecb21a4e60fb80ba851c672e0af6f1e4c182eb8",
       "savedArgumentOverrideEndToEnd": "synthetic_cli_verified",
       "emptyOverrideRuntimeBranch": "synthetic_cli_verified",
-      "artifactSHA256": "985216723bfd4b81a7f15b8a1eecb6857579b376e4a3f7b0a897258aabe5282d"
+      "artifactSHA256": "f0d435872ff436cbd84f54c19759a43e577fb4295f42cea034a4efeec1563bb6"
     },
     "integration": {
       "passed": true,
@@ -48,12 +48,12 @@
       "moduleACanonicalSymlinkConsistent": true,
       "inputCount": 32,
       "inputsStableDuringRun": true,
-      "artifactSHA256": "d04633fa6470e31d2838de47c1fb9f9014d016909c920405ba8f8e0c74b2046b"
+      "artifactSHA256": "0be25d8f3b44389484d71cf3edf1b9e8829a4b742798d4c1101d46e8d6c27a77"
     },
     "strictSwiftFormat": {
       "passed": true,
       "inputCount": 6,
-      "artifactSHA256": "87e4ac523ece3dfa118792e0506a0ea309271ddddd6f7f589057d651850058ab"
+      "artifactSHA256": "d8fde419e54de61ba0373db1ee3d0e7ce186cd64e4e46f52227364f31bb2034c"
     },
     "privacyAudit": {
       "passed": true,
@@ -65,6 +65,7 @@
       "passed": true,
       "completedWindowCount": 1,
       "expectedWindowCount": 3,
+      "windowCRealExecutionArtifacts": 3,
       "interfaceProposals": [
         "window-b/interface-proposal.md",
         "window-c/interface-proposal.md"
@@ -74,7 +75,7 @@
         "window-b": "pending_real_evidence",
         "window-c": "real_evidence_validated"
       },
-      "artifactSHA256": "182d01a878a4c7de4db38b0b323656a56a9e75bf76f39ac1931992ed9fecb811"
+      "artifactSHA256": "2532e6618b040faf3a942a45f802ef3efa9399ecf20663e7eb49821faf9272b0"
     }
   },
   "devRestartScript": {
