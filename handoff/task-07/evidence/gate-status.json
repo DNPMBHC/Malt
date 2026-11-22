@@ -1,0 +1,34 @@
+{
+  "schema": "task-07-gate-status-v1",
+  "updatedAt": "2026-11-22T02:11:32+08:00",
+  "state": "local_final_gate_passed_overall_acceptance_incomplete",
+  "reason": "Task 01 Swift/C diagnostics are in progress; avoid concurrent final gates sharing build caches. Task 02 owns storage preflight and guest file mapping.",
+  "resumeCondition": "explicit source-stability notification",
+  "newFinalGateStarted": true,
+  "preservedReference": {
+    "buildEvidence": "final-verified/build.json",
+    "buildEvidenceSHA256": "630c90a1aacbc60a11302cd11fb3cf780ab9735cd1dc63034ae5a3b9b52b9fe6",
+    "capturedAt": "2026-11-22T00:20:18+08:00",
+    "buildPassed": true,
+    "swiftTests": {
+      "total": 85,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 1,
+      "executed": 84,
+      "passed": 84
+    },
+    "inputCount": 166,
+    "inputFingerprintSHA256": "7e72ef9b86dfafef0d2dfd7d12d1c55bd51c73b2c297ea26bd67b6098404d723",
+    "scope": "Only the recorded immutable input hashes; does not cover later task 01/02/05 edits."
+  },
+  "runtimeEnvironmentStatus": "environment_not_verified",
+  "latestReportedStageEvidence": "reported-stage.json",
+  "latestReadinessEvidence": "final-gate-plan.json",
+  "latestReportedBlockersEvidence": "reported-blockers.json",
+  "latestModule02ReportedEvidence": "reported-module02-completion.json",
+  "sourceStabilityNotificationReceived": true,
+  "finalEvidence": "collection.json",
+  "latestBuildEvidence": "final-integrated/build.json",
+  "localGatePassed": true
+}

@@ -1,0 +1,15 @@
+OVERVIEW: 检查本地 Windows 安装程序的存储条件并输出 JSON。
+
+USAGE: my-project storage-preflight [--bottle-path] [--target <target>] [--guest-config <guest-config>] <bottle> <installer>
+
+ARGUMENTS:
+  <bottle>                容器名称或路径。
+  <installer>             本地 Windows 安装程序的路径。
+
+OPTIONS:
+  --bottle-path           将容器参数视为路径。
+  --target <target>       仅在本次检查中使用此目录。
+  --guest-config <guest-config>
+                          为本次预检读取 JSON 格式的来宾系统配置。
+  -h, --help              Show help information.
+

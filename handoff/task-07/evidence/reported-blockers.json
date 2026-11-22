@@ -1,0 +1,47 @@
+{
+  "schema": "task-07-reported-blockers-v1",
+  "recordedAt": "2026-11-22T01:40:50+08:00",
+  "provenance": "integration coordinator report; task 07 did not rerun commands or inspect immutable failure logs in this update",
+  "sourceFrozen": false,
+  "blockers": [
+    {
+      "ownerTask": "05",
+      "check": "Xcode build strict SwiftLint phase",
+      "reportedResult": "failed",
+      "violations": [
+        "nesting",
+        "type body length reported as 274 lines"
+      ],
+      "status": "owner repair pending; verify after freeze",
+      "acceptance": "original strict lint rules pass without weakening limits or excluding business source",
+      "sourceSnapshotSHA256": null
+    },
+    {
+      "ownerTask": "02",
+      "check": "strict swift-format",
+      "reportedResult": "failed",
+      "violations": [
+        "provider line length at reported line 113"
+      ],
+      "status": "owner repair pending; verify frozen file manifest after freeze",
+      "acceptance": "strict swift-format passes for the explicitly recorded final input files",
+      "sourceSnapshotSHA256": null
+    }
+  ],
+  "storageStageEvidence": {
+    "stagingFileEqualsWorkspaceInstaller": "reported byte-for-byte equal",
+    "volumeAvailableApproxDecimalGB": 64,
+    "independentlyRecheckedInThisUpdate": false,
+    "installerExecuted": false,
+    "scope": "file identity and available capacity do not establish guest mapping, installation or startup"
+  },
+  "runtimeEnvironment": {
+    "status": "environment_not_verified",
+    "utmGuestAvailable": "reported absent",
+    "parallelsGuestAvailable": "reported absent",
+    "realInstallationVerified": false,
+    "realStartupVerified": false
+  },
+  "gateState": "waiting_for_source_stability_notification",
+  "newFinalGateStarted": false
+}

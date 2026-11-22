@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.0.0",
+  "report_id": "window-b-real-windows-probe-report",
+  "captured_on": "2026-11-22",
+  "timezone": "Asia/Shanghai",
+  "status": "blocked_by_guest_os_and_wdk_provisioning",
+  "canonical_probe_source": "<workspace>/Whisky/Modules/module-a/WindowsProbe",
+  "host_and_vm_handover_snapshot": {
+    "host_architecture": "arm64",
+    "utm_installed": true,
+    "utm_version": "5.0.9",
+    "registered_vm_uuid": "B107A021-E60C-426B-BB62-626122CE44BE",
+    "registered_vm_name": "Windows11-ARM64",
+    "registered_vm_backend": "qemu",
+    "registered_vm_architecture": "aarch64",
+    "registered_vm_status": "stopped",
+    "guest_os_installed": false,
+    "qemu_guest_agent_reachable": false,
+    "wdk_installed_in_guest": false
+  },
+  "local_portable_verification": {
+    "protocol_version": 2,
+    "report_schema_version": 2,
+    "abi_ctest_target": "module_a_protocol_abi_test",
+    "abi_ctest_result": "passed (1/1)",
+    "swift_anticheat_probe_tests_result": "passed (30/30)",
+    "verify_lifecycle_ps1_sha256": "639ad94c0ba1ff52a84250a28daef0025633658a5db1e8919c3701513ef4840a"
+  },
+  "environment_blockers": [
+    {
+      "blocker_id": "B2-BLK-01",
+      "component": "Windows 11 ARM64 Guest OS & QEMU Guest Agent",
+      "current_state": "VM shell B107A021-E60C-426B-BB62-626122CE44BE created on external volume by Window A, awaiting Windows 11 ARM64 ISO/VHDX installation and spice-guest-tools (qemu-ga) startup.",
+      "resolution_step": "Install Windows 11 ARM64 into VM B107A021-E60C-426B-BB62-626122CE44BE, install spice-guest-tools, and confirm 'QEMU Guest Agent' service is Running and C:\\whisky-guest-share is mapped."
+    },
+    {
+      "blocker_id": "B2-BLK-02",
+      "component": "Windows Driver Kit (WDK) & Visual Studio Build Tools (ARM64)",
+      "current_state": "Not yet provisioned inside the Windows Guest.",
+      "resolution_step": "Inside Windows 11 ARM64 Guest, install Visual Studio 2022 Build Tools (C++ ARM64/x64 desktop workload) and matching Windows 11 WDK to build ModuleAProbe.sys and module_a_probe.exe."
+    },
+    {
+      "blocker_id": "B2-BLK-03",
+      "component": "Guest Test-Signing Mode (Own Diagnostic Probe Only)",
+      "current_state": "Guest OS not booted.",
+      "resolution_step": "Run 'bcdedit /set testsigning on' in elevated Guest PowerShell and reboot Guest (strictly scoped to self-owned ModuleAProbe.sys diagnostic driver; must be explicitly recorded in report)."
+    },
+    {
+      "blocker_id": "B2-BLK-04",
+      "component": "Explicit User Secondary Authorization for Commercial Installer Dynamic Sampling",
+      "current_state": "Static read-only forensics completed on host; dynamic installer execution in Guest awaits Guest readiness and explicit user secondary authorization.",
+      "resolution_step": "After Guest is ready and user grants secondary authorization, execute VALORANT_CN_installer_v2.17.4.510.exe along standard vendor path without any spoofing or virtualization hiding."
+    }
+  ],
+  "stage_b2_ready_execution_plan": {
+    "step_1_stage_probe_sources_to_shared_volume": "cp -R <workspace>/Whisky/Modules/module-a/WindowsProbe /Volumes/<EXTERNAL_VOLUME>/whisky-phase2-guest/shared/WindowsProbe",
+    "step_2_build_client_and_driver_in_guest": [
+      "cmake -S C:\\whisky-guest-share\\WindowsProbe -B C:\\module-a\\build -A ARM64",
+      "cmake --build C:\\module-a\\build --config Release",
+      "msbuild C:\\whisky-guest-share\\WindowsProbe\\driver\\ModuleAProbe.vcxproj /p:Configuration=Release /p:Platform=ARM64"
+    ],
+    "step_3_test_sign_own_diagnostic_driver": [
+      "$cert = New-SelfSignedCertificate -Type CodeSigningCert -Subject 'CN=ModuleAProbeLocalTest' -CertStoreLocation Cert:\\LocalMachine\\My",
+      "Export-Certificate -Cert $cert -FilePath C:\\module-a\\ModuleAProbeLocalTest.cer",
+      "Import-Certificate -FilePath C:\\module-a\\ModuleAProbeLocalTest.cer -CertStoreLocation Cert:\\LocalMachine\\Root",
+      "Import-Certificate -FilePath C:\\module-a\\ModuleAProbeLocalTest.cer -CertStoreLocation Cert:\\LocalMachine\\TrustedPublisher",
+      "signtool sign /v /fd SHA256 /s My /n ModuleAProbeLocalTest C:\\module-a\\ModuleAProbe.sys"
+    ],
+    "step_4_run_lifecycle_verification_phases": [
+      "powershell -ExecutionPolicy Bypass -File C:\\whisky-guest-share\\WindowsProbe\\tests\\verify-lifecycle.ps1 -Phase cycle -DriverImage C:\\module-a\\ModuleAProbe.sys -CollectorPath C:\\module-a\\build\\Release\\module_a_probe.exe",
+      "powershell -ExecutionPolicy Bypass -File C:\\whisky-guest-share\\WindowsProbe\\tests\\verify-lifecycle.ps1 -Phase before-reboot -DriverImage C:\\module-a\\ModuleAProbe.sys -CollectorPath C:\\module-a\\build\\Release\\module_a_probe.exe",
+      "Restart-Computer -Force",
+      "powershell -ExecutionPolicy Bypass -File C:\\whisky-guest-share\\WindowsProbe\\tests\\verify-lifecycle.ps1 -Phase after-reboot -DriverImage C:\\module-a\\ModuleAProbe.sys -CollectorPath C:\\module-a\\build\\Release\\module_a_probe.exe"
+    ]
+  },
+  "four_independent_commercial_states": {
+    "a-cn-win": {
+      "publisher_stance": {
+        "publisher_permission": "unknown",
+        "publisher_support": "unknown",
+        "note": "Tencent Game Security Center S-T01 documents CPU virtualization and Hyper-V/VBS/HVCI conflict troubleshooting, while standalone CN VM license/support policy remains unknown."
+      },
+      "actual_driver_load": "unknown (not_tested)",
+      "actual_game_start": "unknown (not_tested)",
+      "actual_protected_online_session": "unknown (not_tested)"
+    },
+    "a-riot-win": {
+      "publisher_stance": {
+        "publisher_permission": "unknown",
+        "publisher_support": "not_supported"
+      },
+      "actual_driver_load": "unknown (not_tested)",
+      "actual_game_start": "unknown (not_tested)",
+      "actual_protected_online_session": "unknown (not_tested)"
+    },
+    "b-cn-win": {
+      "publisher_stance": {
+        "publisher_permission": "unknown",
+        "publisher_support": "unknown"
+      },
+      "actual_driver_load": "unknown (not_tested)",
+      "actual_game_start": "unknown (not_tested)",
+      "actual_protected_online_session": "unknown (not_tested)"
+    },
+    "c-cn-win": {
+      "publisher_stance": {
+        "publisher_permission": "unknown",
+        "publisher_support": "unknown"
+      },
+      "actual_driver_load": "unknown (not_tested)",
+      "actual_game_start": "unknown (not_tested)",
+      "actual_protected_online_session": "unknown (not_tested)"
+    }
+  },
+  "five_dimension_status": {
+    "code_implementation": "passed",
+    "local_synthetic_verification": "passed",
+    "real_guest_or_wine_verification": "blocked_by_guest_os_and_wdk_provisioning",
+    "vendor_support": "unknown (CN) / not_supported (Riot global VM)",
+    "real_game_verification": "not_tested"
+  }
+}

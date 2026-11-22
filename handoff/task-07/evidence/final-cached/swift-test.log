@@ -1,0 +1,87 @@
+warning: '--skip-update' option is deprecated and will be removed in a future release
+Building for debugging...
+[1 / 1]
+[2 / 7] ModuleXTests-product
+[4 / 9] ModuleXTests-product
+Build complete! (1.47秒)
+[1/77] Testing ModuleXTests.AntiCheatProbeTests/testIncompleteChildCleanupFailsSelfProbe
+[2/77] Testing ModuleXTests.AntiCheatProbeTests/testInvalidResponseHasDistinctFailure
+[3/77] Testing ModuleXTests.AntiCheatProbeTests/testCandidateArchitectureMismatchDoesNotClaimRuntimeProbeFailure
+[4/77] Testing ModuleXTests.AntiCheatProbeTests/testExcessiveNestingIsRejected
+[5/77] Testing ModuleXTests.AntiCheatProbeTests/testDuplicateObjectKeysAreRejected
+[6/77] Testing ModuleXTests.AntiCheatProbeTests/testCandidateImageSignatureIsReportedSeparately
+[7/77] Testing ModuleXTests.AntiCheatProbeTests/testDriverArchitectureMismatchFailsSelfProbe
+[8/77] Testing ModuleXTests.AntiCheatProbeTests/testDeviceControlFailureFailsSelfProbe
+[9/77] Testing ModuleXTests.AntiCheatProbeTests/testAccessDeniedDoesNotMasqueradeAsDriverNotLoaded
+[10/77] Testing ModuleXTests.AntiCheatProbeTests/testGuestProbeServiceBindsChallengeToGuestReport
+[11/77] Testing ModuleXTests.AntiCheatProbeTests/testMismatchedCurrentContextPIDFailsSelfProbe
+[12/77] Testing ModuleXTests.AntiCheatProbeTests/testMismatchedNonceIsRejected
+[13/77] Testing ModuleXTests.AntiCheatProbeTests/testMissingProcessCreateOrExitNotificationFailsSelfProbe
+[14/77] Testing ModuleXTests.AntiCheatProbeTests/testProtocolRejectionPreservesNativeFailureStage
+[15/77] Testing ModuleXTests.AntiCheatProbeTests/testRequestorAndObservedPIDMismatchFailsSelfProbe
+[16/77] Testing ModuleXTests.AntiCheatProbeTests/testNotificationFailureStageIsMappedSeparately
+[17/77] Testing ModuleXTests.AntiCheatProbeTests/testPreviousReportSchemaVersionIsRejected
+[18/77] Testing ModuleXTests.AntiCheatProbeTests/testMissingDeviceIsReportedAsNotLoaded
+[19/77] Testing ModuleXTests.AntiCheatProbeTests/testOversizedPayloadIsRejectedBeforeParsing
+[20/77] Testing ModuleXTests.AntiCheatProbeTests/testMissingBoundChildPIDFailsSelfProbe
+[21/77] Testing ModuleXTests.AntiCheatProbeTests/testRequestorContextMismatchFailsSelfProbe
+[22/77] Testing ModuleXTests.AntiCheatProbeTests/testStaleReportHasDistinctError
+[23/77] Testing ModuleXTests.AntiCheatProbeTests/testSuccessfulProbeUsesNotificationResponseByteCount
+[24/77] Testing ModuleXTests.AntiCheatProbeTests/testTruncatedPayloadIsRejectedAsInvalidJSON
+[25/77] Testing ModuleXTests.AntiCheatProbeTests/testSuccessfulProbeDoesNotAuthorizeProtectedGame
+[26/77] Testing ModuleXTests.AntiCheatProbeTests/testUnsupportedDriverProtocolFailsSelfProbe
+[27/77] Testing ModuleXTests.AntiCheatProbeTests/testUnmatchedChildPIDFailsSelfProbe
+[28/77] Testing ModuleXTests.AntiCheatProbeTests/testUnknownEnumValueIsRejected
+[29/77] Testing ModuleXTests.AntiCheatProbeTests/testZeroRequestorPIDFailsSelfProbe
+[30/77] Testing ModuleXTests.AntiCheatProbeTests/testWrongFieldTypeIsRejected
+[31/77] Testing ModuleXTests.HostCapabilitiesTests/testGameModeEligibilityRequiresAppleSiliconAndSonomaOrLater
+[32/77] Testing ModuleXTests.HostCapabilitiesTests/testNotificationBurstCoalescesAndUnchangedStateDoesNotPublish
+[33/77] Testing ModuleXTests.HostCapabilitiesTests/testOptionalQueueActuallyPausesAndResumesAcrossPowerAndThermalChanges
+[34/77] Testing ModuleXTests.HostCapabilitiesTests/testExplicitEmptyMetalDeviceListRemainsUnavailable
+[35/77] Testing ModuleXTests.HostCapabilitiesTests/testCurrentProviderPreservesStaticCapabilities
+[36/77] Testing ModuleXTests.HostCapabilitiesTests/testThermalPowerAndWakeNotificationsRefreshDynamicState
+[37/77] Testing ModuleXTests.HostCapabilitiesTests/testStaticMetalCapabilityCacheLoadsOncePerDeviceKey
+[38/77] Testing ModuleXTests.HostCapabilitiesTests/testStopDiscardsScheduledRefreshAndRemovesAllObservers
+[39/77] Testing ModuleXTests.HostMetalFXTests/testMetalAPIValidationIsEnabledForHostChecks
+[40/77] Testing ModuleXTests.IntegrationBoundaryTests/testPerformancePolicyForEveryThermalAndPowerCombination
+[41/77] Testing ModuleXTests.IntegrationBoundaryTests/testProfileMatchingIsCaseInsensitiveAndRejectsSimilarNames
+[42/77] Testing ModuleXTests.IntegrationBoundaryTests/testReadyUnknownGuestForwardsRequestAndProviderError
+[43/77] Testing ModuleXTests.RuntimeProcessTests/testAliasNamesDoNotHideKnownProfilesOrScripts
+[44/77] Testing ModuleXTests.IntegrationBoundaryTests/testWineLaunchWithoutBottleReportsBottleUnavailable
+[45/77] Testing ModuleXTests.IntegrationBoundaryTests/testRejectedGuestLaunchNeverCallsProvider
+[46/77] Testing ModuleXTests.HostMetalFXTests/testMetalFXSpatialCapabilityAndCommandBufferExecution
+[47/77] Testing ModuleXTests.RuntimeProcessTests/testArgumentsPreserveSpacesQuotesEmptyValuesAndEscapes
+[48/77] Testing ModuleXTests.RuntimeProcessTests/testArgumentsRejectIncompleteQuoting
+[49/77] Testing ModuleXTests.RuntimeProcessTests/testProcessSessionCancellationTerminatesSpawnedChild
+[50/77] Testing ModuleXTests.RuntimeProcessTests/testProgramSettingsFollowSymlinksAndContainerMoves
+[51/77] Testing ModuleXTests.RuntimeProcessTests/testProcessSessionReturnsExitCodeAndAllowsAnotherAttempt
+[52/77] Testing ModuleXTests.RuntimeTests/testExplicitProfileResolvesAnIndirectLauncher
+[53/77] Testing ModuleXTests.RuntimeTests/testGuestLaunchPreservesRequestAndReportsNonzeroExit
+[54/77] Testing ModuleXTests.HostMetalFXTests/testMetalFXTemporalCapabilityAndCommandBufferExecution
+[55/77] Testing ModuleXTests.IntegrationBoundaryTests/testGuestCapabilityMatrix
+[56/77] Testing ModuleXTests.RuntimeTests/testReadyGuestAndSelfProbeDoNotImplyVendorSupportOrGameVerification
+[57/77] Testing ModuleXTests.RuntimeTests/testProtectedGameRoutesToUnconfiguredGuestAndCannotLaunch
+[58/77] Testing ModuleXTests.RuntimeTests/testAmbiguousTargetsAndConflictingProfilesAreBlocked
+[59/77] Testing ModuleXTests.RuntimeProcessTests/testShellQuotingRoundTripsLiteralArguments
+[60/77] Testing ModuleXTests.RuntimeTests/testTheFinalsProfileUsesVendorRestrictedStatus
+[61/77] Testing ModuleXTests.RuntimeTests/testUnconfiguredGuestStopsBeforeStartingSession
+[62/77] Testing ModuleXTests.RuntimeTests/testUnknownExecutableDefaultsToWine
+[63/77] Testing ModuleXTests.UTMWindowsGuestProviderTests/testConfigurationRejectsInvalidTimeoutAndGuestPathTraversal
+[64/77] Testing ModuleXTests.UTMWindowsGuestProviderTests/testArchitectureMismatchIsReportedBeforeVMStart
+[65/77] Testing ModuleXTests.UTMWindowsGuestProviderTests/testCancellationIsIdempotentAndWaitReportsGuestTermination
+[66/77] Testing ModuleXTests.UTMWindowsGuestProviderTests/testCancellationFailureIsReturnedByWait
+[67/77] Testing ModuleXTests.UTMWindowsGuestProviderTests/testFileOutsideMappingAndUnsupportedLauncherAreRejected
+[68/77] Testing ModuleXTests.UTMWindowsGuestProviderTests/testMappedProgramPreservesArgumentAndEnvironmentBoundariesAndFullExitCode
+[69/77] Testing ModuleXTests.UTMWindowsGuestProviderTests/testStopRequestsVMShutdownAndWaitsForStoppedStatus
+[70/77] Testing ModuleXTests.UTMWindowsGuestProviderTests/testUnconfiguredAndUnavailableStatesAreExplicit
+[71/77] Testing ModuleXTests.UTMWindowsGuestProviderTests/testStopUsesGuestConfigurationFromLaunchRequest
+[72/77] Testing ModuleXTests.UTMWindowsGuestProviderTests/testUnsupportedVMBackendIsReportedBeforeArchitectureValidation
+[73/77] Testing ModuleXTests.UTMWindowsGuestProviderTests/testVMCrashIsReportedWhileWaitingForProgram
+[74/77] Testing ModuleXTests.UTMWindowsGuestProviderTests/testWindowsStatusCodeParserPreservesHighBitExceptionCode
+[75/77] Testing ModuleXTests.UTMWindowsGuestProviderTests/testRequestConfigurationCanStopGuestAfterReadinessFailure
+[76/77] Testing ModuleXTests.UTMWindowsGuestProviderTests/testStopIsIdempotentWhenGuestAlreadyStopped
+[77/77] Testing ModuleXTests.UTMWindowsGuestProviderTests/testGuestAgentReadinessTimeoutIsReported
+◇ Test run started.
+↳ Testing Library Version: 2084
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

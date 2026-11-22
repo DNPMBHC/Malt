@@ -1,0 +1,85 @@
+{
+  "schema": "phase-2-window-d-gate-summary-v1",
+  "capturedAt": "2026-11-22T10:35:03+08:00",
+  "window": "window-d",
+  "overallLocalGatePassed": true,
+  "overallPhase2RealWorldStatus": "incomplete",
+  "fiveDimensionStatus": {
+    "codeImplementation": "passed",
+    "localSyntheticAndIsolatedVerification": "passed",
+    "realGuestOrWineVerification": "partial (real Wine DXVK vs D3DMetal and metal_host A/B validated; real UTM QEMU shell lifecycle validated; Windows 11 ARM64 Guest OS image and WDK pending)",
+    "vendorSupport": "unknown (CN) / not_supported (Riot global VM)",
+    "realCommercialGameVerification": "not_tested"
+  },
+  "gates": {
+    "build": {
+      "passed": true,
+      "gateProfile": "locked-cache-fast-gate",
+      "failureClassification": {
+        "overall": "none",
+        "failedStages": {},
+        "networkOrFetchBlocked": false,
+        "codeOrBuildBlocked": false
+      },
+      "swiftTests": {
+        "total": 108,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 1,
+        "executed": 107,
+        "passed": 107
+      },
+      "globalGitUnchanged": true,
+      "lockfilesUnchanged": true,
+      "sourcesStableDuringRun": true,
+      "artifactSHA256": "c861f48ae07a0457059e060e0c9433ce51099e15b417dd8e78d0895c19515787"
+    },
+    "cli": {
+      "passed": true,
+      "schema": "task-07-cli-v2",
+      "binarySHA256": "51c204075ff3d5519f69f8b6dc3a4dd3b9bcce1176273d1b2e6690c07aeccbaf",
+      "savedArgumentOverrideEndToEnd": "synthetic_cli_verified",
+      "emptyOverrideRuntimeBranch": "synthetic_cli_verified",
+      "artifactSHA256": "985216723bfd4b81a7f15b8a1eecb6857579b376e4a3f7b0a897258aabe5282d"
+    },
+    "integration": {
+      "passed": true,
+      "schema": "task-07-integration-v2",
+      "moduleACanonicalSymlinkConsistent": true,
+      "inputCount": 32,
+      "inputsStableDuringRun": true,
+      "artifactSHA256": "d04633fa6470e31d2838de47c1fb9f9014d016909c920405ba8f8e0c74b2046b"
+    },
+    "strictSwiftFormat": {
+      "passed": true,
+      "inputCount": 6,
+      "artifactSHA256": "87e4ac523ece3dfa118792e0506a0ea309271ddddd6f7f589057d651850058ab"
+    },
+    "privacyAudit": {
+      "passed": true,
+      "checkedFiles": 207,
+      "findingsCount": 0,
+      "artifactSHA256": "3380e14fa8e6f96030e51a207f0bd84ec70fabdef4a1514f8f3cd505aa33eb26"
+    },
+    "phase2EvidenceValidator": {
+      "passed": true,
+      "completedWindowCount": 1,
+      "expectedWindowCount": 3,
+      "interfaceProposals": [
+        "window-b/interface-proposal.md",
+        "window-c/interface-proposal.md"
+      ],
+      "windowStatuses": {
+        "window-a": "pending_real_evidence",
+        "window-b": "pending_real_evidence",
+        "window-c": "real_evidence_validated"
+      },
+      "artifactSHA256": "182d01a878a4c7de4db38b0b323656a56a9e75bf76f39ac1931992ed9fecb811"
+    }
+  },
+  "devRestartScript": {
+    "path": "handoff/task-07/dev_restart.sh",
+    "syntaxAndUnitTestsPassed": true,
+    "liveStopAndRelaunchCycleVerified": true
+  }
+}

@@ -1,0 +1,18 @@
+OVERVIEW: A CLI interface for my-project.
+
+USAGE: my-project <subcommand>
+
+OPTIONS:
+  -h, --help              Show help information.
+
+SUBCOMMANDS:
+  list                    List existing bottles.
+  create                  Create a new bottle.
+  add                     Add an existing bottle.
+  delete                  Delete an existing bottle from disk.
+  remove                  Remove an existing bottle from my-project.
+  run                     运行 Windows 程序。
+  storage-preflight       检查本地 Windows 安装程序的存储条件并输出 JSON。
+  shellenv                Prints export statements for a Bottle for eval.
+
+  See 'my-project help <subcommand>' for detailed help.

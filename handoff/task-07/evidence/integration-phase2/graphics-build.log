@@ -1,0 +1,14 @@
+<workspace>/graphics-lab/metal_host.swift:686:22: warning: 'line' mutated after capture by sendable closure
+683 |                     "low_power_mode": snap.lowPower
+684 |                 ]
+685 |                 var line = try JSONSerialization.data(withJSONObject: record, options: [.sortedKeys])
+    |                     `- note: variable defined here
+686 |                 line.append(0x0a)
+    |                      `- warning: 'line' mutated after capture by sendable closure
+687 |                 let logHandle = log
+688 |                 telemetryQueue.async {
+    |                                      `- note: variable captured by sendable closure
+689 |                     try? logHandle.write(contentsOf: line)
+    |                                                      `- note: capturing use
+690 |                 }
+691 |                 expectedSequence &+= 1
