@@ -1,0 +1,221 @@
+Final current-workspace verification: 2026-11-22 Asia/Shanghai
+Command: MTL_DEBUG_LAYER=1 HOST_RUN_METALFX_AB=1 HOST_METALFX_AB_REPORT=/tmp/host-task04-metalfx-current.json swift test
+Source snapshot remained unchanged throughout this run.
+
+Building for debugging...
+[1 / 1]
+[2 / 12] HostKit
+[4 / 14] HostKit
+[10 / 15] HostKitTests-product
+[12 / 17] HostKitTests-product
+[18 / 22] HostKitTests-product
+Build complete! (2.38秒)
+Test Suite 'All tests' started at 2026-11-22 00:17:37.941.
+Test Suite 'HostKitTests.xctest' started at 2026-11-22 00:17:37.943.
+Test Suite 'AntiCheatProbeTests' started at 2026-11-22 00:17:37.943.
+Test Case '-[HostKitTests.AntiCheatProbeTests testAccessDeniedDoesNotMasqueradeAsDriverNotLoaded]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testAccessDeniedDoesNotMasqueradeAsDriverNotLoaded]' passed (0.002 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testCandidateArchitectureMismatchDoesNotClaimRuntimeProbeFailure]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testCandidateArchitectureMismatchDoesNotClaimRuntimeProbeFailure]' passed (0.000 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testCandidateImageSignatureIsReportedSeparately]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testCandidateImageSignatureIsReportedSeparately]' passed (0.001 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testDeviceControlFailureFailsSelfProbe]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testDeviceControlFailureFailsSelfProbe]' passed (0.000 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testDriverArchitectureMismatchFailsSelfProbe]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testDriverArchitectureMismatchFailsSelfProbe]' passed (0.000 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testDuplicateObjectKeysAreRejected]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testDuplicateObjectKeysAreRejected]' passed (0.000 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testExcessiveNestingIsRejected]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testExcessiveNestingIsRejected]' passed (0.000 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testGuestProbeServiceBindsChallengeToGuestReport]' started.
+2026-11-22 00:17:37.949 xctest[4723:7350440] Metal API Validation Enabled
+Test Case '-[HostKitTests.AntiCheatProbeTests testGuestProbeServiceBindsChallengeToGuestReport]' passed (0.010 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testIncompleteChildCleanupFailsSelfProbe]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testIncompleteChildCleanupFailsSelfProbe]' passed (0.000 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testInvalidResponseHasDistinctFailure]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testInvalidResponseHasDistinctFailure]' passed (0.000 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testMismatchedCurrentContextPIDFailsSelfProbe]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testMismatchedCurrentContextPIDFailsSelfProbe]' passed (0.000 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testMismatchedNonceIsRejected]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testMismatchedNonceIsRejected]' passed (0.000 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testMissingBoundChildPIDFailsSelfProbe]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testMissingBoundChildPIDFailsSelfProbe]' passed (0.000 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testMissingDeviceIsReportedAsNotLoaded]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testMissingDeviceIsReportedAsNotLoaded]' passed (0.000 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testMissingProcessCreateOrExitNotificationFailsSelfProbe]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testMissingProcessCreateOrExitNotificationFailsSelfProbe]' passed (0.000 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testNotificationFailureStageIsMappedSeparately]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testNotificationFailureStageIsMappedSeparately]' passed (0.000 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testOversizedPayloadIsRejectedBeforeParsing]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testOversizedPayloadIsRejectedBeforeParsing]' passed (0.000 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testPreviousReportSchemaVersionIsRejected]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testPreviousReportSchemaVersionIsRejected]' passed (0.000 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testProtocolRejectionPreservesNativeFailureStage]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testProtocolRejectionPreservesNativeFailureStage]' passed (0.000 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testRequestorAndObservedPIDMismatchFailsSelfProbe]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testRequestorAndObservedPIDMismatchFailsSelfProbe]' passed (0.000 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testRequestorContextMismatchFailsSelfProbe]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testRequestorContextMismatchFailsSelfProbe]' passed (0.000 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testStaleReportHasDistinctError]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testStaleReportHasDistinctError]' passed (0.000 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testSuccessfulProbeDoesNotAuthorizeProtectedGame]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testSuccessfulProbeDoesNotAuthorizeProtectedGame]' passed (0.000 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testSuccessfulProbeUsesNotificationResponseByteCount]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testSuccessfulProbeUsesNotificationResponseByteCount]' passed (0.000 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testTruncatedPayloadIsRejectedAsInvalidJSON]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testTruncatedPayloadIsRejectedAsInvalidJSON]' passed (0.000 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testUnknownEnumValueIsRejected]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testUnknownEnumValueIsRejected]' passed (0.000 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testUnmatchedChildPIDFailsSelfProbe]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testUnmatchedChildPIDFailsSelfProbe]' passed (0.000 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testUnsupportedDriverProtocolFailsSelfProbe]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testUnsupportedDriverProtocolFailsSelfProbe]' passed (0.000 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testWrongFieldTypeIsRejected]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testWrongFieldTypeIsRejected]' passed (0.000 seconds).
+Test Case '-[HostKitTests.AntiCheatProbeTests testZeroRequestorPIDFailsSelfProbe]' started.
+Test Case '-[HostKitTests.AntiCheatProbeTests testZeroRequestorPIDFailsSelfProbe]' passed (0.000 seconds).
+Test Suite 'AntiCheatProbeTests' passed at 2026-11-22 00:17:37.965.
+	 Executed 30 tests, with 0 failures (0 unexpected) in 0.021 (0.022) seconds
+Test Suite 'HostCapabilitiesTests' started at 2026-11-22 00:17:37.965.
+Test Case '-[HostKitTests.HostCapabilitiesTests testCurrentProviderPreservesStaticCapabilities]' started.
+Test Case '-[HostKitTests.HostCapabilitiesTests testCurrentProviderPreservesStaticCapabilities]' passed (0.000 seconds).
+Test Case '-[HostKitTests.HostCapabilitiesTests testExplicitEmptyMetalDeviceListRemainsUnavailable]' started.
+Test Case '-[HostKitTests.HostCapabilitiesTests testExplicitEmptyMetalDeviceListRemainsUnavailable]' passed (0.000 seconds).
+Test Case '-[HostKitTests.HostCapabilitiesTests testGameModeEligibilityRequiresAppleSiliconAndSonomaOrLater]' started.
+Test Case '-[HostKitTests.HostCapabilitiesTests testGameModeEligibilityRequiresAppleSiliconAndSonomaOrLater]' passed (0.000 seconds).
+Test Case '-[HostKitTests.HostCapabilitiesTests testNotificationBurstCoalescesAndUnchangedStateDoesNotPublish]' started.
+Test Case '-[HostKitTests.HostCapabilitiesTests testNotificationBurstCoalescesAndUnchangedStateDoesNotPublish]' passed (0.000 seconds).
+Test Case '-[HostKitTests.HostCapabilitiesTests testOptionalQueueActuallyPausesAndResumesAcrossPowerAndThermalChanges]' started.
+Test Case '-[HostKitTests.HostCapabilitiesTests testOptionalQueueActuallyPausesAndResumesAcrossPowerAndThermalChanges]' passed (0.001 seconds).
+Test Case '-[HostKitTests.HostCapabilitiesTests testPolicyPreservesConsumerPauseAndConcurrencyLimit]' started.
+Test Case '-[HostKitTests.HostCapabilitiesTests testPolicyPreservesConsumerPauseAndConcurrencyLimit]' passed (0.000 seconds).
+Test Case '-[HostKitTests.HostCapabilitiesTests testStaticMetalCapabilityCacheLoadsOncePerDeviceKey]' started.
+Test Case '-[HostKitTests.HostCapabilitiesTests testStaticMetalCapabilityCacheLoadsOncePerDeviceKey]' passed (0.000 seconds).
+Test Case '-[HostKitTests.HostCapabilitiesTests testStopDiscardsScheduledRefreshAndRemovesAllObservers]' started.
+Test Case '-[HostKitTests.HostCapabilitiesTests testStopDiscardsScheduledRefreshAndRemovesAllObservers]' passed (0.000 seconds).
+Test Case '-[HostKitTests.HostCapabilitiesTests testThermalPowerAndWakeNotificationsRefreshDynamicState]' started.
+Test Case '-[HostKitTests.HostCapabilitiesTests testThermalPowerAndWakeNotificationsRefreshDynamicState]' passed (0.000 seconds).
+Test Suite 'HostCapabilitiesTests' passed at 2026-11-22 00:17:37.967.
+	 Executed 9 tests, with 0 failures (0 unexpected) in 0.002 (0.003) seconds
+Test Suite 'HostMetalFXBenchmarkTests' started at 2026-11-22 00:17:37.967.
+Test Case '-[HostKitTests.HostMetalFXBenchmarkTests testInvalidConfigurationFailsBeforeCreatingDevice]' started.
+Test Case '-[HostKitTests.HostMetalFXBenchmarkTests testInvalidConfigurationFailsBeforeCreatingDevice]' passed (0.000 seconds).
+Test Case '-[HostKitTests.HostMetalFXBenchmarkTests testNoDeviceProducesDeterministicCPUFallbackAndSerializableReport]' started.
+Test Case '-[HostKitTests.HostMetalFXBenchmarkTests testNoDeviceProducesDeterministicCPUFallbackAndSerializableReport]' passed (0.007 seconds).
+Test Case '-[HostKitTests.HostMetalFXBenchmarkTests testReproducibleMetalFXABWritesSanitizedJSON]' started.
+Test Case '-[HostKitTests.HostMetalFXBenchmarkTests testReproducibleMetalFXABWritesSanitizedJSON]' passed (2.041 seconds).
+Test Case '-[HostKitTests.HostMetalFXBenchmarkTests testUnsupportedAndCreationFailureExecuteActualNearestFallback]' started.
+Test Case '-[HostKitTests.HostMetalFXBenchmarkTests testUnsupportedAndCreationFailureExecuteActualNearestFallback]' passed (0.017 seconds).
+Test Suite 'HostMetalFXBenchmarkTests' passed at 2026-11-22 00:17:40.032.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 2.065 (2.065) seconds
+Test Suite 'HostMetalFXTests' started at 2026-11-22 00:17:40.033.
+Test Case '-[HostKitTests.HostMetalFXTests testExtendedGraphicsQueriesSeparateSupportFromActualUse]' started.
+Test Case '-[HostKitTests.HostMetalFXTests testExtendedGraphicsQueriesSeparateSupportFromActualUse]' passed (0.000 seconds).
+Test Case '-[HostKitTests.HostMetalFXTests testMetalAPIValidationIsEnabledForHostChecks]' started.
+Test Case '-[HostKitTests.HostMetalFXTests testMetalAPIValidationIsEnabledForHostChecks]' passed (0.000 seconds).
+Test Case '-[HostKitTests.HostMetalFXTests testMetalFXSpatialCapabilityAndCommandBufferExecution]' started.
+Test Case '-[HostKitTests.HostMetalFXTests testMetalFXSpatialCapabilityAndCommandBufferExecution]' passed (0.004 seconds).
+Test Case '-[HostKitTests.HostMetalFXTests testMetalFXTemporalCapabilityAndCommandBufferExecution]' started.
+Test Case '-[HostKitTests.HostMetalFXTests testMetalFXTemporalCapabilityAndCommandBufferExecution]' passed (0.050 seconds).
+Test Suite 'HostMetalFXTests' passed at 2026-11-22 00:17:40.087.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.054 (0.054) seconds
+Test Suite 'HostResourceExperimentTests' started at 2026-11-22 00:17:40.087.
+Test Case '-[HostKitTests.HostResourceExperimentTests testMeasuredOptionalConsumerABAndFallback]' started.
+Test Case '-[HostKitTests.HostResourceExperimentTests testMeasuredOptionalConsumerABAndFallback]' passed (0.338 seconds).
+Test Suite 'HostResourceExperimentTests' passed at 2026-11-22 00:17:40.424.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.338 (0.338) seconds
+Test Suite 'IntegrationBoundaryTests' started at 2026-11-22 00:17:40.424.
+Test Case '-[HostKitTests.IntegrationBoundaryTests testGuestCapabilityMatrix]' started.
+Test Case '-[HostKitTests.IntegrationBoundaryTests testGuestCapabilityMatrix]' passed (0.000 seconds).
+Test Case '-[HostKitTests.IntegrationBoundaryTests testPerformancePolicyForEveryThermalAndPowerCombination]' started.
+Test Case '-[HostKitTests.IntegrationBoundaryTests testPerformancePolicyForEveryThermalAndPowerCombination]' passed (0.000 seconds).
+Test Case '-[HostKitTests.IntegrationBoundaryTests testProfileMatchingIsCaseInsensitiveAndRejectsSimilarNames]' started.
+Test Case '-[HostKitTests.IntegrationBoundaryTests testProfileMatchingIsCaseInsensitiveAndRejectsSimilarNames]' passed (0.000 seconds).
+Test Case '-[HostKitTests.IntegrationBoundaryTests testReadyUnknownGuestForwardsRequestAndProviderError]' started.
+Test Case '-[HostKitTests.IntegrationBoundaryTests testReadyUnknownGuestForwardsRequestAndProviderError]' passed (0.000 seconds).
+Test Case '-[HostKitTests.IntegrationBoundaryTests testRejectedGuestLaunchNeverCallsProvider]' started.
+Test Case '-[HostKitTests.IntegrationBoundaryTests testRejectedGuestLaunchNeverCallsProvider]' passed (0.000 seconds).
+Test Case '-[HostKitTests.IntegrationBoundaryTests testWineLaunchWithoutBottleReportsBottleUnavailable]' started.
+Test Case '-[HostKitTests.IntegrationBoundaryTests testWineLaunchWithoutBottleReportsBottleUnavailable]' passed (0.000 seconds).
+Test Suite 'IntegrationBoundaryTests' passed at 2026-11-22 00:17:40.426.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 0.002 (0.002) seconds
+Test Suite 'RuntimeProcessTests' started at 2026-11-22 00:17:40.426.
+Test Case '-[HostKitTests.RuntimeProcessTests testAliasNamesDoNotHideKnownProfilesOrScripts]' started.
+Test Case '-[HostKitTests.RuntimeProcessTests testAliasNamesDoNotHideKnownProfilesOrScripts]' passed (0.002 seconds).
+Test Case '-[HostKitTests.RuntimeProcessTests testArgumentsPreserveSpacesQuotesEmptyValuesAndEscapes]' started.
+Test Case '-[HostKitTests.RuntimeProcessTests testArgumentsPreserveSpacesQuotesEmptyValuesAndEscapes]' passed (0.000 seconds).
+Test Case '-[HostKitTests.RuntimeProcessTests testArgumentsRejectIncompleteQuoting]' started.
+Test Case '-[HostKitTests.RuntimeProcessTests testArgumentsRejectIncompleteQuoting]' passed (0.000 seconds).
+Test Case '-[HostKitTests.RuntimeProcessTests testExplicitArgumentsReplaceSavedValuesWithoutParsingThem]' started.
+Test Case '-[HostKitTests.RuntimeProcessTests testExplicitArgumentsReplaceSavedValuesWithoutParsingThem]' passed (0.006 seconds).
+Test Case '-[HostKitTests.RuntimeProcessTests testProcessSessionCancellationTerminatesSpawnedChild]' started.
+Test Case '-[HostKitTests.RuntimeProcessTests testProcessSessionCancellationTerminatesSpawnedChild]' passed (0.001 seconds).
+Test Case '-[HostKitTests.RuntimeProcessTests testProcessSessionReturnsExitCodeAndAllowsAnotherAttempt]' started.
+Test Case '-[HostKitTests.RuntimeProcessTests testProcessSessionReturnsExitCodeAndAllowsAnotherAttempt]' passed (0.007 seconds).
+Test Case '-[HostKitTests.RuntimeProcessTests testProgramSettingsFollowSymlinksAndContainerMoves]' started.
+Test Case '-[HostKitTests.RuntimeProcessTests testProgramSettingsFollowSymlinksAndContainerMoves]' passed (0.004 seconds).
+Test Case '-[HostKitTests.RuntimeProcessTests testShellQuotingRoundTripsLiteralArguments]' started.
+Test Case '-[HostKitTests.RuntimeProcessTests testShellQuotingRoundTripsLiteralArguments]' passed (0.070 seconds).
+Test Suite 'RuntimeProcessTests' passed at 2026-11-22 00:17:40.517.
+	 Executed 8 tests, with 0 failures (0 unexpected) in 0.090 (0.091) seconds
+Test Suite 'RuntimeTests' started at 2026-11-22 00:17:40.517.
+Test Case '-[HostKitTests.RuntimeTests testAmbiguousTargetsAndConflictingProfilesAreBlocked]' started.
+Test Case '-[HostKitTests.RuntimeTests testAmbiguousTargetsAndConflictingProfilesAreBlocked]' passed (0.000 seconds).
+Test Case '-[HostKitTests.RuntimeTests testExplicitProfileResolvesAnIndirectLauncher]' started.
+Test Case '-[HostKitTests.RuntimeTests testExplicitProfileResolvesAnIndirectLauncher]' passed (0.000 seconds).
+Test Case '-[HostKitTests.RuntimeTests testGuestLaunchPreservesRequestAndReportsNonzeroExit]' started.
+Test Case '-[HostKitTests.RuntimeTests testGuestLaunchPreservesRequestAndReportsNonzeroExit]' passed (0.001 seconds).
+Test Case '-[HostKitTests.RuntimeTests testProtectedGameRoutesToUnconfiguredGuestAndCannotLaunch]' started.
+Test Case '-[HostKitTests.RuntimeTests testProtectedGameRoutesToUnconfiguredGuestAndCannotLaunch]' passed (0.000 seconds).
+Test Case '-[HostKitTests.RuntimeTests testReadyGuestAndSelfProbeDoNotImplyVendorSupportOrGameVerification]' started.
+Test Case '-[HostKitTests.RuntimeTests testReadyGuestAndSelfProbeDoNotImplyVendorSupportOrGameVerification]' passed (0.000 seconds).
+Test Case '-[HostKitTests.RuntimeTests testTheFinalsProfileUsesVendorRestrictedStatus]' started.
+Test Case '-[HostKitTests.RuntimeTests testTheFinalsProfileUsesVendorRestrictedStatus]' passed (0.000 seconds).
+Test Case '-[HostKitTests.RuntimeTests testUnconfiguredGuestStopsBeforeStartingSession]' started.
+Test Case '-[HostKitTests.RuntimeTests testUnconfiguredGuestStopsBeforeStartingSession]' passed (0.001 seconds).
+Test Case '-[HostKitTests.RuntimeTests testUnknownExecutableDefaultsToWine]' started.
+Test Case '-[HostKitTests.RuntimeTests testUnknownExecutableDefaultsToWine]' passed (0.000 seconds).
+Test Suite 'RuntimeTests' passed at 2026-11-22 00:17:40.521.
+	 Executed 8 tests, with 0 failures (0 unexpected) in 0.003 (0.004) seconds
+Test Suite 'UTMWindowsGuestProviderTests' started at 2026-11-22 00:17:40.521.
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testArchitectureMismatchIsReportedBeforeVMStart]' started.
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testArchitectureMismatchIsReportedBeforeVMStart]' passed (0.002 seconds).
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testCancellationFailureIsReturnedByWait]' started.
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testCancellationFailureIsReturnedByWait]' passed (0.001 seconds).
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testCancellationIsIdempotentAndWaitReportsGuestTermination]' started.
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testCancellationIsIdempotentAndWaitReportsGuestTermination]' passed (0.001 seconds).
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testConfigurationRejectsInvalidTimeoutAndGuestPathTraversal]' started.
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testConfigurationRejectsInvalidTimeoutAndGuestPathTraversal]' passed (0.001 seconds).
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testFileOutsideMappingAndUnsupportedLauncherAreRejected]' started.
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testFileOutsideMappingAndUnsupportedLauncherAreRejected]' passed (0.002 seconds).
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testGuestAgentReadinessTimeoutIsReported]' started.
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testGuestAgentReadinessTimeoutIsReported]' passed (1.006 seconds).
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testMappedProgramPreservesArgumentAndEnvironmentBoundariesAndFullExitCode]' started.
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testMappedProgramPreservesArgumentAndEnvironmentBoundariesAndFullExitCode]' passed (0.003 seconds).
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testRequestConfigurationCanStopGuestAfterReadinessFailure]' started.
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testRequestConfigurationCanStopGuestAfterReadinessFailure]' passed (1.006 seconds).
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testStopIsIdempotentWhenGuestAlreadyStopped]' started.
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testStopIsIdempotentWhenGuestAlreadyStopped]' passed (0.002 seconds).
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testStopRequestsVMShutdownAndWaitsForStoppedStatus]' started.
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testStopRequestsVMShutdownAndWaitsForStoppedStatus]' passed (0.001 seconds).
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testStopUsesGuestConfigurationFromLaunchRequest]' started.
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testStopUsesGuestConfigurationFromLaunchRequest]' passed (0.002 seconds).
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testUnconfiguredAndUnavailableStatesAreExplicit]' started.
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testUnconfiguredAndUnavailableStatesAreExplicit]' passed (0.000 seconds).
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testUnsupportedVMBackendIsReportedBeforeArchitectureValidation]' started.
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testUnsupportedVMBackendIsReportedBeforeArchitectureValidation]' passed (0.002 seconds).
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testVMCrashIsReportedWhileWaitingForProgram]' started.
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testVMCrashIsReportedWhileWaitingForProgram]' passed (0.002 seconds).
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testWindowsStatusCodeParserPreservesHighBitExceptionCode]' started.
+Test Case '-[HostKitTests.UTMWindowsGuestProviderTests testWindowsStatusCodeParserPreservesHighBitExceptionCode]' passed (0.000 seconds).
+Test Suite 'UTMWindowsGuestProviderTests' passed at 2026-11-22 00:17:42.553.
+	 Executed 15 tests, with 0 failures (0 unexpected) in 2.029 (2.031) seconds
+Test Suite 'HostKitTests.xctest' passed at 2026-11-22 00:17:42.553.
+	 Executed 85 tests, with 0 failures (0 unexpected) in 4.604 (4.610) seconds
+Test Suite 'All tests' passed at 2026-11-22 00:17:42.553.
+	 Executed 85 tests, with 0 failures (0 unexpected) in 4.604 (4.612) seconds
+HOST_METALFX_AB_REPORT_WRITTEN=1
+◇ Test run started.
+↳ Testing Library Version: 2084
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

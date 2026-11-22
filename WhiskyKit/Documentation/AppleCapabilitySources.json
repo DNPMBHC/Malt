@@ -1,0 +1,1831 @@
+{
+  "schemaVersion": 1,
+  "project": "my-project",
+  "scope": "Task04 host capability module evidence; selected APIs relevant to resource policy. This is not a complete macOS27 capability inventory.",
+  "retrievalNotes": [
+    "Apple official public HTTPS sources only. URLs and platform metadata were fetched live on each source entry accessedOn date.",
+    "No private paths, device serial numbers, account details or application signing identities are stored.",
+    "No real Game Mode activation, sustained-mode activation, or end-to-end game speedup is implied by source availability."
+  ],
+  "gameModeKeyDistinction": {
+    "systemFeature": "macOS14+ on Apple silicon with native full-screen game",
+    "newDeclaration": "LSSupportsGameMode current official metadata: macOS26.0, iOS/iPadOS18.6",
+    "deprecatedDeclaration": "GCSupportsGameMode current official metadata: iOS/iPadOS18.0 introduced;18.6 deprecated; no macOS platform listed",
+    "replacementEvidence": "GCSupportsGameMode deprecationSummary directly references LSSupportsGameMode"
+  },
+  "sources": [
+    {
+      "id": "game-mode",
+      "url": "https://support.apple.com/en-us/105118",
+      "retrievalURL": "https://support.apple.com/en-us/105118",
+      "accessedOn": "2026-11-21",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple Support HTML",
+      "retrieved": true,
+      "retrievalSHA256": "e272f1db85e8a0fb9c2b65d15ec4dca81e84a99ac6227fbc9776f7b4759dcd23",
+      "metadata": {
+        "title": "Use Game Mode"
+      },
+      "shortExcerpt": "Mac with Apple silicon and macOS Sonoma 14 or later"
+    },
+    {
+      "id": "metal-support",
+      "url": "https://support.apple.com/en-us/102894",
+      "retrievalURL": "https://support.apple.com/en-us/102894",
+      "accessedOn": "2026-11-21",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple Support HTML",
+      "retrieved": true,
+      "retrievalSHA256": "7bf99fc364fb58a2eb1589565741a4819a12f1517e9a561fe9318401f810bd05",
+      "metadata": {
+        "title": "Support for Metal on Apple devices"
+      },
+      "shortExcerpt": "macOS Tahoe 26 or later; Mac with Apple silicon"
+    },
+    {
+      "id": "ls-game-mode",
+      "url": "https://developer.apple.com/documentation/bundleresources/information-property-list/lssupportsgamemode",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/bundleresources/information-property-list/lssupportsgamemode.json",
+      "accessedOn": "2026-11-21",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "43b79fc8c54e6fa9bd1adae5afd68cefd034d98a739aee2d96dece831f3945f0",
+      "metadata": {
+        "title": "LSSupportsGameMode",
+        "role": "symbol",
+        "externalID": "plist:Information_Property_List.LSSupportsGameMode",
+        "platforms": [
+          {
+            "introducedAt": "18.6",
+            "name": "iOS"
+          },
+          {
+            "introducedAt": "18.6",
+            "name": "iPadOS"
+          },
+          {
+            "introducedAt": "26.0",
+            "name": "macOS"
+          }
+        ]
+      },
+      "shortExcerpt": "A Boolean value indicating whether the app supports Game Mode."
+    },
+    {
+      "id": "gc-game-mode",
+      "url": "https://developer.apple.com/documentation/bundleresources/information-property-list/gcsupportsgamemode",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/bundleresources/information-property-list/gcsupportsgamemode.json",
+      "accessedOn": "2026-11-21",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "a84afd59a8a4d2ae6f0708453e57e69cc8016bfa5ed59054b0d5f14b2527a7b2",
+      "metadata": {
+        "title": "GCSupportsGameMode",
+        "role": "symbol",
+        "externalID": "plist:Information_Property_List.GCSupportsGameMode",
+        "platforms": [
+          {
+            "deprecatedAt": "18.6",
+            "introducedAt": "18.0",
+            "name": "iOS"
+          },
+          {
+            "deprecatedAt": "18.6",
+            "introducedAt": "18.0",
+            "name": "iPadOS"
+          }
+        ]
+      },
+      "shortExcerpt": "A Boolean value indicating whether the app supports game mode.",
+      "deprecationSummary": [
+        {
+          "inlineContent": [
+            {
+              "text": "Use ",
+              "type": "text"
+            },
+            {
+              "identifier": "doc://com.apple.bundleresources/documentation/BundleResources/Information-Property-List/LSSupportsGameMode",
+              "isActive": true,
+              "type": "reference"
+            },
+            {
+              "text": " instead.",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        }
+      ]
+    },
+    {
+      "id": "macos-26-notes",
+      "url": "https://developer.apple.com/documentation/macos-release-notes/macos-26-release-notes",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/macos-release-notes/macos-26-release-notes.json",
+      "accessedOn": "2026-11-21",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "bd288387e46c7e022e52c4e0429a4adc3da1172c623401955a099b5dd736150c",
+      "metadata": {
+        "title": "macOS Tahoe 26 Release Notes",
+        "role": "article"
+      },
+      "shortExcerpt": "Update your apps to use new features, and test your apps against API changes."
+    },
+    {
+      "id": "macos-27-notes",
+      "url": "https://developer.apple.com/documentation/macos-release-notes/macos-27-release-notes",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/macos-release-notes/macos-27-release-notes.json",
+      "accessedOn": "2026-11-21",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "bb59953b13fe16411bba9f02d05b1c069df42612d74f57da1880e8004fa5e681",
+      "metadata": {
+        "title": "macOS 27 Golden Gate Release Notes",
+        "role": "article"
+      },
+      "shortExcerpt": "Update your apps to use new features, and test your apps against API changes."
+    },
+    {
+      "id": "sustained-execution",
+      "url": "https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.developer.sustained-execution",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/bundleresources/entitlements/com.apple.developer.sustained-execution.json",
+      "accessedOn": "2026-11-21",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "23bb258fdeba9f15aab16802354a096f28d01de2926fe1b729dddbcd46bfb4b9",
+      "metadata": {
+        "title": "com.apple.developer.sustained-execution",
+        "role": "symbol",
+        "externalID": "entitlements:Entitlements.com.apple.developer.sustained-execution",
+        "platforms": [
+          {
+            "introducedAt": "17.0",
+            "name": "iOS"
+          },
+          {
+            "introducedAt": "17.0",
+            "name": "iPadOS"
+          },
+          {
+            "introducedAt": "17.0",
+            "name": "Mac Catalyst"
+          },
+          {
+            "introducedAt": "15.0",
+            "name": "macOS"
+          }
+        ]
+      },
+      "shortExcerpt": "A Boolean value that indicates whether your app performs consistently when the system constrains it to a sustainable performance level."
+    },
+    {
+      "id": "metal4-family",
+      "url": "https://developer.apple.com/documentation/metal/mtlgpufamily/metal4",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/metal/mtlgpufamily/metal4.json",
+      "accessedOn": "2026-11-21",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "1e73e34d99ff9f0158c0e070e7a82c55aba9cc4aba2298344d611a4cac3d275d",
+      "metadata": {
+        "title": "MTLGPUFamily.metal4",
+        "role": "symbol",
+        "externalID": "c:@E@MTLGPUFamily@MTLGPUFamilyMetal4",
+        "platforms": [
+          {
+            "introducedAt": "26.0",
+            "name": "iOS"
+          },
+          {
+            "introducedAt": "26.0",
+            "name": "iPadOS"
+          },
+          {
+            "introducedAt": "26.0",
+            "name": "Mac Catalyst"
+          },
+          {
+            "introducedAt": "26.0",
+            "name": "macOS"
+          },
+          {
+            "introducedAt": "26.0",
+            "name": "tvOS"
+          },
+          {
+            "introducedAt": "26.0",
+            "name": "visionOS"
+          }
+        ]
+      }
+    },
+    {
+      "id": "metal4-core",
+      "url": "https://developer.apple.com/documentation/metal/understanding-the-metal-4-core-api",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/metal/understanding-the-metal-4-core-api.json",
+      "accessedOn": "2026-11-21",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "bfc94f4ef838b0d66646816e06b01b77469401c49a81a26973b2737e807bf5e4",
+      "metadata": {
+        "title": "Understanding the Metal 4 core API",
+        "role": "article"
+      },
+      "shortExcerpt": "Discover the features and functionality in the Metal 4 foundational APIs."
+    },
+    {
+      "id": "spatial-support",
+      "url": "https://developer.apple.com/documentation/metalfx/mtlfxspatialscalerdescriptor/supportsdevice(_:)",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/metalfx/mtlfxspatialscalerdescriptor/supportsdevice(_:).json",
+      "accessedOn": "2026-11-21",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "42345f07bb71ddeca1e652eb24465841116c957ed83bd7cc4415a84a47b2d0bd",
+      "metadata": {
+        "title": "supportsDevice(_:)",
+        "role": "symbol",
+        "externalID": "c:objc(cs)MTLFXSpatialScalerDescriptor(cm)supportsDevice:",
+        "platforms": [
+          {
+            "introducedAt": "16.0",
+            "name": "iOS"
+          },
+          {
+            "introducedAt": "16.0",
+            "name": "iPadOS"
+          },
+          {
+            "introducedAt": "16.0",
+            "name": "Mac Catalyst"
+          },
+          {
+            "introducedAt": "13.0",
+            "name": "macOS"
+          },
+          {
+            "introducedAt": "27.2",
+            "name": "tvOS"
+          },
+          {
+            "introducedAt": "1.0",
+            "name": "visionOS"
+          }
+        ]
+      },
+      "shortExcerpt": "Returns a Boolean value that indicates whether the spatial scaler works with a GPU."
+    },
+    {
+      "id": "temporal-support",
+      "url": "https://developer.apple.com/documentation/metalfx/mtlfxtemporalscalerdescriptor/supportsdevice(_:)",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/metalfx/mtlfxtemporalscalerdescriptor/supportsdevice(_:).json",
+      "accessedOn": "2026-11-21",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "340c7bb9d1212ac0c1a5f35514d9f99201499644fdd7a6e2f31ef90db2a4426f",
+      "metadata": {
+        "title": "supportsDevice(_:)",
+        "role": "symbol",
+        "externalID": "c:objc(cs)MTLFXTemporalScalerDescriptor(cm)supportsDevice:",
+        "platforms": [
+          {
+            "introducedAt": "16.0",
+            "name": "iOS"
+          },
+          {
+            "introducedAt": "16.0",
+            "name": "iPadOS"
+          },
+          {
+            "introducedAt": "16.0",
+            "name": "Mac Catalyst"
+          },
+          {
+            "introducedAt": "13.0",
+            "name": "macOS"
+          },
+          {
+            "introducedAt": "27.2",
+            "name": "tvOS"
+          }
+        ]
+      },
+      "shortExcerpt": "Returns a Boolean value that indicates whether the temporal scaler works with a GPU."
+    },
+    {
+      "id": "spatial-descriptor",
+      "url": "https://developer.apple.com/documentation/metalfx/mtlfxspatialscalerdescriptor",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/metalfx/mtlfxspatialscalerdescriptor.json",
+      "accessedOn": "2026-11-21",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "4c9d0aaeabfc055056b472503fe036e06072053a2c83179ff95be7f8bf8e7fc5",
+      "metadata": {
+        "title": "MTLFXSpatialScalerDescriptor",
+        "role": "symbol",
+        "externalID": "c:objc(cs)MTLFXSpatialScalerDescriptor",
+        "platforms": [
+          {
+            "introducedAt": "16.0",
+            "name": "iOS"
+          },
+          {
+            "introducedAt": "16.0",
+            "name": "iPadOS"
+          },
+          {
+            "introducedAt": "16.0",
+            "name": "Mac Catalyst"
+          },
+          {
+            "introducedAt": "13.0",
+            "name": "macOS"
+          },
+          {
+            "introducedAt": "27.2",
+            "name": "tvOS"
+          },
+          {
+            "introducedAt": "1.0",
+            "name": "visionOS"
+          }
+        ]
+      },
+      "shortExcerpt": "A set of properties that configure a spatial scaling effect, and a factory method that creates the effect."
+    },
+    {
+      "id": "temporal-descriptor",
+      "url": "https://developer.apple.com/documentation/metalfx/mtlfxtemporalscalerdescriptor",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/metalfx/mtlfxtemporalscalerdescriptor.json",
+      "accessedOn": "2026-11-21",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "6f2e68441c41e2095407f150256612d6e8509316ec7b7d2f7c4b418a76424fce",
+      "metadata": {
+        "title": "MTLFXTemporalScalerDescriptor",
+        "role": "symbol",
+        "externalID": "c:objc(cs)MTLFXTemporalScalerDescriptor",
+        "platforms": [
+          {
+            "introducedAt": "16.0",
+            "name": "iOS"
+          },
+          {
+            "introducedAt": "16.0",
+            "name": "iPadOS"
+          },
+          {
+            "introducedAt": "16.0",
+            "name": "Mac Catalyst"
+          },
+          {
+            "introducedAt": "13.0",
+            "name": "macOS"
+          },
+          {
+            "introducedAt": "27.2",
+            "name": "tvOS"
+          }
+        ]
+      },
+      "shortExcerpt": "A set of properties that configure a temporal scaling effect, and a factory method that creates the effect."
+    },
+    {
+      "id": "spatial-output",
+      "url": "https://developer.apple.com/documentation/metalfx/mtlfxspatialscalerbase/outputtexture",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/metalfx/mtlfxspatialscalerbase/outputtexture.json",
+      "accessedOn": "2026-11-21",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "2bbd18c57018b6ef1a23466a7409b4ab0c397697bbef4c5634973298016f3479",
+      "metadata": {
+        "title": "outputTexture",
+        "role": "symbol",
+        "externalID": "c:objc(pl)MTLFXSpatialScalerBase(py)outputTexture",
+        "platforms": [
+          {
+            "introducedAt": "8.0",
+            "name": "iOS"
+          },
+          {
+            "introducedAt": "8.0",
+            "name": "iPadOS"
+          },
+          {
+            "introducedAt": "8.0",
+            "name": "Mac Catalyst"
+          },
+          {
+            "introducedAt": "10.11",
+            "name": "macOS"
+          },
+          {
+            "introducedAt": "27.2",
+            "name": "tvOS"
+          },
+          {
+            "introducedAt": "1.0",
+            "name": "visionOS"
+          }
+        ]
+      },
+      "shortExcerpt": "An output texture that supports the correct depth texture usage options."
+    },
+    {
+      "id": "temporal-output",
+      "url": "https://developer.apple.com/documentation/metalfx/mtlfxtemporalscalerbase/outputtexture",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/metalfx/mtlfxtemporalscalerbase/outputtexture.json",
+      "accessedOn": "2026-11-21",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "7dfaf461ee9c09661a9c137159e4e17e163ee224f02f846d1effcff56b0301da",
+      "metadata": {
+        "title": "outputTexture",
+        "role": "symbol",
+        "externalID": "c:objc(pl)MTLFXTemporalScalerBase(py)outputTexture",
+        "platforms": [
+          {
+            "introducedAt": "8.0",
+            "name": "iOS"
+          },
+          {
+            "introducedAt": "8.0",
+            "name": "iPadOS"
+          },
+          {
+            "introducedAt": "8.0",
+            "name": "Mac Catalyst"
+          },
+          {
+            "introducedAt": "10.11",
+            "name": "macOS"
+          },
+          {
+            "introducedAt": "27.2",
+            "name": "tvOS"
+          },
+          {
+            "introducedAt": "1.0",
+            "name": "visionOS"
+          }
+        ]
+      },
+      "shortExcerpt": "An output texture that supports the correct depth texture usage options."
+    },
+    {
+      "id": "thermal-state",
+      "url": "https://developer.apple.com/documentation/foundation/processinfo/thermalstate-swift.property",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/foundation/processinfo/thermalstate-swift.property.json",
+      "accessedOn": "2026-11-21",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "4f997354687c634b03251d9015c3645d0d42a0731ae64b89b7eee780459703ff",
+      "metadata": {
+        "title": "thermalState",
+        "role": "symbol",
+        "externalID": "c:objc(cs)NSProcessInfo(py)thermalState",
+        "platforms": [
+          {
+            "introducedAt": "11.0",
+            "name": "iOS"
+          },
+          {
+            "introducedAt": "11.0",
+            "name": "iPadOS"
+          },
+          {
+            "introducedAt": "13.1",
+            "name": "Mac Catalyst"
+          },
+          {
+            "introducedAt": "10.10.3",
+            "name": "macOS"
+          },
+          {
+            "introducedAt": "11.0",
+            "name": "tvOS"
+          },
+          {
+            "introducedAt": "1.0",
+            "name": "visionOS"
+          },
+          {
+            "introducedAt": "4.0",
+            "name": "watchOS"
+          }
+        ]
+      },
+      "shortExcerpt": "The current thermal state of the system."
+    },
+    {
+      "id": "thermal-notification",
+      "url": "https://developer.apple.com/documentation/foundation/processinfo/thermalstatedidchangenotification",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/foundation/processinfo/thermalstatedidchangenotification.json",
+      "accessedOn": "2026-11-21",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "9f79b352dd99316180c81b6ff0e5f1e4b893901ca58c316254ee86b78e455e57",
+      "metadata": {
+        "title": "thermalStateDidChangeNotification",
+        "role": "symbol",
+        "externalID": "c:@NSProcessInfoThermalStateDidChangeNotification",
+        "platforms": [
+          {
+            "introducedAt": "11.0",
+            "name": "iOS"
+          },
+          {
+            "introducedAt": "11.0",
+            "name": "iPadOS"
+          },
+          {
+            "introducedAt": "13.1",
+            "name": "Mac Catalyst"
+          },
+          {
+            "introducedAt": "10.10.3",
+            "name": "macOS"
+          },
+          {
+            "introducedAt": "11.0",
+            "name": "tvOS"
+          },
+          {
+            "introducedAt": "1.0",
+            "name": "visionOS"
+          },
+          {
+            "introducedAt": "4.0",
+            "name": "watchOS"
+          }
+        ]
+      },
+      "shortExcerpt": "Posts when the thermal state of the system changes."
+    },
+    {
+      "id": "low-power-mode",
+      "url": "https://developer.apple.com/documentation/foundation/processinfo/islowpowermodeenabled",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/foundation/processinfo/islowpowermodeenabled.json",
+      "accessedOn": "2026-11-21",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "db441f4baf4867e9519d586952a87a60ad6a3f5d8a05bb051044e2cadb17e1b2",
+      "metadata": {
+        "title": "isLowPowerModeEnabled",
+        "role": "symbol",
+        "externalID": "c:objc(cs)NSProcessInfo(py)lowPowerModeEnabled",
+        "platforms": [
+          {
+            "introducedAt": "9.0",
+            "name": "iOS"
+          },
+          {
+            "introducedAt": "9.0",
+            "name": "iPadOS"
+          },
+          {
+            "introducedAt": "13.1",
+            "name": "Mac Catalyst"
+          },
+          {
+            "introducedAt": "12.0",
+            "name": "macOS"
+          },
+          {
+            "introducedAt": "9.0",
+            "name": "tvOS"
+          },
+          {
+            "introducedAt": "1.0",
+            "name": "visionOS"
+          },
+          {
+            "introducedAt": "2.0",
+            "name": "watchOS"
+          }
+        ]
+      },
+      "shortExcerpt": "A Boolean value that indicates the current state of Low Power Mode."
+    },
+    {
+      "id": "power-notification",
+      "url": "https://developer.apple.com/documentation/foundation/nsnotification/name-swift.struct/nsprocessinfopowerstatedidchange",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/foundation/nsnotification/name-swift.struct/nsprocessinfopowerstatedidchange.json",
+      "accessedOn": "2026-11-21",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "161a3ee65b969321d5b4d0092506564161c9b6045b8597e81a1fad371ca634a3",
+      "metadata": {
+        "title": "NSProcessInfoPowerStateDidChange",
+        "role": "symbol",
+        "externalID": "c:@NSProcessInfoPowerStateDidChangeNotification",
+        "platforms": [
+          {
+            "introducedAt": "9.0",
+            "name": "iOS"
+          },
+          {
+            "introducedAt": "9.0",
+            "name": "iPadOS"
+          },
+          {
+            "introducedAt": "13.1",
+            "name": "Mac Catalyst"
+          },
+          {
+            "introducedAt": "12.0",
+            "name": "macOS"
+          },
+          {
+            "introducedAt": "9.0",
+            "name": "tvOS"
+          },
+          {
+            "introducedAt": "1.0",
+            "name": "visionOS"
+          },
+          {
+            "introducedAt": "2.0",
+            "name": "watchOS"
+          }
+        ]
+      },
+      "shortExcerpt": "Posts when the power state of a device changes."
+    },
+    {
+      "id": "operation-qos",
+      "url": "https://developer.apple.com/documentation/foundation/operationqueue/qualityofservice",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/foundation/operationqueue/qualityofservice.json",
+      "accessedOn": "2026-11-21",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "51ffea0c6c7e4d562723dd55f0813e85fc661dc466d735cec6cd37492bd6ed0d",
+      "metadata": {
+        "title": "qualityOfService",
+        "role": "symbol",
+        "externalID": "c:objc(cs)NSOperationQueue(py)qualityOfService",
+        "platforms": [
+          {
+            "introducedAt": "8.0",
+            "name": "iOS"
+          },
+          {
+            "introducedAt": "8.0",
+            "name": "iPadOS"
+          },
+          {
+            "introducedAt": "13.1",
+            "name": "Mac Catalyst"
+          },
+          {
+            "introducedAt": "10.10",
+            "name": "macOS"
+          },
+          {
+            "introducedAt": "9.0",
+            "name": "tvOS"
+          },
+          {
+            "introducedAt": "1.0",
+            "name": "visionOS"
+          },
+          {
+            "introducedAt": "2.0",
+            "name": "watchOS"
+          }
+        ]
+      },
+      "shortExcerpt": "The default service level to apply to operations that the queue invokes."
+    },
+    {
+      "id": "metal-hud",
+      "url": "https://developer.apple.com/documentation/xcode/monitoring-your-metal-apps-graphics-performance",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/xcode/monitoring-your-metal-apps-graphics-performance.json",
+      "accessedOn": "2026-11-21",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "9ee80a6f88057140d15ab8e677ac242a6b472cfd050a8c5367e453eff566c92e",
+      "metadata": {
+        "title": "Monitoring your Metal app’s graphics performance",
+        "role": "article"
+      },
+      "shortExcerpt": "Catch performance issues using the Metal Performance HUD while your app runs."
+    },
+    {
+      "id": "metal-hud-metrics",
+      "url": "https://developer.apple.com/documentation/xcode/understanding-metal-performance-hud-metrics",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/xcode/understanding-metal-performance-hud-metrics.json",
+      "accessedOn": "2026-11-21",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "aea7250b7373f000dc70d4a382245376542a016b4b64c806e25d0c94591c68cc",
+      "metadata": {
+        "title": "Understanding the Metal Performance HUD metrics",
+        "role": "article"
+      },
+      "shortExcerpt": "Learn what each of the metrics reported by the heads-up display indicates."
+    },
+    {
+      "id": "temporal27-output-motion",
+      "url": "https://developer.apple.com/documentation/metalfx/mtlfxtemporalscalerdescriptor/isoutputresolutionmotionvectorsenabled",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/metalfx/mtlfxtemporalscalerdescriptor/isoutputresolutionmotionvectorsenabled.json",
+      "accessedOn": "2026-11-21",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "7b4192516f629316148af5df75f8964b23e62f237966ffe13329650c5663b86e",
+      "metadata": {
+        "title": "isOutputResolutionMotionVectorsEnabled",
+        "role": "symbol",
+        "externalID": "c:objc(cs)MTLFXTemporalScalerDescriptor(py)outputResolutionMotionVectorsEnabled",
+        "platforms": [
+          {
+            "introducedAt": "27.0",
+            "name": "iOS"
+          },
+          {
+            "introducedAt": "27.0",
+            "name": "iPadOS"
+          },
+          {
+            "introducedAt": "27.0",
+            "name": "Mac Catalyst"
+          },
+          {
+            "introducedAt": "27.0",
+            "name": "macOS"
+          },
+          {
+            "introducedAt": "27.2",
+            "name": "tvOS"
+          }
+        ]
+      },
+      "shortExcerpt": "A Boolean value that indicates whether the scaler expects motion vectors at output resolution."
+    },
+    {
+      "id": "temporal27-jitter-motion",
+      "url": "https://developer.apple.com/documentation/metalfx/mtlfxtemporalscalerdescriptor/isjitteredmotionvectorsenabled",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/metalfx/mtlfxtemporalscalerdescriptor/isjitteredmotionvectorsenabled.json",
+      "accessedOn": "2026-11-21",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "3f26502b28fff9044f9cd69683693f4f0df6fdf5b2789a89a93f04ac8c9b875c",
+      "metadata": {
+        "title": "isJitteredMotionVectorsEnabled",
+        "role": "symbol",
+        "externalID": "c:objc(cs)MTLFXTemporalScalerDescriptor(py)jitteredMotionVectorsEnabled",
+        "platforms": [
+          {
+            "introducedAt": "27.0",
+            "name": "iOS"
+          },
+          {
+            "introducedAt": "27.0",
+            "name": "iPadOS"
+          },
+          {
+            "introducedAt": "27.0",
+            "name": "Mac Catalyst"
+          },
+          {
+            "introducedAt": "27.0",
+            "name": "macOS"
+          },
+          {
+            "introducedAt": "27.2",
+            "name": "tvOS"
+          }
+        ]
+      },
+      "shortExcerpt": "A Boolean value that indicates whether the motion vectors include the jittering pattern."
+    },
+    {
+      "id": "frame27-distortion",
+      "url": "https://developer.apple.com/documentation/metalfx/mtlfxframeinterpolatordescriptor/isdistortiontextureenabled",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/metalfx/mtlfxframeinterpolatordescriptor/isdistortiontextureenabled.json",
+      "accessedOn": "2026-11-21",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "f2f73445c2cd6f31e248c82c6c51a8337d6b722651205a6ca8fb58ce66f527e1",
+      "metadata": {
+        "title": "isDistortionTextureEnabled",
+        "role": "symbol",
+        "externalID": "c:objc(cs)MTLFXFrameInterpolatorDescriptor(py)distortionTextureEnabled",
+        "platforms": [
+          {
+            "introducedAt": "27.0",
+            "name": "iOS"
+          },
+          {
+            "introducedAt": "27.0",
+            "name": "iPadOS"
+          },
+          {
+            "introducedAt": "27.0",
+            "name": "Mac Catalyst"
+          },
+          {
+            "introducedAt": "27.0",
+            "name": "macOS"
+          },
+          {
+            "introducedAt": "27.2",
+            "name": "tvOS"
+          }
+        ]
+      },
+      "shortExcerpt": "A Boolean value that indicates whether the frame interpolator supports barrel distortion correction."
+    },
+    {
+      "id": "frame27-previous-color",
+      "url": "https://developer.apple.com/documentation/metalfx/mtlfxframeinterpolatordescriptor/requiresprevcolortexture",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/metalfx/mtlfxframeinterpolatordescriptor/requiresprevcolortexture.json",
+      "accessedOn": "2026-11-21",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "0481fa6c6cf0b01b6d9622fa4768d57440a13440931cac2cffaae0fb27751138",
+      "metadata": {
+        "title": "requiresPrevColorTexture",
+        "role": "symbol",
+        "externalID": "c:objc(cs)MTLFXFrameInterpolatorDescriptor(py)requiresPrevColorTexture",
+        "platforms": [
+          {
+            "introducedAt": "27.0",
+            "name": "iOS"
+          },
+          {
+            "introducedAt": "27.0",
+            "name": "iPadOS"
+          },
+          {
+            "introducedAt": "27.0",
+            "name": "Mac Catalyst"
+          },
+          {
+            "introducedAt": "27.0",
+            "name": "macOS"
+          },
+          {
+            "introducedAt": "27.2",
+            "name": "tvOS"
+          }
+        ]
+      },
+      "shortExcerpt": "A Boolean value that indicates whether the frame interpolator requires the client to provide a previous color texture."
+    },
+    {
+      "id": "temporal-min-scale",
+      "url": "https://developer.apple.com/documentation/metalfx/mtlfxtemporalscalerdescriptor/supportedinputcontentminscale(device:)",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/metalfx/mtlfxtemporalscalerdescriptor/supportedinputcontentminscale(device:).json",
+      "accessedOn": "2026-11-21",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "91888a89f65e1c33613ab5136984e9cc119a26ac25b57cc9b0bb0afd3ab9d74b",
+      "metadata": {
+        "title": "supportedInputContentMinScale(device:)",
+        "role": "symbol",
+        "externalID": "c:objc(cs)MTLFXTemporalScalerDescriptor(cm)supportedInputContentMinScaleForDevice:",
+        "platforms": [
+          {
+            "introducedAt": "17.0",
+            "name": "iOS"
+          },
+          {
+            "introducedAt": "17.0",
+            "name": "iPadOS"
+          },
+          {
+            "introducedAt": "17.0",
+            "name": "Mac Catalyst"
+          },
+          {
+            "introducedAt": "14.0",
+            "name": "macOS"
+          },
+          {
+            "introducedAt": "27.2",
+            "name": "tvOS"
+          }
+        ]
+      },
+      "shortExcerpt": "Returns the smallest temporal scaling factor the device supports as a floating-point value."
+    },
+    {
+      "id": "temporal-max-scale",
+      "url": "https://developer.apple.com/documentation/metalfx/mtlfxtemporalscalerdescriptor/supportedinputcontentmaxscale(device:)",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/metalfx/mtlfxtemporalscalerdescriptor/supportedinputcontentmaxscale(device:).json",
+      "accessedOn": "2026-11-21",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "6d4d62dd6791f1da67a96341b61cfff09ffb136f6d15657bd1a53844a725136e",
+      "metadata": {
+        "title": "supportedInputContentMaxScale(device:)",
+        "role": "symbol",
+        "externalID": "c:objc(cs)MTLFXTemporalScalerDescriptor(cm)supportedInputContentMaxScaleForDevice:",
+        "platforms": [
+          {
+            "introducedAt": "17.0",
+            "name": "iOS"
+          },
+          {
+            "introducedAt": "17.0",
+            "name": "iPadOS"
+          },
+          {
+            "introducedAt": "17.0",
+            "name": "Mac Catalyst"
+          },
+          {
+            "introducedAt": "14.0",
+            "name": "macOS"
+          },
+          {
+            "introducedAt": "27.2",
+            "name": "tvOS"
+          }
+        ]
+      },
+      "shortExcerpt": "Returns the largest temporal scaling factor the device supports as a floating-point value."
+    },
+    {
+      "id": "metal4fx-spatial",
+      "url": "https://developer.apple.com/documentation/metalfx/mtlfxspatialscalerdescriptor/supportsmetal4fx(_:)",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/metalfx/mtlfxspatialscalerdescriptor/supportsmetal4fx(_:).json",
+      "accessedOn": "2026-11-22",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "642f155cdedde5a51cad3ffb81d41fe7393c2986c6901a26a9626340c93211f6",
+      "metadata": {
+        "title": "supportsMetal4FX(_:)",
+        "role": "symbol",
+        "externalID": "c:objc(cs)MTLFXSpatialScalerDescriptor(cm)supportsMetal4FX:",
+        "platforms": [
+          {
+            "introducedAt": "26.0",
+            "name": "iOS"
+          },
+          {
+            "introducedAt": "26.0",
+            "name": "iPadOS"
+          },
+          {
+            "introducedAt": "26.0",
+            "name": "Mac Catalyst"
+          },
+          {
+            "introducedAt": "26.0",
+            "name": "macOS"
+          },
+          {
+            "introducedAt": "27.2",
+            "name": "tvOS"
+          },
+          {
+            "introducedAt": "26.0",
+            "name": "visionOS"
+          }
+        ]
+      },
+      "shortExcerpt": "Queries whether a Metal device supports spatial scaling compatible with Metal 4."
+    },
+    {
+      "id": "metal4fx-temporal",
+      "url": "https://developer.apple.com/documentation/metalfx/mtlfxtemporalscalerdescriptor/supportsmetal4fx(_:)",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/metalfx/mtlfxtemporalscalerdescriptor/supportsmetal4fx(_:).json",
+      "accessedOn": "2026-11-22",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "29baf4495580d46686fa52d037e21cdc126dc6645ea9045f7b13249253ca72b6",
+      "metadata": {
+        "title": "supportsMetal4FX(_:)",
+        "role": "symbol",
+        "externalID": "c:objc(cs)MTLFXTemporalScalerDescriptor(cm)supportsMetal4FX:",
+        "platforms": [
+          {
+            "introducedAt": "26.0",
+            "name": "iOS"
+          },
+          {
+            "introducedAt": "26.0",
+            "name": "iPadOS"
+          },
+          {
+            "introducedAt": "26.0",
+            "name": "Mac Catalyst"
+          },
+          {
+            "introducedAt": "26.0",
+            "name": "macOS"
+          },
+          {
+            "introducedAt": "27.2",
+            "name": "tvOS"
+          }
+        ]
+      },
+      "shortExcerpt": "Queries whether a Metal device supports temporal scaling compatible with Metal 4."
+    },
+    {
+      "id": "frame-interpolator",
+      "url": "https://developer.apple.com/documentation/metalfx/mtlfxframeinterpolatordescriptor",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/metalfx/mtlfxframeinterpolatordescriptor.json",
+      "accessedOn": "2026-11-22",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "907ff0caca6137dbd3ae52bac95c1cbe183d5511e3a3536a8d15c4d70806e81c",
+      "metadata": {
+        "title": "MTLFXFrameInterpolatorDescriptor",
+        "role": "symbol",
+        "externalID": "c:objc(cs)MTLFXFrameInterpolatorDescriptor",
+        "platforms": [
+          {
+            "introducedAt": "26.0",
+            "name": "iOS"
+          },
+          {
+            "introducedAt": "26.0",
+            "name": "iPadOS"
+          },
+          {
+            "introducedAt": "26.0",
+            "name": "Mac Catalyst"
+          },
+          {
+            "introducedAt": "26.0",
+            "name": "macOS"
+          },
+          {
+            "introducedAt": "27.2",
+            "name": "tvOS"
+          }
+        ]
+      },
+      "shortExcerpt": "A set of properties that configure a frame interpolator, and a factory method that creates the effect."
+    },
+    {
+      "id": "frame-support",
+      "url": "https://developer.apple.com/documentation/metalfx/mtlfxframeinterpolatordescriptor/supportsdevice(_:)",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/metalfx/mtlfxframeinterpolatordescriptor/supportsdevice(_:).json",
+      "accessedOn": "2026-11-22",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "220d00de198a9b27ee3d08bfce28e0fb95dfbc37f1de859cadbc51e6b430ece0",
+      "metadata": {
+        "title": "supportsDevice(_:)",
+        "role": "symbol",
+        "externalID": "c:objc(cs)MTLFXFrameInterpolatorDescriptor(cm)supportsDevice:",
+        "platforms": [
+          {
+            "introducedAt": "26.0",
+            "name": "iOS"
+          },
+          {
+            "introducedAt": "26.0",
+            "name": "iPadOS"
+          },
+          {
+            "introducedAt": "26.0",
+            "name": "Mac Catalyst"
+          },
+          {
+            "introducedAt": "26.0",
+            "name": "macOS"
+          },
+          {
+            "introducedAt": "27.2",
+            "name": "tvOS"
+          }
+        ]
+      },
+      "shortExcerpt": "Queries whether a Metal device supports frame interpolation."
+    },
+    {
+      "id": "frame-metal4-support",
+      "url": "https://developer.apple.com/documentation/metalfx/mtlfxframeinterpolatordescriptor/supportsmetal4fx(_:)",
+      "retrievalURL": "https://developer.apple.com/tutorials/data/documentation/metalfx/mtlfxframeinterpolatordescriptor/supportsmetal4fx(_:).json",
+      "accessedOn": "2026-11-22",
+      "authority": "Apple",
+      "retrievalMethod": "HTTPS Apple DocC JSON",
+      "retrieved": true,
+      "retrievalSHA256": "47a056ddb7ed6c14b3ff17d1efe5901aa08ddee89ef744e71caa4c412bb88dee",
+      "metadata": {
+        "title": "supportsMetal4FX(_:)",
+        "role": "symbol",
+        "externalID": "c:objc(cs)MTLFXFrameInterpolatorDescriptor(cm)supportsMetal4FX:",
+        "platforms": [
+          {
+            "introducedAt": "26.0",
+            "name": "iOS"
+          },
+          {
+            "introducedAt": "26.0",
+            "name": "iPadOS"
+          },
+          {
+            "introducedAt": "26.0",
+            "name": "Mac Catalyst"
+          },
+          {
+            "introducedAt": "26.0",
+            "name": "macOS"
+          },
+          {
+            "introducedAt": "27.2",
+            "name": "tvOS"
+          }
+        ]
+      },
+      "shortExcerpt": "Queries whether a Metal device supports frame interpolation compatible with a Metal 4 command buffer."
+    }
+  ],
+  "capabilityMatrix": [
+    {
+      "capability": "Game Mode system eligibility",
+      "minimumMacOS": "14.0",
+      "hardware": "Apple silicon Mac; game supports macOS native full-screen mode",
+      "entitlement": "No dedicated entitlement is stated in the reviewed source; this is not a claim that all application permissions are unnecessary.",
+      "api": "System-managed Game Mode; game menu or Metal Performance HUD for observed state",
+      "processScope": "The recognized full-screen game process; host eligibility does not establish child-process activation",
+      "inputConditions": [
+        "Launch an application bundle through normal application launch; macOS26 notes document that directly spawning the binary from Terminal does not activate Game Mode.",
+        "Enter native macOS full-screen; user can disable Game Mode."
+      ],
+      "verification": "Observe Game Mode on/off in game menu/HUD for the target application, then A/B test identical replay, frame interval percentiles, GPU time and input latency where instrumented. No automatic speedup claim.",
+      "sourceIDs": [
+        "game-mode",
+        "macos-26-notes",
+        "metal-hud",
+        "metal-hud-metrics"
+      ]
+    },
+    {
+      "capability": "LSSupportsGameMode declaration",
+      "minimumMacOS": "26.0 according to current Apple metadata",
+      "hardware": "System Game Mode eligibility still applies",
+      "entitlement": "Info.plist Boolean; not a code-signing entitlement",
+      "api": "LSSupportsGameMode",
+      "processScope": "The application bundle declaring the key",
+      "inputConditions": [
+        "YES makes Game Mode available; NO opts out; omitted key may prevent activation.",
+        "Plist presence and OS version are not proof of activation."
+      ],
+      "verification": "Inspect built bundle key and observe target-app Game Mode on/off under native full-screen.",
+      "sourceIDs": [
+        "ls-game-mode",
+        "game-mode",
+        "macos-26-notes"
+      ]
+    },
+    {
+      "capability": "Legacy GCSupportsGameMode declaration",
+      "minimumMacOS": null,
+      "hardware": "Current Apple metadata lists iOS/iPadOS only; do not present this legacy key as a macOS14/15 requirement",
+      "entitlement": "Info.plist Boolean; deprecated",
+      "api": "GCSupportsGameMode",
+      "processScope": "The application bundle declaring the key",
+      "inputConditions": [
+        "Introduced iOS/iPadOS18.0; deprecated18.6; Apple deprecationSummary explicitly directs LSSupportsGameMode."
+      ],
+      "verification": "Read current official platform metadata and deprecationSummary; no macOS availability is listed.",
+      "sourceIDs": [
+        "gc-game-mode",
+        "ls-game-mode"
+      ]
+    },
+    {
+      "capability": "MetalFX spatial scaling",
+      "minimumMacOS": "13.0",
+      "hardware": "A selected MTLDevice for which MTLFXSpatialScalerDescriptor.supportsDevice returns true",
+      "entitlement": "No dedicated entitlement is stated in the reviewed source; this is not a claim that all application permissions are unnecessary.",
+      "api": "MTLFXSpatialScalerDescriptor.supportsDevice / makeSpatialScaler",
+      "processScope": "The process creating and encoding the scaler for its selected Metal device",
+      "inputConditions": [
+        "Successful non-nil scaler creation.",
+        "Color texture format/dimensions and scaler-reported texture usages are valid.",
+        "Output texture uses private storage mode and correct output dimensions."
+      ],
+      "verification": "Encode real scaler workload, confirm command-buffer completion without error, copy private output through an appropriate staging resource for image assertions, and compare fixed-scene quality/GPU time. HUD can report actual scaling method and resolutions.",
+      "sourceIDs": [
+        "spatial-support",
+        "spatial-descriptor",
+        "spatial-output",
+        "metal-hud-metrics"
+      ]
+    },
+    {
+      "capability": "MetalFX temporal scaling",
+      "minimumMacOS": "13.0; device min/max scale query APIs14.0",
+      "hardware": "A selected MTLDevice for which MTLFXTemporalScalerDescriptor.supportsDevice returns true",
+      "entitlement": "No dedicated entitlement is stated in the reviewed source; this is not a claim that all application permissions are unnecessary.",
+      "api": "MTLFXTemporalScalerDescriptor.supportsDevice / makeTemporalScaler / supportedInputContentMinScale(device:) / supportedInputContentMaxScale(device:)",
+      "processScope": "The process supplying the renderer history and encoding the scaler",
+      "inputConditions": [
+        "Successful non-nil scaler creation.",
+        "Correct color, depth, motion-vector, jitter, reset/history semantics, dimensions and formats; caller supplies scene data.",
+        "Private output texture and scaler-reported texture usage requirements."
+      ],
+      "verification": "Execute multiple controlled frames, verify output and GPU completion, compare artifact/quality stability and GPU time to the same unscaled or native-resolution scene. A device-support Boolean alone proves no effect.",
+      "sourceIDs": [
+        "temporal-support",
+        "temporal-descriptor",
+        "temporal-output",
+        "temporal-min-scale",
+        "temporal-max-scale",
+        "metal-hud-metrics"
+      ]
+    },
+    {
+      "capability": "System thermal state and notification",
+      "minimumMacOS": "10.10.3",
+      "hardware": "No narrower model list stated in reviewed API source",
+      "entitlement": "No dedicated entitlement is stated in the reviewed source; this is not a claim that all application permissions are unnecessary.",
+      "api": "ProcessInfo.thermalState / ProcessInfo.thermalStateDidChangeNotification",
+      "processScope": "Current process observes system thermal state and adapts its own work",
+      "inputConditions": [
+        "Read thermalState before registering.",
+        "Use default notification center; SDK states delivery occurs on global dispatch queue.",
+        "Read current state on notification; serialize mutations in the consumer."
+      ],
+      "verification": "Test notification/state sampling path and deterministic transitions via injected values; distinguish simulation from actual hardware thermal events.",
+      "sourceIDs": [
+        "thermal-state",
+        "thermal-notification"
+      ]
+    },
+    {
+      "capability": "Low Power Mode state and notification",
+      "minimumMacOS": "12.0",
+      "hardware": "No narrower model list stated in reviewed API source; Low Power Mode is distinct from battery percentage",
+      "entitlement": "No dedicated entitlement is stated in the reviewed source; this is not a claim that all application permissions are unnecessary.",
+      "api": "ProcessInfo.isLowPowerModeEnabled / NSNotification.Name.NSProcessInfoPowerStateDidChange",
+      "processScope": "Current process observes device power state and adapts its own work",
+      "inputConditions": [
+        "Re-read isLowPowerModeEnabled after notification.",
+        "Default notification center; SDK states delivery occurs on global dispatch queue."
+      ],
+      "verification": "Exercise deterministic injected transitions; test a real system Low Power Mode toggle only when that device/system mode is available.",
+      "sourceIDs": [
+        "low-power-mode",
+        "power-notification"
+      ]
+    },
+    {
+      "capability": "OperationQueue QoS",
+      "minimumMacOS": "10.10",
+      "hardware": "No dedicated hardware constraint in reviewed API source",
+      "entitlement": "No dedicated entitlement is stated in the reviewed source; this is not a claim that all application permissions are unnecessary.",
+      "api": "OperationQueue.qualityOfService",
+      "processScope": "Default QoS for operations added to the current-process queue",
+      "inputConditions": [
+        "Explicit operation QoS supersedes the queue default.",
+        "Underlying dispatch queue QoS overrides operation queue QoS; the main queue default cannot be changed."
+      ],
+      "verification": "Assert assigned queue QoS and reversible resource-policy transitions; benchmark representative work separately. QoS is scheduling intent, not a process-wide or cross-process acceleration guarantee.",
+      "sourceIDs": [
+        "operation-qos"
+      ]
+    },
+    {
+      "capability": "Sustained Execution Mode",
+      "minimumMacOS": "15.0",
+      "hardware": "Applicable devices; reviewed entitlement page does not enumerate exact Mac models or expose a device-support query",
+      "entitlement": "com.apple.developer.sustained-execution = true in the code-signed target app",
+      "api": "Signing entitlement; no dynamic switch API established by reviewed source",
+      "processScope": "The entitled app over its lifecycle; no inferred inheritance by a separately launched child game",
+      "inputConditions": [
+        "System limits burst performance to sustain consistent performance over time.",
+        "For devices without the feature, app workload settings remain necessary."
+      ],
+      "verification": "Inspect final signed target entitlement; perform long-duration identical-workload A/B measurements. The host module must not claim observed activation without signing/device/runtime evidence.",
+      "sourceIDs": [
+        "sustained-execution"
+      ]
+    },
+    {
+      "capability": "Metal4 core API",
+      "minimumMacOS": "26.0",
+      "hardware": "Mac with Apple silicon; confirm selected device supportsFamily(.metal4)",
+      "entitlement": "No dedicated entitlement is stated in the reviewed source; this is not a claim that all application permissions are unnecessary.",
+      "api": "MTLDevice.supportsFamily(.metal4), MTL4CommandQueue, MTL4CommandBuffer, MTL4Compiler",
+      "processScope": "Current rendering process and its selected MTLDevice",
+      "inputConditions": [
+        "Availability gate and selected-device family check.",
+        "Metal4 queue/resources/encoding requirements; factories may fail."
+      ],
+      "verification": "Query actual device family and create/execute a representative Metal4 command path before claiming runtime use. Older Metal path remains fallback.",
+      "sourceIDs": [
+        "metal-support",
+        "metal4-family",
+        "metal4-core"
+      ]
+    },
+    {
+      "capability": "Selected MetalFX27 additions",
+      "minimumMacOS": "27.0",
+      "hardware": "Underlying scaler/interpolator device support and valid inputs still apply",
+      "entitlement": "No dedicated entitlement is stated in the reviewed source; this is not a claim that all application permissions are unnecessary.",
+      "api": "Temporal output-resolution motion vectors / jittered motion vectors / content offsets / reactive-mask usage; frame-interpolator distortion and previous-color controls",
+      "processScope": "Current renderer supplying the optional data and enabling the corresponding MetalFX feature",
+      "inputConditions": [
+        "These are selected SDK-confirmed additions, not an inventory of every macOS27 capability.",
+        "Output-resolution motion vector flag requires vectors at output resolution; jittered-motion flag uses per-frame jitter offsets.",
+        "Interpolator distortion/previous-color paths require corresponding valid textures and temporal inputs."
+      ],
+      "verification": "Availability-check specific members and compile against target SDK; actual feature/effect requires corresponding rendering inputs and executed GPU workload.",
+      "sourceIDs": [
+        "temporal27-output-motion",
+        "temporal27-jitter-motion",
+        "frame27-distortion",
+        "frame27-previous-color"
+      ]
+    },
+    {
+      "capability": "Metal4FX spatial scaling",
+      "minimumMacOS": "26.0",
+      "hardware": "Apple silicon Mac; independently query the selected MTLDevice with spatial supportsMetal4FX",
+      "entitlement": "No dedicated entitlement is stated in the reviewed API source; this does not establish permissions for an arbitrary target application.",
+      "api": "MTLFXSpatialScalerDescriptor.supportsMetal4FX / makeSpatialScaler(device:compiler:) / MTL4FXSpatialScaler.encode(commandBuffer:)",
+      "processScope": "The current renderer using its selected device, MTL4Compiler and MTL4CommandBuffer",
+      "inputConditions": [
+        "Non-nil Metal4FX scaler creation; correct color input, dimensions, formats and required usages; private output.",
+        "Ordinary spatial supportsDevice or supportsFamily(.metal4) alone does not establish Metal4FX support."
+      ],
+      "verification": "Support query is measured. Creation, Metal4 command submission, output checks and representative-workload effects remain not tested; renderer must retain an older scaling path.",
+      "sourceIDs": [
+        "metal4fx-spatial",
+        "metal4-core"
+      ]
+    },
+    {
+      "capability": "Metal4FX temporal scaling",
+      "minimumMacOS": "26.0",
+      "hardware": "Apple silicon Mac; independently query the selected MTLDevice with temporal supportsMetal4FX",
+      "entitlement": "No dedicated entitlement is stated in the reviewed API source; this does not establish permissions for an arbitrary target application.",
+      "api": "MTLFXTemporalScalerDescriptor.supportsMetal4FX / makeTemporalScaler(device:compiler:) / MTL4FXTemporalScaler.encode(commandBuffer:)",
+      "processScope": "The current renderer supplying temporal history and encoding MTL4CommandBuffer",
+      "inputConditions": [
+        "Non-nil Metal4FX scaler creation; valid color/depth/motion, jitter/reset/history, dimensions and formats; private output.",
+        "Ordinary temporal support is not a substitute for Metal4FX support."
+      ],
+      "verification": "Support query is measured. Metal4FX creation, multi-frame execution, image/temporal validation and effects remain not tested; retain an older rendering route.",
+      "sourceIDs": [
+        "metal4fx-temporal",
+        "metal4-core"
+      ]
+    },
+    {
+      "capability": "Frame interpolation with ordinary Metal command buffers",
+      "minimumMacOS": "26.0",
+      "hardware": "Selected MTLDevice must pass MTLFXFrameInterpolatorDescriptor.supportsDevice; no narrower Mac model list was established by the reviewed API source",
+      "entitlement": "No dedicated entitlement is stated in the reviewed API source; this does not establish permissions for an arbitrary target application.",
+      "api": "MTLFXFrameInterpolatorDescriptor.supportsDevice / makeFrameInterpolator(device:) / MTLFXFrameInterpolator.encode(commandBuffer:)",
+      "processScope": "The current rendering process using MTLCommandBuffer",
+      "inputConditions": [
+        "Non-nil interpolator creation, valid current/previous color, depth, motion, camera/time/history inputs, dimensions and usages; private output.",
+        "On macOS27 requiresPrevColorTexture defaults true; setting false selects interpolator-managed previous color."
+      ],
+      "verification": "Support query is measured. Create and execute at least two controlled rendered frames, verify intermediate output, motion artifacts, frame intervals and input latency before claiming actual use or effect. Current creation/execution/effect are not tested; fall back to no interpolation.",
+      "sourceIDs": [
+        "frame-interpolator",
+        "frame-support",
+        "frame27-previous-color",
+        "frame27-distortion"
+      ]
+    },
+    {
+      "capability": "Frame interpolation with Metal4FX command buffers",
+      "minimumMacOS": "26.0",
+      "hardware": "Apple silicon Mac; independently query selected MTLDevice with interpolator supportsMetal4FX",
+      "entitlement": "No dedicated entitlement is stated in the reviewed API source; this does not establish permissions for an arbitrary target application.",
+      "api": "MTLFXFrameInterpolatorDescriptor.supportsMetal4FX / makeFrameInterpolator(device:compiler:) / MTL4FXFrameInterpolator.encode(commandBuffer:)",
+      "processScope": "The current renderer using MTL4Compiler and MTL4CommandBuffer",
+      "inputConditions": [
+        "Non-nil Metal4FX interpolator creation and the ordinary interpolator input/private-output requirements.",
+        "Each alternate route requires its own support and factory checks."
+      ],
+      "verification": "Support query is measured. Metal4FX creation, submission, intermediate-frame output and effects are not tested; renderer may select a separately validated ordinary interpolation route or disable interpolation.",
+      "sourceIDs": [
+        "frame-interpolator",
+        "frame-metal4-support",
+        "metal4-core"
+      ]
+    }
+  ],
+  "sdk": {
+    "name": "MacOSX27.0.sdk",
+    "evidenceAccessedOn": "2026-11-21",
+    "root": "SDK_ROOT",
+    "headers": [
+      {
+        "header": "SDK_ROOT/System/Library/Frameworks/MetalFX.framework/Headers/MTLFXSpatialScaler.h",
+        "sha256": "4c45d9f30fa889a6b0df6b92660fbdd0a82d7eb7fe6c479832a50ee54f783075",
+        "selectedEvidence": [
+          {
+            "line": 29,
+            "declarationOrShortComment": "} API_AVAILABLE(macos(13.0), ios(16.0));"
+          },
+          {
+            "line": 36,
+            "declarationOrShortComment": "API_AVAILABLE(macos(13.0), ios(16.0))"
+          },
+          {
+            "line": 77,
+            "declarationOrShortComment": "- (nullable id <MTL4FXSpatialScaler>)newSpatialScalerWithDevice:(nonnull id<MTLDevice>)device compiler:(nonnull id<MTL4Compiler>)compiler API_AVAILABLE(macos(26.0), ios(26.0));"
+          },
+          {
+            "line": 86,
+            "declarationOrShortComment": "+ (BOOL)supportsMetal4FX:(nonnull id<MTLDevice>)device API_AVAILABLE(macos(26.0), ios(26.0));"
+          },
+          {
+            "line": 95,
+            "declarationOrShortComment": "+ (BOOL)supportsDevice:(nonnull id<MTLDevice>)device;"
+          },
+          {
+            "line": 151,
+            "declarationOrShortComment": "/// You are responsible for providing a texture with a private `storageMode` to this property."
+          },
+          {
+            "line": 184,
+            "declarationOrShortComment": "API_AVAILABLE(macos(13.0), ios(16.0))"
+          }
+        ],
+        "additionalVerificationOn": "2026-11-22"
+      },
+      {
+        "header": "SDK_ROOT/System/Library/Frameworks/MetalFX.framework/Headers/MTLFXTemporalScaler.h",
+        "sha256": "e6cbd09203483aa5ab338ff8768cc2d04210e139efcb88803807a2291eb9030a",
+        "selectedEvidence": [
+          {
+            "line": 16,
+            "declarationOrShortComment": "API_AVAILABLE(macos(13.0), ios(16.0))"
+          },
+          {
+            "line": 102,
+            "declarationOrShortComment": "@property (readwrite, nonatomic, getter=isOutputResolutionMotionVectorsEnabled) BOOL outputResolutionMotionVectorsEnabled API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 113,
+            "declarationOrShortComment": "@property (readwrite, nonatomic, getter=isJitteredMotionVectorsEnabled) BOOL jitteredMotionVectorsEnabled API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 137,
+            "declarationOrShortComment": "- (nullable id <MTL4FXTemporalScaler>)newTemporalScalerWithDevice:(nonnull id<MTLDevice>)device compiler:(nonnull id<MTL4Compiler>)compiler API_AVAILABLE(macos(26.0), ios(26.0));"
+          },
+          {
+            "line": 145,
+            "declarationOrShortComment": "+ (float)supportedInputContentMinScaleForDevice:(nonnull id<MTLDevice>)device API_AVAILABLE(macos(14.0), ios(17.0));"
+          },
+          {
+            "line": 153,
+            "declarationOrShortComment": "+ (float)supportedInputContentMaxScaleForDevice:(nonnull id<MTLDevice>)device API_AVAILABLE(macos(14.0), ios(17.0));"
+          },
+          {
+            "line": 162,
+            "declarationOrShortComment": "+ (BOOL)supportsDevice:(nonnull id<MTLDevice>)device;"
+          },
+          {
+            "line": 171,
+            "declarationOrShortComment": "+ (BOOL)supportsMetal4FX:(nonnull id<MTLDevice>)device API_AVAILABLE(macos(26.0), ios(26.0));"
+          },
+          {
+            "line": 225,
+            "declarationOrShortComment": "@property (nonatomic, readonly) MTLTextureUsage reactiveMaskTextureUsage API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 240,
+            "declarationOrShortComment": "@property (nonatomic) NSUInteger colorContentOffsetX API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 242,
+            "declarationOrShortComment": "@property (nonatomic) NSUInteger colorContentOffsetY API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 245,
+            "declarationOrShortComment": "@property (nonatomic) NSUInteger depthContentOffsetX API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 247,
+            "declarationOrShortComment": "@property (nonatomic) NSUInteger depthContentOffsetY API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 250,
+            "declarationOrShortComment": "@property (nonatomic) NSUInteger motionContentOffsetX API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 252,
+            "declarationOrShortComment": "@property (nonatomic) NSUInteger motionContentOffsetY API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 255,
+            "declarationOrShortComment": "@property (nonatomic) NSUInteger reactiveMaskContentOffsetX API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 257,
+            "declarationOrShortComment": "@property (nonatomic) NSUInteger reactiveMaskContentOffsetY API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 260,
+            "declarationOrShortComment": "@property (nonatomic) NSUInteger outputOffsetX API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 262,
+            "declarationOrShortComment": "@property (nonatomic) NSUInteger outputOffsetY API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 274,
+            "declarationOrShortComment": "/// You are responsible for providing a texture with a private `storageMode` to this property."
+          },
+          {
+            "line": 385,
+            "declarationOrShortComment": "API_AVAILABLE(macos(13.0), ios(16.0))"
+          }
+        ],
+        "additionalVerificationOn": "2026-11-22"
+      },
+      {
+        "header": "SDK_ROOT/System/Library/Frameworks/MetalFX.framework/Headers/MTLFXFrameInterpolator.h",
+        "sha256": "233d20aadea260a5a1bbcab2452788cc29f22f793a8d767b4a6a65eaf1fb9a35",
+        "selectedEvidence": [
+          {
+            "line": 34,
+            "declarationOrShortComment": "API_AVAILABLE(macos(26.0), ios(26.0))"
+          },
+          {
+            "line": 73,
+            "declarationOrShortComment": "@property (readwrite, nonatomic, getter=isDistortionTextureEnabled) BOOL distortionTextureEnabled API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 82,
+            "declarationOrShortComment": "@property (readwrite, nonatomic) BOOL requiresPrevColorTexture API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);;"
+          },
+          {
+            "line": 90,
+            "declarationOrShortComment": "- (nullable id <MTLFXFrameInterpolator>)newFrameInterpolatorWithDevice:(nonnull id<MTLDevice>)device;"
+          },
+          {
+            "line": 99,
+            "declarationOrShortComment": "- (nullable id <MTL4FXFrameInterpolator>)newFrameInterpolatorWithDevice:(nonnull id<MTLDevice>)device compiler:(nonnull id<MTL4Compiler>)compiler;"
+          },
+          {
+            "line": 108,
+            "declarationOrShortComment": "+ (BOOL)supportsMetal4FX:(nonnull id<MTLDevice>)device;"
+          },
+          {
+            "line": 117,
+            "declarationOrShortComment": "+ (BOOL)supportsDevice:(nonnull id<MTLDevice>)device;"
+          },
+          {
+            "line": 192,
+            "declarationOrShortComment": "@property (nonatomic, readwrite) NSUInteger contentWidth API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 198,
+            "declarationOrShortComment": "@property (nonatomic, readwrite) NSUInteger contentHeight API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 201,
+            "declarationOrShortComment": "@property (nonatomic, readwrite) NSUInteger depthContentOffsetX API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 203,
+            "declarationOrShortComment": "@property (nonatomic, readwrite) NSUInteger depthContentOffsetY API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 206,
+            "declarationOrShortComment": "@property (nonatomic, readwrite) NSUInteger motionContentOffsetX API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 208,
+            "declarationOrShortComment": "@property (nonatomic, readwrite) NSUInteger motionContentOffsetY API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 211,
+            "declarationOrShortComment": "@property (nonatomic, readwrite) NSUInteger outputOffsetX API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 213,
+            "declarationOrShortComment": "@property (nonatomic, readwrite) NSUInteger outputOffsetY API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 216,
+            "declarationOrShortComment": "@property (nonatomic, readwrite) NSUInteger distortionOffsetX API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 218,
+            "declarationOrShortComment": "@property (nonatomic, readwrite) NSUInteger distortionOffsetY API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 223,
+            "declarationOrShortComment": "@property (nonatomic, readwrite) NSUInteger distortionWidth API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 228,
+            "declarationOrShortComment": "@property (nonatomic, readwrite) NSUInteger distortionHeight API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 304,
+            "declarationOrShortComment": "@property (nonatomic) simd_float4x4 worldToViewMatrix API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 306,
+            "declarationOrShortComment": "@property (nonatomic) simd_float4x4 viewToClipMatrix API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 353,
+            "declarationOrShortComment": "/// You are responsible for providing a texture with a private `storageMode` to this property."
+          },
+          {
+            "line": 363,
+            "declarationOrShortComment": "@property (nonatomic, retain, nullable) id<MTLTexture> distortionTexture API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 399,
+            "declarationOrShortComment": "- (void)encodeToCommandBuffer:(nonnull id<MTLCommandBuffer>)commandBuffer;"
+          }
+        ],
+        "additionalVerificationOn": "2026-11-22"
+      },
+      {
+        "header": "SDK_ROOT/System/Library/Frameworks/MetalFX.framework/Headers/MTLFXTemporalDenoisedScaler.h",
+        "sha256": "757c36a9c050d28eca335061ed7f2c1f27dc76eec6e12585d4f1d0994a357924",
+        "selectedEvidence": [
+          {
+            "line": 151,
+            "declarationOrShortComment": "+ (float)supportedInputContentMinScaleForDevice:(nonnull id<MTLDevice>)device;"
+          },
+          {
+            "line": 159,
+            "declarationOrShortComment": "+ (float)supportedInputContentMaxScaleForDevice:(nonnull id<MTLDevice>)device;"
+          },
+          {
+            "line": 177,
+            "declarationOrShortComment": "+ (BOOL)supportsDevice:(nonnull id<MTLDevice>)device;"
+          },
+          {
+            "line": 227,
+            "declarationOrShortComment": "@property (nonatomic, readonly) MTLTextureUsage reactiveMaskTextureUsage API_AVAILABLE(macos(27.0), ios(27.0)) API_UNAVAILABLE(visionos);"
+          },
+          {
+            "line": 335,
+            "declarationOrShortComment": "/// You are responsible for providing a texture with a private `storageMode` to this property."
+          }
+        ]
+      },
+      {
+        "header": "SDK_ROOT/System/Library/Frameworks/Metal.framework/Headers/MTLDevice.h",
+        "sha256": "bb4222866870a4a703cd1581fe55cf4fee4769fbee5efc795af51fbff95f2989",
+        "selectedEvidence": [
+          {
+            "line": 256,
+            "declarationOrShortComment": "MTLGPUFamilyMetal4 API_AVAILABLE(macos(26.0), ios(26.0)) = 5002,"
+          },
+          {
+            "line": 1368,
+            "declarationOrShortComment": "error:(NSError **)error API_AVAILABLE(macos(27.0), ios(27.0));"
+          }
+        ]
+      },
+      {
+        "header": "SDK_ROOT/System/Library/Frameworks/Metal.framework/Headers/MTL4CommandQueue.h",
+        "sha256": "09ba56bc8af1eec95a216d7d696c17d43c7d62374216fb5a8f161ce04e660a5b",
+        "selectedEvidence": []
+      },
+      {
+        "header": "SDK_ROOT/System/Library/Frameworks/Metal.framework/Headers/MTL4CommandBuffer.h",
+        "sha256": "cde12350c4cb224af178927ac3066685f775c4772000a66cb86aa98a10f5a5dd",
+        "selectedEvidence": []
+      },
+      {
+        "header": "SDK_ROOT/System/Library/Frameworks/Metal.framework/Headers/MTL4Compiler.h",
+        "sha256": "b4c5514be2699339d817f83b6e3e87467531b85b9904582badbe44b77fceaed9",
+        "selectedEvidence": []
+      },
+      {
+        "header": "SDK_ROOT/System/Library/Frameworks/Foundation.framework/Headers/NSProcessInfo.h",
+        "sha256": "9a0afc4ec2f1ffd7b5c4c7d1ab1a0cc40f321239a68b80a3624a764a15c7c5b3",
+        "selectedEvidence": [
+          {
+            "line": 480,
+            "declarationOrShortComment": "@property (readonly) NSProcessInfoThermalState thermalState API_AVAILABLE(macosx(10.10.3), ios(11.0), watchos(4.0), tvos(11.0));"
+          },
+          {
+            "line": 494,
+            "declarationOrShortComment": "/// Your app can query the `isLowPowerModeEnabled` property at any time to determine whether Low Power Mode is active. Your app can also register to receive notifications when the Low Power Mode state of a device changes by observing ``NSProcessInfoPowerStateDidChangeNotification``."
+          },
+          {
+            "line": 495,
+            "declarationOrShortComment": "@property (readonly, getter=isLowPowerModeEnabled) BOOL lowPowerModeEnabled API_AVAILABLE(macos(12.0), ios(9.0), watchos(2.0), tvos(9.0));"
+          },
+          {
+            "line": 508,
+            "declarationOrShortComment": "FOUNDATION_EXTERN NSNotificationName const NSProcessInfoThermalStateDidChangeNotification API_AVAILABLE(macosx(10.10.3), ios(11.0), watchos(4.0), tvos(11.0));"
+          },
+          {
+            "line": 512,
+            "declarationOrShortComment": "/// After your observer receives this notification, query the `isLowPowerModeEnabled` property to determine the current power state of the device. If Low Power Mode is active, take appropriate steps to reduce activity in your app. Otherwise, your app can resume normal operations. This notification is posted on the global dispatch queue. Register for it using the default notification center. The object associated with the notification is `NSProcessInfo.processInfo`."
+          },
+          {
+            "line": 513,
+            "declarationOrShortComment": "FOUNDATION_EXTERN NSNotificationName const NSProcessInfoPowerStateDidChangeNotification API_AVAILABLE(macos(12.0), ios(9.0), watchos(2.0), tvos(9.0));"
+          }
+        ]
+      },
+      {
+        "header": "SDK_ROOT/System/Library/Frameworks/Foundation.framework/Headers/NSOperation.h",
+        "sha256": "0be3e14b458c77e23897dca075984b7eb495adeeea19fde33411bb65385722fa",
+        "selectedEvidence": [
+          {
+            "line": 330,
+            "declarationOrShortComment": "@property NSQualityOfService qualityOfService API_AVAILABLE(macos(10.10), ios(8.0), watchos(2.0), tvos(9.0));"
+          },
+          {
+            "line": 563,
+            "declarationOrShortComment": "@property NSQualityOfService qualityOfService API_AVAILABLE(macos(10.10), ios(8.0), watchos(2.0), tvos(9.0));"
+          }
+        ]
+      },
+      {
+        "header": "SDK_ROOT/System/Library/Frameworks/MetalFX.framework/Headers/MTL4FXSpatialScaler.h",
+        "verifiedOn": "2026-11-22",
+        "sha256": "32119cbb60b7dc1324199e9a4be0468c4ddf12785d6ad5e0594f60a2333b84be",
+        "selectedEvidence": [
+          {
+            "line": 23,
+            "declarationOrShortComment": "API_AVAILABLE(macos(26.0), ios(26.0))"
+          },
+          {
+            "line": 31,
+            "declarationOrShortComment": "- (void)encodeToCommandBuffer:(nonnull id<MTL4CommandBuffer>)commandBuffer;"
+          }
+        ]
+      },
+      {
+        "header": "SDK_ROOT/System/Library/Frameworks/MetalFX.framework/Headers/MTL4FXTemporalScaler.h",
+        "verifiedOn": "2026-11-22",
+        "sha256": "ffb8dcb9b560e8bb5b1319f8082b599883c29c345ac67306a83741476406faeb",
+        "selectedEvidence": [
+          {
+            "line": 22,
+            "declarationOrShortComment": "API_AVAILABLE(macos(26.0), ios(26.0))"
+          },
+          {
+            "line": 33,
+            "declarationOrShortComment": "- (void)encodeToCommandBuffer:(nonnull id<MTL4CommandBuffer>)commandBuffer;"
+          }
+        ]
+      },
+      {
+        "header": "SDK_ROOT/System/Library/Frameworks/MetalFX.framework/Headers/MTL4FXFrameInterpolator.h",
+        "verifiedOn": "2026-11-22",
+        "sha256": "eac3ef2ad9d08b417bcfee2ee839af38e3ec348828db811ca87e75d078af641e",
+        "selectedEvidence": [
+          {
+            "line": 23,
+            "declarationOrShortComment": "API_AVAILABLE(macos(26.0), ios(26.0))"
+          },
+          {
+            "line": 34,
+            "declarationOrShortComment": "- (void)encodeToCommandBuffer:(nonnull id<MTL4CommandBuffer>)commandBuffer;"
+          }
+        ]
+      }
+    ]
+  },
+  "limitations": [
+    "No claim that the selected source set covers every macOS27 API or capability.",
+    "Absence of an entitlement requirement in a reviewed API source is not evidence that arbitrary target applications need no permissions.",
+    "Sustained Execution Mode exact supported Mac models and a public activation/status query are not established by the reviewed entitlement page.",
+    "Runtime effects require target-application and representative-workload evidence; support queries and plist declarations are separate evidence layers."
+  ],
+  "initialAccessedOn": "2026-11-21",
+  "lastUpdatedOn": "2026-11-22"
+}

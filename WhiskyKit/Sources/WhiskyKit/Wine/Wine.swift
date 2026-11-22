@@ -24,7 +24,6 @@ public class Wine {
     private static let dxvkFolder: URL = WhiskyWineInstaller.libraryFolder.appending(path: "DXVK")
     /// Path to the `wine64` binary
     public static let wineBinary: URL = WhiskyWineInstaller.binFolder.appending(path: "wine64")
-    /// Parth to the `wineserver` binary
     private static let wineserverBinary: URL = WhiskyWineInstaller.binFolder.appending(path: "wineserver")
 
     /// Run a process on a executable file given by the `executableURL`
@@ -96,36 +95,39 @@ public class Wine {
         )
     }
 
-    /// Execute a `wine start /unix {url}` command returning the output result
     public static func runProgram(
         at url: URL, args: [String] = [], bottle: Bottle, environment: [String: String] = [:]
     ) async throws {
+        try await RuntimeCoordinator().launch(
+            executableURL: url, bottle: bottle, arguments: args, environment: environment
+        )
+    }
+
+    static func startProgramInWine(_ request: RuntimeLaunchRequest) throws -> RuntimeSession {
+        guard let bottle = request.bottle else { throw RuntimeLaunchError.issue(.bottleUnavailable) }
+        try Task.checkCancellation()
         if bottle.settings.dxvk {
             try enableDXVK(bottle: bottle)
         }
 
-        for await _ in try Self.runWineProcess(
-            name: url.lastPathComponent,
-            args: ["start", "/unix", url.path(percentEncoded: false)] + args,
-            bottle: bottle, environment: environment
-        ) { }
-    }
-
-    public static func generateRunCommand(
-        at url: URL, bottle: Bottle, args: String, environment: [String: String]
-    ) -> String {
-        var wineCmd = "\(wineBinary.esc) start /unix \(url.esc) \(args)"
-        let env = constructWineEnvironment(for: bottle, environment: environment)
-        for environment in env {
-            wineCmd = "\(environment.key)=\"\(environment.value)\" " + wineCmd
-        }
-
-        return wineCmd
+        let log = try makeFileHandle()
+        defer { try? log.close() }
+        let process = Process()
+        process.executableURL = wineBinary
+        process.arguments = ["start", "/wait", "/unix", request.executableURL.path(percentEncoded: false)]
+            + request.arguments
+        process.currentDirectoryURL = request.executableURL.deletingLastPathComponent()
+        process.environment = constructWineEnvironment(for: bottle, environment: request.environment)
+        process.qualityOfService = .userInitiated
+        process.standardOutput = log
+        process.standardError = log
+        return try process.startRuntimeSession()
     }
 
     public static func generateTerminalEnvironmentCommand(bottle: Bottle) -> String {
+        let binPath = RuntimeArguments.quote(wineBinary.deletingLastPathComponent().path(percentEncoded: false))
         var cmd = """
-        export PATH=\"\(WhiskyWineInstaller.binFolder.path):$PATH\"
+        export PATH=\(binPath):\"$PATH\"
         export WINE=\"wine64\"
         alias wine=\"wine64\"
         alias winecfg=\"wine64 winecfg\"
@@ -139,9 +141,8 @@ public class Wine {
         alias winepath=\"wine64 winepath\"
         """
 
-        let env = constructWineEnvironment(for: bottle, environment: constructWineEnvironment(for: bottle))
-        for environment in env {
-            cmd += "\nexport \(environment.key)=\"\(environment.value)\""
+        for (key, value) in constructWineEnvironment(for: bottle).sorted(by: { $0.key < $1.key }) {
+            cmd += "\nexport \(key)=\(RuntimeArguments.quote(value))"
         }
 
         return cmd
@@ -205,11 +206,12 @@ public class Wine {
 
     @discardableResult
     public static func runBatchFile(url: URL, bottle: Bottle) async throws -> String {
-        return try await runWine(["cmd", "/c", url.path(percentEncoded: false)], bottle: bottle)
+        try await runProgram(at: url, bottle: bottle)
+        return ""
     }
 
     public static func killBottle(bottle: Bottle) throws {
-        Task.detached(priority: .userInitiated) {
+        _ = Task.detached(priority: .userInitiated) {
             try await runWineserver(["-k"], bottle: bottle)
         }
     }
@@ -276,7 +278,7 @@ extension Wine {
             try FileManager.default.createDirectory(at: Self.logsFolder, withIntermediateDirectories: true)
         }
 
-        let dateString = Date.now.ISO8601Format()
+        let dateString = "\(Date.now.ISO8601Format())-\(UUID().uuidString)"
         let fileURL = Self.logsFolder.appending(path: dateString).appendingPathExtension("log")
         try "".write(to: fileURL, atomically: true, encoding: .utf8)
         return try FileHandle(forWritingTo: fileURL)

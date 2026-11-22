@@ -100,8 +100,9 @@ struct PinCreationView: View {
     func submit() {
         guard let newPinURL else { return }
 
-        // Ensure this pin doesn't already exist
-        guard !bottle.settings.pins.contains(where: { $0.url == newPinURL })
+        let identity = Program.identity(for: newPinURL)
+        let duplicate = bottle.settings.pins.contains { $0.url.map(Program.identity(for:)) == identity }
+        guard !duplicate
         else {
             isDuplicate = true
             return

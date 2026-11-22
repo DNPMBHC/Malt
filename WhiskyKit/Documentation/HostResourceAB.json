@@ -1,0 +1,1489 @@
+{
+  "baseline" : "utility QoS, concurrency 4, unsuspended",
+  "bytesPerHash" : 16384,
+  "consumer" : "SHA256 diagnostic operations on a dedicated OperationQueue",
+  "expectedChecksum" : 128,
+  "hashesPerJob" : 128,
+  "jobsPerRound" : 16,
+  "limitations" : [
+    "Thermal and power states are injected; no hardware transition is claimed.",
+    "This is a scheduling experiment, not evidence of game FPS, energy, or temperature improvements.",
+    "Observed thread QoS is recorded; the OS can adjust scheduling and running work is not preempted.",
+    "No Wine, guest, renderer, UI, or production launch consumer is connected by this task."
+  ],
+  "pauseObservations" : [
+    {
+      "baselineRestored" : true,
+      "completedAfterRecovery" : 4,
+      "completedWhilePaused" : 0,
+      "observationMilliseconds" : 38.641834,
+      "trigger" : "low-power"
+    },
+    {
+      "baselineRestored" : true,
+      "completedAfterRecovery" : 4,
+      "completedWhilePaused" : 0,
+      "observationMilliseconds" : 40.031,
+      "trigger" : "critical-thermal"
+    }
+  ],
+  "recordedAtUTC" : "2026-11-21T16:00:09Z",
+  "rounds" : [
+    {
+      "configuredConcurrency" : 4,
+      "peakConcurrency" : 4,
+      "round" : 0,
+      "samples" : [
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 0,
+          "waitMilliseconds" : 0.023125,
+          "workMilliseconds" : 0.785292
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 1,
+          "waitMilliseconds" : 0.017958,
+          "workMilliseconds" : 0.782709
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 2,
+          "waitMilliseconds" : 0.018417,
+          "workMilliseconds" : 0.805
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 3,
+          "waitMilliseconds" : 0.0325,
+          "workMilliseconds" : 1.020292
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 4,
+          "waitMilliseconds" : 0.793542,
+          "workMilliseconds" : 0.7745
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 5,
+          "waitMilliseconds" : 0.802375,
+          "workMilliseconds" : 0.772209
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 6,
+          "waitMilliseconds" : 0.831583,
+          "workMilliseconds" : 0.816542
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 7,
+          "waitMilliseconds" : 1.05775,
+          "workMilliseconds" : 0.775458
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 8,
+          "waitMilliseconds" : 1.573,
+          "workMilliseconds" : 0.773708
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 9,
+          "waitMilliseconds" : 1.571958,
+          "workMilliseconds" : 0.773792
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 10,
+          "waitMilliseconds" : 1.666416,
+          "workMilliseconds" : 0.799625
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 11,
+          "waitMilliseconds" : 1.835417,
+          "workMilliseconds" : 0.7675
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 12,
+          "waitMilliseconds" : 2.348083,
+          "workMilliseconds" : 0.791125
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 13,
+          "waitMilliseconds" : 2.358916,
+          "workMilliseconds" : 0.876542
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 14,
+          "waitMilliseconds" : 2.471083,
+          "workMilliseconds" : 0.791792
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 15,
+          "waitMilliseconds" : 2.611584,
+          "workMilliseconds" : 0.78775
+        }
+      ],
+      "treatment" : "control",
+      "wallMilliseconds" : 3.43325
+    },
+    {
+      "configuredConcurrency" : 2,
+      "peakConcurrency" : 2,
+      "round" : 0,
+      "samples" : [
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 0,
+          "waitMilliseconds" : 0.010584,
+          "workMilliseconds" : 0.772666
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 1,
+          "waitMilliseconds" : 0.012542,
+          "workMilliseconds" : 0.77225
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 2,
+          "waitMilliseconds" : 0.78225,
+          "workMilliseconds" : 0.764875
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 3,
+          "waitMilliseconds" : 0.784375,
+          "workMilliseconds" : 0.761875
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 4,
+          "waitMilliseconds" : 1.549125,
+          "workMilliseconds" : 0.769875
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 5,
+          "waitMilliseconds" : 1.54875,
+          "workMilliseconds" : 0.769333
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 6,
+          "waitMilliseconds" : 2.320792,
+          "workMilliseconds" : 0.764792
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 7,
+          "waitMilliseconds" : 2.320292,
+          "workMilliseconds" : 0.764833
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 8,
+          "waitMilliseconds" : 3.086792,
+          "workMilliseconds" : 0.766292
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 9,
+          "waitMilliseconds" : 3.096542,
+          "workMilliseconds" : 0.761833
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 10,
+          "waitMilliseconds" : 3.853542,
+          "workMilliseconds" : 0.767541
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 11,
+          "waitMilliseconds" : 3.857584,
+          "workMilliseconds" : 0.76275
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 12,
+          "waitMilliseconds" : 4.621584,
+          "workMilliseconds" : 0.764625
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 13,
+          "waitMilliseconds" : 4.621042,
+          "workMilliseconds" : 0.76475
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 14,
+          "waitMilliseconds" : 5.387292,
+          "workMilliseconds" : 0.758333
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 15,
+          "waitMilliseconds" : 5.386583,
+          "workMilliseconds" : 0.758375
+        }
+      ],
+      "treatment" : "nominal",
+      "wallMilliseconds" : 6.1645
+    },
+    {
+      "configuredConcurrency" : 1,
+      "peakConcurrency" : 1,
+      "round" : 0,
+      "samples" : [
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 0,
+          "waitMilliseconds" : 0.023666,
+          "workMilliseconds" : 2.838375
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 1,
+          "waitMilliseconds" : 2.881459,
+          "workMilliseconds" : 2.817625
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 2,
+          "waitMilliseconds" : 5.713125,
+          "workMilliseconds" : 2.955334
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 3,
+          "waitMilliseconds" : 8.694792,
+          "workMilliseconds" : 2.821125
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 4,
+          "waitMilliseconds" : 11.52925,
+          "workMilliseconds" : 2.837208
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 5,
+          "waitMilliseconds" : 14.386667,
+          "workMilliseconds" : 2.89025
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 6,
+          "waitMilliseconds" : 17.3,
+          "workMilliseconds" : 2.825875
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 7,
+          "waitMilliseconds" : 20.14525,
+          "workMilliseconds" : 2.830584
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 8,
+          "waitMilliseconds" : 22.988917,
+          "workMilliseconds" : 2.8295
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 9,
+          "waitMilliseconds" : 25.835875,
+          "workMilliseconds" : 2.831709
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 10,
+          "waitMilliseconds" : 28.686417,
+          "workMilliseconds" : 2.831833
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 11,
+          "waitMilliseconds" : 31.5345,
+          "workMilliseconds" : 2.825208
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 12,
+          "waitMilliseconds" : 34.374542,
+          "workMilliseconds" : 2.830291
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 13,
+          "waitMilliseconds" : 37.22475,
+          "workMilliseconds" : 2.821291
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 14,
+          "waitMilliseconds" : 40.061292,
+          "workMilliseconds" : 1.43475
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 15,
+          "waitMilliseconds" : 41.509041,
+          "workMilliseconds" : 1.090917
+        }
+      ],
+      "treatment" : "serious",
+      "wallMilliseconds" : 42.633417
+    },
+    {
+      "configuredConcurrency" : 1,
+      "peakConcurrency" : 1,
+      "round" : 1,
+      "samples" : [
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 0,
+          "waitMilliseconds" : 0.018208,
+          "workMilliseconds" : 1.112833
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 1,
+          "waitMilliseconds" : 1.145083,
+          "workMilliseconds" : 1.424167
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 2,
+          "waitMilliseconds" : 2.583084,
+          "workMilliseconds" : 2.820083
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 3,
+          "waitMilliseconds" : 5.424875,
+          "workMilliseconds" : 2.822208
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 4,
+          "waitMilliseconds" : 8.263292,
+          "workMilliseconds" : 2.829333
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 5,
+          "waitMilliseconds" : 11.109834,
+          "workMilliseconds" : 2.817958
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 6,
+          "waitMilliseconds" : 13.944792,
+          "workMilliseconds" : 2.8295
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 7,
+          "waitMilliseconds" : 16.785625,
+          "workMilliseconds" : 2.814541
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 8,
+          "waitMilliseconds" : 19.612542,
+          "workMilliseconds" : 2.812917
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 9,
+          "waitMilliseconds" : 22.437041,
+          "workMilliseconds" : 2.816917
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 10,
+          "waitMilliseconds" : 25.26525,
+          "workMilliseconds" : 2.824709
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 11,
+          "waitMilliseconds" : 28.105291,
+          "workMilliseconds" : 2.821375
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 12,
+          "waitMilliseconds" : 30.944,
+          "workMilliseconds" : 2.81975
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 13,
+          "waitMilliseconds" : 33.780625,
+          "workMilliseconds" : 2.82575
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 14,
+          "waitMilliseconds" : 36.616875,
+          "workMilliseconds" : 2.847959
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 15,
+          "waitMilliseconds" : 39.485875,
+          "workMilliseconds" : 2.822
+        }
+      ],
+      "treatment" : "serious",
+      "wallMilliseconds" : 42.346417
+    },
+    {
+      "configuredConcurrency" : 2,
+      "peakConcurrency" : 2,
+      "round" : 1,
+      "samples" : [
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 0,
+          "waitMilliseconds" : 0.022375,
+          "workMilliseconds" : 1.157958
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 1,
+          "waitMilliseconds" : 0.021875,
+          "workMilliseconds" : 1.152625
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 2,
+          "waitMilliseconds" : 1.177917,
+          "workMilliseconds" : 1.152416
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 3,
+          "waitMilliseconds" : 1.188792,
+          "workMilliseconds" : 1.152125
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 4,
+          "waitMilliseconds" : 2.3315,
+          "workMilliseconds" : 1.146459
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 5,
+          "waitMilliseconds" : 2.340333,
+          "workMilliseconds" : 1.146084
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 6,
+          "waitMilliseconds" : 3.478417,
+          "workMilliseconds" : 1.161166
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 7,
+          "waitMilliseconds" : 3.485708,
+          "workMilliseconds" : 1.165708
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 8,
+          "waitMilliseconds" : 4.6425,
+          "workMilliseconds" : 1.157416
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 9,
+          "waitMilliseconds" : 4.651,
+          "workMilliseconds" : 1.158167
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 10,
+          "waitMilliseconds" : 5.800167,
+          "workMilliseconds" : 1.157792
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 11,
+          "waitMilliseconds" : 5.81025,
+          "workMilliseconds" : 1.157875
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 12,
+          "waitMilliseconds" : 6.958709,
+          "workMilliseconds" : 1.063166
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 13,
+          "waitMilliseconds" : 6.968542,
+          "workMilliseconds" : 1.06675
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 14,
+          "waitMilliseconds" : 8.024709,
+          "workMilliseconds" : 1.04375
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 15,
+          "waitMilliseconds" : 8.03525,
+          "workMilliseconds" : 1.043875
+        }
+      ],
+      "treatment" : "nominal",
+      "wallMilliseconds" : 9.115041
+    },
+    {
+      "configuredConcurrency" : 4,
+      "peakConcurrency" : 4,
+      "round" : 1,
+      "samples" : [
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 0,
+          "waitMilliseconds" : 0.012042,
+          "workMilliseconds" : 1.112583
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 1,
+          "waitMilliseconds" : 0.013792,
+          "workMilliseconds" : 1.05075
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 2,
+          "waitMilliseconds" : 0.023583,
+          "workMilliseconds" : 1.067834
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 3,
+          "waitMilliseconds" : 0.021416,
+          "workMilliseconds" : 1.110584
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 4,
+          "waitMilliseconds" : 1.063834,
+          "workMilliseconds" : 1.111958
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 5,
+          "waitMilliseconds" : 1.092958,
+          "workMilliseconds" : 1.072833
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 6,
+          "waitMilliseconds" : 1.119375,
+          "workMilliseconds" : 1.062334
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 7,
+          "waitMilliseconds" : 1.140625,
+          "workMilliseconds" : 1.084959
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 8,
+          "waitMilliseconds" : 2.16625,
+          "workMilliseconds" : 1.091333
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 9,
+          "waitMilliseconds" : 2.181709,
+          "workMilliseconds" : 1.072833
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 10,
+          "waitMilliseconds" : 2.205083,
+          "workMilliseconds" : 1.109042
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 11,
+          "waitMilliseconds" : 2.229667,
+          "workMilliseconds" : 1.098458
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 12,
+          "waitMilliseconds" : 3.255,
+          "workMilliseconds" : 1.084041
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 13,
+          "waitMilliseconds" : 3.256416,
+          "workMilliseconds" : 1.095167
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 14,
+          "waitMilliseconds" : 3.346125,
+          "workMilliseconds" : 1.093792
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 15,
+          "waitMilliseconds" : 3.348083,
+          "workMilliseconds" : 1.088834
+        }
+      ],
+      "treatment" : "control",
+      "wallMilliseconds" : 4.463
+    },
+    {
+      "configuredConcurrency" : 2,
+      "peakConcurrency" : 2,
+      "round" : 2,
+      "samples" : [
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 0,
+          "waitMilliseconds" : 0.014167,
+          "workMilliseconds" : 0.97575
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 1,
+          "waitMilliseconds" : 0.015708,
+          "workMilliseconds" : 0.973708
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 2,
+          "waitMilliseconds" : 0.988042,
+          "workMilliseconds" : 0.977125
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 3,
+          "waitMilliseconds" : 0.9885,
+          "workMilliseconds" : 0.975625
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 4,
+          "waitMilliseconds" : 1.969583,
+          "workMilliseconds" : 0.980625
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 5,
+          "waitMilliseconds" : 1.974375,
+          "workMilliseconds" : 0.979792
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 6,
+          "waitMilliseconds" : 2.951125,
+          "workMilliseconds" : 0.970792
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 7,
+          "waitMilliseconds" : 2.95325,
+          "workMilliseconds" : 0.972625
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 8,
+          "waitMilliseconds" : 3.921708,
+          "workMilliseconds" : 0.976833
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 9,
+          "waitMilliseconds" : 3.924333,
+          "workMilliseconds" : 0.973417
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 10,
+          "waitMilliseconds" : 4.900167,
+          "workMilliseconds" : 0.975042
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 11,
+          "waitMilliseconds" : 4.905917,
+          "workMilliseconds" : 0.974666
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 12,
+          "waitMilliseconds" : 5.876541,
+          "workMilliseconds" : 0.959167
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 13,
+          "waitMilliseconds" : 5.879708,
+          "workMilliseconds" : 0.955125
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 14,
+          "waitMilliseconds" : 6.835958,
+          "workMilliseconds" : 0.911709
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 15,
+          "waitMilliseconds" : 6.835541,
+          "workMilliseconds" : 0.911292
+        }
+      ],
+      "treatment" : "nominal",
+      "wallMilliseconds" : 7.773583
+    },
+    {
+      "configuredConcurrency" : 4,
+      "peakConcurrency" : 4,
+      "round" : 2,
+      "samples" : [
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 0,
+          "waitMilliseconds" : 0.009583,
+          "workMilliseconds" : 0.9315
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 1,
+          "waitMilliseconds" : 0.01225,
+          "workMilliseconds" : 0.922083
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 2,
+          "waitMilliseconds" : 0.014875,
+          "workMilliseconds" : 0.925792
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 3,
+          "waitMilliseconds" : 0.0155,
+          "workMilliseconds" : 0.95475
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 4,
+          "waitMilliseconds" : 0.930541,
+          "workMilliseconds" : 0.925375
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 5,
+          "waitMilliseconds" : 0.932959,
+          "workMilliseconds" : 0.937041
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 6,
+          "waitMilliseconds" : 0.938125,
+          "workMilliseconds" : 0.927208
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 7,
+          "waitMilliseconds" : 0.996625,
+          "workMilliseconds" : 0.957875
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 8,
+          "waitMilliseconds" : 1.858458,
+          "workMilliseconds" : 0.9145
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 9,
+          "waitMilliseconds" : 1.863917,
+          "workMilliseconds" : 0.910042
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 10,
+          "waitMilliseconds" : 1.869833,
+          "workMilliseconds" : 0.91
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 11,
+          "waitMilliseconds" : 1.966,
+          "workMilliseconds" : 0.921333
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 12,
+          "waitMilliseconds" : 2.776208,
+          "workMilliseconds" : 0.911792
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 13,
+          "waitMilliseconds" : 2.797667,
+          "workMilliseconds" : 0.91975
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 14,
+          "waitMilliseconds" : 2.799916,
+          "workMilliseconds" : 0.936167
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 15,
+          "waitMilliseconds" : 2.890375,
+          "workMilliseconds" : 0.910583
+        }
+      ],
+      "treatment" : "control",
+      "wallMilliseconds" : 3.824583
+    },
+    {
+      "configuredConcurrency" : 1,
+      "peakConcurrency" : 1,
+      "round" : 2,
+      "samples" : [
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 0,
+          "waitMilliseconds" : 0.029083,
+          "workMilliseconds" : 2.843584
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 1,
+          "waitMilliseconds" : 2.885709,
+          "workMilliseconds" : 2.825958
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 2,
+          "waitMilliseconds" : 5.724833,
+          "workMilliseconds" : 3.428834
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 3,
+          "waitMilliseconds" : 9.195875,
+          "workMilliseconds" : 2.8715
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 4,
+          "waitMilliseconds" : 12.091791,
+          "workMilliseconds" : 2.824125
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 5,
+          "waitMilliseconds" : 14.935958,
+          "workMilliseconds" : 2.821833
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 6,
+          "waitMilliseconds" : 17.7725,
+          "workMilliseconds" : 2.821083
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 7,
+          "waitMilliseconds" : 20.612459,
+          "workMilliseconds" : 2.822458
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 8,
+          "waitMilliseconds" : 23.445917,
+          "workMilliseconds" : 2.872791
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 9,
+          "waitMilliseconds" : 26.3415,
+          "workMilliseconds" : 2.820917
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 10,
+          "waitMilliseconds" : 29.1805,
+          "workMilliseconds" : 2.823042
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 11,
+          "waitMilliseconds" : 32.015792,
+          "workMilliseconds" : 2.81975
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 12,
+          "waitMilliseconds" : 34.852958,
+          "workMilliseconds" : 2.82225
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 13,
+          "waitMilliseconds" : 37.693667,
+          "workMilliseconds" : 2.857
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 14,
+          "waitMilliseconds" : 40.568458,
+          "workMilliseconds" : 2.837125
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 15,
+          "waitMilliseconds" : 43.417084,
+          "workMilliseconds" : 2.838125
+        }
+      ],
+      "treatment" : "serious",
+      "wallMilliseconds" : 46.311958
+    },
+    {
+      "configuredConcurrency" : 1,
+      "peakConcurrency" : 1,
+      "round" : 3,
+      "samples" : [
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 0,
+          "waitMilliseconds" : 0.028875,
+          "workMilliseconds" : 2.865208
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 1,
+          "waitMilliseconds" : 2.910708,
+          "workMilliseconds" : 2.824792
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 2,
+          "waitMilliseconds" : 5.752584,
+          "workMilliseconds" : 2.831083
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 3,
+          "waitMilliseconds" : 8.59575,
+          "workMilliseconds" : 2.820083
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 4,
+          "waitMilliseconds" : 11.42675,
+          "workMilliseconds" : 2.851875
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 5,
+          "waitMilliseconds" : 14.298875,
+          "workMilliseconds" : 2.82375
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 6,
+          "waitMilliseconds" : 17.138583,
+          "workMilliseconds" : 2.847209
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 7,
+          "waitMilliseconds" : 20.002125,
+          "workMilliseconds" : 2.838417
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 8,
+          "waitMilliseconds" : 22.855125,
+          "workMilliseconds" : 2.400084
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 9,
+          "waitMilliseconds" : 25.259917,
+          "workMilliseconds" : 1.282416
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 10,
+          "waitMilliseconds" : 26.548292,
+          "workMilliseconds" : 2.558125
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 11,
+          "waitMilliseconds" : 29.128917,
+          "workMilliseconds" : 2.843958
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 12,
+          "waitMilliseconds" : 31.984625,
+          "workMilliseconds" : 2.824416
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 13,
+          "waitMilliseconds" : 34.819458,
+          "workMilliseconds" : 2.833458
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 14,
+          "waitMilliseconds" : 37.670084,
+          "workMilliseconds" : 2.830958
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 9,
+          "operation" : 15,
+          "waitMilliseconds" : 40.518333,
+          "workMilliseconds" : 2.832708
+        }
+      ],
+      "treatment" : "serious",
+      "wallMilliseconds" : 43.41025
+    },
+    {
+      "configuredConcurrency" : 4,
+      "peakConcurrency" : 4,
+      "round" : 3,
+      "samples" : [
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 0,
+          "waitMilliseconds" : 0.033625,
+          "workMilliseconds" : 1.718833
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 1,
+          "waitMilliseconds" : 0.036084,
+          "workMilliseconds" : 1.698125
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 2,
+          "waitMilliseconds" : 0.042042,
+          "workMilliseconds" : 1.700542
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 3,
+          "waitMilliseconds" : 0.045209,
+          "workMilliseconds" : 1.700666
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 4,
+          "waitMilliseconds" : 1.740166,
+          "workMilliseconds" : 1.686375
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 5,
+          "waitMilliseconds" : 1.74,
+          "workMilliseconds" : 1.677292
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 6,
+          "waitMilliseconds" : 1.760542,
+          "workMilliseconds" : 1.630583
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 7,
+          "waitMilliseconds" : 1.7785,
+          "workMilliseconds" : 1.691709
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 8,
+          "waitMilliseconds" : 3.396209,
+          "workMilliseconds" : 1.0935
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 9,
+          "waitMilliseconds" : 3.416167,
+          "workMilliseconds" : 1.45975
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 10,
+          "waitMilliseconds" : 3.4205,
+          "workMilliseconds" : 1.454334
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 11,
+          "waitMilliseconds" : 3.496542,
+          "workMilliseconds" : 1.485166
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 12,
+          "waitMilliseconds" : 4.493,
+          "workMilliseconds" : 1.361375
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 13,
+          "waitMilliseconds" : 4.878541,
+          "workMilliseconds" : 1.453917
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 14,
+          "waitMilliseconds" : 4.894584,
+          "workMilliseconds" : 1.142
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 15,
+          "waitMilliseconds" : 4.982167,
+          "workMilliseconds" : 1.456541
+        }
+      ],
+      "treatment" : "control",
+      "wallMilliseconds" : 6.49375
+    },
+    {
+      "configuredConcurrency" : 2,
+      "peakConcurrency" : 2,
+      "round" : 3,
+      "samples" : [
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 0,
+          "waitMilliseconds" : 0.015375,
+          "workMilliseconds" : 1.446208
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 1,
+          "waitMilliseconds" : 0.016125,
+          "workMilliseconds" : 1.446166
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 2,
+          "waitMilliseconds" : 1.458458,
+          "workMilliseconds" : 1.364125
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 3,
+          "waitMilliseconds" : 1.460916,
+          "workMilliseconds" : 1.331792
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 4,
+          "waitMilliseconds" : 2.798667,
+          "workMilliseconds" : 1.280041
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 5,
+          "waitMilliseconds" : 2.827292,
+          "workMilliseconds" : 1.28525
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 6,
+          "waitMilliseconds" : 4.081208,
+          "workMilliseconds" : 1.272
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 7,
+          "waitMilliseconds" : 4.114125,
+          "workMilliseconds" : 1.272291
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 8,
+          "waitMilliseconds" : 5.357375,
+          "workMilliseconds" : 1.271041
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 9,
+          "waitMilliseconds" : 5.388541,
+          "workMilliseconds" : 1.2795
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 10,
+          "waitMilliseconds" : 6.634208,
+          "workMilliseconds" : 1.271209
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 11,
+          "waitMilliseconds" : 6.677375,
+          "workMilliseconds" : 1.278209
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 12,
+          "waitMilliseconds" : 7.908333,
+          "workMilliseconds" : 1.200584
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 13,
+          "waitMilliseconds" : 7.955792,
+          "workMilliseconds" : 1.202083
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 14,
+          "waitMilliseconds" : 9.109709,
+          "workMilliseconds" : 1.143583
+        },
+        {
+          "checksum" : 128,
+          "observedQoS" : 17,
+          "operation" : 15,
+          "waitMilliseconds" : 9.158458,
+          "workMilliseconds" : 1.143084
+        }
+      ],
+      "treatment" : "nominal",
+      "wallMilliseconds" : 10.333917
+    }
+  ],
+  "scenario" : "fixed-sha256-optional-diagnostics",
+  "schemaVersion" : 1,
+  "stateSource" : "injected",
+  "warmupRounds" : 3
+}

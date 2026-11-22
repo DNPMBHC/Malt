@@ -116,6 +116,10 @@ struct ConfigView: View {
                         }
                     }
                 }
+                Toggle(isOn: $bottle.settings.adaptiveResourcePolicyEnabled) {
+                    Text("config.adaptiveResourcePolicy")
+                    Text("config.adaptiveResourcePolicy.info")
+                }
             }
             Section("config.title.dxvk", isExpanded: $dxvkSectionExpanded) {
                 Toggle(isOn: $bottle.settings.dxvk) {

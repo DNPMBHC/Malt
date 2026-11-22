@@ -22,12 +22,21 @@ import WhiskyKit
 struct ProgramMenuView: View {
     @ObservedObject var program: Program
     @Binding var path: NavigationPath
+    @ObservedObject var launcher: RuntimeLaunchController
 
     var body: some View {
-        Button("button.run", systemImage: "play") {
-            program.run()
+        if launcher.isLaunching(program) {
+            Button("runtime.cancelLaunch", systemImage: "stop.circle") {
+                launcher.cancel(program)
+            }
+        } else {
+            Button("button.run", systemImage: "play") {
+                launcher.launch(program)
+            }
+            Button("runtime.runInTerminal", systemImage: "terminal") {
+                launcher.launch(program, inTerminal: true)
+            }
         }
-        .labelStyle(.titleAndIcon)
         Section("program.settings") {
             Button("program.config", systemImage: "gearshape") {
                 path.append(program)

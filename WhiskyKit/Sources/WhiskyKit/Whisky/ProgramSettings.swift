@@ -70,6 +70,7 @@ public struct ProgramSettings: Codable {
     public var locale: Locales = .auto
     public var environment: [String: String] = [:]
     public var arguments: String = ""
+    public var launchTarget: RuntimeTargetSelection?
 
     static func decode(from settingsURL: URL) throws -> ProgramSettings {
         guard FileManager.default.fileExists(atPath: settingsURL.path(percentEncoded: false)) else {
@@ -86,6 +87,6 @@ public struct ProgramSettings: Codable {
         let encoder = PropertyListEncoder()
         encoder.outputFormat = .xml
         let data = try encoder.encode(self)
-        try data.write(to: settingsURL)
+        try data.write(to: settingsURL, options: .atomic)
     }
 }

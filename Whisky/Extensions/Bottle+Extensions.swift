@@ -115,7 +115,8 @@ extension Bottle {
     func updateInstalledPrograms() {
         let driveC = url.appending(path: "drive_c")
         var programs: [Program] = []
-        var foundURLS: Set<URL> = []
+        var foundIdentities: Set<URL> = []
+        let blockedIdentities = Set(settings.blocklist.map(Program.identity(for:)))
 
         for folderName in ["Program Files", "Program Files (x86)"] {
             let folderURL = driveC.appending(path: folderName)
@@ -125,16 +126,17 @@ extension Bottle {
 
             while let url = enumerator?.nextObject() as? URL {
                 guard !url.hasDirectoryPath && url.pathExtension == "exe" else { continue }
-                guard !settings.blocklist.contains(url) else { continue }
-                foundURLS.insert(url)
-                programs.append(Program(url: url, bottle: self))
+                let identity = Program.identity(for: url)
+                guard !blockedIdentities.contains(identity), foundIdentities.insert(identity).inserted
+                else { continue }
+                programs.append(Program(url: identity, bottle: self))
             }
         }
 
         // Add missing programs from pins
         for pin in settings.pins {
             guard let url = pin.url else { continue }
-            guard !foundURLS.contains(url) else { continue }
+            guard foundIdentities.insert(Program.identity(for: url)).inserted else { continue }
             programs.append(Program(url: url, bottle: self))
         }
 

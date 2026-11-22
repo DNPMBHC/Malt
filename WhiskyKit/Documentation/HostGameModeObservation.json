@@ -1,0 +1,43 @@
+{
+  "activation": "unknown",
+  "activation_evidence": "no-system-ui-observation",
+  "application_category_build_setting": "public.app-category.utilities",
+  "built_bundle_configuration": "unsigned-Debug",
+  "built_bundle_declarations": {
+    "GCSupportsGameMode": "missing",
+    "LSSupportsGameMode": "missing"
+  },
+  "built_bundle_game_category": "public.app-category.utilities",
+  "built_bundle_observed_on": "2026-11-22",
+  "built_bundle_signing_entitlements": "not-validated-unsigned-build",
+  "declarations": {
+    "GCSupportsGameMode": "missing",
+    "LSSupportsGameMode": "missing"
+  },
+  "entitlement_keys": [
+    "com.apple.security.automation.apple-events",
+    "com.apple.security.cs.allow-unsigned-executable-memory",
+    "com.apple.security.device.audio-input",
+    "com.apple.security.device.camera"
+  ],
+  "excluded_apis": [
+    "deprecated-GLUT-fullscreen-display-mode",
+    "Kernel-resource_private.h-game-mode-declarations"
+  ],
+  "game_mode_declarations_in_project_build_settings": "absent",
+  "game_mode_entitlement_key_present": false,
+  "observed_on": "2026-11-21",
+  "personal_game_history_or_accounts_inspected": false,
+  "platform_eligibility_scope": "Apple-silicon-and-macOS-14-or-later-only",
+  "platform_eligible": true,
+  "project_fixture_review": "no-existing-runnable-fullscreen-Game-Mode-workload-found",
+  "public_activation_query": "not-found-in-reviewed-public-SDK-headers-and-Swift-interfaces",
+  "recorded_at_utc": "2026-11-21T15:57:40.173414+00:00",
+  "recorded_time_source": "host-wall-clock-UTC",
+  "schema_version": 1,
+  "sdk_version": "27.0",
+  "source": "source-application-plist-and-entitlements",
+  "system_version": "27.2.1",
+  "windows_guest_benefit": "unmeasured",
+  "wine_child_benefit": "unmeasured"
+}

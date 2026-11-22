@@ -17,6 +17,9 @@
 //
 
 import Foundation
+import AppKit
+import Dispatch
+import Darwin
 import WhiskyKit
 import SwiftyTextTable
 import Progress
@@ -24,19 +27,18 @@ import SemanticVersion
 import ArgumentParser
 
 @main
-struct Whisky: ParsableCommand {
+struct Whisky: AsyncParsableCommand {
     static let configuration = CommandConfiguration(
         abstract: "A CLI interface for Whisky.",
         subcommands: [List.self,
                       Create.self,
                       Add.self,
-//                      Export.self,
                       Delete.self,
                       Remove.self,
                       Run.self,
-                      Shellenv.self
-                      /*Install.self,
-                      Uninstall.self*/])
+                      LaunchShortcut.self,
+                      StoragePreflight.self,
+                      Shellenv.self])
 }
 
 extension Whisky {
@@ -96,20 +98,13 @@ extension Whisky {
         @Argument var path: String
 
         mutating func run() throws {
-            // Should be sanitised
-            let bottleURL = URL(filePath: path)
-            let settings = try BottleSettings.decode(from: bottleURL)
+            let input = URL(filePath: path).standardizedFileURL
+            let bottleURL = input.lastPathComponent == "Metadata.plist" ? input.deletingLastPathComponent() : input
+            let metadata = bottleURL.appending(path: "Metadata.plist")
+            let settings = try BottleSettings.decode(from: metadata)
             var bottlesList = BottleData()
             bottlesList.paths.append(bottleURL)
             print("Bottle \"\(settings.name)\" added.")
-        }
-    }
-
-    struct Export: ParsableCommand {
-        static let configuration = CommandConfiguration(abstract: "Export an existing bottle.")
-
-        mutating func run() throws {
-//            print("Create a bottle")
         }
     }
 
@@ -158,24 +153,75 @@ extension Whisky {
         }
     }
 
-    struct Run: ParsableCommand {
-        static let configuration = CommandConfiguration(abstract: "Run a program with Whisky.")
+    struct Run: AsyncParsableCommand {
+        static let configuration = CommandConfiguration(
+            abstract: RuntimeCLI.localized("runtime.cli.run", fallback: "Run a Windows program."),
+            discussion: RuntimeCLI.localized(
+                "runtime.cli.discussion",
+                fallback: "Use -- before program arguments to pass options and preserve their order. "
+                    + "Leave them out to use the program’s saved arguments."
+            )
+        )
 
-        @Argument var bottleName: String
-        @Argument var path: String
+        @Flag(help: ArgumentHelp(RuntimeCLI.localized(
+            "runtime.cli.bottlePath", fallback: "Interpret the bottle argument as a path instead of a name."
+        )))
+        var bottlePath = false
+
+        @Flag(help: ArgumentHelp(RuntimeCLI.localized(
+            "runtime.cli.ignoreSavedArguments", fallback: "Use only the arguments given on the command line."
+        )))
+        var ignoreSavedArguments = false
+
+        @Option(help: ArgumentHelp(RuntimeCLI.localized(
+            "runtime.cli.profile", fallback: "Use auto, ordinary, or a compatibility profile identifier."
+        )))
+        var profile: String?
+
+        @Argument(help: ArgumentHelp(RuntimeCLI.localized("runtime.cli.bottle", fallback: "The bottle name or path.")))
+        var bottle: String
+
+        @Argument(help: ArgumentHelp(RuntimeCLI.localized(
+            "runtime.cli.path", fallback: "The path of the Windows program."
+        )))
+        var path: String
+
+        @Argument(help: ArgumentHelp(RuntimeCLI.localized(
+            "runtime.cli.arguments", fallback: "Arguments forwarded to the Windows program."
+        )))
+        var args: [String] = []
+
+        mutating func run() async throws {
+            do {
+                let selectedBottle = try RuntimeCLI.findBottle(bottle, byPath: bottlePath)
+                let arguments = args.isEmpty && !ignoreSavedArguments ? nil : args
+                try await RuntimeCLI.launch(path: path, bottle: selectedBottle, arguments: arguments, profile: profile)
+            } catch {
+                writeStandardError(RuntimeCLI.message(for: error))
+                throw RuntimeCLI.exitCode(for: error)
+            }
+        }
+    }
+
+    struct LaunchShortcut: AsyncParsableCommand {
+        static let configuration = CommandConfiguration(commandName: "launch-shortcut", shouldDisplay: false)
+
+        @Flag var showAlert = false
+        @Argument var manifest: String
         @Argument var args: [String] = []
 
-        mutating func run() throws {
-            var bottlesList = BottleData()
-            let bottles = bottlesList.loadBottles()
-
-            guard let bottle = bottles.first(where: { $0.settings.name == bottleName }) else {
-                throw ValidationError("A bottle with that name doesn't exist.")
+        mutating func run() async throws {
+            do {
+                let shortcut = try RuntimeCLI.Shortcut(contentsOf: URL(fileURLWithPath: manifest))
+                let bottle = try RuntimeCLI.findBottle(shortcut.bottlePath, byPath: true)
+                try await RuntimeCLI.launch(path: shortcut.programPath, bottle: bottle,
+                                            arguments: args.isEmpty ? nil : args, profile: nil)
+            } catch {
+                let message = RuntimeCLI.message(for: error)
+                writeStandardError(message)
+                if showAlert && !(error is CancellationError) { await RuntimeCLI.showShortcutError(message) }
+                throw RuntimeCLI.exitCode(for: error)
             }
-
-            let url = URL(fileURLWithPath: path)
-            let program = Program(url: url, bottle: bottle)
-            program.runInTerminal()
         }
     }
 
@@ -197,22 +243,147 @@ extension Whisky {
 
         }
     }
+}
 
-    struct Install: ParsableCommand {
-        static let configuration = CommandConfiguration(abstract: "Install WhiskyWine.")
+enum RuntimeCLI {
+    struct Shortcut: Decodable {
+        let version: Int
+        let bottlePath: String
+        let programPath: String
 
-        mutating func run() throws {
-
+        init(contentsOf url: URL) throws {
+            do {
+                let values = try url.resourceValues(forKeys: [.isRegularFileKey, .fileSizeKey])
+                guard values.isRegularFile == true, let size = values.fileSize, size <= 64 * 1024 else {
+                    throw Failure.invalidShortcut
+                }
+                let data = try Data(contentsOf: url)
+                guard data.count <= 64 * 1024 else { throw Failure.invalidShortcut }
+                self = try PropertyListDecoder().decode(Self.self, from: data)
+                guard version == 1, bottlePath.hasPrefix("/"), programPath.hasPrefix("/") else {
+                    throw Failure.invalidShortcut
+                }
+            } catch {
+                throw Failure.invalidShortcut
+            }
         }
     }
 
-    struct Uninstall: ParsableCommand {
-        static let configuration = CommandConfiguration(abstract: "Uninstall WhiskyWine.")
+    static func findBottle(_ reference: String, byPath: Bool, readOnly: Bool = false) throws -> Bottle {
+        var bottleData = BottleData(readOnly: readOnly)
+        let bottles = bottleData.loadBottles().filter(\.isAvailable)
+        if byPath {
+            let path = canonicalPath(URL(fileURLWithPath: reference))
+            guard let bottle = bottles.first(where: { canonicalPath($0.url) == path }) else {
+                throw Failure.bottleMissing
+            }
+            return bottle
+        }
+        let matching = bottles.filter { $0.settings.name == reference }
+        guard let bottle = matching.first else { throw Failure.bottleMissing }
+        guard Set(matching.map { canonicalPath($0.url) }).count == 1 else { throw Failure.bottleAmbiguous }
+        return bottle
+    }
 
-        @Flag(name: [.long, .short], help: "Uninstall WhiskyWine") var whiskyWine = false
+    private static func canonicalPath(_ url: URL) -> [String] {
+        Program.identity(for: url).pathComponents
+    }
 
-        mutating func run() throws {
+    static func launch(path: String, bottle: Bottle, arguments: [String]?, profile: String?) async throws {
+        let url = URL(fileURLWithPath: path).standardizedFileURL
+        let program = Program(url: url, bottle: bottle)
+        let selection: RuntimeTargetSelection?
+        switch profile {
+        case nil: selection = nil
+        case "auto": selection = .automatic
+        case "ordinary": selection = .ordinary
+        case .some(let profileID): selection = .profile(profileID)
+        }
 
+        let previous = signal(SIGINT, SIG_IGN)
+        let source = DispatchSource.makeSignalSource(signal: SIGINT)
+        let launchTask = Task { try await program.launchWithRuntime(arguments: arguments, selection: selection) }
+        source.setEventHandler { launchTask.cancel() }
+        source.resume()
+        defer {
+            source.cancel()
+            _ = signal(SIGINT, previous)
+        }
+        try await withTaskCancellationHandler {
+            try await launchTask.value
+        } onCancel: {
+            launchTask.cancel()
         }
     }
+
+    static func message(for error: Error) -> String {
+        if error is CancellationError {
+            return localized("runtime.cli.cancelled", fallback: "Launch cancelled.")
+        }
+        if let runtimeError = error as? RuntimeLaunchError {
+            return runtimeError.description(in: localizationBundle)
+        }
+        return error.localizedDescription
+    }
+
+    static func exitCode(for error: Error) -> ExitCode {
+        if error is CancellationError { return ExitCode(130) }
+        if let runtimeError = error as? RuntimeLaunchError {
+            switch runtimeError {
+            case .processExit(let status) where (1...255).contains(status): return ExitCode(status)
+            case .processSignal(let status) where (1...127).contains(status): return ExitCode(128 + status)
+            default: break
+            }
+        }
+        return .failure
+    }
+
+    private static var localizationBundle: Bundle {
+        // A CLI executable in Contents/Resources does not have the enclosing app as Bundle.main.
+        guard let executable = Bundle.main.executableURL?.resolvingSymlinksInPath(),
+              let app = Bundle(url: executable.deletingLastPathComponent()
+                                     .deletingLastPathComponent().deletingLastPathComponent()),
+              app.bundleURL.pathExtension == "app" else { return .main }
+        return app
+    }
+
+    static func localized(_ key: String, fallback: String) -> String {
+        localizationBundle.localizedString(forKey: key, value: fallback, table: nil)
+    }
+
+    @MainActor
+    static func showShortcutError(_ message: String) {
+        let application = NSApplication.shared
+        application.setActivationPolicy(.accessory)
+        application.activate()
+        let alert = NSAlert()
+        alert.alertStyle = .critical
+        alert.messageText = localized("runtime.errorTitle", fallback: "Unable to launch")
+        alert.informativeText = message
+        alert.addButton(withTitle: localized("button.ok", fallback: "OK"))
+        alert.runModal()
+    }
+
+    enum Failure: LocalizedError {
+        case bottleMissing, bottleAmbiguous, invalidShortcut
+
+        var errorDescription: String? {
+            switch self {
+            case .bottleMissing:
+                localized("runtime.cli.bottleMissing", fallback: "The selected bottle could not be found.")
+            case .bottleAmbiguous:
+                localized("runtime.cli.bottleAmbiguous",
+                          fallback: "More than one bottle has this name. "
+                              + "Use --bottle-path and give the bottle’s path.")
+            case .invalidShortcut:
+                localized("runtime.shortcut.invalidManifest",
+                          fallback: "This shortcut is damaged or was created by a newer version. "
+                              + "Re-create it from the main app.")
+            }
+        }
+    }
+}
+
+func writeStandardError(_ message: String) {
+    try? FileHandle.standardError.write(contentsOf: Data((message + "\n").utf8))
 }

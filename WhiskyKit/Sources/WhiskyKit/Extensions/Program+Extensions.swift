@@ -17,72 +17,32 @@
 //
 
 import Foundation
-import AppKit
-import os.log
 
 extension Program {
-    public func run() {
-        if NSEvent.modifierFlags.contains(.shift) {
-            self.runInTerminal()
-        } else {
-            self.runInWine()
-        }
+    public var runtimeSelection: RuntimeTargetSelection { settings.launchTarget ?? .automatic }
+
+    public func runtimeRequest(arguments: [String]? = nil,
+                               selection: RuntimeTargetSelection? = nil) throws -> RuntimeLaunchRequest {
+        RuntimeLaunchRequest(executableURL: url, bottle: bottle,
+                             arguments: try arguments ?? RuntimeArguments.parse(settings.arguments),
+                             environment: generateEnvironment(), selection: selection ?? runtimeSelection)
     }
 
-    func runInWine() {
-        let arguments = settings.arguments.split { $0.isWhitespace }.map(String.init)
-        let environment = generateEnvironment()
-
-        Task.detached(priority: .userInitiated) {
-            do {
-                try await Wine.runProgram(
-                    at: self.url, args: arguments, bottle: self.bottle, environment: environment
-                )
-            } catch {
-                await MainActor.run {
-                    self.showRunError(message: error.localizedDescription)
-                }
-            }
-        }
-    }
-
-    public func generateTerminalCommand() -> String {
-        return Wine.generateRunCommand(
-            at: self.url, bottle: bottle, args: settings.arguments, environment: generateEnvironment()
+    public func runtimeStoragePreflight(
+        selection: RuntimeTargetSelection? = nil, targetDirectory: URL? = nil,
+        guestConfiguration: RuntimeGuestConfiguration? = nil
+    ) -> RuntimeStoragePreflight {
+        RuntimeCoordinator().storagePreflight(
+            for: url, bottle: bottle, selection: selection ?? runtimeSelection,
+            targetDirectory: targetDirectory, guestConfiguration: guestConfiguration
         )
     }
 
-    public func runInTerminal() {
-        let wineCmd = generateTerminalCommand().replacingOccurrences(of: "\\", with: "\\\\")
-
-        let script = """
-        tell application "Terminal"
-            activate
-            do script "\(wineCmd)"
-        end tell
-        """
-
-        Task.detached(priority: .userInitiated) {
-            var error: NSDictionary?
-            guard let appleScript = NSAppleScript(source: script) else { return }
-            appleScript.executeAndReturnError(&error)
-
-            if let error = error {
-                Logger.wineKit.error("Failed to run terminal script \(error)")
-                guard let description = error["NSAppleScriptErrorMessage"] as? String else { return }
-                await self.showRunError(message: String(describing: description))
-            }
-        }
+    public func validateRuntimeLaunch(selection: RuntimeTargetSelection? = nil) throws {
+        _ = try RuntimeCoordinator().validate(runtimeRequest(selection: selection))
     }
 
-    @MainActor private func showRunError(message: String) {
-        let alert = NSAlert()
-        alert.messageText = String(localized: "alert.message")
-        alert.informativeText = String(localized: "alert.info")
-        + " \(self.url.lastPathComponent): "
-        + message
-        alert.alertStyle = .critical
-        alert.addButton(withTitle: String(localized: "button.ok"))
-        alert.runModal()
+    public func launchWithRuntime(arguments: [String]? = nil, selection: RuntimeTargetSelection? = nil) async throws {
+        try await RuntimeCoordinator().launch(runtimeRequest(arguments: arguments, selection: selection))
     }
 }

@@ -36,13 +36,15 @@ public final class Bottle: ObservableObject, Equatable, Hashable, Identifiable, 
     public var pinnedPrograms: [(pin: PinnedProgram, program: Program, // swiftlint:disable:this large_tuple
                                  id: String)] {
         return settings.pins.compactMap { pin in
-            let exists = FileManager.default.fileExists(atPath: pin.url?.path(percentEncoded: false) ?? "")
-            guard let program = programs.first(where: { $0.url == pin.url && exists }) else { return nil }
+            guard let url = pin.url, FileManager.default.fileExists(atPath: url.path(percentEncoded: false))
+            else { return nil }
+            let identity = Program.identity(for: url)
+            guard let program = programs.first(where: { $0.identityURL == identity }) else { return nil }
             return (pin, program, "\(pin.name)//\(program.url)")
         }
     }
 
-    public init(bottleUrl: URL, inFlight: Bool = false, isAvailable: Bool = false) {
+    public init(bottleUrl: URL, inFlight: Bool = false, isAvailable: Bool = false, readOnly: Bool = false) {
         let metadataURL = bottleUrl.appending(path: "Metadata").appendingPathExtension("plist")
         self.url = bottleUrl
         self.inFlight = inFlight
@@ -50,20 +52,21 @@ public final class Bottle: ObservableObject, Equatable, Hashable, Identifiable, 
         self.metadataURL = metadataURL
 
         do {
-            self.settings = try BottleSettings.decode(from: metadataURL)
+            self.settings = try BottleSettings.decode(from: metadataURL, readOnly: readOnly)
         } catch {
             Logger.wineKit.error(
               "Failed to load settings for bottle `\(metadataURL.path(percentEncoded: false))`: \(error)"
             )
             self.settings = BottleSettings()
+            if readOnly { self.isAvailable = false }
         }
 
+        guard !readOnly else { return }
         // Get rid of duplicates and pins that reference removed files
         var found: Set<URL> = []
         self.settings.pins = self.settings.pins.filter { pin in
             guard let url = pin.url else { return false }
-            guard !found.contains(url) else { return false }
-            found.insert(url)
+            guard found.insert(Program.identity(for: url)).inserted else { return false }
             let urlPath = url.path(percentEncoded: false)
             let volume: URL?
             do {

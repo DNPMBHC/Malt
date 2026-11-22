@@ -21,11 +21,28 @@ import UniformTypeIdentifiers
 import WhiskyKit
 import SemanticVersion
 
+@MainActor
+final class FileOpenQueue: ObservableObject {
+    static let shared = FileOpenQueue()
+    @Published private(set) var pending: [URL] = []
+
+    func enqueue(_ urls: [URL]) {
+        pending.append(contentsOf: urls.filter(\.isFileURL))
+    }
+
+    func takeFirst() -> URL? {
+        guard !pending.isEmpty else { return nil }
+        return pending.removeFirst()
+    }
+}
+
 struct ContentView: View {
     @AppStorage("selectedBottleURL") private var selectedBottleURL: URL?
     @EnvironmentObject var bottleVM: BottleVM
     @Binding var showSetup: Bool
 
+    @ObservedObject private var fileQueue = FileOpenQueue.shared
+    @StateObject private var launcher = RuntimeLaunchController()
     @State private var selected: URL?
     @State private var showBottleCreation: Bool = false
     @State private var bottlesLoaded: Bool = false
@@ -71,24 +88,24 @@ struct ContentView: View {
                 }
             }
         }
-        .sheet(isPresented: $showBottleCreation) {
+        .sheet(isPresented: $showBottleCreation, onDismiss: presentNextFile) {
             BottleCreationView(newlyCreatedBottleURL: $newlyCreatedBottleURL)
         }
-        .sheet(isPresented: $showSetup) {
+        .sheet(isPresented: $showSetup, onDismiss: presentNextFile) {
             SetupView(showSetup: $showSetup, firstTime: false)
         }
-        .sheet(item: $openedFileURL) { url in
+        .sheet(item: $openedFileURL, onDismiss: presentNextFile) { url in
             FileOpenView(fileURL: url,
                          currentBottle: selected,
-                         bottles: bottleVM.bottles)
+                         bottles: bottleVM.bottles,
+                         launcher: launcher)
         }
+        .runtimeLaunchFeedback($launcher.failure)
         .onChange(of: selected) {
             selectedBottleURL = selected
         }
-        .handlesExternalEvents(preferring: [], allowing: ["*"])
-        .onOpenURL { url in
-            openedFileURL = url
-        }
+        .onChange(of: fileQueue.pending) { presentNextFile() }
+        .onChange(of: bottlesLoaded) { presentNextFile() }
         .task {
             bottleVM.loadBottles()
             bottlesLoaded = true
@@ -127,6 +144,11 @@ struct ContentView: View {
                 }
             }
         }
+    }
+
+    private func presentNextFile() {
+        guard bottlesLoaded, !showSetup, !showBottleCreation, openedFileURL == nil else { return }
+        openedFileURL = fileQueue.takeFirst()
     }
 
     var sidebar: some View {
@@ -170,7 +192,7 @@ struct ContentView: View {
     var detail: some View {
         if let bottle = selected {
             if let bottle = bottleVM.bottles.first(where: { $0.url == bottle }) {
-                BottleView(bottle: bottle)
+                BottleView(bottle: bottle, launchController: launcher)
                     .disabled(bottle.inFlight)
                     .id(bottle.url)
             }

@@ -48,6 +48,8 @@ public struct BottleInfo: Codable, Equatable {
     var name: String = "Bottle"
     var pins: [PinnedProgram] = []
     var blocklist: [URL] = []
+    var runtimeStorageDirectory: URL?
+    var runtimeStorageGuestConfiguration: RuntimeGuestConfiguration?
 
     public init() {}
 
@@ -56,6 +58,10 @@ public struct BottleInfo: Codable, Equatable {
         self.name = try container.decodeIfPresent(String.self, forKey: .name) ?? "Bottle"
         self.pins = try container.decodeIfPresent([PinnedProgram].self, forKey: .pins) ?? []
         self.blocklist = try container.decodeIfPresent([URL].self, forKey: .blocklist) ?? []
+        self.runtimeStorageDirectory = try container.decodeIfPresent(URL.self, forKey: .runtimeStorageDirectory)
+        self.runtimeStorageGuestConfiguration = try container.decodeIfPresent(
+            RuntimeGuestConfiguration.self, forKey: .runtimeStorageGuestConfiguration
+        )
     }
 }
 
@@ -95,6 +101,7 @@ public struct BottleWineConfig: Codable, Equatable {
     var windowsVersion: WinVersion = .win10
     var enhancedSync: EnhancedSync = .msync
     var avxEnabled: Bool = false
+    var adaptiveResourcePolicyEnabled: Bool = false
 
     public init() {}
 
@@ -105,6 +112,7 @@ public struct BottleWineConfig: Codable, Equatable {
         self.windowsVersion = try container.decodeIfPresent(WinVersion.self, forKey: .windowsVersion) ?? .win10
         self.enhancedSync = try container.decodeIfPresent(EnhancedSync.self, forKey: .enhancedSync) ?? .msync
         self.avxEnabled = try container.decodeIfPresent(Bool.self, forKey: .avxEnabled) ?? false
+        self.adaptiveResourcePolicyEnabled = try container.decodeIfPresent(Bool.self, forKey: .adaptiveResourcePolicyEnabled) ?? false
     }
     // swiftlint:enable line_length
 }
@@ -193,10 +201,25 @@ public struct BottleSettings: Codable, Equatable {
         set { wineConfig.avxEnabled = newValue }
     }
 
+    public var adaptiveResourcePolicyEnabled: Bool {
+        get { return wineConfig.adaptiveResourcePolicyEnabled }
+        set { wineConfig.adaptiveResourcePolicyEnabled = newValue }
+    }
+
     /// The pinned programs on this bottle
     public var pins: [PinnedProgram] {
         get { return info.pins }
         set { info.pins = newValue }
+    }
+
+    public var runtimeStorageDirectory: URL? {
+        get { info.runtimeStorageDirectory }
+        set { info.runtimeStorageDirectory = newValue }
+    }
+
+    public var runtimeStorageGuestConfiguration: RuntimeGuestConfiguration? {
+        get { info.runtimeStorageGuestConfiguration }
+        set { info.runtimeStorageGuestConfiguration = newValue }
     }
 
     /// The blocked applicaitons on this bottle
@@ -241,7 +264,12 @@ public struct BottleSettings: Codable, Equatable {
     }
 
     @discardableResult
-    public static func decode(from metadataURL: URL) throws -> BottleSettings {
+    public static func decode(from metadataURL: URL, readOnly: Bool = false) throws -> BottleSettings {
+        if readOnly {
+            let settings = try PropertyListDecoder().decode(BottleSettings.self, from: Data(contentsOf: metadataURL))
+            guard settings.fileVersion == defaultFileVersion else { throw CocoaError(.fileReadCorruptFile) }
+            return settings
+        }
         guard FileManager.default.fileExists(atPath: metadataURL.path(percentEncoded: false)) else {
             let decoder = PropertyListDecoder()
             let settings = try decoder.decode(BottleSettings.self, from: Data(contentsOf: metadataURL))
@@ -324,6 +352,15 @@ public struct BottleSettings: Codable, Equatable {
 
         if dxrEnabled {
             wineEnv.updateValue("1", forKey: "D3DM_SUPPORT_DXR")
+        }
+
+        if adaptiveResourcePolicyEnabled {
+            let policy = HostWineLaunchPolicy(
+                snapshot: HostCapabilityProvider.current(),
+                graphicsBackend: dxvk ? .dxvk : .d3dMetal,
+                enabled: true
+            )
+            wineEnv = policy.applyingNonDestructively(to: wineEnv)
         }
     }
 }

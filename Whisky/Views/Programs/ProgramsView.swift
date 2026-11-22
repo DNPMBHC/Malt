@@ -21,6 +21,7 @@ import WhiskyKit
 
 struct ProgramsView: View {
     @ObservedObject var bottle: Bottle
+    @ObservedObject var launcher: RuntimeLaunchController
     @State private var blocklist: [URL] = []
     @State private var selectedPrograms = Set<Program>()
     @State private var selectedBlockitems = Set<URL>()
@@ -51,7 +52,7 @@ struct ProgramsView: View {
             Section("program.title", isExpanded: $areProgramsExpanded) {
                 List(searchResults, id: \.self, selection: $selectedPrograms) { program in
                     ProgramItemView(
-                        bottle: bottle, program: program, path: $path
+                        bottle: bottle, program: program, path: $path, launcher: launcher
                     )
                     .contextMenu {
                         let selectedPrograms = selectedSearchedPrograms
@@ -62,7 +63,7 @@ struct ProgramsView: View {
                             }
                             .labelStyle(.titleAndIcon)
                         } else {
-                            ProgramMenuView(program: program, path: $path)
+                            ProgramMenuView(program: program, path: $path, launcher: launcher)
 
                             Section {
                                 Button("program.add.blocklist", systemImage: "hand.raised") {
@@ -145,6 +146,7 @@ struct ProgramItemView: View {
     @Binding var path: NavigationPath
     @State private var showButtons = false
     @State private var pinHovered = false
+    @ObservedObject var launcher: RuntimeLaunchController
 
     var body: some View {
         HStack {
@@ -182,13 +184,19 @@ struct ProgramItemView: View {
                 .buttonStyle(.plain)
                 .foregroundStyle(.secondary)
                 .help("program.config")
-                Button("button.run", systemImage: "play") {
-                    program.run()
+                if !launcher.isLaunching(program) {
+                    Button("button.run", systemImage: "play") {
+                        launcher.launch(program)
+                    }
+                    .labelStyle(.iconOnly)
+                    .buttonStyle(.plain)
+                    .foregroundStyle(.secondary)
+                    .help("button.run")
                 }
-                .labelStyle(.iconOnly)
-                .buttonStyle(.plain)
-                .foregroundStyle(.secondary)
-                .help("button.run")
+            }
+            if launcher.isLaunching(program) {
+                ProgressView()
+                    .controlSize(.small)
             }
         }
         .padding(4)

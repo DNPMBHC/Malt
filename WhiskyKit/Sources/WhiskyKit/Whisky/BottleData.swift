@@ -34,17 +34,22 @@ public struct BottleData: Codable {
 
     static let currentVersion = SemanticVersion(1, 0, 0)
 
+    private enum CodingKeys: String, CodingKey { case fileVersion, paths }
+
     private var fileVersion: SemanticVersion
+    private var readOnly = false
     public var paths: [URL] = [] {
         didSet {
-            encode()
+            if !readOnly { encode() }
         }
     }
 
-    public init() {
+    public init(readOnly: Bool = false) {
         fileVersion = Self.currentVersion
 
-        if !decode() {
+        let decoded = decode(reportVersionError: !readOnly)
+        self.readOnly = readOnly
+        if !decoded && !readOnly {
             encode()
         }
     }
@@ -59,9 +64,9 @@ public struct BottleData: Codable {
                 .path(percentEncoded: false)
 
             if FileManager.default.fileExists(atPath: bottleMetadata) {
-                bottles.append(Bottle(bottleUrl: path, isAvailable: true))
+                bottles.append(Bottle(bottleUrl: path, isAvailable: true, readOnly: readOnly))
             } else {
-                bottles.append(Bottle(bottleUrl: path))
+                bottles.append(Bottle(bottleUrl: path, readOnly: readOnly))
             }
         }
 
@@ -69,15 +74,17 @@ public struct BottleData: Codable {
     }
 
     @discardableResult
-    private mutating func decode() -> Bool {
+    private mutating func decode(reportVersionError: Bool) -> Bool {
         let decoder = PropertyListDecoder()
         do {
             let data = try Data(contentsOf: Self.bottleEntriesDir)
-            self = try decoder.decode(BottleData.self, from: data)
-            if self.fileVersion != Self.currentVersion {
-                print("Invalid file version \(self.fileVersion)")
+            let decoded = try decoder.decode(BottleData.self, from: data)
+            if reportVersionError { self = decoded }
+            guard decoded.fileVersion == Self.currentVersion else {
+                if reportVersionError { print("Invalid file version \(decoded.fileVersion)") }
                 return false
             }
+            self = decoded
             return true
         } catch {
             return false

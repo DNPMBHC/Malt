@@ -119,6 +119,35 @@ public extension Process {
     }
 }
 
+extension Process {
+    func startRuntimeSession() throws -> RuntimeSession {
+        try Task.checkCancellation()
+        let (exits, continuation) = AsyncStream.makeStream(
+            of: RuntimeExitResult.self, bufferingPolicy: .bufferingNewest(1)
+        )
+        terminationHandler = { process in
+            let reason: RuntimeExitReason = process.terminationReason == .exit ? .exit : .signal
+            continuation.yield(RuntimeExitResult(status: process.terminationStatus, reason: reason))
+            continuation.finish()
+        }
+        do {
+            try run()
+        } catch {
+            continuation.finish()
+            terminationHandler = nil
+            throw error
+        }
+
+        let result = Task {
+            var iterator = exits.makeAsyncIterator()
+            return await iterator.next() ?? RuntimeExitResult(status: 0, reason: .unreported)
+        }
+        return RuntimeSession(wait: { await result.value }, cancel: {
+            if self.isRunning { self.terminate() }
+        })
+    }
+}
+
 extension FileHandle {
     func nextLine() -> String? {
         guard let line = String(data: availableData, encoding: .utf8) else { return nil }

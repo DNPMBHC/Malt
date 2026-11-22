@@ -29,6 +29,7 @@ struct PinView: View {
     @State private var showRenameSheet = false
     @State private var name: String = ""
     @State private var opening: Bool = false
+    @ObservedObject var launcher: RuntimeLaunchController
 
     var body: some View {
         VStack {
@@ -54,16 +55,20 @@ struct PinView: View {
         .overlay {
             HStack {
                 Spacer()
-                Image(systemName: "play.fill")
-                    .resizable()
-                    .foregroundColor(.green)
-                    .frame(width: 16, height: 16)
+                if launcher.isLaunching(program) {
+                    ProgressView().controlSize(.small)
+                } else {
+                    Image(systemName: "play.fill")
+                        .resizable()
+                        .foregroundColor(.green)
+                        .frame(width: 16, height: 16)
+                }
             }
             .frame(width: 45, height: 45)
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
         }
         .contextMenu {
-            ProgramMenuView(program: program, path: $path)
+            ProgramMenuView(program: program, path: $path, launcher: launcher)
 
             Button("button.rename", systemImage: "pencil.line") {
                 showRenameSheet.toggle()
@@ -94,7 +99,7 @@ struct PinView: View {
         .onChange(of: name) {
             if let index = bottle.settings.pins.firstIndex(where: {
                 let exists = FileManager.default.fileExists(atPath: pin.url?.path(percentEncoded: false) ?? "")
-                return $0.url == pin.url && exists
+                return $0.url.map(Program.identity(for:)) == program.identityURL && exists
             }) {
                 bottle.settings.pins[index].name = name
             }
@@ -102,6 +107,7 @@ struct PinView: View {
     }
 
     func runProgram() {
+        guard !launcher.isLaunching(program) else { return }
         withAnimation(.easeIn(duration: 0.25)) {
             opening = true
         } completion: {
@@ -110,6 +116,6 @@ struct PinView: View {
             }
         }
 
-        program.run()
+        launcher.launch(program)
     }
 }

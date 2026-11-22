@@ -28,8 +28,9 @@ enum BottleStage {
 
 struct BottleView: View {
     @ObservedObject var bottle: Bottle
+    @ObservedObject var launchController: RuntimeLaunchController
     @State private var path = NavigationPath()
-    @State private var programLoading: Bool = false
+    @State private var openedFileURL: URL?
     @State private var showWinetricksSheet: Bool = false
 
     private let gridLayout = [GridItem(.adaptive(minimum: 100, maximum: .infinity))]
@@ -40,7 +41,8 @@ struct BottleView: View {
                 LazyVGrid(columns: gridLayout, alignment: .center) {
                     ForEach(bottle.pinnedPrograms, id: \.id) { pinnedProgram in
                         PinView(
-                            bottle: bottle, program: pinnedProgram.program, pin: pinnedProgram.pin, path: $path
+                            bottle: bottle, program: pinnedProgram.program, pin: pinnedProgram.pin,
+                            path: $path, launcher: launchController
                         )
                     }
                     PinAddView(bottle: bottle)
@@ -82,34 +84,10 @@ struct BottleView: View {
                                                      UTType(exportedAs: "com.microsoft.bat")]
                         panel.directoryURL = bottle.url.appending(path: "drive_c")
                         panel.begin { result in
-                            programLoading = true
-                            Task(priority: .userInitiated) {
-                                if result == .OK {
-                                    if let url = panel.urls.first {
-                                        do {
-                                            if url.pathExtension == "bat" {
-                                                try await Wine.runBatchFile(url: url, bottle: bottle)
-                                            } else {
-                                                try await Wine.runProgram(at: url, bottle: bottle)
-                                            }
-                                        } catch {
-                                            print("Failed to run external program: \(error)")
-                                        }
-                                        programLoading = false
-                                    }
-                                } else {
-                                    programLoading = false
-                                }
-                                updateStartMenu()
+                            if result == .OK {
+                                openedFileURL = panel.url
                             }
                         }
-                    }
-                    .disabled(programLoading)
-                    if programLoading {
-                        Spacer()
-                            .frame(width: 10)
-                        ProgressView()
-                            .controlSize(.small)
                     }
                 }
                 .padding()
@@ -122,6 +100,9 @@ struct BottleView: View {
             .sheet(isPresented: $showWinetricksSheet) {
                 WinetricksView(bottle: bottle)
             }
+            .sheet(item: $openedFileURL, onDismiss: updateStartMenu) { url in
+                FileOpenView(fileURL: url, currentBottle: bottle.url, bottles: [bottle], launcher: launchController)
+            }
             .onChange(of: bottle.settings) { oldValue, newValue in
                 guard oldValue != newValue else { return }
                 // Trigger a reload
@@ -133,14 +114,14 @@ struct BottleView: View {
                     ConfigView(bottle: bottle)
                 case .programs:
                     ProgramsView(
-                        bottle: bottle, path: $path
+                        bottle: bottle, launcher: launchController, path: $path
                     )
                 case .processes:
                     RunningProcessesView(bottle: bottle)
                 }
             }
             .navigationDestination(for: Program.self) { program in
-                ProgramView(program: program)
+                ProgramView(program: program, launcher: launchController)
             }
         }
     }
@@ -154,11 +135,6 @@ struct BottleView: View {
             // For some godforsaken reason "foo/bar" != "foo/Bar" so...
             program.url.path().caseInsensitiveCompare(startMenuProgram.url.path()) == .orderedSame {
                 program.pinned = true
-                guard !bottle.settings.pins.contains(where: { $0.url == program.url }) else { return }
-                bottle.settings.pins.append(PinnedProgram(
-                    name: program.url.deletingPathExtension().lastPathComponent,
-                    url: program.url
-                ))
             }
         }
     }
