@@ -167,6 +167,19 @@ public struct HostWineLaunchPolicy: Equatable, Sendable {
     public let environmentOverrides: [HostResourceConsumerBinding]
     public let unmanagedDomainNote: String?
 
+    init(
+        isEnabled: Bool, performancePolicy: RuntimePerformancePolicy,
+        graphicsBackend: HostWineGraphicsBackend, processQualityOfService: QualityOfService,
+        environmentOverrides: [HostResourceConsumerBinding], unmanagedDomainNote: String?
+    ) {
+        self.isEnabled = isEnabled
+        self.performancePolicy = performancePolicy
+        self.graphicsBackend = graphicsBackend
+        self.processQualityOfService = processQualityOfService
+        self.environmentOverrides = environmentOverrides
+        self.unmanagedDomainNote = unmanagedDomainNote
+    }
+
     public init(
         snapshot: RuntimeHostSnapshot,
         graphicsBackend: HostWineGraphicsBackend,

@@ -7,11 +7,13 @@ import MetalFX
 public enum RuntimeBackendKind: String, Codable, CaseIterable, Sendable {
     case wine
     case windowsGuest
+    case remotePhysics
 
     public var title: String {
         switch self {
         case .wine: return "Wine translation"
         case .windowsGuest: return "Windows guest"
+        case .remotePhysics: return "Remote physical Windows"
         }
     }
 
@@ -19,6 +21,7 @@ public enum RuntimeBackendKind: String, Codable, CaseIterable, Sendable {
         switch self {
         case .wine: return "runtime.backend.wine"
         case .windowsGuest: return "runtime.backend.windowsGuest"
+        case .remotePhysics: return "runtime.backend.remotePhysics"
         }
     }
 }
@@ -83,6 +86,7 @@ public struct GameCompatibilityProfile: Identifiable, Codable, Hashable, Sendabl
     public let antiCheat: AntiCheatSystem
     public let wineCompatibility: RuntimeCompatibility
     public let windowsGuestCompatibility: RuntimeCompatibility
+    public let remotePhysicsCompatibility: RuntimeCompatibility?
     public let notes: String
     public let metadata: GameProfileMetadata?
 
@@ -93,6 +97,7 @@ public struct GameCompatibilityProfile: Identifiable, Codable, Hashable, Sendabl
         antiCheat: AntiCheatSystem,
         wineCompatibility: RuntimeCompatibility,
         windowsGuestCompatibility: RuntimeCompatibility,
+        remotePhysicsCompatibility: RuntimeCompatibility? = nil,
         notes: String,
         metadata: GameProfileMetadata? = nil
     ) {
@@ -102,6 +107,7 @@ public struct GameCompatibilityProfile: Identifiable, Codable, Hashable, Sendabl
         self.antiCheat = antiCheat
         self.wineCompatibility = wineCompatibility
         self.windowsGuestCompatibility = windowsGuestCompatibility
+        self.remotePhysicsCompatibility = remotePhysicsCompatibility
         self.notes = notes
         self.metadata = metadata
     }

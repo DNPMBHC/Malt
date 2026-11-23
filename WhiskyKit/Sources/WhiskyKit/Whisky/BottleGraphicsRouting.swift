@@ -64,43 +64,72 @@ public extension BottleSettings {
         bottleURL.appending(path: "dxmt_shader_cache")
     }
 
+    /// Returns the per-bottle isolated DXVK state cache directory URL.
+    static func dxvkStateCacheDirectory(for bottleURL: URL) -> URL {
+        bottleURL.appending(path: "dxvk_state_cache")
+    }
+
     /// Populates Wine environment variables using the resolved three-engine backend and adaptive resource policy.
     func environmentVariables(
         wineEnv: inout [String: String],
         bottleURL: URL?,
         hostSnapshot: RuntimeHostSnapshot? = nil,
         availableBackends: HostAvailableWineBackends? = nil,
-        dxmtWinePath: URL? = nil
+        dxmtWinePath: URL? = nil,
+        libraryFolder: URL = WhiskyWineInstaller.libraryFolder
     ) {
-        let available = availableBackends ?? WhiskyWineInstaller.availableGraphicsBackends()
+        let available = availableBackends ?? WhiskyWineInstaller.availableGraphicsBackends(libraryFolder: libraryFolder)
         let selectedBackend = effectiveGraphicsBackend(available: available)
+        let resolvedSnapshot = hostSnapshot ?? HostCapabilityProvider.current()
 
         switch selectedBackend {
         case .dxvk:
-            applyDXVKEnvironment(to: &wineEnv)
+            applyDXVKEnvironment(
+                to: &wineEnv,
+                bottleURL: bottleURL,
+                libraryFolder: libraryFolder,
+                hostSnapshot: resolvedSnapshot
+            )
         case .dxmt:
             applyDXMTEnvironment(
                 to: &wineEnv,
                 bottleURL: bottleURL,
-                dxmtWinePath: dxmtWinePath ?? WhiskyWineInstaller.dxmtWineFolder()
+                dxmtWinePath: dxmtWinePath ?? WhiskyWineInstaller.dxmtWineFolder(in: libraryFolder)
             )
         case .d3dMetal:
-            break
+            applyD3DMetalEnvironment(to: &wineEnv, libraryFolder: libraryFolder)
         }
 
         applyCommonWineEnvironment(to: &wineEnv)
 
+        let metalFXOptions = HostDXMTMetalFXOptions(preset: dxmtMetalFXPreset)
         if adaptiveResourcePolicyEnabled {
-            let policy = HostWineLaunchPolicy(
-                snapshot: hostSnapshot ?? HostCapabilityProvider.current(),
+            let policy = HostWineLaunchPolicy.configured(
+                snapshot: resolvedSnapshot,
                 graphicsBackend: selectedBackend,
-                enabled: true
+                enabled: true,
+                options: HostWineLaunchOptions(dxmtMetalFX: metalFXOptions)
             )
             wineEnv = policy.applyingNonDestructively(to: wineEnv)
+        } else if selectedBackend == .dxmt, dxmtMetalFXPreset != .off {
+            let metalFX = HostDXMTMetalFXPolicy(
+                snapshot: resolvedSnapshot,
+                options: metalFXOptions,
+                enabled: true
+            )
+            for binding in metalFX.environmentOverrides where wineEnv[binding.name] == nil {
+                wineEnv[binding.name] = binding.value
+            }
         }
     }
 
-    private func applyDXVKEnvironment(to wineEnv: inout [String: String]) {
+    private func applyDXVKEnvironment(
+        to wineEnv: inout [String: String],
+        bottleURL: URL?,
+        libraryFolder: URL,
+        hostSnapshot: RuntimeHostSnapshot
+    ) {
+        let fileManager = FileManager.default
         wineEnv.updateValue("dxgi,d3d9,d3d10core,d3d11=n,b", forKey: "WINEDLLOVERRIDES")
         switch dxvkHud {
         case .full:
@@ -114,6 +143,96 @@ public extension BottleSettings {
         }
         if dxvkAsync {
             wineEnv.updateValue("1", forKey: "DXVK_ASYNC")
+        }
+        if let bottleURL, wineEnv["DXVK_STATE_CACHE_PATH"] == nil {
+            let cacheDir = Self.dxvkStateCacheDirectory(for: bottleURL)
+            try? fileManager.createDirectory(at: cacheDir, withIntermediateDirectories: true)
+            wineEnv["DXVK_STATE_CACHE_PATH"] = cacheDir.path(percentEncoded: false)
+        }
+        let dxvkWineDir = libraryFolder.appending(path: "DXVK/wine")
+        if fileManager.fileExists(atPath: dxvkWineDir.path(percentEncoded: false)) {
+            Self.prependWineDLLPath(dxvkWineDir, to: &wineEnv)
+        }
+        applyDXVKVulkanICD(to: &wineEnv, libraryFolder: libraryFolder, hostSnapshot: hostSnapshot)
+    }
+
+    private func applyDXVKVulkanICD(
+        to wineEnv: inout [String: String],
+        libraryFolder: URL,
+        hostSnapshot: RuntimeHostSnapshot
+    ) {
+        guard wineEnv["WINE_SONAME_LIBVULKAN"] == nil,
+              wineEnv["VK_DRIVER_FILES"] == nil,
+              wineEnv["VK_ICD_FILENAMES"] == nil else {
+            return
+        }
+        let availability = Self.discoverVulkanICDAvailability(in: libraryFolder)
+        let route = HostWineBackendRouter.routeVulkanICD(
+            hostSnapshot: hostSnapshot,
+            available: availability,
+            preferKosmicKrisp: dxvkPreferKosmicKrisp
+        )
+        for binding in route.environmentOverrides where wineEnv[binding.name] == nil {
+            wineEnv[binding.name] = binding.value
+        }
+    }
+
+    static func discoverVulkanICDAvailability(
+        in libraryFolder: URL,
+        fileManager: FileManager = .default
+    ) -> HostVulkanICDAvailability {
+        let icdCandidates = [
+            libraryFolder.appending(path: "DXVK/vulkan/icd.d/kosmickrisp_icd.json"),
+            libraryFolder.appending(path: "Vulkan/icd.d/kosmickrisp_icd.json"),
+            libraryFolder.appending(path: "KosmicKrisp/kosmickrisp_icd.json")
+        ]
+        let loaderCandidates = [
+            libraryFolder.appending(path: "DXVK/libvulkan.1.dylib"),
+            libraryFolder.appending(path: "Vulkan/libvulkan.1.dylib"),
+            libraryFolder.appending(path: "Wine/lib/libvulkan.1.dylib")
+        ]
+        let moltenCandidates = [
+            libraryFolder.appending(path: "DXVK/libMoltenVK.dylib"),
+            libraryFolder.appending(path: "MoltenVK/libMoltenVK.dylib"),
+            libraryFolder.appending(path: "Wine/lib/libMoltenVK.dylib")
+        ]
+        let icdPath = icdCandidates
+            .first(where: { fileManager.fileExists(atPath: $0.path(percentEncoded: false)) })?
+            .path(percentEncoded: false)
+        let loaderPath = loaderCandidates
+            .first(where: { fileManager.fileExists(atPath: $0.path(percentEncoded: false)) })?
+            .path(percentEncoded: false)
+        let moltenPath = moltenCandidates
+            .first(where: { fileManager.fileExists(atPath: $0.path(percentEncoded: false)) })?
+            .path(percentEncoded: false)
+        return HostVulkanICDAvailability(
+            hasKosmicKrispICD: icdPath != nil && loaderPath != nil,
+            hasMoltenVK: moltenPath != nil,
+            kosmicKrispICDManifestPath: icdPath,
+            vulkanLoaderLibraryPath: loaderPath,
+            moltenVKLibraryPath: moltenPath
+        )
+    }
+
+    private func applyD3DMetalEnvironment(to wineEnv: inout [String: String], libraryFolder: URL) {
+        let fileManager = FileManager.default
+        let gptkWineDir = libraryFolder.appending(path: "GPTK/wine")
+        if fileManager.fileExists(atPath: gptkWineDir.path(percentEncoded: false)) {
+            Self.prependWineDLLPath(gptkWineDir, to: &wineEnv)
+        }
+        let sharedCandidates = [
+            libraryFolder.appending(path: "GPTK/external/libd3dshared.dylib"),
+            libraryFolder.appending(path: "Wine/lib/external/libd3dshared.dylib")
+        ]
+        if let shared = sharedCandidates.first(where: {
+            fileManager.fileExists(atPath: $0.path(percentEncoded: false))
+        }) {
+            if wineEnv["WINE_GPTK_LIBD3DSHARED_PATH"] == nil {
+                wineEnv["WINE_GPTK_LIBD3DSHARED_PATH"] = shared.path(percentEncoded: false)
+            }
+            if wineEnv["DYLD_FRAMEWORK_PATH"] == nil {
+                wineEnv["DYLD_FRAMEWORK_PATH"] = shared.deletingLastPathComponent().path
+            }
         }
     }
 
@@ -130,18 +249,23 @@ public extension BottleSettings {
         }
         if let bottleURL, wineEnv["DXMT_SHADER_CACHE_PATH"] == nil {
             let cacheDir = Self.dxmtShaderCacheDirectory(for: bottleURL)
+            try? FileManager.default.createDirectory(at: cacheDir, withIntermediateDirectories: true)
             wineEnv["DXMT_SHADER_CACHE_PATH"] = cacheDir.path(percentEncoded: false)
         }
         if let dxmtWinePath {
-            let path = dxmtWinePath.path(percentEncoded: false)
-            if let existing = wineEnv["WINEDLLPATH"], !existing.isEmpty {
-                let parts = existing.split(separator: ":").map(String.init)
-                if !parts.contains(path) {
-                    wineEnv["WINEDLLPATH"] = "\(path):\(existing)"
-                }
-            } else {
-                wineEnv["WINEDLLPATH"] = path
+            Self.prependWineDLLPath(dxmtWinePath, to: &wineEnv)
+        }
+    }
+
+    private static func prependWineDLLPath(_ directory: URL, to wineEnv: inout [String: String]) {
+        let path = directory.path(percentEncoded: false)
+        if let existing = wineEnv["WINEDLLPATH"], !existing.isEmpty {
+            let parts = existing.split(separator: ":").map(String.init)
+            if !parts.contains(path) {
+                wineEnv["WINEDLLPATH"] = "\(path):\(existing)"
             }
+        } else {
+            wineEnv["WINEDLLPATH"] = path
         }
     }
 

@@ -38,6 +38,7 @@ final class FileOpenQueue: ObservableObject {
 
 struct ContentView: View {
     @AppStorage("selectedBottleURL") private var selectedBottleURL: URL?
+    @AppStorage("hasAcceptedComplianceDisclaimerV1") private var hasAcceptedDisclaimer: Bool = false
     @EnvironmentObject var bottleVM: BottleVM
     @Binding var showSetup: Bool
 
@@ -45,6 +46,7 @@ struct ContentView: View {
     @StateObject private var launcher = RuntimeLaunchController()
     @State private var selected: URL?
     @State private var showBottleCreation: Bool = false
+    @State private var showComplianceDisclaimer: Bool = false
     @State private var bottlesLoaded: Bool = false
     @State private var showBottleSelection: Bool = false
     @State private var newlyCreatedBottleURL: URL?
@@ -94,6 +96,14 @@ struct ContentView: View {
         .sheet(isPresented: $showSetup, onDismiss: presentNextFile) {
             SetupView(showSetup: $showSetup, firstTime: false)
         }
+        .sheet(isPresented: $showComplianceDisclaimer, onDismiss: continueStartupFlow) {
+            ComplianceDisclaimerSheet(
+                isPresented: $showComplianceDisclaimer,
+                requireAcceptance: !hasAcceptedDisclaimer
+            ) {
+                hasAcceptedDisclaimer = true
+            }
+        }
         .sheet(item: $openedFileURL, onDismiss: presentNextFile) { url in
             FileOpenView(fileURL: url,
                          currentBottle: selected,
@@ -118,9 +128,8 @@ struct ContentView: View {
                 }
             }
 
-            if !WhiskyWineInstaller.isWhiskyWineInstalled() {
-                showSetup = true
-            }
+            continueStartupFlow()
+            guard hasAcceptedDisclaimer, WhiskyWineInstaller.isWhiskyWineInstalled() else { return }
             let task = Task.detached {
                 return await WhiskyWineInstaller.shouldUpdateWhiskyWine()
             }
@@ -146,8 +155,21 @@ struct ContentView: View {
         }
     }
 
+    private func continueStartupFlow() {
+        if !hasAcceptedDisclaimer {
+            showComplianceDisclaimer = true
+            return
+        }
+        if !WhiskyWineInstaller.isWhiskyWineInstalled() {
+            showSetup = true
+            return
+        }
+        presentNextFile()
+    }
+
     private func presentNextFile() {
-        guard bottlesLoaded, !showSetup, !showBottleCreation, openedFileURL == nil else { return }
+        guard bottlesLoaded, !showSetup, !showBottleCreation,
+              !showComplianceDisclaimer, openedFileURL == nil else { return }
         openedFileURL = fileQueue.takeFirst()
     }
 

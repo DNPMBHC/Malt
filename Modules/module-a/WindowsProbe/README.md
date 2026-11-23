@@ -42,7 +42,7 @@ Use the matching -A ARM64 generator option for an ARM64 collector. The driver pr
 
 ## Lifecycle and Failure Paths
 
-Run the lifecycle script from an elevated PowerShell session inside the isolated guest. It records the probe JSON's loadState, failureStage, win32Error, bytesReturned, and notification booleans, without emitting process IDs:
+Run the lifecycle script from an elevated PowerShell session inside the isolated guest. It verifies the current challenge nonce and records the probe JSON's architecture, candidate signature status, process-context assertions, loadState, failureStage, win32Error, bytesReturned, and notification booleans, without emitting process IDs:
 
 ~~~powershell
 .\tests\verify-lifecycle.ps1 -Phase cycle -DriverImage C:\module-a\ModuleAProbe.sys -CollectorPath C:\module-a\module_a_probe.exe
@@ -50,9 +50,19 @@ Run the lifecycle script from an elevated PowerShell session inside the isolated
 
 If a phase fails after collecting probe reports, the script emits the stage records gathered so far before returning the failure. This preserves partial evidence for diagnosis without changing the test's nonzero failure result.
 
-For the demand-started reboot check, run -Phase before-reboot, restart the guest, then run -Phase after-reboot. The script verifies that a stopped demand-started service leaves the device absent, that a missing image fails to start, and that service registration is not treated as a successful driver load. The reboot phases require the same service name to remain in the guest between invocations.
+For the demand-started reboot check, run -Phase before-reboot, restart the guest, then run -Phase after-reboot. The script verifies that a stopped demand-started service leaves the device absent, that a missing image fails to start, and that service registration is not treated as a successful driver load. The reboot phases require the same service name to remain in the guest between invocations. The before-reboot phase saves the Windows boot timestamp and both binary SHA-256 hashes in module-x-reboot-state.json beside the driver; use -RebootStatePath to select another dedicated evidence location. The after-reboot phase requires a later Windows boot and identical binaries before starting the driver. It removes the saved baseline only after successful completion. Service-control failures retain the native sc.exe exit code, including the expected missing-image error 2. The demand-start service names are module-x-probe-lifecycle and module-x-probe-start-failure.
 
 During unload, the driver first removes the process callback; Windows waits for callback invocations already in progress. The driver then drains session rundown and releases the retained owner process reference. If callback removal unexpectedly fails, the probe deliberately stops the Windows guest instead of continuing with a callback that could reference unloaded driver code. Treat this as a fatal driver invariant failure and preserve the guest crash dump for diagnosis. The callback remains registered across idle and armed states, so ARM does not dynamically register it after publishing session state.
+
+## Lifecycle Script Checks
+
+Run the isolated script checks before touching a driver service:
+
+~~~powershell
+.\tests\verify-lifecycle-self-test.ps1
+~~~
+
+These checks parse the production lifecycle script and exercise its functions with a synthetic collector and service-control stub. They verify retained process-context evidence and reject malformed numeric or boolean fields, a stale nonce, mismatched process context, incomplete child cleanup, a missing real reboot, and changed binaries. They also verify preservation of native service-start error 2. They do not load kernel code or replace the three real lifecycle phases.
 
 ## Isolated Guest Run
 

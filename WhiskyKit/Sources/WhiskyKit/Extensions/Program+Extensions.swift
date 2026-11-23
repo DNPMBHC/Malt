@@ -20,29 +20,57 @@ import Foundation
 
 extension Program {
     public var runtimeSelection: RuntimeTargetSelection { settings.launchTarget ?? .automatic }
+    public var runtimeBackend: RuntimeBackendKind? { settings.preferredBackend }
+
+    public func runtimeCoordinator(
+        remotePhysicsAvailability: RemotePhysicsAvailability? = nil
+    ) -> RuntimeCoordinator {
+        let remoteProvider: any RemotePhysicsProvider
+        if let configuration = bottle.settings.remotePhysicsConfiguration {
+            remoteProvider = ExternalClientRemotePhysicsProvider(configuration: configuration)
+        } else {
+            remoteProvider = UnconfiguredRemotePhysicsProvider()
+        }
+        return RuntimeCoordinator(
+            remotePhysicsProvider: remoteProvider,
+            remotePhysicsAvailability: remotePhysicsAvailability
+        )
+    }
 
     public func runtimeRequest(arguments: [String]? = nil,
-                               selection: RuntimeTargetSelection? = nil) throws -> RuntimeLaunchRequest {
+                               selection: RuntimeTargetSelection? = nil,
+                               backend: RuntimeBackendKind? = nil) throws -> RuntimeLaunchRequest {
         RuntimeLaunchRequest(executableURL: url, bottle: bottle,
                              arguments: try arguments ?? RuntimeArguments.parse(settings.arguments),
-                             environment: generateEnvironment(), selection: selection ?? runtimeSelection)
+                             environment: generateEnvironment(), selection: selection ?? runtimeSelection,
+                             backend: backend ?? runtimeBackend)
     }
 
     public func runtimeStoragePreflight(
-        selection: RuntimeTargetSelection? = nil, targetDirectory: URL? = nil,
-        guestConfiguration: RuntimeGuestConfiguration? = nil
+        selection: RuntimeTargetSelection? = nil, backend: RuntimeBackendKind? = nil,
+        targetDirectory: URL? = nil, guestConfiguration: RuntimeGuestConfiguration? = nil
     ) -> RuntimeStoragePreflight {
-        RuntimeCoordinator().storagePreflight(
+        runtimeCoordinator().storagePreflight(
             for: url, bottle: bottle, selection: selection ?? runtimeSelection,
+            backend: backend ?? runtimeBackend,
             targetDirectory: targetDirectory, guestConfiguration: guestConfiguration
         )
     }
 
-    public func validateRuntimeLaunch(selection: RuntimeTargetSelection? = nil) throws {
-        _ = try RuntimeCoordinator().validate(runtimeRequest(selection: selection))
+    public func validateRuntimeLaunch(
+        selection: RuntimeTargetSelection? = nil,
+        backend: RuntimeBackendKind? = nil
+    ) throws {
+        let request = try runtimeRequest(selection: selection, backend: backend)
+        _ = try runtimeCoordinator().validate(request, allowUnverifiedRemotePhysics: true)
     }
 
-    public func launchWithRuntime(arguments: [String]? = nil, selection: RuntimeTargetSelection? = nil) async throws {
-        try await RuntimeCoordinator().launch(runtimeRequest(arguments: arguments, selection: selection))
+    public func launchWithRuntime(
+        arguments: [String]? = nil,
+        selection: RuntimeTargetSelection? = nil,
+        backend: RuntimeBackendKind? = nil
+    ) async throws {
+        let request = try runtimeRequest(arguments: arguments, selection: selection, backend: backend)
+        try await runtimeCoordinator().launch(request)
     }
 }

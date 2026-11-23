@@ -87,15 +87,57 @@ extension Whisky {
             }
         }
     }
+
+    struct IntegrityReport: ParsableCommand {
+        static let configuration = CommandConfiguration(
+            commandName: "integrity-report",
+            abstract: RuntimeCLI.localized(
+                "runtime.cli.integrityReport",
+                fallback: "Print a read-only host SIP, signature, and Hardened Runtime attestation JSON."
+            )
+        )
+
+        func run() throws {
+            let report = RuntimeIntegrityAttestor.currentReport()
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = [.sortedKeys]
+            var data = try encoder.encode(report)
+            data.append(10)
+            try FileHandle.standardOutput.write(contentsOf: data)
+        }
+    }
 }
 
 private enum StorageGuestConfigurationError: LocalizedError {
     case invalidFile
+    case invalidBackend(String)
 
     var errorDescription: String? {
-        RuntimeCLI.localized(
-            "runtime.cli.storageGuestConfigInvalid",
-            fallback: "The guest configuration could not be read. Check that it is a valid JSON file."
-        )
+        switch self {
+        case .invalidFile:
+            RuntimeCLI.localized(
+                "runtime.cli.storageGuestConfigInvalid",
+                fallback: "The guest configuration could not be read. Check that it is a valid JSON file."
+            )
+        case .invalidBackend(let value):
+            String(
+                format: RuntimeCLI.localized(
+                    "runtime.cli.backendInvalid",
+                    fallback: "Unknown backend '%@'. Use auto, wine, windowsGuest, or remotePhysics."
+                ),
+                value
+            )
+        }
+    }
+}
+
+extension RuntimeCLI {
+    static func parseBackend(_ rawValue: String?) throws -> RuntimeBackendKind? {
+        guard let rawValue else { return nil }
+        if rawValue == "auto" { return nil }
+        guard let parsed = RuntimeBackendKind(rawValue: rawValue) else {
+            throw StorageGuestConfigurationError.invalidBackend(rawValue)
+        }
+        return parsed
     }
 }

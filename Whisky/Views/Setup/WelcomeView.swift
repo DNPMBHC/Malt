@@ -23,6 +23,8 @@ struct WelcomeView: View {
     @State var rosettaInstalled: Bool?
     @State var whiskyWineInstalled: Bool?
     @State var shouldCheckInstallStatus: Bool = false
+    @State private var runtimeFolder: URL = WhiskyWineInstaller.applicationFolder
+    @State private var externalVolumes = WhiskyWineInstaller.mountedExternalVolumes()
     @Binding var path: [SetupStage]
     @Binding var showSetup: Bool
     var firstTime: Bool
@@ -56,6 +58,7 @@ struct WelcomeView: View {
                                   shouldCheckInstallStatus: $shouldCheckInstallStatus,
                                   showUninstall: true,
                                   name: "WhiskyWine")
+                runtimeStorageRow
             }
             .formStyle(.grouped)
             .scrollDisabled(true)
@@ -93,10 +96,50 @@ struct WelcomeView: View {
                 }
             }
         }
-        .frame(width: 400, height: 200)
+        .frame(width: 440, height: 270)
+    }
+
+    @ViewBuilder
+    private var runtimeStorageRow: some View {
+        let freeText = WhiskyWineInstaller.availableCapacityBytes(for: runtimeFolder)
+            .map { ByteCountFormatter.string(fromByteCount: $0, countStyle: .file) } ?? ""
+        HStack {
+            VStack(alignment: .leading, spacing: 2) {
+                Text("settings.runtimePath")
+                Text(freeText.isEmpty ? runtimeFolder.prettyPath() : "\(runtimeFolder.prettyPath()) (\(freeText))")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            Spacer()
+            if let preferred = externalVolumes.first {
+                Button("settings.storage.useExternal") {
+                    let target = preferred.url
+                        .appending(path: "WhiskyExternalData/Runtime", directoryHint: .isDirectory)
+                    WhiskyWineInstaller.setCustomRuntimeLocation(target)
+                    checkInstallStatus()
+                }
+            }
+            Button("create.browse") { chooseRuntimeDirectory() }
+        }
+    }
+
+    private func chooseRuntimeDirectory() {
+        let panel = NSOpenPanel()
+        panel.canChooseFiles = false
+        panel.canChooseDirectories = true
+        panel.canCreateDirectories = true
+        panel.directoryURL = runtimeFolder
+        panel.begin { result in
+            if result == .OK, let url = panel.urls.first {
+                WhiskyWineInstaller.setCustomRuntimeLocation(url)
+                checkInstallStatus()
+            }
+        }
     }
 
     func checkInstallStatus() {
+        runtimeFolder = WhiskyWineInstaller.applicationFolder
+        externalVolumes = WhiskyWineInstaller.mountedExternalVolumes()
         rosettaInstalled = Rosetta2.isRosettaInstalled
         whiskyWineInstalled = WhiskyWineInstaller.isWhiskyWineInstalled()
     }

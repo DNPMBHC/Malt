@@ -39,6 +39,7 @@ struct ConfigView: View {
     @AppStorage("wineSectionExpanded") private var wineSectionExpanded: Bool = true
     @AppStorage("dxvkSectionExpanded") private var dxvkSectionExpanded: Bool = true
     @AppStorage("metalSectionExpanded") private var metalSectionExpanded: Bool = true
+    @AppStorage("remotePhysicsSectionExpanded") private var remotePhysicsSectionExpanded: Bool = false
 
     var body: some View {
         Form {
@@ -132,21 +133,21 @@ struct ConfigView: View {
                     Text("config.metalTrace")
                     Text("config.metalTrace.info")
                 }
-                if let device = MTLCreateSystemDefaultDevice() {
-                    // Represents the Apple family 9 GPU features that correspond to the Apple A17, M3, and M4 GPUs.
-                    if device.supportsFamily(.apple9) {
-                        Toggle(isOn: $bottle.settings.dxrEnabled) {
-                            Text("config.dxr")
-                            Text("config.dxr.info")
-                        }
+                if let device = MTLCreateSystemDefaultDevice(), device.supportsFamily(.apple9) {
+                    Toggle(isOn: $bottle.settings.dxrEnabled) {
+                        Text("config.dxr"); Text("config.dxr.info")
                     }
                 }
+            }
+            Section("config.title.remotePhysics", isExpanded: $remotePhysicsSectionExpanded) {
+                BottleRemotePhysicsSection(bottle: bottle)
             }
         }
         .formStyle(.grouped)
         .animation(.whiskyDefault, value: wineSectionExpanded)
         .animation(.whiskyDefault, value: dxvkSectionExpanded)
         .animation(.whiskyDefault, value: metalSectionExpanded)
+        .animation(.whiskyDefault, value: remotePhysicsSectionExpanded)
         .bottomBar {
             HStack {
                 Spacer()
@@ -183,16 +184,13 @@ struct ConfigView: View {
         .navigationTitle("tab.config")
         .onAppear {
             winVersionLoadingState = .success
-
             loadBuildName()
-
             Task(priority: .userInitiated) {
                 do {
                     retinaMode = try await Wine.retinaMode(bottle: bottle)
                     retinaModeLoadingState = .success
                 } catch {
-                    print(error)
-                    retinaModeLoadingState = .failed
+                    print(error); retinaModeLoadingState = .failed
                 }
             }
             Task(priority: .userInitiated) {
@@ -389,6 +387,7 @@ private struct BottleGraphicsBackendSection: View {
         LabeledContent("config.graphicsBackend.selected", value: selectedLabel)
         LabeledContent("config.graphicsBackend.fallback",
                        value: String(localized: route.usedFallback ? "runtime.on" : "runtime.off"))
+        GraphicsFallbackWarningBanner(route: route)
         Text(route.reason).font(.footnote).foregroundStyle(.secondary)
         Toggle("config.dxvk.async", isOn: $bottle.settings.dxvkAsync).disabled(!dxvkConfigurable)
         Picker("config.dxvkHud", selection: $bottle.settings.dxvkHud) {

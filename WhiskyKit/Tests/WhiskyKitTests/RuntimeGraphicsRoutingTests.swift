@@ -170,4 +170,131 @@ final class RuntimeGraphicsRoutingTests: XCTestCase, @unchecked Sendable {
         let route = plan.wineGraphicsRoute(for: settings, available: .all)
         XCTAssertEqual(route.selectedBackend, .dxmt)
     }
+
+    func testD3DMetalAndDXVKEnvironmentInjectLibrariesAndPerBottleCache() throws {
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString, isDirectory: true)
+        let fileManager = FileManager.default
+        try fileManager.createDirectory(at: root, withIntermediateDirectories: true)
+        defer { try? fileManager.removeItem(at: root) }
+
+        let libs = root.appending(path: "Libraries")
+        let gptkWine = libs.appending(path: "GPTK/wine")
+        let gptkExt = libs.appending(path: "GPTK/external")
+        let dxvkWine = libs.appending(path: "DXVK/wine")
+        for dir in [gptkWine, gptkExt, dxvkWine] {
+            try fileManager.createDirectory(at: dir, withIntermediateDirectories: true)
+        }
+        let sharedDylib = gptkExt.appending(path: "libd3dshared.dylib")
+        let moltenDylib = libs.appending(path: "DXVK/libMoltenVK.dylib")
+        try Data("shared".utf8).write(to: sharedDylib)
+        try Data("mvk".utf8).write(to: moltenDylib)
+
+        let bottleDir = root.appending(path: "Bottle")
+        try fileManager.createDirectory(at: bottleDir, withIntermediateDirectories: true)
+
+        var d3dmSettings = BottleSettings()
+        d3dmSettings.wineGraphicsBackendMode = .d3dMetal
+        var d3dmEnv: [String: String] = [:]
+        d3dmSettings.environmentVariables(wineEnv: &d3dmEnv, bottleURL: bottleDir,
+                                          availableBackends: .all, libraryFolder: libs)
+        XCTAssertEqual(d3dmEnv["WINE_GPTK_LIBD3DSHARED_PATH"], sharedDylib.path(percentEncoded: false))
+        XCTAssertEqual(d3dmEnv["DYLD_FRAMEWORK_PATH"], gptkExt.path(percentEncoded: false))
+        XCTAssertTrue(d3dmEnv["WINEDLLPATH"]?.contains(gptkWine.path(percentEncoded: false)) == true)
+
+        var dxvkSettings = BottleSettings()
+        dxvkSettings.wineGraphicsBackendMode = .dxvk
+        var dxvkEnv: [String: String] = [:]
+        dxvkSettings.environmentVariables(wineEnv: &dxvkEnv, bottleURL: bottleDir,
+                                          availableBackends: .all, libraryFolder: libs)
+        XCTAssertEqual(dxvkEnv["WINE_SONAME_LIBVULKAN"], moltenDylib.path(percentEncoded: false))
+        XCTAssertEqual(dxvkEnv["DXVK_STATE_CACHE_PATH"],
+                       BottleSettings.dxvkStateCacheDirectory(for: bottleDir).path(percentEncoded: false))
+        XCTAssertTrue(dxvkEnv["WINEDLLPATH"]?.contains(dxvkWine.path(percentEncoded: false)) == true)
+    }
+}
+
+final class BottleGraphicsKosmicKrispRoutingTests: XCTestCase {
+    private static let appleSiliconMac27 = RuntimeHostSnapshot(
+        operatingSystemVersion: .init(major: 27, minor: 2, patch: 1),
+        architecture: "arm64",
+        isAppleSilicon: true,
+        gameModePlatformAvailable: true,
+        isMacOS27OrLater: true,
+        thermalState: .nominal,
+        isLowPowerModeEnabled: false,
+        metalDeviceName: "Apple M4",
+        metalFXSpatialScalingAvailable: true,
+        metalFXTemporalScalingAvailable: true,
+        gpuDeveloperToolsAvailable: false
+    )
+
+    func testDXVKRoutesKosmicKrispWhenPresentAndFallsBackToMoltenVK() throws {
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString, isDirectory: true)
+        let fileManager = FileManager.default
+        try fileManager.createDirectory(at: root, withIntermediateDirectories: true)
+        defer { try? fileManager.removeItem(at: root) }
+
+        let libs = root.appending(path: "Libraries")
+        let icdDir = libs.appending(path: "DXVK/vulkan/icd.d")
+        try fileManager.createDirectory(at: icdDir, withIntermediateDirectories: true)
+        let icdManifest = icdDir.appending(path: "kosmickrisp_icd.json")
+        let loaderDylib = libs.appending(path: "DXVK/libvulkan.1.dylib")
+        let moltenDylib = libs.appending(path: "DXVK/libMoltenVK.dylib")
+        try Data("{}".utf8).write(to: icdManifest)
+        try Data("loader".utf8).write(to: loaderDylib)
+        try Data("mvk".utf8).write(to: moltenDylib)
+
+        var settings = BottleSettings()
+        settings.wineGraphicsBackendMode = .dxvk
+        settings.dxvkPreferKosmicKrisp = true
+        var env: [String: String] = [:]
+        settings.environmentVariables(
+            wineEnv: &env,
+            bottleURL: root,
+            hostSnapshot: Self.appleSiliconMac27,
+            availableBackends: .all,
+            libraryFolder: libs
+        )
+        XCTAssertEqual(env["WINE_SONAME_LIBVULKAN"], loaderDylib.path(percentEncoded: false))
+        XCTAssertEqual(env["VK_DRIVER_FILES"], icdManifest.path(percentEncoded: false))
+        XCTAssertEqual(env["VK_ICD_FILENAMES"], icdManifest.path(percentEncoded: false))
+
+        settings.dxvkPreferKosmicKrisp = false
+        var fallbackEnv: [String: String] = [:]
+        settings.environmentVariables(
+            wineEnv: &fallbackEnv,
+            bottleURL: root,
+            hostSnapshot: Self.appleSiliconMac27,
+            availableBackends: .all,
+            libraryFolder: libs
+        )
+        XCTAssertEqual(fallbackEnv["WINE_SONAME_LIBVULKAN"], moltenDylib.path(percentEncoded: false))
+        XCTAssertNil(fallbackEnv["VK_DRIVER_FILES"])
+    }
+
+    func testDXMTMetalFXPresetDefaultsOffAndRespectsQualityPreset() {
+        var settings = BottleSettings()
+        settings.wineGraphicsBackendMode = .dxmt
+        XCTAssertEqual(settings.dxmtMetalFXPreset, .off)
+
+        var defaultEnv: [String: String] = [:]
+        settings.environmentVariables(
+            wineEnv: &defaultEnv,
+            bottleURL: nil,
+            hostSnapshot: Self.appleSiliconMac27,
+            availableBackends: .all
+        )
+        XCTAssertNil(defaultEnv["DXMT_METALFX_SPATIAL_SWAPCHAIN"])
+
+        settings.dxmtMetalFXPreset = .quality
+        var qualityEnv: [String: String] = [:]
+        settings.environmentVariables(
+            wineEnv: &qualityEnv,
+            bottleURL: nil,
+            hostSnapshot: Self.appleSiliconMac27,
+            availableBackends: .all
+        )
+        XCTAssertEqual(qualityEnv["DXMT_METALFX_SPATIAL_SWAPCHAIN"], "1")
+        XCTAssertEqual(qualityEnv["DXMT_CONFIG"], "d3d11.metalSpatialUpscaleFactor=1.5")
+    }
 }

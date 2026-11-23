@@ -195,6 +195,56 @@ final class UTMWindowsGuestProviderTests: XCTestCase, @unchecked Sendable {
 }
 
 extension UTMWindowsGuestProviderTests {
+  func testCancelledVMStartRollsBackInIndependentScope() async throws {
+    let directory = try makeFixtureDirectory()
+    defer { try? FileManager.default.removeItem(at: directory) }
+    let config = makeConfiguration(directory: directory)
+    let transport = FakeUTMTransport(status: .stopped, cancelDuringStart: true)
+    let provider = UTMWindowsGuestProvider(configuration: config, transport: transport)
+    let task = Task {
+      try await UTMGuestOperationDeadline.$value.withValue(.now + .seconds(1)) {
+        try await provider.start(makeRequest(directory: directory, config: config))
+      }
+    }
+    while await transport.startCount == 0 { await Task.yield() }
+    task.cancel()
+    do {
+      _ = try await task.value
+      XCTFail("Launch cancellation must propagate after cleanup.")
+    } catch is CancellationError {}
+    let status = await transport.currentStatus
+    let stopCount = await transport.stopCount
+    let cleanupCancelled = await transport.cleanupWasCancelled
+    let remaining = await transport.cleanupHadFreshDeadline
+    XCTAssertEqual(status, .stopped)
+    XCTAssertEqual(stopCount, 1)
+    XCTAssertFalse(cleanupCancelled)
+    XCTAssertTrue(remaining)
+  }
+
+  func testBothLaunchModesHonorEarlierParentDeadline() async throws {
+    let directory = try makeFixtureDirectory()
+    defer { try? FileManager.default.removeItem(at: directory) }
+    try Data([0x4d, 0x5a]).write(to: directory.appendingPathComponent("desktop-helper.exe"))
+    let config = makeConfiguration(directory: directory)
+    for mode in [WindowsGuestExecutionMode.background, .interactiveDesktop] {
+      let transport = FakeUTMTransport(rejectInspection: true)
+      let provider = UTMWindowsGuestProvider(
+        configuration: config, transport: transport, executionMode: mode)
+      let deadline = ContinuousClock.now + .seconds(1)
+      do {
+        _ = try await UTMGuestOperationDeadline.$value.withValue(deadline) {
+          try await provider.start(makeRequest(directory: directory, config: config))
+        }
+        XCTFail("The isolated transport rejects inspection.")
+      } catch let error as UTMGuestError {
+        XCTAssertEqual(error, .automationFailed)
+      }
+      let observed = await transport.observedDeadline
+      XCTAssertEqual(observed, deadline)
+    }
+  }
+
   func testStopRequestsVMShutdownAndWaitsForStoppedStatus() async throws {
     let directory = try makeFixtureDirectory()
     defer { try? FileManager.default.removeItem(at: directory) }
@@ -312,86 +362,5 @@ extension UTMWindowsGuestProviderTests {
       executableURL: directory.appendingPathComponent("sample app.exe"), bottle: nil,
       arguments: arguments, environment: environment, backend: .windowsGuest,
       guestConfiguration: config)
-  }
-}
-
-private actor FakeUTMTransport: UTMGuestTransport {
-  private(set) var currentStatus: UTMVMStatus
-  private let architecture: String
-  private let backend: String
-  private let programResult: UTMProcessResult?
-  private let probeResult: UTMProcessResult?
-  private let crashAfterProgramStarts: Bool
-  private let failTerminate: Bool
-  private let fileVisible: Bool
-  private(set) var startCount = 0
-  private(set) var stopCount = 0
-  private(set) var terminateCount = 0
-  private(set) var pushedPath: String?
-  private(set) var verifiedPath: String?
-  struct ProgramLaunch: Sendable {
-    let executable: String
-    let arguments: [String]
-    let environment: [String: String]
-  }
-  private(set) var programLaunch: ProgramLaunch?
-  private var programStarted = false
-  private var programTerminated = false
-
-  init(
-    architecture: String = "x86_64", backend: String = "qemu", status: UTMVMStatus = .started,
-    programResult: UTMProcessResult? = .init(exitCode: 0, signal: 0),
-    probeResult: UTMProcessResult? = .init(exitCode: 0, signal: 0),
-    crashAfterProgramStarts: Bool = false, failTerminate: Bool = false,
-    fileVisible: Bool = true
-  ) {
-    self.architecture = architecture
-    self.backend = backend
-    currentStatus = status
-    self.programResult = programResult
-    self.probeResult = probeResult
-    self.crashAfterProgramStarts = crashAfterProgramStarts
-    self.failTerminate = failTerminate
-    self.fileVisible = fileVisible
-  }
-
-  func inspect(_ identifier: String) async throws -> UTMVMSnapshot {
-    if crashAfterProgramStarts && programStarted { currentStatus = .stopped }
-    return UTMVMSnapshot(
-      identifier: identifier, backend: backend, status: currentStatus, architecture: architecture)
-  }
-  func start(_ identifier: String) async throws {
-    startCount += 1
-    currentStatus = .started
-  }
-  func push(_ identifier: String, hostURL: URL, guestPath: String) async throws {
-    pushedPath = guestPath
-  }
-  func execute(
-    _ identifier: String, executable: String, arguments: [String], environment: [String: String]
-  ) async throws -> Int32 {
-    if executable == "cmd.exe" { return 10 }
-    if executable.hasSuffix("attrib.exe") {
-      verifiedPath = arguments.last
-      return 12
-    }
-    programStarted = true
-    programLaunch = .init(executable: executable, arguments: arguments, environment: environment)
-    return 11
-  }
-  func result(_ identifier: String, pid: Int32) async throws -> UTMProcessResult? {
-    if pid == 10 { return probeResult }
-    if pid == 12 { return .init(exitCode: fileVisible ? 0 : 2, signal: 0) }
-    if programTerminated { return .init(exitCode: 1, signal: 9) }
-    return programResult
-  }
-  func terminate(_ identifier: String, pid: Int32) async throws {
-    if failTerminate { throw UTMGuestError.automationFailed }
-    terminateCount += 1
-    programTerminated = true
-  }
-  func stop(_ identifier: String) async throws {
-    stopCount += 1
-    currentStatus = .stopped
   }
 }

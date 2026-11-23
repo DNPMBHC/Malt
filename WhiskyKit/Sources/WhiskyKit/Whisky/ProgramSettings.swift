@@ -71,6 +71,7 @@ public struct ProgramSettings: Codable {
     public var environment: [String: String] = [:]
     public var arguments: String = ""
     public var launchTarget: RuntimeTargetSelection?
+    public var preferredBackend: RuntimeBackendKind?
 
     static func decode(from settingsURL: URL) throws -> ProgramSettings {
         guard FileManager.default.fileExists(atPath: settingsURL.path(percentEncoded: false)) else {

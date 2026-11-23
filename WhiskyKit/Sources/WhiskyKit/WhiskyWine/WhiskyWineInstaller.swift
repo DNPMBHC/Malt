@@ -20,22 +20,99 @@ import Foundation
 import SemanticVersion
 
 public class WhiskyWineInstaller {
-    /// The Whisky application folder
-    public static let applicationFolder = FileManager.default.urls(
-        for: .applicationSupportDirectory, in: .userDomainMask
-        )[0].appending(path: Bundle.whiskyBundleIdentifier)
+    public static let customRuntimeLocationKey = "customRuntimeLocation"
+    public static let runtimeLocationEnvironmentKey = "WHISKY_RUNTIME_ROOT"
 
-    /// The folder of all the libfrary files
-    public static let libraryFolder = applicationFolder.appending(path: "Libraries")
+    /// Default system-disk application folder.
+    public static var defaultApplicationFolder: URL {
+        FileManager.default.urls(
+            for: .applicationSupportDirectory, in: .userDomainMask
+        )[0].appending(path: Bundle.whiskyBundleIdentifier)
+    }
+
+    /// Active Whisky application folder (honors env override, then custom user/external volume path).
+    public static var applicationFolder: URL {
+        resolveApplicationFolder()
+    }
+
+    public static func resolveApplicationFolder(
+        environment: [String: String] = ProcessInfo.processInfo.environment,
+        userDefaults: UserDefaults = .standard
+    ) -> URL {
+        if let envPath = environment[runtimeLocationEnvironmentKey]?
+            .trimmingCharacters(in: .whitespacesAndNewlines),
+           !envPath.isEmpty {
+            return URL(fileURLWithPath: envPath, isDirectory: true).standardizedFileURL
+        }
+        if let stored = userDefaults.string(forKey: customRuntimeLocationKey)?
+            .trimmingCharacters(in: .whitespacesAndNewlines),
+           !stored.isEmpty {
+            return URL(fileURLWithPath: stored, isDirectory: true).standardizedFileURL
+        }
+        return defaultApplicationFolder
+    }
+
+    public static func setCustomRuntimeLocation(_ url: URL?, userDefaults: UserDefaults = .standard) {
+        if let url {
+            userDefaults.set(url.standardizedFileURL.path(percentEncoded: false), forKey: customRuntimeLocationKey)
+        } else {
+            userDefaults.removeObject(forKey: customRuntimeLocationKey)
+        }
+    }
+
+    public static func isUsingCustomRuntimeLocation(userDefaults: UserDefaults = .standard) -> Bool {
+        guard let stored = userDefaults.string(forKey: customRuntimeLocationKey)?
+            .trimmingCharacters(in: .whitespacesAndNewlines) else { return false }
+        return !stored.isEmpty
+    }
+
+    /// Available bytes on the volume containing `url` (or nearest existing ancestor).
+    public static func availableCapacityBytes(for url: URL, fileManager: FileManager = .default) -> Int64? {
+        var current = url.standardizedFileURL
+        while !fileManager.fileExists(atPath: current.path(percentEncoded: false)) {
+            let parent = current.deletingLastPathComponent()
+            if parent == current { break }
+            current = parent
+        }
+        let values = try? current.resourceValues(forKeys: [.volumeAvailableCapacityForImportantUsageKey,
+                                                           .volumeAvailableCapacityKey])
+        if let important = values?.volumeAvailableCapacityForImportantUsage, important > 0 {
+            return important
+        }
+        return values?.volumeAvailableCapacity.map(Int64.init)
+    }
+
+    /// Lists mounted external/removable writable volumes sorted by free space descending.
+    public static func mountedExternalVolumes(fileManager: FileManager = .default) -> [(url: URL, freeBytes: Int64)] {
+        let keys: [URLResourceKey] = [
+            .volumeIsInternalKey, .volumeIsReadOnlyKey,
+            .volumeAvailableCapacityForImportantUsageKey, .volumeAvailableCapacityKey
+        ]
+        guard let urls = fileManager.mountedVolumeURLs(
+            includingResourceValuesForKeys: keys,
+            options: [.skipHiddenVolumes]
+        ) else { return [] }
+        return urls.compactMap { url in
+            guard let values = try? url.resourceValues(forKeys: Set(keys)),
+                  values.volumeIsInternal == false,
+                  values.volumeIsReadOnly != true else { return nil }
+            let free = values.volumeAvailableCapacityForImportantUsage
+                ?? values.volumeAvailableCapacity.map(Int64.init) ?? 0
+            return (url, free)
+        }.sorted { $0.freeBytes > $1.freeBytes }
+    }
+
+    /// The folder of all the library files
+    public static var libraryFolder: URL { applicationFolder.appending(path: "Libraries") }
 
     /// URL to the installed `wine` `bin` directory
-    public static let binFolder: URL = libraryFolder.appending(path: "Wine").appending(path: "bin")
+    public static var binFolder: URL { libraryFolder.appending(path: "Wine").appending(path: "bin") }
 
     /// URL to the installed `DXVK` directory
-    public static let dxvkFolder: URL = libraryFolder.appending(path: "DXVK")
+    public static var dxvkFolder: URL { libraryFolder.appending(path: "DXVK") }
 
     /// URL to the installed `DXMT` directory
-    public static let dxmtFolder: URL = libraryFolder.appending(path: "DXMT")
+    public static var dxmtFolder: URL { libraryFolder.appending(path: "DXMT") }
 
     /// Returns the DXMT `wine` directory (containing `x86_64-windows` and `x86_64-unix`) when installed.
     public static func dxmtWineFolder(
@@ -103,12 +180,10 @@ public class WhiskyWineInstaller {
 
     public static func install(from: URL) {
         do {
-            if !FileManager.default.fileExists(atPath: applicationFolder.path) {
+            if !FileManager.default.fileExists(atPath: applicationFolder.path(percentEncoded: false)) {
                 try FileManager.default.createDirectory(at: applicationFolder, withIntermediateDirectories: true)
-            } else {
-                // Recreate it
-                try FileManager.default.removeItem(at: applicationFolder)
-                try FileManager.default.createDirectory(at: applicationFolder, withIntermediateDirectories: true)
+            } else if FileManager.default.fileExists(atPath: libraryFolder.path(percentEncoded: false)) {
+                try FileManager.default.removeItem(at: libraryFolder)
             }
 
             try Tar.untar(tarBall: from, toURL: applicationFolder)

@@ -30,6 +30,7 @@ import ArgumentParser
 struct Whisky: AsyncParsableCommand {
     static let configuration = CommandConfiguration(
         abstract: "A CLI interface for Whisky.",
+        discussion: RuntimeIntegrityReport.defaultBoundaryDisclosure,
         subcommands: [List.self,
                       Create.self,
                       Add.self,
@@ -38,6 +39,7 @@ struct Whisky: AsyncParsableCommand {
                       Run.self,
                       LaunchShortcut.self,
                       StoragePreflight.self,
+                      IntegrityReport.self,
                       Shellenv.self])
 }
 
@@ -165,18 +167,19 @@ extension Whisky {
 
         @Flag(help: ArgumentHelp(RuntimeCLI.localized(
             "runtime.cli.bottlePath", fallback: "Interpret the bottle argument as a path instead of a name."
-        )))
-        var bottlePath = false
+        ))) var bottlePath = false
 
         @Flag(help: ArgumentHelp(RuntimeCLI.localized(
             "runtime.cli.ignoreSavedArguments", fallback: "Use only the arguments given on the command line."
-        )))
-        var ignoreSavedArguments = false
+        ))) var ignoreSavedArguments = false
 
         @Option(help: ArgumentHelp(RuntimeCLI.localized(
             "runtime.cli.profile", fallback: "Use auto, ordinary, or a compatibility profile identifier."
-        )))
-        var profile: String?
+        ))) var profile: String?
+
+        @Option(help: ArgumentHelp(RuntimeCLI.localized(
+            "runtime.cli.backend", fallback: "Use auto, wine, windowsGuest, or remotePhysics."
+        ))) var backend: String?
 
         @Argument(help: ArgumentHelp(RuntimeCLI.localized("runtime.cli.bottle", fallback: "The bottle name or path.")))
         var bottle: String
@@ -195,7 +198,9 @@ extension Whisky {
             do {
                 let selectedBottle = try RuntimeCLI.findBottle(bottle, byPath: bottlePath)
                 let arguments = args.isEmpty && !ignoreSavedArguments ? nil : args
-                try await RuntimeCLI.launch(path: path, bottle: selectedBottle, arguments: arguments, profile: profile)
+                try await RuntimeCLI.launch(
+                    path: path, bottle: selectedBottle, arguments: arguments, profile: profile, backend: backend
+                )
             } catch {
                 writeStandardError(RuntimeCLI.message(for: error))
                 throw RuntimeCLI.exitCode(for: error)
@@ -289,20 +294,24 @@ enum RuntimeCLI {
         Program.identity(for: url).pathComponents
     }
 
-    static func launch(path: String, bottle: Bottle, arguments: [String]?, profile: String?) async throws {
+    static func launch(
+        path: String, bottle: Bottle, arguments: [String]?, profile: String?, backend: String? = nil
+    ) async throws {
         let url = URL(fileURLWithPath: path).standardizedFileURL
         let program = Program(url: url, bottle: bottle)
-        let selection: RuntimeTargetSelection?
-        switch profile {
-        case nil: selection = nil
-        case "auto": selection = .automatic
-        case "ordinary": selection = .ordinary
-        case .some(let profileID): selection = .profile(profileID)
+        let selection: RuntimeTargetSelection? = switch profile {
+        case nil: nil
+        case "auto": .automatic
+        case "ordinary": .ordinary
+        case .some(let profileID): .profile(profileID)
         }
+        let resolvedBackend = try RuntimeCLI.parseBackend(backend)
 
         let previous = signal(SIGINT, SIG_IGN)
         let source = DispatchSource.makeSignalSource(signal: SIGINT)
-        let launchTask = Task { try await program.launchWithRuntime(arguments: arguments, selection: selection) }
+        let launchTask = Task {
+            try await program.launchWithRuntime(arguments: arguments, selection: selection, backend: resolvedBackend)
+        }
         source.setEventHandler { launchTask.cancel() }
         source.resume()
         defer {

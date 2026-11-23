@@ -6,7 +6,7 @@ func makeWindowsGuestTransport() -> any UTMGuestTransport {
   UTMAppleScriptTransport()
 }
 
-private struct UTMAppleScriptTransport: UTMGuestTransport {
+struct UTMAppleScriptTransport: UTMGuestTransport {
   func inspect(_ identifier: String) async throws -> UTMVMSnapshot {
     let fields = try await run(Self.inspectScript, args: [identifier]).split(
       separator: "\n", omittingEmptySubsequences: false
@@ -55,65 +55,103 @@ private struct UTMAppleScriptTransport: UTMGuestTransport {
     let deadline = ContinuousClock.now + .seconds(15)
     while ContinuousClock.now < deadline {
       if let result = try await result(identifier, pid: killPID) {
-        if result.signal == 0, result.exitCode == 0 { return }
         if try await self.result(identifier, pid: pid) != nil { return }
-        throw UTMGuestError.automationFailed
+        if result.signal != 0 || result.exitCode != 0 { throw UTMGuestError.automationFailed }
+        // taskkill success alone does not prove the selected QGA control process was reaped.
       }
       try await Task.sleep(for: .milliseconds(100))
     }
     throw UTMGuestError.automationFailed
   }
+  private static func parseCapturedResult(
+    _ raw: String, expectedRequestID: String?
+  ) throws -> Data? {
+    let fields = raw.split(separator: "\n", maxSplits: 4, omittingEmptySubsequences: false)
+      .map(String.init)
+    guard let state = fields.first else { throw UTMGuestError.automationFailed }
+    guard state == "1" else { return nil }
+    guard fields.count >= 3 else { throw UTMGuestError.automationFailed }
+    let exit = try UTMGuestResultParser.windowsStatusCode(fields[1])
+    let signal = try UTMGuestResultParser.windowsStatusCode(fields[2])
+    let base64Text = fields.count > 3 ? fields[3] : ""
+    let decoded =
+      base64Text.isEmpty
+      ? nil : Data(base64Encoded: base64Text, options: .ignoreUnknownCharacters)
+    let data = decoded ?? Data((fields.count > 4 ? fields[4] : "").utf8)
+    if let expectedRequestID, !capturedResponseMatches(data, requestID: expectedRequestID) {
+      // A reused QGA PID can still have an earlier completion cached. Request UUIDs
+      // keep that record from becoming output or lifecycle facts for this operation.
+      return nil
+    }
+    guard signal == 0, exit == 0 else { throw UTMGuestError.invalidResult }
+    return data
+  }
+
   func collectOutput(
     _ identifier: String, executable: String, arguments: [String],
-    until deadline: ContinuousClock.Instant, pollInterval: Duration
+    until deadline: ContinuousClock.Instant, pollInterval: Duration,
+    expectedRequestID: String? = nil
   ) async throws -> Data {
     let args = [identifier, executable, String(arguments.count)] + arguments
-    guard let pid = Int32(try await run(Self.executeCapturingScript, args: args)), pid > 0 else {
+    guard let pid = Int32(try await run(Self.executeCapturingScript, args: args, until: deadline)),
+      pid > 0
+    else {
       throw UTMGuestError.automationFailed
     }
-    while ContinuousClock.now < deadline {
-      try Task.checkCancellation()
-      guard try await inspect(identifier).status == .started else {
-        throw UTMGuestError.vmStopped
-      }
-      let raw = try await run(Self.capturedResultScript, args: [identifier, String(pid)])
-      let fields = raw.split(separator: "\n", maxSplits: 4, omittingEmptySubsequences: false)
-        .map(String.init)
-      guard fields.count == 5 else { throw UTMGuestError.automationFailed }
-      if fields[0] == "1" {
-        let exit = try UTMGuestResultParser.windowsStatusCode(fields[1])
-        let signal = try UTMGuestResultParser.windowsStatusCode(fields[2])
-        guard signal == 0, exit == 0 else { throw UTMGuestError.invalidResult }
-        let decoded = Data(base64Encoded: fields[3], options: .ignoreUnknownCharacters)
-        if !fields[3].isEmpty, let decoded { return decoded }
-        return Data(fields[4].utf8)
-      }
-      try await Task.sleep(for: pollInterval)
-    }
-    throw RuntimeLaunchError.issue(.guestTimeout)
-  }
-  private func run(_ script: String, args: [String]) async throws -> String {
     do {
-      return try await Task.detached(priority: .utility) {
-        let process = Process()
-        process.executableURL = URL(fileURLWithPath: "/usr/bin/osascript")
-        process.arguments = ["-e", script, "--"] + args
-        let pipe = Pipe()
-        process.standardOutput = pipe
-        process.standardError = pipe
-        try process.run()
-        let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        process.waitUntilExit()
-        guard process.terminationReason == .exit, process.terminationStatus == 0,
-          let text = String(data: data, encoding: .utf8)
-        else {
-          throw UTMGuestError.automationFailed
+      while ContinuousClock.now < deadline {
+        try Task.checkCancellation()
+        guard try await inspect(identifier).status == .started else {
+          throw UTMGuestError.vmStopped
         }
-        return text.trimmingCharacters(in: .whitespacesAndNewlines)
-      }.value
-    } catch is CancellationError { throw CancellationError() } catch let error as UTMGuestError {
+        let raw = try await run(
+          Self.capturedResultScript, args: [identifier, String(pid)], until: deadline)
+        if let data = try Self.parseCapturedResult(raw, expectedRequestID: expectedRequestID) {
+          return data
+        }
+        try await Task.sleep(for: pollInterval)
+      }
+      throw RuntimeLaunchError.issue(.guestTimeout)
+    } catch {
+      if expectedRequestID == nil {
+        let cleanup = Task {
+          try await UTMGuestOperationDeadline.$value.withValue(.now + .seconds(10)) {
+            try await terminate(identifier, pid: pid)
+          }
+        }
+        try? await cleanup.value
+      }
+      // Interactive helper commands are bounded natively. Their target cleanup uses the
+      // request UUID and authenticated Job, never a potentially reused capture PID.
       throw error
-    } catch { throw UTMGuestError.automationFailed }
+    }
+  }
+  static func capturedResponseMatches(_ data: Data, requestID: String) -> Bool {
+    guard let object = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+      let actualID = object["requestID"] as? String
+    else { return false }
+    return actualID.caseInsensitiveCompare(requestID) == .orderedSame
+  }
+
+  private func run(
+    _ script: String, args: [String], until requestedDeadline: ContinuousClock.Instant? = nil
+  ) async throws -> String {
+    let localDeadline = requestedDeadline ?? (.now + .seconds(10))
+    let deadline = min(localDeadline, UTMGuestOperationDeadline.value ?? localDeadline)
+    do {
+      let result = try await UTMHostProcessRunner.run(
+        executable: URL(fileURLWithPath: "/usr/bin/osascript"),
+        arguments: ["-e", script, "--"] + args, until: deadline,
+        maximumOutputBytes: 3 * 1024 * 1024)
+      guard result.terminationReason == .exit, result.terminationStatus == 0,
+        let text = String(data: result.standardOutput, encoding: .utf8)
+      else { throw UTMGuestError.automationFailed }
+      return text.trimmingCharacters(in: .whitespacesAndNewlines)
+    } catch is CancellationError { throw CancellationError() } catch UTMHostProcessError.timedOut {
+      throw RuntimeLaunchError.issue(.guestTimeout)
+    } catch let error as UTMGuestError { throw error } catch {
+      throw UTMGuestError.automationFailed
+    }
   }
 
   private static let inspectScript = #"""
@@ -231,11 +269,21 @@ extension UTMGuestTransport {
       try await push(identifier, hostURL: hostURL, guestPath: guestPath)
     } catch {
       guard let parent = Self.windowsParentDirectory(of: guestPath) else { throw error }
+      // The script is fixed. The path is UTF-8 data, never PowerShell source.
+      let script = """
+        try { $p = [Text.Encoding]::UTF8.GetString(\
+        [Convert]::FromBase64String($env:DEMO_DIRECTORY_BASE64)); \
+        [IO.Directory]::CreateDirectory($p) | Out-Null; exit 0 } catch { exit 1 }
+        """
+      let encodedScript = Data(
+        script.utf16.flatMap {
+          [UInt8(truncatingIfNeeded: $0), UInt8(truncatingIfNeeded: $0 >> 8)]
+        }
+      ).base64EncodedString()
       let mkdirPID = try await execute(
-        identifier, executable: "cmd.exe",
-        arguments: ["/d", "/c", "if", "not", "exist", parent, "mkdir", parent],
-        environment: [:]
-      )
+        identifier, executable: #"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"#,
+        arguments: ["-NoProfile", "-NonInteractive", "-EncodedCommand", encodedScript],
+        environment: ["DEMO_DIRECTORY_BASE64": Data(parent.utf8).base64EncodedString()])
       while ContinuousClock.now < deadline {
         try Task.checkCancellation()
         guard try await inspect(identifier).status == .started else {
@@ -287,4 +335,9 @@ extension UTMGuestTransport {
     }
     return parent
   }
+}
+
+// Task-local deadlines reach every in-flight AppleScript process in an operation.
+enum UTMGuestOperationDeadline {
+  @TaskLocal static var value: ContinuousClock.Instant?
 }

@@ -55,9 +55,19 @@ struct ProgramView: View {
                     get: { program.runtimeSelection },
                     set: { program.settings.launchTarget = $0 == .automatic ? nil : $0 }
                 ))
+                Picker("runtime.backend", selection: Binding<RuntimeBackendKind?>(
+                    get: { program.runtimeBackend },
+                    set: { program.settings.preferredBackend = $0 }
+                )) {
+                    Text("runtime.target.automatic").tag(RuntimeBackendKind?.none)
+                    ForEach(RuntimeBackendKind.allCases, id: \.self) { kind in
+                        Text(localized(kind.localizationKey)).tag(Optional(kind))
+                    }
+                }
             }
             if let runtimePlan {
                 Section("runtime.section") {
+                    KernelAntiCheatComplianceBanner(plan: runtimePlan)
                     RuntimeStatusRows(plan: runtimePlan)
                     if runtimePlan.preferredBackend == .wine {
                         let route = runtimePlan.wineGraphicsRoute(for: program.bottle.settings)
@@ -67,6 +77,7 @@ struct ProgramView: View {
                         LabeledContent("config.graphicsBackend.selected", value: selectedLabel)
                         LabeledContent("config.graphicsBackend.fallback",
                                        value: localized(route.usedFallback ? "runtime.on" : "runtime.off"))
+                        GraphicsFallbackWarningBanner(route: route)
                         Text(route.reason).font(.footnote).foregroundStyle(.secondary)
                     }
                     let host = runtimePlan.host
@@ -159,6 +170,8 @@ struct ProgramView: View {
             refreshRuntimePlan()
         }
         .onChange(of: program.runtimeSelection) { refreshRuntimePlan() }
+        .onChange(of: program.runtimeBackend) { refreshRuntimePlan() }
+        .onChange(of: program.bottle.settings.remotePhysicsConfiguration) { refreshRuntimePlan() }
     }
 
     private func createShortcut() {
@@ -187,7 +200,15 @@ struct ProgramView: View {
     }
 
     private func refreshRuntimePlan() {
-        runtimePlan = RuntimeCoordinator().plan(for: program.url, selection: program.runtimeSelection)
+        let coordinator = program.runtimeCoordinator()
+        let url = program.url
+        let selection = program.runtimeSelection
+        let backend = program.runtimeBackend
+        runtimePlan = coordinator.plan(for: url, selection: selection, backend: backend)
+        guard backend == .remotePhysics else { return }
+        Task {
+            runtimePlan = await coordinator.resolvePlan(for: url, selection: selection, backend: backend)
+        }
     }
 
     private func localized(_ key: String) -> String {

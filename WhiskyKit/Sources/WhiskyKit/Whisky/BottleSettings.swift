@@ -50,6 +50,7 @@ public struct BottleInfo: Codable, Equatable {
     var blocklist: [URL] = []
     var runtimeStorageDirectory: URL?
     var runtimeStorageGuestConfiguration: RuntimeGuestConfiguration?
+    var remotePhysicsConfiguration: RemotePhysicsConfiguration?
 
     public init() {}
 
@@ -61,6 +62,9 @@ public struct BottleInfo: Codable, Equatable {
         self.runtimeStorageDirectory = try container.decodeIfPresent(URL.self, forKey: .runtimeStorageDirectory)
         self.runtimeStorageGuestConfiguration = try container.decodeIfPresent(
             RuntimeGuestConfiguration.self, forKey: .runtimeStorageGuestConfiguration
+        )
+        self.remotePhysicsConfiguration = try container.decodeIfPresent(
+            RemotePhysicsConfiguration.self, forKey: .remotePhysicsConfiguration
         )
     }
 }
@@ -143,6 +147,8 @@ public struct BottleDXVKConfig: Codable, Equatable {
     var graphicsBackendMode: WineGraphicsBackendMode = .auto
     var directXAPIRequirement: HostDirectXAPIRequirement = .unknown
     var graphicsRoutingPreference: HostGraphicsRoutingPreference = .performanceFirst
+    var dxmtMetalFXPreset: HostDXMTMetalFXPreset = .off
+    var dxvkPreferKosmicKrisp: Bool = true
 
     public init() {}
 
@@ -164,6 +170,12 @@ public struct BottleDXVKConfig: Codable, Equatable {
         self.graphicsRoutingPreference = try container.decodeIfPresent(
             HostGraphicsRoutingPreference.self, forKey: .graphicsRoutingPreference
         ) ?? .performanceFirst
+        self.dxmtMetalFXPreset = try container.decodeIfPresent(
+            HostDXMTMetalFXPreset.self, forKey: .dxmtMetalFXPreset
+        ) ?? .off
+        self.dxvkPreferKosmicKrisp = try container.decodeIfPresent(
+            Bool.self, forKey: .dxvkPreferKosmicKrisp
+        ) ?? true
     }
 }
 
@@ -238,6 +250,11 @@ public struct BottleSettings: Codable, Equatable {
         set { info.runtimeStorageGuestConfiguration = newValue }
     }
 
+    public var remotePhysicsConfiguration: RemotePhysicsConfiguration? {
+        get { info.remotePhysicsConfiguration }
+        set { info.remotePhysicsConfiguration = newValue }
+    }
+
     /// The blocked applicaitons on this bottle
     public var blocklist: [URL] {
         get { return info.blocklist }
@@ -302,6 +319,16 @@ public struct BottleSettings: Codable, Equatable {
     public var dxvkHud: DXVKHUD {
         get {  return dxvkConfig.dxvkHud }
         set { dxvkConfig.dxvkHud = newValue }
+    }
+
+    public var dxmtMetalFXPreset: HostDXMTMetalFXPreset {
+        get { return dxvkConfig.dxmtMetalFXPreset }
+        set { dxvkConfig.dxmtMetalFXPreset = newValue }
+    }
+
+    public var dxvkPreferKosmicKrisp: Bool {
+        get { return dxvkConfig.dxvkPreferKosmicKrisp }
+        set { dxvkConfig.dxvkPreferKosmicKrisp = newValue }
     }
 
     @discardableResult

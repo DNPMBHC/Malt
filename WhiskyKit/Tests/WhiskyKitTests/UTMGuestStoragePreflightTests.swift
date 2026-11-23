@@ -136,19 +136,18 @@ final class UTMGuestStoragePreflightTests: XCTestCase, @unchecked Sendable {
     guard let vmID = env["WHISKY_REAL_UTM_VM_ID"],
       let sharedPath = env["WHISKY_REAL_UTM_SHARED_DIR"]
     else {
-      XCTAssertEqual(UTMWindowsGuestProvider(configuration: nil).availability, .unconfigured)
-      return
+      throw XCTSkip("Real Guest VM and shared directory configuration is required.")
     }
     let sharedURL = URL(fileURLWithPath: sharedPath, isDirectory: true)
-    let exeURL = sharedURL.appendingPathComponent("real_guest_check.exe")
-    try Data([0x4d, 0x5a, 0x90, 0x00]).write(to: exeURL)
-    defer { try? FileManager.default.removeItem(at: exeURL) }
+    let exeURL = sharedURL.appendingPathComponent("whisky_a2_test.exe")
+    XCTAssertTrue(FileManager.default.isReadableFile(atPath: exeURL.path))
 
     let mapping = RuntimeGuestConfiguration.FileMapping(
       hostDirectory: sharedURL, guestDirectory: #"C:\whisky-guest-share"#)
     let mismatchConfig = RuntimeGuestConfiguration(
-      identifier: vmID, architecture: "x86_64", fileMappings: [mapping], startupTimeoutSeconds: 4)
-    let mismatchProvider = UTMWindowsGuestProvider(configuration: mismatchConfig)
+      identifier: vmID, architecture: "x86_64", fileMappings: [mapping], startupTimeoutSeconds: 30)
+    let mismatchProvider = UTMWindowsGuestProvider(
+      configuration: mismatchConfig, executionMode: .background)
     XCTAssertEqual(mismatchProvider.availability, .ready)
     let preflight = mismatchProvider.preflightStorage(
       targetDirectory: sharedURL, installerURL: exeURL)
@@ -166,20 +165,48 @@ final class UTMGuestStoragePreflightTests: XCTestCase, @unchecked Sendable {
     }
 
     let armConfig = RuntimeGuestConfiguration(
-      identifier: vmID, architecture: "aarch64", fileMappings: [mapping], startupTimeoutSeconds: 5)
-    let realProvider = UTMWindowsGuestProvider(configuration: armConfig)
-    do {
-      let session = try await realProvider.start(
-        RuntimeLaunchRequest(
-          executableURL: exeURL, bottle: nil, backend: .windowsGuest, guestConfiguration: armConfig)
-      )
-      _ = try await session.wait()
-    } catch RuntimeLaunchError.issue(let issue) {
-      XCTAssertEqual(issue, .guestTimeout)
-    }
-    try await realProvider.stop()
-    let snapshotAfter = try await realProvider.transport.inspect(vmID)
-    XCTAssertEqual(snapshotAfter.status, .stopped)
+      identifier: vmID, architecture: "aarch64", fileMappings: [mapping], startupTimeoutSeconds: 60)
+    let realProvider = UTMWindowsGuestProvider(configuration: armConfig, executionMode: .background)
+    try await verifyRealGuestExecutionAndCancellation(
+      provider: realProvider, exeURL: exeURL, config: armConfig)
+    let assessment = try await WindowsGuestProbeService(provider: realProvider).assess()
+    XCTAssertEqual(assessment.report.schemaVersion, 2)
+    XCTAssertEqual(assessment.report.guest.kernelArchitecture, .arm64)
+    XCTAssertEqual(assessment.report.guest.windowsBuild, 26100)
+    XCTAssertFalse(assessment.protectedGameLaunchAuthorized)
+  }
+
+  private func verifyRealGuestExecutionAndCancellation(
+    provider: UTMWindowsGuestProvider, exeURL: URL, config: RuntimeGuestConfiguration
+  ) async throws {
+    let zeroSession = try await provider.start(
+      RuntimeLaunchRequest(
+        executableURL: exeURL, bottle: nil,
+        arguments: ["--exit-code", "0", "--echo", "two words", "literal \"quote\""],
+        environment: ["WHISKY_E2E_ENV": "verified_from_host"],
+        backend: .windowsGuest, guestConfiguration: config))
+    let verified = await provider.latestStoragePreflight()
+    XCTAssertEqual(verified?.guestFileVisibility, .visible)
+    XCTAssertEqual(verified?.storage.guestMapping, .verified)
+    XCTAssertEqual(verified?.canExecuteGuestFile, true)
+    let zeroResult = try await zeroSession.wait()
+    XCTAssertEqual(zeroResult, RuntimeExitResult(status: 0, reason: .exit))
+
+    let nonZeroSession = try await provider.start(
+      RuntimeLaunchRequest(
+        executableURL: exeURL, bottle: nil, arguments: ["--exit-code", "42"],
+        backend: .windowsGuest, guestConfiguration: config))
+    let nonZeroResult = try await nonZeroSession.wait()
+    XCTAssertEqual(nonZeroResult, RuntimeExitResult(status: 42, reason: .exit))
+
+    let sleepSession = try await provider.start(
+      RuntimeLaunchRequest(
+        executableURL: exeURL, bottle: nil, arguments: ["--sleep-ms", "30000"],
+        backend: .windowsGuest, guestConfiguration: config))
+    await sleepSession.cancel()
+    await sleepSession.cancel()
+    let cancelResult = try await sleepSession.wait()
+    XCTAssertNotEqual(cancelResult.status, 0)
   }
 }
 
@@ -210,9 +237,11 @@ private actor ParentCreatingFakeTransport: UTMGuestTransport {
   func execute(
     _ identifier: String, executable: String, arguments: [String], environment: [String: String]
   ) async throws -> Int32 {
-    if executable == "cmd.exe", arguments.contains("mkdir") {
-      createdDirectory = arguments.last
-      return 20
+    if executable.hasSuffix("powershell.exe"), let encoded = environment["DEMO_DIRECTORY_BASE64"] {
+      if let data = Data(base64Encoded: encoded) {
+        createdDirectory = String(data: data, encoding: .utf8)
+        return 20
+      }
     }
     if executable == "cmd.exe" { return 10 }
     if executable.hasSuffix("attrib.exe") { return 12 }

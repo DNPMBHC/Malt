@@ -1,0 +1,250 @@
+{
+  "schema_version": "1.0.0",
+  "source_dataset_id": "module-f-task-06",
+  "source_snapshot_id": "2026-11-22#e554fb57615c2cd3",
+  "source_evidence_sha256": "e554fb57615c2cd3407bbff001306e2a0f169d98a3113e28624b5fa563a44857",
+  "as_of": "2026-11-22",
+  "timezone": "Asia/Shanghai",
+  "source_count": 42,
+  "claim_count": 45,
+  "woa_and_vm_orthogonal_split": {
+    "P-WOA-PRISM": {
+      "claim_id": "P-WOA-PRISM",
+      "scope_id": "platform-arm",
+      "topic": "prism_user_mode_isa_vs_kernel_driver_split",
+      "status": "confirmed",
+      "updated_on": "2026-11-22",
+      "summary_zh": "Windows 11 24H2+ 的 Prism 转译器在用户态支持 x86/x64 及 AVX、AVX2、BMI、FMA、F16C 等指令集扩展（64位默认暴露，32位 x86 可通过“Show newer emulated CPU features”开启）；但内核态无任何转译，内核驱动必须编译为原生 Arm64。",
+      "limitation_zh": "Prism 解决了用户态 SSE4.2/AVX/AVX2 游戏与登录器的指令集门槛，但不能替反作弊厂商生成原生 Arm64 内核驱动，也不消除反作弊对 Hypervisor/VM 的策略拦截。",
+      "value": {
+        "emulator": "Prism (Windows 11 24H2+)",
+        "emulated_user_mode_isas": [
+          "x86 (via WOW64)",
+          "x64 (via Arm64X system binaries)"
+        ],
+        "emulated_cpu_extensions_win11_24h2_plus": [
+          "AVX",
+          "AVX2",
+          "BMI",
+          "FMA",
+          "F16C",
+          "SSE4.2"
+        ],
+        "x86_32bit_newer_cpu_features_default": "hidden_by_default_can_enable_via_Show_newer_emulated_CPU_features",
+        "kernel_mode_driver_emulation": false,
+        "native_arm64_kernel_driver_required": true
+      }
+    },
+    "A-WOA-SPLIT": {
+      "claim_id": "A-WOA-SPLIT",
+      "scope_id": "a-riot-win",
+      "topic": "bare_metal_woa_vs_virtualized_arm64_guest_split",
+      "status": "confirmed",
+      "updated_on": "2026-11-22",
+      "summary_zh": "国际服 VALORANT（Vanguard / On-Demand）在 ARM64 下必须拆分为两个正交维度：（1）裸金属 WoA 驱动可用性：Prism 已满足用户态 SSE4.2/AVX，但公开规格页仍标 ARM 不支持，On-Demand 模式是否已分发原生 ARM64 驱动二进制待实测核查；（2）虚拟化 ARM64 Guest 策略：VAN 9100 明确拒绝 VM，且 On-Demand 要求 IOMMU/VBS/HVCI 硬件信任根，与“有无 ARM64 驱动”属不同层级的独立阻塞。",
+      "limitation_zh": "随着 Windows on ARM 生态（如 Snapdragon X 及 NVIDIA N1/N1X 平台）演进，即使未来裸金属 WoA 获得原生 ARM64 Vanguard 驱动，虚拟化 ARM64 Guest 仍受 VAN 9100 与 vTPM/IOMMU/VBS 策略独立限制，二者严禁混为一谈。",
+      "value": {
+        "bare_metal_woa_axis": {
+          "user_mode_isa_requirement": "SSE4.2 or AVX (satisfied by Windows 11 24H2+ Prism user-mode emulation)",
+          "documented_arm_policy": "not_supported (S-A01)",
+          "on_demand_precheck_mode": "Windows 11 25H2+ optional on-demand driver startup (S-R02)",
+          "native_arm64_driver_binary_distributed": "unknown_pending_guest_sampling"
+        },
+        "virtualized_arm64_guest_axis": {
+          "documented_vm_rejection": "VAN 9100 disallows running in VM or unsupported virtualization environment (S-R03)",
+          "hardware_trust_root_requirements": [
+            "Secure Boot",
+            "TPM 2.0",
+            "IOMMU",
+            "VBS",
+            "HVCI"
+          ],
+          "apple_silicon_arm64_vm_gap": "Hypervisor presence exposed; nested virtualization, VBS, and guest IOMMU unavailable on standard Apple Silicon ARM64 VM paths (S-P02)"
+        },
+        "diagnostic_separation_required": true
+      }
+    },
+    "A-CN-WOA-SPLIT": {
+      "claim_id": "A-CN-WOA-SPLIT",
+      "scope_id": "a-cn-win",
+      "topic": "bare_metal_woa_vs_virtualized_arm64_guest_split",
+      "status": "confirmed",
+      "updated_on": "2026-11-22",
+      "summary_zh": "国服《无畏契约》（腾讯 ACE）在 ARM64 下同样必须拆分为两个正交维度：（1）裸金属 WoA 驱动可用性：国服下载页要求 64 位 Win10/11 与 SSE4.2/AVX（未明文禁止 ARM），外层 32 位 x86 安装器可经 WOW64/Prism 运行，实际释放的 ACE 内核驱动是否含原生 ARM64 二进制待动态采样；（2）虚拟化 ARM64 Guest 策略：腾讯安全中心明确检测并排斥 Hyper-V、VBS 及虚拟机监控程序占用 CPU 虚拟化功能。",
+      "limitation_zh": "在阶段 B2 真实 Windows 11 ARM64 Guest 动态采样中，必须根据实际产物与错误码严格区分“ACE 未释放 ARM64 驱动 / 驱动 PE Machine 为 AMD64 无法加载”与“ACE 检测到 Hypervisor/虚拟化占用而弹窗拒绝”。",
+      "value": {
+        "bare_metal_woa_axis": {
+          "documented_os_and_isa": "Win10、11 (64位); CPU requires SSE4.2 or AVX Support (S-A06)",
+          "explicit_arm_prohibition_in_cn_specs": false,
+          "outer_installer_binary": "PE32 32-bit x86 NSIS launcher (VALORANT_CN_installer_v2.17.4.510.exe, runs under WOW64; 32-bit AVX exposure controllable via S-P05)",
+          "ace_kernel_driver_arm64_binary_distributed": "unknown_pending_authorized_dynamic_sampling"
+        },
+        "virtualized_arm64_guest_axis": {
+          "tencent_gamesafe_virtualization_rule": "Requires physical BIOS VT-x/VT-d or SVM/IOMMU enabled and rejects conflicting Hyper-V, VBS (hypervisorlaunchtype off), HVCI, Windows Sandbox, WSL2, or third-party hypervisors (S-T01)",
+          "vm_guest_conflict_mechanism": "Inside a virtualized ARM64 Guest, hypervisor presence is active and physical VT-x/SVM hardware virtualization is owned by the host hypervisor"
+        },
+        "diagnostic_separation_required": true
+      }
+    }
+  },
+  "records": [
+    {
+      "record_id": "VM-A-RIOT",
+      "scope_id": "a-riot-win",
+      "target_id": "target-a",
+      "product_name": "VALORANT",
+      "platform": "windows_pc",
+      "distribution": "riot_documented_release",
+      "region": "Riot documentation scope; China not inferred",
+      "environment": "virtual_machine",
+      "guest_cpu_architecture": "unknown",
+      "updated_on": "2026-11-22",
+      "five_dimension_states": {
+        "publisher_permission": "unknown",
+        "publisher_support": "not_supported",
+        "driver_load": "unknown",
+        "game_start": "unknown",
+        "protected_session": "unknown"
+      },
+      "basis_claim_ids": [
+        "A-VM"
+      ]
+    },
+    {
+      "record_id": "VM-A-CN",
+      "scope_id": "a-cn-win",
+      "target_id": "target-a",
+      "product_name": "VALORANT",
+      "platform": "windows_pc",
+      "distribution": "china_release",
+      "region": "China mainland; independent verification needed",
+      "environment": "virtual_machine",
+      "guest_cpu_architecture": "unknown",
+      "updated_on": "2026-11-22",
+      "five_dimension_states": {
+        "publisher_permission": "unknown",
+        "publisher_support": "unknown",
+        "driver_load": "unknown",
+        "game_start": "unknown",
+        "protected_session": "unknown"
+      },
+      "basis_claim_ids": []
+    },
+    {
+      "record_id": "VM-B-RIOT",
+      "scope_id": "b-riot-win",
+      "target_id": "target-b",
+      "product_name": "League of Legends",
+      "platform": "windows_pc",
+      "distribution": "riot_documented_release",
+      "region": "Riot documentation scope; China not inferred",
+      "environment": "virtual_machine",
+      "guest_cpu_architecture": "unknown",
+      "updated_on": "2026-11-22",
+      "five_dimension_states": {
+        "publisher_permission": "unknown",
+        "publisher_support": "not_supported",
+        "driver_load": "unknown",
+        "game_start": "unknown",
+        "protected_session": "unknown"
+      },
+      "basis_claim_ids": [
+        "B-VM"
+      ]
+    },
+    {
+      "record_id": "VM-B-CN",
+      "scope_id": "b-cn-win",
+      "target_id": "target-b",
+      "product_name": "League of Legends",
+      "platform": "windows_pc",
+      "distribution": "china_release",
+      "region": "China mainland; independent verification needed",
+      "environment": "virtual_machine",
+      "guest_cpu_architecture": "unknown",
+      "updated_on": "2026-11-22",
+      "five_dimension_states": {
+        "publisher_permission": "unknown",
+        "publisher_support": "unknown",
+        "driver_load": "unknown",
+        "game_start": "unknown",
+        "protected_session": "unknown"
+      },
+      "basis_claim_ids": []
+    },
+    {
+      "record_id": "VM-C-STEAM",
+      "scope_id": "c-steam-win",
+      "target_id": "target-c",
+      "product_name": "THE FINALS",
+      "platform": "windows_pc",
+      "distribution": "international_steam",
+      "region": "International Steam / Embark support; China not inferred",
+      "environment": "virtual_machine",
+      "guest_cpu_architecture": "unknown",
+      "updated_on": "2026-11-22",
+      "five_dimension_states": {
+        "publisher_permission": "prohibited",
+        "publisher_support": "unknown",
+        "driver_load": "unknown",
+        "game_start": "unknown",
+        "protected_session": "unknown"
+      },
+      "basis_claim_ids": [
+        "C-VM"
+      ]
+    },
+    {
+      "record_id": "VM-C-JP",
+      "scope_id": "c-jp-win",
+      "target_id": "target-c",
+      "product_name": "THE FINALS",
+      "platform": "windows_pc",
+      "distribution": "japan_official_support",
+      "region": "Japan official FAQ only",
+      "environment": "virtual_machine",
+      "guest_cpu_architecture": "unknown",
+      "updated_on": "2026-11-22",
+      "five_dimension_states": {
+        "publisher_permission": "unknown",
+        "publisher_support": "not_supported",
+        "driver_load": "unknown",
+        "game_start": "unknown",
+        "protected_session": "unknown"
+      },
+      "basis_claim_ids": [
+        "C-JP"
+      ]
+    },
+    {
+      "record_id": "VM-C-CN",
+      "scope_id": "c-cn-win",
+      "target_id": "target-c",
+      "product_name": "THE FINALS",
+      "platform": "windows_pc",
+      "distribution": "china_release_unverified",
+      "region": "China mainland; current operation and requirements unverified",
+      "environment": "virtual_machine",
+      "guest_cpu_architecture": "unknown",
+      "updated_on": "2026-11-22",
+      "five_dimension_states": {
+        "publisher_permission": "unknown",
+        "publisher_support": "unknown",
+        "driver_load": "unknown",
+        "game_start": "unknown",
+        "protected_session": "unknown"
+      },
+      "basis_claim_ids": []
+    }
+  ],
+  "consumption_rules": [
+    "Unknown is not false, not unsupported, and not permission.",
+    "Publisher support and publisher permission are separate.",
+    "Never promote driver_load, game_start, or protected_session from policy, version, VM readiness, or another state.",
+    "A public patch identifier is not an installed build or driver version.",
+    "Do not apply one distribution, client platform, or historical source to a different scope.",
+    "On-demand security requirements are mode-specific.",
+    "Cross-boundary interface remains unknown until an applicable official interface and authorization are evidenced.",
+    "Software-documented VM rejection is separate from publisher license/terms permission and from observed runtime results."
+  ]
+}

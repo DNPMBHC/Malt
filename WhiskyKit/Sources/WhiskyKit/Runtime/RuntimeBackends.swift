@@ -37,11 +37,13 @@ public struct RuntimeLaunchRequest: Sendable {
     public let selection: RuntimeTargetSelection
     public let backend: RuntimeBackendKind?
     public let guestConfiguration: RuntimeGuestConfiguration?
+    public let guestExecutionMode: WindowsGuestExecutionMode
 
     public init(executableURL: URL, bottle: Bottle?, arguments: [String] = [], environment: [String: String] = [:],
                 profile: GameCompatibilityProfile? = nil, host: RuntimeHostSnapshot = .current(),
                 selection: RuntimeTargetSelection = .automatic, backend: RuntimeBackendKind? = nil,
-                guestConfiguration: RuntimeGuestConfiguration? = nil) {
+                guestConfiguration: RuntimeGuestConfiguration? = nil,
+                guestExecutionMode: WindowsGuestExecutionMode = .background) {
         self.executableURL = executableURL
         self.bottle = bottle
         self.arguments = arguments
@@ -51,26 +53,29 @@ public struct RuntimeLaunchRequest: Sendable {
         self.selection = selection
         self.backend = backend
         self.guestConfiguration = guestConfiguration
+        self.guestExecutionMode = guestExecutionMode
     }
 
     func resolving(profile: GameCompatibilityProfile?, guestConfiguration: RuntimeGuestConfiguration?) -> Self {
         Self(executableURL: executableURL, bottle: bottle, arguments: arguments, environment: environment,
              profile: profile, host: host, selection: selection, backend: backend,
-             guestConfiguration: guestConfiguration)
+             guestConfiguration: guestConfiguration, guestExecutionMode: guestExecutionMode)
     }
 }
 
 public enum RuntimeExitReason: String, Sendable, Equatable {
-    case exit, signal, unreported
+    case exit, signal, cancelled, unreported
 }
 
 public struct RuntimeExitResult: Sendable, Equatable {
     public let status: Int32
     public let reason: RuntimeExitReason
+    public let rootExitCode: Int32?
 
-    public init(status: Int32, reason: RuntimeExitReason = .exit) {
+    public init(status: Int32, reason: RuntimeExitReason = .exit, rootExitCode: Int32? = nil) {
         self.status = status
         self.reason = reason
+        self.rootExitCode = rootExitCode
     }
 }
 
@@ -193,7 +198,8 @@ public struct WineRuntimeBackend: RuntimeBackend {
             host: request.host,
             selection: request.selection,
             backend: request.backend,
-            guestConfiguration: request.guestConfiguration
+            guestConfiguration: request.guestConfiguration,
+            guestExecutionMode: request.guestExecutionMode
         )
     }
 
@@ -279,6 +285,8 @@ public enum RuntimeIssue: String, Equatable, Sendable {
     case selectTarget, conflictingTarget, unknownTarget
     case wineUnavailable, requiresWindowsKernel, wineNotSupported
     case guestUnconfigured, guestUnavailable, guestNotSupported, guestTimeout, guestFileUnavailable
+    case remotePhysicsUnconfigured, remotePhysicsUnverified, remotePhysicsClientMissing
+    case remotePhysicsHostUnreachable, remotePhysicsTimeout
     case localFileRequired, invalidFileType, fileMissing, invalidArgumentsOrEnvironment, bottleUnavailable
     case unfinishedEscape, unmatchedQuote, terminalUnavailable
 
@@ -294,6 +302,11 @@ public enum RuntimeIssue: String, Equatable, Sendable {
         .guestNotSupported: "Vendor support has not been confirmed for this Windows guest configuration.",
         .guestTimeout: "The Windows guest did not become ready in time.",
         .guestFileUnavailable: "The Windows guest cannot access the selected file. Check its file mapping.",
+        .remotePhysicsUnconfigured: "No remote physical Windows host is configured.",
+        .remotePhysicsUnverified: "Remote physical Windows host availability has not been verified yet.",
+        .remotePhysicsClientMissing: "The streaming client for the remote physical Windows host is missing.",
+        .remotePhysicsHostUnreachable: "The remote physical Windows host is unreachable.",
+        .remotePhysicsTimeout: "Timed out while connecting to the remote physical Windows host.",
         .localFileRequired: "Choose a local Windows program.",
         .invalidFileType: "This Windows file type cannot be launched.",
         .fileMissing: "The selected program file could not be found.",
@@ -309,7 +322,7 @@ public enum RuntimeIssue: String, Equatable, Sendable {
     }
 }
 
-public enum RuntimeLaunchError: LocalizedError, Sendable {
+public enum RuntimeLaunchError: LocalizedError, Equatable, Sendable {
     case issue(RuntimeIssue)
     case blocked(String, [RuntimeIssue])
     case processExit(Int32)

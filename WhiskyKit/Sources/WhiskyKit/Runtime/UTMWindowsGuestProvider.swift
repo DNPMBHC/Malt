@@ -13,11 +13,21 @@ public struct UTMWindowsGuestProvider: WindowsGuestProvider {
   let transport: any UTMGuestTransport
   let installed: Bool
   let pollInterval: Duration
+  public let executionMode: WindowsGuestExecutionMode
+  let interactiveConfiguration: WindowsGuestInteractiveConfiguration?
+  private let minimumFreeBytes: Int64
   let activeGuest = UTMActiveGuest()
-  private let storageStatus = UTMGuestStorageStatus()
+  let storageStatus = UTMGuestStorageStatus()
 
-  public init(configuration: RuntimeGuestConfiguration? = nil) {
+  public init(
+    configuration: RuntimeGuestConfiguration? = nil,
+    executionMode: WindowsGuestExecutionMode = .interactiveDesktop,
+    interactiveConfiguration: WindowsGuestInteractiveConfiguration? = nil
+  ) {
     self.configuration = configuration
+    minimumFreeBytes = 4 * 1024 * 1024 * 1024
+    self.executionMode = executionMode
+    self.interactiveConfiguration = interactiveConfiguration
     transport = makeWindowsGuestTransport()
     installed = NSWorkspace.shared.urlForApplication(withBundleIdentifier: "com.utmapp.UTM") != nil
     pollInterval = .milliseconds(250)
@@ -25,9 +35,14 @@ public struct UTMWindowsGuestProvider: WindowsGuestProvider {
 
   init(
     configuration: RuntimeGuestConfiguration?, transport: any UTMGuestTransport,
-    installed: Bool = true, pollInterval: Duration = .milliseconds(1)
+    installed: Bool = true, pollInterval: Duration = .milliseconds(1),
+    executionMode: WindowsGuestExecutionMode = .background, minimumFreeBytes: Int64 = 0,
+    interactiveConfiguration: WindowsGuestInteractiveConfiguration? = nil
   ) {
     self.configuration = configuration
+    self.minimumFreeBytes = minimumFreeBytes
+    self.executionMode = executionMode
+    self.interactiveConfiguration = interactiveConfiguration
     self.transport = transport
     self.installed = installed
     self.pollInterval = pollInterval
@@ -41,6 +56,11 @@ public struct UTMWindowsGuestProvider: WindowsGuestProvider {
     do { try GuestConfigurationValidator.validate(configuration) } catch {
       return .unavailable("The Windows guest configuration is invalid.")
     }
+    if executionMode == .interactiveDesktop {
+      do { _ = try resolveInteractiveConfiguration(configuration: configuration) } catch {
+        return .unavailable("The interactive desktop helper is not configured or readable.")
+      }
+    }
     return .ready
   }
 
@@ -49,7 +69,7 @@ public struct UTMWindowsGuestProvider: WindowsGuestProvider {
     installerBytes: Int64? = nil,
     configuration requestedConfiguration: RuntimeGuestConfiguration? = nil
   ) -> UTMGuestStoragePreflight {
-    UTMGuestStoragePreflightChecker().check(
+    UTMGuestStoragePreflightChecker(minimumFreeBytes: minimumFreeBytes).check(
       targetDirectory: targetDirectory,
       installerURL: installerURL,
       installerBytes: installerBytes,
@@ -62,6 +82,21 @@ public struct UTMWindowsGuestProvider: WindowsGuestProvider {
   }
 
   public func start(_ request: RuntimeLaunchRequest) async throws -> RuntimeSession {
+    if executionMode == .interactiveDesktop {
+      return try await startInteractive(request).asRuntimeSession()
+    }
+    if let config = request.guestConfiguration ?? configuration {
+      try GuestConfigurationValidator.validate(config)
+    }
+    let timeout = (request.guestConfiguration ?? configuration)?.startupTimeoutSeconds ?? 60
+    let localDeadline = ContinuousClock.now + .seconds(timeout)
+    let deadline = min(localDeadline, UTMGuestOperationDeadline.value ?? localDeadline)
+    return try await UTMGuestOperationDeadline.$value.withValue(deadline) {
+      try await startBackground(request)
+    }
+  }
+
+  private func startBackground(_ request: RuntimeLaunchRequest) async throws -> RuntimeSession {
     guard let config = request.guestConfiguration ?? configuration else {
       throw RuntimeLaunchError.issue(.guestUnconfigured)
     }
@@ -80,7 +115,8 @@ public struct UTMWindowsGuestProvider: WindowsGuestProvider {
     let initial = try await transport.inspect(config.identifier)
     guard initial.identifier == config.identifier else { throw UTMGuestError.vmUnavailable }
     try validate(initial, config: config)
-    let deadline = ContinuousClock.now + .seconds(config.startupTimeoutSeconds)
+    let deadline =
+      UTMGuestOperationDeadline.value ?? (.now + .seconds(config.startupTimeoutSeconds))
     let launchedVM = try await prepareVM(initial, config: config, until: deadline)
 
     do {
@@ -95,14 +131,15 @@ public struct UTMWindowsGuestProvider: WindowsGuestProvider {
       return RuntimeSession(wait: { try await session.wait() }, cancel: { await session.cancel() })
     } catch {
       if launchedVM {
-        try? await transport.stop(config.identifier)
-        await activeGuest.clear(ifMatching: config.identifier)
+        do { try await rollbackGuest(config.identifier) } catch {
+          throw UTMGuestError.rollbackFailed
+        }
       }
       throw error
     }
   }
 
-  private func pushAndVerify(
+  func pushAndVerify(
     _ program: MappedGuestFile, configuration: RuntimeGuestConfiguration,
     storage: UTMGuestStoragePreflight, until deadline: ContinuousClock.Instant
   ) async throws {
@@ -111,7 +148,13 @@ public struct UTMWindowsGuestProvider: WindowsGuestProvider {
       try await transport.pushCreatingParentDirectory(
         identifier, hostURL: program.hostURL, guestPath: program.guestPath,
         until: deadline, pollInterval: pollInterval)
-    } catch { throw UTMGuestError.fileMappingUnavailable }
+    } catch is CancellationError {
+      throw CancellationError()
+    } catch let error as RuntimeLaunchError where error == .issue(.guestTimeout) {
+      throw error
+    } catch {
+      throw UTMGuestError.fileMappingUnavailable
+    }
     guard try await verifyGuestFile(identifier, guestPath: program.guestPath, until: deadline)
     else {
       await storageStatus.update(storage.recordingGuestFileVisibility(.notVisible))
@@ -120,6 +163,31 @@ public struct UTMWindowsGuestProvider: WindowsGuestProvider {
     let verified = storage.recordingGuestFileVisibility(.visible)
     guard verified.canExecuteGuestFile else { throw UTMGuestError.guestFileNotVisible }
     await storageStatus.update(verified)
+  }
+
+  /// Cleanup owns a fresh cancellation scope, so an expired launch can still roll back its VM.
+  func rollbackGuest(_ identifier: String) async throws {
+    let transport = transport
+    let activeGuest = activeGuest
+    let cleanup = Task {
+      let deadline = ContinuousClock.now + .seconds(10)
+      try await UTMGuestOperationDeadline.$value.withValue(deadline) {
+        if try await transport.inspect(identifier).status == .stopped {
+          await activeGuest.clear(ifMatching: identifier)
+          return
+        }
+        try await transport.stop(identifier)
+        while ContinuousClock.now < deadline {
+          if try await transport.inspect(identifier).status == .stopped {
+            await activeGuest.clear(ifMatching: identifier)
+            return
+          }
+          try await Task.sleep(for: .milliseconds(100))
+        }
+        throw UTMGuestError.stopTimedOut
+      }
+    }
+    try await cleanup.value
   }
 
   public func launch(_ request: RuntimeLaunchRequest) async throws {
@@ -150,32 +218,34 @@ public struct UTMWindowsGuestProvider: WindowsGuestProvider {
     }
     throw UTMGuestError.stopTimedOut
   }
+}
 
+extension UTMWindowsGuestProvider {
   func prepareVM(
     _ initial: UTMVMSnapshot, config: RuntimeGuestConfiguration,
     until deadline: ContinuousClock.Instant
   ) async throws -> Bool {
     let launchedVM = initial.status == .stopped || initial.status == .paused
-    switch initial.status {
-    case .started, .starting, .resuming:
-      await activeGuest.set(config.identifier)
-    case .stopped, .paused:
-      try await transport.start(config.identifier)
-      await activeGuest.set(config.identifier)
-    case .pausing, .stopping, .unavailable:
-      throw UTMGuestError.vmUnavailable
-    }
-    if initial.status != .started {
-      do {
-        try await waitForVM(config, until: deadline)
-      } catch {
-        if launchedVM { try? await transport.stop(config.identifier) }
-        if launchedVM { await activeGuest.clear(ifMatching: config.identifier) }
-        throw error
+    do {
+      switch initial.status {
+      case .started, .starting, .resuming:
+        await activeGuest.set(config.identifier)
+      case .stopped, .paused:
+        try await transport.start(config.identifier)
+        await activeGuest.set(config.identifier)
+      case .pausing, .stopping, .unavailable:
+        throw UTMGuestError.vmUnavailable
       }
+      if initial.status != .started { try await waitForVM(config, until: deadline) }
+      return launchedVM
+    } catch {
+      if launchedVM {
+        do { try await rollbackGuest(config.identifier) } catch {
+          throw UTMGuestError.rollbackFailed
+        }
+      }
+      throw error
     }
-
-    return launchedVM
   }
 
   func validate(_ snapshot: UTMVMSnapshot, config: RuntimeGuestConfiguration) throws {
@@ -237,7 +307,7 @@ public struct UTMWindowsGuestProvider: WindowsGuestProvider {
     throw RuntimeLaunchError.issue(.guestTimeout)
   }
 
-  private func verifyGuestFile(
+  func verifyGuestFile(
     _ identifier: String, guestPath: String, until deadline: ContinuousClock.Instant
   ) async throws -> Bool {
     let pid = try await transport.execute(
@@ -255,114 +325,5 @@ public struct UTMWindowsGuestProvider: WindowsGuestProvider {
       try await Task.sleep(for: pollInterval)
     }
     throw RuntimeLaunchError.issue(.guestTimeout)
-  }
-}
-public enum UTMGuestError: LocalizedError, Sendable, Equatable {
-  case utmNotInstalled, invalidConfiguration, architectureMismatch, unsupportedBackend
-  case vmUnavailable, vmStopped, agentUnavailable, fileMappingUnavailable, unsupportedExecutable
-  case invalidArguments, automationFailed, stopTimedOut, invalidResult, cancelFailed
-  case storageNotWritable, insufficientHostSpace, storagePreflightUnavailable, guestFileNotVisible
-
-  public var errorDescription: String? {
-    switch self {
-    case .utmNotInstalled: "UTM is not installed or cannot be automated."
-    case .invalidConfiguration: "The Windows guest configuration is invalid."
-    case .architectureMismatch:
-      "The configured guest architecture does not match the UTM virtual machine."
-    case .unsupportedBackend: "The configured virtual machine is not using UTM's QEMU backend."
-    case .vmUnavailable: "The configured UTM virtual machine is unavailable."
-    case .vmStopped: "The Windows guest stopped before completing the operation."
-    case .agentUnavailable: "The UTM guest agent is not ready in the Windows guest."
-    case .fileMappingUnavailable:
-      "The selected program is outside the configured guest file mappings or cannot be read."
-    case .unsupportedExecutable: "The UTM guest backend currently runs .exe and .com programs."
-    case .invalidArguments: "A guest argument or environment entry is invalid."
-    case .automationFailed: "UTM automation failed. Check macOS Automation permissions."
-    case .stopTimedOut: "The Windows guest did not stop within the requested time."
-    case .invalidResult: "UTM returned an invalid guest process result."
-    case .cancelFailed: "The Windows guest could not terminate the selected program."
-    case .storageNotWritable: "The selected guest storage target is not writable or creatable."
-    case .insufficientHostSpace:
-      "The selected guest storage target does not have enough free space."
-    case .storagePreflightUnavailable: "The selected guest storage target could not be preflighted."
-    case .guestFileNotVisible: "The pushed program is not visible in the Windows guest."
-    }
-  }
-}
-enum UTMVMStatus: String, Sendable {
-  case stopped, starting, started, pausing, paused, resuming, stopping, unavailable
-}
-struct UTMVMSnapshot: Sendable {
-  let identifier: String
-  let backend: String
-  let status: UTMVMStatus
-  let architecture: String
-}
-struct UTMProcessResult: Sendable {
-  let exitCode: Int32
-  let signal: Int32
-}
-
-protocol UTMGuestTransport: Sendable {
-  func inspect(_ identifier: String) async throws -> UTMVMSnapshot
-  func start(_ identifier: String) async throws
-  func push(_ identifier: String, hostURL: URL, guestPath: String) async throws
-  func execute(
-    _ identifier: String, executable: String, arguments: [String], environment: [String: String]
-  ) async throws -> Int32
-  func result(_ identifier: String, pid: Int32) async throws -> UTMProcessResult?
-  func terminate(_ identifier: String, pid: Int32) async throws
-  func stop(_ identifier: String) async throws
-  func collectOutput(
-    _ identifier: String, executable: String, arguments: [String],
-    until deadline: ContinuousClock.Instant, pollInterval: Duration
-  ) async throws -> Data
-}
-enum GuestConfigurationValidator {
-  static func validate(_ config: RuntimeGuestConfiguration) throws {
-    guard config.isValidForGuestProvider else { throw UTMGuestError.invalidConfiguration }
-  }
-}
-struct MappedGuestFile {
-  let hostURL: URL
-  let storageDirectory: URL
-  let guestPath: String
-}
-private enum GuestFileMapping {
-  static func resolve(
-    _ url: URL, configuration: RuntimeGuestConfiguration
-  ) throws -> MappedGuestFile {
-    guard ["exe", "com"].contains(url.pathExtension.lowercased()) else {
-      throw UTMGuestError.unsupportedExecutable
-    }
-    let file = url.standardizedFileURL.resolvingSymlinksInPath()
-    var isDirectory: ObjCBool = false
-    guard file.isFileURL,
-      FileManager.default.fileExists(atPath: file.path, isDirectory: &isDirectory),
-      !isDirectory.boolValue, FileManager.default.isReadableFile(atPath: file.path)
-    else {
-      throw UTMGuestError.fileMappingUnavailable
-    }
-    guard let match = configuration.guestPath(for: file, allowsMappingRoot: false) else {
-      throw UTMGuestError.fileMappingUnavailable
-    }
-    return MappedGuestFile(hostURL: file, storageDirectory: match.directory, guestPath: match.path)
-  }
-
-  static func validate(arguments: [String], environment: [String: String]) throws {
-    guard arguments.allSatisfy({ !$0.contains("\0") }),
-      environment.allSatisfy({ key, value in
-        !key.isEmpty && !key.contains("=") && !key.contains("\0") && !value.contains("\0")
-      })
-    else { throw UTMGuestError.invalidArguments }
-  }
-}
-enum UTMGuestResultParser {
-  static func windowsStatusCode(_ value: String) throws -> Int32 {
-    if let signed = Int32(value) { return signed }
-    guard let raw = UInt64(value), raw <= UInt64(UInt32.max) else {
-      throw UTMGuestError.invalidResult
-    }
-    return Int32(bitPattern: UInt32(raw))
   }
 }

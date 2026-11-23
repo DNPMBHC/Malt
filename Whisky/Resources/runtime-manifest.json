@@ -1,0 +1,129 @@
+{
+  "schemaVersion": "1.0.0",
+  "owner": "@DNPMBHC",
+  "capturedAt": "2026-11-23T08:40:00+08:00",
+  "baselineSource": "handoff/phase-2/evidence/window-c/wine-dxmt-three-engine/manifest.json",
+  "components": [
+    {
+      "id": "wine",
+      "displayName": "Wine Core",
+      "version": "wine-10000073",
+      "status": "locked",
+      "supportedAPIs": "Win32 / WoW64 Core Runtime",
+      "artifacts": [
+        {
+          "name": "wine",
+          "relativePath": "Wine/bin/wine64",
+          "alternateRelativePaths": [
+            "Wine/bin/wine"
+          ],
+          "sha256": "78010eb35647a71f2e6995f295215b99e919dee2450f28990e8a13b32b21b607"
+        }
+      ]
+    },
+    {
+      "id": "dxmt",
+      "displayName": "DXMT",
+      "version": "v0.80 (dxmt-wine-builtin-7641370)",
+      "status": "locked",
+      "supportedAPIs": "D3D10 / D3D11 -> Metal",
+      "artifacts": [
+        {
+          "name": "d3d11.dll",
+          "relativePath": "DXMT/wine/x86_64-windows/d3d11.dll",
+          "alternateRelativePaths": [
+            "DXMT/x64/d3d11.dll"
+          ],
+          "sha256": "1cbe930e2370c4382ac4b435faf8cc563943324cfade33380cc6de0b8d94d801"
+        },
+        {
+          "name": "dxgi.dll",
+          "relativePath": "DXMT/wine/x86_64-windows/dxgi.dll",
+          "alternateRelativePaths": [
+            "DXMT/x64/dxgi.dll"
+          ],
+          "sha256": "3831a078756a054027413e0c9c901a28a0a57a8dd3f327d3e2fb41a8616d251c"
+        },
+        {
+          "name": "winemetal.dll",
+          "relativePath": "DXMT/wine/x86_64-windows/winemetal.dll",
+          "alternateRelativePaths": [],
+          "sha256": "39e5cfb3ac9b93976c9fc48e215c14b90f626e1b0bcf677b6eef1fb6e3fabf26"
+        },
+        {
+          "name": "winemetal.so",
+          "relativePath": "DXMT/wine/x86_64-unix/winemetal.so",
+          "alternateRelativePaths": [],
+          "sha256": "76843f2ab3226a9c7dc107c9d4d9ace9593ec7210edf9e74d5a6cf146384c52a"
+        }
+      ]
+    },
+    {
+      "id": "d3dMetal",
+      "displayName": "D3DMetal",
+      "version": "Apple GPTK 4.0-1",
+      "status": "locked",
+      "supportedAPIs": "D3D11 / D3D12 -> Metal",
+      "artifacts": [
+        {
+          "name": "libd3dshared.dylib",
+          "relativePath": "Wine/lib/external/libd3dshared.dylib",
+          "alternateRelativePaths": [
+            "GPTK/external/libd3dshared.dylib"
+          ],
+          "sha256": "66005073540dc91001ea11685160a71e302bfd79c2ee7b9fe5be560ae17621e2"
+        },
+        {
+          "name": "d3d11.dll",
+          "relativePath": "GPTK/wine/x86_64-windows/d3d11.dll",
+          "alternateRelativePaths": [
+            "Wine/lib/wine/x86_64-windows/d3d11.dll"
+          ],
+          "sha256": "05fa6f700fb5ee5561dc3a46d98f0aed845d4fa8ab274bff1dc604b0b3f6edd1"
+        },
+        {
+          "name": "dxgi.dll",
+          "relativePath": "GPTK/wine/x86_64-windows/dxgi.dll",
+          "alternateRelativePaths": [
+            "Wine/lib/wine/x86_64-windows/dxgi.dll"
+          ],
+          "sha256": "249711d3d786a9b0bb7c3558f36e472ab07ee21b8dbf118e34c975046832f9a2"
+        }
+      ]
+    },
+    {
+      "id": "dxvk",
+      "displayName": "DXVK + MoltenVK",
+      "version": "DXVK 1.10.3 + MoltenVK 1.2.1",
+      "status": "locked",
+      "supportedAPIs": "D3D9 / D3D10 / D3D11 -> Vulkan -> MoltenVK",
+      "artifacts": [
+        {
+          "name": "d3d11.dll",
+          "relativePath": "DXVK/x64/d3d11.dll",
+          "alternateRelativePaths": [
+            "DXVK/wine/x86_64-windows/d3d11.dll"
+          ],
+          "sha256": "7a0442591dfee7e3729d26a598d3b490f917fbe8ebf9da3bb75410e8d095d302"
+        },
+        {
+          "name": "libMoltenVK.dylib",
+          "relativePath": "DXVK/libMoltenVK.dylib",
+          "alternateRelativePaths": [
+            "Wine/lib/libMoltenVK.dylib",
+            "MoltenVK/libMoltenVK.dylib"
+          ],
+          "sha256": "952ef0be316e7a8694781ac8d68d4dccca403ef0710854c608414449e317de6e"
+        }
+      ]
+    },
+    {
+      "id": "kosmicKrisp",
+      "displayName": "KosmicKrisp (Mesa Vulkan -> Metal 4)",
+      "version": "pending-p4-a-proposal",
+      "status": "reserved",
+      "supportedAPIs": "Vulkan 1.4 -> Metal 4 (Reserved slot for Window 4A)",
+      "artifacts": []
+    }
+  ]
+}

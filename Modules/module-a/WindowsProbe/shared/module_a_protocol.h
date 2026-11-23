@@ -2,8 +2,16 @@
 #ifndef MODULE_A_PROTOCOL_H
 #define MODULE_A_PROTOCOL_H
 
+#if defined(_KERNEL_MODE)
+#include <ntdef.h>
+typedef UINT32 uint32_t;
+typedef UINT64 uint64_t;
+#define PROBE_FIELD_OFFSET(type, field) FIELD_OFFSET(type, field)
+#else
 #include <stddef.h>
 #include <stdint.h>
+#define PROBE_FIELD_OFFSET(type, field) offsetof(type, field)
+#endif
 
 #define MODULE_A_PROTOCOL_VERSION 2u
 #define MODULE_A_DEVICE_TYPE 0x8000u
@@ -79,30 +87,30 @@ typedef struct MODULE_A_NOTIFICATION_BIND_RESPONSE {
 #if defined(__cplusplus)
 static_assert(sizeof(MODULE_A_SELF_REQUEST) == 8, "request ABI changed");
 static_assert(sizeof(MODULE_A_SELF_RESPONSE) == 40, "response ABI changed");
-static_assert(offsetof(MODULE_A_SELF_RESPONSE, requestor_pid) == 16, "response ABI changed");
+static_assert(PROBE_FIELD_OFFSET(MODULE_A_SELF_RESPONSE, requestor_pid) == 16, "response ABI changed");
 static_assert(sizeof(MODULE_A_NOTIFICATION_RESPONSE) == 32, "notification ABI changed");
 static_assert(sizeof(MODULE_A_NOTIFICATION_BIND_REQUEST) == 16, "bind ABI changed");
-static_assert(offsetof(MODULE_A_NOTIFICATION_BIND_REQUEST, child_pid) == 8, "bind ABI changed");
+static_assert(PROBE_FIELD_OFFSET(MODULE_A_NOTIFICATION_BIND_REQUEST, child_pid) == 8, "bind ABI changed");
 static_assert(sizeof(MODULE_A_NOTIFICATION_BIND_RESPONSE) == 16, "bind response ABI changed");
-static_assert(offsetof(MODULE_A_NOTIFICATION_BIND_RESPONSE, bound_child_pid) == 8, "bind response ABI changed");
+static_assert(PROBE_FIELD_OFFSET(MODULE_A_NOTIFICATION_BIND_RESPONSE, bound_child_pid) == 8, "bind response ABI changed");
 #elif defined(_MSC_VER)
 typedef char module_a_request_size_check[(sizeof(MODULE_A_SELF_REQUEST) == 8) ? 1 : -1];
 typedef char module_a_response_size_check[(sizeof(MODULE_A_SELF_RESPONSE) == 40) ? 1 : -1];
-typedef char module_a_response_pid_offset_check[(offsetof(MODULE_A_SELF_RESPONSE, requestor_pid) == 16) ? 1 : -1];
+typedef char module_a_response_pid_offset_check[(PROBE_FIELD_OFFSET(MODULE_A_SELF_RESPONSE, requestor_pid) == 16) ? 1 : -1];
 typedef char module_a_notification_size_check[(sizeof(MODULE_A_NOTIFICATION_RESPONSE) == 32) ? 1 : -1];
 typedef char module_a_bind_size_check[(sizeof(MODULE_A_NOTIFICATION_BIND_REQUEST) == 16) ? 1 : -1];
-typedef char module_a_bind_pid_offset_check[(offsetof(MODULE_A_NOTIFICATION_BIND_REQUEST, child_pid) == 8) ? 1 : -1];
+typedef char module_a_bind_pid_offset_check[(PROBE_FIELD_OFFSET(MODULE_A_NOTIFICATION_BIND_REQUEST, child_pid) == 8) ? 1 : -1];
 typedef char module_a_bind_response_size_check[(sizeof(MODULE_A_NOTIFICATION_BIND_RESPONSE) == 16) ? 1 : -1];
-typedef char module_a_bind_response_pid_offset_check[(offsetof(MODULE_A_NOTIFICATION_BIND_RESPONSE, bound_child_pid) == 8) ? 1 : -1];
+typedef char module_a_bind_response_pid_offset_check[(PROBE_FIELD_OFFSET(MODULE_A_NOTIFICATION_BIND_RESPONSE, bound_child_pid) == 8) ? 1 : -1];
 #else
 _Static_assert(sizeof(MODULE_A_SELF_REQUEST) == 8, "request ABI changed");
 _Static_assert(sizeof(MODULE_A_SELF_RESPONSE) == 40, "response ABI changed");
-_Static_assert(offsetof(MODULE_A_SELF_RESPONSE, requestor_pid) == 16, "response ABI changed");
+_Static_assert(PROBE_FIELD_OFFSET(MODULE_A_SELF_RESPONSE, requestor_pid) == 16, "response ABI changed");
 _Static_assert(sizeof(MODULE_A_NOTIFICATION_RESPONSE) == 32, "notification ABI changed");
 _Static_assert(sizeof(MODULE_A_NOTIFICATION_BIND_REQUEST) == 16, "bind request size");
-_Static_assert(offsetof(MODULE_A_NOTIFICATION_BIND_REQUEST, child_pid) == 8, "bind request PID offset");
+_Static_assert(PROBE_FIELD_OFFSET(MODULE_A_NOTIFICATION_BIND_REQUEST, child_pid) == 8, "bind request PID offset");
 _Static_assert(sizeof(MODULE_A_NOTIFICATION_BIND_RESPONSE) == 16, "bind response size");
-_Static_assert(offsetof(MODULE_A_NOTIFICATION_BIND_RESPONSE, bound_child_pid) == 8, "bind response PID offset");
+_Static_assert(PROBE_FIELD_OFFSET(MODULE_A_NOTIFICATION_BIND_RESPONSE, bound_child_pid) == 8, "bind response PID offset");
 #endif
 
 #endif

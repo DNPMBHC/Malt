@@ -1,0 +1,297 @@
+{
+  "schema_version": 1,
+  "profile_id": "anticheat-minimal-win11-arm64",
+  "owner": "@DNPMBHC",
+  "target_os": {
+    "product": "Windows 11",
+    "display_version": "24H2",
+    "minimum_build": 26100,
+    "architecture": "ARM64"
+  },
+  "compliance": {
+    "forbid_virtualization_hiding": true,
+    "forbid_hardware_spoofing": true,
+    "forbid_bcd_or_ci_weakening": true,
+    "forbid_kernel_driver_tampering": true,
+    "preserve_official_signatures": true
+  },
+  "protected_whitelist": {
+    "services": [
+      "BFE",
+      "CoreMessagingRegistrar",
+      "CryptSvc",
+      "DcomLaunch",
+      "Dhcp",
+      "Dnscache",
+      "EventLog",
+      "KeyIso",
+      "LSM",
+      "mpssvc",
+      "Netman",
+      "NlaSvc",
+      "nsi",
+      "PlugPlay",
+      "Power",
+      "QEMU-GA",
+      "RpcEptMapper",
+      "RpcSs",
+      "SamSs",
+      "Schedule",
+      "SecurityHealthService",
+      "Sense",
+      "SystemEventsBroker",
+      "TBS",
+      "TrustedInstaller",
+      "UserManager",
+      "VaultSvc",
+      "VirtioFsSvc",
+      "WinDefend",
+      "Winmgmt",
+      "Audiosrv",
+      "AudioEndpointBuilder",
+      "wuauserv",
+      "vgc",
+      "vgk",
+      "ACE-BASE",
+      "ACE-GAME",
+      "AntiCheatExpert Service",
+      "AntiCheatExpert Protection",
+      "EasyAntiCheat",
+      "EasyAntiCheat_EOS",
+      "BEService"
+    ],
+    "prism_files": [
+      "System32\\xtajit.dll",
+      "System32\\xtajit64.dll",
+      "System32\\wow64.dll",
+      "System32\\wow64win.dll"
+    ],
+    "appx_prefixes": [
+      "Microsoft.VCLibs",
+      "Microsoft.UI.Xaml",
+      "Microsoft.NET",
+      "Microsoft.DirectX",
+      "Microsoft.Windows.ShellExperienceHost",
+      "Microsoft.Windows.StartMenuExperienceHost",
+      "Microsoft.Windows.SecHealthUI",
+      "Microsoft.AAD.BrokerPlugin",
+      "Microsoft.AccountsControl",
+      "Microsoft.LockApp",
+      "Microsoft.DesktopAppInstaller",
+      "Microsoft.Services.Store.Engagement",
+      "Microsoft.StorePurchaseApp",
+      "Microsoft.WindowsStore"
+    ],
+    "task_prefixes": [
+      "\\Microsoft\\Windows\\Windows Defender\\",
+      "\\Microsoft\\Windows\\TPM\\",
+      "\\Microsoft\\Windows\\Device Information\\",
+      "\\Microsoft\\Windows\\CertificateServicesClient\\",
+      "\\Microsoft\\Windows\\Servicing\\",
+      "\\Microsoft\\Windows\\TaskScheduler\\"
+    ],
+    "security_invariants": [
+      "secure_boot_enabled",
+      "tpm_present_and_enabled",
+      "code_integrity_no_test_signing",
+      "bcd_no_unsafe_switches",
+      "prism_binaries_present_and_signed",
+      "qga_service_running"
+    ]
+  },
+  "optimization_blacklist": {
+    "services": [
+      {
+        "name": "WSearch",
+        "target_start_type": "Disabled",
+        "stop_running": true,
+        "reason": "Disable background desktop search indexing I/O and RAM overhead"
+      },
+      {
+        "name": "SysMain",
+        "target_start_type": "Disabled",
+        "stop_running": true,
+        "reason": "Disable Superfetch background memory prefetching inside virtualized Guest"
+      },
+      {
+        "name": "Spooler",
+        "target_start_type": "Disabled",
+        "stop_running": true,
+        "reason": "Disable print spooler background service"
+      },
+      {
+        "name": "bthserv",
+        "target_start_type": "Disabled",
+        "stop_running": true,
+        "reason": "Disable Bluetooth support service unused in Guest"
+      },
+      {
+        "name": "lfsvc",
+        "target_start_type": "Disabled",
+        "stop_running": true,
+        "reason": "Disable geolocation service"
+      },
+      {
+        "name": "DiagTrack",
+        "target_start_type": "Disabled",
+        "stop_running": true,
+        "reason": "Disable Connected User Experiences and Telemetry background service"
+      },
+      {
+        "name": "dmwappushservice",
+        "target_start_type": "Disabled",
+        "stop_running": true,
+        "reason": "Disable WAP push telemetry routing service"
+      },
+      {
+        "name": "WbioSrvc",
+        "target_start_type": "Disabled",
+        "stop_running": true,
+        "reason": "Disable Windows Biometric Service unused in Guest"
+      },
+      {
+        "name": "MapsBroker",
+        "target_start_type": "Disabled",
+        "stop_running": true,
+        "reason": "Disable Downloaded Maps Manager background service"
+      },
+      {
+        "name": "WerSvc",
+        "target_start_type": "Disabled",
+        "stop_running": true,
+        "reason": "Disable Windows Error Reporting background upload service"
+      },
+      {
+        "name": "Fax",
+        "target_start_type": "Disabled",
+        "stop_running": true,
+        "reason": "Disable legacy Fax service"
+      },
+      {
+        "name": "RetailDemo",
+        "target_start_type": "Disabled",
+        "stop_running": true,
+        "reason": "Disable Retail Demo service"
+      },
+      {
+        "name": "XblAuthManager",
+        "target_start_type": "Disabled",
+        "stop_running": true,
+        "reason": "Disable optional Xbox Live Auth Manager background service"
+      },
+      {
+        "name": "XblGameSave",
+        "target_start_type": "Disabled",
+        "stop_running": true,
+        "reason": "Disable optional Xbox Live Game Save sync service"
+      },
+      {
+        "name": "XboxNetApiSvc",
+        "target_start_type": "Disabled",
+        "stop_running": true,
+        "reason": "Disable optional Xbox Live Networking background service"
+      }
+    ],
+    "scheduled_tasks": [
+      {
+        "task_path": "\\Microsoft\\Windows\\Application Experience\\",
+        "task_name": "Microsoft Compatibility Appraiser",
+        "reason": "Disable background telemetry compatibility scanner"
+      },
+      {
+        "task_path": "\\Microsoft\\Windows\\Application Experience\\",
+        "task_name": "ProgramDataUpdater",
+        "reason": "Disable telemetry program data updater"
+      },
+      {
+        "task_path": "\\Microsoft\\Windows\\Customer Experience Improvement Program\\",
+        "task_name": "Consolidator",
+        "reason": "Disable CEIP telemetry consolidator"
+      },
+      {
+        "task_path": "\\Microsoft\\Windows\\Customer Experience Improvement Program\\",
+        "task_name": "UsbCeip",
+        "reason": "Disable USB CEIP telemetry task"
+      },
+      {
+        "task_path": "\\Microsoft\\Windows\\Maps\\",
+        "task_name": "MapsUpdateTask",
+        "reason": "Disable offline maps periodic update task"
+      },
+      {
+        "task_path": "\\Microsoft\\Windows\\Maps\\",
+        "task_name": "MapsToastTask",
+        "reason": "Disable offline maps notification task"
+      },
+      {
+        "task_path": "\\Microsoft\\Windows\\Windows Error Reporting\\",
+        "task_name": "QueueReporting",
+        "reason": "Disable background error report queue task"
+      }
+    ],
+    "uwp_packages": [
+      "MicrosoftWindows.Client.WebExperience",
+      "Microsoft.Copilot",
+      "Microsoft.BingNews",
+      "Microsoft.BingWeather",
+      "Microsoft.BingSearch",
+      "Microsoft.MicrosoftSolitaireCollection",
+      "Clipchamp.Clipchamp",
+      "MSTeams",
+      "Microsoft.WindowsFeedbackHub",
+      "Microsoft.GetHelp",
+      "Microsoft.Getstarted",
+      "Microsoft.People",
+      "Microsoft.Todos",
+      "Microsoft.WindowsMaps",
+      "Microsoft.ZuneMusic",
+      "Microsoft.ZuneVideo",
+      "Microsoft.PowerAutomateDesktop",
+      "Microsoft.OutlookForWindows",
+      "Microsoft.YourPhone",
+      "Microsoft.XboxGamingOverlay",
+      "Microsoft.GamingApp",
+      "Microsoft.MicrosoftOfficeHub",
+      "Microsoft.MicrosoftStickyNotes",
+      "Microsoft.WindowsAlarms",
+      "Microsoft.WindowsSoundRecorder"
+    ],
+    "registry_tweaks": [
+      {
+        "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize",
+        "name": "EnableTransparency",
+        "kind": "DWord",
+        "value": 0,
+        "reason": "Disable desktop acrylic transparency composition overhead"
+      },
+      {
+        "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VisualEffects",
+        "name": "VisualFXSetting",
+        "kind": "DWord",
+        "value": 2,
+        "reason": "Adjust Windows visual effects for best performance"
+      },
+      {
+        "path": "HKCU:\\Control Panel\\Desktop\\WindowMetrics",
+        "name": "MinAnimate",
+        "kind": "String",
+        "value": "0",
+        "reason": "Disable window minimize/maximize animations"
+      },
+      {
+        "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications",
+        "name": "GlobalUserDisabled",
+        "kind": "DWord",
+        "value": 1,
+        "reason": "Disable background execution of non-essential UWP apps"
+      },
+      {
+        "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search",
+        "name": "BingSearchEnabled",
+        "kind": "DWord",
+        "value": 0,
+        "reason": "Disable Start menu web search telemetry queries"
+      }
+    ]
+  }
+}

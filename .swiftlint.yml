@@ -5,6 +5,8 @@ opt_in_rules:
 excluded:
   - .build
   - "**/.build"
+  # Standalone M2.5 experiment receiver frozen to its Phase 4B SHA-256 evidence digest.
+  - Modules/guest-gpu-lab/metal_host_async.swift
 
 file_header:
     severity: error
