@@ -1,0 +1,1644 @@
+Command line invocation:
+    <system-path> -project <workspace>/my-project/my-project.xcodeproj -scheme my-project -scmProvider system -disableAutomaticPackageResolution -onlyUsePackageVersionsFromResolvedFile -skipPackageUpdates -configuration Debug -destination platform=macOS,arch=arm64 CODE_SIGNING_ALLOWED=NO build
+
+Build settings from command line:
+    CODE_SIGNING_ALLOWED = NO
+
+Resolve Package Graph
+
+
+Resolved source packages:
+  Progress: <dependency-remote> @ 0.4.0
+  swift-argument-parser: <dependency-remote> @ 1.5.0
+  ModuleX: <workspace>/my-project/module-x
+  Sparkle: <dependency-remote> @ 2.x (8de8db0)
+  SwiftyTextTable: <dependency-remote> @ 0.9.0
+  SemanticVersion: <dependency-remote> @ 0.4.0
+
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (16 targets)
+    Target 'my-project' in project 'my-project'
+        ➜ Explicit dependency on target 'my-projectThumbnail' in project 'my-project'
+        ➜ Implicit dependency on target 'my-projectCmd' in project 'my-project' via file 'my-projectCmd' in build phase 'Copy Files'
+        ➜ Explicit dependency on target 'ModuleX-product' in project 'ModuleX'
+        ➜ Explicit dependency on target 'Sparkle-product' in project 'Sparkle'
+        ➜ Explicit dependency on target 'SemanticVersion-product' in project 'SemanticVersion'
+    Target 'Sparkle-product' in project 'Sparkle' (no dependencies)
+    Target 'my-projectCmd' in project 'my-project'
+        ➜ Explicit dependency on target 'ModuleX-product' in project 'ModuleX'
+        ➜ Explicit dependency on target 'Progress-product' in project 'Progress'
+        ➜ Explicit dependency on target 'SemanticVersion-product' in project 'SemanticVersion'
+        ➜ Explicit dependency on target 'SwiftyTextTable-product' in project 'SwiftyTextTable'
+        ➜ Explicit dependency on target 'ArgumentParser-product' in project 'swift-argument-parser'
+    Target 'ArgumentParser-product' in project 'swift-argument-parser'
+        ➜ Explicit dependency on target 'ArgumentParser' in project 'swift-argument-parser'
+        ➜ Explicit dependency on target 'ArgumentParserToolInfo' in project 'swift-argument-parser'
+    Target 'ArgumentParser' in project 'swift-argument-parser'
+        ➜ Explicit dependency on target 'ArgumentParserToolInfo' in project 'swift-argument-parser'
+    Target 'ArgumentParserToolInfo' in project 'swift-argument-parser' (no dependencies)
+    Target 'SwiftyTextTable-product' in project 'SwiftyTextTable'
+        ➜ Explicit dependency on target 'SwiftyTextTable' in project 'SwiftyTextTable'
+    Target 'SwiftyTextTable' in project 'SwiftyTextTable' (no dependencies)
+    Target 'Progress-product' in project 'Progress'
+        ➜ Explicit dependency on target 'Progress' in project 'Progress'
+    Target 'Progress' in project 'Progress' (no dependencies)
+    Target 'my-projectThumbnail' in project 'my-project'
+        ➜ Explicit dependency on target 'ModuleX-product' in project 'ModuleX'
+    Target 'ModuleX-product' in project 'ModuleX'
+        ➜ Explicit dependency on target 'ModuleX' in project 'ModuleX'
+        ➜ Explicit dependency on target 'SemanticVersion-product' in project 'SemanticVersion'
+    Target 'ModuleX' in project 'ModuleX'
+        ➜ Explicit dependency on target 'SemanticVersion-product' in project 'SemanticVersion'
+    Target 'SemanticVersion-product' in project 'SemanticVersion'
+        ➜ Explicit dependency on target 'SemanticVersion' in project 'SemanticVersion'
+        ➜ Explicit dependency on target 'SemanticVersion_SemanticVersion' in project 'SemanticVersion'
+    Target 'SemanticVersion' in project 'SemanticVersion'
+        ➜ Explicit dependency on target 'SemanticVersion_SemanticVersion' in project 'SemanticVersion'
+    Target 'SemanticVersion_SemanticVersion' in project 'SemanticVersion' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool <system-path> --version
+
+ExecuteExternalTool <system-path> --version --output-format xml1
+
+ExecuteExternalTool <system-path> -v -E -dM -isysroot <system-path> -x c -c /dev/null
+
+ExecuteExternalTool <system-path> compile --dry-run --output-directory <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build <workspace>/my-project/my-project/Localizable.xcstrings
+
+ExecuteExternalTool <system-path> -version_details
+
+ReadFileContents <system-path>
+
+Build description signature: dde31b9e266dcba7e50053651fb40b48
+Build description path: <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/XCBuildData/dde31b9e266dcba7e50053651fb40b48.xcbuilddata
+ClangStatCache <system-path> <system-path> <home>/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/macosx27.0-26A425-7231f6df4def33e022ae2eb8f782df1a.sdkstatcache
+    cd <workspace>/my-project/my-project.xcodeproj
+    <system-path> <system-path> -o <home>/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/macosx27.0-26A425-7231f6df4def33e022ae2eb8f782df1a.sdkstatcache
+
+ProcessInfoPlistFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/SemanticVersion_SemanticVersion.bundle/Contents/Info.plist <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/SemanticVersion.build/Debug/SemanticVersion_SemanticVersion-b.build/empty-SemanticVersion_SemanticVersion.plist (in target 'SemanticVersion_SemanticVersion' from project 'SemanticVersion')
+    cd <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/SourcePackages/checkouts/SemanticVersion
+    builtin-infoPlistUtility <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/SemanticVersion.build/Debug/SemanticVersion_SemanticVersion-b.build/empty-SemanticVersion_SemanticVersion.plist -producttype com.apple.product-type.bundle -expandbuildsettings -platform macosx -o <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/SemanticVersion_SemanticVersion.bundle/Contents/Info.plist
+
+WriteAuxiliaryFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.SwiftFileList (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/module-x
+    write-file <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.SwiftFileList
+
+WriteAuxiliaryFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.LinkFileList (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/module-x
+    write-file <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.LinkFileList
+
+WriteAuxiliaryFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.SwiftConstValuesFileList (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/module-x
+    write-file <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.SwiftConstValuesFileList
+
+WriteAuxiliaryFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX-OutputFileMap.json (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/module-x
+    write-file <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX-OutputFileMap.json
+
+WriteAuxiliaryFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd.SwiftFileList (in target 'my-projectCmd' from project 'my-project')
+    cd <workspace>/my-project
+    write-file <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd.SwiftFileList
+
+WriteAuxiliaryFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd.LinkFileList (in target 'my-projectCmd' from project 'my-project')
+    cd <workspace>/my-project
+    write-file <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd.LinkFileList
+
+WriteAuxiliaryFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd-OutputFileMap.json (in target 'my-projectCmd' from project 'my-project')
+    cd <workspace>/my-project
+    write-file <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd-OutputFileMap.json
+
+SwiftDriver ModuleX normal arm64 com.apple.xcode.tools.swift.compiler (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftDriver -- <system-path> -parse-as-library -module-name ModuleX -Onone @<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.SwiftFileList -DSWIFT_PACKAGE -DDEBUG -DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE -DXcode -plugin-path <system-path> -enable-experimental-feature DebugDescriptionMacro -sdk <system-path> -target arm64-apple-macos14.0 -g -module-cache-path <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 6 -I <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -Isystem <system-path> -F <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/PackageFrameworks -F <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -F <system-path> -c -j10 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc <home>/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/macosx27.0-26A425-7231f6df4def33e022ae2eb8f782df1a.sdkstatcache -output-file-map <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path <home>/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -package-name ModuleX -emit-const-values -const-gather-protocols-list <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX_const_extract_protocols.json -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/include -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/DerivedSources-normal/arm64 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/DerivedSources/arm64 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX-Swift.h -working-directory <workspace>/my-project/my-project.xcodeproj -experimental-emit-module-separately -disable-cmo
+
+SwiftCompile normal arm64 Compiling\ UTMWindowsGuestProvider.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/UTMWindowsGuestProvider.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/UTMWindowsGuestProvider.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile UTMWindowsGuestProvider.swift
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ ModuleX (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    
+
+SwiftCompile normal arm64 Compiling\ Program+Extensions.swift,\ RuntimeBackends.swift <workspace>/my-project/module-x/Sources/ModuleX/Extensions/Program+Extensions.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/RuntimeBackends.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Extensions/Program+Extensions.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile Program+Extensions.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/RuntimeBackends.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile RuntimeBackends.swift
+
+SwiftCompile normal arm64 Compiling\ RuntimeStorage.swift,\ UTMGuestSession.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/RuntimeStorage.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/UTMGuestSession.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/RuntimeStorage.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile RuntimeStorage.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/UTMGuestSession.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile UTMGuestSession.swift
+
+SwiftCompile normal arm64 Compiling\ UTMGuestStoragePreflight.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/UTMGuestStoragePreflight.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/UTMGuestStoragePreflight.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile UTMGuestStoragePreflight.swift
+
+SwiftCompile normal arm64 Compiling\ BottleData.swift <workspace>/my-project/module-x/Sources/ModuleX/my-project/BottleData.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/my-project/BottleData.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile BottleData.swift
+
+SwiftCompile normal arm64 Compiling\ Program.swift <workspace>/my-project/module-x/Sources/ModuleX/my-project/Program.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/my-project/Program.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile Program.swift
+
+SwiftCompile normal arm64 Compiling\ Bottle.swift <workspace>/my-project/module-x/Sources/ModuleX/my-project/Bottle.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/my-project/Bottle.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile Bottle.swift
+
+SwiftCompile normal arm64 Compiling\ WindowsGuestTransport.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/WindowsGuestTransport.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/WindowsGuestTransport.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile WindowsGuestTransport.swift
+
+SwiftCompile normal arm64 Compiling\ RuntimeCoordinator.swift,\ RuntimeModels.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/RuntimeCoordinator.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/RuntimeModels.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/RuntimeCoordinator.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile RuntimeCoordinator.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/RuntimeModels.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile RuntimeModels.swift
+
+SwiftCompile normal arm64 Compiling\ BottleSettings.swift <workspace>/my-project/module-x/Sources/ModuleX/my-project/BottleSettings.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/my-project/BottleSettings.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile BottleSettings.swift
+
+SwiftDriverJobDiscovery normal arm64 Compiling BottleData.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftDriverJobDiscovery normal arm64 Compiling UTMGuestStoragePreflight.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftDriverJobDiscovery normal arm64 Compiling WindowsGuestTransport.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftDriverJobDiscovery normal arm64 Compiling Bottle.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 Compiling\ HostExtendedGraphicsCapabilities.swift,\ HostGameModeEvidence.swift,\ HostMetalFXBenchmark.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostExtendedGraphicsCapabilities.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostGameModeEvidence.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostMetalFXBenchmark.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostExtendedGraphicsCapabilities.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile HostExtendedGraphicsCapabilities.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostGameModeEvidence.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile HostGameModeEvidence.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostMetalFXBenchmark.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile HostMetalFXBenchmark.swift
+
+SwiftCompile normal arm64 Compiling\ BitmapInfo.swift,\ FileHandle+Extensions.swift,\ FileManager+Extensions.swift,\ Process+Extensions.swift <workspace>/my-project/module-x/Sources/ModuleX/BitmapInfo.swift <workspace>/my-project/module-x/Sources/ModuleX/Extensions/FileHandle+Extensions.swift <workspace>/my-project/module-x/Sources/ModuleX/Extensions/FileManager+Extensions.swift <workspace>/my-project/module-x/Sources/ModuleX/Extensions/Process+Extensions.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/BitmapInfo.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile BitmapInfo.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Extensions/FileHandle+Extensions.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile FileHandle+Extensions.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Extensions/FileManager+Extensions.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile FileManager+Extensions.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Extensions/Process+Extensions.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile Process+Extensions.swift
+
+SwiftCompile normal arm64 Compiling\ HostResourcePolicy.swift,\ JSONKeyUniquenessScanner.swift,\ RuntimeArguments.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostResourcePolicy.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/JSONKeyUniquenessScanner.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/RuntimeArguments.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostResourcePolicy.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile HostResourcePolicy.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/JSONKeyUniquenessScanner.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile JSONKeyUniquenessScanner.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/RuntimeArguments.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile RuntimeArguments.swift
+
+SwiftCompile normal arm64 Compiling\ ProgramSettings.swift,\ my-projectWineInstaller.swift,\ Wine.swift <workspace>/my-project/module-x/Sources/ModuleX/my-project/ProgramSettings.swift <workspace>/my-project/module-x/Sources/ModuleX/my-projectWine/my-projectWineInstaller.swift <workspace>/my-project/module-x/Sources/ModuleX/Wine/Wine.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/my-project/ProgramSettings.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile ProgramSettings.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/my-projectWine/my-projectWineInstaller.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile my-projectWineInstaller.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Wine/Wine.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile Wine.swift
+
+SwiftDriverJobDiscovery normal arm64 Compiling Program.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 Compiling\ HostMetalFXBenchmarkGPUContext.swift,\ HostMetalFXBenchmarkGPUPath.swift,\ HostResourceExperiment.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostMetalFXBenchmarkGPUContext.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostMetalFXBenchmarkGPUPath.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostResourceExperiment.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostMetalFXBenchmarkGPUContext.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile HostMetalFXBenchmarkGPUContext.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostMetalFXBenchmarkGPUPath.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile HostMetalFXBenchmarkGPUPath.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostResourceExperiment.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile HostResourceExperiment.swift
+
+SwiftDriverJobDiscovery normal arm64 Compiling Program+Extensions.swift, RuntimeBackends.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 Compiling\ ResourceDirectoryTable.swift,\ ResourceType.swift,\ Section.swift <workspace>/my-project/module-x/Sources/ModuleX/PE/RSRC/ResourceDirectoryTable.swift <workspace>/my-project/module-x/Sources/ModuleX/PE/RSRC/ResourceType.swift <workspace>/my-project/module-x/Sources/ModuleX/PE/Section.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/PE/RSRC/ResourceDirectoryTable.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile ResourceDirectoryTable.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/PE/RSRC/ResourceType.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile ResourceType.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/PE/Section.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile Section.swift
+
+SwiftDriverJobDiscovery normal arm64 Compiling UTMWindowsGuestProvider.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 Compiling\ WindowsGuestProbeService.swift,\ ShellLink.swift,\ Rosetta2.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/WindowsGuestProbeService.swift <workspace>/my-project/module-x/Sources/ModuleX/ShellLink.swift <workspace>/my-project/module-x/Sources/ModuleX/Utils/Rosetta2.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/WindowsGuestProbeService.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile WindowsGuestProbeService.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/ShellLink.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile ShellLink.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Utils/Rosetta2.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile Rosetta2.swift
+
+SwiftDriverJobDiscovery normal arm64 Compiling RuntimeStorage.swift, UTMGuestSession.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 Compiling\ URL+Extensions.swift,\ COFFFileHeader.swift,\ Magic.swift <workspace>/my-project/module-x/Sources/ModuleX/Extensions/URL+Extensions.swift <workspace>/my-project/module-x/Sources/ModuleX/PE/COFFFileHeader.swift <workspace>/my-project/module-x/Sources/ModuleX/PE/Magic.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Extensions/URL+Extensions.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile URL+Extensions.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/PE/COFFFileHeader.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile COFFFileHeader.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/PE/Magic.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile Magic.swift
+
+SwiftDriverJobDiscovery normal arm64 Compiling HostResourcePolicy.swift, JSONKeyUniquenessScanner.swift, RuntimeArguments.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 Compiling\ OptionalHeader.swift,\ PortableExecutable.swift,\ ResourceDataEntry.swift <workspace>/my-project/module-x/Sources/ModuleX/PE/OptionalHeader.swift <workspace>/my-project/module-x/Sources/ModuleX/PE/PortableExecutable.swift <workspace>/my-project/module-x/Sources/ModuleX/PE/RSRC/ResourceDataEntry.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/PE/OptionalHeader.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile OptionalHeader.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/PE/PortableExecutable.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile PortableExecutable.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/PE/RSRC/ResourceDataEntry.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile ResourceDataEntry.swift
+
+SwiftDriverJobDiscovery normal arm64 Compiling RuntimeCoordinator.swift, RuntimeModels.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 Compiling\ AntiCheatProbe.swift,\ GameCompatibilityDatabase.swift,\ HostCapabilities.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/AntiCheatProbe.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/GameCompatibilityDatabase.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostCapabilities.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/AntiCheatProbe.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile AntiCheatProbe.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/GameCompatibilityDatabase.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile GameCompatibilityDatabase.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostCapabilities.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile HostCapabilities.swift
+
+SwiftDriverJobDiscovery normal arm64 Compiling BottleSettings.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftDriverJobDiscovery normal arm64 Compiling ResourceDirectoryTable.swift, ResourceType.swift, Section.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftDriverJobDiscovery normal arm64 Emitting module for ModuleX (in target 'ModuleX' from project 'ModuleX')
+
+SwiftDriver\ Compilation\ Requirements ModuleX normal arm64 com.apple.xcode.tools.swift.compiler (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-Swift-Compilation-Requirements -- <system-path> -parse-as-library -module-name ModuleX -Onone @<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.SwiftFileList -DSWIFT_PACKAGE -DDEBUG -DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE -DXcode -plugin-path <system-path> -enable-experimental-feature DebugDescriptionMacro -sdk <system-path> -target arm64-apple-macos14.0 -g -module-cache-path <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 6 -I <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -Isystem <system-path> -F <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/PackageFrameworks -F <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -F <system-path> -c -j10 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc <home>/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/macosx27.0-26A425-7231f6df4def33e022ae2eb8f782df1a.sdkstatcache -output-file-map <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path <home>/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -package-name ModuleX -emit-const-values -const-gather-protocols-list <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX_const_extract_protocols.json -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/include -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/DerivedSources-normal/arm64 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/DerivedSources/arm64 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX-Swift.h -working-directory <workspace>/my-project/my-project.xcodeproj -experimental-emit-module-separately -disable-cmo
+
+SwiftDriverJobDiscovery normal arm64 Compiling URL+Extensions.swift, COFFFileHeader.swift, Magic.swift (in target 'ModuleX' from project 'ModuleX')
+
+Copy <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/ModuleX.swiftmodule/arm64-apple-macos.swiftdoc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.swiftdoc (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/module-x
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.swiftdoc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/ModuleX.swiftmodule/arm64-apple-macos.swiftdoc
+
+Copy <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/ModuleX.swiftmodule/arm64-apple-macos.swiftmodule <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.swiftmodule (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/module-x
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.swiftmodule <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/ModuleX.swiftmodule/arm64-apple-macos.swiftmodule
+
+Copy <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/ModuleX.swiftmodule/arm64-apple-macos.abi.json <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.abi.json (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/module-x
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.abi.json <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/ModuleX.swiftmodule/arm64-apple-macos.abi.json
+
+Copy <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/ModuleX.swiftmodule/Project/arm64-apple-macos.swiftsourceinfo <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.swiftsourceinfo (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/module-x
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.swiftsourceinfo <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/ModuleX.swiftmodule/Project/arm64-apple-macos.swiftsourceinfo
+
+SwiftDriver my-projectThumbnail normal arm64 com.apple.xcode.tools.swift.compiler (in target 'my-projectThumbnail' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftDriver -- <system-path> -module-name my-projectThumbnail -Onone @<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64/my-projectThumbnail.SwiftFileList -DDEBUG -DDEBUG -enable-experimental-feature DebugDescriptionMacro -sdk <system-path> -target arm64-apple-macos14.0 -g -module-cache-path <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -application-extension -enable-testing -index-store-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 6 -I <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -F <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/PackageFrameworks -F <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -emit-localized-strings -emit-localized-strings-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64 -c -j10 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc <home>/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/macosx27.0-26A425-7231f6df4def33e022ae2eb8f782df1a.sdkstatcache -output-file-map <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64/my-projectThumbnail-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path <home>/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64/my-projectThumbnail.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64/my-projectThumbnail-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64/my-projectThumbnail_const_extract_protocols.json -Xcc -iquote -Xcc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/my-projectThumbnail-generated-files.hmap -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/my-projectThumbnail-own-target-headers.hmap -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/my-projectThumbnail-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project-7d27baa379973ef6627408aef202f00b-VFS/all-product-headers.yaml -Xcc -iquote -Xcc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/my-projectThumbnail-project-headers.hmap -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/include -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/DerivedSources-normal/arm64 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/DerivedSources/arm64 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64/my-projectThumbnail-Swift.h -working-directory <workspace>/my-project -experimental-emit-module-separately -disable-cmo
+
+SwiftDriver my-projectCmd normal arm64 com.apple.xcode.tools.swift.compiler (in target 'my-projectCmd' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftDriver -- <system-path> -module-name my-projectCmd -Onone @<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd.SwiftFileList -DDEBUG -DDEBUG -enable-experimental-feature DebugDescriptionMacro -sdk <system-path> -target arm64-apple-macos14.0 -g -module-cache-path <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 6 -I <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -F <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -c -j10 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc <home>/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/macosx27.0-26A425-7231f6df4def33e022ae2eb8f782df1a.sdkstatcache -output-file-map <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path <home>/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd_const_extract_protocols.json -Xcc -iquote -Xcc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/my-projectCmd-generated-files.hmap -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/my-projectCmd-own-target-headers.hmap -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/my-projectCmd-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project-7d27baa379973ef6627408aef202f00b-VFS/all-product-headers.yaml -Xcc -iquote -Xcc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/my-projectCmd-project-headers.hmap -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/include -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/DerivedSources-normal/arm64 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/DerivedSources/arm64 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd-Swift.h -working-directory <workspace>/my-project -experimental-emit-module-separately -disable-cmo
+
+SwiftDriverJobDiscovery normal arm64 Compiling WindowsGuestProbeService.swift, ShellLink.swift, Rosetta2.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftDriverJobDiscovery normal arm64 Compiling ProgramSettings.swift, my-projectWineInstaller.swift, Wine.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftDriverJobDiscovery normal arm64 Compiling HostExtendedGraphicsCapabilities.swift, HostGameModeEvidence.swift, HostMetalFXBenchmark.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftDriverJobDiscovery normal arm64 Compiling HostMetalFXBenchmarkGPUContext.swift, HostMetalFXBenchmarkGPUPath.swift, HostResourceExperiment.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftDriverJobDiscovery normal arm64 Compiling BitmapInfo.swift, FileHandle+Extensions.swift, FileManager+Extensions.swift, Process+Extensions.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 Compiling\ StoragePreflight.swift <workspace>/my-project/my-projectCmd/StoragePreflight.swift (in target 'my-projectCmd' from project 'my-project')
+
+SwiftCompile normal arm64 <workspace>/my-project/my-projectCmd/StoragePreflight.swift (in target 'my-projectCmd' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile StoragePreflight.swift
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ my-projectCmd (in target 'my-projectCmd' from project 'my-project')
+
+SwiftCompile normal arm64 (in target 'my-projectCmd' from project 'my-project')
+    cd <workspace>/my-project
+    
+
+SwiftCompile normal arm64 Compiling\ Main.swift <workspace>/my-project/my-projectCmd/Main.swift (in target 'my-projectCmd' from project 'my-project')
+
+SwiftCompile normal arm64 <workspace>/my-project/my-projectCmd/Main.swift (in target 'my-projectCmd' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile Main.swift
+
+SwiftCompile normal arm64 Compiling\ GeneratedAssetSymbols.swift <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'my-projectThumbnail' from project 'my-project')
+
+SwiftCompile normal arm64 <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'my-projectThumbnail' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile GeneratedAssetSymbols.swift
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ my-projectThumbnail (in target 'my-projectThumbnail' from project 'my-project')
+
+SwiftCompile normal arm64 (in target 'my-projectThumbnail' from project 'my-project')
+    cd <workspace>/my-project
+    
+
+SwiftCompile normal arm64 Compiling\ ThumbnailProvider.swift <workspace>/my-project/my-projectThumbnail/ThumbnailProvider.swift (in target 'my-projectThumbnail' from project 'my-project')
+
+SwiftCompile normal arm64 <workspace>/my-project/my-projectThumbnail/ThumbnailProvider.swift (in target 'my-projectThumbnail' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile ThumbnailProvider.swift
+
+SwiftDriverJobDiscovery normal arm64 Compiling OptionalHeader.swift, PortableExecutable.swift, ResourceDataEntry.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftDriverJobDiscovery normal arm64 Emitting module for my-projectThumbnail (in target 'my-projectThumbnail' from project 'my-project')
+
+SwiftDriver\ Compilation\ Requirements my-projectThumbnail normal arm64 com.apple.xcode.tools.swift.compiler (in target 'my-projectThumbnail' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-Swift-Compilation-Requirements -- <system-path> -module-name my-projectThumbnail -Onone @<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64/my-projectThumbnail.SwiftFileList -DDEBUG -DDEBUG -enable-experimental-feature DebugDescriptionMacro -sdk <system-path> -target arm64-apple-macos14.0 -g -module-cache-path <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -application-extension -enable-testing -index-store-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 6 -I <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -F <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/PackageFrameworks -F <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -emit-localized-strings -emit-localized-strings-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64 -c -j10 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc <home>/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/macosx27.0-26A425-7231f6df4def33e022ae2eb8f782df1a.sdkstatcache -output-file-map <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64/my-projectThumbnail-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path <home>/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64/my-projectThumbnail.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64/my-projectThumbnail-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64/my-projectThumbnail_const_extract_protocols.json -Xcc -iquote -Xcc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/my-projectThumbnail-generated-files.hmap -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/my-projectThumbnail-own-target-headers.hmap -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/my-projectThumbnail-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project-7d27baa379973ef6627408aef202f00b-VFS/all-product-headers.yaml -Xcc -iquote -Xcc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/my-projectThumbnail-project-headers.hmap -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/include -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/DerivedSources-normal/arm64 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/DerivedSources/arm64 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64/my-projectThumbnail-Swift.h -working-directory <workspace>/my-project -experimental-emit-module-separately -disable-cmo
+
+Copy <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectThumbnail.swiftmodule/arm64-apple-macos.abi.json <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64/my-projectThumbnail.abi.json (in target 'my-projectThumbnail' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64/my-projectThumbnail.abi.json <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectThumbnail.swiftmodule/arm64-apple-macos.abi.json
+
+SwiftDriverJobDiscovery normal arm64 Emitting module for my-projectCmd (in target 'my-projectCmd' from project 'my-project')
+
+SwiftDriver\ Compilation\ Requirements my-projectCmd normal arm64 com.apple.xcode.tools.swift.compiler (in target 'my-projectCmd' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-Swift-Compilation-Requirements -- <system-path> -module-name my-projectCmd -Onone @<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd.SwiftFileList -DDEBUG -DDEBUG -enable-experimental-feature DebugDescriptionMacro -sdk <system-path> -target arm64-apple-macos14.0 -g -module-cache-path <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 6 -I <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -F <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -c -j10 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc <home>/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/macosx27.0-26A425-7231f6df4def33e022ae2eb8f782df1a.sdkstatcache -output-file-map <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path <home>/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd_const_extract_protocols.json -Xcc -iquote -Xcc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/my-projectCmd-generated-files.hmap -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/my-projectCmd-own-target-headers.hmap -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/my-projectCmd-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project-7d27baa379973ef6627408aef202f00b-VFS/all-product-headers.yaml -Xcc -iquote -Xcc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/my-projectCmd-project-headers.hmap -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/include -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/DerivedSources-normal/arm64 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/DerivedSources/arm64 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd-Swift.h -working-directory <workspace>/my-project -experimental-emit-module-separately -disable-cmo
+
+Copy <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectCmd.swiftmodule/Project/arm64-apple-macos.swiftsourceinfo <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd.swiftsourceinfo (in target 'my-projectCmd' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd.swiftsourceinfo <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectCmd.swiftmodule/Project/arm64-apple-macos.swiftsourceinfo
+
+Copy <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectCmd.swiftmodule/arm64-apple-macos.swiftmodule <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd.swiftmodule (in target 'my-projectCmd' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd.swiftmodule <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectCmd.swiftmodule/arm64-apple-macos.swiftmodule
+
+Copy <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectCmd.swiftmodule/arm64-apple-macos.abi.json <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd.abi.json (in target 'my-projectCmd' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd.abi.json <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectCmd.swiftmodule/arm64-apple-macos.abi.json
+
+SwiftDriver my-project normal arm64 com.apple.xcode.tools.swift.compiler (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftDriver -- <system-path> -module-name my-project -Onone @<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project.SwiftFileList -DDEBUG -enable-experimental-feature DebugDescriptionMacro -sdk <system-path> -target arm64-apple-macos14.0 -g -module-cache-path <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 6 -I <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -F <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/PackageFrameworks -F <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -emit-localized-strings -emit-localized-strings-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64 -c -j10 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc <home>/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/macosx27.0-26A425-7231f6df4def33e022ae2eb8f782df1a.sdkstatcache -output-file-map <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path <home>/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project_const_extract_protocols.json -Xcc -iquote -Xcc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/my-project-generated-files.hmap -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/my-project-own-target-headers.hmap -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/my-project-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project-7d27baa379973ef6627408aef202f00b-VFS/all-product-headers.yaml -Xcc -iquote -Xcc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/my-project-project-headers.hmap -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/include -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/DerivedSources-normal/arm64 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/DerivedSources/arm64 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project-Swift.h -working-directory <workspace>/my-project -experimental-emit-module-separately -disable-cmo
+
+SwiftDriverJobDiscovery normal arm64 Compiling AntiCheatProbe.swift, GameCompatibilityDatabase.swift, HostCapabilities.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftDriver\ Compilation ModuleX normal arm64 com.apple.xcode.tools.swift.compiler (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-Swift-Compilation -- <system-path> -parse-as-library -module-name ModuleX -Onone @<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.SwiftFileList -DSWIFT_PACKAGE -DDEBUG -DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE -DXcode -plugin-path <system-path> -enable-experimental-feature DebugDescriptionMacro -sdk <system-path> -target arm64-apple-macos14.0 -g -module-cache-path <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 6 -I <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -Isystem <system-path> -F <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/PackageFrameworks -F <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -F <system-path> -c -j10 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc <home>/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/macosx27.0-26A425-7231f6df4def33e022ae2eb8f782df1a.sdkstatcache -output-file-map <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path <home>/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -package-name ModuleX -emit-const-values -const-gather-protocols-list <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX_const_extract_protocols.json -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/include -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/DerivedSources-normal/arm64 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/DerivedSources/arm64 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX-Swift.h -working-directory <workspace>/my-project/my-project.xcodeproj -experimental-emit-module-separately -disable-cmo
+
+SwiftDriverJobDiscovery normal arm64 Compiling GeneratedAssetSymbols.swift (in target 'my-projectThumbnail' from project 'my-project')
+
+Ld <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/ModuleX.o normal (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/module-x
+    <system-path> -Xlinker -reproducible -target arm64-apple-macos14.0 -r -isysroot <system-path> -O0 -Xlinker -no_warn_duplicate_libraries -F<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/EagerLinkingTBDs/Debug -F<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/PackageFrameworks -F<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -iframework <system-path> -filelist <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.LinkFileList -nostdlib -Xlinker -object_path_lto -Xlinker <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX_lto.o -Xlinker -no_deduplicate -Xlinker -dependency_info -Xlinker <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.swiftmodule -o <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/ModuleX.o
+
+SwiftDriverJobDiscovery normal arm64 Compiling ThumbnailProvider.swift (in target 'my-projectThumbnail' from project 'my-project')
+
+SwiftDriver\ Compilation my-projectThumbnail normal arm64 com.apple.xcode.tools.swift.compiler (in target 'my-projectThumbnail' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-Swift-Compilation -- <system-path> -module-name my-projectThumbnail -Onone @<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64/my-projectThumbnail.SwiftFileList -DDEBUG -DDEBUG -enable-experimental-feature DebugDescriptionMacro -sdk <system-path> -target arm64-apple-macos14.0 -g -module-cache-path <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -application-extension -enable-testing -index-store-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 6 -I <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -F <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/PackageFrameworks -F <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -emit-localized-strings -emit-localized-strings-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64 -c -j10 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc <home>/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/macosx27.0-26A425-7231f6df4def33e022ae2eb8f782df1a.sdkstatcache -output-file-map <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64/my-projectThumbnail-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path <home>/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64/my-projectThumbnail.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64/my-projectThumbnail-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64/my-projectThumbnail_const_extract_protocols.json -Xcc -iquote -Xcc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/my-projectThumbnail-generated-files.hmap -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/my-projectThumbnail-own-target-headers.hmap -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/my-projectThumbnail-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project-7d27baa379973ef6627408aef202f00b-VFS/all-product-headers.yaml -Xcc -iquote -Xcc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/my-projectThumbnail-project-headers.hmap -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/include -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/DerivedSources-normal/arm64 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/DerivedSources/arm64 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64/my-projectThumbnail-Swift.h -working-directory <workspace>/my-project -experimental-emit-module-separately -disable-cmo
+
+ExtractAppIntentsMetadata (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/module-x
+    <system-path> --toolchain-dir <system-path> --module-name ModuleX --sdk-root <system-path> --xcode-version 27A266a --platform-family macOS --deployment-target 14.0 --bundle-identifier ModuleX.ModuleX --output <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/ModuleX.appintents --target-triple arm64-apple-macos14.0 --binary-file <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/ModuleX.o --dependency-file <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX_dependency_info.dat --stringsdata-file <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.SwiftFileList --metadata-file-list <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/ModuleX.DependencyMetadataFileList --static-metadata-file-list <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/ModuleX.DependencyStaticMetadataFileList --swift-const-vals-list <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.SwiftConstValuesFileList --force --compile-time-extraction --deployment-aware-processing --no-app-shortcuts-localization
+2026-11-22 01:57:21.043 appintentsmetadataprocessor[41738:7567003] Starting appintentsmetadataprocessor export
+2026-11-22 01:57:21.109 appintentsmetadataprocessor[41738:7567003] Extracted no relevant App Intents symbols, skipping writing output
+
+SwiftDriverJobDiscovery normal arm64 Compiling StoragePreflight.swift (in target 'my-projectCmd' from project 'my-project')
+
+Ld <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectThumbnail.appex/Contents/MacOS/my-projectThumbnail.debug.dylib normal (in target 'my-projectThumbnail' from project 'my-project')
+    cd <workspace>/my-project
+    <system-path> -Xlinker -reproducible -target arm64-apple-macos14.0 -dynamiclib -isysroot <system-path> -O0 -Xlinker -no_warn_duplicate_libraries -L<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/EagerLinkingTBDs/Debug -L<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -F<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/EagerLinkingTBDs/Debug -F<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/PackageFrameworks -F<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -filelist <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64/my-projectThumbnail.LinkFileList -install_name @rpath/my-projectThumbnail.debug.dylib -Xlinker -rpath -Xlinker <system-path> -Xlinker -rpath -Xlinker @loader_path -Xlinker -rpath -Xlinker <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/PackageFrameworks -Xlinker -rpath -Xlinker @executable_path/../Frameworks -Xlinker -rpath -Xlinker @executable_path/../../../../Frameworks -Xlinker -dead_strip -Xlinker -object_path_lto -Xlinker <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64/my-projectThumbnail_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -dependency_info -Xlinker <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64/my-projectThumbnail_dependency_info.dat -fapplication-extension -fobjc-link-runtime -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64/my-projectThumbnail.swiftmodule -Xlinker -alias -Xlinker _NSExtensionMain -Xlinker ___debug_main_executable_dylib_entry_point -framework QuickLookThumbnailing -framework Quartz -o <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectThumbnail.appex/Contents/MacOS/my-projectThumbnail.debug.dylib
+
+SwiftCompile normal arm64 Compiling\ PinView.swift,\ SparkleView.swift,\ my-projectApp.swift <workspace>/my-project/my-project/Views/Bottle/Pins/PinView.swift <workspace>/my-project/my-project/Views/SparkleView.swift <workspace>/my-project/my-project/Views/my-projectApp.swift (in target 'my-project' from project 'my-project')
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Views/Bottle/Pins/PinView.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile PinView.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Views/SparkleView.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile SparkleView.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Views/my-projectApp.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile my-projectApp.swift
+
+SwiftCompile normal arm64 Compiling\ AppDelegate.swift,\ my-projectCmd.swift,\ ContentView.swift,\ ActionView.swift <workspace>/my-project/my-project/AppDelegate.swift <workspace>/my-project/my-project/Utils/my-projectCmd.swift <workspace>/my-project/my-project/Views/ContentView.swift <workspace>/my-project/my-project/Views/Common/ActionView.swift (in target 'my-project' from project 'my-project')
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/AppDelegate.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile AppDelegate.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Utils/my-projectCmd.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile my-projectCmd.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Views/ContentView.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile ContentView.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Views/Common/ActionView.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile ActionView.swift
+
+SwiftCompile normal arm64 Compiling\ BottleView.swift,\ ProgramView.swift,\ GeneratedAssetSymbols.swift <workspace>/my-project/my-project/Views/Bottle/BottleView.swift <workspace>/my-project/my-project/Views/Programs/ProgramView.swift <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'my-project' from project 'my-project')
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Views/Bottle/BottleView.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile BottleView.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Views/Programs/ProgramView.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile ProgramView.swift
+
+SwiftCompile normal arm64 <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile GeneratedAssetSymbols.swift
+
+SwiftCompile normal arm64 Compiling\ ConfigView.swift,\ BottomBar.swift,\ my-projectWineDownloadView.swift,\ BottleListEntry.swift <workspace>/my-project/my-project/Views/Bottle/ConfigView.swift <workspace>/my-project/my-project/Views/Common/BottomBar.swift <workspace>/my-project/my-project/Views/Setup/my-projectWineDownloadView.swift <workspace>/my-project/my-project/Views/Bottle/BottleListEntry.swift (in target 'my-project' from project 'my-project')
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Views/Bottle/ConfigView.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile ConfigView.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Views/Common/BottomBar.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile BottomBar.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Views/Setup/my-projectWineDownloadView.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile my-projectWineDownloadView.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Views/Bottle/BottleListEntry.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile BottleListEntry.swift
+
+SwiftCompile normal arm64 Compiling\ SetupView.swift,\ ProgramsView.swift,\ PinCreationView.swift,\ ProgramShortcut.swift <workspace>/my-project/my-project/Views/Setup/SetupView.swift <workspace>/my-project/my-project/Views/Programs/ProgramsView.swift <workspace>/my-project/my-project/Views/Bottle/Pins/PinCreationView.swift <workspace>/my-project/my-project/Utils/ProgramShortcut.swift (in target 'my-project' from project 'my-project')
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Views/Setup/SetupView.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile SetupView.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Views/Programs/ProgramsView.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile ProgramsView.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Views/Bottle/Pins/PinCreationView.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile PinCreationView.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Utils/ProgramShortcut.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile ProgramShortcut.swift
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ my-project (in target 'my-project' from project 'my-project')
+
+SwiftCompile normal arm64 (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    
+
+SwiftCompile normal arm64 Compiling\ BottleCreationView.swift,\ WinetricksView.swift,\ RenameView.swift,\ RunningProcessesView.swift <workspace>/my-project/my-project/Views/Bottle/BottleCreationView.swift <workspace>/my-project/my-project/Views/Bottle/WinetricksView.swift <workspace>/my-project/my-project/Views/Common/RenameView.swift <workspace>/my-project/my-project/Views/Bottle/RunningProcessesView.swift (in target 'my-project' from project 'my-project')
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Views/Bottle/BottleCreationView.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile BottleCreationView.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Views/Bottle/WinetricksView.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile WinetricksView.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Views/Common/RenameView.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile RenameView.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Views/Bottle/RunningProcessesView.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile RunningProcessesView.swift
+
+SwiftCompile normal arm64 Compiling\ EnvironmentArgView.swift,\ RosettaView.swift,\ my-projectWineInstallView.swift <workspace>/my-project/my-project/Views/Programs/EnvironmentArgView.swift <workspace>/my-project/my-project/Views/Setup/RosettaView.swift <workspace>/my-project/my-project/Views/Setup/my-projectWineInstallView.swift (in target 'my-project' from project 'my-project')
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Views/Programs/EnvironmentArgView.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile EnvironmentArgView.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Views/Setup/RosettaView.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile RosettaView.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Views/Setup/my-projectWineInstallView.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile my-projectWineInstallView.swift
+
+SwiftCompile normal arm64 Compiling\ SettingsView.swift,\ FileOpenView.swift,\ WelcomeView.swift <workspace>/my-project/my-project/Views/Settings/SettingsView.swift <workspace>/my-project/my-project/Views/FileOpenView.swift <workspace>/my-project/my-project/Views/Setup/WelcomeView.swift (in target 'my-project' from project 'my-project')
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Views/Settings/SettingsView.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile SettingsView.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Views/FileOpenView.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile FileOpenView.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Views/Setup/WelcomeView.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile WelcomeView.swift
+
+SwiftDriverJobDiscovery normal arm64 Compiling Main.swift (in target 'my-projectCmd' from project 'my-project')
+
+SwiftDriver\ Compilation my-projectCmd normal arm64 com.apple.xcode.tools.swift.compiler (in target 'my-projectCmd' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-Swift-Compilation -- <system-path> -module-name my-projectCmd -Onone @<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd.SwiftFileList -DDEBUG -DDEBUG -enable-experimental-feature DebugDescriptionMacro -sdk <system-path> -target arm64-apple-macos14.0 -g -module-cache-path <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 6 -I <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -F <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -c -j10 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc <home>/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/macosx27.0-26A425-7231f6df4def33e022ae2eb8f782df1a.sdkstatcache -output-file-map <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path <home>/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd_const_extract_protocols.json -Xcc -iquote -Xcc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/my-projectCmd-generated-files.hmap -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/my-projectCmd-own-target-headers.hmap -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/my-projectCmd-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project-7d27baa379973ef6627408aef202f00b-VFS/all-product-headers.yaml -Xcc -iquote -Xcc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/my-projectCmd-project-headers.hmap -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/include -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/DerivedSources-normal/arm64 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/DerivedSources/arm64 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd-Swift.h -working-directory <workspace>/my-project -experimental-emit-module-separately -disable-cmo
+
+ConstructStubExecutorLinkFileList <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/my-projectThumbnail-ExecutorLinkFileList-normal-arm64.txt (in target 'my-projectThumbnail' from project 'my-project')
+    cd <workspace>/my-project
+    construct-stub-executor-link-file-list <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectThumbnail.appex/Contents/MacOS/my-projectThumbnail.debug.dylib <system-path> <system-path> --output <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/my-projectThumbnail-ExecutorLinkFileList-normal-arm64.txt
+note: Using stub executor library without Swift entry point. (in target 'my-projectThumbnail' from project 'my-project')
+
+Ld <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectCmd normal (in target 'my-projectCmd' from project 'my-project')
+    cd <workspace>/my-project
+    <system-path> -Xlinker -reproducible -target arm64-apple-macos14.0 -isysroot <system-path> -O0 -Xlinker -no_warn_duplicate_libraries -L<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/EagerLinkingTBDs/Debug -L<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -F<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/EagerLinkingTBDs/Debug -F<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -filelist <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd.LinkFileList -Xlinker -rpath -Xlinker <system-path> -Xlinker -rpath -Xlinker @loader_path/../Frameworks -Xlinker -dead_strip -Xlinker -object_path_lto -Xlinker <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -dependency_info -Xlinker <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectCmd.build/Objects-normal/arm64/my-projectCmd.swiftmodule -o <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectCmd -Xlinker -add_ast_path -Xlinker <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/Progress.build/Debug/Progress-t.build/Objects-normal/arm64/Progress.swiftmodule -Xlinker -add_ast_path -Xlinker <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/SwiftyTextTable.build/Debug/SwiftyTextTable-t.build/Objects-normal/arm64/SwiftyTextTable.swiftmodule
+
+Ld <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectThumbnail.appex/Contents/MacOS/my-projectThumbnail normal (in target 'my-projectThumbnail' from project 'my-project')
+    cd <workspace>/my-project
+    <system-path> -Xlinker -reproducible -target arm64-apple-macos14.0 -isysroot <system-path> -O0 -Xlinker -no_warn_duplicate_libraries -L<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -F<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/PackageFrameworks -F<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -Xlinker -rpath -Xlinker @executable_path -Xlinker -rpath -Xlinker @loader_path -Xlinker -rpath -Xlinker <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/PackageFrameworks -Xlinker -rpath -Xlinker @executable_path/../Frameworks -Xlinker -rpath -Xlinker @executable_path/../../../../Frameworks -rdynamic -Xlinker -no_deduplicate -e ___debug_blank_executor_main -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_dylib -Xlinker <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/my-projectThumbnail-DebugDylibPath-normal-arm64.txt -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_entry -Xlinker <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/my-projectThumbnail-DebugEntryPoint-normal-arm64.txt -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_instlnm -Xlinker <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/my-projectThumbnail-DebugDylibInstallName-normal-arm64.txt -Xlinker -filelist -Xlinker <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/my-projectThumbnail-ExecutorLinkFileList-normal-arm64.txt <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectThumbnail.appex/Contents/MacOS/my-projectThumbnail.debug.dylib -o <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectThumbnail.appex/Contents/MacOS/my-projectThumbnail
+
+SwiftCompile normal arm64 Compiling\ Animation+Extensions.swift,\ Bottle+Extensions.swift,\ Winetricks.swift <workspace>/my-project/my-project/Extensions/Animation+Extensions.swift <workspace>/my-project/my-project/Extensions/Bottle+Extensions.swift <workspace>/my-project/my-project/Utils/Winetricks.swift (in target 'my-project' from project 'my-project')
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Extensions/Animation+Extensions.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile Animation+Extensions.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Extensions/Bottle+Extensions.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile Bottle+Extensions.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Utils/Winetricks.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile Winetricks.swift
+
+SwiftDriverJobDiscovery normal arm64 Compiling EnvironmentArgView.swift, RosettaView.swift, my-projectWineInstallView.swift (in target 'my-project' from project 'my-project')
+
+SwiftCompile normal arm64 Compiling\ ProgramMenuView.swift,\ BottleVM.swift,\ PinAddView.swift <workspace>/my-project/my-project/Views/Programs/ProgramMenuView.swift <workspace>/my-project/my-project/View\ Models/BottleVM.swift <workspace>/my-project/my-project/Views/Bottle/Pins/PinAddView.swift (in target 'my-project' from project 'my-project')
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Views/Programs/ProgramMenuView.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile ProgramMenuView.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/View\ Models/BottleVM.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile BottleVM.swift
+
+SwiftCompile normal arm64 <workspace>/my-project/my-project/Views/Bottle/Pins/PinAddView.swift (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-SwiftPerFileCompile PinAddView.swift
+
+SwiftDriverJobDiscovery normal arm64 Compiling PinView.swift, SparkleView.swift, my-projectApp.swift (in target 'my-project' from project 'my-project')
+
+ExtractAppIntentsMetadata (in target 'my-projectThumbnail' from project 'my-project')
+    cd <workspace>/my-project
+    <system-path> --toolchain-dir <system-path> --module-name my-projectThumbnail --sdk-root <system-path> --xcode-version 27A266a --platform-family macOS --deployment-target 14.0 --bundle-identifier com.isaacmarovitz.my-project.my-projectThumbnail --output <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectThumbnail.appex/Contents/Resources --target-triple arm64-apple-macos14.0 --binary-file <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectThumbnail.appex/Contents/MacOS/my-projectThumbnail --dependency-file <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64/my-projectThumbnail_dependency_info.dat --stringsdata-file <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64/my-projectThumbnail.SwiftFileList --metadata-file-list <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/my-projectThumbnail.DependencyMetadataFileList --static-metadata-file-list <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/my-projectThumbnail.DependencyStaticMetadataFileList --swift-const-vals-list <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/Objects-normal/arm64/my-projectThumbnail.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --no-app-shortcuts-localization
+2026-11-22 01:57:22.130 appintentsmetadataprocessor[41767:7567124] Starting appintentsmetadataprocessor export
+2026-11-22 01:57:22.135 appintentsmetadataprocessor[41767:7567124] warning: Metadata extraction skipped, no AppIntents.framework dependency found
+
+ProcessInfoPlistFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectThumbnail.appex/Contents/Info.plist <workspace>/my-project/my-projectThumbnail/Info.plist (in target 'my-projectThumbnail' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-infoPlistUtility <workspace>/my-project/my-projectThumbnail/Info.plist -producttype com.apple.product-type.app-extension -expandbuildsettings -platform macosx -additionalcontentfile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/assetcatalog_generated_info.plist -scanforprivacyfile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectThumbnail.appex/Contents/Resources/SemanticVersion_SemanticVersion.bundle -o <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectThumbnail.appex/Contents/Info.plist
+
+RegisterExecutionPolicyException <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectCmd (in target 'my-projectCmd' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-RegisterExecutionPolicyException <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectCmd
+
+CompileXCStrings <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/ <workspace>/my-project/my-project/Localizable.xcstrings (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    <system-path> compile --output-directory <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build <workspace>/my-project/my-project/Localizable.xcstrings
+
+SwiftDriverJobDiscovery normal arm64 Compiling BottleCreationView.swift, WinetricksView.swift, RenameView.swift, RunningProcessesView.swift (in target 'my-project' from project 'my-project')
+
+SwiftDriverJobDiscovery normal arm64 Compiling Animation+Extensions.swift, Bottle+Extensions.swift, Winetricks.swift (in target 'my-project' from project 'my-project')
+
+SwiftDriverJobDiscovery normal arm64 Compiling AppDelegate.swift, my-projectCmd.swift, ContentView.swift, ActionView.swift (in target 'my-project' from project 'my-project')
+
+CopyStringsFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/ar.lproj/Localizable.strings <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/ar.lproj/Localizable.strings (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copyStrings --validate --outputencoding UTF-16 --outfilename Localizable.strings --outdir <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/ar.lproj -- <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/ar.lproj/Localizable.strings
+<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/ar.lproj/Localizable.strings:1:1: note: detected encoding of input file as Unicode (UTF-8) (in target 'my-project' from project 'my-project')
+
+CopyStringsFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/zh-Hant.lproj/Localizable.strings <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/zh-Hant.lproj/Localizable.strings (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copyStrings --validate --outputencoding UTF-16 --outfilename Localizable.strings --outdir <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/zh-Hant.lproj -- <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/zh-Hant.lproj/Localizable.strings
+<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/zh-Hant.lproj/Localizable.strings:1:1: note: detected encoding of input file as Unicode (UTF-8) (in target 'my-project' from project 'my-project')
+
+CopyStringsFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/zh-Hans.lproj/Localizable.strings <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/zh-Hans.lproj/Localizable.strings (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copyStrings --validate --outputencoding UTF-16 --outfilename Localizable.strings --outdir <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/zh-Hans.lproj -- <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/zh-Hans.lproj/Localizable.strings
+<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/zh-Hans.lproj/Localizable.strings:1:1: note: detected encoding of input file as Unicode (UTF-8) (in target 'my-project' from project 'my-project')
+
+CopyStringsFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/vi.lproj/Localizable.strings <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/vi.lproj/Localizable.strings (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copyStrings --validate --outputencoding UTF-16 --outfilename Localizable.strings --outdir <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/vi.lproj -- <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/vi.lproj/Localizable.strings
+<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/vi.lproj/Localizable.strings:1:1: note: detected encoding of input file as Unicode (UTF-8) (in target 'my-project' from project 'my-project')
+
+CopyStringsFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/uk.lproj/Localizable.strings <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/uk.lproj/Localizable.strings (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copyStrings --validate --outputencoding UTF-16 --outfilename Localizable.strings --outdir <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/uk.lproj -- <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/uk.lproj/Localizable.strings
+<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/uk.lproj/Localizable.strings:1:1: note: detected encoding of input file as Unicode (UTF-8) (in target 'my-project' from project 'my-project')
+
+CopyStringsFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/tr.lproj/Localizable.strings <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/tr.lproj/Localizable.strings (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copyStrings --validate --outputencoding UTF-16 --outfilename Localizable.strings --outdir <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/tr.lproj -- <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/tr.lproj/Localizable.strings
+<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/tr.lproj/Localizable.strings:1:1: note: detected encoding of input file as Unicode (UTF-8) (in target 'my-project' from project 'my-project')
+
+CopyStringsFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/ru.lproj/Localizable.strings <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/ru.lproj/Localizable.strings (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copyStrings --validate --outputencoding UTF-16 --outfilename Localizable.strings --outdir <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/ru.lproj -- <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/ru.lproj/Localizable.strings
+<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/ru.lproj/Localizable.strings:1:1: note: detected encoding of input file as Unicode (UTF-8) (in target 'my-project' from project 'my-project')
+
+CopyStringsFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/ro.lproj/Localizable.strings <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/ro.lproj/Localizable.strings (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copyStrings --validate --outputencoding UTF-16 --outfilename Localizable.strings --outdir <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/ro.lproj -- <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/ro.lproj/Localizable.strings
+<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/ro.lproj/Localizable.strings:1:1: note: detected encoding of input file as Unicode (UTF-8) (in target 'my-project' from project 'my-project')
+
+CopyStringsFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/pt-PT.lproj/Localizable.strings <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/pt-PT.lproj/Localizable.strings (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copyStrings --validate --outputencoding UTF-16 --outfilename Localizable.strings --outdir <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/pt-PT.lproj -- <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/pt-PT.lproj/Localizable.strings
+<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/pt-PT.lproj/Localizable.strings:1:1: note: detected encoding of input file as Unicode (UTF-8) (in target 'my-project' from project 'my-project')
+
+CopyStringsFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/pt-BR.lproj/Localizable.strings <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/pt-BR.lproj/Localizable.strings (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copyStrings --validate --outputencoding UTF-16 --outfilename Localizable.strings --outdir <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/pt-BR.lproj -- <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/pt-BR.lproj/Localizable.strings
+<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/pt-BR.lproj/Localizable.strings:1:1: note: detected encoding of input file as Unicode (UTF-8) (in target 'my-project' from project 'my-project')
+
+CopyStringsFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/pl.lproj/Localizable.strings <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/pl.lproj/Localizable.strings (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copyStrings --validate --outputencoding UTF-16 --outfilename Localizable.strings --outdir <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/pl.lproj -- <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/pl.lproj/Localizable.strings
+<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/pl.lproj/Localizable.strings:1:1: note: detected encoding of input file as Unicode (UTF-8) (in target 'my-project' from project 'my-project')
+
+CopyStringsFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/nl.lproj/Localizable.strings <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/nl.lproj/Localizable.strings (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copyStrings --validate --outputencoding UTF-16 --outfilename Localizable.strings --outdir <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/nl.lproj -- <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/nl.lproj/Localizable.strings
+<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/nl.lproj/Localizable.strings:1:1: note: detected encoding of input file as Unicode (UTF-8) (in target 'my-project' from project 'my-project')
+
+CopyStringsFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/ko.lproj/Localizable.strings <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/ko.lproj/Localizable.strings (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copyStrings --validate --outputencoding UTF-16 --outfilename Localizable.strings --outdir <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/ko.lproj -- <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/ko.lproj/Localizable.strings
+<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/ko.lproj/Localizable.strings:1:1: note: detected encoding of input file as Unicode (UTF-8) (in target 'my-project' from project 'my-project')
+
+CopyStringsFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/ja.lproj/Localizable.strings <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/ja.lproj/Localizable.strings (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copyStrings --validate --outputencoding UTF-16 --outfilename Localizable.strings --outdir <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/ja.lproj -- <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/ja.lproj/Localizable.strings
+<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/ja.lproj/Localizable.strings:1:1: note: detected encoding of input file as Unicode (UTF-8) (in target 'my-project' from project 'my-project')
+
+CopyStringsFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/it.lproj/Localizable.strings <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/it.lproj/Localizable.strings (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copyStrings --validate --outputencoding UTF-16 --outfilename Localizable.strings --outdir <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/it.lproj -- <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/it.lproj/Localizable.strings
+<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/it.lproj/Localizable.strings:1:1: note: detected encoding of input file as Unicode (UTF-8) (in target 'my-project' from project 'my-project')
+
+CopyStringsFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/fr.lproj/Localizable.strings <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/fr.lproj/Localizable.strings (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copyStrings --validate --outputencoding UTF-16 --outfilename Localizable.strings --outdir <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/fr.lproj -- <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/fr.lproj/Localizable.strings
+<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/fr.lproj/Localizable.strings:1:1: note: detected encoding of input file as Unicode (UTF-8) (in target 'my-project' from project 'my-project')
+
+CopyStringsFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/fi.lproj/Localizable.strings <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/fi.lproj/Localizable.strings (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copyStrings --validate --outputencoding UTF-16 --outfilename Localizable.strings --outdir <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/fi.lproj -- <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/fi.lproj/Localizable.strings
+<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/fi.lproj/Localizable.strings:1:1: note: detected encoding of input file as Unicode (UTF-8) (in target 'my-project' from project 'my-project')
+
+CopyStringsFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/es.lproj/Localizable.strings <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/es.lproj/Localizable.strings (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copyStrings --validate --outputencoding UTF-16 --outfilename Localizable.strings --outdir <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/es.lproj -- <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/es.lproj/Localizable.strings
+<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/es.lproj/Localizable.strings:1:1: note: detected encoding of input file as Unicode (UTF-8) (in target 'my-project' from project 'my-project')
+
+CopyStringsFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/en.lproj/Localizable.strings <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/en.lproj/Localizable.strings (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copyStrings --validate --outputencoding UTF-16 --outfilename Localizable.strings --outdir <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/en.lproj -- <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/en.lproj/Localizable.strings
+<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/en.lproj/Localizable.strings:1:1: note: detected encoding of input file as Unicode (UTF-8) (in target 'my-project' from project 'my-project')
+
+CopyStringsFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/de.lproj/Localizable.strings <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/de.lproj/Localizable.strings (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copyStrings --validate --outputencoding UTF-16 --outfilename Localizable.strings --outdir <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/de.lproj -- <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/de.lproj/Localizable.strings
+<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/de.lproj/Localizable.strings:1:1: note: detected encoding of input file as Unicode (UTF-8) (in target 'my-project' from project 'my-project')
+
+CopyStringsFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/cs.lproj/Localizable.strings <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/cs.lproj/Localizable.strings (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copyStrings --validate --outputencoding UTF-16 --outfilename Localizable.strings --outdir <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/cs.lproj -- <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/cs.lproj/Localizable.strings
+<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/cs.lproj/Localizable.strings:1:1: note: detected encoding of input file as Unicode (UTF-8) (in target 'my-project' from project 'my-project')
+
+CopyStringsFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/da.lproj/Localizable.strings <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/da.lproj/Localizable.strings (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copyStrings --validate --outputencoding UTF-16 --outfilename Localizable.strings --outdir <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/da.lproj -- <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/da.lproj/Localizable.strings
+<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/da.lproj/Localizable.strings:1:1: note: detected encoding of input file as Unicode (UTF-8) (in target 'my-project' from project 'my-project')
+
+SwiftDriverJobDiscovery normal arm64 Compiling BottleView.swift, ProgramView.swift, GeneratedAssetSymbols.swift (in target 'my-project' from project 'my-project')
+
+CpResource <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/ModuleX <workspace>/my-project/module-x (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks <workspace>/my-project/module-x <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources
+
+SwiftDriverJobDiscovery normal arm64 Compiling ProgramMenuView.swift, BottleVM.swift, PinAddView.swift (in target 'my-project' from project 'my-project')
+
+SwiftDriverJobDiscovery normal arm64 Emitting module for my-project (in target 'my-project' from project 'my-project')
+
+SwiftDriver\ Compilation\ Requirements my-project normal arm64 com.apple.xcode.tools.swift.compiler (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-Swift-Compilation-Requirements -- <system-path> -module-name my-project -Onone @<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project.SwiftFileList -DDEBUG -enable-experimental-feature DebugDescriptionMacro -sdk <system-path> -target arm64-apple-macos14.0 -g -module-cache-path <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 6 -I <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -F <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/PackageFrameworks -F <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -emit-localized-strings -emit-localized-strings-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64 -c -j10 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc <home>/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/macosx27.0-26A425-7231f6df4def33e022ae2eb8f782df1a.sdkstatcache -output-file-map <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path <home>/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project_const_extract_protocols.json -Xcc -iquote -Xcc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/my-project-generated-files.hmap -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/my-project-own-target-headers.hmap -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/my-project-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project-7d27baa379973ef6627408aef202f00b-VFS/all-product-headers.yaml -Xcc -iquote -Xcc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/my-project-project-headers.hmap -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/include -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/DerivedSources-normal/arm64 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/DerivedSources/arm64 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project-Swift.h -working-directory <workspace>/my-project -experimental-emit-module-separately -disable-cmo
+
+Copy <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.swiftmodule/arm64-apple-macos.abi.json <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project.abi.json (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project.abi.json <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.swiftmodule/arm64-apple-macos.abi.json
+
+Copy <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.swiftmodule/arm64-apple-macos.swiftmodule <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project.swiftmodule (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project.swiftmodule <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.swiftmodule/arm64-apple-macos.swiftmodule
+
+Copy <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.swiftmodule/Project/arm64-apple-macos.swiftsourceinfo <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project.swiftsourceinfo (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project.swiftsourceinfo <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.swiftmodule/Project/arm64-apple-macos.swiftsourceinfo
+
+SwiftDriverJobDiscovery normal arm64 Compiling SettingsView.swift, FileOpenView.swift, WelcomeView.swift (in target 'my-project' from project 'my-project')
+
+SwiftDriverJobDiscovery normal arm64 Compiling ConfigView.swift, BottomBar.swift, my-projectWineDownloadView.swift, BottleListEntry.swift (in target 'my-project' from project 'my-project')
+
+SwiftDriverJobDiscovery normal arm64 Compiling SetupView.swift, ProgramsView.swift, PinCreationView.swift, ProgramShortcut.swift (in target 'my-project' from project 'my-project')
+
+SwiftDriver\ Compilation my-project normal arm64 com.apple.xcode.tools.swift.compiler (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-Swift-Compilation -- <system-path> -module-name my-project -Onone @<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project.SwiftFileList -DDEBUG -enable-experimental-feature DebugDescriptionMacro -sdk <system-path> -target arm64-apple-macos14.0 -g -module-cache-path <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 6 -I <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -F <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/PackageFrameworks -F <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -emit-localized-strings -emit-localized-strings-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64 -c -j10 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc <home>/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/macosx27.0-26A425-7231f6df4def33e022ae2eb8f782df1a.sdkstatcache -output-file-map <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path <home>/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project_const_extract_protocols.json -Xcc -iquote -Xcc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/my-project-generated-files.hmap -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/my-project-own-target-headers.hmap -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/my-project-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project-7d27baa379973ef6627408aef202f00b-VFS/all-product-headers.yaml -Xcc -iquote -Xcc <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/my-project-project-headers.hmap -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/include -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/DerivedSources-normal/arm64 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/DerivedSources/arm64 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project-Swift.h -working-directory <workspace>/my-project -experimental-emit-module-separately -disable-cmo
+
+Ld <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/MacOS/my-project.debug.dylib normal (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    <system-path> -Xlinker -reproducible -target arm64-apple-macos14.0 -dynamiclib -isysroot <system-path> -O0 -Xlinker -no_warn_duplicate_libraries -L<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/EagerLinkingTBDs/Debug -L<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -F<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/EagerLinkingTBDs/Debug -F<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/PackageFrameworks -F<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -filelist <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project.LinkFileList -install_name @rpath/my-project.debug.dylib -Xlinker -rpath -Xlinker <system-path> -Xlinker -rpath -Xlinker @loader_path -Xlinker -rpath -Xlinker <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/PackageFrameworks -Xlinker -rpath -Xlinker @executable_path/../Frameworks -Xlinker -dead_strip -Xlinker -object_path_lto -Xlinker <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -dependency_info -Xlinker <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project.swiftmodule -Xlinker -alias -Xlinker _main -Xlinker ___debug_main_executable_dylib_entry_point -framework Sparkle -o <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/MacOS/my-project.debug.dylib
+
+ConstructStubExecutorLinkFileList <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/my-project-ExecutorLinkFileList-normal-arm64.txt (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    construct-stub-executor-link-file-list <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/MacOS/my-project.debug.dylib <system-path> <system-path> --output <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/my-project-ExecutorLinkFileList-normal-arm64.txt
+note: Using stub executor library with Swift entry point. (in target 'my-project' from project 'my-project')
+
+Ld <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/MacOS/my-project normal (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    <system-path> -Xlinker -reproducible -target arm64-apple-macos14.0 -isysroot <system-path> -O0 -Xlinker -no_warn_duplicate_libraries -L<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -F<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/PackageFrameworks -F<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -Xlinker -rpath -Xlinker @executable_path -Xlinker -rpath -Xlinker @loader_path -Xlinker -rpath -Xlinker <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/PackageFrameworks -Xlinker -rpath -Xlinker @executable_path/../Frameworks -rdynamic -Xlinker -no_deduplicate -e ___debug_blank_executor_main -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_dylib -Xlinker <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/my-project-DebugDylibPath-normal-arm64.txt -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_instlnm -Xlinker <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/my-project-DebugDylibInstallName-normal-arm64.txt -Xlinker -filelist -Xlinker <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/my-project-ExecutorLinkFileList-normal-arm64.txt <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/MacOS/my-project.debug.dylib -o <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/MacOS/my-project
+
+PhaseScriptExecution SwiftLint <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Script-6E50D98129CD0EAF008C39F6.sh (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+    <system-path> -c <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Script-6E50D98129CD0EAF008C39F6.sh
+Running SwiftLint
+Linting Swift files in current working directory
+Linting 'StoragePreflight.swift' (1/100)
+Linting 'ThumbnailProvider.swift' (3/100)
+Linting 'Main.swift' (2/100)
+Linting 'HostGameModeEvidenceChecks.swift' (4/100)
+Linting 'Package.swift' (5/100)
+Linting 'host-state-observer.swift' (6/100)
+Linting 'HostMetalFXBenchmarkTests.swift' (7/100)
+Linting 'IntegrationBoundaryTests.swift' (8/100)
+Linting 'RuntimeTests.swift' (9/100)
+Linting 'AntiCheatProbeTests.swift' (10/100)
+Linting 'HostCapabilitiesTests.swift' (11/100)
+Linting 'UTMWindowsGuestProviderTests.swift' (12/100)
+Linting 'AntiCheatProbeTestSupport.swift' (13/100)
+Linting 'HostResourceExperimentTests.swift' (14/100)
+Linting 'HostMetalFXTests.swift' (15/100)
+Linting 'RuntimeProcessTests.swift' (16/100)
+Linting 'UTMGuestStoragePreflightTests.swift' (17/100)
+Linting 'Tar.swift' (18/100)
+Linting 'BitmapInfo.swift' (19/100)
+Linting 'ShellLink.swift' (20/100)
+Linting 'Magic.swift' (21/100)
+Linting 'PortableExecutable.swift' (22/100)
+Linting 'Section.swift' (23/100)
+Linting 'OptionalHeader.swift' (24/100)
+Linting 'COFFFileHeader.swift' (25/100)
+Linting 'ResourceType.swift' (26/100)
+Linting 'ResourceDirectoryTable.swift' (27/100)
+Linting 'ResourceDataEntry.swift' (28/100)
+Linting 'ResourceDirectoryEntry.swift' (29/100)
+Linting 'RuntimeArguments.swift' (30/100)
+Linting 'RuntimeModels.swift' (31/100)
+Linting 'GameCompatibilityDatabase.swift' (32/100)
+Linting 'HostGameModeEvidence.swift' (34/100)
+Linting 'HostMetalFXBenchmark.swift' (33/100)
+Linting 'UTMGuestStoragePreflight.swift' (35/100)
+Linting 'AntiCheatProbe.swift' (36/100)
+Linting 'WindowsGuestProbeService.swift' (37/100)
+Linting 'JSONKeyUniquenessScanner.swift' (38/100)
+Linting 'HostResourceStateMonitor.swift' (39/100)
+Linting 'HostResourceExperiment.swift' (40/100)
+Linting 'HostMetalFXBenchmarkGPUPath.swift' (41/100)
+Linting 'WindowsGuestTransport.swift' (42/100)
+Linting 'HostMetalFXBenchmarkGPUContext.swift' (43/100)
+Linting 'HostExtendedGraphicsCapabilities.swift' (44/100)
+Linting 'HostResourcePolicy.swift' (45/100)
+Linting 'UTMWindowsGuestProvider.swift' (46/100)
+Linting 'HostCapabilities.swift' (47/100)
+Linting 'RuntimeStorage.swift' (48/100)
+Linting 'UTMGuestSession.swift' (49/100)
+Linting 'Wine.swift' (50/100)
+Linting 'Rosetta2.swift' (51/100)
+Linting 'RuntimeBackends.swift' (52/100)
+Linting 'RuntimeCoordinator.swift' (53/100)
+Linting 'Process+Extensions.swift' (54/100)
+Linting 'Program+Extensions.swift' (55/100)
+Linting 'FileManager+Extensions.swift' (56/100)
+Linting 'FileHandle+Extensions.swift' (57/100)
+Linting 'Logger+Extensions.swift' (58/100)
+Linting 'Bundle+Extensions.swift' (59/100)
+Linting 'URL+Extensions.swift' (60/100)
+Linting 'BottleData.swift' (61/100)
+Linting 'Bottle.swift' (62/100)
+Linting 'my-projectWineInstaller.swift' (63/100)
+Linting 'ProgramSettings.swift' (64/100)
+Linting 'Program.swift' (65/100)
+Linting 'BottleSettings.swift' (66/100)
+Linting 'AppDelegate.swift' (67/100)
+Linting 'Constants.swift' (68/100)
+Linting 'ProgramShortcut.swift' (69/100)
+Linting 'Winetricks.swift' (70/100)
+Linting 'Animation+Extensions.swift' (71/100)
+Linting 'my-projectCmd.swift' (72/100)
+Linting 'Bottle+Extensions.swift' (73/100)
+Linting 'SparkleView.swift' (74/100)
+Linting 'ContentView.swift' (75/100)
+Linting 'SettingsView.swift' (76/100)
+Linting 'my-projectApp.swift' (77/100)
+Linting 'FileOpenView.swift' (78/100)
+Linting 'SetupView.swift' (79/100)
+Linting 'RosettaView.swift' (80/100)
+Linting 'my-projectWineInstallView.swift' (81/100)
+Linting 'ProgramMenuView.swift' (82/100)
+Linting 'WelcomeView.swift' (83/100)
+Linting 'ProgramView.swift' (84/100)
+Linting 'ProgramsView.swift' (85/100)
+Linting 'EnvironmentArgView.swift' (86/100)
+Linting 'BottomBar.swift' (87/100)
+Linting 'BottleVM.swift' (88/100)
+Linting 'ActionView.swift' (89/100)
+Linting 'ConfigView.swift' (90/100)
+Linting 'RenameView.swift' (91/100)
+Linting 'BottleView.swift' (92/100)
+Linting 'RunningProcessesView.swift' (93/100)
+Linting 'WinetricksView.swift' (94/100)
+Linting 'BottleCreationView.swift' (95/100)
+Linting 'BottleListEntry.swift' (96/100)
+Linting 'PinCreationView.swift' (97/100)
+Linting 'PinAddView.swift' (98/100)
+Linting 'PinView.swift' (99/100)
+Linting 'my-projectWineDownloadView.swift' (100/100)
+Done linting! Found 0 violations, 0 serious in 100 files.
+
+Copy <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/my-projectCmd <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectCmd (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -remove-static-executable <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectCmd <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources
+
+Copy <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/PlugIns/my-projectThumbnail.appex <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectThumbnail.appex (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks -remove-static-executable <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectThumbnail.appex <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/PlugIns
+
+ProcessInfoPlistFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Info.plist <workspace>/my-project/my-project/Info.plist (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-infoPlistUtility <workspace>/my-project/my-project/Info.plist -producttype com.apple.product-type.application -genpkginfo <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/PkgInfo -expandbuildsettings -platform macosx -additionalcontentfile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/assetcatalog_generated_info.plist -scanforprivacyfile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Frameworks/Sparkle.framework -scanforprivacyfile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/PlugIns/my-projectThumbnail.appex -scanforprivacyfile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/SemanticVersion_SemanticVersion.bundle -o <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Info.plist
+
+ExtractAppIntentsMetadata (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    <system-path> --toolchain-dir <system-path> --module-name my-project --sdk-root <system-path> --xcode-version 27A266a --platform-family macOS --deployment-target 14.0 --bundle-identifier com.isaacmarovitz.my-project --output <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources --target-triple arm64-apple-macos14.0 --binary-file <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/MacOS/my-project --dependency-file <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project_dependency_info.dat --stringsdata-file <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project.SwiftFileList --metadata-file-list <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/my-project.DependencyMetadataFileList --static-metadata-file-list <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/my-project.DependencyStaticMetadataFileList --swift-const-vals-list <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Objects-normal/arm64/my-project.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --no-app-shortcuts-localization
+2026-11-22 01:57:25.414 appintentsmetadataprocessor[41781:7567238] Starting appintentsmetadataprocessor export
+2026-11-22 01:57:25.415 appintentsmetadataprocessor[41781:7567238] warning: Metadata extraction skipped, no AppIntents.framework dependency found
+
+CopySwiftLibs <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-swiftStdLibTool --copy --verbose --scan-executable <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/MacOS/my-project.debug.dylib --scan-folder <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Frameworks --scan-folder <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/PlugIns --scan-folder <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Library/SystemExtensions --scan-folder <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Extensions --platform macosx --toolchain <system-path> --destination <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Frameworks --strip-bitcode --strip-bitcode-tool <system-path> --emit-dependency-info <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os --back-deploy-swift-span
+Ignoring --strip-bitcode because --sign was not passed
+
+ValidateEmbeddedBinary <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/PlugIns/my-projectThumbnail.appex (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    <system-path> <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/PlugIns/my-projectThumbnail.appex -info-plist-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Info.plist
+
+PruneExplicitPrecompiledModules <home>/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ExplicitPrecompiledModules
+
+note: Run script build phase 'SwiftLint' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'my-project' from project 'my-project')
+** BUILD SUCCEEDED **
+

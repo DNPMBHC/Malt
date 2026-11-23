@@ -1,0 +1,151 @@
+{
+  "schema": "task-07-cli-v2",
+  "checks": {
+    "help": {
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "requiredDiagnosticsPresent": true,
+      "forbiddenDiagnosticsAbsent": true,
+      "passed": true
+    },
+    "run-help": {
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "requiredDiagnosticsPresent": true,
+      "forbiddenDiagnosticsAbsent": true,
+      "passed": true
+    },
+    "storage-help": {
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "requiredDiagnosticsPresent": true,
+      "forbiddenDiagnosticsAbsent": true,
+      "passed": true
+    },
+    "integrity-report": {
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "requiredDiagnosticsPresent": true,
+      "forbiddenDiagnosticsAbsent": true,
+      "passed": true
+    },
+    "unknown-option": {
+      "exitCode": 64,
+      "expectedExitCode": 64,
+      "requiredDiagnosticsPresent": true,
+      "forbiddenDiagnosticsAbsent": true,
+      "passed": true
+    },
+    "empty-override-flag-rejects-value": {
+      "exitCode": 64,
+      "expectedExitCode": 64,
+      "requiredDiagnosticsPresent": true,
+      "forbiddenDiagnosticsAbsent": true,
+      "passed": true
+    }
+  },
+  "storagePreflight": {
+    "passed": true,
+    "status": "synthetic_local_execution",
+    "homeIsolationVerified": true,
+    "registryEncoding": "Foundation PropertyListEncoder",
+    "registryURLUsesKeyedRepresentation": true,
+    "bundleIdentifiersFrom": "scheme/all-target build settings and source fallback; identifiers not exported",
+    "syntheticBottleLookupResolved": true,
+    "checks": {
+      "storage-local-capacity": {
+        "exitCode": 0,
+        "state": "ready",
+        "guestMapping": "notConfigured",
+        "passed": true
+      },
+      "storage-file-target": {
+        "exitCode": 1,
+        "state": "notWritable",
+        "guestMapping": "notConfigured",
+        "passed": true
+      },
+      "storage-missing-installer": {
+        "exitCode": 1,
+        "state": "notChecked",
+        "guestMapping": "notConfigured",
+        "passed": true
+      },
+      "storage-invalid-guest-config": {
+        "exitCode": 1,
+        "passed": true
+      }
+    },
+    "preservation": {
+      "metadataRegistryAndInstallerUnchanged": true,
+      "savedProgramSettingsNotCreated": true,
+      "noPersistentStagingFiles": true
+    },
+    "fixtureInstallerExecuted": false,
+    "realGuestExecuted": false,
+    "realInstallationVerified": false,
+    "scope": "temporary synthetic registry, inert installer and local staging; capacity pass is not guest mapping or installation proof"
+  },
+  "runEndToEnd": {
+    "passed": true,
+    "status": "synthetic_cli_verified",
+    "homeIsolationVerified": true,
+    "isolatedLogFilesCreated": 7,
+    "checks": {
+      "inheritsSavedArguments": {
+        "exitCode": 0,
+        "expectedExitCode": 0,
+        "argvMatched": true,
+        "envMatched": true,
+        "passed": true
+      },
+      "ignoreSavedArgumentsEmptyOverride": {
+        "exitCode": 0,
+        "expectedExitCode": 0,
+        "argvMatched": true,
+        "passed": true
+      },
+      "explicitArgumentsOverride": {
+        "exitCode": 0,
+        "expectedExitCode": 0,
+        "argvMatched": true,
+        "passed": true
+      },
+      "nonzeroExitMapping": {
+        "exitCode": 42,
+        "expectedExitCode": 42,
+        "diagnosticMatched": true,
+        "passed": true
+      },
+      "signalSigtermMapping": {
+        "exitCode": 143,
+        "expectedExitCode": 143,
+        "diagnosticMatched": true,
+        "passed": true
+      },
+      "signalSigkillMapping": {
+        "exitCode": 137,
+        "expectedExitCode": 137,
+        "diagnosticMatched": true,
+        "passed": true
+      },
+      "cancelViaSigint": {
+        "exitCode": 130,
+        "expectedExitCode": 130,
+        "childSpawned": true,
+        "childTerminated": true,
+        "diagnosticMatched": true,
+        "passed": true
+      }
+    },
+    "realWineExecuted": false,
+    "realGuestExecuted": false,
+    "realGameExecuted": false,
+    "scope": "isolated synthetic Wine shim in CFFIXED_USER_HOME exercising production CLI run end-to-end"
+  },
+  "binarySHA256": "b61c7bbc73fc3ef792f62d830a9f6f80d03d83e8d69bd1c0ea88fd74e22bf9e2",
+  "passed": true,
+  "scope": "parser checks, isolated synthetic storage-preflight, and isolated synthetic run E2E; no real Wine, guest, installer, or game launch",
+  "savedArgumentOverrideEndToEnd": "synthetic_cli_verified",
+  "emptyOverrideRuntimeBranch": "synthetic_cli_verified"
+}

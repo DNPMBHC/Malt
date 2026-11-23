@@ -1,0 +1,267 @@
+{
+  "game_mode_observation": {
+    "app_bundle": "graphics-lab/build/GraphicsLabHost.app",
+    "boundary_note": "Info.plist sets LSSupportsGameMode=true and LSApplicationCategoryType=public.app-category.games on an eligible macOS 27.2.1 Apple M4 host. Because macOS 27 SDK provides no public Game Mode activation query API and no manual Game Overlay UI confirmation was captured in this automated run, activation remains 'unknown' and Wine child benefit remains 'unmeasured'.",
+    "host_evidence_verifier": {
+      "activation": "unknown",
+      "activation_evidence": "noSystemUIObservation",
+      "application_category": "public.app-category.games",
+      "declaration": "enabled",
+      "legacy_declaration": "missing",
+      "platform_eligible": true,
+      "windows_guest_benefit": "unmeasured",
+      "wine_child_benefit": "unmeasured"
+    },
+    "host_state_observer_events": 3,
+    "launch_mode": "native_fullscreen_requested_via_NSWindow_toggleFullScreen",
+    "observed_activation": "unknown",
+    "public_api_activation_query_available": false,
+    "system_ui_manual_confirmation": false,
+    "wine_child_benefit": "unmeasured"
+  },
+  "host": {
+    "architecture": "arm64",
+    "cpu_brand": "Apple M4",
+    "display_summary": [
+      "Chipset Model: Apple M4",
+      "Display Type: Built-in Liquid Retina XDR Display",
+      "Resolution: 3024 x 1964 Retina"
+    ],
+    "memory_bytes": 17179869184,
+    "os_build": "26B131",
+    "os_product": "macOS",
+    "os_version": "27.2.1",
+    "python_version": "3.9.6",
+    "recorded_at_utc": "2026-11-22T02:32:19.499802+00:00",
+    "sdk_version": "27.0"
+  },
+  "immutable_digests": {
+    "d3d11_probe_exe": "4498e38244e7b06ecfaecfa6d025bcb44d9c9cfe2c9487ae8e38cd0713b6c34e",
+    "gamemode_app_binary": "f357bfe98643fc7e78e958e7f9dcab6ac3fd256bdae643230654c27f3f9eedb6",
+    "gamemode_app_info_plist": "fbc6ade8bd9f3a8515c0b907ef849d83caed0d4e5fcf0c2d8fbc3fc506ee0aff",
+    "host_jsonl": "19a0bd9c713cb70c96d6a97c2de69556f8ab318f0f33137218dea26d5beb6311",
+    "metal_host_swift": "43159ad0f49076f28c1b6180c01636d0ffda09e3f4bb4f1aa94e78a474ea1784",
+    "offload_csv": "5ef0245d868dff2bf9508ad3288e934452961daef4a33675d20db006b45ebd88",
+    "state_jsonl": "e1df17cd851abc1888c7f9f287ce2d8d41474695e0e98ddca13cf0f44e605004"
+  },
+  "recorded_at_utc": "2026-11-22T02:32:19.038042+00:00",
+  "schema_version": 1,
+  "wine_tcp_offload_verification": {
+    "client_summary": {
+      "environment_telemetry": {
+        "note": "Missing readings remain null and are not inferred.",
+        "power_w": {
+          "coverage": 0.0,
+          "max": null,
+          "mean": null,
+          "missing": 120,
+          "p50": null,
+          "p95": null,
+          "p99": null,
+          "sample_count": 0
+        },
+        "temperature_c": {
+          "coverage": 0.0,
+          "max": null,
+          "mean": null,
+          "missing": 120,
+          "p50": null,
+          "p95": null,
+          "p99": null,
+          "sample_count": 0
+        }
+      },
+      "frame_count": 120,
+      "memory": {
+        "device_memory_bytes": {
+          "coverage": 1.0,
+          "max": 43827200.0,
+          "mean": 43827200.0,
+          "missing": 0,
+          "p50": 43827200.0,
+          "p95": 43827200.0,
+          "p99": 43827200.0,
+          "sample_count": 120
+        },
+        "host_resident_bytes": {
+          "coverage": 1.0,
+          "max": 92880896.0,
+          "mean": 92546116.26666667,
+          "missing": 0,
+          "p50": 92536832.0,
+          "p95": 92848947.2,
+          "p99": 92877783.04,
+          "sample_count": 120
+        },
+        "host_texture_bytes": {
+          "coverage": 1.0,
+          "max": 14745600.0,
+          "mean": 14745600.0,
+          "missing": 0,
+          "p50": 14745600.0,
+          "p95": 14745600.0,
+          "p99": 14745600.0,
+          "sample_count": 120
+        },
+        "process_resident_bytes": {
+          "max": 63262720.0,
+          "mean": 61521066.666666664,
+          "p50": 61296640.0,
+          "p95": 62177280.0,
+          "p99": 63262720.0,
+          "sample_count": 120
+        }
+      },
+      "run": {
+        "initialization_ms": 1649.779,
+        "warmup_ms": 361.481
+      },
+      "schema_version": 1,
+      "timing": {
+        "cpu_frame_interval_ms": {
+          "max": 10.144,
+          "mean": 8.337117647058824,
+          "p50": 8.286,
+          "p95": 9.6734,
+          "p99": 10.041739999999999,
+          "sample_count": 119
+        },
+        "cpu_submit_ms": {
+          "max": 10.107,
+          "mean": 8.300066666666668,
+          "p50": 8.247,
+          "p95": 9.639000000000001,
+          "p99": 10.00167,
+          "sample_count": 120
+        },
+        "derived_fps_from_mean_interval": 119.9455306178606,
+        "gpu_ms": {
+          "coverage": 0.0,
+          "max": null,
+          "mean": null,
+          "missing": 120,
+          "p50": null,
+          "p95": null,
+          "p99": null,
+          "sample_count": 0
+        },
+        "host_gpu_ms": {
+          "coverage": 1.0,
+          "max": 2.05,
+          "mean": 0.39466666666666667,
+          "missing": 0,
+          "p50": 0.2025,
+          "p95": 1.1378999999999992,
+          "p99": 1.8745700000000007,
+          "sample_count": 120
+        },
+        "host_receive_to_present_ms": {
+          "coverage": 1.0,
+          "max": 9.932,
+          "mean": 8.0399,
+          "missing": 0,
+          "p50": 7.977,
+          "p95": 9.33795,
+          "p99": 9.70184,
+          "sample_count": 120
+        },
+        "latency_note": "Synthetic frame-request-to-Present-return proxy; it is not physical input-to-photon latency.",
+        "process_cpu_ms": {
+          "max": 20.0,
+          "mean": 3.0833333333333335,
+          "p50": 0.0,
+          "p95": 10.0,
+          "p99": 20.0,
+          "sample_count": 120
+        },
+        "synthetic_input_to_present_return_ms": {
+          "max": 10.107,
+          "mean": 8.300066666666668,
+          "p50": 8.247,
+          "p95": 9.639000000000001,
+          "p99": 10.00167,
+          "sample_count": 120
+        }
+      },
+      "transfer": {
+        "command_bytes": {
+          "coverage": 1.0,
+          "per_frame_max": 256,
+          "per_frame_mean": 8.533333333333333,
+          "per_frame_min": 0,
+          "sample_count": 120,
+          "total": 1024
+        },
+        "network_bytes_in": {
+          "coverage": 1.0,
+          "per_frame_max": 56,
+          "per_frame_mean": 56.0,
+          "per_frame_min": 56,
+          "sample_count": 120,
+          "total": 6720
+        },
+        "network_bytes_out": {
+          "coverage": 1.0,
+          "per_frame_max": 3752224,
+          "per_frame_mean": 3688625.066666667,
+          "per_frame_min": 3686432,
+          "sample_count": 120,
+          "total": 442635008
+        },
+        "network_bytes_total": {
+          "coverage": 1.0,
+          "per_frame_max": 3752280,
+          "per_frame_mean": 3688681.066666667,
+          "per_frame_min": 3686488,
+          "sample_count": 120,
+          "total": 442641728
+        },
+        "resource_bytes": {
+          "coverage": 1.0,
+          "per_frame_max": 65536,
+          "per_frame_mean": 2184.5333333333333,
+          "per_frame_min": 0,
+          "sample_count": 120,
+          "total": 262144
+        },
+        "transferred_bytes": {
+          "coverage": 1.0,
+          "per_frame_max": 3752280,
+          "per_frame_mean": 3688681.066666667,
+          "per_frame_min": 3686488,
+          "sample_count": 120,
+          "total": 442641728
+        }
+      },
+      "transport_mode": "offload_tcp"
+    },
+    "host_measured_frames": 120,
+    "host_policy_modes_observed": [
+      "maximum-performance"
+    ],
+    "host_policy_sources_observed": [
+      "live"
+    ],
+    "host_render_paths_observed": [
+      "direct_blit"
+    ],
+    "scope_note": "Runs real d3d11_probe.exe (offload_tcp mode) inside a local Wine D3DMetal process over loopback TCP to GraphicsLabHost.app. Verifies D3D11 render -> CopyResource -> staging Map -> TCP -> Metal present -> ACK. This is NOT a Windows Guest boundary measurement (C3 awaits Window A's Windows Guest).",
+    "startup": {
+      "exit_code": 0,
+      "probe_internal_initialization_ms": 1649.779,
+      "process_start_to_d3d_ready_ms": 6641.399667,
+      "ready": true,
+      "schema_version": 1
+    },
+    "workload": {
+      "command_every": 30,
+      "commands": 16,
+      "frames": 120,
+      "height": 720,
+      "resource_bytes": 65536,
+      "resource_every": 30,
+      "warmup": 30,
+      "width": 1280
+    }
+  }
+}

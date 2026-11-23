@@ -1,0 +1,31 @@
+{
+  "artifact_checks": [
+    {
+      "expected": 9,
+      "manifest": "m0-adapters/manifest.json",
+      "verified": 9
+    },
+    {
+      "expected": 27,
+      "manifest": "local-metal-protocol/final-command-protocol/artifact-manifest.json",
+      "verified": 27
+    }
+  ],
+  "captured_at_utc": "2026-11-22T07:26:11.993320+00:00",
+  "guest_handoff_valid": true,
+  "guest_operations": "M0 and two real WARP/Metal cases passed; all read-only SHA queries now structured and bounded",
+  "owner": "@DNPMBHC",
+  "python_regression": {
+    "errors": 0,
+    "failures": 0,
+    "passed": 147,
+    "skips": 0,
+    "tests": 147
+  },
+  "source_syntax": {
+    "passed": true,
+    "python_files": 32,
+    "shell_files": 4,
+    "shell_passed": true
+  }
+}

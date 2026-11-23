@@ -1,0 +1,15 @@
+test_rejects_non_contiguous_frames_and_empty_data (test_analyze.AnalyzeTests) ... ok
+test_rejects_non_finite_negative_and_fractional_counters (test_analyze.AnalyzeTests) ... ok
+test_rejects_unknown_or_mixed_transport_modes (test_analyze.AnalyzeTests) ... ok
+test_rejects_wrong_header_order (test_analyze.AnalyzeTests) ... ok
+test_summarizes_frames_percentiles_bytes_and_missing_telemetry (test_analyze.AnalyzeTests) ... ok
+test_experiment_sources_typecheck_against_active_macos_sdk (test_metalfx_sdk_compile.MetalFXSDKCompileTests) ... ok
+test_failure_diagnostics_redact_home_and_temporary_paths (test_metalfx_sdk_compile.MetalFXSDKCompileTests) ... ok
+test_records_process_start_to_ready_without_saving_command (test_run_probe.RunProbeTests) ... ok
+test_aggregate_runs_computes_means_and_preserves_missing_gpu_timing (test_wine_benchmark.WineBenchmarkHelperTests) ... ok
+test_redact_text_removes_home_workspace_and_tmp_paths (test_wine_benchmark.WineBenchmarkHelperTests) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 2.473s
+
+OK

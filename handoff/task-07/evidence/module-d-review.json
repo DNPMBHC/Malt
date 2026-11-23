@@ -1,0 +1,1821 @@
+{
+  "schema": 1,
+  "capturedAtUTC": "2026-11-21T16:32:04.115558+00:00",
+  "project": "my-project",
+  "ownerTask": "07",
+  "scope": {
+    "kind": "read-only review of module-d host synthetic evidence",
+    "reviewReranWorkload": false,
+    "reviewChangedSourceOrRawEvidence": false,
+    "D3DExecuted": false,
+    "WineExecuted": false,
+    "windowsGuestExecuted": false,
+    "gameExecuted": false,
+    "realHardwareThermalOrPowerTransitionsObserved": false
+  },
+  "method": {
+    "statistics": "linear interpolation at (n-1)*p; p50 is median; population standard deviation",
+    "inputIntegrity": "SHA256 of exact bytes at review time; the review is a local integrity record, not execution attestation",
+    "artifactNames": "neutral roles; use content SHA256 to match original inputs",
+    "currentSourceHashesDoNotProveAcquisitionTimeSource": true
+  },
+  "inputArtifacts": [
+    {
+      "role": "gpu-performance-run",
+      "bytes": 72678,
+      "sha256": "4c62c8ba14beac921f41c71f362541a4720a71750b2493399a1d28269ce503cc"
+    },
+    {
+      "role": "game-mode-observation",
+      "bytes": 1752,
+      "sha256": "47a6551533204d901270620944d16fad73b35e0d73a949ebccf6c2013ad9475c"
+    },
+    {
+      "role": "resource-queue-experiment",
+      "bytes": 39379,
+      "sha256": "92e96f55ee6bce475f514d5260d1054bc86ea76cded9f17e606d8f58f093af9e"
+    },
+    {
+      "role": "gpu-api-validation-run",
+      "bytes": 72552,
+      "sha256": "92e05e13472f6b773d0a14ab4dbfca22be7c510459fce40744d9d644ed9c5e71"
+    },
+    {
+      "role": "platform-reference",
+      "bytes": 76906,
+      "sha256": "eb05694d6039ad4ad7ad7a359d42d2151d63429d5ce71ff15aaa82545dc8c921"
+    },
+    {
+      "role": "newer-gpu-capability-probe",
+      "bytes": 288,
+      "sha256": "76b0ed029b477f6a4baf81d5e81f9d3916cade53cd57722c635330bebc59a6f4"
+    },
+    {
+      "role": "machine-sdk-observation",
+      "bytes": 1365,
+      "sha256": "508dc02e9325e46c7551e33d7b870960dfad7363d60f3391c04f36879388eb05"
+    },
+    {
+      "role": "historical-hardware-smoke-log",
+      "bytes": 22648,
+      "sha256": "ec4f3cd02b72edd294e250723bff5fbd13a32b19bb56b2e04ff48823ecba19ce"
+    }
+  ],
+  "currentSourceInputs": [
+    {
+      "role": "game-mode-standalone-checks-source",
+      "bytes": 7106,
+      "sha256": "5e3a9ebf9c6c8eb371828b34f70062a02a035c19da653802d0ba14a823c9a61a"
+    },
+    {
+      "role": "gpu-ab-tests",
+      "bytes": 7498,
+      "sha256": "e67aa3d1d54acd8dc3aaac356a4bcdef8e43cca16f6be2012ac49c1451e37a68"
+    },
+    {
+      "role": "resource-experiment-tests",
+      "bytes": 1590,
+      "sha256": "7ea6892ce0d67308c271106f23b0744d665da5f8f4d468ca4d8c49e0de13b7a0"
+    },
+    {
+      "role": "gpu-hardware-smoke-tests",
+      "bytes": 8434,
+      "sha256": "df9fee1235ca7d22a766aadaf9a9024e0d063dd35eb85af6d53ca79000deb144"
+    },
+    {
+      "role": "gpu-benchmark-source",
+      "bytes": 11480,
+      "sha256": "7eb4c0fe2bfc04ee965653d56567874de5836e0a5a34e6276eec4660d11d25e4"
+    },
+    {
+      "role": "game-mode-evidence-source",
+      "bytes": 6064,
+      "sha256": "fd57c00ceb0260d5c61c68de68d216c75e406287d619a9aff106d72e735f5d01"
+    },
+    {
+      "role": "resource-experiment-source",
+      "bytes": 8561,
+      "sha256": "0bb152942e0508e2a5f5ca518f6a558f1f7a4b499140ec7bb4d3d0bcc04cdaf9"
+    },
+    {
+      "role": "gpu-path-source",
+      "bytes": 9878,
+      "sha256": "e81bc5afa7b384499ec7679564d54b4d69325c2c66cc235f3c5e0bfb2f38a3e5"
+    },
+    {
+      "role": "gpu-context-source",
+      "bytes": 6076,
+      "sha256": "0a5d02fe880328959eff4cd388a7fb6319b7d9c2546d7da5106ac25b52c9537e"
+    }
+  ],
+  "resourcePolicyExperiment": {
+    "kind": "real-host-CPU-work-with-injected-policy-state",
+    "stateSource": "injected",
+    "recordedAtUTC": "2026-11-21T16:00:09Z",
+    "workload": {
+      "jobsPerRound": 16,
+      "bytesPerHash": 16384,
+      "hashesPerJob": 128,
+      "expectedChecksum": 128,
+      "warmupRounds": 3,
+      "measuredRounds": 12,
+      "measuredOperationSamples": 192
+    },
+    "baseline": {
+      "qos": "utility",
+      "maxConcurrency": 4,
+      "suspended": false
+    },
+    "treatments": {
+      "control": {
+        "rounds": 4,
+        "operationSamples": 64,
+        "configuredConcurrency": [
+          4
+        ],
+        "observedPeakConcurrency": [
+          4
+        ],
+        "observedThreadQoSClasses": [
+          17
+        ],
+        "wallMilliseconds": {
+          "sampleCount": 4,
+          "mean": 4.55364575,
+          "p50": 4.1437915,
+          "p95": 6.189137499999999,
+          "p99": 6.4328275,
+          "minimum": 3.43325,
+          "maximum": 6.49375,
+          "populationStddev": 1.1788808551881687
+        },
+        "waitMilliseconds": {
+          "sampleCount": 64,
+          "mean": 1.708068359375,
+          "p50": 1.740083,
+          "p95": 4.343531299999994,
+          "p99": 4.92698971,
+          "minimum": 0.009583,
+          "maximum": 4.982167,
+          "populationStddev": 1.375478020402491
+        },
+        "workMilliseconds": {
+          "sampleCount": 64,
+          "mean": 1.08636984375,
+          "p50": 1.0355210000000001,
+          "p95": 1.6971626,
+          "p99": 1.70738779,
+          "minimum": 0.7675,
+          "maximum": 1.718833,
+          "populationStddev": 0.29111404445499417
+        },
+        "allChecksumsMatch": true,
+        "roundRecords": [
+          {
+            "round": 0,
+            "treatment": "control",
+            "configuredConcurrency": 4,
+            "peakConcurrency": 4,
+            "wallMilliseconds": 3.43325
+          },
+          {
+            "round": 1,
+            "treatment": "control",
+            "configuredConcurrency": 4,
+            "peakConcurrency": 4,
+            "wallMilliseconds": 4.463
+          },
+          {
+            "round": 2,
+            "treatment": "control",
+            "configuredConcurrency": 4,
+            "peakConcurrency": 4,
+            "wallMilliseconds": 3.824583
+          },
+          {
+            "round": 3,
+            "treatment": "control",
+            "configuredConcurrency": 4,
+            "peakConcurrency": 4,
+            "wallMilliseconds": 6.49375
+          }
+        ],
+        "selectedRealOperationSamples": [
+          {
+            "checksum": 128,
+            "observedQoS": 17,
+            "operation": 0,
+            "waitMilliseconds": 0.023125,
+            "workMilliseconds": 0.785292
+          },
+          {
+            "checksum": 128,
+            "observedQoS": 17,
+            "operation": 1,
+            "waitMilliseconds": 0.017958,
+            "workMilliseconds": 0.782709
+          },
+          {
+            "checksum": 128,
+            "observedQoS": 17,
+            "operation": 14,
+            "waitMilliseconds": 4.894584,
+            "workMilliseconds": 1.142
+          },
+          {
+            "checksum": 128,
+            "observedQoS": 17,
+            "operation": 15,
+            "waitMilliseconds": 4.982167,
+            "workMilliseconds": 1.456541
+          }
+        ]
+      },
+      "nominal": {
+        "rounds": 4,
+        "operationSamples": 64,
+        "configuredConcurrency": [
+          2
+        ],
+        "observedPeakConcurrency": [
+          2
+        ],
+        "observedThreadQoSClasses": [
+          17
+        ],
+        "wallMilliseconds": {
+          "sampleCount": 4,
+          "mean": 8.346760249999999,
+          "p50": 8.444312,
+          "p95": 10.151085599999998,
+          "p99": 10.297350719999999,
+          "minimum": 6.1645,
+          "maximum": 10.333917,
+          "populationStddev": 1.5515991120887787
+        },
+        "waitMilliseconds": {
+          "sampleCount": 64,
+          "mean": 3.719910859375,
+          "p50": 3.669625,
+          "p95": 8.014371449999999,
+          "p99": 9.12774613,
+          "minimum": 0.010584,
+          "maximum": 9.158458,
+          "populationStddev": 2.5512399661522243
+        },
+        "workMilliseconds": {
+          "sampleCount": 64,
+          "mean": 1.0352935781250001,
+          "p50": 1.0121875,
+          "p95": 1.3248106999999998,
+          "p99": 1.44618154,
+          "minimum": 0.758333,
+          "maximum": 1.446208,
+          "populationStddev": 0.19782578377204815
+        },
+        "allChecksumsMatch": true,
+        "roundRecords": [
+          {
+            "round": 0,
+            "treatment": "nominal",
+            "configuredConcurrency": 2,
+            "peakConcurrency": 2,
+            "wallMilliseconds": 6.1645
+          },
+          {
+            "round": 1,
+            "treatment": "nominal",
+            "configuredConcurrency": 2,
+            "peakConcurrency": 2,
+            "wallMilliseconds": 9.115041
+          },
+          {
+            "round": 2,
+            "treatment": "nominal",
+            "configuredConcurrency": 2,
+            "peakConcurrency": 2,
+            "wallMilliseconds": 7.773583
+          },
+          {
+            "round": 3,
+            "treatment": "nominal",
+            "configuredConcurrency": 2,
+            "peakConcurrency": 2,
+            "wallMilliseconds": 10.333917
+          }
+        ],
+        "selectedRealOperationSamples": [
+          {
+            "checksum": 128,
+            "observedQoS": 17,
+            "operation": 0,
+            "waitMilliseconds": 0.010584,
+            "workMilliseconds": 0.772666
+          },
+          {
+            "checksum": 128,
+            "observedQoS": 17,
+            "operation": 1,
+            "waitMilliseconds": 0.012542,
+            "workMilliseconds": 0.77225
+          },
+          {
+            "checksum": 128,
+            "observedQoS": 17,
+            "operation": 14,
+            "waitMilliseconds": 9.109709,
+            "workMilliseconds": 1.143583
+          },
+          {
+            "checksum": 128,
+            "observedQoS": 17,
+            "operation": 15,
+            "waitMilliseconds": 9.158458,
+            "workMilliseconds": 1.143084
+          }
+        ]
+      },
+      "serious": {
+        "rounds": 4,
+        "operationSamples": 64,
+        "configuredConcurrency": [
+          1
+        ],
+        "observedPeakConcurrency": [
+          1
+        ],
+        "observedThreadQoSClasses": [
+          9
+        ],
+        "wallMilliseconds": {
+          "sampleCount": 4,
+          "mean": 43.6755105,
+          "p50": 43.0218335,
+          "p95": 45.8767018,
+          "p99": 46.224906759999996,
+          "minimum": 42.346417,
+          "maximum": 46.311958,
+          "populationStddev": 1.5711195807131435
+        },
+        "waitMilliseconds": {
+          "sampleCount": 64,
+          "mean": 20.595545625,
+          "p50": 20.378854500000003,
+          "p95": 40.44977685,
+          "p99": 42.215016909999996,
+          "minimum": 0.018208,
+          "maximum": 43.417084,
+          "populationStddev": 12.881314172602988
+        },
+        "workMilliseconds": {
+          "sampleCount": 64,
+          "mean": 2.70988734375,
+          "p50": 2.825,
+          "p95": 2.87259735,
+          "p99": 3.130528999999999,
+          "minimum": 1.090917,
+          "maximum": 3.428834,
+          "populationStddev": 0.43326985356841335
+        },
+        "allChecksumsMatch": true,
+        "roundRecords": [
+          {
+            "round": 0,
+            "treatment": "serious",
+            "configuredConcurrency": 1,
+            "peakConcurrency": 1,
+            "wallMilliseconds": 42.633417
+          },
+          {
+            "round": 1,
+            "treatment": "serious",
+            "configuredConcurrency": 1,
+            "peakConcurrency": 1,
+            "wallMilliseconds": 42.346417
+          },
+          {
+            "round": 2,
+            "treatment": "serious",
+            "configuredConcurrency": 1,
+            "peakConcurrency": 1,
+            "wallMilliseconds": 46.311958
+          },
+          {
+            "round": 3,
+            "treatment": "serious",
+            "configuredConcurrency": 1,
+            "peakConcurrency": 1,
+            "wallMilliseconds": 43.41025
+          }
+        ],
+        "selectedRealOperationSamples": [
+          {
+            "checksum": 128,
+            "observedQoS": 9,
+            "operation": 0,
+            "waitMilliseconds": 0.023666,
+            "workMilliseconds": 2.838375
+          },
+          {
+            "checksum": 128,
+            "observedQoS": 9,
+            "operation": 1,
+            "waitMilliseconds": 2.881459,
+            "workMilliseconds": 2.817625
+          },
+          {
+            "checksum": 128,
+            "observedQoS": 9,
+            "operation": 14,
+            "waitMilliseconds": 37.670084,
+            "workMilliseconds": 2.830958
+          },
+          {
+            "checksum": 128,
+            "observedQoS": 9,
+            "operation": 15,
+            "waitMilliseconds": 40.518333,
+            "workMilliseconds": 2.832708
+          }
+        ]
+      }
+    },
+    "pauseAndRecoveryObservations": [
+      {
+        "baselineRestored": true,
+        "completedAfterRecovery": 4,
+        "completedWhilePaused": 0,
+        "observationMilliseconds": 38.641834,
+        "trigger": "low-power"
+      },
+      {
+        "baselineRestored": true,
+        "completedAfterRecovery": 4,
+        "completedWhilePaused": 0,
+        "observationMilliseconds": 40.031,
+        "trigger": "critical-thermal"
+      }
+    ],
+    "measuredHardwareThermalTransition": false,
+    "measuredHardwarePowerModeTransition": false,
+    "productionConsumerConnected": false,
+    "conclusion": "The dedicated diagnostic queue executes real SHA256 work and responds to injected policy states. Reduced concurrency increases completion time in this workload; no game speedup, energy saving, or temperature reduction is established.",
+    "suppliedLimitations": [
+      "Thermal and power states are injected; no hardware transition is claimed.",
+      "This is a scheduling experiment, not evidence of game FPS, energy, or temperature improvements.",
+      "Observed thread QoS is recorded; the OS can adjust scheduling and running work is not preempted.",
+      "No Wine, guest, renderer, UI, or production launch consumer is connected by this task."
+    ]
+  },
+  "gpuExperiments": {
+    "gpu-performance-run": {
+      "schemaVersion": 1,
+      "scene": "synthetic_static_plane_v1",
+      "configuration": {
+        "framesPerSample": 4,
+        "outputSize": 512,
+        "sampleRounds": 12,
+        "warmupFrames": 8
+      },
+      "metalDeviceAvailable": true,
+      "metalAPIValidationEnabled": false,
+      "warmupFrameCommands": 32,
+      "timedFrameSamples": 288,
+      "paths": [
+        {
+          "capabilitySupported": true,
+          "executedRoute": "native",
+          "gpuEncodingCompleted": true,
+          "meanAbsoluteErrorAgainstCPUReference": 0,
+          "meanAbsoluteErrorAgainstNative": 0,
+          "nonzeroColorOutput": true,
+          "opaqueOutput": true,
+          "outputChecksum": "e4eef86986feea02",
+          "requestedGPUEncodingCompleted": true,
+          "requestedRoute": "native",
+          "shadedPixelsPerFrame": 262144
+        },
+        {
+          "capabilitySupported": true,
+          "executedRoute": "nearest",
+          "gpuEncodingCompleted": true,
+          "meanAbsoluteErrorAgainstCPUReference": 0.0006180657280815972,
+          "meanAbsoluteErrorAgainstNative": 0.0006180657280815972,
+          "nonzeroColorOutput": true,
+          "opaqueOutput": true,
+          "outputChecksum": "4f32ffbfe929a24d",
+          "requestedGPUEncodingCompleted": true,
+          "requestedRoute": "nearest",
+          "shadedPixelsPerFrame": 65536
+        },
+        {
+          "capabilitySupported": true,
+          "executedRoute": "spatial",
+          "gpuEncodingCompleted": true,
+          "meanAbsoluteErrorAgainstCPUReference": 0.0038968852922028185,
+          "meanAbsoluteErrorAgainstNative": 0.0038968852922028185,
+          "nonzeroColorOutput": true,
+          "opaqueOutput": true,
+          "outputChecksum": "1046209422261910",
+          "requestedGPUEncodingCompleted": true,
+          "requestedRoute": "spatial",
+          "scalerCreationSucceeded": true,
+          "shadedPixelsPerFrame": 65536
+        },
+        {
+          "capabilitySupported": true,
+          "executedRoute": "temporal",
+          "gpuEncodingCompleted": true,
+          "meanAbsoluteErrorAgainstCPUReference": 0.0014943989273769403,
+          "meanAbsoluteErrorAgainstNative": 0.0014943989273769403,
+          "nonzeroColorOutput": true,
+          "opaqueOutput": true,
+          "outputChecksum": "935d333939dd4127",
+          "requestedGPUEncodingCompleted": true,
+          "requestedRoute": "temporal",
+          "scalerCreationSucceeded": true,
+          "shadedPixelsPerFrame": 65536
+        }
+      ],
+      "comparisons": [
+        {
+          "reference": {
+            "route": "native",
+            "cpuEncodeAndCommitMilliseconds": {
+              "sampleCount": 48,
+              "mean": 0.005611979166666667,
+              "p50": 0.005083,
+              "p95": 0.007906349999999998,
+              "p99": 0.013497020000000009,
+              "minimum": 0.004,
+              "maximum": 0.016709,
+              "populationStddev": 0.0019444351417312192
+            },
+            "gpuMilliseconds": {
+              "sampleCount": 48,
+              "mean": 0.06941752872080542,
+              "p50": 0.05685415817424655,
+              "p95": 0.1352312741801141,
+              "p99": 0.3034050209680573,
+              "minimum": 0.04824995994567871,
+              "maximum": 0.33912499202415347,
+              "populationStddev": 0.0518822362721268
+            },
+            "sampleRoutesPresent": true,
+            "sampleRoutesMatchRequestedRoute": true,
+            "selectedRealTimingSamples": [
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.006084,
+                "executedRoute": "native",
+                "frame": 0,
+                "gpuMilliseconds": 0.05970831261947751,
+                "position": 0,
+                "round": 0
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.006166,
+                "executedRoute": "native",
+                "frame": 1,
+                "gpuMilliseconds": 0.05687499651685357,
+                "position": 0,
+                "round": 0
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.004292,
+                "executedRoute": "native",
+                "frame": 2,
+                "gpuMilliseconds": 0.048250018153339624,
+                "position": 1,
+                "round": 11
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.00575,
+                "executedRoute": "native",
+                "frame": 3,
+                "gpuMilliseconds": 0.04824995994567871,
+                "position": 1,
+                "round": 11
+              }
+            ]
+          },
+          "candidate": {
+            "route": "nearest",
+            "cpuEncodeAndCommitMilliseconds": {
+              "sampleCount": 48,
+              "mean": 0.006927145833333333,
+              "p50": 0.0065835,
+              "p95": 0.010617,
+              "p99": 0.011765000000000001,
+              "minimum": 0.005,
+              "maximum": 0.012,
+              "populationStddev": 0.001552502925246618
+            },
+            "gpuMilliseconds": {
+              "sampleCount": 48,
+              "mean": 0.03168229159200564,
+              "p50": 0.028979149647057056,
+              "p95": 0.03780417609959841,
+              "p99": 0.08447749016340828,
+              "minimum": 0.02462498378008604,
+              "maximum": 0.1095833140425384,
+              "populationStddev": 0.012723246919951303
+            },
+            "sampleRoutesPresent": true,
+            "sampleRoutesMatchRequestedRoute": true,
+            "selectedRealTimingSamples": [
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.008125,
+                "executedRoute": "nearest",
+                "frame": 0,
+                "gpuMilliseconds": 0.02824998227879405,
+                "position": 1,
+                "round": 0
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.006625,
+                "executedRoute": "nearest",
+                "frame": 1,
+                "gpuMilliseconds": 0.027999980375170708,
+                "position": 1,
+                "round": 0
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.0115,
+                "executedRoute": "nearest",
+                "frame": 2,
+                "gpuMilliseconds": 0.1095833140425384,
+                "position": 0,
+                "round": 11
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.012,
+                "executedRoute": "nearest",
+                "frame": 3,
+                "gpuMilliseconds": 0.02462498378008604,
+                "position": 0,
+                "round": 11
+              }
+            ]
+          },
+          "expectedSamplesPerArm": 48,
+          "roundFrameCoordinatesUnique": true,
+          "alternationMatchesRoundParity": true,
+          "suppliedMediansMatchRecomputation": true
+        },
+        {
+          "reference": {
+            "route": "nearest",
+            "cpuEncodeAndCommitMilliseconds": {
+              "sampleCount": 48,
+              "mean": 0.0057899375,
+              "p50": 0.004916,
+              "p95": 0.0084125,
+              "p99": 0.012325240000000005,
+              "minimum": 0.004458,
+              "maximum": 0.013833,
+              "populationStddev": 0.0017726281971300177
+            },
+            "gpuMilliseconds": {
+              "sampleCount": 48,
+              "mean": 0.04214149400164994,
+              "p50": 0.027666683308780193,
+              "p95": 0.1036937290336935,
+              "p99": 0.35482290259096805,
+              "minimum": 0.023874978069216013,
+              "maximum": 0.48162497114390135,
+              "populationStddev": 0.0712640655330659
+            },
+            "sampleRoutesPresent": true,
+            "sampleRoutesMatchRequestedRoute": true,
+            "selectedRealTimingSamples": [
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.006709,
+                "executedRoute": "nearest",
+                "frame": 0,
+                "gpuMilliseconds": 0.0239583314396441,
+                "position": 0,
+                "round": 0
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.007917,
+                "executedRoute": "nearest",
+                "frame": 1,
+                "gpuMilliseconds": 0.02400000812485814,
+                "position": 0,
+                "round": 0
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.005,
+                "executedRoute": "nearest",
+                "frame": 2,
+                "gpuMilliseconds": 0.028125010430812836,
+                "position": 1,
+                "round": 11
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.004958,
+                "executedRoute": "nearest",
+                "frame": 3,
+                "gpuMilliseconds": 0.02804165706038475,
+                "position": 1,
+                "round": 11
+              }
+            ]
+          },
+          "candidate": {
+            "route": "spatial",
+            "cpuEncodeAndCommitMilliseconds": {
+              "sampleCount": 48,
+              "mean": 0.023794395833333332,
+              "p50": 0.020063,
+              "p95": 0.03806929999999999,
+              "p99": 0.05029649000000002,
+              "minimum": 0.017459,
+              "maximum": 0.058208,
+              "populationStddev": 0.0077211772465397175
+            },
+            "gpuMilliseconds": {
+              "sampleCount": 48,
+              "mean": 0.12444010887217398,
+              "p50": 0.10958334314636886,
+              "p95": 0.11832499003503472,
+              "p99": 0.46417000994552,
+              "minimum": 0.10545831173658371,
+              "maximum": 0.7703750161454082,
+              "populationStddev": 0.09428392185998193
+            },
+            "sampleRoutesPresent": true,
+            "sampleRoutesMatchRequestedRoute": true,
+            "selectedRealTimingSamples": [
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.040709,
+                "executedRoute": "spatial",
+                "frame": 0,
+                "gpuMilliseconds": 0.11162500595673919,
+                "position": 1,
+                "round": 0
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.030875,
+                "executedRoute": "spatial",
+                "frame": 1,
+                "gpuMilliseconds": 0.7703750161454082,
+                "position": 1,
+                "round": 0
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.026792,
+                "executedRoute": "spatial",
+                "frame": 2,
+                "gpuMilliseconds": 0.10545831173658371,
+                "position": 0,
+                "round": 11
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.027917,
+                "executedRoute": "spatial",
+                "frame": 3,
+                "gpuMilliseconds": 0.11800002539530396,
+                "position": 0,
+                "round": 11
+              }
+            ]
+          },
+          "expectedSamplesPerArm": 48,
+          "roundFrameCoordinatesUnique": true,
+          "alternationMatchesRoundParity": true,
+          "suppliedMediansMatchRecomputation": true
+        },
+        {
+          "reference": {
+            "route": "nearest",
+            "cpuEncodeAndCommitMilliseconds": {
+              "sampleCount": 48,
+              "mean": 0.006214270833333333,
+              "p50": 0.005937,
+              "p95": 0.00833125,
+              "p99": 0.010095040000000003,
+              "minimum": 0.004375,
+              "maximum": 0.011584,
+              "populationStddev": 0.0015029120724389165
+            },
+            "gpuMilliseconds": {
+              "sampleCount": 48,
+              "mean": 0.047873258154140785,
+              "p50": 0.027750007575377822,
+              "p95": 0.19791872764471882,
+              "p99": 0.410809989552945,
+              "minimum": 0.023874978069216013,
+              "maximum": 0.4646250163204968,
+              "populationStddev": 0.08446781413793154
+            },
+            "sampleRoutesPresent": true,
+            "sampleRoutesMatchRequestedRoute": true,
+            "selectedRealTimingSamples": [
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.005666,
+                "executedRoute": "nearest",
+                "frame": 0,
+                "gpuMilliseconds": 0.028125010430812836,
+                "position": 0,
+                "round": 0
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.004709,
+                "executedRoute": "nearest",
+                "frame": 1,
+                "gpuMilliseconds": 0.02766662510111928,
+                "position": 0,
+                "round": 0
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.00675,
+                "executedRoute": "nearest",
+                "frame": 2,
+                "gpuMilliseconds": 0.027791655156761408,
+                "position": 1,
+                "round": 11
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.005292,
+                "executedRoute": "nearest",
+                "frame": 3,
+                "gpuMilliseconds": 0.028291658964008093,
+                "position": 1,
+                "round": 11
+              }
+            ]
+          },
+          "candidate": {
+            "route": "temporal",
+            "cpuEncodeAndCommitMilliseconds": {
+              "sampleCount": 48,
+              "mean": 0.019654520833333335,
+              "p50": 0.01775,
+              "p95": 0.0318329,
+              "p99": 0.045666490000000025,
+              "minimum": 0.012333,
+              "maximum": 0.055458,
+              "populationStddev": 0.006715979610195818
+            },
+            "gpuMilliseconds": {
+              "sampleCount": 48,
+              "mean": 0.3674158021264399,
+              "p50": 0.3116041771136224,
+              "p95": 0.47177916858345265,
+              "p99": 1.3274112401995815,
+              "minimum": 0.2534583327360451,
+              "maximum": 1.6324999742209911,
+              "populationStddev": 0.2150089805464402
+            },
+            "sampleRoutesPresent": true,
+            "sampleRoutesMatchRequestedRoute": true,
+            "selectedRealTimingSamples": [
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.033291,
+                "executedRoute": "temporal",
+                "frame": 0,
+                "gpuMilliseconds": 0.4880833439528942,
+                "position": 1,
+                "round": 0
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.027291,
+                "executedRoute": "temporal",
+                "frame": 1,
+                "gpuMilliseconds": 0.3672500024549663,
+                "position": 1,
+                "round": 0
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.016084,
+                "executedRoute": "temporal",
+                "frame": 2,
+                "gpuMilliseconds": 0.2637500292621553,
+                "position": 0,
+                "round": 11
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.0155,
+                "executedRoute": "temporal",
+                "frame": 3,
+                "gpuMilliseconds": 0.27600000612437725,
+                "position": 0,
+                "round": 11
+              }
+            ]
+          },
+          "expectedSamplesPerArm": 48,
+          "roundFrameCoordinatesUnique": true,
+          "alternationMatchesRoundParity": true,
+          "suppliedMediansMatchRecomputation": true
+        }
+      ],
+      "pathAndOutputChecks": "Runtime route, completion, checksum, output-opacity and error flags are supplied by the producing executable; no pixel buffers or independent GPU trace are included.",
+      "sourceBinding": {
+        "recordedAt": null,
+        "immutableSourceSHA256": null,
+        "binarySHA256": null,
+        "reason": "not embedded in the supplied A/B report; current review hashes cannot reconstruct acquisition-time binding"
+      },
+      "suppliedLimitations": [
+        "GPU interval covers synthetic scene shading and the selected reconstruction; readback is outside timing.",
+        "CPU interval covers command allocation, encoding, and commit; GPU waiting is excluded.",
+        "Native shades four times as many pixels as every low-resolution route. These timings do not prove game speedup.",
+        "Temporal uses a static plane, depth=0.5, zero non-jitter motion, matched Halton jitter, and persistent history.",
+        "Temporal output error includes jitter phase and filter history; no moving geometry or disocclusion is exercised.",
+        "Nearest is a compute resample because Metal blit does not resize textures.",
+        "No process names, local paths, device names, registry IDs, or personal identifiers are collected.",
+        "API validation changes timing overhead; use a separate validation-disabled run for performance conclusions.",
+        "Game Mode activation, guest rendering, presentation, frame pacing, and thermal steady state are outside this experiment."
+      ]
+    },
+    "gpu-api-validation-run": {
+      "schemaVersion": 1,
+      "scene": "synthetic_static_plane_v1",
+      "configuration": {
+        "framesPerSample": 4,
+        "outputSize": 512,
+        "sampleRounds": 12,
+        "warmupFrames": 8
+      },
+      "metalDeviceAvailable": true,
+      "metalAPIValidationEnabled": true,
+      "warmupFrameCommands": 32,
+      "timedFrameSamples": 288,
+      "paths": [
+        {
+          "capabilitySupported": true,
+          "executedRoute": "native",
+          "gpuEncodingCompleted": true,
+          "meanAbsoluteErrorAgainstCPUReference": 0,
+          "meanAbsoluteErrorAgainstNative": 0,
+          "nonzeroColorOutput": true,
+          "opaqueOutput": true,
+          "outputChecksum": "e4eef86986feea02",
+          "requestedGPUEncodingCompleted": true,
+          "requestedRoute": "native",
+          "shadedPixelsPerFrame": 262144
+        },
+        {
+          "capabilitySupported": true,
+          "executedRoute": "nearest",
+          "gpuEncodingCompleted": true,
+          "meanAbsoluteErrorAgainstCPUReference": 0.0006180657280815972,
+          "meanAbsoluteErrorAgainstNative": 0.0006180657280815972,
+          "nonzeroColorOutput": true,
+          "opaqueOutput": true,
+          "outputChecksum": "4f32ffbfe929a24d",
+          "requestedGPUEncodingCompleted": true,
+          "requestedRoute": "nearest",
+          "shadedPixelsPerFrame": 65536
+        },
+        {
+          "capabilitySupported": true,
+          "executedRoute": "spatial",
+          "gpuEncodingCompleted": true,
+          "meanAbsoluteErrorAgainstCPUReference": 0.0038968852922028185,
+          "meanAbsoluteErrorAgainstNative": 0.0038968852922028185,
+          "nonzeroColorOutput": true,
+          "opaqueOutput": true,
+          "outputChecksum": "1046209422261910",
+          "requestedGPUEncodingCompleted": true,
+          "requestedRoute": "spatial",
+          "scalerCreationSucceeded": true,
+          "shadedPixelsPerFrame": 65536
+        },
+        {
+          "capabilitySupported": true,
+          "executedRoute": "temporal",
+          "gpuEncodingCompleted": true,
+          "meanAbsoluteErrorAgainstCPUReference": 0.0014943989273769403,
+          "meanAbsoluteErrorAgainstNative": 0.0014943989273769403,
+          "nonzeroColorOutput": true,
+          "opaqueOutput": true,
+          "outputChecksum": "935d333939dd4127",
+          "requestedGPUEncodingCompleted": true,
+          "requestedRoute": "temporal",
+          "scalerCreationSucceeded": true,
+          "shadedPixelsPerFrame": 65536
+        }
+      ],
+      "comparisons": [
+        {
+          "reference": {
+            "route": "native",
+            "cpuEncodeAndCommitMilliseconds": {
+              "sampleCount": 48,
+              "mean": 0.018169291666666667,
+              "p50": 0.014792,
+              "p95": 0.04093125,
+              "p99": 0.053606740000000014,
+              "minimum": 0.012458,
+              "maximum": 0.060167,
+              "populationStddev": 0.009864402507582363
+            },
+            "gpuMilliseconds": {
+              "sampleCount": 48,
+              "mean": 0.22761805909491764,
+              "p50": 0.22714585065841675,
+              "p95": 0.23137292300816625,
+              "p99": 0.23145833984017372,
+              "minimum": 0.22370833903551102,
+              "maximum": 0.23145833984017372,
+              "populationStddev": 0.0032597616636057146
+            },
+            "sampleRoutesPresent": true,
+            "sampleRoutesMatchRequestedRoute": true,
+            "selectedRealTimingSamples": [
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.026167,
+                "executedRoute": "native",
+                "frame": 0,
+                "gpuMilliseconds": 0.22387498756870627,
+                "position": 0,
+                "round": 0
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.013667,
+                "executedRoute": "native",
+                "frame": 1,
+                "gpuMilliseconds": 0.2237916924059391,
+                "position": 0,
+                "round": 0
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.013292,
+                "executedRoute": "native",
+                "frame": 2,
+                "gpuMilliseconds": 0.22404163610190153,
+                "position": 1,
+                "round": 11
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.015208,
+                "executedRoute": "native",
+                "frame": 3,
+                "gpuMilliseconds": 0.2239999594166875,
+                "position": 1,
+                "round": 11
+              }
+            ]
+          },
+          "candidate": {
+            "route": "nearest",
+            "cpuEncodeAndCommitMilliseconds": {
+              "sampleCount": 48,
+              "mean": 0.022555541666666668,
+              "p50": 0.0201875,
+              "p95": 0.031431249999999994,
+              "p99": 0.06097623,
+              "minimum": 0.018042,
+              "maximum": 0.061583,
+              "populationStddev": 0.008426815064024124
+            },
+            "gpuMilliseconds": {
+              "sampleCount": 48,
+              "mean": 0.11367447708228913,
+              "p50": 0.11514581274241209,
+              "p95": 0.1165812456747517,
+              "p99": 0.11666916310787201,
+              "minimum": 0.10925001697614789,
+              "maximum": 0.11670833919197321,
+              "populationStddev": 0.0030050545846299456
+            },
+            "sampleRoutesPresent": true,
+            "sampleRoutesMatchRequestedRoute": true,
+            "selectedRealTimingSamples": [
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.023541,
+                "executedRoute": "nearest",
+                "frame": 0,
+                "gpuMilliseconds": 0.10991666931658983,
+                "position": 1,
+                "round": 0
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.020292,
+                "executedRoute": "nearest",
+                "frame": 1,
+                "gpuMilliseconds": 0.11650001397356391,
+                "position": 1,
+                "round": 0
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.0205,
+                "executedRoute": "nearest",
+                "frame": 2,
+                "gpuMilliseconds": 0.1095833140425384,
+                "position": 0,
+                "round": 11
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.019166,
+                "executedRoute": "nearest",
+                "frame": 3,
+                "gpuMilliseconds": 0.10929163545370102,
+                "position": 0,
+                "round": 11
+              }
+            ]
+          },
+          "expectedSamplesPerArm": 48,
+          "roundFrameCoordinatesUnique": true,
+          "alternationMatchesRoundParity": true,
+          "suppliedMediansMatchRecomputation": true
+        },
+        {
+          "reference": {
+            "route": "nearest",
+            "cpuEncodeAndCommitMilliseconds": {
+              "sampleCount": 48,
+              "mean": 0.027691833333333332,
+              "p50": 0.0256455,
+              "p95": 0.039149899999999994,
+              "p99": 0.07201026000000003,
+              "minimum": 0.020625,
+              "maximum": 0.08425,
+              "populationStddev": 0.010063039189142723
+            },
+            "gpuMilliseconds": {
+              "sampleCount": 48,
+              "mean": 0.11295746177590142,
+              "p50": 0.11293750139884651,
+              "p95": 0.11686043872032315,
+              "p99": 0.11725749063771218,
+              "minimum": 0.1091666636057198,
+              "maximum": 0.11737499153241515,
+              "populationStddev": 0.0033376558890740966
+            },
+            "sampleRoutesPresent": true,
+            "sampleRoutesMatchRequestedRoute": true,
+            "selectedRealTimingSamples": [
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.024042,
+                "executedRoute": "nearest",
+                "frame": 0,
+                "gpuMilliseconds": 0.10933331213891506,
+                "position": 0,
+                "round": 0
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.020625,
+                "executedRoute": "nearest",
+                "frame": 1,
+                "gpuMilliseconds": 0.10949996067211032,
+                "position": 0,
+                "round": 0
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.029292,
+                "executedRoute": "nearest",
+                "frame": 2,
+                "gpuMilliseconds": 0.11316663585603237,
+                "position": 1,
+                "round": 11
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.027667,
+                "executedRoute": "nearest",
+                "frame": 3,
+                "gpuMilliseconds": 0.11554168304428458,
+                "position": 1,
+                "round": 11
+              }
+            ]
+          },
+          "candidate": {
+            "route": "spatial",
+            "cpuEncodeAndCommitMilliseconds": {
+              "sampleCount": 48,
+              "mean": 0.13325252083333333,
+              "p50": 0.137625,
+              "p95": 0.14770450000000002,
+              "p99": 0.16236826000000001,
+              "minimum": 0.105375,
+              "maximum": 0.165208,
+              "populationStddev": 0.014054854748433581
+            },
+            "gpuMilliseconds": {
+              "sampleCount": 48,
+              "mean": 0.3684149342007004,
+              "p50": 0.3757291997317225,
+              "p95": 0.389893731335178,
+              "p99": 0.39444000693038106,
+              "minimum": 0.23012497695162892,
+              "maximum": 0.3954583662562072,
+              "populationStddev": 0.03622000211964492
+            },
+            "sampleRoutesPresent": true,
+            "sampleRoutesMatchRequestedRoute": true,
+            "selectedRealTimingSamples": [
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.165208,
+                "executedRoute": "spatial",
+                "frame": 0,
+                "gpuMilliseconds": 0.3903749748133123,
+                "position": 1,
+                "round": 0
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.134042,
+                "executedRoute": "spatial",
+                "frame": 1,
+                "gpuMilliseconds": 0.38124999264255166,
+                "position": 1,
+                "round": 0
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.144708,
+                "executedRoute": "spatial",
+                "frame": 2,
+                "gpuMilliseconds": 0.23012497695162892,
+                "position": 0,
+                "round": 11
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.143,
+                "executedRoute": "spatial",
+                "frame": 3,
+                "gpuMilliseconds": 0.23141666315495968,
+                "position": 0,
+                "round": 11
+              }
+            ]
+          },
+          "expectedSamplesPerArm": 48,
+          "roundFrameCoordinatesUnique": true,
+          "alternationMatchesRoundParity": true,
+          "suppliedMediansMatchRecomputation": true
+        },
+        {
+          "reference": {
+            "route": "nearest",
+            "cpuEncodeAndCommitMilliseconds": {
+              "sampleCount": 48,
+              "mean": 0.027720416666666668,
+              "p50": 0.0260835,
+              "p95": 0.03365845,
+              "p99": 0.05786300000000003,
+              "minimum": 0.020875,
+              "maximum": 0.070083,
+              "populationStddev": 0.007140653287203879
+            },
+            "gpuMilliseconds": {
+              "sampleCount": 48,
+              "mean": 0.05967708178407823,
+              "p50": 0.06420834688469768,
+              "p95": 0.11241043102927506,
+              "p99": 0.1155629480490461,
+              "minimum": 0.03595830639824271,
+              "maximum": 0.11687504593282938,
+              "populationStddev": 0.020469668416095328
+            },
+            "sampleRoutesPresent": true,
+            "sampleRoutesMatchRequestedRoute": true,
+            "selectedRealTimingSamples": [
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.026834,
+                "executedRoute": "nearest",
+                "frame": 0,
+                "gpuMilliseconds": 0.11687504593282938,
+                "position": 0,
+                "round": 0
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.027833,
+                "executedRoute": "nearest",
+                "frame": 1,
+                "gpuMilliseconds": 0.109999964479357,
+                "position": 0,
+                "round": 0
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.030084,
+                "executedRoute": "nearest",
+                "frame": 2,
+                "gpuMilliseconds": 0.03600004129111767,
+                "position": 1,
+                "round": 11
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.029625,
+                "executedRoute": "nearest",
+                "frame": 3,
+                "gpuMilliseconds": 0.03595830639824271,
+                "position": 1,
+                "round": 11
+              }
+            ]
+          },
+          "candidate": {
+            "route": "temporal",
+            "cpuEncodeAndCommitMilliseconds": {
+              "sampleCount": 48,
+              "mean": 0.0725469375,
+              "p50": 0.068854,
+              "p95": 0.08953749999999999,
+              "p99": 0.11957500000000006,
+              "minimum": 0.061,
+              "maximum": 0.14425,
+              "populationStddev": 0.012727181269181079
+            },
+            "gpuMilliseconds": {
+              "sampleCount": 48,
+              "mean": 0.9771171899046749,
+              "p50": 0.4668541660066694,
+              "p95": 4.300625019823194,
+              "p99": 9.647841263795272,
+              "minimum": 0.3825000021606684,
+              "maximum": 10.020375018939376,
+              "populationStddev": 1.9756254183459587
+            },
+            "sampleRoutesPresent": true,
+            "sampleRoutesMatchRequestedRoute": true,
+            "selectedRealTimingSamples": [
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.14425,
+                "executedRoute": "temporal",
+                "frame": 0,
+                "gpuMilliseconds": 0.871583295520395,
+                "position": 1,
+                "round": 0
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.084125,
+                "executedRoute": "temporal",
+                "frame": 1,
+                "gpuMilliseconds": 6.052375014405698,
+                "position": 1,
+                "round": 0
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.063375,
+                "executedRoute": "temporal",
+                "frame": 2,
+                "gpuMilliseconds": 0.38958335062488914,
+                "position": 0,
+                "round": 11
+              },
+              {
+                "cpuEncodeAndCommitMilliseconds": 0.061625,
+                "executedRoute": "temporal",
+                "frame": 3,
+                "gpuMilliseconds": 0.38899999344721437,
+                "position": 0,
+                "round": 11
+              }
+            ]
+          },
+          "expectedSamplesPerArm": 48,
+          "roundFrameCoordinatesUnique": true,
+          "alternationMatchesRoundParity": true,
+          "suppliedMediansMatchRecomputation": true
+        }
+      ],
+      "pathAndOutputChecks": "Runtime route, completion, checksum, output-opacity and error flags are supplied by the producing executable; no pixel buffers or independent GPU trace are included.",
+      "sourceBinding": {
+        "recordedAt": null,
+        "immutableSourceSHA256": null,
+        "binarySHA256": null,
+        "reason": "not embedded in the supplied A/B report; current review hashes cannot reconstruct acquisition-time binding"
+      },
+      "suppliedLimitations": [
+        "GPU interval covers synthetic scene shading and the selected reconstruction; readback is outside timing.",
+        "CPU interval covers command allocation, encoding, and commit; GPU waiting is excluded.",
+        "Native shades four times as many pixels as every low-resolution route. These timings do not prove game speedup.",
+        "Temporal uses a static plane, depth=0.5, zero non-jitter motion, matched Halton jitter, and persistent history.",
+        "Temporal output error includes jitter phase and filter history; no moving geometry or disocclusion is exercised.",
+        "Nearest is a compute resample because Metal blit does not resize textures.",
+        "No process names, local paths, device names, registry IDs, or personal identifiers are collected.",
+        "API validation changes timing overhead; use a separate validation-disabled run for performance conclusions.",
+        "Game Mode activation, guest rendering, presentation, frame pacing, and thermal steady state are outside this experiment."
+      ]
+    }
+  },
+  "gpuOutputChecksumsMatchAcrossInstrumentationRuns": true,
+  "historicalHardwareSmoke": {
+    "hasMetalAPIValidationEnabledLog": true,
+    "spatialExecutionTestPassed": true,
+    "temporalExecutionTestPassed": true,
+    "historicalSuiteTotal": 85,
+    "independentOfNewABTimingReports": true,
+    "scope": "Supplied module acquisition log with explicit opt-in GPU A/B and resource test; independent of the task-07 final gate. Test duration excludes compilation. No game workload or acquisition-time source/binary binding is established.",
+    "reportedPassed": 85,
+    "reportedSkippedMarkerCount": 0,
+    "reportedFailures": 0,
+    "explicitABTestPassed": true,
+    "explicitABTestSeconds": 2.041,
+    "resourceExperimentTestPassed": true,
+    "resourceExperimentTestSeconds": 0.338,
+    "wholeProcessElapsedSeconds": null
+  },
+  "gameMode": {
+    "declarations": {
+      "GCSupportsGameMode": "missing",
+      "LSSupportsGameMode": "missing"
+    },
+    "platformEligible": true,
+    "activation": "unknown",
+    "activationEvidence": "no-system-ui-observation",
+    "wineChildBenefit": "unmeasured",
+    "windowsGuestBenefit": "unmeasured",
+    "systemUIObservationAvailable": false,
+    "actualActivationObserved": false,
+    "sourcePlistAndEntitlementReviewOnly": false,
+    "personalGameHistoryOrAccountsInspected": false,
+    "standaloneLogicalCheckGroupsInSource": 5,
+    "standaloneExecutionPassLogAvailableInReviewedArtifacts": false,
+    "conclusion": "Source declarations and an unsigned Debug bundle were inspected. Platform eligibility and declaration presence do not establish actual Game Mode activation; no system UI observation or child-process benefit measurement is supplied.",
+    "builtBundleConfiguration": "unsigned-Debug",
+    "builtBundleDeclarations": {
+      "GCSupportsGameMode": "missing",
+      "LSSupportsGameMode": "missing"
+    },
+    "builtBundleGameCategory": "public.app-category.utilities",
+    "builtBundleObservedOn": "2026-11-22",
+    "builtBundleSigningEntitlements": "not-validated-unsigned-build",
+    "publicActivationQuery": "not-found-in-reviewed-public-SDK-headers-and-Swift-interfaces"
+  },
+  "platformReferences": {
+    "accessedOn": "2026-11-22",
+    "officialSourceMetadataCount": 33,
+    "retrievedTrueMetadataCount": 33,
+    "officialDomains": [
+      "developer.apple.com",
+      "support.apple.com"
+    ],
+    "capabilityMatrixRows": 15,
+    "networkSourcesIndependentlyRefetchedDuringReview": false,
+    "retrievalPayloadHashesIndependentlyVerified": false,
+    "currentSDKHeaderChecks": [
+      {
+        "headerRole": "sdk-header-1",
+        "sha256": "4c45d9f30fa889a6b0df6b92660fbdd0a82d7eb7fe6c479832a50ee54f783075",
+        "matchesCurrentSDK": true
+      },
+      {
+        "headerRole": "sdk-header-2",
+        "sha256": "e6cbd09203483aa5ab338ff8768cc2d04210e139efcb88803807a2291eb9030a",
+        "matchesCurrentSDK": true
+      },
+      {
+        "headerRole": "sdk-header-3",
+        "sha256": "233d20aadea260a5a1bbcab2452788cc29f22f793a8d767b4a6a65eaf1fb9a35",
+        "matchesCurrentSDK": true
+      },
+      {
+        "headerRole": "sdk-header-4",
+        "sha256": "757c36a9c050d28eca335061ed7f2c1f27dc76eec6e12585d4f1d0994a357924",
+        "matchesCurrentSDK": true
+      },
+      {
+        "headerRole": "sdk-header-5",
+        "sha256": "bb4222866870a4a703cd1581fe55cf4fee4769fbee5efc795af51fbff95f2989",
+        "matchesCurrentSDK": true
+      },
+      {
+        "headerRole": "sdk-header-6",
+        "sha256": "09ba56bc8af1eec95a216d7d696c17d43c7d62374216fb5a8f161ce04e660a5b",
+        "matchesCurrentSDK": true
+      },
+      {
+        "headerRole": "sdk-header-7",
+        "sha256": "cde12350c4cb224af178927ac3066685f775c4772000a66cb86aa98a10f5a5dd",
+        "matchesCurrentSDK": true
+      },
+      {
+        "headerRole": "sdk-header-8",
+        "sha256": "b4c5514be2699339d817f83b6e3e87467531b85b9904582badbe44b77fceaed9",
+        "matchesCurrentSDK": true
+      },
+      {
+        "headerRole": "sdk-header-9",
+        "sha256": "9a0afc4ec2f1ffd7b5c4c7d1ab1a0cc40f321239a68b80a3624a764a15c7c5b3",
+        "matchesCurrentSDK": true
+      },
+      {
+        "headerRole": "sdk-header-10",
+        "sha256": "0be3e14b458c77e23897dca075984b7eb495adeeea19fde33411bb65385722fa",
+        "matchesCurrentSDK": true
+      },
+      {
+        "headerRole": "sdk-header-11",
+        "sha256": "32119cbb60b7dc1324199e9a4be0468c4ddf12785d6ad5e0594f60a2333b84be",
+        "matchesCurrentSDK": true
+      },
+      {
+        "headerRole": "sdk-header-12",
+        "sha256": "ffb8dcb9b560e8bb5b1319f8082b599883c29c345ac67306a83741476406faeb",
+        "matchesCurrentSDK": true
+      },
+      {
+        "headerRole": "sdk-header-13",
+        "sha256": "eac3ef2ad9d08b417bcfee2ee839af38e3ec348828db811ca87e75d078af641e",
+        "matchesCurrentSDK": true
+      }
+    ],
+    "machineRecordSDKHeaderChecks": [
+      {
+        "headerRole": "machine-sdk-entry-1",
+        "sha256": "4c45d9f30fa889a6b0df6b92660fbdd0a82d7eb7fe6c479832a50ee54f783075",
+        "matchesCurrentSDK": true
+      },
+      {
+        "headerRole": "machine-sdk-entry-2",
+        "sha256": "e6cbd09203483aa5ab338ff8768cc2d04210e139efcb88803807a2291eb9030a",
+        "matchesCurrentSDK": true
+      },
+      {
+        "headerRole": "machine-sdk-entry-3",
+        "sha256": "9a0afc4ec2f1ffd7b5c4c7d1ab1a0cc40f321239a68b80a3624a764a15c7c5b3",
+        "matchesCurrentSDK": true
+      },
+      {
+        "headerRole": "machine-sdk-entry-4",
+        "sha256": "0be3e14b458c77e23897dca075984b7eb495adeeea19fde33411bb65385722fa",
+        "matchesCurrentSDK": true
+      }
+    ],
+    "recordedMachineCommands": 5,
+    "recordedMachineCommandExitCodesAllZero": true,
+    "doesNotEstablishRuntimeFeatureUse": true,
+    "suppliedLimitations": [
+      "No claim that the selected source set covers every macOS27 API or capability.",
+      "Absence of an entitlement requirement in a reviewed API source is not evidence that arbitrary target applications need no permissions.",
+      "Sustained Execution Mode exact supported Mac models and a public activation/status query are not established by the reviewed entitlement page.",
+      "Runtime effects require target-application and representative-workload evidence; support queries and plist declarations are separate evidence layers."
+    ]
+  },
+  "newerGPUCapabilityProbe": {
+    "actualFeatureUse": "not-tested",
+    "devicePresent": true,
+    "frameInterpolationSupported": true,
+    "metal4APIsAvailable": true,
+    "metal4FamilySupported": true,
+    "metal4FrameInterpolationSupported": true,
+    "metal4SpatialSupported": true,
+    "metal4TemporalSupported": true
+  },
+  "instrumentationAndSafeExecution": {
+    "optInRequired": true,
+    "optInEnvironmentKey": "HOST_RUN_METALFX_AB",
+    "outputOverrideEnvironmentKey": "HOST_METALFX_AB_REPORT",
+    "validationLayerEnvironmentKey": "MTL_DEBUG_LAYER",
+    "performanceRunValidationValue": "0",
+    "apiValidationRunValue": "1",
+    "selectOnlyABTest": true,
+    "preferNonparallelRunForInterpretableSkipLog": true,
+    "freshOutputDestinationRequiredToAvoidReplacingArchivedReport": true,
+    "defaultOutputIsDocumentationJSONAndMayBeAtomicallyOverwritten": true,
+    "writes": "explicit report destination plus normal Swift build/test caches; no user content consumer is invoked",
+    "work": "offscreen GPU textures and deterministic CPU reference; no game, VM, window, thermal or power-mode activation",
+    "defaultFrameCommands": 320,
+    "defaultWarmupFrameCommands": 32,
+    "defaultTimedFrameSamples": 288,
+    "cpuTimingScope": "command allocation, encoding and commit; excludes GPU waiting, initialization, warmup and readback",
+    "gpuTimingScope": "synthetic scene shading plus selected reconstruction; excludes readback and presentation",
+    "wholeProcessElapsedSeconds": null,
+    "internalTimeoutSeconds": null,
+    "durationLimitation": "Reports lack process start/end times and the source has no internal deadline. Timed CPU/GPU intervals cannot recover total elapsed duration; compilation time is separate.",
+    "missingDeviceOrSetupFailure": "report may exist with CPU fallback; inspect actual route and completion flags rather than file existence",
+    "optionalScalerFallback": "unsupported device, creation failure or command failure can execute nearest; inspect per-sample executedRoute",
+    "defaultTestPassMeaning": "A successful default gate without an independently acquired A/B report establishes the ordinary test gate only. The explicit A/B branch may be skipped; count true executed, failed and skipped cases from usable runner output."
+  },
+  "missingMetrics": {
+    "gameFPS": {
+      "value": null,
+      "reason": "no game or presentation workload"
+    },
+    "physicalInputLatencyMilliseconds": {
+      "value": null,
+      "reason": "no physical instrumentation"
+    },
+    "powerWatts": {
+      "value": null,
+      "reason": "not collected"
+    },
+    "temperatureCelsius": {
+      "value": null,
+      "reason": "not collected"
+    },
+    "cpuUtilizationPercent": {
+      "value": null,
+      "reason": "not collected"
+    },
+    "gpuUtilizationPercent": {
+      "value": null,
+      "reason": "command durations are not utilization"
+    },
+    "realColdStartMilliseconds": {
+      "value": null,
+      "reason": "not measured"
+    },
+    "realHotStartMilliseconds": {
+      "value": null,
+      "reason": "not measured"
+    },
+    "gameModeBenefit": {
+      "value": null,
+      "reason": "actual activation and representative child workload not observed"
+    }
+  },
+  "findings": [
+    {
+      "ownerTask": "03/04",
+      "kind": "scope_limit",
+      "detail": "Synthetic static-plane GPU data cannot establish D3D, Wine, guest or game speedup, image stability for motion/disocclusion, presentation or frame pacing."
+    },
+    {
+      "ownerTask": "04",
+      "kind": "acquisition_provenance_limit",
+      "detail": "A/B reports do not embed collection timestamps or immutable source/binary hashes; current intake hashes cannot establish which executable produced earlier samples."
+    },
+    {
+      "ownerTask": "04/05",
+      "kind": "production_integration_limit",
+      "detail": "The resource experiment controls a dedicated diagnostic queue. Production launch/render consumers and Game Mode activation remain separate acceptance work."
+    },
+    {
+      "ownerTask": "07",
+      "kind": "test_reporting_limit",
+      "detail": "Default parallel test progress or incomplete JUnit skip information is insufficient to claim the opt-in A/B branch executed."
+    }
+  ],
+  "privacy": {
+    "selectedArtifactFilesScanned": 8,
+    "findingsByArtifactRole": {
+      "gpu-performance-run": {
+        "absoluteLocalPath": 0,
+        "email": 0,
+        "credentialLikeField": 0,
+        "nonLoopbackIPv4": 0,
+        "privateProjectOrUserToken": 0
+      },
+      "game-mode-observation": {
+        "absoluteLocalPath": 0,
+        "email": 0,
+        "credentialLikeField": 0,
+        "nonLoopbackIPv4": 0,
+        "privateProjectOrUserToken": 0
+      },
+      "resource-queue-experiment": {
+        "absoluteLocalPath": 0,
+        "email": 0,
+        "credentialLikeField": 0,
+        "nonLoopbackIPv4": 0,
+        "privateProjectOrUserToken": 0
+      },
+      "gpu-api-validation-run": {
+        "absoluteLocalPath": 0,
+        "email": 0,
+        "credentialLikeField": 0,
+        "nonLoopbackIPv4": 0,
+        "privateProjectOrUserToken": 0
+      },
+      "platform-reference": {
+        "absoluteLocalPath": 0,
+        "email": 0,
+        "credentialLikeField": 0,
+        "nonLoopbackIPv4": 0,
+        "privateProjectOrUserToken": 0
+      },
+      "newer-gpu-capability-probe": {
+        "absoluteLocalPath": 0,
+        "email": 0,
+        "credentialLikeField": 0,
+        "nonLoopbackIPv4": 0,
+        "privateProjectOrUserToken": 0
+      },
+      "machine-sdk-observation": {
+        "absoluteLocalPath": 0,
+        "email": 0,
+        "credentialLikeField": 0,
+        "nonLoopbackIPv4": 0,
+        "privateProjectOrUserToken": 0
+      },
+      "historical-hardware-smoke-log": {
+        "absoluteLocalPath": 0,
+        "email": 0,
+        "credentialLikeField": 0,
+        "nonLoopbackIPv4": 0,
+        "privateProjectOrUserToken": 0
+      }
+    },
+    "hasFindings": false,
+    "detectorsCheckedWithSyntheticPositiveControls": true,
+    "limitation": "pattern scan is not proof of complete anonymization",
+    "finalBindingSnapshotScan": {
+      "filesScanned": 8,
+      "findingsByType": {
+        "absoluteLocalPath": {
+          "matchCount": 0,
+          "fileCount": 0
+        },
+        "email": {
+          "matchCount": 0,
+          "fileCount": 0
+        },
+        "credentialLikeField": {
+          "matchCount": 0,
+          "fileCount": 0
+        },
+        "privateWorkspaceOrUserToken": {
+          "matchCount": 0,
+          "fileCount": 0
+        }
+      },
+      "hasFindings": false,
+      "limitation": "Pattern scan is not proof of complete anonymization."
+    }
+  },
+  "result": "synthetic_resource_and_gpu_evidence_reviewed_real_activation_and_game_results_unverified",
+  "inputIntegrity": {
+    "allInputsStableDuringReview": true,
+    "reviewModifiedOnlyItsNewReport": false,
+    "artifactCount": 8,
+    "sourceCount": 9,
+    "reviewModifiedOnlyOwnedReviews": true
+  },
+  "snapshotBindingReview": {
+    "recheckedAtUTC": "2026-11-21T16:32:04.115558+00:00",
+    "previousReviewSHA256": "13bf751bae06a4a62123c087916f1f54a2b175825e67ddc65ea503b6b589f1b3",
+    "previousCapturedAtUTC": "2026-11-21T16:05:42.223838+00:00",
+    "previousInputArtifacts": [
+      {
+        "role": "gpu-performance-run",
+        "bytes": 72678,
+        "sha256": "4c62c8ba14beac921f41c71f362541a4720a71750b2493399a1d28269ce503cc"
+      },
+      {
+        "role": "game-mode-observation",
+        "bytes": 1411,
+        "sha256": "bb6b775ed13a04e96b5254188e38980503777d6c981aec8226a3afad31ccbaf9"
+      },
+      {
+        "role": "resource-queue-experiment",
+        "bytes": 39379,
+        "sha256": "92e96f55ee6bce475f514d5260d1054bc86ea76cded9f17e606d8f58f093af9e"
+      },
+      {
+        "role": "gpu-api-validation-run",
+        "bytes": 72552,
+        "sha256": "92e05e13472f6b773d0a14ab4dbfca22be7c510459fce40744d9d644ed9c5e71"
+      },
+      {
+        "role": "platform-reference",
+        "bytes": 61585,
+        "sha256": "31a421a093294a342a8737f28138cd572c05cc198323a0f1a08c41f9836d06cc"
+      },
+      {
+        "role": "newer-gpu-capability-probe",
+        "bytes": 288,
+        "sha256": "76b0ed029b477f6a4baf81d5e81f9d3916cade53cd57722c635330bebc59a6f4"
+      },
+      {
+        "role": "machine-sdk-observation",
+        "bytes": 1365,
+        "sha256": "508dc02e9325e46c7551e33d7b870960dfad7363d60f3391c04f36879388eb05"
+      },
+      {
+        "role": "historical-hardware-smoke-log",
+        "bytes": 19453,
+        "sha256": "175dba26702d88d31497c7614e46f60fd0d4d0909b3a9d32454a62d01fb61705"
+      }
+    ],
+    "changedArtifacts": [
+      {
+        "role": "game-mode-observation",
+        "previousSHA256": "bb6b775ed13a04e96b5254188e38980503777d6c981aec8226a3afad31ccbaf9",
+        "previousBytes": 1411,
+        "currentSHA256": "47a6551533204d901270620944d16fad73b35e0d73a949ebccf6c2013ad9475c",
+        "currentBytes": 1752
+      },
+      {
+        "role": "platform-reference",
+        "previousSHA256": "31a421a093294a342a8737f28138cd572c05cc198323a0f1a08c41f9836d06cc",
+        "previousBytes": 61585,
+        "currentSHA256": "eb05694d6039ad4ad7ad7a359d42d2151d63429d5ce71ff15aaa82545dc8c921",
+        "currentBytes": 76906
+      },
+      {
+        "role": "historical-hardware-smoke-log",
+        "previousSHA256": "175dba26702d88d31497c7614e46f60fd0d4d0909b3a9d32454a62d01fb61705",
+        "previousBytes": 19453,
+        "currentSHA256": "ec4f3cd02b72edd294e250723bff5fbd13a32b19bb56b2e04ff48823ecba19ce",
+        "currentBytes": 22648
+      }
+    ],
+    "unchangedArtifactCount": 5,
+    "selectedSourceCount": 9,
+    "selectedSourcesUnchanged": true,
+    "previousReferenceCounts": {
+      "sources": 28,
+      "capabilityRows": 11,
+      "sdkHeaders": 10
+    },
+    "previousHistoricalSmokeSuiteTotal": 77,
+    "snapshotBoundary": "Exact bytes captured during this final binding review; subsequent upstream edits are outside this review. No workloads were executed during this review.",
+    "acquisitionTimeExecutableBindingEstablished": false
+  }
+}

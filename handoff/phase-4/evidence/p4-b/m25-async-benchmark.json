@@ -1,0 +1,726 @@
+{
+  "schema_version": "1.0.0",
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-23T00:59:05.142458+00:00",
+  "environment": {
+    "host_device": "Apple M4",
+    "guest_alias": "vm-a",
+    "guest_os_build": "26100",
+    "guest_arch": "AMD64",
+    "secure_boot_enabled": true,
+    "testsigning_present": false,
+    "resolution": "1280x720",
+    "draw_count": 16,
+    "resource_bytes": 65536,
+    "command_every": 30,
+    "resource_every": 30,
+    "warmup_frames": 60,
+    "measured_frames_per_round": 300,
+    "rounds": 3,
+    "completion_boundary": "gpu-complete-drain-inclusive",
+    "display_sync_enabled": false
+  },
+  "pixel_validation": {
+    "separate_from_performance": true,
+    "tolerance_lsb": 1,
+    "all_passed": true,
+    "cases": [
+      {
+        "schema_version": 1,
+        "format": "RGBA8",
+        "origin": "top-left",
+        "width": 1280,
+        "height": 720,
+        "tolerance_lsb": 1,
+        "compared_pixels": 921600,
+        "max_channel_error": 0,
+        "over_threshold_pixels": 0,
+        "over_threshold_channels": 0,
+        "first_failure": null,
+        "passed": true,
+        "reference_sha256": "88b4a75cde2b7b8f40dd0e18287e7224f6659170eb1abee79eee11e105d63ff6",
+        "actual_sha256": "88b4a75cde2b7b8f40dd0e18287e7224f6659170eb1abee79eee11e105d63ff6",
+        "case_id": "legacy-0"
+      },
+      {
+        "schema_version": 1,
+        "format": "RGBA8",
+        "origin": "top-left",
+        "width": 1280,
+        "height": 720,
+        "tolerance_lsb": 1,
+        "compared_pixels": 921600,
+        "max_channel_error": 1,
+        "over_threshold_pixels": 0,
+        "over_threshold_channels": 0,
+        "first_failure": null,
+        "passed": true,
+        "reference_sha256": "3ae42a56026c5619d89ae2a67334ab637669dc07ac235173566e0f6562f529fe",
+        "actual_sha256": "db3a7df7f0018da65d4d1267997201bb1e1291f1fdb8b95fdc64d613bb643d39",
+        "case_id": "seeded-0"
+      },
+      {
+        "schema_version": 1,
+        "format": "RGBA8",
+        "origin": "top-left",
+        "width": 1280,
+        "height": 720,
+        "tolerance_lsb": 1,
+        "compared_pixels": 921600,
+        "max_channel_error": 1,
+        "over_threshold_pixels": 0,
+        "over_threshold_channels": 0,
+        "first_failure": null,
+        "passed": true,
+        "reference_sha256": "b60607081ba263918dba3b9d782c4ea21a0394f319e9e3e5b2aa4bdf4d5b9f86",
+        "actual_sha256": "554462387255c85ec6bdf8e3b4fa1645d3c47d7a352d48919e9c854576c4a38f",
+        "case_id": "seeded-30"
+      },
+      {
+        "schema_version": 1,
+        "format": "RGBA8",
+        "origin": "top-left",
+        "width": 1280,
+        "height": 720,
+        "tolerance_lsb": 1,
+        "compared_pixels": 921600,
+        "max_channel_error": 1,
+        "over_threshold_pixels": 0,
+        "over_threshold_channels": 0,
+        "first_failure": null,
+        "passed": true,
+        "reference_sha256": "b60607081ba263918dba3b9d782c4ea21a0394f319e9e3e5b2aa4bdf4d5b9f86",
+        "actual_sha256": "554462387255c85ec6bdf8e3b4fa1645d3c47d7a352d48919e9c854576c4a38f",
+        "case_id": "seeded-31"
+      }
+    ]
+  },
+  "modes": [
+    {
+      "mode_id": "m2_sync_nagle",
+      "label": "M2 Baseline (Sync, Nagle On, Split ACK, In-Flight=1)",
+      "pipeline_mode": "sync",
+      "tcp_nodelay": false,
+      "max_in_flight": 1,
+      "split_send": true,
+      "rounds": 3,
+      "total_measured_frames": 900,
+      "pooled_throughput_fps": 19.0549,
+      "round_mean_fps": 19.0549,
+      "max_observed_depth": 1,
+      "ack_interval_ms": {
+        "mean": 52.4803,
+        "p50": 53.3357,
+        "p95": 59.1181,
+        "p99": 61.1206
+      },
+      "frame_rtt_ms": {
+        "mean": 52.4702,
+        "p95": 59.115
+      },
+      "host_gpu_ms_mean": 0.8026,
+      "avg_wire_bytes_per_frame": 2289.6,
+      "per_round": [
+        {
+          "protocol_version": 3,
+          "width": 1280,
+          "height": 720,
+          "warmup_frames": 60,
+          "measured_frames": 300,
+          "tcp_nodelay": false,
+          "max_in_flight": 1,
+          "max_observed_depth": 1,
+          "split_send": true,
+          "elapsed_drain_ms": 15744.302583,
+          "throughput_fps_drain_inclusive": 19.054512,
+          "avg_wire_bytes_per_frame": 2289.6,
+          "ack_interval_ms": {
+            "mean": 52.481269,
+            "p50": 53.325146,
+            "p95": 59.441046,
+            "p99": 61.039495
+          },
+          "submit_interval_ms": {
+            "mean": 52.478629,
+            "p50": 53.325063,
+            "p95": 59.441625,
+            "p99": 61.088682
+          },
+          "frame_rtt_ms": {
+            "mean": 52.47237,
+            "p50": 53.321729,
+            "p95": 59.43816,
+            "p99": 61.036369
+          },
+          "host_gpu_ms": {
+            "mean": 0.78511,
+            "p50": 0.826,
+            "p95": 1.34075,
+            "p99": 1.60216
+          },
+          "host_receive_ms": {
+            "mean": 51.030907
+          },
+          "round": 1
+        },
+        {
+          "protocol_version": 3,
+          "width": 1280,
+          "height": 720,
+          "warmup_frames": 60,
+          "measured_frames": 300,
+          "tcp_nodelay": false,
+          "max_in_flight": 1,
+          "max_observed_depth": 1,
+          "split_send": true,
+          "elapsed_drain_ms": 15749.826,
+          "throughput_fps_drain_inclusive": 19.047829,
+          "avg_wire_bytes_per_frame": 2289.6,
+          "ack_interval_ms": {
+            "mean": 52.499641,
+            "p50": 53.273771,
+            "p95": 58.900929,
+            "p99": 61.734914
+          },
+          "submit_interval_ms": {
+            "mean": 52.526565,
+            "p50": 53.303521,
+            "p95": 58.900923,
+            "p99": 61.733805
+          },
+          "frame_rtt_ms": {
+            "mean": 52.488277,
+            "p50": 53.268187,
+            "p95": 58.898027,
+            "p99": 61.731082
+          },
+          "host_gpu_ms": {
+            "mean": 0.783953,
+            "p50": 0.825,
+            "p95": 1.313,
+            "p99": 1.62519
+          },
+          "host_receive_ms": {
+            "mean": 51.029477
+          },
+          "round": 2
+        },
+        {
+          "protocol_version": 3,
+          "width": 1280,
+          "height": 720,
+          "warmup_frames": 60,
+          "measured_frames": 300,
+          "tcp_nodelay": false,
+          "max_in_flight": 1,
+          "max_observed_depth": 1,
+          "split_send": true,
+          "elapsed_drain_ms": 15737.870042,
+          "throughput_fps_drain_inclusive": 19.0623,
+          "avg_wire_bytes_per_frame": 2289.6,
+          "ack_interval_ms": {
+            "mean": 52.4599,
+            "p50": 53.408167,
+            "p95": 59.012317,
+            "p99": 60.58747
+          },
+          "submit_interval_ms": {
+            "mean": 52.478725,
+            "p50": 53.413604,
+            "p95": 59.012758,
+            "p99": 60.550555
+          },
+          "frame_rtt_ms": {
+            "mean": 52.450072,
+            "p50": 53.378417,
+            "p95": 59.008827,
+            "p99": 60.547585
+          },
+          "host_gpu_ms": {
+            "mean": 0.838833,
+            "p50": 0.825,
+            "p95": 1.39625,
+            "p99": 2.98896
+          },
+          "host_receive_ms": {
+            "mean": 50.953627
+          },
+          "round": 3
+        }
+      ]
+    },
+    {
+      "mode_id": "m25_sync_nodelay",
+      "label": "M2.5 TCP_NODELAY + Coalesced Send (Sync, In-Flight=1)",
+      "pipeline_mode": "sync",
+      "tcp_nodelay": true,
+      "max_in_flight": 1,
+      "split_send": false,
+      "rounds": 3,
+      "total_measured_frames": 900,
+      "pooled_throughput_fps": 322.9485,
+      "round_mean_fps": 337.5746,
+      "max_observed_depth": 1,
+      "ack_interval_ms": {
+        "mean": 3.0967,
+        "p50": 1.8297,
+        "p95": 9.2027,
+        "p99": 13.0943
+      },
+      "frame_rtt_ms": {
+        "mean": 3.0881,
+        "p95": 9.1999
+      },
+      "host_gpu_ms_mean": 0.8106,
+      "avg_wire_bytes_per_frame": 2289.6,
+      "per_round": [
+        {
+          "protocol_version": 3,
+          "width": 1280,
+          "height": 720,
+          "warmup_frames": 60,
+          "measured_frames": 300,
+          "tcp_nodelay": true,
+          "max_in_flight": 1,
+          "max_observed_depth": 1,
+          "split_send": false,
+          "elapsed_drain_ms": 675.959667,
+          "throughput_fps_drain_inclusive": 443.813462,
+          "avg_wire_bytes_per_frame": 2289.6,
+          "ack_interval_ms": {
+            "mean": 2.253453,
+            "p50": 1.788479,
+            "p95": 8.478319,
+            "p99": 9.620412
+          },
+          "submit_interval_ms": {
+            "mean": 2.263219,
+            "p50": 1.791417,
+            "p95": 8.478844,
+            "p99": 9.620584
+          },
+          "frame_rtt_ms": {
+            "mean": 2.245592,
+            "p50": 1.771271,
+            "p95": 8.476306,
+            "p99": 9.617708
+          },
+          "host_gpu_ms": {
+            "mean": 0.85631,
+            "p50": 0.826,
+            "p95": 1.29395,
+            "p99": 1.91421
+          },
+          "host_receive_ms": {
+            "mean": 0.457213
+          },
+          "round": 1
+        },
+        {
+          "protocol_version": 3,
+          "width": 1280,
+          "height": 720,
+          "warmup_frames": 60,
+          "measured_frames": 300,
+          "tcp_nodelay": true,
+          "max_in_flight": 1,
+          "max_observed_depth": 1,
+          "split_send": false,
+          "elapsed_drain_ms": 1084.182417,
+          "throughput_fps_drain_inclusive": 276.706203,
+          "avg_wire_bytes_per_frame": 2289.6,
+          "ack_interval_ms": {
+            "mean": 3.614184,
+            "p50": 1.906104,
+            "p95": 9.925596,
+            "p99": 17.253049
+          },
+          "submit_interval_ms": {
+            "mean": 3.591117,
+            "p50": 1.906458,
+            "p95": 9.925431,
+            "p99": 17.24538
+          },
+          "frame_rtt_ms": {
+            "mean": 3.605882,
+            "p50": 1.894479,
+            "p95": 9.922554,
+            "p99": 17.24221
+          },
+          "host_gpu_ms": {
+            "mean": 0.813707,
+            "p50": 0.826,
+            "p95": 1.0905,
+            "p99": 1.34632
+          },
+          "host_receive_ms": {
+            "mean": 0.456437
+          },
+          "round": 2
+        },
+        {
+          "protocol_version": 3,
+          "width": 1280,
+          "height": 720,
+          "warmup_frames": 60,
+          "measured_frames": 300,
+          "tcp_nodelay": true,
+          "max_in_flight": 1,
+          "max_observed_depth": 1,
+          "split_send": false,
+          "elapsed_drain_ms": 1026.68,
+          "throughput_fps_drain_inclusive": 292.203997,
+          "avg_wire_bytes_per_frame": 2289.6,
+          "ack_interval_ms": {
+            "mean": 3.422561,
+            "p50": 1.7945,
+            "p95": 9.204219,
+            "p99": 12.409328
+          },
+          "submit_interval_ms": {
+            "mean": 3.449197,
+            "p50": 1.792667,
+            "p95": 9.39061,
+            "p99": 12.41033
+          },
+          "frame_rtt_ms": {
+            "mean": 3.412869,
+            "p50": 1.783812,
+            "p95": 9.200783,
+            "p99": 12.40729
+          },
+          "host_gpu_ms": {
+            "mean": 0.761783,
+            "p50": 0.825,
+            "p95": 0.872,
+            "p99": 1.26292
+          },
+          "host_receive_ms": {
+            "mean": 0.58096
+          },
+          "round": 3
+        }
+      ]
+    },
+    {
+      "mode_id": "m25_async_inflight2",
+      "label": "M2.5 Async Fence Pipeline (NoDelay, In-Flight=2)",
+      "pipeline_mode": "async",
+      "tcp_nodelay": true,
+      "max_in_flight": 2,
+      "split_send": false,
+      "rounds": 3,
+      "total_measured_frames": 900,
+      "pooled_throughput_fps": 471.9827,
+      "round_mean_fps": 494.5039,
+      "max_observed_depth": 2,
+      "ack_interval_ms": {
+        "mean": 2.1127,
+        "p50": 1.4619,
+        "p95": 5.7803,
+        "p99": 9.4148
+      },
+      "frame_rtt_ms": {
+        "mean": 4.2087,
+        "p95": 8.8729
+      },
+      "host_gpu_ms_mean": 0.7053,
+      "avg_wire_bytes_per_frame": 2289.6,
+      "per_round": [
+        {
+          "protocol_version": 3,
+          "width": 1280,
+          "height": 720,
+          "warmup_frames": 60,
+          "measured_frames": 300,
+          "tcp_nodelay": true,
+          "max_in_flight": 2,
+          "max_observed_depth": 2,
+          "split_send": false,
+          "elapsed_drain_ms": 463.890042,
+          "throughput_fps_drain_inclusive": 646.70498,
+          "avg_wire_bytes_per_frame": 2289.6,
+          "ack_interval_ms": {
+            "mean": 1.538704,
+            "p50": 1.368833,
+            "p95": 2.598123,
+            "p99": 3.960165
+          },
+          "submit_interval_ms": {
+            "mean": 1.547166,
+            "p50": 1.370771,
+            "p95": 2.598175,
+            "p99": 3.960879
+          },
+          "frame_rtt_ms": {
+            "mean": 3.070548,
+            "p50": 2.823917,
+            "p95": 4.507046,
+            "p99": 6.117108
+          },
+          "host_gpu_ms": {
+            "mean": 0.88359,
+            "p50": 0.851,
+            "p95": 1.70905,
+            "p99": 1.86028
+          },
+          "host_receive_ms": {
+            "mean": 0.236457
+          },
+          "round": 1
+        },
+        {
+          "protocol_version": 3,
+          "width": 1280,
+          "height": 720,
+          "warmup_frames": 60,
+          "measured_frames": 300,
+          "tcp_nodelay": true,
+          "max_in_flight": 2,
+          "max_observed_depth": 2,
+          "split_send": false,
+          "elapsed_drain_ms": 778.258083,
+          "throughput_fps_drain_inclusive": 385.47624,
+          "avg_wire_bytes_per_frame": 2289.6,
+          "ack_interval_ms": {
+            "mean": 2.589857,
+            "p50": 1.377312,
+            "p95": 9.98941,
+            "p99": 15.501569
+          },
+          "submit_interval_ms": {
+            "mean": 2.561732,
+            "p50": 1.378146,
+            "p95": 9.990379,
+            "p99": 15.517622
+          },
+          "frame_rtt_ms": {
+            "mean": 5.146501,
+            "p50": 2.825625,
+            "p95": 11.990269,
+            "p99": 37.122635
+          },
+          "host_gpu_ms": {
+            "mean": 0.866713,
+            "p50": 0.851,
+            "p95": 0.9391,
+            "p99": 1.03119
+          },
+          "host_receive_ms": {
+            "mean": 0.17161
+          },
+          "round": 2
+        },
+        {
+          "protocol_version": 3,
+          "width": 1280,
+          "height": 720,
+          "warmup_frames": 60,
+          "measured_frames": 300,
+          "tcp_nodelay": true,
+          "max_in_flight": 2,
+          "max_observed_depth": 2,
+          "split_send": false,
+          "elapsed_drain_ms": 664.701417,
+          "throughput_fps_drain_inclusive": 451.330466,
+          "avg_wire_bytes_per_frame": 2289.6,
+          "ack_interval_ms": {
+            "mean": 2.209611,
+            "p50": 1.639521,
+            "p95": 4.753515,
+            "p99": 8.782644
+          },
+          "submit_interval_ms": {
+            "mean": 2.200985,
+            "p50": 1.627083,
+            "p95": 4.753342,
+            "p99": 8.785056
+          },
+          "frame_rtt_ms": {
+            "mean": 4.409043,
+            "p50": 3.199375,
+            "p95": 10.12124,
+            "p99": 12.816985
+          },
+          "host_gpu_ms": {
+            "mean": 0.365573,
+            "p50": 0.3535,
+            "p95": 0.57755,
+            "p99": 1.18055
+          },
+          "host_receive_ms": {
+            "mean": 0.041067
+          },
+          "round": 3
+        }
+      ]
+    },
+    {
+      "mode_id": "m25_async_inflight3",
+      "label": "M2.5 Async Fence Pipeline (NoDelay, In-Flight=3)",
+      "pipeline_mode": "async",
+      "tcp_nodelay": true,
+      "max_in_flight": 3,
+      "split_send": false,
+      "rounds": 3,
+      "total_measured_frames": 900,
+      "pooled_throughput_fps": 145.1517,
+      "round_mean_fps": 164.9878,
+      "max_observed_depth": 3,
+      "ack_interval_ms": {
+        "mean": 6.8523,
+        "p50": 6.2162,
+        "p95": 8.8261,
+        "p99": 10.8099
+      },
+      "frame_rtt_ms": {
+        "mean": 20.5309,
+        "p95": 25.5173
+      },
+      "host_gpu_ms_mean": 6.0279,
+      "avg_wire_bytes_per_frame": 2289.6,
+      "per_round": [
+        {
+          "protocol_version": 3,
+          "width": 1280,
+          "height": 720,
+          "warmup_frames": 60,
+          "measured_frames": 300,
+          "tcp_nodelay": true,
+          "max_in_flight": 3,
+          "max_observed_depth": 3,
+          "split_send": false,
+          "elapsed_drain_ms": 2516.579125,
+          "throughput_fps_drain_inclusive": 119.209445,
+          "avg_wire_bytes_per_frame": 2289.6,
+          "ack_interval_ms": {
+            "mean": 8.333391,
+            "p50": 8.340125,
+            "p95": 9.238817,
+            "p99": 12.10412
+          },
+          "submit_interval_ms": {
+            "mean": 8.334487,
+            "p50": 8.339125,
+            "p95": 9.240042,
+            "p99": 12.17603
+          },
+          "frame_rtt_ms": {
+            "mean": 24.994122,
+            "p50": 24.977708,
+            "p95": 26.010381,
+            "p99": 28.816558
+          },
+          "host_gpu_ms": {
+            "mean": 7.400893,
+            "p50": 7.497,
+            "p95": 7.72125,
+            "p99": 8.4781
+          },
+          "host_receive_ms": {
+            "mean": 0.01584
+          },
+          "round": 1
+        },
+        {
+          "protocol_version": 3,
+          "width": 1280,
+          "height": 720,
+          "warmup_frames": 60,
+          "measured_frames": 300,
+          "tcp_nodelay": true,
+          "max_in_flight": 3,
+          "max_observed_depth": 3,
+          "split_send": false,
+          "elapsed_drain_ms": 2513.854542,
+          "throughput_fps_drain_inclusive": 119.338647,
+          "avg_wire_bytes_per_frame": 2289.6,
+          "ack_interval_ms": {
+            "mean": 8.33252,
+            "p50": 8.334729,
+            "p95": 8.771773,
+            "p99": 11.02067
+          },
+          "submit_interval_ms": {
+            "mean": 8.32234,
+            "p50": 8.339417,
+            "p95": 8.802044,
+            "p99": 11.462005
+          },
+          "frame_rtt_ms": {
+            "mean": 24.996726,
+            "p50": 25.010604,
+            "p95": 25.435898,
+            "p99": 28.121336
+          },
+          "host_gpu_ms": {
+            "mean": 7.63512,
+            "p50": 7.71,
+            "p95": 8.24335,
+            "p99": 8.57551
+          },
+          "host_receive_ms": {
+            "mean": 0.014013
+          },
+          "round": 2
+        },
+        {
+          "protocol_version": 3,
+          "width": 1280,
+          "height": 720,
+          "warmup_frames": 60,
+          "measured_frames": 300,
+          "tcp_nodelay": true,
+          "max_in_flight": 3,
+          "max_observed_depth": 3,
+          "split_send": false,
+          "elapsed_drain_ms": 1169.977542,
+          "throughput_fps_drain_inclusive": 256.415178,
+          "avg_wire_bytes_per_frame": 2289.6,
+          "ack_interval_ms": {
+            "mean": 3.890984,
+            "p50": 1.973813,
+            "p95": 8.467669,
+            "p99": 9.304872
+          },
+          "submit_interval_ms": {
+            "mean": 3.825724,
+            "p50": 1.956417,
+            "p95": 8.486946,
+            "p99": 9.30535
+          },
+          "frame_rtt_ms": {
+            "mean": 11.601745,
+            "p50": 5.569688,
+            "p95": 25.105592,
+            "p99": 25.738553
+          },
+          "host_gpu_ms": {
+            "mean": 3.047547,
+            "p50": 0.827,
+            "p95": 8.0151,
+            "p99": 8.24206
+          },
+          "host_receive_ms": {
+            "mean": 0.008683
+          },
+          "round": 3
+        }
+      ]
+    }
+  ],
+  "post_run_cleanup": {
+    "temp_dir_removed": true,
+    "remaining_probe_procs": 0,
+    "secure_boot_enabled": true,
+    "testsigning_present": false
+  },
+  "digests": {
+    "metal_host_async.swift": "4928146520be0d0ddb95b25572ed60f4a5c481b569e592355427466cb3a6d66a",
+    "metal_host_async": "fa8901a88ea610116e56e2445f91eae1d9b33a19e7e5f0aca811353d78c63546",
+    "d3d11_probe_async.cpp": "5bc27c2865702815bce7688b54b260514d7dd7f1ddeec225a63ba1f56c347f37",
+    "d3d11_probe_async.exe": "07edd3c8e4eb0f0a5bca9db913a5cf61cbfcc05a11f37311d7329ee3024fd7a3",
+    "m2_async_protocol.py": "42e52196dece4bbbef38ae66a428af8288661339b4e95604888b6c6f5e92838d",
+    "m2_async_benchmark.py": "4c69c828d6766d39e1863de77fb8f97654590b26bd64dac7a361ed1ce615b27d"
+  }
+}
