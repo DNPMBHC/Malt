@@ -3,98 +3,30 @@
 import CryptoKit
 import Foundation
 
-/// Status of the immutable `golden-guest-manifest.json` produced by Window 6A.
-public enum GoldenGuestManifestState: String, Codable, Sendable, Equatable {
-    case ready
-    case uninitialized
-    case invalid
-
-    public var localizationKey: String {
-        "settings.goldenGuest.state.\(rawValue)"
-    }
+/// Read-only compatibility summary for a tracked target from `compatibility-matrix.json`.
+public struct CompatibilityTargetSummary: Codable, Sendable, Equatable {
+    public let snapshotID: String
+    public let targetID: String
+    public let productName: String
+    public let updatedOn: String
+    public let visualStage: String
+    public let rootCauseCode: String
+    public let dxvkVenusStatus: String
+    public let aceArm64Coverage: String
+    public let vendorVMSupport: String
+    public let recommendedDisplayMode: String
+    public let pointerGuidanceCode: String
+    public let phase8VerificationStatus: String
+    public let fiveDimensionStates: BundledMatrixFiveDimensionStates
+    public let boundaryNote: String
 }
 
-/// Decoded metadata from `golden-guest-manifest.json` with resilient key aliases.
-public struct GoldenGuestBaselineManifest: Codable, Sendable, Equatable {
-    public let schemaVersion: String
-    public let guestID: String
-    public let driverVersion: String?
-    public let qemuProfile: String?
-    public let securityInvariantsPassed: Bool?
-    public let imageSHA256: String?
-    public let capturedAt: String?
+/// Redacted external volume capacity summary for storage readiness checks.
+public struct ExternalVolumeSummary: Codable, Sendable, Equatable, Identifiable {
+    public let volumeName: String
+    public let freeBytes: Int64
 
-    enum CodingKeys: String, CodingKey {
-        case schemaVersion = "schema_version"
-        case camelSchemaVersion = "schemaVersion"
-        case guestID = "guest_id"
-        case camelGuestID = "guestId"
-        case goldenID = "golden_id"
-        case camelGoldenID = "goldenId"
-        case driverVersion = "driver_version"
-        case camelDriverVersion = "driverVersion"
-        case qemuProfile = "qemu_profile"
-        case camelQemuProfile = "qemuProfile"
-        case securityInvariantsPassed = "security_invariants_passed"
-        case camelSecurityInvariantsPassed = "securityInvariantsPassed"
-        case imageSHA256 = "image_sha256"
-        case camelImageSHA256 = "imageSha256"
-        case sha256
-        case capturedAt = "captured_at"
-        case camelCapturedAt = "capturedAt"
-    }
-
-    public init(
-        schemaVersion: String,
-        guestID: String,
-        driverVersion: String? = nil,
-        qemuProfile: String? = nil,
-        securityInvariantsPassed: Bool? = nil,
-        imageSHA256: String? = nil,
-        capturedAt: String? = nil
-    ) {
-        self.schemaVersion = schemaVersion
-        self.guestID = guestID
-        self.driverVersion = driverVersion
-        self.qemuProfile = qemuProfile
-        self.securityInvariantsPassed = securityInvariantsPassed
-        self.imageSHA256 = imageSHA256
-        self.capturedAt = capturedAt
-    }
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        schemaVersion = try container.decodeIfPresent(String.self, forKey: .schemaVersion)
-            ?? container.decodeIfPresent(String.self, forKey: .camelSchemaVersion)
-            ?? "1.0.0"
-        guestID = try container.decodeIfPresent(String.self, forKey: .guestID)
-            ?? container.decodeIfPresent(String.self, forKey: .camelGuestID)
-            ?? container.decodeIfPresent(String.self, forKey: .goldenID)
-            ?? container.decodeIfPresent(String.self, forKey: .camelGoldenID)
-            ?? "golden-win11-arm64-v1"
-        driverVersion = try container.decodeIfPresent(String.self, forKey: .driverVersion)
-            ?? container.decodeIfPresent(String.self, forKey: .camelDriverVersion)
-        qemuProfile = try container.decodeIfPresent(String.self, forKey: .qemuProfile)
-            ?? container.decodeIfPresent(String.self, forKey: .camelQemuProfile)
-        securityInvariantsPassed = try container.decodeIfPresent(Bool.self, forKey: .securityInvariantsPassed)
-            ?? container.decodeIfPresent(Bool.self, forKey: .camelSecurityInvariantsPassed)
-        imageSHA256 = try container.decodeIfPresent(String.self, forKey: .imageSHA256)
-            ?? container.decodeIfPresent(String.self, forKey: .camelImageSHA256)
-            ?? container.decodeIfPresent(String.self, forKey: .sha256)
-        capturedAt = try container.decodeIfPresent(String.self, forKey: .capturedAt)
-            ?? container.decodeIfPresent(String.self, forKey: .camelCapturedAt)
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(schemaVersion, forKey: .schemaVersion)
-        try container.encode(guestID, forKey: .guestID)
-        try container.encodeIfPresent(driverVersion, forKey: .driverVersion)
-        try container.encodeIfPresent(qemuProfile, forKey: .qemuProfile)
-        try container.encodeIfPresent(securityInvariantsPassed, forKey: .securityInvariantsPassed)
-        try container.encodeIfPresent(imageSHA256, forKey: .imageSHA256)
-        try container.encodeIfPresent(capturedAt, forKey: .capturedAt)
-    }
+    public var id: String { volumeName }
 }
 
 /// Honest read-only gate status reflecting Window 5C interface-proposal preconditions.
@@ -116,7 +48,7 @@ public struct GuestSurfaceIntegrationGateStatus: Codable, Sendable, Equatable {
     )
 }
 
-/// Unified host runtime lock + golden guest baseline + 5C integration gate self-check summary.
+/// Unified host runtime lock + golden guest baseline + compatibility + external storage self-check summary.
 public struct UnifiedRuntimeBaselineReport: Codable, Sendable, Equatable {
     public let schemaVersion: String
     public let runtimeManifestSHA256: String?
@@ -124,8 +56,11 @@ public struct UnifiedRuntimeBaselineReport: Codable, Sendable, Equatable {
     public let goldenGuestState: GoldenGuestManifestState
     public let goldenGuestManifestSHA256: String?
     public let goldenGuestManifest: GoldenGuestBaselineManifest?
+    public let compatibilitySummary: CompatibilityTargetSummary?
+    public let externalVolumes: [ExternalVolumeSummary]
     public let guestSurfaceGate: GuestSurfaceIntegrationGateStatus
     public let hostIntegrity: RuntimeIntegrityReport
+    public let advisoryLocalizationKeys: [String]
 
     public static func collect(
         libraryFolder: URL = WhiskyWineInstaller.libraryFolder,
@@ -150,15 +85,65 @@ public struct UnifiedRuntimeBaselineReport: Codable, Sendable, Equatable {
             environment: environment
         )
 
+        let volumes = WhiskyWineInstaller.mountedExternalVolumes(fileManager: fileManager).map {
+            ExternalVolumeSummary(volumeName: $0.url.lastPathComponent, freeBytes: $0.freeBytes)
+        }
+
+        let advisories = diagnosticAdvisories(for: goldenResult.manifest)
+
         return UnifiedRuntimeBaselineReport(
-            schemaVersion: "1.0.0",
+            schemaVersion: "1.2.0",
             runtimeManifestSHA256: runtimeSHA,
             runtimeVerification: verification,
             goldenGuestState: goldenResult.state,
             goldenGuestManifestSHA256: goldenResult.sha256,
             goldenGuestManifest: goldenResult.manifest,
+            compatibilitySummary: loadTargetCompatibilitySummary(bundle: bundle),
+            externalVolumes: volumes,
             guestSurfaceGate: .current,
-            hostIntegrity: RuntimeIntegrityAttestor.currentReport()
+            hostIntegrity: RuntimeIntegrityAttestor.currentReport(),
+            advisoryLocalizationKeys: advisories
+        )
+    }
+
+    private static func diagnosticAdvisories(for manifest: GoldenGuestBaselineManifest?) -> [String] {
+        guard let version = manifest?.driverVersion,
+              version == "100.6.101.58000" || version == "v100.6.101.58000" else {
+            return []
+        }
+        return [
+            "settings.goldenGuest.advisory.viogpu3dResize",
+            "settings.goldenGuest.advisory.doNotReplaceSignedDLL",
+            "settings.goldenGuest.advisory.pointerModeCheck"
+        ]
+    }
+
+    private static func loadTargetCompatibilitySummary(bundle: Bundle) -> CompatibilityTargetSummary? {
+        let resolvedBundle = (bundle == .main
+            ? RuntimeManifestVerifier.defaultAppBundleURL().flatMap(Bundle.init(url:))
+            : nil) ?? bundle
+        guard let matrix = try? BundledCompatibilityMatrix.load(bundle: resolvedBundle),
+              let record = matrix.records.first(where: { $0.targetID == "target-cn" })
+                ?? matrix.records.first else {
+            return nil
+        }
+        return CompatibilityTargetSummary(
+            snapshotID: matrix.sourceSnapshotID,
+            targetID: record.targetID ?? record.recordID,
+            productName: record.productName,
+            updatedOn: record.updatedOn,
+            visualStage: "entered_game_ui_freeze_on_resize",
+            rootCauseCode: "neptune_umd_swapchain_resize_deadlock",
+            dxvkVenusStatus: "probe_passed_0lsb_launcher_purges_dropin_dll",
+            aceArm64Coverage: "partial_core_arm64_running_ace_game_x64_blocked_1275",
+            vendorVMSupport: "unknown",
+            recommendedDisplayMode: "1280x720_windowed_static_no_dynamic_resolution",
+            pointerGuidanceCode: "utm_check_usb_tablet_or_capture_cursor_on_window_mode",
+            phase8VerificationStatus: "pending_8a_verification",
+            fiveDimensionStates: record.fiveDimensionStates,
+            boundaryNote: "Entered fullscreen/windowed UI on WHQL viogpu3d; SwapChain resize "
+                + "triggers neptune_umd deadlock. ACE-CORE runs natively on ARM64 while "
+                + "ACE-GAME.sys (x64) is blocked with 1275; vendor VM support remains unknown."
         )
     }
 
@@ -232,9 +217,14 @@ public enum GoldenGuestManifestInspector {
                 appSupport.appending(path: "com.isaacmarovitz.Whisky/golden-guest-manifest.json")
             )
         }
-        let cwd = URL(fileURLWithPath: fileManager.currentDirectoryPath, isDirectory: true)
-        candidates.append(cwd.appending(path: "handoff/phase-6/evidence/p6-a/golden-guest-manifest.json"))
-        candidates.append(cwd.appending(path: "Whisky/Modules/guest-golden/golden-guest-manifest.json"))
+        var probe = URL(fileURLWithPath: fileManager.currentDirectoryPath, isDirectory: true)
+        for _ in 0..<5 {
+            candidates.append(probe.appending(path: "handoff/phase-6/evidence/p6-a/golden-guest-manifest.json"))
+            candidates.append(probe.appending(path: "Whisky/Modules/guest-golden/golden-guest-manifest.json"))
+            let parent = probe.deletingLastPathComponent()
+            if parent.path == probe.path { break }
+            probe = parent
+        }
         return candidates
     }
 }

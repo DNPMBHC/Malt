@@ -119,14 +119,62 @@ extension Whisky {
         @Option(help: ArgumentHelp("Optional path to golden-guest-manifest.json."))
         var goldenManifest: String?
 
+        @Flag(help: ArgumentHelp("Print a human-readable diagnostic summary instead of compact JSON."))
+        var summary = false
+
         func run() throws {
             let goldenURL = goldenManifest.map { URL(fileURLWithPath: $0) }
             let report = UnifiedRuntimeBaselineReport.collect(goldenManifestURL: goldenURL)
+            if summary {
+                print(Self.formatSummary(report))
+                return
+            }
             let encoder = JSONEncoder()
             encoder.outputFormatting = [.sortedKeys]
             var data = try encoder.encode(report)
             data.append(10)
             try FileHandle.standardOutput.write(contentsOf: data)
+        }
+
+        private static func formatSummary(_ report: UnifiedRuntimeBaselineReport) -> String {
+            var lines: [String] = []
+            lines.append("Runtime Lock SHA-256 : \(report.runtimeManifestSHA256 ?? "unavailable")")
+            lines.append("Golden Guest State   : \(report.goldenGuestState.rawValue)")
+            if let golden = report.goldenGuestManifest {
+                lines.append("  ID / Status        : \(golden.guestID) (\(golden.status ?? "unknown"))")
+                let feature = golden.featureLevel ?? "?"
+                lines.append("  WHQL 3D Driver     : \(golden.driverVersion ?? "unknown") (FL \(feature))")
+                lines.append("  4C Optimizer       : \(golden.optimizerProfileID ?? "none")")
+                let secState = golden.securityInvariantsPassed.map { $0 ? "passed" : "failed" } ?? "unknown"
+                lines.append("  Security Invariants: \(secState)")
+            }
+            if let compat = report.compatibilitySummary {
+                lines.append("Target Compatibility : \(compat.targetID) (snapshot \(compat.snapshotID))")
+                lines.append("  Visual Stage       : \(compat.visualStage)")
+                lines.append("  Root Cause         : \(compat.rootCauseCode)")
+                lines.append("  DXVK/Venus Status  : \(compat.dxvkVenusStatus)")
+                lines.append("  ACE ARM64 Coverage : \(compat.aceArm64Coverage)")
+                lines.append("  Vendor VM Support  : \(compat.vendorVMSupport)")
+                lines.append("  Display Guidance   : \(compat.recommendedDisplayMode)")
+                lines.append("  Pointer Guidance   : \(compat.pointerGuidanceCode)")
+                lines.append("  Phase 8 Status     : \(compat.phase8VerificationStatus)")
+                lines.append("  Boundary           : \(compat.boundaryNote)")
+            }
+            for key in report.advisoryLocalizationKeys {
+                lines.append("Advisory (\(key)) : \(RuntimeCLI.localized(key, fallback: key))")
+            }
+            if report.externalVolumes.isEmpty {
+                lines.append("External Volumes     : none mounted")
+            } else {
+                for volume in report.externalVolumes {
+                    let free = ByteCountFormatter.string(fromByteCount: volume.freeBytes, countStyle: .file)
+                    lines.append("External Volume      : \(volume.volumeName) (\(free) free)")
+                }
+            }
+            let gate = report.guestSurfaceGate
+            let gateRev = "Rev \(gate.contractRevision)/S\(gate.snapshotRevision)"
+            lines.append("5C GuestSurface Gate : enabled=\(gate.gameShellEntryEnabled) (\(gateRev))")
+            return lines.joined(separator: "\n")
         }
     }
 }

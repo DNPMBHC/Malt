@@ -204,20 +204,48 @@ struct SettingsRuntimeManifestSection: View {
         LabeledContent("settings.goldenGuest.title", value: stateText)
             .font(.footnote)
         if let golden = baselineReport?.goldenGuestManifest {
-            LabeledContent("settings.goldenGuest.id", value: golden.guestID)
+            let idLabel = golden.status.map { "\(golden.guestID) (\($0))" } ?? golden.guestID
+            LabeledContent("settings.goldenGuest.id", value: idLabel)
                 .font(.caption)
             if let driver = golden.driverVersion {
-                LabeledContent("settings.goldenGuest.driver", value: driver)
+                let driverText = golden.featureLevel.map { "\(driver) (FL \($0))" } ?? driver
+                LabeledContent("settings.goldenGuest.driver", value: driverText)
+                    .font(.caption)
+            }
+            if let optimizer = golden.optimizerProfileID {
+                LabeledContent("settings.goldenGuest.optimizer", value: optimizer)
+                    .font(.caption)
+            }
+            if let secPassed = golden.securityInvariantsPassed {
+                let key = secPassed ? "settings.goldenGuest.security.passed" : "settings.goldenGuest.security.failed"
+                LabeledContent("settings.goldenGuest.security", value: String(localized: String.LocalizationValue(key)))
                     .font(.caption)
             }
             if let sha = baselineReport?.goldenGuestManifestSHA256 {
-                LabeledContent("settings.goldenGuest.fingerprint", value: String(sha.prefix(16)))
-                    .font(.caption)
+                LabeledContent("settings.goldenGuest.fingerprint", value: String(sha.prefix(16))).font(.caption)
             }
         } else {
             Text(state == .invalid ? "settings.goldenGuest.invalidNote" : "settings.goldenGuest.uninitializedNote")
+                .font(.caption).foregroundStyle(.secondary)
+        }
+        if let compat = baselineReport?.compatibilitySummary {
+            LabeledContent("settings.compatibility.targetSummary", value: "\(compat.targetID): \(compat.visualStage)")
                 .font(.caption)
-                .foregroundStyle(.secondary)
+            let detail = "\(compat.rootCauseCode) | \(compat.recommendedDisplayMode)"
+                + " | 8A: \(compat.phase8VerificationStatus)"
+            Text(detail).font(.caption2).foregroundStyle(.secondary)
+        }
+        if let advisories = baselineReport?.advisoryLocalizationKeys, !advisories.isEmpty {
+            ForEach(advisories, id: \.self) { key in
+                Label(String(localized: String.LocalizationValue(key)), systemImage: "info.circle")
+                    .font(.caption).foregroundStyle(.secondary)
+            }
+        }
+        if let volumes = baselineReport?.externalVolumes, !volumes.isEmpty {
+            ForEach(volumes) { volume in
+                let free = ByteCountFormatter.string(fromByteCount: volume.freeBytes, countStyle: .file)
+                LabeledContent("settings.storage.externalTitle", value: "\(volume.volumeName) (\(free))").font(.caption)
+            }
         }
     }
 
