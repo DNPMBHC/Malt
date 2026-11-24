@@ -1,0 +1,478 @@
+{
+  "schema": "task-07-phase2-evidence-v1",
+  "passed": true,
+  "windows": {
+    "window-a": {
+      "status": "pending_real_evidence",
+      "artifactCount": 1,
+      "realExecutionArtifacts": 0,
+      "artifacts": [
+        {
+          "file": "window-a/e2e-verification.json",
+          "fileSHA256": "424cbd7b205d8b5939c65a16861a6883710b13284b27f3a43216ef06ddbe70b0",
+          "schema": "phase-2-window-a-e2e-verification-v1",
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": true,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        }
+      ],
+      "passed": true
+    },
+    "window-b": {
+      "status": "pending_real_evidence",
+      "artifactCount": 2,
+      "realExecutionArtifacts": 0,
+      "artifacts": [
+        {
+          "file": "window-b/real-windows-probe-report.json",
+          "fileSHA256": "d167f9d6857fc683cced016869d23b3a1f1e80bb35e9d27ce1b9ef69feab5a24",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-b/valorant-cn-installer-static.json",
+          "fileSHA256": "7b8626f672f3da808734983c492798bcb250a34c0faefad8f5d927187a56cd06",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        }
+      ],
+      "passed": true
+    },
+    "window-c": {
+      "status": "real_evidence_validated",
+      "artifactCount": 41,
+      "realExecutionArtifacts": 3,
+      "artifacts": [
+        {
+          "file": "window-c/gamemode-and-offload/observation-manifest.json",
+          "fileSHA256": "cefaa9cdf32989463a37a49fc7ebba2280a3d7ef9026a176bc27e1bd9ac55375",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": true,
+          "hasValidBinarySHA256": true,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/gamemode-and-offload/wine-d3dmetal-offload-startup.json",
+          "fileSHA256": "17e3cc8c5c9a3daea28f076d0b703b0dc32d29015497a4b3b66b154857f8e2f5",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/metal-host-policy-ab/manifest.json",
+          "fileSHA256": "c562f726fb36cf8f6b174667c25e29c30df72f8a4cdfc97f5e051f9112f10b14",
+          "schema": null,
+          "requiresDigestBinding": true,
+          "hasValidSourceSHA256": true,
+          "hasValidBinarySHA256": true,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxmt-three-engine/dxmt-r1-cold-startup.json",
+          "fileSHA256": "560a01c350774546c25773f965df9fd8e5ffdcdbaa85f1bf271a7ac3b943099e",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxmt-three-engine/dxmt-r1-cold-summary.json",
+          "fileSHA256": "41b0bc9b5d29c963b2769fcf14f539f97256ef667665ccb1ffdb3b6e23ddc44a",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxmt-three-engine/dxmt-r1-hot-startup.json",
+          "fileSHA256": "f1ce1ddb73826053bc29ac53f422b0d0c87c96ab1fe829446e1bcb472a29c12c",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxmt-three-engine/dxmt-r1-hot-summary.json",
+          "fileSHA256": "ff7b02151d870f1f027626a5cc11026ef5a1574ec57784b5da75dca98392dca3",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxmt-three-engine/dxmt-r2-cold-startup.json",
+          "fileSHA256": "c359e1e6da98fe35e27d64367af336c2ff1e6d42274bdd3bdf98488383af285a",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxmt-three-engine/dxmt-r2-cold-summary.json",
+          "fileSHA256": "6fb1b76d42c8d8c0965108d5d378eb6bfd6500120978d6f2485f9681dff01c17",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxmt-three-engine/dxmt-r2-hot-startup.json",
+          "fileSHA256": "903805f72d08f7b8e2e48c0e476b42663ece272cad41bee39e4b117ed74cec0d",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxmt-three-engine/dxmt-r2-hot-summary.json",
+          "fileSHA256": "23425ad9a7ef65ee46b83e80f6725ef589bc4e8be8940896808a2684e2848ed2",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxmt-three-engine/dxmt-r3-cold-startup.json",
+          "fileSHA256": "7cfb841f190b314fdbc95b36f8c339874132394a2ca07e68e651f2844fedc3af",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxmt-three-engine/dxmt-r3-cold-summary.json",
+          "fileSHA256": "2ed5c4712ef9280737e49a0f14b55c597efce88ece3b0520d818f7d4936812a2",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxmt-three-engine/dxmt-r3-hot-startup.json",
+          "fileSHA256": "3e823a0f187da2ed81aa3e1dde6944cffbbf482f355f899c65a5e7b4ab08516e",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxmt-three-engine/dxmt-r3-hot-summary.json",
+          "fileSHA256": "6a761ad2cc4441bef11e50e676e4a42b03cd35c82c7f48acf9c441c04e66983f",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxmt-three-engine/manifest.json",
+          "fileSHA256": "55cbba0bcfe9f0d68de66ce0d6bb4bdc6a5b17e7b433f5b377c7b4c6e0dc8912",
+          "schema": null,
+          "requiresDigestBinding": true,
+          "hasValidSourceSHA256": true,
+          "hasValidBinarySHA256": true,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxvk-vs-d3dmetal/d3dmetal-r1-cold-startup.json",
+          "fileSHA256": "75dc8848ae79c2ab2b191fa9dc05ab5b9a9b10442f6383062067c2181af7498d",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxvk-vs-d3dmetal/d3dmetal-r1-cold-summary.json",
+          "fileSHA256": "7756cc348deb3c6ae2f2a8aaa8cb009305210b344a045a052c87752de4450738",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxvk-vs-d3dmetal/d3dmetal-r1-hot-startup.json",
+          "fileSHA256": "4b3db1df622b67546f12b0042fd057c2584f5dce80e55cb61b76a7ad124660cd",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxvk-vs-d3dmetal/d3dmetal-r1-hot-summary.json",
+          "fileSHA256": "0c22622863e4ab210158ddfa16d14ce1dedfed38bdb94e68bf9b833b0489cfc2",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxvk-vs-d3dmetal/d3dmetal-r2-cold-startup.json",
+          "fileSHA256": "1318d7275b33c257806809732637baac09821c028d7cfd63461d5d927d858075",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxvk-vs-d3dmetal/d3dmetal-r2-cold-summary.json",
+          "fileSHA256": "495ffb08fe258b793158cd76e4c6ac3dcc089010898a87e860a9d6251dd2e180",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxvk-vs-d3dmetal/d3dmetal-r2-hot-startup.json",
+          "fileSHA256": "3eb7831b723f5894e9f4f28a65d4c5cd017d8ae18351ba39561a801957757d15",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxvk-vs-d3dmetal/d3dmetal-r2-hot-summary.json",
+          "fileSHA256": "8c5e14b1018fc1f2a7ebfd8d01d18c43bdf152f809fc6f5a7fddcee53279d727",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxvk-vs-d3dmetal/d3dmetal-r3-cold-startup.json",
+          "fileSHA256": "4c6647fb0a3901a76c86ec94f744e7122ee91786cd28e753cf50215c9d9785c4",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxvk-vs-d3dmetal/d3dmetal-r3-cold-summary.json",
+          "fileSHA256": "de5e267f94324e42ba28349c67431df3b839bc67463fc91c1372fcb972b341f7",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxvk-vs-d3dmetal/d3dmetal-r3-hot-startup.json",
+          "fileSHA256": "1be81d5c5e555756c76181196218a37fffac9de1d4f1d95676392428f0e6811b",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxvk-vs-d3dmetal/d3dmetal-r3-hot-summary.json",
+          "fileSHA256": "3d5b47c9471ea597a926ba6242288577ce45b97f50983f5d2051775d2803cd2e",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxvk-vs-d3dmetal/dxvk-r1-cold-startup.json",
+          "fileSHA256": "db28903d47e68dd2a2507dc0702e0c24bace14ac85f66d3c0d3f2a4cd57812c3",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxvk-vs-d3dmetal/dxvk-r1-cold-summary.json",
+          "fileSHA256": "079bf421e40d5c24723049e1fe06f2520cd3c79db21345043e6c3c6823142e9f",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxvk-vs-d3dmetal/dxvk-r1-hot-startup.json",
+          "fileSHA256": "be4c3e229250bd2aa19e6560d5f863f2216433fa0e69321d6e8d40533c8b8094",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxvk-vs-d3dmetal/dxvk-r1-hot-summary.json",
+          "fileSHA256": "3ff59a3efa1452e561d55882a6c567a5cb74b14154e72a5baf071188c9a1e62c",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxvk-vs-d3dmetal/dxvk-r2-cold-startup.json",
+          "fileSHA256": "f0d625f1414bd7526105daec4e62d35e6f9ccd8dc0801cf4a6f40f839c32bb33",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxvk-vs-d3dmetal/dxvk-r2-cold-summary.json",
+          "fileSHA256": "26fd848e39f241a55e9e3b0a6dd2e86dc2fdea08554631b1af1dc47cd77b5b86",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxvk-vs-d3dmetal/dxvk-r2-hot-startup.json",
+          "fileSHA256": "1f660bc13202510d1041db1dbf243602b9e92de701315308e58884b3ed8cb2b1",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxvk-vs-d3dmetal/dxvk-r2-hot-summary.json",
+          "fileSHA256": "32049a9b34800e3a459fe83d5a103eafd140f7ce89d416bdb3d7a53f583057d1",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxvk-vs-d3dmetal/dxvk-r3-cold-startup.json",
+          "fileSHA256": "2ff8f2528b669a53ff529c82eeb4512555e3ea56782d1a603a7f575a7e9628ab",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxvk-vs-d3dmetal/dxvk-r3-cold-summary.json",
+          "fileSHA256": "11a01773bff65b0fbed9e7099b0513c7c2ca17d3e2236f329ace2b673d6b3459",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxvk-vs-d3dmetal/dxvk-r3-hot-startup.json",
+          "fileSHA256": "a0791ce47015e11988547cc9cf1674daffe01bc26678927ee13bfc49fc7ad76e",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxvk-vs-d3dmetal/dxvk-r3-hot-summary.json",
+          "fileSHA256": "98065414a272694e99352f9074ca94073e15b87d2936406b07fc7b055bca6e46",
+          "schema": null,
+          "requiresDigestBinding": false,
+          "hasValidSourceSHA256": false,
+          "hasValidBinarySHA256": false,
+          "passed": true,
+          "errors": []
+        },
+        {
+          "file": "window-c/wine-dxvk-vs-d3dmetal/manifest.json",
+          "fileSHA256": "51b1f97a7bc88b6c7d5757f1b883a7bca77b9233a248533fe40af59b13d0b06c",
+          "schema": null,
+          "requiresDigestBinding": true,
+          "hasValidSourceSHA256": true,
+          "hasValidBinarySHA256": true,
+          "passed": true,
+          "errors": []
+        }
+      ],
+      "passed": true
+    }
+  },
+  "interfaceProposals": [
+    "window-b/interface-proposal.md",
+    "window-c/interface-proposal.md"
+  ],
+  "anyRealEvidencePresent": true,
+  "allWindowsHaveRealEvidence": false,
+  "completedWindowCount": 1,
+  "expectedWindowCount": 3
+}

@@ -1,0 +1,35 @@
+{
+  "schema": "task-07-collection-v1",
+  "buildEvidence": "final-integrated/build.json",
+  "capturedAt": "2026-11-22T01:57:25+08:00",
+  "assembledAt": "2026-11-22T02:11:32+08:00",
+  "testEnvironment": {
+    "MTL_DEBUG_LAYER": "1",
+    "HOST_RUN_METALFX_AB": "not_enabled"
+  },
+  "swiftTests": {
+    "total": 91,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1,
+    "executed": 90,
+    "passed": 90
+  },
+  "junitProvenance": "generated-from-sequential-xctest-log",
+  "inputCount": 171,
+  "integrationEvidence": "integration-final/integration.json",
+  "integrationInputCount": 26,
+  "currentSourceMatchesAtAssembly": true,
+  "postBuildChangedInputs": [],
+  "integrationToolsMatchAtAssembly": true,
+  "formatEvidence": "format-final/format.json",
+  "formatInputCount": 6,
+  "cliEvidence": "cli/cli.json",
+  "cliBinarySHA256": "95ef1fcd8a7c60a565c8f484b85cde061cb16b55dc5b4f38181078703363fad8",
+  "cliParserChecks": 5,
+  "cliStorageChecks": 4,
+  "localGatePassed": true,
+  "runtimeEnvironmentStatus": "environment_not_verified",
+  "overallStatus": "incomplete",
+  "boundary": "Frozen compile inputs passed the local gate. Real driver, protection, guest, installation, game and game-performance acceptance remain separate."
+}

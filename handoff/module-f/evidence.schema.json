@@ -1,0 +1,572 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/my-project/module-f/evidence.schema.json",
+  "title": "module-f isolated official evidence snapshot",
+  "description": "Snapshot exchange format only. Run validate_evidence.py for provenance, regional boundaries and no-promotion invariants.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "dataset_id": {
+      "const": "module-f-task-06"
+    },
+    "snapshot": {
+      "type": "object",
+      "properties": {
+        "as_of": {
+          "type": "string",
+          "format": "date"
+        },
+        "timezone": {
+          "const": "Asia/Shanghai"
+        },
+        "method": {
+          "const": "current_official_public_document_review"
+        },
+        "live_client_tested": {
+          "const": false
+        },
+        "vendor_contacted": {
+          "const": false
+        },
+        "accounts_used": {
+          "const": false
+        }
+      },
+      "required": [
+        "as_of",
+        "timezone",
+        "method",
+        "live_client_tested",
+        "vendor_contacted",
+        "accounts_used"
+      ],
+      "additionalProperties": false
+    },
+    "products": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "target_id": {
+            "enum": [
+              "target-a",
+              "target-b",
+              "target-c"
+            ]
+          },
+          "public_product_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "requested_client": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "target_id",
+          "public_product_name",
+          "requested_client"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/source"
+      },
+      "minItems": 1
+    },
+    "scopes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/scope"
+      },
+      "minItems": 1
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      },
+      "minItems": 1
+    },
+    "compatibility_matrix": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/record"
+      },
+      "minItems": 1
+    },
+    "research_log": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/research_log"
+      }
+    },
+    "consumption_rules": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "dataset_id",
+    "snapshot",
+    "products",
+    "sources",
+    "scopes",
+    "claims",
+    "compatibility_matrix",
+    "research_log",
+    "consumption_rules"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "source": {
+      "type": "object",
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "accessed_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "access_timezone": {
+          "const": "Asia/Shanghai"
+        },
+        "page_date": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "page_date_kind": {
+          "enum": [
+            "publication",
+            "last_updated",
+            "page_display",
+            "not_displayed"
+          ]
+        },
+        "published_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "updated_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source_timezone": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "official_scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version_scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "access_result": {
+          "enum": [
+            "opened",
+            "opened_partial"
+          ]
+        },
+        "applicable_scope_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "source_id",
+        "title",
+        "url",
+        "accessed_on",
+        "access_timezone",
+        "page_date",
+        "page_date_kind",
+        "published_at",
+        "updated_at",
+        "source_timezone",
+        "official_scope",
+        "version_scope",
+        "access_result",
+        "applicable_scope_ids"
+      ],
+      "additionalProperties": false
+    },
+    "scope": {
+      "type": "object",
+      "properties": {
+        "scope_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "platform": {
+          "type": "string",
+          "minLength": 1
+        },
+        "distribution": {
+          "type": "string",
+          "minLength": 1
+        },
+        "region": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "scope_id",
+        "target_id",
+        "platform",
+        "distribution",
+        "region"
+      ],
+      "additionalProperties": false
+    },
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "paraphrase_zh": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "source_id",
+        "locator",
+        "paraphrase_zh"
+      ],
+      "additionalProperties": false
+    },
+    "claim": {
+      "type": "object",
+      "properties": {
+        "claim_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "topic": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "confirmed",
+            "unknown",
+            "conflict",
+            "inferred"
+          ]
+        },
+        "value": {},
+        "summary_zh": {
+          "type": "string",
+          "minLength": 1
+        },
+        "updated_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 1
+        },
+        "limitation_zh": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "claim_id",
+        "scope_id",
+        "topic",
+        "status",
+        "value",
+        "summary_zh",
+        "updated_on",
+        "evidence",
+        "limitation_zh"
+      ],
+      "additionalProperties": false
+    },
+    "permission": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "enum": [
+            "allowed",
+            "prohibited",
+            "unknown"
+          ]
+        },
+        "basis_claim_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "updated_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "verification_method": {
+          "enum": [
+            "official_documentation",
+            "not_tested"
+          ]
+        }
+      },
+      "required": [
+        "value",
+        "basis_claim_ids",
+        "updated_on",
+        "verification_method"
+      ],
+      "additionalProperties": false
+    },
+    "support": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "enum": [
+            "supported",
+            "not_supported",
+            "unknown",
+            "conflict"
+          ]
+        },
+        "basis_claim_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "updated_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "verification_method": {
+          "enum": [
+            "official_documentation",
+            "not_tested"
+          ]
+        }
+      },
+      "required": [
+        "value",
+        "basis_claim_ids",
+        "updated_on",
+        "verification_method"
+      ],
+      "additionalProperties": false
+    },
+    "observation": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "const": "unknown"
+        },
+        "basis_claim_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "maxItems": 0
+        },
+        "updated_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "verification_method": {
+          "const": "not_tested"
+        }
+      },
+      "required": [
+        "value",
+        "basis_claim_ids",
+        "updated_on",
+        "verification_method"
+      ],
+      "additionalProperties": false
+    },
+    "record": {
+      "type": "object",
+      "properties": {
+        "record_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "environment": {
+          "const": "virtual_machine"
+        },
+        "guest_cpu_architecture": {
+          "enum": [
+            "unknown",
+            "AMD64",
+            "ARM64"
+          ]
+        },
+        "publisher_permission": {
+          "$ref": "#/$defs/permission"
+        },
+        "publisher_support": {
+          "$ref": "#/$defs/support"
+        },
+        "driver_load": {
+          "$ref": "#/$defs/observation"
+        },
+        "game_start": {
+          "$ref": "#/$defs/observation"
+        },
+        "protected_session": {
+          "$ref": "#/$defs/observation",
+          "description": "Actual protected online session. Launch, menus, VM readiness and driver-service presence are insufficient."
+        },
+        "binary_architecture_claim_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "updated_on": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "required": [
+        "record_id",
+        "scope_id",
+        "environment",
+        "guest_cpu_architecture",
+        "publisher_permission",
+        "publisher_support",
+        "driver_load",
+        "game_start",
+        "protected_session",
+        "binary_architecture_claim_id",
+        "updated_on"
+      ],
+      "additionalProperties": false
+    },
+    "research_log": {
+      "type": "object",
+      "properties": {
+        "log_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "official_hosts": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "attempts": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "outcome": {
+          "type": "string",
+          "minLength": 1
+        },
+        "implication": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "log_id",
+        "scope_id",
+        "official_hosts",
+        "attempts",
+        "outcome",
+        "implication"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

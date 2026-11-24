@@ -1,0 +1,28 @@
+{
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-23T16:32:22.090398+00:00",
+  "verification": "official_pages_read_only",
+  "sources": [
+    {
+      "api": "ChangeDisplaySettingsExW",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-changedisplaysettingsexw",
+      "finding": "dynamic_mode_flags_zero_supported_fields_do_not_list_system_dpi_scaling"
+    },
+    {
+      "api": "GetDpiForSystem",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getdpiforsystem",
+      "finding": "unaware_calling_context_reports_96"
+    },
+    {
+      "api": "SetThreadDpiAwarenessContext",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setthreaddpiawarenesscontext",
+      "finding": "sets_calling_thread_context_not_system_scale",
+      "page_fetch_status": "verified"
+    },
+    {
+      "api": "SystemParametersInfo",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-systemparametersinfoa",
+      "finding": "SPI_SETLOGICALDPIOVERRIDE_not_for_use"
+    }
+  ]
+}

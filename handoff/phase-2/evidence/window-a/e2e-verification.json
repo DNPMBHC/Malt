@@ -1,0 +1,188 @@
+{
+  "schema": "phase-2-window-a-e2e-verification-v1",
+  "capturedAt": "2026-11-22T11:55:02+08:00",
+  "window": "window-a",
+  "module": "task-02 / module-b",
+  "sourceSHA256": {
+    "Whisky/WhiskyKit/Sources/WhiskyKit/Runtime/UTMWindowsGuestProvider.swift": "9960cfc37847259adb32eb3909a6b1aab213f3de06dc823c30a9db39ea38dc49",
+    "Whisky/WhiskyKit/Sources/WhiskyKit/Runtime/UTMGuestSession.swift": "4f048f7b2a59885cf0ec874f97e5ff65ec62e18c71af48b15bd79ee659a7425e",
+    "Whisky/WhiskyKit/Sources/WhiskyKit/Runtime/WindowsGuestTransport.swift": "f751c98611f2423e70de4dcd05970109767df10019dc76049422fe2871ab2fc6",
+    "Whisky/WhiskyKit/Sources/WhiskyKit/Runtime/UTMGuestStoragePreflight.swift": "469323dadd5f53743a04782c9ccddecb11e8fc89de4cdc77494c84e78f23b339",
+    "Whisky/WhiskyKit/Sources/WhiskyKit/Runtime/WindowsGuestProbeService.swift": "bbb0c8b0d19f17f166ec00f7cfd942d091c4f758338a23f5a7095aa47f17321e",
+    "Whisky/WhiskyKit/Tests/WhiskyKitTests/UTMWindowsGuestProviderTests.swift": "91fd082398d75a742820e522e8533fcce9d0a0fd466b4c48452406bada242b68",
+    "Whisky/WhiskyKit/Tests/WhiskyKitTests/UTMGuestStoragePreflightTests.swift": "dcee26f96d55e6485fa1ce62421315778670f2a959f8437a3af8537d53ef1e52"
+  },
+  "environmentMetadata": {
+    "host_cpu_architecture": "arm64",
+    "host_cpu_cores": 10,
+    "host_memory_bytes": 17179869184,
+    "host_hv_support": 1,
+    "utm_app_version": "5.0.9",
+    "utmctl_version": "5.0.9",
+    "registered_vm_identifier": "B107A021-E60C-426B-BB62-626122CE44BE",
+    "registered_vm_backend": "qemu",
+    "registered_vm_bundle_path": "/Volumes/<EXTERNAL_VOLUME>/whisky-phase2-guest/vms/Windows11-ARM64.utm",
+    "registered_vm_shared_directory": "/Volumes/<EXTERNAL_VOLUME>/whisky-phase2-guest/shared",
+    "guest_cpu_architecture": "arm64 (aarch64, ARMv8 64-bit Family 8 Model 0)",
+    "guest_os_build": "10.0.26100.1 (26100.1.arm64fre.ge_release.240331-1435)",
+    "guest_os_edition": "Windows 11 Enterprise Evaluation 24H2 (EditionID: EnterpriseEval)",
+    "qemu_guest_agent_status": "online_and_verified"
+  },
+  "realContractFixesVerified": [
+    {
+      "id": "UTM-SDEF-01",
+      "file": "Whisky/WhiskyKit/Sources/WhiskyKit/Runtime/WindowsGuestTransport.swift",
+      "issue": "Real UTM 5.0.9 AppleScript fails with error -1700 on `architecture of (configuration of vm) as text` because `configuration` is an AppleScript record value rather than an object element.",
+      "fix": "Evaluate `set vmConfig to configuration of vm` into a local variable first, then read `architecture of vmConfig as text`.",
+      "realGuestVerified": true
+    },
+    {
+      "id": "UTM-SDEF-02",
+      "file": "Whisky/WhiskyKit/Sources/WhiskyKit/Runtime/WindowsGuestTransport.swift",
+      "issue": "`stop ... by request` sends an ACPI shutdown hint that can be ignored during `waitForAgent` timeout rollback, leaving the QEMU VM stranded in `.started` state.",
+      "fix": "Align `stopScript` with `utmctl stop` default (`by force`) so timeout rollback and `provider.stop()` reliably transition the QEMU VM to `.stopped`.",
+      "realGuestVerified": true
+    },
+    {
+      "id": "UTM-SDEF-03",
+      "file": "Whisky/WhiskyKit/Sources/WhiskyKit/Runtime/WindowsGuestTransport.swift",
+      "issue": "QGA `open file ... for writing` fails if the destination parent directory does not yet exist in the Windows guest; chained `push of (open file ...)` also risks AppleEvent specifier evaluation errors.",
+      "fix": "Separate `open file` and `push ... with closing`, and add `pushCreatingParentDirectory` to create missing guest parent directories via `cmd.exe /d /c if not exist <parent> mkdir <parent>` before retrying push.",
+      "realGuestVerified": true
+    },
+    {
+      "id": "UTM-SDEF-04",
+      "file": "Whisky/WhiskyKit/Sources/WhiskyKit/Runtime/WindowsGuestTransport.swift",
+      "issue": "`terminate` treated nonzero `taskkill.exe` exit code as `automationFailed` even when the target PID exited naturally just before `taskkill.exe` ran.",
+      "fix": "Re-check `result(identifier, pid: pid) != nil` when `taskkill.exe` returns nonzero; treat an already-exited target process as successful termination.",
+      "realGuestVerified": true
+    },
+    {
+      "id": "UTM-PROBE-05",
+      "file": "Whisky/WhiskyKit/Sources/WhiskyKit/Runtime/WindowsGuestProbeService.swift",
+      "issue": "`UTMWindowsGuestProvider` did not conform to `WindowsGuestProbeReporting`, and `collectOutput` failed when `trimmingCharacters(in: .whitespacesAndNewlines)` stripped trailing empty lines while process exited state was still `0`.",
+      "fix": "Implement `WindowsGuestProbeReporting.collectSelfProbeReport(nonce:)` on `UTMWindowsGuestProvider` using UTM 5.0.9 `execute ... with output capturing` and parse `state == \"0\"` prior to requiring output fields.",
+      "realGuestVerified": true
+    }
+  ],
+  "stageA2RealGuestE2EVerification": {
+    "testName": "UTMGuestStoragePreflightTests.testRealUTMProviderHostAndVMLifecycleWhenConfigured",
+    "status": "passed",
+    "durationSeconds": 9.958,
+    "verifiedItems": {
+      "configurationAndArchitectureRecognition": {
+        "hostArchitecture": "arm64",
+        "guestConfiguredArchitecture": "aarch64",
+        "guestKernelArchitectureViaIsWow64Process2": "arm64",
+        "mismatchArchitectureRejectionBeforeVMStart": "passed"
+      },
+      "vmAttachAndGuestAgentHandshake": {
+        "vmStatus": "started",
+        "qgaHandshakeCommand": "cmd.exe /d /c exit 0",
+        "qgaHandshakeLatencyMs": 209.39,
+        "status": "passed"
+      },
+      "storagePreflightPromotionToVerified": {
+        "hostDirectory": "/Volumes/<EXTERNAL_VOLUME>/whisky-phase2-guest/shared",
+        "guestDirectory": "C:\\whisky-guest-share",
+        "pushedExecutable": "C:\\whisky-guest-share\\whisky_a2_test.exe",
+        "visibilityCheckCommand": "C:\\Windows\\System32\\attrib.exe /L C:\\whisky-guest-share\\whisky_a2_test.exe",
+        "hostTargetState": "writable",
+        "guestFileVisibility": "visible",
+        "guestMappingStateBeforeStart": "configured",
+        "guestMappingStateAfterPushAndVerify": "verified",
+        "canExecuteGuestFile": true
+      },
+      "programExecutionExitCodesArgumentsAndEnvironment": {
+        "zeroExitCodeTest": {
+          "arguments": [
+            "--exit-code",
+            "0",
+            "--echo",
+            "two words",
+            "literal \"quote\""
+          ],
+          "environment": {
+            "WHISKY_E2E_ENV": "verified_from_host"
+          },
+          "observedExitCode": 0,
+          "observedExitReason": "exit",
+          "guestCapturedOutput": [
+            "ARGC=7",
+            "ARG[0]=--exit-code",
+            "ARG[1]=0",
+            "ARG[2]=--echo",
+            "ARG[3]=two words",
+            "ARG[4]=literal \"quote\"",
+            "ARG[5]=--report",
+            "ARG[6]=C:\\whisky-guest-share\\a2_args_env_proof.txt",
+            "WHISKY_E2E_ENV=verified_from_host",
+            "OS_VERSION=Microsoft Windows NT 6.2.9200.0",
+            "IS_64BIT=True"
+          ]
+        },
+        "nonZeroExitCodeTest": {
+          "arguments": [
+            "--exit-code",
+            "42"
+          ],
+          "observedExitCode": 42,
+          "observedExitReason": "exit"
+        }
+      },
+      "cancellationIdempotencyAndRecovery": {
+        "runningProcessArguments": [
+          "--sleep-ms",
+          "30000"
+        ],
+        "firstCancelSucceeded": true,
+        "duplicateSecondCancelSideEffectFree": true,
+        "terminatedViaTaskkill": true,
+        "timeoutRollbackAndStopVerified": true
+      },
+      "windowsGuestProbeServiceRealExecution": {
+        "probeExecutableGuestPath": "C:\\whisky-guest-share\\module_a_probe.exe",
+        "schemaVersion": 2,
+        "guestKernelArchitecture": "arm64",
+        "guestProcessArchitecture": "arm64",
+        "guestWindowsBuild": 26100,
+        "driverLoadStateInCleanGuest": "notLoaded",
+        "failureStage": "open",
+        "win32Error": 2,
+        "protectedGameLaunchAuthorized": false,
+        "readyForWindowBHandoff": true
+      }
+    }
+  },
+  "hostInfrastructureBaseline": {
+    "appleScriptInspectLatencyMs": 186.89,
+    "vmColdStartToStartedMs": 3224.76,
+    "vmWarmAttachInspectLatencyMs": 173.99,
+    "qgaWarmHandshakeLatencyMs": 209.39,
+    "qgaPushExecutableLatencyMs": 144.56,
+    "qgaAttribVisibilityVerifyLatencyMs": 178.28,
+    "guestProgramEndToEndExecLatencyMs": 849.39,
+    "vmStopToStoppedLatencyMs": 563.42,
+    "idleWindows11DesktopHostResources": {
+      "utmRSSMiB": 46.2,
+      "qemuRSSMiB": 1029.38,
+      "utmCpuPercent": 1.5,
+      "qemuCpuPercent": 142.6
+    },
+    "activeProgramExecutionHostResources": {
+      "utmRSSMiB": 57.02,
+      "qemuRSSMiB": 1132.62,
+      "utmCpuPercent": 0.5,
+      "qemuCpuPercent": 154.9
+    },
+    "externalVolumeSharedDirWrite1MiBMs": 5.33,
+    "externalVolumeSharedDirRead1MiBMs": 0.61
+  },
+  "fiveDimensionStatus": {
+    "codeImplementation": "completed",
+    "localSyntheticAndContractVerification": "passed",
+    "realGuestAndUTMVerification": "verified",
+    "vendorSupport": "unknown",
+    "realCommercialGameVerification": "not_verified"
+  }
+}

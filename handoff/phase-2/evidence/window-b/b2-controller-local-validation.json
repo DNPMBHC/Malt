@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "scope": "local-controller-mocks-and-static-checks",
+  "guest_operations_performed": false,
+  "powershell_wrapper_runtime_verified": false,
+  "controller_mock_test_cases": 22,
+  "controller_mock_passed": 22,
+  "transfer_mock_test_cases": 35,
+  "transfer_mock_passed": 35,
+  "static_check_count": 10,
+  "static_checks": [
+    {
+      "check": "b2-guest-control.py-python-ast-parse",
+      "passed": true
+    },
+    {
+      "check": "b2-guest-control.py-no-trailing-whitespace",
+      "passed": true
+    },
+    {
+      "check": "b2-controller-checks.py-python-ast-parse",
+      "passed": true
+    },
+    {
+      "check": "b2-controller-checks.py-no-trailing-whitespace",
+      "passed": true
+    },
+    {
+      "check": "no-uncaptured-cleanup-or-unbound-result-call",
+      "passed": true
+    },
+    {
+      "check": "no-taskkill-command",
+      "passed": true
+    },
+    {
+      "check": "private-marker-stored-in-recovery-handle",
+      "passed": true
+    },
+    {
+      "check": "private-marker-generated-per-request",
+      "passed": true
+    },
+    {
+      "check": "response-framing-stripped-before-return",
+      "passed": true
+    },
+    {
+      "check": "no-private-absolute-path-literal",
+      "passed": true
+    }
+  ],
+  "coverage": [
+    "per-request-private-random-marker",
+    "private-marker-recovery-binding",
+    "stale-result-from-reused-native-pid",
+    "missing-duplicate-or-conflicting-marker",
+    "invalid-base64-result",
+    "raw-running-pid-on-timeout-or-exception",
+    "legacy-unmarked-recovery-reference",
+    "raw-poll-bypass-rejection",
+    "nonzero-exit-preservation"
+  ],
+  "cleanup_policy": "no-native-process-termination-without-verified-creation-time-identity",
+  "public_markers_exported": false
+}

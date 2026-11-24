@@ -1,0 +1,46 @@
+{
+  "schema": "task-07-command-readiness-v1",
+  "helpChecks": [
+    {
+      "entry": "build-entry",
+      "helpExitCode": 0,
+      "executable": true
+    },
+    {
+      "entry": "integration-entry",
+      "helpExitCode": 0,
+      "executable": true
+    },
+    {
+      "entry": "cli-entry",
+      "helpExitCode": 0,
+      "executable": true
+    },
+    {
+      "entry": "privacy-entry",
+      "helpExitCode": 0,
+      "executable": true
+    }
+  ],
+  "integrationInputCount": 25,
+  "sdkCompileTestPresent": true,
+  "sdkSwiftInputCount": 3,
+  "sdkSwiftInputsPresent": true,
+  "finalGateExecutedForPendingFeatures": false,
+  "testCounting": "Sequential XCTest log reconciles unique started/completed cases and final summary; passed excludes skipped. Native XML absence is explicit and generated JUnit provenance is preserved. SDK compile test must execute on macOS and be reported separately; skip is unverified.",
+  "capturedAt": "2026-11-22T01:00:40+08:00",
+  "sdkCompileTestSHA256": "495f511d8ed1ed875a9df520b434eaddd1135359ca839f93deddaa48c8d274fb",
+  "sdkCompileTestMethods": [
+    "test_experiment_sources_typecheck_against_active_macos_sdk",
+    "test_failure_diagnostics_redact_home_and_temporary_paths"
+  ],
+  "sdkFinalGateRunStatus": "pending modules 02/03/05 final snapshot",
+  "module03SharedSnapshotHashMatches": true,
+  "module03SharedSnapshotBytes": 5210,
+  "module03IndependentTestsReported": {
+    "total": 8,
+    "passed": 8,
+    "sdkTypecheckSkipped": false,
+    "independentlyRerunByFinalGate": false
+  }
+}

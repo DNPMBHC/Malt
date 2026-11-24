@@ -1,0 +1,43 @@
+{
+  "capturedAt" : "2026-11-22T06:49:10Z",
+  "controllerIsTarget" : false,
+  "controllerPID" : 6304,
+  "exitCode" : 42,
+  "outputCaptured" : true,
+  "probe" : {
+    "arguments" : [
+      "--gui",
+      "--sleep-ms",
+      "1000",
+      "--exit-code",
+      "42",
+      "--echo",
+      "",
+      "two words",
+      "literal \"quote\"",
+      "&%!=",
+      "tail\\",
+      "示例参数 Ω 🙂"
+    ],
+    "childSpawnError" : 0,
+    "elevated" : true,
+    "environment" : "synthetic-value &%!=",
+    "hresult" : 0,
+    "installerPreviewVisible" : false,
+    "presentSucceeded" : true,
+    "probeArchitecture" : "x86_64",
+    "probeSchemaVersion" : 1,
+    "processID" : 4100,
+    "sessionID" : 1,
+    "spawnedChildPID" : 0,
+    "swapChainCreated" : true,
+    "windowCloaked" : 0,
+    "windowVisible" : true
+  },
+  "realRunID" : "run-28badd7853794b1ba8074c3491a045b7",
+  "schemaVersion" : 1,
+  "scope" : "selfOwnedDesktopProbe",
+  "sessionID" : 1,
+  "stderrMarkerMatched" : true,
+  "targetPID" : 4100
+}

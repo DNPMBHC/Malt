@@ -1,0 +1,51 @@
+{
+  "captured_at_utc": "2026-11-22T06:49:02.984600+00:00",
+  "coordination": "explicit clean module-a file handoff is required before all Guest operations",
+  "correctness_cases_passed_in_latest_run": 2,
+  "current_guest_owner": "C",
+  "desktop_conditions": [
+    "explicit exclusive handoff from module-a",
+    "no prior Guest jobs running",
+    "logged-in and unlocked interactive Windows desktop",
+    "stable nonzero Windows session across all runs",
+    "Windows 11 24H2 build 26100 native ARM64",
+    "host isolated TCP endpoint available"
+  ],
+  "entry": "PYTHONDONTWRITEBYTECODE=1 python3 graphics-lab/run_guest_acceptance.py --wait",
+  "formal_performance_records": [],
+  "guest_operations": "none",
+  "guest_operations_started": true,
+  "handoff_file": "handoff/phase-2/evidence/window-a/guest-benchmark-handoff.json",
+  "handoff_valid": true,
+  "local_regression_passed": true,
+  "local_regression_tests": 143,
+  "measurement": "per-frame GPU completion and pooled frame intervals; captures excluded; not physical screen latency",
+  "owner": "@DNPMBHC",
+  "performance_measurement": false,
+  "phase": "final_audit_tests_before_actual_preflight",
+  "prerequisites": [
+    "Guest M0 hardware fingerprint",
+    "separate Guest WARP/Metal pixel validation"
+  ],
+  "ready": true,
+  "workload": {
+    "command_every": 30,
+    "draws_per_scene": 16,
+    "height": 720,
+    "host_rebuild_restarts": 6,
+    "measured_frames": 2700,
+    "measured_frames_per_run": 300,
+    "modes": [
+      "direct-present",
+      "pixel-readback",
+      "command-only"
+    ],
+    "resource_bytes": 65536,
+    "resource_every": 30,
+    "rounds": 3,
+    "runs": 9,
+    "total_frames": 3240,
+    "warmup_per_run": 60,
+    "width": 1280
+  }
+}

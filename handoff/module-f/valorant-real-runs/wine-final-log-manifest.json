@@ -1,0 +1,81 @@
+{
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-24T04:20:10.926376+00:00",
+  "logs": [
+    {
+      "log_ref": "d3dmetal-retry.stderr.log",
+      "size_bytes": 3655630,
+      "sha256": "1b63568811e0408237e3b2d9a4446a9d4e9a4bcf4934e3b1adc6e4b3e9ed8f34",
+      "line_count": 47374,
+      "exception_code_counts": {
+        "c0000005": 9,
+        "40010006": 2
+      },
+      "unhandled_exception_marker_count": 0,
+      "import_dll_error_marker_count": 0
+    },
+    {
+      "log_ref": "d3dmetal-retry.stdout.log",
+      "size_bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "line_count": 0,
+      "exception_code_counts": {},
+      "unhandled_exception_marker_count": 0,
+      "import_dll_error_marker_count": 0
+    },
+    {
+      "log_ref": "installer.stderr.log",
+      "size_bytes": 10300036,
+      "sha256": "0a6e7d98cc172e25274fae88753b23af38923d1f11b7b01e1be278b6e5646698",
+      "line_count": 115711,
+      "exception_code_counts": {
+        "80000026": 4398,
+        "4001000a": 3972,
+        "40010006": 3993,
+        "c0000005": 9
+      },
+      "unhandled_exception_marker_count": 0,
+      "import_dll_error_marker_count": 0
+    },
+    {
+      "log_ref": "installer.stdout.log",
+      "size_bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "line_count": 0,
+      "exception_code_counts": {},
+      "unhandled_exception_marker_count": 0,
+      "import_dll_error_marker_count": 0
+    },
+    {
+      "log_ref": "server.log",
+      "size_bytes": 65,
+      "sha256": "e8253b4d12cc561d641041bcfa5212e984d7b6731f750b0c4da89b31d9787c0a",
+      "line_count": 1,
+      "exception_code_counts": {},
+      "unhandled_exception_marker_count": 0,
+      "import_dll_error_marker_count": 0
+    },
+    {
+      "log_ref": "software-retry.stderr.log",
+      "size_bytes": 2098124,
+      "sha256": "cd5001be1a0bbc2b908c05348f8e9a4e330f175107548e4c7b8dd2505ce3f74c",
+      "line_count": 27153,
+      "exception_code_counts": {
+        "c0000005": 9
+      },
+      "unhandled_exception_marker_count": 0,
+      "import_dll_error_marker_count": 0
+    },
+    {
+      "log_ref": "software-retry.stdout.log",
+      "size_bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "line_count": 0,
+      "exception_code_counts": {},
+      "unhandled_exception_marker_count": 0,
+      "import_dll_error_marker_count": 0
+    }
+  ],
+  "privacy": "No credentials or real local paths exported; private logs deleted with owned runtime",
+  "limitation": "Numeric first-chance exceptions and bootstrap exit 0 do not prove GUI success or a vendor rejection"
+}

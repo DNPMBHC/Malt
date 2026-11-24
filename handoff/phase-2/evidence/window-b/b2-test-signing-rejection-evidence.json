@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_kind": "owned-probe-initial-signing-rejection",
+  "collated_at_utc": "2026-11-22T06:18:46.619093+00:00",
+  "execution_request_at_utc": "2026-11-22T05:18:09.255Z",
+  "response_timestamp_available": false,
+  "original_artifact_alias": "b2-testsigning-attempt.json",
+  "original_artifact_sha256": "cc03a03788098d86a7496c9ba0065c617a69d4e0f181805357dc7960d537de1e",
+  "historical_wrapper_exit_code": 0,
+  "native_exit_code": 1,
+  "official_message": "An error has occurred setting the element data. The value is protected by Secure Boot policy and cannot be modified or deleted.",
+  "interpretation": "The native request failed under Secure Boot policy. Later owned-probe success used the separately authorized temporary change and verified restoration."
+}

@@ -1,0 +1,107 @@
+{
+  "aggregation": "900 measured frames per mode/resolution; nearest-rank pooled P99; sum client+worker CPU / measured wall",
+  "binary_sha256": "3bab131557a8c0376989a8328205f8f86f8a243921a58cc6b1901173e22f8012",
+  "maximum_in_flight": 1,
+  "origin": "host_synthetic_not_guest_scanout",
+  "owner": "@DNPMBHC",
+  "real_qemu_comparison": false,
+  "rows": [
+    {
+      "ack_baseline_mean_latency_saved_ms": -0.0014223788888888533,
+      "ack_cpu_ms_per_frame_saved": 0.021331111111111106,
+      "copy_baseline_mean_latency_saved_ms": 2.275231806666667,
+      "copy_cpu_ms_per_frame_saved": 2.0138855555555555,
+      "modes": {
+        "ipc_client": {
+          "cpu_ms_per_frame": 2.172991111111111,
+          "cpu_pct_total_one_core": 77.9146345501386,
+          "mean_ms": 2.7887016511111113,
+          "measured_frames": 900,
+          "p99_ms_pooled": 5.836709,
+          "round_mean_ms": [
+            2.7638031566666674,
+            2.596075686666667,
+            3.0062261099999987
+          ]
+        },
+        "ipc_control_client": {
+          "cpu_ms_per_frame": 0.18043666666666666,
+          "cpu_pct_total_one_core": 35.23095684970903,
+          "mean_ms": 0.5120474655555556,
+          "measured_frames": 900,
+          "p99_ms_pooled": 2.628666,
+          "round_mean_ms": [
+            0.5072291633333332,
+            0.5720638966666667,
+            0.45684933666666666
+          ]
+        },
+        "native": {
+          "cpu_ms_per_frame": 0.15910555555555556,
+          "cpu_pct_total_one_core": 30.97745445743082,
+          "mean_ms": 0.5134698444444444,
+          "measured_frames": 900,
+          "p99_ms_pooled": 2.856625,
+          "round_mean_ms": [
+            0.5151452600000003,
+            0.47688763000000034,
+            0.5483766433333334
+          ]
+        }
+      },
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    {
+      "ack_baseline_mean_latency_saved_ms": -0.036124166666666735,
+      "ack_cpu_ms_per_frame_saved": 0.023516666666666658,
+      "copy_baseline_mean_latency_saved_ms": 9.105077164444443,
+      "copy_cpu_ms_per_frame_saved": 8.88940111111111,
+      "modes": {
+        "ipc_client": {
+          "cpu_ms_per_frame": 9.073033333333333,
+          "cpu_pct_total_one_core": 91.7847493233581,
+          "mean_ms": 9.884697516666666,
+          "measured_frames": 900,
+          "p99_ms_pooled": 16.292417,
+          "round_mean_ms": [
+            10.022887046666659,
+            9.521555503333332,
+            10.109649999999998
+          ]
+        },
+        "ipc_control_client": {
+          "cpu_ms_per_frame": 0.20714888888888888,
+          "cpu_pct_total_one_core": 27.85683960211538,
+          "mean_ms": 0.7434961855555555,
+          "measured_frames": 900,
+          "p99_ms_pooled": 3.685792,
+          "round_mean_ms": [
+            0.8417855400000003,
+            0.7089991500000005,
+            0.6797038666666665
+          ]
+        },
+        "native": {
+          "cpu_ms_per_frame": 0.18363222222222222,
+          "cpu_pct_total_one_core": 23.551214618457188,
+          "mean_ms": 0.7796203522222223,
+          "measured_frames": 900,
+          "p99_ms_pooled": 3.791333,
+          "round_mean_ms": [
+            0.7648555833333336,
+            0.8626100200000002,
+            0.7113954533333334
+          ]
+        }
+      },
+      "resolution": [
+        2560,
+        1440
+      ]
+    }
+  ],
+  "source_benchmark_sha256": "5300b22e514ce5e5d3e663bf0de45bcba9ddb2b04fc58d36c8af7f55ba1b2293"
+}

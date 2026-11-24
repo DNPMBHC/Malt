@@ -1,0 +1,19 @@
+OVERVIEW: 运行 Windows 程序。
+
+在程序参数前加上 -- 可原样传递选项和参数顺序。省略参数将使用已保存的程序参数。
+
+USAGE: my-project run [--bottle-path] [--ignore-saved-arguments] [--profile <profile>] [--backend <backend>] <bottle> <path> [<args> ...]
+
+ARGUMENTS:
+  <bottle>                容器名称或路径。
+  <path>                  Windows 程序的路径。
+  <args>                  传递给 Windows 程序的参数。
+
+OPTIONS:
+  --bottle-path           将容器参数视为路径。
+  --ignore-saved-arguments
+                          仅使用命令行中提供的参数。
+  --profile <profile>     使用 auto、ordinary 或兼容性档案标识符。
+  --backend <backend>     使用 auto、wine、windowsGuest 或 remotePhysics。
+  -h, --help              Show help information.
+

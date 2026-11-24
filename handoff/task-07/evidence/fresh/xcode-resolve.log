@@ -1,0 +1,37 @@
+Command line invocation:
+    <system-path> -project <workspace>/my-project/my-project.xcodeproj -scheme my-project -scmProvider system -disableAutomaticPackageResolution -onlyUsePackageVersionsFromResolvedFile -clonedSourcePackagesDirPath <build-cache>/xcode-packages -packageCachePath <build-cache>/xcode-cache -derivedDataPath <build-cache>/derived -resolvePackageDependencies
+
+Resolve Package Graph
+
+Fetching from <dependency-remote>
+
+Fetching from <dependency-remote>
+
+Fetching from <dependency-remote>
+
+Fetching from <dependency-remote>
+
+Fetching from <dependency-remote>
+
+Creating working copy of package ‘SwiftyTextTable’
+
+Creating working copy of package ‘Progress.swift’
+
+Creating working copy of package ‘swift-argument-parser’
+
+Creating working copy of package ‘Sparkle’
+
+Creating working copy of package ‘SemanticVersion’
+
+Checking out 0.9.0 of package ‘SwiftyTextTable’
+
+Checking out 0.4.0 of package ‘SemanticVersion’
+
+Checking out 0.4.0 of package ‘Progress.swift’
+
+Checking out 1.5.0 of package ‘swift-argument-parser’
+
+Checking out 2.x (8de8db0) of package ‘Sparkle’
+
+
+time limit exceeded

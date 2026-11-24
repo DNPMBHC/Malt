@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-11-22T06:40:38.486218+00:00",
+  "artifacts": [
+    {
+      "logicalPath": "m0-native/desktop-elevation-probe.exe",
+      "sha256": "17f23f8559c77d67be5054fbc4b9ff3b97b5ab2703de183ac78e1a3b6ffcd3be",
+      "probeArchitecture": "x64",
+      "guestArchitecture": "arm64",
+      "executionMode": "x64EmulationOnARM64",
+      "realGuestVerified": true
+    },
+    {
+      "logicalPath": "m0-native/desktop-helper.exe",
+      "sha256": "c5d9c5fad2c424b923a3213f0584b47e2319b4a091ad912612da165989cf64f8",
+      "probeArchitecture": "x64",
+      "guestArchitecture": "arm64",
+      "executionMode": "x64EmulationOnARM64",
+      "realGuestVerified": true
+    },
+    {
+      "logicalPath": "m0-native/desktop-probe.exe",
+      "sha256": "6aa71e60b3a9457d08f0e2a24852db51d149233945344430ebd84b16470ef528",
+      "probeArchitecture": "x64",
+      "guestArchitecture": "arm64",
+      "executionMode": "x64EmulationOnARM64",
+      "realGuestVerified": true
+    },
+    {
+      "logicalPath": "m1/compute-probe.exe",
+      "sha256": "16777e86734d7305766d3107c0c5528aa1f05b73e7cbb61cf71dcab46ebc5370",
+      "probeArchitecture": "x64",
+      "guestArchitecture": "arm64",
+      "executionMode": "x64EmulationOnARM64",
+      "realGuestVerified": true
+    }
+  ]
+}
