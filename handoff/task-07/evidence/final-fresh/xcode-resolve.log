@@ -1,0 +1,77 @@
+Command line invocation:
+    <system-path> -project <workspace>/my-project/my-project.xcodeproj -scheme my-project -scmProvider system -disableAutomaticPackageResolution -onlyUsePackageVersionsFromResolvedFile -clonedSourcePackagesDirPath <build-cache>/xcode-packages -packageCachePath <build-cache>/xcode-cache -derivedDataPath <build-cache>/derived -resolvePackageDependencies
+
+Resolve Package Graph
+
+Fetching from <dependency-remote>
+skipping cache due to an error: Failed to clone repository <dependency-remote>
+    Cloning into bare repository '<build-cache>/xcode-cache/repositories/SwiftyTextTable-cca6ebd7'...
+    fatal: unable to access '<dependency-remote>': Operation too slow. Less than 1 bytes/sec transferred the last 20 seconds
+Fetching from <dependency-remote>
+skipping cache due to an error: Failed to clone repository <dependency-remote>
+    Cloning into bare repository '<build-cache>/xcode-cache/repositories/Progress.swift-08230e42'...
+    fatal: unable to access '<dependency-remote>': Operation too slow. Less than 1 bytes/sec transferred the last 20 seconds
+
+Fetching from <dependency-remote>
+skipping cache due to an error: Failed to clone repository <dependency-remote>
+    Cloning into bare repository '<build-cache>/xcode-cache/repositories/SemanticVersion-4d68bae3'...
+    fatal: unable to access '<dependency-remote>': Operation too slow. Less than 1 bytes/sec transferred the last 20 seconds
+
+Fetching from <dependency-remote>
+skipping cache due to an error: Failed to clone repository <dependency-remote>
+    Cloning into bare repository '<build-cache>/xcode-cache/repositories/swift-argument-parser-54a11a8d'...
+    error: RPC failed; curl 28 Operation too slow. Less than 1 bytes/sec transferred the last 20 seconds
+    fatal: expected flush after ref listing
+
+Fetching from <dependency-remote>
+skipping cache due to an error: Failed to clone repository <dependency-remote>
+    Cloning into bare repository '<build-cache>/xcode-cache/repositories/Sparkle-09d89c53'...
+    fatal: unable to access '<dependency-remote>': Operation too slow. Less than 1 bytes/sec transferred the last 20 seconds
+
+Fetching from <dependency-remote>
+skipping cache due to an error: Failed to clone repository <dependency-remote>
+    Cloning into bare repository '<build-cache>/xcode-cache/repositories/SemanticVersion-4d68bae3'...
+    fatal: unable to access '<dependency-remote>': Failed to connect to github.com port 443 after 75003 ms: Couldn't connect to server
+Fetching from <dependency-remote>
+skipping cache due to an error: Failed to clone repository <dependency-remote>
+    Cloning into bare repository '<build-cache>/xcode-cache/repositories/swift-argument-parser-54a11a8d'...
+    fatal: unable to access '<dependency-remote>': Failed to connect to github.com port 443 after 75004 ms: Couldn't connect to server
+
+Fetching from <dependency-remote>
+skipping cache due to an error: Failed to clone repository <dependency-remote>
+    Cloning into bare repository '<build-cache>/xcode-cache/repositories/SwiftyTextTable-cca6ebd7'...
+    fatal: unable to access '<dependency-remote>': Failed to connect to github.com port 443 after 75003 ms: Couldn't connect to server
+
+Fetching from <dependency-remote>
+skipping cache due to an error: Failed to clone repository <dependency-remote>
+    Cloning into bare repository '<build-cache>/xcode-cache/repositories/Sparkle-09d89c53'...
+    fatal: unable to access '<dependency-remote>': Failed to connect to github.com port 443 after 75003 ms: Couldn't connect to server
+
+Fetching from <dependency-remote>
+skipping cache due to an error: Failed to clone repository <dependency-remote>
+    Cloning into bare repository '<build-cache>/xcode-cache/repositories/Progress.swift-08230e42'...
+    fatal: unable to access '<dependency-remote>': Failed to connect to github.com port 443 after 75004 ms: Couldn't connect to server
+
+fatalError
+Resolved source packages:
+  ModuleX: (null)
+
+2026-11-21 23:18:32.737 xcodebuild[78419:7228238] Writing error result bundle to <temporary>
+xcodebuild: error: Could not resolve package dependencies:
+  Failed to clone repository <dependency-remote>
+    Cloning into bare repository '<build-cache>/xcode-packages/repositories/swift-argument-parser-54a11a8d'...
+    fatal: unable to access '<dependency-remote>': Failed to connect to github.com port 443 after 75004 ms: Couldn't connect to server
+  Failed to clone repository <dependency-remote>
+    Cloning into bare repository '<build-cache>/xcode-packages/repositories/Progress.swift-08230e42'...
+    fatal: unable to access '<dependency-remote>': Failed to connect to github.com port 443 after 75004 ms: Couldn't connect to server
+  Failed to clone repository <dependency-remote>
+    Cloning into bare repository '<build-cache>/xcode-packages/repositories/SemanticVersion-4d68bae3'...
+    fatal: unable to access '<dependency-remote>': Failed to connect to github.com port 443 after 75003 ms: Couldn't connect to server
+  Failed to clone repository <dependency-remote>
+    Cloning into bare repository '<build-cache>/xcode-packages/repositories/Sparkle-09d89c53'...
+    fatal: unable to access '<dependency-remote>': Failed to connect to github.com port 443 after 75003 ms: Couldn't connect to server
+  Failed to clone repository <dependency-remote>
+    Cloning into bare repository '<build-cache>/xcode-packages/repositories/SwiftyTextTable-cca6ebd7'...
+    fatal: unable to access '<dependency-remote>': Failed to connect to github.com port 443 after 75004 ms: Couldn't connect to server
+  fatalError
+

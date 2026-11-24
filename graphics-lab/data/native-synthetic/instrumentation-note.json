@@ -1,0 +1,18 @@
+{
+  "actual_wire_bytes": "The client measured network_bytes_in as 56 bytes per acknowledged frame: 32-byte ACK header plus 24-byte timing and memory metrics.",
+  "affected_files": [
+    "run-01-host.jsonl",
+    "run-02-host.jsonl",
+    "run-03-host.jsonl",
+    "cadence-every-1-host.jsonl",
+    "cadence-every-30-host.jsonl"
+  ],
+  "finding": "The original receiver JSONL logged ack_bytes_out as the 32-byte protocol header only.",
+  "fix_smoke_frames": 3,
+  "interpretation": "The archived JSONL field is incomplete. Use the corresponding client CSV for total network traffic; do not use archived ack_bytes_out alone as total response bytes.",
+  "real_samples_available": false,
+  "schema_version": 1,
+  "source_status": "The receiver JSONL logger now records ack_bytes_out=56 and separately records 32 header bytes and 24 metrics bytes. The fixed source was optimized-compiled and exercised in a separate smoke run; instrumentation-fix-smoke.jsonl records the corrected values. Original baseline JSONL evidence is unchanged.",
+  "summary_basis": "CSV network byte totals use the client measured sendall/receive byte lengths and include the complete 56-byte response.",
+  "validation_status": "Native synthetic protocol only; Wine, Windows guest, D3D workload and real game remain unverified."
+}

@@ -1,0 +1,1367 @@
+{"timestamp": "2026-11-22T05:15:53.611Z", "operation": "snapshot_request", "record_kind": "execution_request_timestamp", "details": "Recovered from local execution journal; result documented separately."}
+{"timestamp": "2026-11-22T05:16:26.490Z", "operation": "clean_shutdown_request", "record_kind": "execution_request_timestamp", "details": "Recovered from local execution journal; result documented separately."}
+{"timestamp": "2026-11-22T05:17:08.512Z", "operation": "cold_snapshot_request", "record_kind": "execution_request_timestamp", "details": "Recovered from local execution journal; result documented separately."}
+{"timestamp": "2026-11-22T05:17:41.212Z", "operation": "guest_start_request", "record_kind": "execution_request_timestamp", "details": "Recovered from local execution journal; result documented separately."}
+{"timestamp": "2026-11-22T05:18:09.255Z", "operation": "test_signing_enable_request_rejected", "record_kind": "execution_request_timestamp", "details": "Recovered from local execution journal; result documented separately."}
+{"timestamp": "2026-11-22T05:23:29.115Z", "operation": "cold_snapshot_request", "record_kind": "execution_request_timestamp", "details": "Recovered from local execution journal; result documented separately."}
+{"timestamp": "2026-11-22T05:27:46.758067+00:00", "operation": "prepare-official-arm64-toolchain", "state": "started"}
+{"timestamp": "2026-11-22T05:29:52.996171+00:00", "operation": "prepare-official-arm64-toolchain", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T05:31:02.678859+00:00", "operation": "resolve-neutral-source-staging", "state": "started"}
+{"timestamp": "2026-11-22T05:31:07.778382+00:00", "operation": "resolve-neutral-source-staging", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T05:31:07.778741+00:00", "operation": "push-owned-source-archive", "state": "started"}
+{"timestamp": "2026-11-22T05:31:07.930364+00:00", "operation": "push-owned-source-archive", "state": "ended", "status": "completed"}
+{"timestamp": "2026-11-22T05:31:07.930866+00:00", "operation": "build-owned-arm64-driver-and-collector", "state": "started"}
+{"timestamp": "2026-11-22T05:31:19.990682+00:00", "operation": "build-owned-arm64-driver-and-collector", "state": "ended", "exit_code": 1, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T05:34:41.494214+00:00", "operation": "read-tpm-provider-and-boot-time", "state": "started"}
+{"timestamp": "2026-11-22T05:34:49.446161+00:00", "operation": "read-tpm-provider-and-boot-time", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T05:34:49.447141+00:00", "operation": "request-uefi-firmware-setup", "state": "started"}
+{"timestamp": "2026-11-22T05:34:49.447288+00:00", "operation": "reboot-to-uefi-setup", "state": "started"}
+{"timestamp": "2026-11-22T05:34:53.480406+00:00", "operation": "reboot-to-uefi-setup", "state": "ended", "exit_code": 1, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T05:34:53.480860+00:00", "operation": "request-uefi-firmware-setup", "state": "ended", "status": "requested"}
+{"timestamp": "2026-11-22T05:39:13.535666+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T05:39:19.493845+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T05:40:02.252361+00:00", "operation": "firmware-entry-state-verification", "state": "started"}
+{"timestamp": "2026-11-22T05:40:02.405191+00:00", "operation": "firmware-entry-state-verification", "state": "failed"}
+{"timestamp": "2026-11-22T05:45:37.133012+00:00", "operation": "observed-firmware-ui-input", "state": "started"}
+{"timestamp": "2026-11-22T05:45:37.182036+00:00", "operation": "observed-firmware-ui-input", "state": "ended", "exit_code": 1}
+{"timestamp": "2026-11-22T05:45:57.612740+00:00", "operation": "observed-firmware-ui-input", "state": "started"}
+{"timestamp": "2026-11-22T05:45:57.903260+00:00", "operation": "observed-firmware-ui-input", "state": "ended", "exit_code": 0}
+{"timestamp": "2026-11-22T05:46:07.310972+00:00", "operation": "observed-firmware-ui-input", "state": "started"}
+{"timestamp": "2026-11-22T05:46:07.645525+00:00", "operation": "observed-firmware-ui-input", "state": "ended", "exit_code": 0}
+{"timestamp": "2026-11-22T05:46:26.459408+00:00", "operation": "temporarily-disable-secure-boot", "state": "started", "authorized_scope": "owned-driver-experiment"}
+{"timestamp": "2026-11-22T05:46:26.620406+00:00", "operation": "observed-firmware-ui-input", "state": "started"}
+{"timestamp": "2026-11-22T05:46:26.949839+00:00", "operation": "observed-firmware-ui-input", "state": "ended", "exit_code": 0}
+{"timestamp": "2026-11-22T05:46:44.086379+00:00", "operation": "observed-firmware-ui-input", "state": "started"}
+{"timestamp": "2026-11-22T05:46:44.290195+00:00", "operation": "observed-firmware-ui-input", "state": "ended", "exit_code": 0}
+{"timestamp": "2026-11-22T05:46:52.762817+00:00", "operation": "observed-firmware-ui-input", "state": "started"}
+{"timestamp": "2026-11-22T05:46:53.271068+00:00", "operation": "observed-firmware-ui-input", "state": "ended", "exit_code": 0}
+{"timestamp": "2026-11-22T05:47:18.691938+00:00", "operation": "preflight-restaged", "state": "started"}
+{"timestamp": "2026-11-22T05:47:28.102887+00:00", "operation": "preflight-restaged", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T05:48:12.124400+00:00", "operation": "temporarily-disable-secure-boot", "state": "ended", "secure_boot_enabled": false, "verified_by": "Confirm-SecureBootUEFI"}
+{"timestamp": "2026-11-22T05:48:12.456539+00:00", "operation": "build-native", "state": "started"}
+{"timestamp": "2026-11-22T05:48:26.495494+00:00", "operation": "build-native", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T05:48:40.419225+00:00", "operation": "lifecycle-selftest", "state": "started"}
+{"timestamp": "2026-11-22T05:48:45.360761+00:00", "operation": "lifecycle-selftest", "state": "ended", "exit_code": 1, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T05:49:22.385486+00:00", "operation": "lifecycle-selftest-retry", "state": "started"}
+{"timestamp": "2026-11-22T05:49:28.986044+00:00", "operation": "lifecycle-selftest-retry", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T05:49:58.553583+00:00", "operation": "owned-test-signing", "state": "started"}
+{"timestamp": "2026-11-22T05:50:05.248314+00:00", "operation": "owned-test-signing", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T05:50:39.653283+00:00", "operation": "signing-reboot", "state": "started"}
+{"timestamp": "2026-11-22T05:50:44.525471+00:00", "operation": "signing-reboot", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T05:51:20.752573+00:00", "operation": "test-security", "state": "started"}
+{"timestamp": "2026-11-22T05:51:28.814149+00:00", "operation": "test-security", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T05:52:17.384686+00:00", "operation": "lifecycle-cycle", "state": "started"}
+{"timestamp": "2026-11-22T05:52:26.896415+00:00", "operation": "lifecycle-cycle", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T05:52:46.236349+00:00", "operation": "lifecycle-before-reboot", "state": "started"}
+{"timestamp": "2026-11-22T05:52:51.969006+00:00", "operation": "lifecycle-before-reboot", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T05:53:15.428351+00:00", "operation": "lifecycle-reboot", "state": "started"}
+{"timestamp": "2026-11-22T05:53:22.221338+00:00", "operation": "lifecycle-reboot", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T05:53:48.318603+00:00", "operation": "lifecycle-after-reboot", "state": "started"}
+{"timestamp": "2026-11-22T05:53:58.728556+00:00", "operation": "lifecycle-after-reboot", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T05:54:30.629602+00:00", "operation": "cleanup-owned-signing", "state": "started"}
+{"timestamp": "2026-11-22T05:54:36.366430+00:00", "operation": "cleanup-owned-signing", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T05:55:02.579555+00:00", "operation": "restore-firmware-entry", "state": "started"}
+{"timestamp": "2026-11-22T05:55:07.491480+00:00", "operation": "restore-firmware-entry", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T05:56:01.487357+00:00", "operation": "observed-firmware-ui-input", "state": "started"}
+{"timestamp": "2026-11-22T05:56:01.741973+00:00", "operation": "observed-firmware-ui-input", "state": "ended", "exit_code": 0}
+{"timestamp": "2026-11-22T05:56:02.809268+00:00", "operation": "observed-firmware-ui-input", "state": "started"}
+{"timestamp": "2026-11-22T05:56:03.142507+00:00", "operation": "observed-firmware-ui-input", "state": "ended", "exit_code": 0}
+{"timestamp": "2026-11-22T05:56:25.813017+00:00", "operation": "observed-firmware-ui-input", "state": "started"}
+{"timestamp": "2026-11-22T05:56:26.117448+00:00", "operation": "observed-firmware-ui-input", "state": "ended", "exit_code": 0}
+{"timestamp": "2026-11-22T05:56:27.171769+00:00", "operation": "observed-firmware-ui-input", "state": "started"}
+{"timestamp": "2026-11-22T05:56:27.380652+00:00", "operation": "observed-firmware-ui-input", "state": "ended", "exit_code": 0}
+{"timestamp": "2026-11-22T05:56:40.204486+00:00", "operation": "observed-firmware-ui-input", "state": "started"}
+{"timestamp": "2026-11-22T05:56:40.717732+00:00", "operation": "observed-firmware-ui-input", "state": "ended", "exit_code": 0}
+{"timestamp": "2026-11-22T05:57:03.298467+00:00", "operation": "restored-security", "state": "started"}
+{"timestamp": "2026-11-22T05:57:10.047347+00:00", "operation": "restored-security", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T05:58:28.905908+00:00", "operation": "official-installer-staging", "state": "started"}
+{"timestamp": "2026-11-22T05:59:08.356493+00:00", "operation": "official-installer-staging", "state": "ended", "status": "uploaded", "installer_sha256": "686ee838411863d2eccdbe8a0596129e509819ae46626408760588ae8b0c800e"}
+{"timestamp": "2026-11-22T05:59:52.880030+00:00", "operation": "inventory-parser", "state": "started"}
+{"timestamp": "2026-11-22T05:59:58.792875+00:00", "operation": "inventory-parser", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T06:00:03.880160+00:00", "operation": "inventory-before", "state": "started"}
+{"timestamp": "2026-11-22T06:00:31.568446+00:00", "operation": "inventory-before", "state": "ended", "exit_code": 1, "signal": 0, "status": "execution_error"}
+{"timestamp": "2026-11-22T06:01:22.200175+00:00", "operation": "inventory-progress-check", "state": "started"}
+{"timestamp": "2026-11-22T06:01:50.666518+00:00", "operation": "inventory-progress-check", "state": "failed"}
+{"timestamp": "2026-11-22T06:03:44.012565+00:00", "operation": "observed-firmware-ui-input", "state": "started"}
+{"timestamp": "2026-11-22T06:03:44.322541+00:00", "operation": "observed-firmware-ui-input", "state": "ended", "exit_code": 0}
+{"timestamp": "2026-11-22T06:03:44.676984+00:00", "operation": "recover-guest-agent-clean-reboot", "state": "started", "reason": "transport-rpc-timeout-after-inventory"}
+{"timestamp": "2026-11-22T06:03:46.241595+00:00", "operation": "observed-firmware-ui-input", "state": "started"}
+{"timestamp": "2026-11-22T06:03:46.479487+00:00", "operation": "observed-firmware-ui-input", "state": "ended", "exit_code": 0}
+{"timestamp": "2026-11-22T06:04:44.303791+00:00", "operation": "inventory-recovery-security", "state": "started"}
+{"timestamp": "2026-11-22T06:04:59.634288+00:00", "operation": "inventory-recovery-security", "state": "failed"}
+{"timestamp": "2026-11-22T06:07:20.867742+00:00", "operation": "recover-guest-agent-powerdown-request", "state": "started"}
+{"timestamp": "2026-11-22T06:07:36.367167+00:00", "operation": "recover-guest-agent-powerdown-request", "state": "ended", "guest_status": "stopped", "clean_shutdown_confirmed": true}
+{"timestamp": "2026-11-22T06:07:58.933264+00:00", "operation": "retire-execution-after-clean-shutdown", "state": "ended", "retired_private_handle_count": 1, "original_native_exit_code": "unavailable", "terminated_by_confirmed_guest_shutdown": true}
+{"timestamp": "2026-11-22T06:07:58.934209+00:00", "operation": "create-restored-cold-recovery-point", "state": "started"}
+{"timestamp": "2026-11-22T06:07:59.500162+00:00", "operation": "create-restored-cold-recovery-point", "state": "ended", "exit_code": 0}
+{"timestamp": "2026-11-22T06:08:09.267846+00:00", "operation": "start-recovered-guest", "state": "started"}
+{"timestamp": "2026-11-22T06:08:11.710176+00:00", "operation": "start-recovered-guest", "state": "ended"}
+{"timestamp": "2026-11-22T06:08:39.759403+00:00", "operation": "recovery-boot-security", "state": "started"}
+{"timestamp": "2026-11-22T06:08:46.551500+00:00", "operation": "recovery-boot-security", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T06:09:53.542523+00:00", "operation": "short-validation-handover-readiness", "state": "started"}
+{"timestamp": "2026-11-22T06:09:58.476626+00:00", "operation": "short-validation-handover-readiness", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T06:09:58.477112+00:00", "operation": "window-a-short-validation-release", "state": "ended", "owner": "window-a", "window_b_guest_jobs_active": 0, "security_baseline": "restored_verified"}
+{"timestamp": "2026-11-22T14:44:08.104478+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T14:44:16.671655+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:44:37.158870+00:00", "operation": "prepare-private-ui-tokens", "state": "started"}
+{"timestamp": "2026-11-22T14:44:42.928588+00:00", "operation": "prepare-private-ui-tokens", "state": "ended", "exit_code": 1, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:45:00.673022+00:00", "operation": "prepare-private-ui-tokens", "state": "started"}
+{"timestamp": "2026-11-22T14:45:05.572920+00:00", "operation": "prepare-private-ui-tokens", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:45:22.930252+00:00", "operation": "private-output-token-preparation", "state": "started"}
+{"timestamp": "2026-11-22T14:45:26.903293+00:00", "operation": "private-output-token-preparation", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:45:26.903773+00:00", "operation": "sampling-preflight", "state": "started"}
+{"timestamp": "2026-11-22T14:45:36.272627+00:00", "operation": "sampling-preflight", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:45:59.570059+00:00", "operation": "private-output-token-preparation", "state": "started"}
+{"timestamp": "2026-11-22T14:46:05.579562+00:00", "operation": "private-output-token-preparation", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:46:05.580254+00:00", "operation": "inventory-before-r2", "state": "started"}
+{"timestamp": "2026-11-22T14:46:16.872855+00:00", "operation": "inventory-before-r2", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:46:24.051068+00:00", "operation": "evidence-file-metadata", "state": "started"}
+{"timestamp": "2026-11-22T14:46:28.927724+00:00", "operation": "evidence-file-metadata", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:46:28.928179+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:46:32.915622+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:46:32.916161+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:46:36.906069+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:46:36.906765+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:46:40.876686+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:46:40.877456+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:46:44.876164+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:46:44.876893+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:46:48.884254+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:46:48.884913+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:46:52.868018+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:46:52.868514+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:46:56.826499+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:46:56.827188+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:47:00.777208+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:47:00.777866+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:47:04.756457+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:47:04.757097+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:47:08.721858+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:47:08.722391+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:47:12.696584+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:47:12.697162+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:47:17.689204+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:47:17.701038+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:47:26.844645+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:47:26.845827+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:47:34.162216+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:47:34.163284+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:47:42.434836+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:47:42.436099+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:47:49.409844+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:47:49.410473+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:47:53.427268+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:47:53.427896+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:47:57.393907+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:47:57.394478+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:48:01.375971+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:48:01.376545+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:48:05.310706+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:48:05.311271+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:48:09.268792+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:48:09.269425+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:48:13.234161+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:48:13.234711+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:48:17.234937+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:48:17.235519+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:48:21.198290+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:48:21.198788+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:48:25.265490+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:48:25.266012+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:48:30.140835+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:48:30.141386+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:48:35.041990+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:48:35.042462+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:48:41.141087+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:48:41.141541+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:48:47.431981+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:48:47.432558+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:48:52.433025+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:48:52.433514+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:48:57.298891+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:48:57.299423+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:49:01.238242+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:49:01.238781+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:49:05.178734+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:49:05.179280+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:49:09.203900+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:49:09.204540+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:49:13.152949+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:49:13.153423+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:49:17.095991+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:49:17.096675+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:49:21.011728+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:49:21.012395+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:49:24.949103+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:49:24.949673+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:49:28.847607+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:49:28.848052+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:49:32.748019+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:49:32.748490+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:49:36.710841+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:49:36.711320+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:49:40.661458+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:49:40.661909+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:49:44.594833+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:49:44.595401+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:49:48.519879+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:49:48.520429+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:49:52.469443+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:49:52.469975+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:49:56.394221+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:49:56.394848+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:50:00.399492+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:50:00.400041+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:50:05.233871+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:50:05.234658+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:50:10.182588+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:50:10.183104+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:50:14.115506+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:50:14.116003+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:50:18.005773+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:50:18.006251+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:50:21.923203+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:50:21.923690+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:50:25.893054+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:50:25.893509+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:50:30.703135+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:50:30.703644+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:50:34.618503+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:50:34.618998+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:50:38.518732+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:50:38.519193+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:50:42.560345+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:50:42.560878+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:50:46.493485+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:50:46.493987+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:50:50.429959+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:50:50.431355+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:50:54.347823+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:50:54.348289+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:50:58.280907+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:50:58.281413+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:51:02.197803+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:51:02.198308+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:51:06.205539+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:51:06.205986+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:51:10.113966+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:51:10.114438+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:51:14.005154+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:51:14.005604+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:51:17.880133+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:51:17.880558+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:51:22.748264+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:51:22.748751+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:51:26.647117+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:51:26.647599+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:51:30.563789+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:51:30.564243+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:51:35.714826+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:51:35.715428+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:51:40.531396+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:51:40.532187+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:51:44.438445+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:51:44.439072+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:51:48.405348+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:51:48.405825+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:51:52.338724+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:51:52.339187+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:51:57.215096+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:51:57.215608+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:52:01.147095+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:52:01.147586+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:52:05.988707+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:52:05.989167+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:52:10.798071+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:52:10.798577+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:52:14.713706+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:52:14.714205+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:52:18.588809+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:52:18.589270+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:52:22.547566+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:52:22.548051+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:52:26.438412+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:52:26.438882+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:52:30.338012+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:52:30.338487+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:52:36.198518+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:52:36.200028+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T14:52:40.181421+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:52:40.182867+00:00", "operation": "evidence-file-metadata", "state": "started"}
+{"timestamp": "2026-11-22T14:52:44.953702+00:00", "operation": "evidence-file-metadata", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:53:07.940157+00:00", "operation": "private-output-token-preparation", "state": "started"}
+{"timestamp": "2026-11-22T14:53:12.754542+00:00", "operation": "private-output-token-preparation", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:53:12.755077+00:00", "operation": "ui-launch", "state": "started"}
+{"timestamp": "2026-11-22T14:53:27.270596+00:00", "operation": "ui-launch", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:53:39.724621+00:00", "operation": "private-output-token-preparation", "state": "started"}
+{"timestamp": "2026-11-22T14:53:44.004010+00:00", "operation": "private-output-token-preparation", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:53:44.004443+00:00", "operation": "ui-capture-1", "state": "started"}
+{"timestamp": "2026-11-22T14:53:52.529810+00:00", "operation": "ui-capture-1", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:53:52.811892+00:00", "operation": "resolve-private-screen-redaction-tokens", "state": "started"}
+{"timestamp": "2026-11-22T14:53:57.661897+00:00", "operation": "resolve-private-screen-redaction-tokens", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:54:47.861661+00:00", "operation": "resolve-private-screen-redaction-tokens", "state": "started"}
+{"timestamp": "2026-11-22T14:54:52.845441+00:00", "operation": "resolve-private-screen-redaction-tokens", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:55:26.414564+00:00", "operation": "private-output-token-preparation", "state": "started"}
+{"timestamp": "2026-11-22T14:55:31.261272+00:00", "operation": "private-output-token-preparation", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:55:31.261693+00:00", "operation": "ui-capture-2", "state": "started"}
+{"timestamp": "2026-11-22T14:55:40.596496+00:00", "operation": "ui-capture-2", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:56:22.799541+00:00", "operation": "inspect-vendor-state", "state": "started"}
+{"timestamp": "2026-11-22T14:56:33.964838+00:00", "operation": "inspect-vendor-state", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:57:03.137635+00:00", "operation": "inspect-aclos-and-net", "state": "started"}
+{"timestamp": "2026-11-22T14:57:11.646965+00:00", "operation": "inspect-aclos-and-net", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:57:39.699893+00:00", "operation": "inspect-aclos-interesting", "state": "started"}
+{"timestamp": "2026-11-22T14:57:45.479027+00:00", "operation": "inspect-aclos-interesting", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:58:09.789501+00:00", "operation": "inspect-installer-dialog-text", "state": "started"}
+{"timestamp": "2026-11-22T14:58:22.195059+00:00", "operation": "inspect-installer-dialog-text", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:58:50.188621+00:00", "operation": "observed-guest-ui-input", "state": "started"}
+{"timestamp": "2026-11-22T14:58:50.482321+00:00", "operation": "observed-guest-ui-input", "state": "ended", "exit_code": 0}
+{"timestamp": "2026-11-22T14:58:52.766870+00:00", "operation": "resolve-private-screen-redaction-tokens", "state": "started"}
+{"timestamp": "2026-11-22T14:58:57.660825+00:00", "operation": "resolve-private-screen-redaction-tokens", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:59:33.592759+00:00", "operation": "resolve-private-screen-redaction-tokens", "state": "started"}
+{"timestamp": "2026-11-22T14:59:38.502264+00:00", "operation": "resolve-private-screen-redaction-tokens", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:59:38.502741+00:00", "operation": "guest-session1-screen-capture", "state": "started"}
+{"timestamp": "2026-11-22T14:59:50.918382+00:00", "operation": "guest-session1-screen-capture", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:59:50.919053+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T14:59:54.870579+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:59:54.871086+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T14:59:58.787548+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T14:59:58.788063+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:00:02.727512+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:00:02.727954+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:00:06.644078+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:00:06.644500+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:00:10.585722+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:00:10.586147+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:00:14.569364+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:00:14.569799+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:00:18.502337+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:00:18.502776+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:00:22.420826+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:00:22.421328+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:00:27.244342+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:00:27.244862+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:00:31.186725+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:00:31.187182+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:00:35.119540+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:00:35.120014+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:00:39.036022+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:00:39.036495+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:00:42.993922+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:00:42.994356+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:00:46.911264+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:00:46.911686+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:00:50.819541+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:00:50.820004+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:00:54.803581+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:00:54.804053+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:00:58.727353+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:00:58.727830+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:01:02.627133+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:01:02.627579+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:01:06.535250+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:01:06.535717+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:01:10.386935+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:01:10.387386+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:01:14.251767+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:01:14.252229+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:01:18.177122+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:01:18.177631+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:01:22.087518+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:01:22.087962+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:01:26.010876+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:01:26.011478+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:01:30.112343+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:01:30.112811+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:01:34.056955+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:01:34.057465+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:01:37.997092+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:01:37.997646+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:01:42.857988+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:01:42.858492+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:01:48.867841+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:01:48.869062+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:01:53.891130+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:01:53.891652+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:01:57.757904+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:01:57.758449+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:02:01.658156+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:02:01.658624+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:02:05.566542+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:02:05.567015+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:02:09.483308+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:02:09.483767+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:02:13.400255+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:02:13.400735+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:02:17.341611+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:02:17.342063+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:02:21.308507+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:02:21.309016+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:02:25.234119+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:02:25.234648+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:02:29.166570+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:02:29.167027+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:02:33.100486+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:02:33.101053+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:02:37.966799+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:02:37.967322+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:02:41.891244+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:02:41.891780+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:02:45.850375+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:02:45.850931+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:02:49.808008+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:02:49.808466+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:02:53.750622+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:02:53.751255+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:02:57.717516+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:02:57.718015+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:03:06.287885+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:03:06.289423+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:03:14.713308+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:03:14.714609+00:00", "operation": "cleanup-temp-screen", "state": "started"}
+{"timestamp": "2026-11-22T15:03:26.015501+00:00", "operation": "cleanup-temp-screen", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:03:52.862296+00:00", "operation": "clean-preexisting-aclos", "state": "started"}
+{"timestamp": "2026-11-22T15:04:02.415377+00:00", "operation": "clean-preexisting-aclos", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:04:15.311050+00:00", "operation": "verify-clean-preexisting-aclos", "state": "started"}
+{"timestamp": "2026-11-22T15:04:22.098907+00:00", "operation": "verify-clean-preexisting-aclos", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:04:32.337832+00:00", "operation": "private-output-token-preparation", "state": "started"}
+{"timestamp": "2026-11-22T15:04:38.103240+00:00", "operation": "private-output-token-preparation", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:04:38.103768+00:00", "operation": "inventory-before-r2", "state": "started"}
+{"timestamp": "2026-11-22T15:04:43.828327+00:00", "operation": "inventory-before-r2", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:04:58.644539+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T15:05:03.471017+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:05:03.851473+00:00", "operation": "private-output-token-preparation", "state": "started"}
+{"timestamp": "2026-11-22T15:05:08.719173+00:00", "operation": "private-output-token-preparation", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:05:08.719726+00:00", "operation": "inventory-before-r2", "state": "started"}
+{"timestamp": "2026-11-22T15:05:17.952511+00:00", "operation": "inventory-before-r2", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:05:30.228976+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T15:05:35.496129+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:05:35.816660+00:00", "operation": "private-output-token-preparation", "state": "started"}
+{"timestamp": "2026-11-22T15:05:42.353314+00:00", "operation": "private-output-token-preparation", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:05:42.354446+00:00", "operation": "ui-launch-fresh", "state": "started"}
+{"timestamp": "2026-11-22T15:05:51.519308+00:00", "operation": "ui-launch-fresh", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:06:11.294028+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T15:06:16.204774+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:06:16.520157+00:00", "operation": "private-output-token-preparation", "state": "started"}
+{"timestamp": "2026-11-22T15:06:21.451916+00:00", "operation": "private-output-token-preparation", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:06:21.452347+00:00", "operation": "ui-launch-fresh", "state": "started"}
+{"timestamp": "2026-11-22T15:06:38.848695+00:00", "operation": "ui-launch-fresh", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:07:08.862462+00:00", "operation": "resolve-private-screen-redaction-tokens", "state": "started"}
+{"timestamp": "2026-11-22T15:07:15.055272+00:00", "operation": "resolve-private-screen-redaction-tokens", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:07:15.055708+00:00", "operation": "guest-session1-screen-capture", "state": "started"}
+{"timestamp": "2026-11-22T15:07:22.716354+00:00", "operation": "guest-session1-screen-capture", "state": "ended", "exit_code": 1, "signal": 0, "status": "execution_error"}
+{"timestamp": "2026-11-22T15:07:54.703009+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T15:08:01.594062+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:08:20.337711+00:00", "operation": "resolve-private-screen-redaction-tokens", "state": "started"}
+{"timestamp": "2026-11-22T15:08:25.238106+00:00", "operation": "resolve-private-screen-redaction-tokens", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:08:25.238550+00:00", "operation": "guest-session1-screen-capture", "state": "started"}
+{"timestamp": "2026-11-22T15:08:31.080165+00:00", "operation": "guest-session1-screen-capture", "state": "ended", "exit_code": 1, "signal": 0, "status": "execution_error"}
+{"timestamp": "2026-11-22T15:09:05.942585+00:00", "operation": "resolve-private-screen-redaction-tokens", "state": "started"}
+{"timestamp": "2026-11-22T15:09:11.914337+00:00", "operation": "resolve-private-screen-redaction-tokens", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:09:11.914860+00:00", "operation": "guest-session1-screen-capture", "state": "started"}
+{"timestamp": "2026-11-22T15:09:25.896797+00:00", "operation": "guest-session1-screen-capture", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:09:25.897957+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:09:29.865706+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:09:29.866368+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:09:33.804721+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:09:33.805395+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:09:37.762501+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:09:37.763203+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:09:42.072569+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:09:42.073585+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:09:46.455380+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:09:46.456128+00:00", "operation": "cleanup-temp-screen", "state": "started"}
+{"timestamp": "2026-11-22T15:09:50.479624+00:00", "operation": "cleanup-temp-screen", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:10:14.900770+00:00", "operation": "interactive-click", "state": "started"}
+{"timestamp": "2026-11-22T15:10:27.747776+00:00", "operation": "interactive-click", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:10:30.131709+00:00", "operation": "resolve-private-screen-redaction-tokens", "state": "started"}
+{"timestamp": "2026-11-22T15:10:36.942612+00:00", "operation": "resolve-private-screen-redaction-tokens", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:10:36.943302+00:00", "operation": "guest-session1-screen-capture", "state": "started"}
+{"timestamp": "2026-11-22T15:10:52.717505+00:00", "operation": "guest-session1-screen-capture", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:10:52.718655+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:10:59.620010+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:10:59.620935+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:11:05.949226+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:11:05.950548+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:11:11.091896+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:11:11.092438+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:11:15.159529+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:11:15.160353+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:11:20.150848+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:11:20.151549+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:11:25.167746+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:11:25.168486+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:11:31.097429+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:11:31.098701+00:00", "operation": "cleanup-temp-screen", "state": "started"}
+{"timestamp": "2026-11-22T15:11:40.774982+00:00", "operation": "cleanup-temp-screen", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:11:41.736246+00:00", "operation": "resolve-private-screen-redaction-tokens", "state": "started"}
+{"timestamp": "2026-11-22T15:11:53.039510+00:00", "operation": "resolve-private-screen-redaction-tokens", "state": "ended", "exit_code": 124, "signal": 0, "status": "timeout"}
+{"timestamp": "2026-11-22T15:12:06.972970+00:00", "operation": "resolve-private-screen-redaction-tokens", "state": "started"}
+{"timestamp": "2026-11-22T15:12:20.498107+00:00", "operation": "resolve-private-screen-redaction-tokens", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:12:20.501365+00:00", "operation": "guest-session1-screen-capture", "state": "started"}
+{"timestamp": "2026-11-22T15:12:45.409823+00:00", "operation": "guest-session1-screen-capture", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:12:45.411855+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:12:51.695339+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:12:51.698484+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:13:01.197768+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:13:01.199201+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:13:09.844532+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:13:09.845379+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:13:15.837443+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:13:15.838062+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:13:22.109070+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:13:22.109855+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:13:27.531155+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:13:27.531689+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:13:32.814134+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:13:32.814744+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:13:38.015164+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:13:38.016036+00:00", "operation": "cleanup-temp-screen", "state": "started"}
+{"timestamp": "2026-11-22T15:13:45.498040+00:00", "operation": "cleanup-temp-screen", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:14:06.934903+00:00", "operation": "inspect-post-install-live", "state": "started"}
+{"timestamp": "2026-11-22T15:14:39.263736+00:00", "operation": "inspect-post-install-live", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:14:56.406102+00:00", "operation": "private-output-token-preparation", "state": "started"}
+{"timestamp": "2026-11-22T15:15:02.274825+00:00", "operation": "private-output-token-preparation", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:15:02.275398+00:00", "operation": "inventory-after-r2", "state": "started"}
+{"timestamp": "2026-11-22T15:15:25.988273+00:00", "operation": "inventory-after-r2", "state": "ended", "exit_code": 1, "signal": 0, "status": "execution_error"}
+{"timestamp": "2026-11-22T15:16:46.053116+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T15:16:50.997548+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:17:17.546918+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T15:17:23.572537+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:17:36.835049+00:00", "operation": "private-output-token-preparation", "state": "started"}
+{"timestamp": "2026-11-22T15:17:41.811566+00:00", "operation": "private-output-token-preparation", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:17:41.812002+00:00", "operation": "inventory-after-r2", "state": "started"}
+{"timestamp": "2026-11-22T15:18:03.096710+00:00", "operation": "inventory-after-r2", "state": "ended", "exit_code": 1, "signal": 0, "status": "execution_error"}
+{"timestamp": "2026-11-22T15:18:14.522486+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T15:18:19.441454+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:18:57.007558+00:00", "operation": "start-async-inventory-after", "state": "started"}
+{"timestamp": "2026-11-22T15:19:01.958372+00:00", "operation": "start-async-inventory-after", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:19:04.959846+00:00", "operation": "poll-async-inventory-after", "state": "started"}
+{"timestamp": "2026-11-22T15:19:16.404659+00:00", "operation": "poll-async-inventory-after", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:19:19.408816+00:00", "operation": "poll-async-inventory-after", "state": "started"}
+{"timestamp": "2026-11-22T15:19:32.254766+00:00", "operation": "poll-async-inventory-after", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:19:35.262403+00:00", "operation": "poll-async-inventory-after", "state": "started"}
+{"timestamp": "2026-11-22T15:19:53.728157+00:00", "operation": "poll-async-inventory-after", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:19:56.733178+00:00", "operation": "poll-async-inventory-after", "state": "started"}
+{"timestamp": "2026-11-22T15:20:00.674095+00:00", "operation": "poll-async-inventory-after", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:20:03.679389+00:00", "operation": "poll-async-inventory-after", "state": "started"}
+{"timestamp": "2026-11-22T15:20:07.598830+00:00", "operation": "poll-async-inventory-after", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:20:10.600504+00:00", "operation": "poll-async-inventory-after", "state": "started"}
+{"timestamp": "2026-11-22T15:20:15.694691+00:00", "operation": "poll-async-inventory-after", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:20:18.700299+00:00", "operation": "poll-async-inventory-after", "state": "started"}
+{"timestamp": "2026-11-22T15:20:22.712259+00:00", "operation": "poll-async-inventory-after", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:20:25.718489+00:00", "operation": "poll-async-inventory-after", "state": "started"}
+{"timestamp": "2026-11-22T15:20:29.858611+00:00", "operation": "poll-async-inventory-after", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:20:32.863771+00:00", "operation": "poll-async-inventory-after", "state": "started"}
+{"timestamp": "2026-11-22T15:20:37.054609+00:00", "operation": "poll-async-inventory-after", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:20:40.058342+00:00", "operation": "poll-async-inventory-after", "state": "started"}
+{"timestamp": "2026-11-22T15:20:45.028438+00:00", "operation": "poll-async-inventory-after", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:20:48.034387+00:00", "operation": "poll-async-inventory-after", "state": "started"}
+{"timestamp": "2026-11-22T15:20:54.170199+00:00", "operation": "poll-async-inventory-after", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:20:57.176006+00:00", "operation": "poll-async-inventory-after", "state": "started"}
+{"timestamp": "2026-11-22T15:21:03.403960+00:00", "operation": "poll-async-inventory-after", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:21:06.405800+00:00", "operation": "poll-async-inventory-after", "state": "started"}
+{"timestamp": "2026-11-22T15:21:12.611433+00:00", "operation": "poll-async-inventory-after", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:21:15.612777+00:00", "operation": "poll-async-inventory-after", "state": "started"}
+{"timestamp": "2026-11-22T15:21:20.896168+00:00", "operation": "poll-async-inventory-after", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:21:23.899772+00:00", "operation": "poll-async-inventory-after", "state": "started"}
+{"timestamp": "2026-11-22T15:21:28.911184+00:00", "operation": "poll-async-inventory-after", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:21:31.914350+00:00", "operation": "poll-async-inventory-after", "state": "started"}
+{"timestamp": "2026-11-22T15:21:38.344509+00:00", "operation": "poll-async-inventory-after", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:21:41.346492+00:00", "operation": "poll-async-inventory-after", "state": "started"}
+{"timestamp": "2026-11-22T15:21:47.515602+00:00", "operation": "poll-async-inventory-after", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:21:50.516595+00:00", "operation": "poll-async-inventory-after", "state": "started"}
+{"timestamp": "2026-11-22T15:21:55.536055+00:00", "operation": "poll-async-inventory-after", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:21:58.541749+00:00", "operation": "poll-async-inventory-after", "state": "started"}
+{"timestamp": "2026-11-22T15:22:04.509816+00:00", "operation": "poll-async-inventory-after", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:22:07.513616+00:00", "operation": "poll-async-inventory-after", "state": "started"}
+{"timestamp": "2026-11-22T15:22:13.564769+00:00", "operation": "poll-async-inventory-after", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:22:29.049668+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T15:22:36.602351+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:22:47.435170+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T15:22:53.515639+00:00", "operation": "guest-command", "state": "ended", "exit_code": 1, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:23:05.077067+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T15:23:22.998501+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:23:37.065774+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T15:23:44.286194+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:23:44.636230+00:00", "operation": "evidence-file-metadata", "state": "started"}
+{"timestamp": "2026-11-22T15:23:50.573618+00:00", "operation": "evidence-file-metadata", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:23:50.574079+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:23:57.636318+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:23:57.637180+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:24:03.566389+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:24:03.567085+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:24:08.661965+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:24:08.662756+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:24:14.872299+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:24:14.873111+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:24:21.005139+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:24:21.005748+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:24:26.186914+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:24:26.187759+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:24:31.187225+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:24:31.187958+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:24:36.179005+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:24:36.179583+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:24:41.095477+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:24:41.096074+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:24:47.020461+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:24:47.021197+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:24:52.011470+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:24:52.012194+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:24:57.311991+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:24:57.312630+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:25:03.907644+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:25:03.909816+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:25:10.847164+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:25:10.847829+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:25:16.854671+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:25:16.855479+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:25:22.828873+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:25:22.829809+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:25:30.891335+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:25:30.892258+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:25:42.668393+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:25:42.669923+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:25:51.466414+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:25:51.467032+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:25:57.792021+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:25:57.792618+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:26:05.872999+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:26:05.874159+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:26:13.166604+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:26:13.167434+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:26:19.388191+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:26:19.389284+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:26:26.740798+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:26:26.741505+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:26:32.867098+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:26:32.867708+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:26:39.083263+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:26:39.083889+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:26:45.142736+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:26:45.143364+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:26:51.589545+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:26:51.590238+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:26:57.508507+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:26:57.509069+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:27:03.529957+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:27:03.530815+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:27:08.461593+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:27:08.462320+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:27:13.402501+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:27:13.403071+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:27:18.271433+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:27:18.272093+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:27:24.350228+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:27:24.351392+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:27:29.298113+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:27:29.299052+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:27:34.603881+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:27:34.604765+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:27:39.026989+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:27:39.027612+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:27:43.335393+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:27:43.336105+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:27:47.549814+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:27:47.550367+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:27:51.512125+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:27:51.512721+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:27:55.474125+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:27:55.474678+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:27:59.381802+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:27:59.382376+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:28:03.297038+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:28:03.297531+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:28:07.183986+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:28:07.184569+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:28:11.153340+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:28:11.154017+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:28:15.140233+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:28:15.140795+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:28:19.056635+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:28:19.057168+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:28:22.963753+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:28:22.964216+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:28:27.856378+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:28:27.857030+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:28:31.965232+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:28:31.965905+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:28:35.863784+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:28:35.864261+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:28:39.799371+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:28:39.799916+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:28:43.673542+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:28:43.674068+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:28:47.598235+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:28:47.598805+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:28:51.597322+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:28:51.597945+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:28:55.556380+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:28:55.556926+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:28:59.490174+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:28:59.490720+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:29:03.413649+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:29:03.414279+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:29:07.372470+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:29:07.373017+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:29:11.315464+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:29:11.315996+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:29:15.281469+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:29:15.282408+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:29:19.230545+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:29:19.231186+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:29:23.147886+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:29:23.148464+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:29:27.048509+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:29:27.049089+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:29:30.973006+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:29:30.973519+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:29:34.897727+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:29:34.898361+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:29:38.823204+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:29:38.823766+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:29:42.788803+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:29:42.789348+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:29:46.732291+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:29:46.732835+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:29:50.688230+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:29:50.688696+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:29:54.555572+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:29:54.556122+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:29:58.513613+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:29:58.514240+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:30:02.406657+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:30:02.407203+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:30:06.279757+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:30:06.280237+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:30:10.233642+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:30:10.234065+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:30:14.151120+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:30:14.151659+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:30:18.068919+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:30:18.069475+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:30:22.010643+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:30:22.011206+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:30:25.884136+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:30:25.884580+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:30:29.809822+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:30:29.810398+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:30:33.693054+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:30:33.693692+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:30:37.610660+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:30:37.611175+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:30:41.542904+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:30:41.543580+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:30:45.518933+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:30:45.519485+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T15:30:49.503415+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:30:49.507542+00:00", "operation": "evidence-file-metadata", "state": "started"}
+{"timestamp": "2026-11-22T15:30:54.282812+00:00", "operation": "evidence-file-metadata", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:31:10.834659+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T15:31:15.688089+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:31:41.945696+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T15:31:47.817442+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:37:23.889650+00:00", "operation": "shutdown-for-temp-data-disk", "state": "started"}
+{"timestamp": "2026-11-22T15:37:29.282215+00:00", "operation": "shutdown-for-temp-data-disk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:38:34.385271+00:00", "operation": "wait-qga-after-temp-disk", "state": "started"}
+{"timestamp": "2026-11-22T15:38:34.510741+00:00", "operation": "wait-qga-after-temp-disk", "state": "failed"}
+{"timestamp": "2026-11-22T15:38:37.513710+00:00", "operation": "wait-qga-after-temp-disk", "state": "started"}
+{"timestamp": "2026-11-22T15:38:37.653284+00:00", "operation": "wait-qga-after-temp-disk", "state": "failed"}
+{"timestamp": "2026-11-22T15:38:40.660467+00:00", "operation": "wait-qga-after-temp-disk", "state": "started"}
+{"timestamp": "2026-11-22T15:38:40.817916+00:00", "operation": "wait-qga-after-temp-disk", "state": "failed"}
+{"timestamp": "2026-11-22T15:38:43.823435+00:00", "operation": "wait-qga-after-temp-disk", "state": "started"}
+{"timestamp": "2026-11-22T15:38:51.502224+00:00", "operation": "wait-qga-after-temp-disk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:38:51.502780+00:00", "operation": "format-temp-d-drive", "state": "started"}
+{"timestamp": "2026-11-22T15:39:03.875519+00:00", "operation": "format-temp-d-drive", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:39:14.662012+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T15:39:23.282458+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:39:34.891314+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T15:39:49.612924+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:43:04.227606+00:00", "operation": "resolve-private-screen-redaction-tokens", "state": "started"}
+{"timestamp": "2026-11-22T15:43:11.195154+00:00", "operation": "resolve-private-screen-redaction-tokens", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:43:11.196063+00:00", "operation": "guest-session1-screen-capture", "state": "started"}
+{"timestamp": "2026-11-22T15:43:43.356110+00:00", "operation": "guest-session1-screen-capture", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:43:43.357331+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:43:50.047852+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:43:50.048555+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:43:57.095451+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:43:57.096501+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:44:03.440642+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:44:03.441682+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:44:07.680379+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:44:07.681025+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:44:13.171817+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:44:13.172649+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:44:18.489777+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:44:18.490349+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:44:22.636425+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:44:22.637092+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:44:26.595381+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:44:26.595915+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:44:30.711847+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:44:30.712556+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T15:44:34.701925+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:44:34.702402+00:00", "operation": "cleanup-temp-screen", "state": "started"}
+{"timestamp": "2026-11-22T15:44:38.562567+00:00", "operation": "cleanup-temp-screen", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:44:46.602626+00:00", "operation": "inspect-download-failure", "state": "started"}
+{"timestamp": "2026-11-22T15:45:01.219860+00:00", "operation": "inspect-download-failure", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:45:13.377170+00:00", "operation": "read-launcher-main-log", "state": "started"}
+{"timestamp": "2026-11-22T15:45:18.432056+00:00", "operation": "read-launcher-main-log", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:45:39.026705+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T15:45:47.129986+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:48:06.019179+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T15:48:15.416128+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:48:29.923960+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T15:48:35.682714+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:52:54.116777+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T15:53:04.834168+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:53:25.176819+00:00", "operation": "check-download-log-tail", "state": "started"}
+{"timestamp": "2026-11-22T15:53:31.070341+00:00", "operation": "check-download-log-tail", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:55:19.702098+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T15:55:28.343240+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T15:59:31.078800+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T15:59:40.817680+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:03:06.654809+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T16:03:16.390862+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:06:45.146339+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T16:06:54.921622+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:12:25.033224+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T16:12:33.694738+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:17:59.057030+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T16:18:08.578986+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:23:30.532203+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T16:23:38.142217+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:28:58.323219+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T16:29:06.032495+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:34:26.975577+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T16:34:35.569457+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:39:55.261419+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T16:40:03.916296+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:40:26.557140+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T16:40:33.290731+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:49:56.721325+00:00", "operation": "resolve-private-screen-redaction-tokens", "state": "started"}
+{"timestamp": "2026-11-22T16:50:03.718588+00:00", "operation": "resolve-private-screen-redaction-tokens", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:50:03.719072+00:00", "operation": "guest-session1-screen-capture", "state": "started"}
+{"timestamp": "2026-11-22T16:50:18.281011+00:00", "operation": "guest-session1-screen-capture", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:50:18.281617+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T16:50:23.346459+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:50:23.346988+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T16:50:27.306867+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:50:27.307540+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T16:50:32.299768+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:50:32.300412+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T16:50:36.649643+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:50:36.650411+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T16:50:41.032967+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:50:41.033567+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T16:50:45.349634+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:50:45.350279+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T16:50:49.657580+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:50:49.658149+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T16:50:53.820001+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:50:53.820569+00:00", "operation": "pull-screen-chunk", "state": "started"}
+{"timestamp": "2026-11-22T16:50:57.708471+00:00", "operation": "pull-screen-chunk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:50:57.708912+00:00", "operation": "cleanup-temp-screen", "state": "started"}
+{"timestamp": "2026-11-22T16:51:01.775837+00:00", "operation": "cleanup-temp-screen", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:51:09.886865+00:00", "operation": "collect-game-launch-rejection", "state": "started"}
+{"timestamp": "2026-11-22T16:51:16.125422+00:00", "operation": "collect-game-launch-rejection", "state": "ended", "exit_code": 1, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:51:35.366629+00:00", "operation": "collect-game-launch-rejection-v2", "state": "started"}
+{"timestamp": "2026-11-22T16:51:43.056887+00:00", "operation": "collect-game-launch-rejection-v2", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:52:02.158720+00:00", "operation": "collect-exact-1648-events-and-logs", "state": "started"}
+{"timestamp": "2026-11-22T16:52:07.975270+00:00", "operation": "collect-exact-1648-events-and-logs", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:52:21.007381+00:00", "operation": "guest-command", "state": "started"}
+{"timestamp": "2026-11-22T16:52:35.709531+00:00", "operation": "guest-command", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:52:35.936991+00:00", "operation": "evidence-file-metadata", "state": "started"}
+{"timestamp": "2026-11-22T16:52:41.687989+00:00", "operation": "evidence-file-metadata", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:52:41.688499+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:52:46.551726+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:52:46.552266+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:52:51.465746+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:52:51.466337+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:52:55.455839+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:52:55.456346+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:53:00.437647+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:53:00.438178+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:53:04.474160+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:53:04.475069+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:53:09.359884+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:53:09.360384+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:53:14.247555+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:53:14.248095+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:53:19.122880+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:53:19.123503+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:53:24.064382+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:53:24.064925+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:53:28.075654+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:53:28.076188+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:53:32.035133+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:53:32.035618+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:53:36.904820+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:53:36.905385+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:53:41.733479+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:53:41.734005+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:53:46.888879+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:53:46.889410+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:53:51.767506+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:53:51.768109+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:53:55.772587+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:53:55.773129+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:54:00.633499+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:54:00.634223+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:54:05.536684+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:54:05.537181+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:54:10.403192+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:54:10.403698+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:54:14.374360+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:54:14.374928+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:54:18.384151+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:54:18.384763+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:54:23.225220+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:54:23.225727+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:54:28.101526+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:54:28.102090+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:54:33.086804+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:54:33.088452+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:54:37.956319+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:54:37.956921+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:54:42.730991+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:54:42.731511+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:54:47.498868+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:54:47.499348+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:54:52.355827+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:54:52.356343+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:54:57.097372+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:54:57.097862+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:55:01.906456+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:55:01.906990+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:55:06.730333+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:55:06.730824+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:55:11.482162+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:55:11.482680+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:55:16.272751+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:55:16.273255+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:55:21.042143+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:55:21.042777+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:55:25.931792+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:55:25.932277+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:55:30.817023+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:55:30.817630+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:55:35.829368+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:55:35.829939+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:55:40.823446+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:55:40.824833+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:55:45.762761+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:55:45.763327+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:55:50.646357+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:55:50.646845+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:55:55.564697+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:55:55.565513+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:56:00.453135+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:56:00.453797+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:56:05.402206+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:56:05.402901+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:56:10.202002+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:56:10.202585+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:56:15.017834+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:56:15.019873+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:56:19.839887+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:56:19.840532+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:56:24.606034+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:56:24.606518+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:56:29.442697+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:56:29.443316+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:56:33.784467+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:56:33.784948+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:56:38.084257+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:56:38.084742+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:56:42.333859+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:56:42.334335+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:56:46.667987+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:56:46.668533+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:56:50.916688+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:56:50.917166+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:56:54.849378+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:56:54.849884+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:56:59.666114+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:56:59.666659+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:57:04.507428+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:57:04.507914+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:57:08.432587+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:57:08.433096+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:57:12.391575+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:57:12.392119+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:57:17.208698+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:57:17.209282+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:57:22.048757+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:57:22.049312+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:57:26.876187+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:57:26.876723+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:57:31.726036+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:57:31.726571+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:57:35.682409+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:57:35.682897+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:57:39.608372+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:57:39.609547+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:57:44.476780+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:57:44.477317+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:57:49.350403+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:57:49.350910+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:57:54.165569+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:57:54.166032+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:57:58.140764+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:57:58.141249+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:58:02.983434+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:58:02.983918+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:58:06.909064+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:58:06.909636+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:58:11.748263+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:58:11.748745+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:58:16.573702+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:58:16.574208+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:58:20.499451+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:58:20.499948+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:58:25.274234+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:58:25.274735+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:58:29.125330+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:58:29.125915+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:58:33.949505+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:58:33.950033+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:58:38.774988+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:58:38.775551+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:58:43.609942+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:58:43.610488+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:58:47.515639+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:58:47.516130+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:58:52.290617+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:58:52.291125+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:58:57.098996+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:58:57.099483+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:59:01.914926+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:59:01.915421+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:59:06.809814+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:59:06.810373+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:59:10.748454+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:59:10.748955+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:59:14.658237+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:59:14.658832+00:00", "operation": "bounded-evidence-read", "state": "started"}
+{"timestamp": "2026-11-22T16:59:19.506608+00:00", "operation": "bounded-evidence-read", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:59:19.507639+00:00", "operation": "evidence-file-metadata", "state": "started"}
+{"timestamp": "2026-11-22T16:59:24.380571+00:00", "operation": "evidence-file-metadata", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:59:48.328597+00:00", "operation": "cleanup-commercial-c-drive", "state": "started"}
+{"timestamp": "2026-11-22T16:59:58.665711+00:00", "operation": "cleanup-commercial-c-drive", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T16:59:58.666254+00:00", "operation": "shutdown-to-detach-game-disk", "state": "started"}
+{"timestamp": "2026-11-22T17:00:02.655628+00:00", "operation": "shutdown-to-detach-game-disk", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T17:00:12.745764+00:00", "operation": "wait-qga-post-restore", "state": "started"}
+{"timestamp": "2026-11-22T17:00:12.855683+00:00", "operation": "wait-qga-post-restore", "state": "failed"}
+{"timestamp": "2026-11-22T17:00:15.861084+00:00", "operation": "wait-qga-post-restore", "state": "started"}
+{"timestamp": "2026-11-22T17:00:15.979428+00:00", "operation": "wait-qga-post-restore", "state": "failed"}
+{"timestamp": "2026-11-22T17:00:18.984926+00:00", "operation": "wait-qga-post-restore", "state": "started"}
+{"timestamp": "2026-11-22T17:00:19.120975+00:00", "operation": "wait-qga-post-restore", "state": "failed"}
+{"timestamp": "2026-11-22T17:00:22.126530+00:00", "operation": "wait-qga-post-restore", "state": "started"}
+{"timestamp": "2026-11-22T17:00:28.729602+00:00", "operation": "wait-qga-post-restore", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T17:00:28.945708+00:00", "operation": "private-output-token-preparation", "state": "started"}
+{"timestamp": "2026-11-22T17:00:34.689091+00:00", "operation": "private-output-token-preparation", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-22T17:00:34.689554+00:00", "operation": "post-commercial-security", "state": "started"}
+{"timestamp": "2026-11-22T17:00:41.179432+00:00", "operation": "post-commercial-security", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:48:17.611783+00:00", "operation": "p4b-wait-qga", "state": "started"}
+{"timestamp": "2026-11-23T00:48:18.093559+00:00", "operation": "p4b-wait-qga", "state": "failed"}
+{"timestamp": "2026-11-23T00:48:21.097437+00:00", "operation": "p4b-wait-qga", "state": "started"}
+{"timestamp": "2026-11-23T00:48:21.222544+00:00", "operation": "p4b-wait-qga", "state": "failed"}
+{"timestamp": "2026-11-23T00:48:24.225570+00:00", "operation": "p4b-wait-qga", "state": "started"}
+{"timestamp": "2026-11-23T00:48:24.356918+00:00", "operation": "p4b-wait-qga", "state": "failed"}
+{"timestamp": "2026-11-23T00:48:27.359773+00:00", "operation": "p4b-wait-qga", "state": "started"}
+{"timestamp": "2026-11-23T00:48:27.527474+00:00", "operation": "p4b-wait-qga", "state": "failed"}
+{"timestamp": "2026-11-23T00:48:30.530125+00:00", "operation": "p4b-wait-qga", "state": "started"}
+{"timestamp": "2026-11-23T00:48:38.232774+00:00", "operation": "p4b-wait-qga", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:48:38.234269+00:00", "operation": "p4b-vm-preflight", "state": "started"}
+{"timestamp": "2026-11-23T00:48:46.113821+00:00", "operation": "p4b-vm-preflight", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:48:46.147394+00:00", "operation": "p4b-mkdir", "state": "started"}
+{"timestamp": "2026-11-23T00:48:51.055658+00:00", "operation": "p4b-mkdir", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:48:58.764016+00:00", "operation": "p4b-verify-probe-sha", "state": "started"}
+{"timestamp": "2026-11-23T00:49:04.603958+00:00", "operation": "p4b-verify-probe-sha", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:49:08.042417+00:00", "operation": "p4b-probe-f3-nd1", "state": "started"}
+{"timestamp": "2026-11-23T00:49:17.615587+00:00", "operation": "p4b-probe-f3-nd1", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:49:18.132169+00:00", "operation": "p4b-probe-f3-nd1", "state": "started"}
+{"timestamp": "2026-11-23T00:49:22.582362+00:00", "operation": "p4b-probe-f3-nd1", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:49:28.820094+00:00", "operation": "p4b-probe-f1-nd0", "state": "started"}
+{"timestamp": "2026-11-23T00:49:36.171828+00:00", "operation": "p4b-probe-f1-nd0", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:49:40.135579+00:00", "operation": "p4b-probe-f1-nd1", "state": "started"}
+{"timestamp": "2026-11-23T00:49:47.659917+00:00", "operation": "p4b-probe-f1-nd1", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:49:51.928043+00:00", "operation": "p4b-probe-f2-nd1", "state": "started"}
+{"timestamp": "2026-11-23T00:49:59.534387+00:00", "operation": "p4b-probe-f2-nd1", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:50:02.550859+00:00", "operation": "p4b-probe-f3-nd1", "state": "started"}
+{"timestamp": "2026-11-23T00:50:10.805430+00:00", "operation": "p4b-probe-f3-nd1", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:50:13.518278+00:00", "operation": "p4b-probe-f3-nd1", "state": "started"}
+{"timestamp": "2026-11-23T00:50:21.686320+00:00", "operation": "p4b-probe-f3-nd1", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:50:25.158248+00:00", "operation": "p4b-probe-f2-nd1", "state": "started"}
+{"timestamp": "2026-11-23T00:50:32.153093+00:00", "operation": "p4b-probe-f2-nd1", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:50:34.314921+00:00", "operation": "p4b-probe-f1-nd1", "state": "started"}
+{"timestamp": "2026-11-23T00:50:39.778291+00:00", "operation": "p4b-probe-f1-nd1", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:50:41.851067+00:00", "operation": "p4b-probe-f1-nd0", "state": "started"}
+{"timestamp": "2026-11-23T00:50:47.265745+00:00", "operation": "p4b-probe-f1-nd0", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:50:49.679124+00:00", "operation": "p4b-probe-f1-nd0", "state": "started"}
+{"timestamp": "2026-11-23T00:50:54.971516+00:00", "operation": "p4b-probe-f1-nd0", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:50:57.102899+00:00", "operation": "p4b-probe-f1-nd1", "state": "started"}
+{"timestamp": "2026-11-23T00:51:03.194656+00:00", "operation": "p4b-probe-f1-nd1", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:51:06.031708+00:00", "operation": "p4b-probe-f2-nd1", "state": "started"}
+{"timestamp": "2026-11-23T00:51:08.710633+00:00", "operation": "p4b-probe-f2-nd1", "state": "ended", "exit_code": 1, "signal": 0, "status": "execution_error"}
+{"timestamp": "2026-11-23T00:51:08.886779+00:00", "operation": "p4b-cleanup-guest", "state": "started"}
+{"timestamp": "2026-11-23T00:51:14.683648+00:00", "operation": "p4b-cleanup-guest", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:53:03.072160+00:00", "operation": "p4b-wait-qga", "state": "started"}
+{"timestamp": "2026-11-23T00:53:08.284876+00:00", "operation": "p4b-wait-qga", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:53:08.285321+00:00", "operation": "p4b-vm-preflight", "state": "started"}
+{"timestamp": "2026-11-23T00:53:14.518407+00:00", "operation": "p4b-vm-preflight", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:53:14.548475+00:00", "operation": "p4b-mkdir", "state": "started"}
+{"timestamp": "2026-11-23T00:53:18.706699+00:00", "operation": "p4b-mkdir", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:53:20.465477+00:00", "operation": "p4b-verify-probe-sha", "state": "started"}
+{"timestamp": "2026-11-23T00:53:25.223251+00:00", "operation": "p4b-verify-probe-sha", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:53:28.407447+00:00", "operation": "p4b-probe-f3-nd1", "state": "started"}
+{"timestamp": "2026-11-23T00:53:34.969953+00:00", "operation": "p4b-probe-f3-nd1", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:53:35.492024+00:00", "operation": "p4b-probe-f3-nd1", "state": "started"}
+{"timestamp": "2026-11-23T00:53:39.865205+00:00", "operation": "p4b-probe-f3-nd1", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:53:44.442872+00:00", "operation": "p4b-probe-f1-nd0", "state": "started"}
+{"timestamp": "2026-11-23T00:54:03.955472+00:00", "operation": "p4b-probe-f1-nd0", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:54:03.981054+00:00", "operation": "p4b-cleanup-guest", "state": "started"}
+{"timestamp": "2026-11-23T00:54:10.843827+00:00", "operation": "p4b-cleanup-guest", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:54:58.056524+00:00", "operation": "p4b-wait-qga", "state": "started"}
+{"timestamp": "2026-11-23T00:55:09.140857+00:00", "operation": "p4b-wait-qga", "state": "ended", "exit_code": 124, "signal": 0, "status": "timeout"}
+{"timestamp": "2026-11-23T00:55:12.146502+00:00", "operation": "p4b-wait-qga", "state": "started"}
+{"timestamp": "2026-11-23T00:55:19.925672+00:00", "operation": "p4b-wait-qga", "state": "ended", "exit_code": 1, "signal": 0, "status": "execution_error"}
+{"timestamp": "2026-11-23T00:55:22.929403+00:00", "operation": "p4b-wait-qga", "state": "started"}
+{"timestamp": "2026-11-23T00:55:32.496193+00:00", "operation": "p4b-wait-qga", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:55:32.496877+00:00", "operation": "p4b-vm-preflight", "state": "started"}
+{"timestamp": "2026-11-23T00:55:41.329760+00:00", "operation": "p4b-vm-preflight", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:55:41.365512+00:00", "operation": "p4b-mkdir", "state": "started"}
+{"timestamp": "2026-11-23T00:55:48.319027+00:00", "operation": "p4b-mkdir", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:55:49.793898+00:00", "operation": "p4b-verify-probe-sha", "state": "started"}
+{"timestamp": "2026-11-23T00:55:55.547657+00:00", "operation": "p4b-verify-probe-sha", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:55:59.294729+00:00", "operation": "p4b-probe-f3-nd1", "state": "started"}
+{"timestamp": "2026-11-23T00:56:04.997274+00:00", "operation": "p4b-probe-f3-nd1", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:56:05.503809+00:00", "operation": "p4b-probe-f3-nd1", "state": "started"}
+{"timestamp": "2026-11-23T00:56:10.356040+00:00", "operation": "p4b-probe-f3-nd1", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:56:15.200804+00:00", "operation": "p4b-probe-f1-nd0", "state": "started"}
+{"timestamp": "2026-11-23T00:56:40.874254+00:00", "operation": "p4b-probe-f1-nd0", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:56:49.478887+00:00", "operation": "p4b-probe-f1-nd1", "state": "started"}
+{"timestamp": "2026-11-23T00:56:54.643299+00:00", "operation": "p4b-probe-f1-nd1", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:56:57.452772+00:00", "operation": "p4b-probe-f2-nd1", "state": "started"}
+{"timestamp": "2026-11-23T00:57:02.598386+00:00", "operation": "p4b-probe-f2-nd1", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:57:05.056330+00:00", "operation": "p4b-probe-f3-nd1", "state": "started"}
+{"timestamp": "2026-11-23T00:57:12.192000+00:00", "operation": "p4b-probe-f3-nd1", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:57:15.179091+00:00", "operation": "p4b-probe-f3-nd1", "state": "started"}
+{"timestamp": "2026-11-23T00:57:22.966992+00:00", "operation": "p4b-probe-f3-nd1", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:57:25.584677+00:00", "operation": "p4b-probe-f2-nd1", "state": "started"}
+{"timestamp": "2026-11-23T00:57:30.601412+00:00", "operation": "p4b-probe-f2-nd1", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:57:33.277439+00:00", "operation": "p4b-probe-f1-nd1", "state": "started"}
+{"timestamp": "2026-11-23T00:57:39.490882+00:00", "operation": "p4b-probe-f1-nd1", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:57:42.534331+00:00", "operation": "p4b-probe-f1-nd0", "state": "started"}
+{"timestamp": "2026-11-23T00:58:06.966392+00:00", "operation": "p4b-probe-f1-nd0", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:58:10.640180+00:00", "operation": "p4b-probe-f1-nd0", "state": "started"}
+{"timestamp": "2026-11-23T00:58:33.698589+00:00", "operation": "p4b-probe-f1-nd0", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:58:37.025541+00:00", "operation": "p4b-probe-f1-nd1", "state": "started"}
+{"timestamp": "2026-11-23T00:58:43.005191+00:00", "operation": "p4b-probe-f1-nd1", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:58:45.476963+00:00", "operation": "p4b-probe-f2-nd1", "state": "started"}
+{"timestamp": "2026-11-23T00:58:50.665331+00:00", "operation": "p4b-probe-f2-nd1", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:58:53.308821+00:00", "operation": "p4b-probe-f3-nd1", "state": "started"}
+{"timestamp": "2026-11-23T00:58:58.402153+00:00", "operation": "p4b-probe-f3-nd1", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:58:58.557130+00:00", "operation": "p4b-cleanup-guest", "state": "started"}
+{"timestamp": "2026-11-23T00:59:05.136432+00:00", "operation": "p4b-cleanup-guest", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T00:59:32.685292+00:00", "operation": "p4b-shutdown-primary-before-m3-clone", "state": "started"}
+{"timestamp": "2026-11-23T00:59:37.659308+00:00", "operation": "p4b-shutdown-primary-before-m3-clone", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T01:01:27.314030+00:00", "operation": "m3-clone-wait-qga", "state": "started"}
+{"timestamp": "2026-11-23T01:01:27.439517+00:00", "operation": "m3-clone-wait-qga", "state": "failed"}
+{"timestamp": "2026-11-23T01:01:30.630394+00:00", "operation": "m3-clone-wait-qga", "state": "started"}
+{"timestamp": "2026-11-23T01:01:30.788460+00:00", "operation": "m3-clone-wait-qga", "state": "failed"}
+{"timestamp": "2026-11-23T01:01:33.965870+00:00", "operation": "m3-clone-wait-qga", "state": "started"}
+{"timestamp": "2026-11-23T01:01:34.119902+00:00", "operation": "m3-clone-wait-qga", "state": "failed"}
+{"timestamp": "2026-11-23T01:01:37.352058+00:00", "operation": "m3-clone-wait-qga", "state": "started"}
+{"timestamp": "2026-11-23T01:01:37.526312+00:00", "operation": "m3-clone-wait-qga", "state": "failed"}
+{"timestamp": "2026-11-23T01:01:40.709429+00:00", "operation": "m3-clone-wait-qga", "state": "started"}
+{"timestamp": "2026-11-23T01:01:52.154862+00:00", "operation": "m3-clone-wait-qga", "state": "ended", "exit_code": 124, "signal": 0, "status": "timeout"}
+{"timestamp": "2026-11-23T01:01:55.325734+00:00", "operation": "m3-clone-wait-qga", "state": "started"}
+{"timestamp": "2026-11-23T01:02:00.163408+00:00", "operation": "m3-clone-wait-qga", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T01:02:00.240927+00:00", "operation": "m3-clone-inspect-gpu-and-sigs", "state": "started"}
+{"timestamp": "2026-11-23T01:02:06.781037+00:00", "operation": "m3-clone-inspect-gpu-and-sigs", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T01:02:31.040375+00:00", "operation": "m3-mkdir", "state": "started"}
+{"timestamp": "2026-11-23T01:02:34.939580+00:00", "operation": "m3-mkdir", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T01:02:38.883882+00:00", "operation": "m3-check-sigs-and-pnputil", "state": "started"}
+{"timestamp": "2026-11-23T01:03:39.495923+00:00", "operation": "m3-check-sigs-and-pnputil", "state": "ended", "exit_code": 124, "signal": 0, "status": "timeout"}
+{"timestamp": "2026-11-23T01:03:57.109450+00:00", "operation": "m3-inspect-after-pnputil", "state": "started"}
+{"timestamp": "2026-11-23T01:04:02.869343+00:00", "operation": "m3-inspect-after-pnputil", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T01:04:33.056447+00:00", "operation": "m3-clone-reboot", "state": "started"}
+{"timestamp": "2026-11-23T01:04:36.992837+00:00", "operation": "m3-clone-reboot", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T01:04:50.003166+00:00", "operation": "m3-clone-wait-reboot", "state": "started"}
+{"timestamp": "2026-11-23T01:04:54.893190+00:00", "operation": "m3-clone-wait-reboot", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T01:04:54.893730+00:00", "operation": "m3-check-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:04:59.725879+00:00", "operation": "m3-check-logon", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T01:05:01.730177+00:00", "operation": "m3-check-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:05:07.705686+00:00", "operation": "m3-check-logon", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T01:05:09.711219+00:00", "operation": "m3-check-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:05:15.522344+00:00", "operation": "m3-check-logon", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T01:05:17.528205+00:00", "operation": "m3-check-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:05:17.664605+00:00", "operation": "m3-check-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:05:43.614919+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:05:43.809831+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:05:46.814403+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:05:46.954976+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:05:49.960423+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:05:50.121245+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:05:53.126696+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:05:53.253898+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:05:56.259380+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:05:56.387022+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:05:59.392474+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:05:59.528900+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:06:02.534416+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:06:02.686870+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:06:05.692437+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:06:05.836492+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:06:08.841918+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:06:08.961791+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:06:11.964174+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:06:12.094738+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:06:15.095424+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:06:15.220140+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:06:18.225622+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:06:18.362032+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:06:21.363003+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:06:21.508682+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:06:24.514172+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:06:24.636542+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:06:27.639089+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:06:27.761771+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:06:30.764199+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:06:30.886569+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:06:33.891948+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:06:34.024135+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:06:37.036430+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:06:37.166180+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:06:40.171870+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:06:40.592173+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:06:43.592803+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:06:43.732219+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:06:46.734698+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:06:46.865948+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:06:49.871507+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:06:50.007482+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:06:53.011408+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:06:53.141191+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:06:56.143191+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:06:56.299009+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:06:59.301432+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:06:59.448689+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:07:02.451383+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:07:02.576830+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:07:05.582312+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:07:05.740769+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:07:08.746265+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:07:08.887046+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:07:11.887933+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:07:12.079470+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:07:15.080167+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:07:15.212285+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:07:18.214095+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:07:18.344719+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:07:21.347203+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:07:21.492457+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:07:24.497080+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:07:24.636177+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:07:27.641586+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:07:27.786397+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:07:30.787559+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:07:30.936748+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:07:33.942400+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:07:34.086844+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:07:37.092317+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:07:37.219567+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:07:40.221458+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:07:40.378479+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:07:43.379584+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:07:43.511387+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:07:46.513603+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:07:46.670269+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:07:49.675881+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:07:49.802968+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:07:52.808528+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:07:52.936176+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:07:55.942018+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:07:56.077887+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:07:59.080220+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:07:59.219811+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:08:02.223025+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:08:02.370296+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:08:05.371780+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:08:05.511558+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:08:08.516583+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:08:08.704187+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:08:11.709607+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:08:11.878154+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:08:14.878892+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:08:15.010853+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:08:18.014338+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:08:18.153046+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:08:21.153728+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:08:21.294942+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:08:24.300478+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:08:24.461237+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:08:27.463438+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:08:27.602691+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:08:30.604952+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:08:30.778147+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:08:33.779839+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:08:33.919250+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:08:36.924677+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:08:37.044623+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:08:40.046563+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:08:40.169164+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:08:43.171557+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:08:43.293995+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:08:46.297930+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:08:46.444582+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:08:49.447568+00:00", "operation": "m3-wait-post-reboot-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:08:49.611921+00:00", "operation": "m3-wait-post-reboot-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:09:15.917247+00:00", "operation": "m3-ping", "state": "started"}
+{"timestamp": "2026-11-23T01:09:16.093738+00:00", "operation": "m3-ping", "state": "failed"}
+{"timestamp": "2026-11-23T01:11:31.143421+00:00", "operation": "m3-wait-cold-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:11:31.276267+00:00", "operation": "m3-wait-cold-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:11:34.278470+00:00", "operation": "m3-wait-cold-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:11:34.442134+00:00", "operation": "m3-wait-cold-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:11:37.446311+00:00", "operation": "m3-wait-cold-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:11:37.573842+00:00", "operation": "m3-wait-cold-logon", "state": "failed"}
+{"timestamp": "2026-11-23T01:11:40.574645+00:00", "operation": "m3-wait-cold-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:11:48.823442+00:00", "operation": "m3-wait-cold-logon", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T01:11:51.824478+00:00", "operation": "m3-wait-cold-logon", "state": "started"}
+{"timestamp": "2026-11-23T01:12:02.215246+00:00", "operation": "m3-wait-cold-logon", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T01:12:02.216187+00:00", "operation": "m3-verify-gpu-cold", "state": "started"}
+{"timestamp": "2026-11-23T01:12:12.145295+00:00", "operation": "m3-verify-gpu-cold", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T01:12:12.156029+00:00", "operation": "m3-bench-mkdir", "state": "started"}
+{"timestamp": "2026-11-23T01:12:17.004335+00:00", "operation": "m3-bench-mkdir", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T01:12:20.146111+00:00", "operation": "m3-run-direct-d3d11-probe-cold", "state": "started"}
+{"timestamp": "2026-11-23T01:16:42.764369+00:00", "operation": "m3-run-direct-d3d11-probe-cold", "state": "ended", "exit_code": 124, "signal": 0, "status": "timeout"}
+{"timestamp": "2026-11-23T01:16:57.142053+00:00", "operation": "m3-inspect-bench-dir", "state": "started"}
+{"timestamp": "2026-11-23T01:17:28.986987+00:00", "operation": "m3-inspect-bench-dir", "state": "ended", "exit_code": 1, "signal": 0, "status": "execution_error"}
+{"timestamp": "2026-11-23T01:18:04.448535+00:00", "operation": "m3-ls", "state": "started"}
+{"timestamp": "2026-11-23T01:18:09.515174+00:00", "operation": "m3-ls", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T01:18:09.516584+00:00", "operation": "m3-ps", "state": "started"}
+{"timestamp": "2026-11-23T01:18:13.564269+00:00", "operation": "m3-ps", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T01:18:13.564840+00:00", "operation": "m3-read-fp-hw.json", "state": "started"}
+{"timestamp": "2026-11-23T01:18:17.530604+00:00", "operation": "m3-read-fp-hw.json", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T01:18:17.532015+00:00", "operation": "m3-read-fp-hw.stderr.log", "state": "started"}
+{"timestamp": "2026-11-23T01:18:21.531205+00:00", "operation": "m3-read-fp-hw.stderr.log", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T01:18:21.532257+00:00", "operation": "m3-read-cap-meta.json", "state": "started"}
+{"timestamp": "2026-11-23T01:18:25.564230+00:00", "operation": "m3-read-cap-meta.json", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T01:18:25.565667+00:00", "operation": "m3-read-cap.stderr.log", "state": "started"}
+{"timestamp": "2026-11-23T01:18:29.548252+00:00", "operation": "m3-read-cap.stderr.log", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T01:18:29.549305+00:00", "operation": "m3-read-direct-r1.stderr.log", "state": "started"}
+{"timestamp": "2026-11-23T01:18:33.548338+00:00", "operation": "m3-read-direct-r1.stderr.log", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T01:18:33.549188+00:00", "operation": "m3-read-direct-r2.stderr.log", "state": "started"}
+{"timestamp": "2026-11-23T01:18:37.631208+00:00", "operation": "m3-read-direct-r2.stderr.log", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T01:18:37.632242+00:00", "operation": "m3-read-direct-r3.stderr.log", "state": "started"}
+{"timestamp": "2026-11-23T01:18:41.664867+00:00", "operation": "m3-read-direct-r3.stderr.log", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T01:19:21.480834+00:00", "operation": "m3-pull-text", "state": "started"}
+{"timestamp": "2026-11-23T01:19:24.435946+00:00", "operation": "m3-pull-text", "state": "ended", "exit_code": 1, "signal": 0, "status": "execution_error"}
+{"timestamp": "2026-11-23T01:19:56.618001+00:00", "operation": "m3-aggregate-results", "state": "started"}
+{"timestamp": "2026-11-23T01:20:05.531055+00:00", "operation": "m3-aggregate-results", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T01:20:26.431835+00:00", "operation": "m3-check-csv-head", "state": "started"}
+{"timestamp": "2026-11-23T01:20:31.311929+00:00", "operation": "m3-check-csv-head", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}
+{"timestamp": "2026-11-23T01:21:04.105078+00:00", "operation": "m3-exact-stats", "state": "started"}
+{"timestamp": "2026-11-23T01:21:09.954484+00:00", "operation": "m3-exact-stats", "state": "ended", "exit_code": 0, "signal": 0, "status": "exited"}

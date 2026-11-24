@@ -1,0 +1,91 @@
+{
+  "schema": "task-07-integration-v1",
+  "stages": {
+    "performance-tools": {
+      "exitCode": 0,
+      "state": "passed",
+      "durationSeconds": 0.37,
+      "diagnostics": []
+    },
+    "graphics-tools": {
+      "exitCode": 0,
+      "state": "passed",
+      "durationSeconds": 0.124,
+      "diagnostics": []
+    },
+    "graphics-typecheck": {
+      "exitCode": 0,
+      "state": "passed",
+      "durationSeconds": 0.681,
+      "diagnostics": []
+    },
+    "graphics-build": {
+      "exitCode": 0,
+      "state": "passed",
+      "durationSeconds": 1.548,
+      "diagnostics": []
+    },
+    "vendor-evidence": {
+      "exitCode": 0,
+      "state": "passed",
+      "durationSeconds": 0.035,
+      "diagnostics": []
+    },
+    "driver-abi-configure": {
+      "exitCode": 0,
+      "state": "passed",
+      "durationSeconds": 0.406,
+      "diagnostics": []
+    },
+    "driver-abi-build": {
+      "exitCode": 0,
+      "state": "passed",
+      "durationSeconds": 0.142,
+      "diagnostics": []
+    },
+    "driver-abi-test": {
+      "exitCode": 0,
+      "state": "passed",
+      "durationSeconds": 0.445,
+      "diagnostics": [
+        "100% tests passed out of 1"
+      ]
+    }
+  },
+  "passed": true,
+  "inputSHA256": {
+    "Modules/module-a/WindowsProbe/CMakeLists.txt": "5f1374fe56bd9cd2a37f116dd217763f0e4216fe99fef554c28590069a769b2f",
+    "Modules/module-a/WindowsProbe/shared/module_a_protocol.h": "fcbb0f25265753d98b25c6b835a35fdc5009eb43dedfe7c35c4c67947cdd92a6",
+    "Modules/module-a/WindowsProbe/tests/protocol_abi_test.c": "fe13b19ced6c27813ac5f5ec8298cc09da3c0b78ebc0cb45171096d4ed161f38",
+    "graphics-lab/analyze.py": "4e480cecd69df60e389e5f47c51f4531d2e926d2ff19ae9e6aaf372b0b1dd9b6",
+    "graphics-lab/metal_host.swift": "80f731c4466ad7f2d84ec5ad2456236af5a7a2866aaa9882ed6a642a73a2d54d",
+    "graphics-lab/run_probe.py": "0b5ca9ba36815675e7c724f7c58deec793567d5cdb552af662272c17c4261889",
+    "graphics-lab/test_analyze.py": "f37504bed6734eb6145b0e69813de3fa629981124686afafd93850fdda3567f4",
+    "graphics-lab/test_run_probe.py": "d8e20e14fc32f12477682d0907291300a2ebc7358ea078dc7236f7d132843b60",
+    "handoff/module-f/README.md": "f55ce198d90f6a0b14cc11c4ac2c3c125be727ddc1a8e4fb01ca29f13a8c4ecd",
+    "handoff/module-f/engineering-input.md": "01d030f29207e8343219e3d454a97cc3d6e44eac96562b4051bc2896753aaab2",
+    "handoff/module-f/evidence-matrix.md": "0df5cff41a61b99c04937335906d3fd241bc4d1dc6d766bb61b19948ae7ffac3",
+    "handoff/module-f/evidence.json": "374f95b5d3e529cce1b678c667118bbc6c33d6ed21b4ebd82eb58354491c2cc3",
+    "handoff/module-f/evidence.schema.json": "667785826aea797eb4f8873414d6520c316296f2837949d442a16725812705d4",
+    "handoff/module-f/validate_evidence.py": "fffdd804f1cf1ac2c68c887fcdce236647e5ccfe4d3348e9e242c0dd01467b6e",
+    "handoff/task-07/cli_smoke.py": "b1b127805d11e3209fce75ecc3da7c5a3bf4dd1be0045168e164c7b824d521c6",
+    "handoff/task-07/integration.py": "3db2517007d433b4f698c4796210d093ae4e2b1e735adeb0db8871834e6514ea",
+    "handoff/task-07/performance.py": "4a8fdb4300c6cf5820da02fee7089d5ac73bdbeb6b325d1eba44dccdd633ca23",
+    "handoff/task-07/test_cli_smoke.py": "874a047afb58ca89ef18091ac8ac6c1c334f71ffe513ed4da853a30ba9bf405f",
+    "handoff/task-07/test_performance.py": "1599002bd32bd8261f5b36f015fc0512677c72401e2b39760dffecc4aa508419",
+    "handoff/task-07/test_verify.py": "c32a3db0508b752f00147ff8e7b76483db22bc82951431e21ce8a8019a9575bc",
+    "handoff/task-07/verify.py": "234c01e2181bf1b41f3443ce4a0f21102d3eb57f239756a9261058c0f9859357"
+  },
+  "inputFingerprintSHA256": "f75d978eabbdd356546d9c3fea4ba84cd0ef441e918f4a9c6f7bb8f9c0184767",
+  "inputCount": 21,
+  "inputsStableDuringRun": true,
+  "changedInputs": [],
+  "graphicsSourceSHA256": "80f731c4466ad7f2d84ec5ad2456236af5a7a2866aaa9882ed6a642a73a2d54d",
+  "graphicsSourceStableDuringRun": true,
+  "graphicsBinarySHA256": "fd2608efa8d2975c5ff53cbce26a63a0990acabd5e118b401dfe703f89fefe91",
+  "scope": "local test tools, portable C ABI, and evidence semantics only",
+  "realDriverLoaded": "not_verified",
+  "gameProtection": "not_verified",
+  "onlineGameSession": "not_tested",
+  "gamePerformance": "not_tested"
+}

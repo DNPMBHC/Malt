@@ -1,0 +1,33 @@
+{
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-24T05:55:04.086108+00:00",
+  "scope": "complete_runtime_headless_guest_probe_build_only",
+  "vm_actions": 0,
+  "guest_execution_enabled": false,
+  "guest_validation": "not_tested",
+  "guest_scanout_verified": false,
+  "virtual_hid_verified": false,
+  "system_dpi_scaling_implemented": true,
+  "passed": true,
+  "unguarded_execution_rejected_before_vm_access": true,
+  "production_snapshot_revision": 4,
+  "production_fingerprint": "3627d20d3e6a9acf0f333ab3c8a757221a88bf9cd1b5ae84bc9442532e134c27",
+  "source_fingerprint_before": "224e57d8216be813254fd3d5702d63ab0c155f11bd5c7a995d088f08d2fdd0bf",
+  "source_fingerprint_after": "224e57d8216be813254fd3d5702d63ab0c155f11bd5c7a995d088f08d2fdd0bf",
+  "production_archive_sha256": "56e66ee30dcb6820975ee742a6cf3d961ee07001db92ffd7293d0f491a429ee6",
+  "source_sha256": "d33afba1b7b92b71ee419e9df2234b31fd4987da558f39f96c7c4752e0f5d946",
+  "support_source_sha256": "bb99e47bbf10dcbee39656695726962a5b5a5c1fee82d879b07abdd7903ba93b",
+  "executable_sha256": "9f7d272bf9aabba55d78b05b4021e592bcc59f66272d7569fa990ff1818dc720",
+  "runner_source_sha256": "1b026122133aa1a0c9a21874790eb316d04ed06ade4233b1e0c7b2a1ab3eda8e",
+  "consumer_module_sha256": {
+    "arm64-apple-macos.swiftdoc": "185325fece062693e116c8b716ec55e1593fee830ab628abc580f1753621a55f",
+    "arm64-apple-macos.swiftmodule": "973c29e3ba0e147d034207cbb3be9ddd36be882ad018f9a47e4330d257d35583",
+    "arm64-apple-macos.abi.json": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "isolated_build_directory": "guest-shell-roundtrip-kshsew77",
+  "recovery_journal": "atomic_baseline_before_first_display_apply",
+  "cold_headless_start_verified": false,
+  "required_initial_guest_state": "stopped_paused_or_started_owned_clone",
+  "required_execution_gate": "current_released_A_lease_and_independent_C_clone_proofs",
+  "inputs_stable": true
+}

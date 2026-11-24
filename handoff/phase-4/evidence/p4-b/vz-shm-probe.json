@@ -1,0 +1,39 @@
+{
+  "local_shm_ring_64k_update_frame" : {
+    "avg_per_frame_us" : 1.583,
+    "elapsed_ms" : 7.915,
+    "frames" : 5000,
+    "page_size_bytes" : 16384,
+    "region_bytes" : 294912,
+    "ring_throughput_fps" : 631751.84999999998,
+    "slot_bytes" : 66048,
+    "slot_count" : 4,
+    "status" : "passed"
+  },
+  "local_shm_ring_88b_cached_frame" : {
+    "avg_per_frame_us" : 0.0050000000000000001,
+    "elapsed_ms" : 0.045999999999999999,
+    "frames" : 10000,
+    "page_size_bytes" : 16384,
+    "region_bytes" : 32768,
+    "ring_throughput_fps" : 219380032.03,
+    "slot_bytes" : 88,
+    "slot_count" : 4,
+    "status" : "passed"
+  },
+  "note" : "Local page-aligned shared-memory ring proves host memory transport floor; full cross-VM zero-copy requires guest VirtIO driver integration.",
+  "owner" : "@DNPMBHC",
+  "probe" : "vz_custom_virtio_and_shm_ring",
+  "vz_custom_virtio" : {
+    "api_available" : true,
+    "configured_pci_class" : 3,
+    "configured_pci_subclass" : 128,
+    "configured_shm_region_bytes" : 268435456,
+    "configured_shm_region_id" : 0,
+    "configured_virtio_device_id" : 16,
+    "configured_virtio_queues" : 2,
+    "macos_min_version" : "27.0",
+    "max_allowed_shared_memory_regions" : 1,
+    "supports_dynamic_map_unmap_api" : true
+  }
+}

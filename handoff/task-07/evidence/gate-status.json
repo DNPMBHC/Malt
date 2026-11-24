@@ -1,0 +1,39 @@
+{
+  "schema": "task-07-gate-status-v3",
+  "updatedAt": "2026-11-23T08:39:30+08:00",
+  "owner": "@DNPMBHC",
+  "state": "all_phase2_gates_green_commercial_game_incomplete",
+  "reason": "Phase 2 final 3/3 real-evidence baseline all green: SwiftPM 183/173/10 skipped/0 failed, Strict SwiftLint 125 files/0 violations, format 6/6, CLI smoke passed, integration.py 10/10 stages passed (including 152 graphics-lab tests, anticheat hardening audit, compatibility matrix compile), and phase2_evidence.py v2 3/3 real-byte SHA-256 verification passed. Commercial game protected session remains blocked/incomplete on ARM64 due to observed_amd64_only_in_sample.",
+  "resumeCondition": "Phase 4 Window 4D packaging and artifact consistency gate in progress.",
+  "newFinalGateStarted": true,
+  "preservedReference": {
+    "buildEvidence": "final-verified/build.json",
+    "buildEvidenceSHA256": "630c90a1aacbc60a11302cd11fb3cf780ab9735cd1dc63034ae5a3b9b52b9fe6",
+    "capturedAt": "2026-11-22T00:20:18+08:00",
+    "buildPassed": true,
+    "swiftTests": {
+      "total": 85,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 1,
+      "executed": 84,
+      "passed": 84
+    },
+    "inputCount": 166,
+    "inputFingerprintSHA256": "7e72ef9b86dfafef0d2dfd7d12d1c55bd51c73b2c297ea26bd67b6098404d723",
+    "scope": "Preserved Phase 1 historical baseline; does not cover later Phase 2/3/4 edits."
+  },
+  "runtimeEnvironmentStatus": "phase2_three_windows_real_evidence_validated",
+  "latestBuildEvidence": "phase2-review-closure/build.json",
+  "latestBuildEvidenceSHA256": "916503777a03120a997c4b904cb354977564f51f72ac3ab1075434f63adb320f",
+  "latestIntegrationEvidence": "integration-p4-baseline/integration.json",
+  "latestIntegrationEvidenceSHA256": "8305dc8b36618824c1116a0172e35e381814f478be22cb4383126516dcf5b941",
+  "latestFormatEvidence": "format-review-closure/format.json",
+  "latestPhase2Evidence": "phase2-evidence.json",
+  "latestPhase2EvidenceSHA256": "92e16224be07ac38e5f6ec5274d7e23ddeadd92e00002ac4216d0ce0e1959fc2",
+  "latestCliEvidence": "cli/cli.json",
+  "sourceStabilityNotificationReceived": true,
+  "finalEvidence": "collection.json",
+  "localGatePassed": true,
+  "phase2EvidenceAllPassed": true
+}

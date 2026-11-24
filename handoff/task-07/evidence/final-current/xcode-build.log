@@ -1,0 +1,831 @@
+Command line invocation:
+    <system-path> -project <workspace>/my-project/my-project.xcodeproj -scheme my-project -scmProvider system -disableAutomaticPackageResolution -onlyUsePackageVersionsFromResolvedFile -skipPackageUpdates -configuration Debug -destination platform=macOS,arch=arm64 CODE_SIGNING_ALLOWED=NO build
+
+Build settings from command line:
+    CODE_SIGNING_ALLOWED = NO
+
+Resolve Package Graph
+
+
+Resolved source packages:
+  swift-argument-parser: <dependency-remote> @ 1.5.0
+  ModuleX: <workspace>/my-project/module-x
+  Progress: <dependency-remote> @ 0.4.0
+  Sparkle: <dependency-remote> @ 2.x (8de8db0)
+  SwiftyTextTable: <dependency-remote> @ 0.9.0
+  SemanticVersion: <dependency-remote> @ 0.4.0
+
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (16 targets)
+    Target 'my-project' in project 'my-project'
+        ➜ Explicit dependency on target 'my-projectThumbnail' in project 'my-project'
+        ➜ Implicit dependency on target 'my-projectCmd' in project 'my-project' via file 'my-projectCmd' in build phase 'Copy Files'
+        ➜ Explicit dependency on target 'ModuleX-product' in project 'ModuleX'
+        ➜ Explicit dependency on target 'Sparkle-product' in project 'Sparkle'
+        ➜ Explicit dependency on target 'SemanticVersion-product' in project 'SemanticVersion'
+    Target 'Sparkle-product' in project 'Sparkle' (no dependencies)
+    Target 'my-projectCmd' in project 'my-project'
+        ➜ Explicit dependency on target 'ModuleX-product' in project 'ModuleX'
+        ➜ Explicit dependency on target 'Progress-product' in project 'Progress'
+        ➜ Explicit dependency on target 'SemanticVersion-product' in project 'SemanticVersion'
+        ➜ Explicit dependency on target 'SwiftyTextTable-product' in project 'SwiftyTextTable'
+        ➜ Explicit dependency on target 'ArgumentParser-product' in project 'swift-argument-parser'
+    Target 'ArgumentParser-product' in project 'swift-argument-parser'
+        ➜ Explicit dependency on target 'ArgumentParser' in project 'swift-argument-parser'
+        ➜ Explicit dependency on target 'ArgumentParserToolInfo' in project 'swift-argument-parser'
+    Target 'ArgumentParser' in project 'swift-argument-parser'
+        ➜ Explicit dependency on target 'ArgumentParserToolInfo' in project 'swift-argument-parser'
+    Target 'ArgumentParserToolInfo' in project 'swift-argument-parser' (no dependencies)
+    Target 'SwiftyTextTable-product' in project 'SwiftyTextTable'
+        ➜ Explicit dependency on target 'SwiftyTextTable' in project 'SwiftyTextTable'
+    Target 'SwiftyTextTable' in project 'SwiftyTextTable' (no dependencies)
+    Target 'Progress-product' in project 'Progress'
+        ➜ Explicit dependency on target 'Progress' in project 'Progress'
+    Target 'Progress' in project 'Progress' (no dependencies)
+    Target 'my-projectThumbnail' in project 'my-project'
+        ➜ Explicit dependency on target 'ModuleX-product' in project 'ModuleX'
+    Target 'ModuleX-product' in project 'ModuleX'
+        ➜ Explicit dependency on target 'ModuleX' in project 'ModuleX'
+        ➜ Explicit dependency on target 'SemanticVersion-product' in project 'SemanticVersion'
+    Target 'ModuleX' in project 'ModuleX'
+        ➜ Explicit dependency on target 'SemanticVersion-product' in project 'SemanticVersion'
+    Target 'SemanticVersion-product' in project 'SemanticVersion'
+        ➜ Explicit dependency on target 'SemanticVersion' in project 'SemanticVersion'
+        ➜ Explicit dependency on target 'SemanticVersion_SemanticVersion' in project 'SemanticVersion'
+    Target 'SemanticVersion' in project 'SemanticVersion'
+        ➜ Explicit dependency on target 'SemanticVersion_SemanticVersion' in project 'SemanticVersion'
+    Target 'SemanticVersion_SemanticVersion' in project 'SemanticVersion' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool <system-path> --version
+
+ExecuteExternalTool <system-path> --version --output-format xml1
+
+ExecuteExternalTool <system-path> -v -E -dM -isysroot <system-path> -x c -c /dev/null
+
+ExecuteExternalTool <system-path> compile --dry-run --output-directory <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build <workspace>/my-project/my-project/Localizable.xcstrings
+
+ExecuteExternalTool <system-path> -version_details
+
+ReadFileContents <system-path>
+
+Build description signature: 5b0126495c88ca637975ec2b834e227c
+Build description path: <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/XCBuildData/5b0126495c88ca637975ec2b834e227c.xcbuilddata
+ClangStatCache <system-path> <system-path> <home>/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/macosx27.0-26A425-7231f6df4def33e022ae2eb8f782df1a.sdkstatcache
+    cd <workspace>/my-project/my-project.xcodeproj
+    <system-path> <system-path> -o <home>/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/macosx27.0-26A425-7231f6df4def33e022ae2eb8f782df1a.sdkstatcache
+
+ProcessInfoPlistFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/SemanticVersion_SemanticVersion.bundle/Contents/Info.plist <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/SemanticVersion.build/Debug/SemanticVersion_SemanticVersion-b.build/empty-SemanticVersion_SemanticVersion.plist (in target 'SemanticVersion_SemanticVersion' from project 'SemanticVersion')
+    cd <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/SourcePackages/checkouts/SemanticVersion
+    builtin-infoPlistUtility <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/SemanticVersion.build/Debug/SemanticVersion_SemanticVersion-b.build/empty-SemanticVersion_SemanticVersion.plist -producttype com.apple.product-type.bundle -expandbuildsettings -platform macosx -o <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/SemanticVersion_SemanticVersion.bundle/Contents/Info.plist
+
+ProcessInfoPlistFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectThumbnail.appex/Contents/Info.plist <workspace>/my-project/my-projectThumbnail/Info.plist (in target 'my-projectThumbnail' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-infoPlistUtility <workspace>/my-project/my-projectThumbnail/Info.plist -producttype com.apple.product-type.app-extension -expandbuildsettings -platform macosx -additionalcontentfile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-projectThumbnail.build/assetcatalog_generated_info.plist -scanforprivacyfile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectThumbnail.appex/Contents/Resources/SemanticVersion_SemanticVersion.bundle -o <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-projectThumbnail.appex/Contents/Info.plist
+
+note: Run script build phase 'SwiftLint' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'my-project' from project 'my-project')
+CpResource <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/ModuleX <workspace>/my-project/module-x (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks <workspace>/my-project/module-x <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources
+
+PhaseScriptExecution SwiftLint <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Script-6E50D98129CD0EAF008C39F6.sh (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+<environment redacted>
+    <system-path> -c <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/Script-6E50D98129CD0EAF008C39F6.sh
+Running SwiftLint
+Linting Swift files in current working directory
+Linting 'ThumbnailProvider.swift' (2/85)
+Linting 'Package.swift' (3/85)
+Linting 'Main.swift' (1/85)
+Linting 'RuntimeTests.swift' (4/85)
+Linting 'HostCapabilitiesTests.swift' (5/85)
+Linting 'AntiCheatProbeTestSupport.swift' (8/85)
+Linting 'AntiCheatProbeTests.swift' (7/85)
+Linting 'IntegrationBoundaryTests.swift' (6/85)
+Linting 'UTMWindowsGuestProviderTests.swift' (9/85)
+Linting 'HostMetalFXTests.swift' (10/85)
+Linting 'RuntimeProcessTests.swift' (11/85)
+Linting 'ShellLink.swift' (12/85)
+Linting 'Tar.swift' (13/85)
+Linting 'BitmapInfo.swift' (14/85)
+Linting 'Magic.swift' (15/85)
+Linting 'PortableExecutable.swift' (16/85)
+Linting 'Section.swift' (17/85)
+Linting 'COFFFileHeader.swift' (18/85)
+Linting 'OptionalHeader.swift' (19/85)
+Linting 'ResourceType.swift' (20/85)
+Linting 'ResourceDataEntry.swift' (21/85)
+Linting 'ResourceDirectoryTable.swift' (22/85)
+Linting 'ResourceDirectoryEntry.swift' (23/85)
+Linting 'RuntimeArguments.swift' (24/85)
+Linting 'RuntimeModels.swift' (25/85)
+Linting 'GameCompatibilityDatabase.swift' (26/85)
+Linting 'JSONKeyUniquenessScanner.swift' (27/85)
+Linting 'WindowsGuestProbeService.swift' (28/85)
+Linting 'AntiCheatProbe.swift' (29/85)
+Linting 'HostResourceStateMonitor.swift' (30/85)
+Linting 'HostResourcePolicy.swift' (31/85)
+Linting 'WindowsGuestTransport.swift' (32/85)
+Linting 'UTMWindowsGuestProvider.swift' (33/85)
+Linting 'HostCapabilities.swift' (34/85)
+Linting 'RuntimeBackends.swift' (35/85)
+Linting 'RuntimeCoordinator.swift' (36/85)
+Linting 'Rosetta2.swift' (37/85)
+Linting 'Wine.swift' (38/85)
+Linting 'Process+Extensions.swift' (39/85)
+Linting 'FileHandle+Extensions.swift' (40/85)
+Linting 'Logger+Extensions.swift' (41/85)
+Linting 'Program+Extensions.swift' (42/85)
+Linting 'FileManager+Extensions.swift' (43/85)
+Linting 'URL+Extensions.swift' (44/85)
+Linting 'Bundle+Extensions.swift' (45/85)
+Linting 'my-projectWineInstaller.swift' (46/85)
+Linting 'ProgramSettings.swift' (47/85)
+Linting 'BottleSettings.swift' (48/85)
+Linting 'Bottle.swift' (49/85)
+Linting 'Program.swift' (51/85)
+Linting 'BottleData.swift' (50/85)
+Linting 'AppDelegate.swift' (52/85)
+Linting 'BottleVM.swift' (53/85)
+Linting 'Constants.swift' (54/85)
+Linting 'Winetricks.swift' (55/85)
+Linting 'my-projectCmd.swift' (56/85)
+Linting 'ProgramShortcut.swift' (57/85)
+Linting 'Animation+Extensions.swift' (58/85)
+Linting 'Bottle+Extensions.swift' (59/85)
+Linting 'SparkleView.swift' (60/85)
+Linting 'FileOpenView.swift' (61/85)
+Linting 'my-projectApp.swift' (62/85)
+Linting 'ContentView.swift' (63/85)
+Linting 'SettingsView.swift' (64/85)
+Linting 'SetupView.swift' (65/85)
+Linting 'RosettaView.swift' (66/85)
+Linting 'WelcomeView.swift' (67/85)
+Linting 'my-projectWineDownloadView.swift' (68/85)
+Linting 'my-projectWineInstallView.swift' (69/85)
+Linting 'ProgramView.swift' (71/85)
+Linting 'ProgramMenuView.swift' (70/85)
+Linting 'EnvironmentArgView.swift' (72/85)
+Linting 'ProgramsView.swift' (73/85)
+Linting 'BottomBar.swift' (74/85)
+Linting 'RenameView.swift' (75/85)
+Linting 'ActionView.swift' (76/85)
+Linting 'ConfigView.swift' (77/85)
+Linting 'RunningProcessesView.swift' (78/85)
+Linting 'BottleView.swift' (79/85)
+Linting 'BottleListEntry.swift' (80/85)
+Linting 'WinetricksView.swift' (81/85)
+Linting 'BottleCreationView.swift' (82/85)
+Linting 'PinCreationView.swift' (83/85)
+Linting 'PinView.swift' (85/85)
+Linting 'PinAddView.swift' (84/85)
+Done linting! Found 0 violations, 0 serious in 85 files.
+
+CopySwiftLibs <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-swiftStdLibTool --copy --verbose --scan-executable <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/MacOS/my-project.debug.dylib --scan-folder <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Frameworks --scan-folder <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/PlugIns --scan-folder <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Library/SystemExtensions --scan-folder <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Extensions --platform macosx --toolchain <system-path> --destination <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Frameworks --strip-bitcode --strip-bitcode-tool <system-path> --emit-dependency-info <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os --back-deploy-swift-span
+Ignoring --strip-bitcode because --sign was not passed
+
+ProcessInfoPlistFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Info.plist <workspace>/my-project/my-project/Info.plist (in target 'my-project' from project 'my-project')
+    cd <workspace>/my-project
+    builtin-infoPlistUtility <workspace>/my-project/my-project/Info.plist -producttype com.apple.product-type.application -genpkginfo <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/PkgInfo -expandbuildsettings -platform macosx -additionalcontentfile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build/assetcatalog_generated_info.plist -scanforprivacyfile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Frameworks/Sparkle.framework -scanforprivacyfile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/PlugIns/my-projectThumbnail.appex -scanforprivacyfile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Resources/SemanticVersion_SemanticVersion.bundle -o <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/my-project.app/Contents/Info.plist
+
+PruneExplicitPrecompiledModules <home>/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules
+
+** BUILD SUCCEEDED **
+

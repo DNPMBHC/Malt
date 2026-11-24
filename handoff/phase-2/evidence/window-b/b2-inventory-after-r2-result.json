@@ -1,0 +1,15 @@
+{
+  "status": "execution_error",
+  "exit_code": 1,
+  "signal": 0,
+  "stdout": "",
+  "cleanup": "exit_unconfirmed_no_process_termination",
+  "recovery_pending": true,
+  "reason": "Execution failed; unconfirmed processes retain private recovery state.",
+  "stage": "inventory-after-r2",
+  "started_at_utc": "2026-11-22T15:17:41.811967+00:00",
+  "ended_at_utc": "2026-11-22T15:18:03.097355+00:00",
+  "stage_source_sha256": "987e32d0471820ee1386d784946c80ad417d8b3bf826a37df2997235f09fb563",
+  "wrapper_validation_status": "failed",
+  "wrapper_validation_reason": "transport_recovery_pending"
+}

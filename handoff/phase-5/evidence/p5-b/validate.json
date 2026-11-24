@@ -1,0 +1,85 @@
+{
+  "efiSecureBootAPI": {
+    "apiAvailable": true,
+    "className": "VZEFISignatureDatabaseConfiguration",
+    "initialDBCount": 0,
+    "initialDBXCount": 0,
+    "initialKEKCount": 0
+  },
+  "entitlementProbe": {
+    "codesignExit": 0,
+    "hardenedRuntimeFlag": true,
+    "hasVirtualizationEntitlement": true
+  },
+  "hostPageSizeBytes": 16384,
+  "maxAllowedSharedMemoryRegions": 1,
+  "maxValidatedSharedMemoryMiB": 1048576,
+  "nativeVtpmApiInSDK": false,
+  "owner": "@DNPMBHC",
+  "pciModernSpec": {
+    "deviceID": "0x1050",
+    "pciClass": "0x03",
+    "pciSubclass": "0x80",
+    "vendorID": "0x1af4",
+    "virtioDeviceID": 16,
+    "virtioQueues": 2
+  },
+  "sharedMemoryLadder": [
+    {
+      "errorCode": 0,
+      "sharedMemoryMiB": 64,
+      "validated": true
+    },
+    {
+      "errorCode": 0,
+      "sharedMemoryMiB": 256,
+      "validated": true
+    },
+    {
+      "errorCode": 0,
+      "sharedMemoryMiB": 1024,
+      "validated": true
+    },
+    {
+      "errorCode": 0,
+      "sharedMemoryMiB": 2048,
+      "validated": true
+    },
+    {
+      "errorCode": 0,
+      "sharedMemoryMiB": 4096,
+      "validated": true
+    },
+    {
+      "errorCode": 0,
+      "sharedMemoryMiB": 8192,
+      "validated": true
+    },
+    {
+      "errorCode": 0,
+      "sharedMemoryMiB": 16384,
+      "validated": true
+    },
+    {
+      "errorCode": 0,
+      "sharedMemoryMiB": 65536,
+      "validated": true
+    },
+    {
+      "errorCode": 0,
+      "sharedMemoryMiB": 1048576,
+      "validated": true
+    }
+  ],
+  "twoRegionsCase": {
+    "errorCode": 2,
+    "errorDomain": "VZErrorDomain",
+    "errorSummary": "Invalid virtual machine configuration. The number of Virtio shared memory regions is greater than the maximum number supported.",
+    "sharedMemoryMiB": 64,
+    "validated": false
+  },
+  "unaligned4KCase": {
+    "errorCode": 0,
+    "validated": true
+  }
+}

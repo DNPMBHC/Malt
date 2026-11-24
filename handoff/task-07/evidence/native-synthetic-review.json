@@ -1,0 +1,1289 @@
+{
+  "schema": "task-07-native-synthetic-review-v1",
+  "capturedAt": "2026-11-21T16:32:04.115558+00:00",
+  "scope": {
+    "kind": "native_synthetic_loopback_protocol",
+    "D3DExecuted": false,
+    "windowsGuestExecuted": false,
+    "gameExecuted": false,
+    "driverExecuted": false,
+    "physicalLatencyMeasured": false,
+    "powerMeasured": false,
+    "temperatureMeasured": false,
+    "rawEvidenceChangedDuringReview": false
+  },
+  "method": {
+    "percentiles": "linear interpolation at (n-1)*p, sorted samples",
+    "frameIntervalFirstRowExcluded": "frame_index 0 contains an initial zero sentinel; 90 measured frames yield 89 intervals",
+    "independentRecompute": "standard-library CSV/JSON parser and statistics; supplied summaries additionally compared against module analyzer",
+    "manifestSHA256": "981955925b75a3c7be1658287f6892ef42583350d173622dde9ddf6f69d6d329",
+    "integrityLimitation": "The manifest is a local integrity check, not independent attestation of acquisition or execution.",
+    "buildProvenance": {
+      "exactSourceSnapshotHash": null,
+      "receiverBinaryHash": null,
+      "senderBinaryHash": null,
+      "reason": "raw evidence records do not bind each run to immutable source or executable hashes"
+    },
+    "originalManifestSHA256": "e6358a60dc49d43ff8ddd0f6867533fcb2220b9a603ac7626709d991532fcbf0",
+    "followUpReview": "Final binding recheck of current manifest and all file hashes; new 60-frame CSV and 65-record host log independently cross-checked. Original five measurement sets retain their reviewed hashes; their statistics were not recomputed."
+  },
+  "manifest": {
+    "expectedFiles": 24,
+    "allHashesMatch": true,
+    "allSizesMatch": true,
+    "unlistedFileCount": 0,
+    "files": {
+      "cadence-both-every-30-host.jsonl": {
+        "sha256Matches": true,
+        "sizeMatches": true,
+        "sha256": "71c9940a77cb0c876abb6b6033e93742896e11c2df365d4bba43d5a863e8eeeb",
+        "bytes": 35131
+      },
+      "cadence-both-every-30-meta.json": {
+        "sha256Matches": true,
+        "sizeMatches": true,
+        "sha256": "029c84c5a864d2d279446c2801def867b3ee52645f7e51cceacd375e6d2eef71",
+        "bytes": 1462
+      },
+      "cadence-both-every-30-summary.json": {
+        "sha256Matches": true,
+        "sizeMatches": true,
+        "sha256": "117e561773feff1f13bfaa68ee62f6c1e27909bb2a13b149eb1593bd7ca13154",
+        "bytes": 4183
+      },
+      "cadence-both-every-30.csv": {
+        "sha256Matches": true,
+        "sizeMatches": true,
+        "sha256": "c2935821517abf56b05ee287b485b0364bb7d0541188adee39a045ba025c30a0",
+        "bytes": 11628
+      },
+      "cadence-every-1-host.jsonl": {
+        "sha256Matches": true,
+        "sizeMatches": true,
+        "sha256": "8b1205ec6b45c1121d6c0df077ab4157f31cfb9f54339edecbde2c52c02a9feb",
+        "bytes": 25264
+      },
+      "cadence-every-1-summary.json": {
+        "sha256Matches": true,
+        "sizeMatches": true,
+        "sha256": "fc1aa03c53e32587cf64285197f2243d33b57e7a9d732bf5682c64f306bfbad9",
+        "bytes": 4176
+      },
+      "cadence-every-1.csv": {
+        "sha256Matches": true,
+        "sizeMatches": true,
+        "sha256": "ccb1a4cd5d29d1fc97b5a57a4b92d877be09f4994a461243e7c792ceb2b32f4f",
+        "bytes": 12075
+      },
+      "cadence-every-30-host.jsonl": {
+        "sha256Matches": true,
+        "sizeMatches": true,
+        "sha256": "73f8574e93fc694c4651db1c342a9fffdb6b4c86e7983428b5b897b0686190be",
+        "bytes": 24766
+      },
+      "cadence-every-30-summary.json": {
+        "sha256Matches": true,
+        "sizeMatches": true,
+        "sha256": "3cfb3b28e1e39888911d6ec5a5c38a23c1350d3d2583395d0a0d920996316685",
+        "bytes": 4164
+      },
+      "cadence-every-30.csv": {
+        "sha256Matches": true,
+        "sizeMatches": true,
+        "sha256": "a7dfca42ced9d80c370600a3838534af6e43f520da7c06c21f6b7640880dd7d2",
+        "bytes": 11923
+      },
+      "instrumentation-fix-smoke.csv": {
+        "sha256Matches": true,
+        "sizeMatches": true,
+        "sha256": "00fc437b6c5f30c025e0fc4e563c29726a6fdd3ed241d722f7382642b97a4f5d",
+        "bytes": 724
+      },
+      "instrumentation-fix-smoke.jsonl": {
+        "sha256Matches": true,
+        "sizeMatches": true,
+        "sha256": "3f98abacd739cb8787633c302afc38565b23a53ca00a78eed2d4ecbb5bc80fcc",
+        "bytes": 1445
+      },
+      "instrumentation-note.json": {
+        "sha256Matches": true,
+        "sizeMatches": true,
+        "sha256": "e13121e58bf5d78a9ed4cebbc1228cdb55e5c916006a85dcdcc41b2a9efa20d7",
+        "bytes": 1297
+      },
+      "machine.json": {
+        "sha256Matches": true,
+        "sizeMatches": true,
+        "sha256": "47bebf88bc052d9e4d41dd5b6c1c1430ffa2a7b9007acf613db878dc6927e9e7",
+        "bytes": 534
+      },
+      "protocol-check.json": {
+        "sha256Matches": true,
+        "sizeMatches": true,
+        "sha256": "7b34781e4b4e758ecaaf55604ad2fad7ef597b3fe764d6794d9a56d0662662a2",
+        "bytes": 663
+      },
+      "run-01-host.jsonl": {
+        "sha256Matches": true,
+        "sizeMatches": true,
+        "sha256": "18d4776d15b6a8266ab66feb382feff7a3433251fb628b8e0bd8ad7184b5ef89",
+        "bytes": 42769
+      },
+      "run-01-summary.json": {
+        "sha256Matches": true,
+        "sizeMatches": true,
+        "sha256": "41651cb2b4728ceae944ec7eba7248b3450f6c4da2a2d9031b37f5e3c4758fcd",
+        "bytes": 4155
+      },
+      "run-01.csv": {
+        "sha256Matches": true,
+        "sizeMatches": true,
+        "sha256": "ef94a62dec73e5588c4865cd8f7db852a420ac2afacb11ecb8141ad030b4dea5",
+        "bytes": 17943
+      },
+      "run-02-host.jsonl": {
+        "sha256Matches": true,
+        "sizeMatches": true,
+        "sha256": "5b695a13c1ba8e863cd969821f3f021d59c3408020ccf1e19491e3fcd498217d",
+        "bytes": 42766
+      },
+      "run-02-summary.json": {
+        "sha256Matches": true,
+        "sizeMatches": true,
+        "sha256": "2aa9d516bf9bcd5fec33673e33ad9b67d1ab2f3d777749b08924b1ec0ee49d27",
+        "bytes": 4152
+      },
+      "run-02.csv": {
+        "sha256Matches": true,
+        "sizeMatches": true,
+        "sha256": "6058e91dec55d6841f78d38d609e602f471e609adcde0b1053f4e628132c102c",
+        "bytes": 18034
+      },
+      "run-03-host.jsonl": {
+        "sha256Matches": true,
+        "sizeMatches": true,
+        "sha256": "899ff23f27c00bdfb2c5987c3afc7ba6fe7413301ebd21ee29dd6c664cb31476",
+        "bytes": 42761
+      },
+      "run-03-summary.json": {
+        "sha256Matches": true,
+        "sizeMatches": true,
+        "sha256": "eaf579536d6dcc20af4ae44497f9c6aa1e624ca5028bee88aeb00ba88fac2669",
+        "bytes": 4150
+      },
+      "run-03.csv": {
+        "sha256Matches": true,
+        "sizeMatches": true,
+        "sha256": "bc844c9cc80db0d183d268cc81e8f3639bf09465b88cc65c2b2a3e853d0a4eed",
+        "bytes": 17985
+      }
+    },
+    "unchangedAfterReview": true,
+    "originalFileCount": 17,
+    "originalFilesUnchanged": false,
+    "addedFiles": [
+      "cadence-both-every-30-host.jsonl",
+      "cadence-both-every-30-meta.json",
+      "cadence-both-every-30-summary.json",
+      "cadence-both-every-30.csv",
+      "instrumentation-fix-smoke.csv",
+      "instrumentation-fix-smoke.jsonl",
+      "instrumentation-note.json"
+    ],
+    "removedFiles": [],
+    "originalMeasurementSetCount": 5,
+    "originalMeasurementFileCount": 15,
+    "originalMeasurementFilesUnchanged": true
+  },
+  "privacyScan": {
+    "scope": "All current native raw evidence including current manifest and command/resource cadence follow-up; counts and types only",
+    "filesScanned": 25,
+    "findingsByType": {
+      "absoluteLocalPath": {
+        "matchCount": 0,
+        "fileCount": 0
+      },
+      "email": {
+        "matchCount": 0,
+        "fileCount": 0
+      },
+      "credentialLikeField": {
+        "matchCount": 0,
+        "fileCount": 0
+      },
+      "privateWorkspaceOrUserToken": {
+        "matchCount": 0,
+        "fileCount": 0
+      }
+    },
+    "hasFindings": false,
+    "limitation": "pattern scan is not proof of complete anonymization",
+    "detectorsCheckedWithSyntheticPositiveControls": true,
+    "versionChainSubstringsExcludedFromIPv4Detection": true
+  },
+  "host": {
+    "architecture": "arm64",
+    "build": "26B131",
+    "gpu": "Apple M4",
+    "os": "macOS 27.2.1",
+    "python": "3.12.8",
+    "sdk": "27.0",
+    "swift": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)",
+    "xcode": "Xcode 27.0"
+  },
+  "runs": [
+    {
+      "run": "run-01",
+      "scope": "native_synthetic_loopback_protocol",
+      "measuredFrames": 90,
+      "warmupFrames": 20,
+      "hostFrameRecords": 110,
+      "resolution": {
+        "width": 640,
+        "height": 360
+      },
+      "resourceEveryFrames": 1,
+      "frameIntervalMs": {
+        "sampleCount": 89,
+        "p50": 10.613958991598338,
+        "p95": 64.79633337585254,
+        "p99": 66.36897489894181,
+        "mean": 27.224690539584486,
+        "minimum": 1.2982500484213233,
+        "maximum": 66.62729103118181,
+        "populationStddev": 26.223256526007805,
+        "coefficientOfVariationPercent": 96.32159633873302
+      },
+      "requestToPresentReturnProxyMs": {
+        "sampleCount": 90,
+        "p50": 11.026978987501934,
+        "p95": 64.63156858517323,
+        "p99": 66.31928136339411,
+        "mean": 27.462399075739086,
+        "minimum": 1.2885420001111925,
+        "maximum": 66.58687500748783,
+        "populationStddev": 26.193580359760684,
+        "coefficientOfVariationPercent": 95.37979652659223
+      },
+      "hostReceiveToPresentCompleteMs": {
+        "sampleCount": 90,
+        "p50": 9.959499999999998,
+        "p95": 63.46704999999999,
+        "p99": 65.16832,
+        "mean": 26.480866666666664,
+        "minimum": 0.802,
+        "maximum": 65.446,
+        "populationStddev": 26.20062810154664,
+        "coefficientOfVariationPercent": 98.94173189779782
+      },
+      "hostMetalCommandBufferMs": {
+        "sampleCount": 90,
+        "p50": 0.1705,
+        "p95": 0.2261,
+        "p99": 0.23455,
+        "mean": 0.16753333333333334,
+        "minimum": 0.043,
+        "maximum": 0.239,
+        "populationStddev": 0.04198788184967446,
+        "coefficientOfVariationPercent": 25.062404605854233
+      },
+      "processCpuTimePerFrameMs": {
+        "sampleCount": 90,
+        "p50": 0.8574999999999972,
+        "p95": 1.093050000000003,
+        "p99": 1.2215899999999944,
+        "mean": 0.7715111111111103,
+        "minimum": 0.16199999999999548,
+        "maximum": 1.2830000000000064,
+        "populationStddev": 0.291702673756247,
+        "coefficientOfVariationPercent": 37.80926412532729
+      },
+      "startup": {
+        "connectSetupMs": 20.03616699948907,
+        "warmupMs": 401.6353329643607,
+        "coldStartMs": null,
+        "hotStartMs": null,
+        "reason": "connect_setup_is_not_process_or_game_cold_hot_start"
+      },
+      "network": {
+        "applicationProtocolBytesTotal": 88873200,
+        "applicationProtocolBytesPerFrame": 987480.0,
+        "measuredSpanSeconds": 2.4744204999879003,
+        "applicationProtocolMiBPerSecond": 34.25290416776388,
+        "applicationProtocolMegabitsPerSecond": 287.3341859249374,
+        "bandwidthMeaning": "loopback_application_bytes_divided_by_first_measured_frame_start_to_last_ack_elapsed; excludes_handshake_warmup_and_TCP_IP_headers",
+        "ackBytesPerFrameFromClient": [
+          56
+        ],
+        "ackBytesPerFrameFromHostLog": [
+          32
+        ],
+        "resourceUpdateCount": 90,
+        "resourceBytesTotal": 5898240
+      },
+      "memory": {
+        "senderPeakRssBytes": 32882688.0,
+        "hostResidentPeakBytes": 87539712.0,
+        "modeledTextureFootprintBytes": 3686400,
+        "modeledTextureIsMeasuredVRAM": false
+      },
+      "missing": {
+        "powerW": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "not_collected"
+        },
+        "temperatureC": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "not_collected"
+        },
+        "producerGpuMs": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "synthetic_sender_has_no_D3D_GPU_query"
+        },
+        "physicalInputToPhotonMs": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "no_physical_instrumentation"
+        },
+        "cpuUtilizationPercent": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "process_cpu_time_only"
+        },
+        "gpuUtilizationPercent": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "command_buffer_time_only"
+        }
+      },
+      "validation": {
+        "expectedCountsMatch": true,
+        "summaryMatchesAnalyzerRecomputation": true,
+        "perFrameMismatchCounts": {
+          "sequence": 0,
+          "warmup": 0,
+          "commandBytes": 0,
+          "resourceBytes": 0,
+          "pixelBytes": 0,
+          "outboundBytes": 0,
+          "inboundAckBytes": 90,
+          "hostTiming": 0,
+          "hostGpuTiming": 0,
+          "hostResidentBytes": 0,
+          "modeledTextureBytes": 0,
+          "resourceRetention": 0,
+          "resourceCadence": 0,
+          "syntheticProxyEquality": 0
+        },
+        "payloadAndTelemetryMatch": true,
+        "acknowledgementCounterMatches": false
+      }
+    },
+    {
+      "run": "run-02",
+      "scope": "native_synthetic_loopback_protocol",
+      "measuredFrames": 90,
+      "warmupFrames": 20,
+      "hostFrameRecords": 110,
+      "resolution": {
+        "width": 640,
+        "height": 360
+      },
+      "resourceEveryFrames": 1,
+      "frameIntervalMs": {
+        "sampleCount": 89,
+        "p50": 10.945749992970377,
+        "p95": 65.93175039160997,
+        "p99": 66.46059108665213,
+        "mean": 24.378039786497947,
+        "minimum": 1.5719999792054296,
+        "maximum": 67.18604202615097,
+        "populationStddev": 24.791279195201284,
+        "coefficientOfVariationPercent": 101.6951297656517
+      },
+      "requestToPresentReturnProxyMs": {
+        "sampleCount": 90,
+        "p50": 11.31735448143445,
+        "p95": 65.88338997680694,
+        "p99": 66.42103172605857,
+        "mean": 24.45782356792026,
+        "minimum": 1.5508749638684094,
+        "maximum": 67.14845902752131,
+        "populationStddev": 24.67321652940685,
+        "coefficientOfVariationPercent": 100.88067100855658
+      },
+      "hostReceiveToPresentCompleteMs": {
+        "sampleCount": 90,
+        "p50": 9.832,
+        "p95": 64.6003,
+        "p99": 65.76273,
+        "mean": 23.35288888888889,
+        "minimum": 0.807,
+        "maximum": 66.424,
+        "populationStddev": 24.68625545991329,
+        "coefficientOfVariationPercent": 105.70964293697645
+      },
+      "hostMetalCommandBufferMs": {
+        "sampleCount": 90,
+        "p50": 0.17049999999999998,
+        "p95": 0.23554999999999998,
+        "p99": 0.24677,
+        "mean": 0.15452222222222223,
+        "minimum": 0.043,
+        "maximum": 0.253,
+        "populationStddev": 0.053028132528933854,
+        "coefficientOfVariationPercent": 34.31747988497912
+      },
+      "processCpuTimePerFrameMs": {
+        "sampleCount": 90,
+        "p50": 0.896000000000001,
+        "p95": 1.296349999999989,
+        "p99": 1.4113899999999993,
+        "mean": 0.8201444444444432,
+        "minimum": 0.16499999999999848,
+        "maximum": 1.6330000000000233,
+        "populationStddev": 0.3406542581272791,
+        "coefficientOfVariationPercent": 41.535885591230766
+      },
+      "startup": {
+        "connectSetupMs": 16.085042036138475,
+        "warmupMs": 552.6332079898566,
+        "coldStartMs": null,
+        "hotStartMs": null,
+        "reason": "connect_setup_is_not_process_or_game_cold_hot_start"
+      },
+      "network": {
+        "applicationProtocolBytesTotal": 88873200,
+        "applicationProtocolBytesPerFrame": 987480.0,
+        "measuredSpanSeconds": 2.2043787500006147,
+        "applicationProtocolMiBPerSecond": 38.44896810804963,
+        "applicationProtocolMegabitsPerSecond": 322.53332146292996,
+        "bandwidthMeaning": "loopback_application_bytes_divided_by_first_measured_frame_start_to_last_ack_elapsed; excludes_handshake_warmup_and_TCP_IP_headers",
+        "ackBytesPerFrameFromClient": [
+          56
+        ],
+        "ackBytesPerFrameFromHostLog": [
+          32
+        ],
+        "resourceUpdateCount": 90,
+        "resourceBytesTotal": 5898240
+      },
+      "memory": {
+        "senderPeakRssBytes": 36421632.0,
+        "hostResidentPeakBytes": 88080384.0,
+        "modeledTextureFootprintBytes": 3686400,
+        "modeledTextureIsMeasuredVRAM": false
+      },
+      "missing": {
+        "powerW": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "not_collected"
+        },
+        "temperatureC": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "not_collected"
+        },
+        "producerGpuMs": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "synthetic_sender_has_no_D3D_GPU_query"
+        },
+        "physicalInputToPhotonMs": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "no_physical_instrumentation"
+        },
+        "cpuUtilizationPercent": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "process_cpu_time_only"
+        },
+        "gpuUtilizationPercent": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "command_buffer_time_only"
+        }
+      },
+      "validation": {
+        "expectedCountsMatch": true,
+        "summaryMatchesAnalyzerRecomputation": true,
+        "perFrameMismatchCounts": {
+          "sequence": 0,
+          "warmup": 0,
+          "commandBytes": 0,
+          "resourceBytes": 0,
+          "pixelBytes": 0,
+          "outboundBytes": 0,
+          "inboundAckBytes": 90,
+          "hostTiming": 0,
+          "hostGpuTiming": 0,
+          "hostResidentBytes": 0,
+          "modeledTextureBytes": 0,
+          "resourceRetention": 0,
+          "resourceCadence": 0,
+          "syntheticProxyEquality": 0
+        },
+        "payloadAndTelemetryMatch": true,
+        "acknowledgementCounterMatches": false
+      }
+    },
+    {
+      "run": "run-03",
+      "scope": "native_synthetic_loopback_protocol",
+      "measuredFrames": 90,
+      "warmupFrames": 20,
+      "hostFrameRecords": 110,
+      "resolution": {
+        "width": 640,
+        "height": 360
+      },
+      "resourceEveryFrames": 1,
+      "frameIntervalMs": {
+        "sampleCount": 89,
+        "p50": 8.680624945554882,
+        "p95": 64.36598339350893,
+        "p99": 67.95709300553426,
+        "mean": 23.989288382274047,
+        "minimum": 2.3459999938495457,
+        "maximum": 69.19374997960404,
+        "populationStddev": 24.464133891555306,
+        "coefficientOfVariationPercent": 101.97940639886644
+      },
+      "requestToPresentReturnProxyMs": {
+        "sampleCount": 90,
+        "p50": 6.100145488744602,
+        "p95": 64.2163415934192,
+        "p99": 67.89753199380357,
+        "mean": 23.719231989364037,
+        "minimum": 2.3110000183805823,
+        "maximum": 69.14041697746143,
+        "populationStddev": 24.420211902898284,
+        "coefficientOfVariationPercent": 102.95532297946484
+      },
+      "hostReceiveToPresentCompleteMs": {
+        "sampleCount": 90,
+        "p50": 4.965999999999999,
+        "p95": 63.0066,
+        "p99": 66.71624,
+        "mean": 22.598966666666666,
+        "minimum": 1.475,
+        "maximum": 68.037,
+        "populationStddev": 24.407418649732982,
+        "coefficientOfVariationPercent": 108.00236581495459
+      },
+      "hostMetalCommandBufferMs": {
+        "sampleCount": 90,
+        "p50": 0.1755,
+        "p95": 0.23909999999999998,
+        "p99": 0.244,
+        "mean": 0.18105555555555558,
+        "minimum": 0.097,
+        "maximum": 0.244,
+        "populationStddev": 0.03254001335488051,
+        "coefficientOfVariationPercent": 17.972391543045386
+      },
+      "processCpuTimePerFrameMs": {
+        "sampleCount": 90,
+        "p50": 0.893999999999992,
+        "p95": 1.240849999999992,
+        "p99": 1.3519700000000028,
+        "mean": 0.939799999999999,
+        "minimum": 0.6789999999999852,
+        "maximum": 1.376000000000002,
+        "populationStddev": 0.16439621514972766,
+        "coefficientOfVariationPercent": 17.492680905482853
+      },
+      "startup": {
+        "connectSetupMs": 18.362083996180445,
+        "warmupMs": 476.1040420271456,
+        "coldStartMs": null,
+        "hotStartMs": null,
+        "reason": "connect_setup_is_not_process_or_game_cold_hot_start"
+      },
+      "network": {
+        "applicationProtocolBytesTotal": 88873200,
+        "applicationProtocolBytesPerFrame": 987480.0,
+        "measuredSpanSeconds": 2.1380415830062702,
+        "applicationProtocolMiBPerSecond": 39.64192695338581,
+        "applicationProtocolMegabitsPerSecond": 332.54058557658783,
+        "bandwidthMeaning": "loopback_application_bytes_divided_by_first_measured_frame_start_to_last_ack_elapsed; excludes_handshake_warmup_and_TCP_IP_headers",
+        "ackBytesPerFrameFromClient": [
+          56
+        ],
+        "ackBytesPerFrameFromHostLog": [
+          32
+        ],
+        "resourceUpdateCount": 90,
+        "resourceBytesTotal": 5898240
+      },
+      "memory": {
+        "senderPeakRssBytes": 31801344.0,
+        "hostResidentPeakBytes": 88621056.0,
+        "modeledTextureFootprintBytes": 3686400,
+        "modeledTextureIsMeasuredVRAM": false
+      },
+      "missing": {
+        "powerW": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "not_collected"
+        },
+        "temperatureC": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "not_collected"
+        },
+        "producerGpuMs": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "synthetic_sender_has_no_D3D_GPU_query"
+        },
+        "physicalInputToPhotonMs": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "no_physical_instrumentation"
+        },
+        "cpuUtilizationPercent": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "process_cpu_time_only"
+        },
+        "gpuUtilizationPercent": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "command_buffer_time_only"
+        }
+      },
+      "validation": {
+        "expectedCountsMatch": true,
+        "summaryMatchesAnalyzerRecomputation": true,
+        "perFrameMismatchCounts": {
+          "sequence": 0,
+          "warmup": 0,
+          "commandBytes": 0,
+          "resourceBytes": 0,
+          "pixelBytes": 0,
+          "outboundBytes": 0,
+          "inboundAckBytes": 90,
+          "hostTiming": 0,
+          "hostGpuTiming": 0,
+          "hostResidentBytes": 0,
+          "modeledTextureBytes": 0,
+          "resourceRetention": 0,
+          "resourceCadence": 0,
+          "syntheticProxyEquality": 0
+        },
+        "payloadAndTelemetryMatch": true,
+        "acknowledgementCounterMatches": false
+      }
+    },
+    {
+      "run": "cadence-every-1",
+      "scope": "native_synthetic_loopback_protocol",
+      "measuredFrames": 60,
+      "warmupFrames": 5,
+      "hostFrameRecords": 65,
+      "resolution": {
+        "width": 320,
+        "height": 180
+      },
+      "resourceEveryFrames": 1,
+      "frameIntervalMs": {
+        "sampleCount": 59,
+        "p50": 10.947999951895326,
+        "p95": 64.21732049784623,
+        "p99": 66.74139761598781,
+        "mean": 24.073930796614643,
+        "minimum": 1.2855830136686563,
+        "maximum": 67.65941699268296,
+        "populationStddev": 24.554200122260852,
+        "coefficientOfVariationPercent": 101.99497676430036
+      },
+      "requestToPresentReturnProxyMs": {
+        "sampleCount": 60,
+        "p50": 10.13904099818319,
+        "p95": 64.0942639001878,
+        "p99": 66.68096968962345,
+        "mean": 23.672401996251818,
+        "minimum": 1.247250009328127,
+        "maximum": 67.60154198855162,
+        "populationStddev": 24.504651570535756,
+        "coefficientOfVariationPercent": 103.51569551081346
+      },
+      "hostReceiveToPresentCompleteMs": {
+        "sampleCount": 60,
+        "p50": 9.1095,
+        "p95": 63.041549999999994,
+        "p99": 65.97872,
+        "mean": 22.695366666666665,
+        "minimum": 0.717,
+        "maximum": 66.859,
+        "populationStddev": 24.51173852121106,
+        "coefficientOfVariationPercent": 108.00327168634007
+      },
+      "hostMetalCommandBufferMs": {
+        "sampleCount": 60,
+        "p50": 0.1455,
+        "p95": 0.16824999999999998,
+        "p99": 0.18822999999999998,
+        "mean": 0.14323333333333332,
+        "minimum": 0.078,
+        "maximum": 0.19,
+        "populationStddev": 0.01943138926811176,
+        "coefficientOfVariationPercent": 13.566248034520662
+      },
+      "processCpuTimePerFrameMs": {
+        "sampleCount": 60,
+        "p50": 0.35400000000000365,
+        "p95": 0.43554999999999144,
+        "p99": 0.5086099999999935,
+        "mean": 0.3510666666666665,
+        "minimum": 0.11999999999999511,
+        "maximum": 0.5209999999999937,
+        "populationStddev": 0.06515183974549163,
+        "coefficientOfVariationPercent": 18.558252870914828
+      },
+      "startup": {
+        "connectSetupMs": 18.819249991793185,
+        "warmupMs": 95.42624995810911,
+        "coldStartMs": null,
+        "hotStartMs": null,
+        "reason": "connect_setup_is_not_process_or_game_cold_hot_start"
+      },
+      "network": {
+        "applicationProtocolBytesTotal": 17776800,
+        "applicationProtocolBytesPerFrame": 296280.0,
+        "measuredSpanSeconds": 1.4223132499610074,
+        "applicationProtocolMiBPerSecond": 11.91951040908562,
+        "applicationProtocolMegabitsPerSecond": 99.9881003737389,
+        "bandwidthMeaning": "loopback_application_bytes_divided_by_first_measured_frame_start_to_last_ack_elapsed; excludes_handshake_warmup_and_TCP_IP_headers",
+        "ackBytesPerFrameFromClient": [
+          56
+        ],
+        "ackBytesPerFrameFromHostLog": [
+          32
+        ],
+        "resourceUpdateCount": 60,
+        "resourceBytesTotal": 3932160
+      },
+      "memory": {
+        "senderPeakRssBytes": 22183936.0,
+        "hostResidentPeakBytes": 88227840.0,
+        "modeledTextureFootprintBytes": 921600,
+        "modeledTextureIsMeasuredVRAM": false
+      },
+      "missing": {
+        "powerW": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "not_collected"
+        },
+        "temperatureC": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "not_collected"
+        },
+        "producerGpuMs": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "synthetic_sender_has_no_D3D_GPU_query"
+        },
+        "physicalInputToPhotonMs": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "no_physical_instrumentation"
+        },
+        "cpuUtilizationPercent": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "process_cpu_time_only"
+        },
+        "gpuUtilizationPercent": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "command_buffer_time_only"
+        }
+      },
+      "validation": {
+        "expectedCountsMatch": true,
+        "summaryMatchesAnalyzerRecomputation": true,
+        "perFrameMismatchCounts": {
+          "sequence": 0,
+          "warmup": 0,
+          "commandBytes": 0,
+          "resourceBytes": 0,
+          "pixelBytes": 0,
+          "outboundBytes": 0,
+          "inboundAckBytes": 60,
+          "hostTiming": 0,
+          "hostGpuTiming": 0,
+          "hostResidentBytes": 0,
+          "modeledTextureBytes": 0,
+          "resourceRetention": 0,
+          "resourceCadence": 0,
+          "syntheticProxyEquality": 0
+        },
+        "payloadAndTelemetryMatch": true,
+        "acknowledgementCounterMatches": false
+      }
+    },
+    {
+      "run": "cadence-every-30",
+      "scope": "native_synthetic_loopback_protocol",
+      "measuredFrames": 60,
+      "warmupFrames": 5,
+      "hostFrameRecords": 65,
+      "resolution": {
+        "width": 320,
+        "height": 180
+      },
+      "resourceEveryFrames": 30,
+      "frameIntervalMs": {
+        "sampleCount": 59,
+        "p50": 10.24637499358505,
+        "p95": 62.2563298267778,
+        "p99": 65.69935764069669,
+        "mean": 23.353570609519227,
+        "minimum": 1.2494580005295575,
+        "maximum": 67.84654199145734,
+        "populationStddev": 24.21531925320932,
+        "coefficientOfVariationPercent": 103.69000808526827
+      },
+      "requestToPresentReturnProxyMs": {
+        "sampleCount": 60,
+        "p50": 11.641125020105392,
+        "p95": 62.21801701176446,
+        "p99": 65.6058752175886,
+        "mean": 23.727312561823055,
+        "minimum": 1.2437920086085796,
+        "maximum": 67.78983399271965,
+        "populationStddev": 24.208506239412678,
+        "coefficientOfVariationPercent": 102.02801592610138
+      },
+      "hostReceiveToPresentCompleteMs": {
+        "sampleCount": 60,
+        "p50": 10.825,
+        "p95": 61.14035,
+        "p99": 64.39770999999999,
+        "mean": 22.770866666666667,
+        "minimum": 0.73,
+        "maximum": 66.658,
+        "populationStddev": 24.196967177359692,
+        "coefficientOfVariationPercent": 106.26282930539766
+      },
+      "hostMetalCommandBufferMs": {
+        "sampleCount": 60,
+        "p50": 0.146,
+        "p95": 0.188,
+        "p99": 0.19687,
+        "mean": 0.1452,
+        "minimum": 0.09,
+        "maximum": 0.201,
+        "populationStddev": 0.027017155043909908,
+        "coefficientOfVariationPercent": 18.606856090847046
+      },
+      "processCpuTimePerFrameMs": {
+        "sampleCount": 60,
+        "p50": 0.32850000000000934,
+        "p95": 0.4605500000000019,
+        "p99": 0.4823299999999966,
+        "mean": 0.3203166666666671,
+        "minimum": 0.10200000000000486,
+        "maximum": 0.4900000000000043,
+        "populationStddev": 0.08979095939396659,
+        "coefficientOfVariationPercent": 28.031934875061076
+      },
+      "startup": {
+        "connectSetupMs": 15.076625044457614,
+        "warmupMs": 120.08141598198563,
+        "coldStartMs": null,
+        "hotStartMs": null,
+        "reason": "connect_setup_is_not_process_or_game_cold_hot_start"
+      },
+      "network": {
+        "applicationProtocolBytesTotal": 13975712,
+        "applicationProtocolBytesPerFrame": 232928.53333333333,
+        "measuredSpanSeconds": 1.4255958329886198,
+        "applicationProtocolMiBPerSecond": 9.349268060042808,
+        "applicationProtocolMegabitsPerSecond": 78.42734484261959,
+        "bandwidthMeaning": "loopback_application_bytes_divided_by_first_measured_frame_start_to_last_ack_elapsed; excludes_handshake_warmup_and_TCP_IP_headers",
+        "ackBytesPerFrameFromClient": [
+          56
+        ],
+        "ackBytesPerFrameFromHostLog": [
+          32
+        ],
+        "resourceUpdateCount": 2,
+        "resourceBytesTotal": 131072
+      },
+      "memory": {
+        "senderPeakRssBytes": 22740992.0,
+        "hostResidentPeakBytes": 88588288.0,
+        "modeledTextureFootprintBytes": 921600,
+        "modeledTextureIsMeasuredVRAM": false
+      },
+      "missing": {
+        "powerW": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "not_collected"
+        },
+        "temperatureC": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "not_collected"
+        },
+        "producerGpuMs": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "synthetic_sender_has_no_D3D_GPU_query"
+        },
+        "physicalInputToPhotonMs": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "no_physical_instrumentation"
+        },
+        "cpuUtilizationPercent": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "process_cpu_time_only"
+        },
+        "gpuUtilizationPercent": {
+          "sampleCount": 0,
+          "value": null,
+          "reason": "command_buffer_time_only"
+        }
+      },
+      "validation": {
+        "expectedCountsMatch": true,
+        "summaryMatchesAnalyzerRecomputation": true,
+        "perFrameMismatchCounts": {
+          "sequence": 0,
+          "warmup": 0,
+          "commandBytes": 0,
+          "resourceBytes": 0,
+          "pixelBytes": 0,
+          "outboundBytes": 0,
+          "inboundAckBytes": 60,
+          "hostTiming": 0,
+          "hostGpuTiming": 0,
+          "hostResidentBytes": 0,
+          "modeledTextureBytes": 0,
+          "resourceRetention": 0,
+          "resourceCadence": 0,
+          "syntheticProxyEquality": 0
+        },
+        "payloadAndTelemetryMatch": true,
+        "acknowledgementCounterMatches": false
+      }
+    },
+    {
+      "run": "cadence-command-and-resource-every-30",
+      "scope": "native synthetic loopback protocol; commands validated and retained, not executed or replayed",
+      "hostFrameRecords": 65,
+      "warmupFrames": 5,
+      "measuredFrames": 60,
+      "effectiveFrameIntervalSamples": 59,
+      "resolution": {
+        "width": 320,
+        "height": 180
+      },
+      "commandEveryFrames": 30,
+      "resourceEveryFrames": 30,
+      "commandUpdateGlobalFrames": [
+        30,
+        60
+      ],
+      "resourceUpdateGlobalFrames": [
+        30,
+        60
+      ],
+      "retainedCommandHashConstant": true,
+      "retainedResourceHashConstant": true,
+      "commandBytesTotal": 512,
+      "resourceBytesTotal": 131072,
+      "applicationProtocolBytesTotal": 13960864,
+      "frameIntervalMs": {
+        "samples": 59,
+        "mean": 8.360093220736895,
+        "median": 8.447416999842972,
+        "p95": 9.29440417094156,
+        "p99": 9.521723029902205,
+        "minimum": 7.08574999589473,
+        "maximum": 9.596833027899265,
+        "populationStandardDeviation": 0.6468218488357088
+      },
+      "powerWatts": null,
+      "temperatureCelsius": null,
+      "ackBytes": 56,
+      "ackHeaderBytes": 32,
+      "ackMetricsBytes": 24,
+      "allMeasuredByteCountersMatchClient": true,
+      "sourceAndBinaryAcquisitionBindingAvailable": false,
+      "unpairedTrafficComparison": {
+        "priorResourceOnlyProtocolBytesTotal": 13975712,
+        "bytesReduced": 14848,
+        "fractionReduced": 0.0010624145660700507,
+        "causalTimingImprovementEstablished": false
+      },
+      "limitations": [
+        "Host validates and retains command records but does not replay them.",
+        "No D3D device or Windows guest participated.",
+        "Protocol byte counts exclude TCP/IP, link-layer, retransmission and host OS overhead.",
+        "Frame request-to-ACK timing is not input-to-photon latency.",
+        "Power and temperature were not sampled."
+      ]
+    }
+  ],
+  "baselineVariation": {
+    "repeats": 3,
+    "measuredFramesTotal": 270,
+    "intervalSamplesTotal": 267,
+    "runMeanFrameIntervalMs": {
+      "sampleCount": 3,
+      "p50": 24.378039786497947,
+      "p95": 26.94002546427583,
+      "p99": 27.167757524522756,
+      "mean": 25.197339569452158,
+      "minimum": 23.989288382274047,
+      "maximum": 27.224690539584486,
+      "populationStddev": 1.442312005229538,
+      "coefficientOfVariationPercent": 5.7240646428328334
+    },
+    "runP50FrameIntervalMs": {
+      "sampleCount": 3,
+      "p50": 10.613958991598338,
+      "p95": 10.912570892833173,
+      "p99": 10.939114172942936,
+      "mean": 10.080111310041199,
+      "minimum": 8.680624945554882,
+      "maximum": 10.945749992970377,
+      "populationStddev": 0.9988135896936963,
+      "coefficientOfVariationPercent": 9.908755558073436
+    },
+    "runP95FrameIntervalMs": {
+      "sampleCount": 3,
+      "p50": 64.79633337585254,
+      "p95": 65.81820869003423,
+      "p99": 65.90904205129482,
+      "mean": 65.03135572032382,
+      "minimum": 64.36598339350893,
+      "maximum": 65.93175039160997,
+      "populationStddev": 0.6604711449090288,
+      "coefficientOfVariationPercent": 1.0156195232181147
+    },
+    "runP99FrameIntervalMs": {
+      "sampleCount": 3,
+      "p50": 66.46059108665213,
+      "p95": 67.80744281364605,
+      "p99": 67.92716296715662,
+      "mean": 66.92888633037607,
+      "minimum": 66.36897489894181,
+      "maximum": 67.95709300553426,
+      "populationStddev": 0.7280133270724019,
+      "coefficientOfVariationPercent": 1.0877415821305676
+    },
+    "confidenceInterval": null,
+    "limitation": "three repeated unpaced native protocol runs; frame and run variation are not controlled D3D, guest, game, or thermal baselines"
+  },
+  "cadenceComparison": {
+    "matchedResolution": [
+      320,
+      180
+    ],
+    "measuredFramesPerCondition": 60,
+    "warmupFramesPerCondition": 5,
+    "commandBytesPerFrame": 256,
+    "resourcePayloadBytes": 65536,
+    "conditions": [
+      1,
+      30
+    ],
+    "repeatsPerCondition": 1,
+    "allPerFramePayloadChecksPass": true,
+    "resourceRetentionObserved": true,
+    "trafficBytesEveryFrame": 17776800,
+    "trafficBytesEvery30Frames": 13975712,
+    "trafficReductionBytes": 3801088,
+    "trafficReductionPercent": 21.382296026281445,
+    "conclusion": "deterministic reduction in application protocol traffic only",
+    "performanceImprovementEstablished": false,
+    "limitation": "one run per cadence and noisy presentation timing; no speedup or game-performance conclusion"
+  },
+  "findings": [
+    {
+      "kind": "instrumentation_counter_mismatch",
+      "field": "host ack_bytes_out",
+      "affectedMeasuredFrames": 390,
+      "rawHostLogBytesPerFrame": 32,
+      "clientObservedBytesPerFrame": 56,
+      "missingMetricsPayloadBytesPerFrame": 24,
+      "interpretation": "raw host logs count the acknowledgement header while client CSV includes the 24-byte metrics payload; payload and timing fields independently align",
+      "ownerTask": "03",
+      "rawEvidenceModified": false,
+      "resolutionStatus": "historical_raw_logs_retained_current_fix_validated_by_small_smoke",
+      "currentSmokeAckBytesPerFrame": 56,
+      "currentSmokeHostRecordCount": 3,
+      "currentSmokeMeasuredCSVRows": 2,
+      "currentSmokeCountersMatchClient": true
+    },
+    {
+      "kind": "scope_limit",
+      "interpretation": "summary statistics cannot establish D3D/Wine/VM/game performance, power, thermal state, or physical input latency"
+    },
+    {
+      "kind": "repeatability_limit",
+      "interpretation": "No per-run record of competing host workloads, refresh rate, thermal state, power mode, or cold/hot process cache state; frame-time variance cannot be causally attributed."
+    },
+    {
+      "kind": "protocol_negative_test_limit",
+      "interpretation": "The packaged protocol-check metadata reports negative-handshake outcomes, but raw invalid-handshake packet/session traces were not supplied; this review validates six valid-session frame logs only."
+    }
+  ],
+  "result": "verified_with_historical_instrumentation_discrepancy_and_current_fix_smoke",
+  "totals": {
+    "validHostFrameRecords": 525,
+    "measuredFrames": 450,
+    "warmupFrames": 75,
+    "effectiveFrameIntervalSamples": 444
+  },
+  "instrumentationFollowUp": {
+    "noteReviewed": true,
+    "noteSchemaVersion": 1,
+    "originalRawCounterDefectRetained": true,
+    "originalBaselineFilesUnchanged": true,
+    "originalAffectedHostLogCount": 5,
+    "originalAffectedMeasuredFrames": 390,
+    "correctedAckBytes": 56,
+    "headerBytes": 32,
+    "metricsBytes": 24,
+    "fixSmokeHostRecords": 3,
+    "fixSmokeWarmupRecords": 1,
+    "fixSmokeMeasuredCSVRows": 2,
+    "noteFrameCountMatchesAllHostRecords": true,
+    "allHostAckCountersCorrect": true,
+    "clientAndHostByteAccountingMatches": true,
+    "frameSequencesMatch": true,
+    "clientHostMetricsMatchAtRecordedPrecision": true,
+    "smokeNetworkBytesInPerMeasuredFrame": 56,
+    "smokeNetworkBytesOutPerMeasuredFrame": 77920,
+    "smokeTotalProtocolBytesPerMeasuredFrame": 77976,
+    "scope": "native synthetic loopback protocol only",
+    "optimizedCompilationClaim": "reported by supplied instrumentation note; no immutable binary hash or independent compilation performed in this follow-up",
+    "summaryRecomputation": "not repeated; original raw CSV files retain reviewed hashes",
+    "realGameSamplesAvailable": false,
+    "interpretation": "The current smoke logs validate corrected ACK accounting. Historical host ack_bytes_out values remain 32 and must not be used alone for total response bytes; original CSV totals include the complete 56-byte response. The small smoke run is not a new performance baseline."
+  },
+  "commandResourceCadenceFollowUp": {
+    "run": "cadence-command-and-resource-every-30",
+    "scope": "native synthetic loopback protocol; commands validated and retained, not executed or replayed",
+    "hostFrameRecords": 65,
+    "warmupFrames": 5,
+    "measuredFrames": 60,
+    "effectiveFrameIntervalSamples": 59,
+    "resolution": {
+      "width": 320,
+      "height": 180
+    },
+    "commandEveryFrames": 30,
+    "resourceEveryFrames": 30,
+    "commandUpdateGlobalFrames": [
+      30,
+      60
+    ],
+    "resourceUpdateGlobalFrames": [
+      30,
+      60
+    ],
+    "retainedCommandHashConstant": true,
+    "retainedResourceHashConstant": true,
+    "commandBytesTotal": 512,
+    "resourceBytesTotal": 131072,
+    "applicationProtocolBytesTotal": 13960864,
+    "frameIntervalMs": {
+      "samples": 59,
+      "mean": 8.360093220736895,
+      "median": 8.447416999842972,
+      "p95": 9.29440417094156,
+      "p99": 9.521723029902205,
+      "minimum": 7.08574999589473,
+      "maximum": 9.596833027899265,
+      "populationStandardDeviation": 0.6468218488357088
+    },
+    "powerWatts": null,
+    "temperatureCelsius": null,
+    "ackBytes": 56,
+    "ackHeaderBytes": 32,
+    "ackMetricsBytes": 24,
+    "allMeasuredByteCountersMatchClient": true,
+    "sourceAndBinaryAcquisitionBindingAvailable": false,
+    "unpairedTrafficComparison": {
+      "priorResourceOnlyProtocolBytesTotal": 13975712,
+      "bytesReduced": 14848,
+      "fractionReduced": 0.0010624145660700507,
+      "causalTimingImprovementEstablished": false
+    },
+    "limitations": [
+      "Host validates and retains command records but does not replay them.",
+      "No D3D device or Windows guest participated.",
+      "Protocol byte counts exclude TCP/IP, link-layer, retransmission and host OS overhead.",
+      "Frame request-to-ACK timing is not input-to-photon latency.",
+      "Power and temperature were not sampled."
+    ]
+  },
+  "snapshotBindingReview": {
+    "recheckedAtUTC": "2026-11-21T16:32:04.115558+00:00",
+    "previousReviewSHA256": "39a8da582e20f5336a57bf354ff686d3369806a03310ef176c2c20efcf18a7c6",
+    "previousManifestSHA256": "c2663e33d0c7565a6cec85df55bab6110aaa9af859736c5fc843a50a33637b96",
+    "currentManifestSHA256": "981955925b75a3c7be1658287f6892ef42583350d173622dde9ddf6f69d6d329",
+    "previousManifestEntries": 20,
+    "currentManifestEntries": 24,
+    "currentFilesIncludingManifest": 25,
+    "previousTotals": {
+      "validHostFrameRecords": 460,
+      "measuredFrames": 390,
+      "warmupFrames": 70,
+      "effectiveFrameIntervalSamples": 385
+    },
+    "previousEntriesUnchanged": 19,
+    "changedExistingEntries": [
+      {
+        "role": "protocol-validation-metadata",
+        "previousSHA256": "7f1328a7353c08433a0e8379071f713eee7afb0fc6d789fd83f90b8d3911280c",
+        "previousBytes": 538,
+        "currentSHA256": "7b34781e4b4e758ecaaf55604ad2fad7ef597b3fe764d6794d9a56d0662662a2",
+        "currentBytes": 663
+      }
+    ],
+    "addedArtifacts": [
+      {
+        "role": "command-resource-cadence-1",
+        "sha256": "71c9940a77cb0c876abb6b6033e93742896e11c2df365d4bba43d5a863e8eeeb",
+        "bytes": 35131
+      },
+      {
+        "role": "command-resource-cadence-2",
+        "sha256": "029c84c5a864d2d279446c2801def867b3ee52645f7e51cceacd375e6d2eef71",
+        "bytes": 1462
+      },
+      {
+        "role": "command-resource-cadence-3",
+        "sha256": "117e561773feff1f13bfaa68ee62f6c1e27909bb2a13b149eb1593bd7ca13154",
+        "bytes": 4183
+      },
+      {
+        "role": "command-resource-cadence-4",
+        "sha256": "c2935821517abf56b05ee287b485b0364bb7d0541188adee39a045ba025c30a0",
+        "bytes": 11628
+      }
+    ],
+    "originalFiveMeasurementSetsUnchanged": true,
+    "snapshotBoundary": "Exact bytes captured during this final binding review; subsequent upstream edits are outside this review. No hardware workloads or builds were run.",
+    "negativeHandshakeRawTraceAvailable": false
+  }
+}

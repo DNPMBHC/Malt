@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "owner": "@DNPMBHC",
+  "action": "rollback",
+  "captured_at_utc": "2026-11-24T07:17:14.1972254Z",
+  "profile_id": "minimal-profile",
+  "profile_sha256": "906b01c178307f7cec917a90a1d96de62e123d69e41282f3b0276659ef77f76a",
+  "script_sha256": "d71161af5673d1ae205230377ae7e256f32091e98f6a3ab8e046a227739ab768",
+  "snapshot_profile_sha256": "906b01c178307f7cec917a90a1d96de62e123d69e41282f3b0276659ef77f76a",
+  "rollback_consistent": true,
+  "mismatch_count": 0,
+  "mismatches": [],
+  "security_invariants_passed": true,
+  "security_invariants": {
+    "secure_boot_enabled": true,
+    "tpm_present": true,
+    "tpm_enabled": true,
+    "bcd_safe": true,
+    "prism_files_verified": true,
+    "prism_signatures_valid": true,
+    "prism_files": [
+      {
+        "relative_path": "System32\\xtajit.dll",
+        "exists": true,
+        "signature_status": "Valid"
+      },
+      {
+        "relative_path": "System32\\xtajit64.dll",
+        "exists": true,
+        "signature_status": "Valid"
+      },
+      {
+        "relative_path": "System32\\wow64.dll",
+        "exists": true,
+        "signature_status": "Valid"
+      },
+      {
+        "relative_path": "System32\\wow64win.dll",
+        "exists": true,
+        "signature_status": "Valid"
+      }
+    ],
+    "qga_service_running": true
+  },
+  "metrics_after": {
+    "process_count": 118,
+    "running_service_count": 80,
+    "system_drive_total_bytes": 37925941248,
+    "system_drive_used_bytes": 34661519360,
+    "system_drive_free_bytes": 3264421888
+  },
+  "restored": {
+    "services": [
+      {
+        "name": "WSearch",
+        "expected_start_mode": "Auto",
+        "actual_start_mode": "Auto",
+        "matched": true
+      },
+      {
+        "name": "SysMain",
+        "expected_start_mode": "Auto",
+        "actual_start_mode": "Auto",
+        "matched": true
+      },
+      {
+        "name": "Spooler",
+        "expected_start_mode": "Auto",
+        "actual_start_mode": "Auto",
+        "matched": true
+      },
+      {
+        "name": "bthserv",
+        "expected_start_mode": "Manual",
+        "actual_start_mode": "Manual",
+        "matched": true
+      },
+      {
+        "name": "lfsvc",
+        "expected_start_mode": "Manual",
+        "actual_start_mode": "Manual",
+        "matched": true
+      },
+      {
+        "name": "DiagTrack",
+        "expected_start_mode": "Auto",
+        "actual_start_mode": "Auto",
+        "matched": true
+      },
+      {
+        "name": "dmwappushservice",
+        "expected_start_mode": "Manual",
+        "actual_start_mode": "Manual",
+        "matched": true
+      },
+      {
+        "name": "WbioSrvc",
+        "expected_start_mode": "Manual",
+        "actual_start_mode": "Manual",
+        "matched": true
+      },
+      {
+        "name": "MapsBroker",
+        "expected_start_mode": "Auto",
+        "actual_start_mode": "Auto",
+        "matched": true
+      },
+      {
+        "name": "WerSvc",
+        "expected_start_mode": "Manual",
+        "actual_start_mode": "Manual",
+        "matched": true
+      },
+      {
+        "name": "RetailDemo",
+        "expected_start_mode": "Manual",
+        "actual_start_mode": "Manual",
+        "matched": true
+      },
+      {
+        "name": "XblAuthManager",
+        "expected_start_mode": "Manual",
+        "actual_start_mode": "Manual",
+        "matched": true
+      },
+      {
+        "name": "XblGameSave",
+        "expected_start_mode": "Manual",
+        "actual_start_mode": "Manual",
+        "matched": true
+      },
+      {
+        "name": "XboxNetApiSvc",
+        "expected_start_mode": "Manual",
+        "actual_start_mode": "Manual",
+        "matched": true
+      }
+    ],
+    "scheduled_tasks": [
+      {
+        "task": "\\Microsoft\\Windows\\Application Experience\\Microsoft Compatibility Appraiser",
+        "matched": true
+      },
+      {
+        "task": "\\Microsoft\\Windows\\Customer Experience Improvement Program\\Consolidator",
+        "matched": true
+      },
+      {
+        "task": "\\Microsoft\\Windows\\Customer Experience Improvement Program\\UsbCeip",
+        "matched": true
+      },
+      {
+        "task": "\\Microsoft\\Windows\\Maps\\MapsUpdateTask",
+        "matched": true
+      },
+      {
+        "task": "\\Microsoft\\Windows\\Maps\\MapsToastTask",
+        "matched": true
+      },
+      {
+        "task": "\\Microsoft\\Windows\\Windows Error Reporting\\QueueReporting",
+        "matched": true
+      }
+    ],
+    "uwp_packages": [
+      {
+        "name": "Microsoft.OutlookForWindows",
+        "status": "reregistered",
+        "matched": true
+      }
+    ],
+    "registry_tweaks": [
+      {
+        "name": "EnableTransparency",
+        "matched": true
+      },
+      {
+        "name": "VisualFXSetting",
+        "matched": true
+      },
+      {
+        "name": "MinAnimate",
+        "matched": true
+      },
+      {
+        "name": "GlobalUserDisabled",
+        "matched": true
+      },
+      {
+        "name": "BingSearchEnabled",
+        "matched": true
+      }
+    ]
+  },
+  "session_id": 1,
+  "request_id": "0084b596cc7c435f8a306179a86ff764",
+  "primary_vm_control_actions": 0,
+  "script_process_execution_policy": "RemoteSigned",
+  "persistent_execution_policy_changed": false
+}

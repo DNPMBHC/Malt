@@ -1,0 +1,457 @@
+{
+  "schema": "task-07-matrix-v1",
+  "capturedAt": "2026-11-22T01:57:25+08:00",
+  "host": {
+    "architecture": "arm64",
+    "chip": "Apple M4",
+    "memoryBytes": "17179869184",
+    "macOS": "27.2.1",
+    "macOSBuild": "26B131",
+    "xcode": "Xcode 27.0\nBuild version 27A266a",
+    "swift": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx27.2.0",
+    "sdk": "27.0"
+  },
+  "nullMeaning": "not applicable for host-only experiments, or not configured; see each record",
+  "combinations": [
+    {
+      "id": "native-app-build",
+      "kind": "measured-local-build",
+      "dimensions": {
+        "guestOS": null,
+        "guestArchitecture": null,
+        "vmPlatform": null,
+        "translationBackend": "native orchestration code; backend not launched",
+        "driver": null,
+        "gameVersion": null,
+        "gameRegion": null
+      },
+      "results": {
+        "build": {
+          "status": "passed",
+          "evidence": [
+            "final-integrated/build.json"
+          ],
+          "scope": "Debug/arm64 unsigned; strict SwiftLint 100 files/0 violations; 91 XCTest total, 90 passed, 1 optional A/B skipped"
+        },
+        "startup": {
+          "status": "not_verified",
+          "evidence": [
+            "cli/cli.json"
+          ],
+          "scope": "CLI parser/help and isolated synthetic storage-preflight execution only; app/backend launch not measured"
+        },
+        "driver": {
+          "status": "not_verified",
+          "evidence": [
+            "integration-final/integration.json"
+          ],
+          "scope": "portable ABI only; no Windows kernel execution"
+        },
+        "protectionScope": {
+          "status": "not_verified",
+          "evidence": [],
+          "scope": "no real driver, protected process, game session or game benchmark"
+        },
+        "onlineSession": {
+          "status": "not_tested",
+          "evidence": [],
+          "scope": "no real driver, protected process, game session or game benchmark"
+        },
+        "performance": {
+          "status": "not_tested",
+          "evidence": [],
+          "scope": "no real driver, protected process, game session or game benchmark"
+        }
+      }
+    },
+    {
+      "id": "simulated-guest-behavior",
+      "kind": "simulation-only",
+      "dimensions": {
+        "guestOS": "synthetic Windows fixtures; no guest installed for test",
+        "guestArchitecture": "arm64 and mismatch fixtures",
+        "vmPlatform": "mock transport",
+        "translationBackend": "Windows guest provider under test",
+        "driver": "synthetic probe reports",
+        "gameVersion": null,
+        "gameRegion": null
+      },
+      "results": {
+        "build": {
+          "status": "passed",
+          "evidence": [
+            "final-integrated/build.json"
+          ],
+          "scope": "provider and probe code compiled in package"
+        },
+        "startup": {
+          "status": "simulation_passed",
+          "evidence": [
+            "final-integrated/swift-tests.xml",
+            "../findings-behavior.md"
+          ],
+          "scope": "21 guest/provider/storage synthetic tests in final package gate; no real guest"
+        },
+        "driver": {
+          "status": "not_verified",
+          "evidence": [],
+          "scope": "synthetic fixtures do not prove real guest, driver or protection"
+        },
+        "protectionScope": {
+          "status": "not_verified",
+          "evidence": [],
+          "scope": "synthetic fixtures do not prove real guest, driver or protection"
+        },
+        "onlineSession": {
+          "status": "not_tested",
+          "evidence": [],
+          "scope": "synthetic fixtures do not prove real guest, driver or protection"
+        },
+        "performance": {
+          "status": "not_tested",
+          "evidence": [],
+          "scope": "synthetic fixtures do not prove real guest, driver or protection"
+        }
+      }
+    },
+    {
+      "id": "native-synthetic-graphics",
+      "kind": "measured-host-only",
+      "dimensions": {
+        "guestOS": null,
+        "guestArchitecture": null,
+        "vmPlatform": null,
+        "translationBackend": "native Metal loopback, 640x360 fixed synthetic scene; not D3D",
+        "driver": null,
+        "gameVersion": null,
+        "gameRegion": null
+      },
+      "results": {
+        "driver": {
+          "status": "not_applicable",
+          "evidence": [],
+          "scope": "account-free synthetic protocol loopback; no Windows game protection"
+        },
+        "protectionScope": {
+          "status": "not_applicable",
+          "evidence": [],
+          "scope": "account-free synthetic protocol loopback; no Windows game protection"
+        },
+        "onlineSession": {
+          "status": "not_applicable",
+          "evidence": [],
+          "scope": "account-free synthetic protocol loopback; no Windows game protection"
+        },
+        "build": {
+          "status": "passed",
+          "evidence": [
+            "integration-final/integration.json"
+          ],
+          "scope": "current native Metal receiver typechecked and optimized binary compiled"
+        },
+        "startup": {
+          "status": "partial",
+          "evidence": [
+            "native-synthetic-review.json"
+          ],
+          "scope": "host receiver ran; true cold/hot startup not measured"
+        },
+        "performance": {
+          "status": "partial",
+          "evidence": [
+            "native-synthetic-review.json"
+          ],
+          "scope": "3 baseline runs: each 20 warmup plus 90 measured frames, 89 intervals; incomplete metrics; original runs lack immutable source/binary binding"
+        }
+      }
+    },
+    {
+      "id": "same-guest-arm64",
+      "kind": "unconfigured-candidate",
+      "dimensions": {
+        "guestOS": "Windows; version not configured",
+        "guestArchitecture": "arm64",
+        "vmPlatform": "not configured",
+        "translationBackend": "same-guest candidate; not exercised",
+        "driver": "not selected; matching architecture and lawful signing required",
+        "gameVersion": null,
+        "gameRegion": null
+      },
+      "results": {
+        "build": {
+          "status": "not_verified",
+          "evidence": [],
+          "scope": "no real guest, matching driver or game available; no compatibility claim"
+        },
+        "startup": {
+          "status": "environment_not_verified",
+          "evidence": [],
+          "scope": "no real guest, matching driver or game available; no compatibility claim"
+        },
+        "driver": {
+          "status": "not_verified",
+          "evidence": [],
+          "scope": "no real guest, matching driver or game available; no compatibility claim"
+        },
+        "protectionScope": {
+          "status": "not_verified",
+          "evidence": [],
+          "scope": "no real guest, matching driver or game available; no compatibility claim"
+        },
+        "onlineSession": {
+          "status": "not_tested",
+          "evidence": [],
+          "scope": "no real guest, matching driver or game available; no compatibility claim"
+        },
+        "performance": {
+          "status": "not_tested",
+          "evidence": [],
+          "scope": "no real guest, matching driver or game available; no compatibility claim"
+        }
+      }
+    },
+    {
+      "id": "same-guest-x86_64",
+      "kind": "unconfigured-candidate",
+      "dimensions": {
+        "guestOS": "Windows; version not configured",
+        "guestArchitecture": "x86_64",
+        "vmPlatform": "not configured",
+        "translationBackend": "same-guest candidate; not exercised",
+        "driver": "not selected; matching architecture and lawful signing required",
+        "gameVersion": null,
+        "gameRegion": null
+      },
+      "results": {
+        "build": {
+          "status": "not_verified",
+          "evidence": [],
+          "scope": "no real guest, matching driver or game available; no compatibility claim"
+        },
+        "startup": {
+          "status": "environment_not_verified",
+          "evidence": [],
+          "scope": "no real guest, matching driver or game available; no compatibility claim"
+        },
+        "driver": {
+          "status": "not_verified",
+          "evidence": [],
+          "scope": "no real guest, matching driver or game available; no compatibility claim"
+        },
+        "protectionScope": {
+          "status": "not_verified",
+          "evidence": [],
+          "scope": "no real guest, matching driver or game available; no compatibility claim"
+        },
+        "onlineSession": {
+          "status": "not_tested",
+          "evidence": [],
+          "scope": "no real guest, matching driver or game available; no compatibility claim"
+        },
+        "performance": {
+          "status": "not_tested",
+          "evidence": [],
+          "scope": "no real guest, matching driver or game available; no compatibility claim"
+        }
+      }
+    },
+    {
+      "id": "wine-cross-guest-research",
+      "kind": "research-only",
+      "dimensions": {
+        "guestOS": "Windows; not configured",
+        "guestArchitecture": "not configured",
+        "vmPlatform": "not configured",
+        "translationBackend": "Wine plus cross-boundary research; not configured",
+        "driver": "vendor interface and support not established",
+        "gameVersion": null,
+        "gameRegion": null
+      },
+      "results": {
+        "build": {
+          "status": "not_verified",
+          "evidence": [],
+          "scope": "vendor-supported cross-boundary interface and support required; not a routine configuration error"
+        },
+        "startup": {
+          "status": "not_verified",
+          "evidence": [],
+          "scope": "vendor-supported cross-boundary interface and support required; not a routine configuration error"
+        },
+        "driver": {
+          "status": "not_verified",
+          "evidence": [],
+          "scope": "vendor-supported cross-boundary interface and support required; not a routine configuration error"
+        },
+        "protectionScope": {
+          "status": "not_implemented",
+          "evidence": [],
+          "scope": "vendor-supported cross-boundary interface and support required; not a routine configuration error"
+        },
+        "onlineSession": {
+          "status": "not_tested",
+          "evidence": [],
+          "scope": "vendor-supported cross-boundary interface and support required; not a routine configuration error"
+        },
+        "performance": {
+          "status": "not_tested",
+          "evidence": [],
+          "scope": "vendor-supported cross-boundary interface and support required; not a routine configuration error"
+        }
+      }
+    },
+    {
+      "id": "native-resource-and-metalfx",
+      "kind": "measured-synthetic-with-injected-resource-state",
+      "dimensions": {
+        "guestOS": null,
+        "guestArchitecture": null,
+        "vmPlatform": null,
+        "translationBackend": "native offscreen Metal/MetalFX and diagnostic CPU queue",
+        "driver": null,
+        "gameVersion": null,
+        "gameRegion": null
+      },
+      "results": {
+        "driver": {
+          "status": "not_applicable",
+          "evidence": [],
+          "scope": "synthetic host-only workload; no Windows or game execution"
+        },
+        "protectionScope": {
+          "status": "not_applicable",
+          "evidence": [],
+          "scope": "synthetic host-only workload; no Windows or game execution"
+        },
+        "onlineSession": {
+          "status": "not_applicable",
+          "evidence": [],
+          "scope": "synthetic host-only workload; no Windows or game execution"
+        },
+        "build": {
+          "status": "passed",
+          "evidence": [
+            "final-integrated/build.json"
+          ],
+          "scope": "resource and GPU code compiled; optional A/B collection skipped in ordinary gate"
+        },
+        "startup": {
+          "status": "not_measured",
+          "evidence": [],
+          "scope": "true cold/hot process startup not collected"
+        },
+        "performance": {
+          "status": "partial",
+          "evidence": [
+            "module-d-review.json"
+          ],
+          "scope": "injected-state diagnostic queue: 12 rounds/192 tasks; GPU A/B: two instrumentation configurations, 288 timing samples each; static synthetic scene adds scaler cost; Game Mode activation unknown; no game benefit claim"
+        }
+      }
+    }
+  ],
+  "dependencies": {
+    "cached": {
+      "status": "passed",
+      "evidence": [
+        "final-integrated/build.json"
+      ],
+      "scope": "locked Swift and Xcode resolution; sources stable"
+    },
+    "freshDefault": {
+      "status": "failed",
+      "evidence": [
+        "final-fresh/build.json"
+      ],
+      "scope": "Swift fetch and 77 tests passed; Xcode fetch curl 28 / exit 74; concurrent source changes"
+    },
+    "freshHTTP1": {
+      "status": "failed",
+      "evidence": [
+        "fresh-http1/build.json"
+      ],
+      "scope": "both resolve phases timed out after 300 seconds / exit 124; tests/build skipped; concurrent source changes"
+    }
+  },
+  "overallStatus": "incomplete",
+  "blockers": [
+    "cold-cache dependency retrieval not repeatable",
+    "real Windows build/signing/driver load unverified",
+    "same-domain protection and vendor interfaces unverified",
+    "real guest and game sessions untested",
+    "game performance missing",
+    "automatic volume ordering gap remains; current GUI/CLI/file-open/shortcut flows do not consume selector"
+  ],
+  "functionalFollowups": {
+    "01/02": "WDK build, architecture, lawful signing, kernel execution",
+    "01/06": "same-domain process/memory protection and vendor interface",
+    "02": "real VM/Agent lifecycle, cancellation and recovery",
+    "03": "Windows D3D, Wine and guest graphics comparison",
+    "03/04": "controlled cold/hot startup, utilization, power, thermal and physical input latency",
+    "05": "full CLI argument override, cancellation and status mapping",
+    "07": "cold-cache dependency reproducibility"
+  },
+  "privacy": "neutral aliases and sanitized evidence only",
+  "buildSummary": {
+    "passed": true,
+    "swiftTests": {
+      "total": 85,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 1,
+      "executed": 84,
+      "passed": 84
+    },
+    "countEvidence": "sequential-xctest-log",
+    "countsVerified": true,
+    "sourceInputCount": 166,
+    "sourcesStableDuringRun": true,
+    "globalGitUnchanged": true,
+    "lockfilesUnchanged": true,
+    "followupDocumentationChanges": "collection.json"
+  },
+  "integrationSummary": {
+    "passed": true,
+    "inputCount": 21,
+    "inputsStableDuringRun": true,
+    "verificationToolTests": 31,
+    "graphicsToolTests": 6,
+    "driverABITests": 1,
+    "cliParserChecks": 4
+  },
+  "environmentAvailability": {
+    "status": "environment_not_verified",
+    "evidence": [
+      "preflight-environment.json"
+    ],
+    "utmCLIOnPATH": false,
+    "utmApplicationInStandardLocations": false,
+    "guestConfiguration": "no real guest configured; not enumerated",
+    "realGuestExecuted": false,
+    "missingEnvironmentClassifiedAsFunctionalFailure": false
+  },
+  "currentPrerequisiteObservation": {
+    "evidence": [
+      "preflight-environment.json",
+      "reported-blockers.json",
+      "collection.json"
+    ],
+    "availableCapacity": "about 59.9 GiB, equivalent to about 64 decimal GB; user confirmed sufficient",
+    "installationOrMappingInferredFromCapacity": false,
+    "finalIntegratedGate": "passed locally",
+    "runtimeEnvironmentStatus": "environment_not_verified"
+  },
+  "localValidation": {
+    "build": true,
+    "strictSwiftFormat": true,
+    "integration": true,
+    "cliStoragePreflight": true,
+    "sourceInputs": 171,
+    "toolInputs": 26,
+    "evidence": [
+      "collection.json",
+      "format-final/format.json",
+      "cli/cli.json"
+    ]
+  }
+}

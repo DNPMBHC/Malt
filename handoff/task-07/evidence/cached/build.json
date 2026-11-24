@@ -1,0 +1,57 @@
+{
+  "schema": "task-07-build-v1",
+  "capturedAt": "2026-11-21T22:49:54+08:00",
+  "host": {
+    "architecture": "arm64",
+    "chip": "Apple M4",
+    "memoryBytes": "17179869184",
+    "macOS": "27.2.1",
+    "macOSBuild": "26B131",
+    "xcode": "Xcode 27.0\nBuild version 27A266a",
+    "swift": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx27.2.0",
+    "sdk": "27.0"
+  },
+  "dependencyMode": "existing caches, pinned resolved versions, process-scoped HTTPS rewrite",
+  "signing": "disabled for local compilation only",
+  "stages": {
+    "swift-resolve": {
+      "exitCode": 0,
+      "state": "passed",
+      "durationSeconds": 1.924,
+      "diagnostics": [
+        "warning: '--skip-update' option is deprecated and will be removed in a future release"
+      ]
+    },
+    "swift-test": {
+      "exitCode": 0,
+      "state": "passed",
+      "durationSeconds": 2.563,
+      "diagnostics": [
+        "warning: '--skip-update' option is deprecated and will be removed in a future release"
+      ]
+    },
+    "xcode-resolve": {
+      "exitCode": 0,
+      "state": "passed",
+      "durationSeconds": 3.094,
+      "diagnostics": []
+    },
+    "xcode-build": {
+      "exitCode": 65,
+      "state": "failed",
+      "durationSeconds": 15.003,
+      "diagnostics": [
+        "2026-11-21 22:49:52.387 appintentsmetadataprocessor[68113:7180090] warning: Metadata extraction skipped, no AppIntents.framework dependency found",
+        "error: SwiftLint not installed, download from <dependency-remote>",
+        "** BUILD FAILED **"
+      ]
+    }
+  },
+  "globalGitUnchanged": true,
+  "lockfilesUnchanged": true,
+  "lockfileSHA256": {
+    "swift": "935bc153b9dc10ebfe5e2d9cc067f1fb953510f2e057e1b67718757a37e96f04",
+    "xcode": "f2f7552f5b9c61d06b83b2f23d273b4c14d94e5cd5e6d4229299bfd6a681f1e7"
+  },
+  "passed": false
+}

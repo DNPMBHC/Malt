@@ -1,0 +1,26 @@
+{
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-24T05:01:16.875403+00:00",
+  "private_original_logs_retained": false,
+  "retention_policy": "private originals removed with owned runtime; allowlisted structured evidence and original hashes retained",
+  "logs": [
+    {
+      "log_role": "ordinary-installer",
+      "original_bytes_sha256": "f91e06a4966bdceeee2c165f8132aef24599e071c4b31731d1017aae41b6adea",
+      "original_size_bytes": 10690811,
+      "source_private_log_removed_after_sealing": true,
+      "structured_summary_ref": "wine-visible-installer-log-summary.json",
+      "structured_summary_sha256": "a691ceff4f96f2226958f42e21b094456254d59b1de84d72569f7ddfe6623ab9",
+      "raw_content_exported": false
+    },
+    {
+      "log_role": "chromium-main-launcher",
+      "original_bytes_sha256": "ab06af0ac5a5d68f9bd48ed3bedb886186f58a7b2d2a2baec9d08ee232f1c68b",
+      "original_size_bytes": 6469553,
+      "source_private_log_removed_after_sealing": true,
+      "structured_summary_ref": "wine-fresh-chromium-log-summary.json",
+      "structured_summary_sha256": "db86befb192ab6e9ffcc59d6bfc8883accb256f8c12bd466c1024e4219c230bd",
+      "raw_content_exported": false
+    }
+  ]
+}

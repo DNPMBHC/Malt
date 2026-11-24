@@ -1,0 +1,22 @@
+{
+  "schema": "task-07-format-v1",
+  "stage": {
+    "exitCode": 0,
+    "state": "passed",
+    "durationSeconds": 0.146,
+    "diagnostics": []
+  },
+  "inputSHA256": {
+    "ModuleX/Sources/ModuleX/Runtime/UTMWindowsGuestProvider.swift": "9960cfc37847259adb32eb3909a6b1aab213f3de06dc823c30a9db39ea38dc49",
+    "ModuleX/Sources/ModuleX/Runtime/WindowsGuestTransport.swift": "f751c98611f2423e70de4dcd05970109767df10019dc76049422fe2871ab2fc6",
+    "ModuleX/Tests/ModuleXTests/UTMWindowsGuestProviderTests.swift": "91fd082398d75a742820e522e8533fcce9d0a0fd466b4c48452406bada242b68",
+    "ModuleX/Sources/ModuleX/Runtime/UTMGuestSession.swift": "4f048f7b2a59885cf0ec874f97e5ff65ec62e18c71af48b15bd79ee659a7425e",
+    "ModuleX/Sources/ModuleX/Runtime/UTMGuestStoragePreflight.swift": "469323dadd5f53743a04782c9ccddecb11e8fc89de4cdc77494c84e78f23b339",
+    "ModuleX/Tests/ModuleXTests/UTMGuestStoragePreflightTests.swift": "dcee26f96d55e6485fa1ce62421315778670f2a959f8437a3af8537d53ef1e52"
+  },
+  "inputCount": 6,
+  "inputsStableDuringRun": true,
+  "toolSourceSHA256": "b654714615508c32ad125b2fdd6bcf1eae2781ff98e8be57ea64aee4a024d2ff",
+  "passed": true,
+  "scope": "six explicit guest/session/storage source and test files; no repository-wide format claim"
+}
