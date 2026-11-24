@@ -40,6 +40,7 @@ struct Whisky: AsyncParsableCommand {
                       LaunchShortcut.self,
                       StoragePreflight.self,
                       IntegrityReport.self,
+                      BaselineReport.self,
                       Shellenv.self])
 }
 

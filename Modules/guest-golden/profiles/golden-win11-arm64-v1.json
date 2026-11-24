@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "golden_id": "golden-win11-arm64-v1",
+  "owner": "@DNPMBHC",
+  "source_template": "vm-a",
+  "guest_os": {
+    "name": "Windows 11 ARM64",
+    "build": "26100",
+    "architecture": "aarch64"
+  },
+  "qemu_profile": {
+    "backend": "QEMU",
+    "display_hardware": "virtio-ramfb-gl",
+    "display_args_expected": "virtio-ramfb-gl,hostmem=8G,blob=true,venus=true,neptune=true,refresh_rate=120000",
+    "cpu_count": 6,
+    "memory_mib": 6144,
+    "uefi_boot": true,
+    "tpm_device": true,
+    "hypervisor": true,
+    "directory_share_mode": "None",
+    "clipboard_sharing": false,
+    "usb_sharing": false,
+    "allow_additional_arguments": false
+  },
+  "security_baseline": {
+    "secure_boot_enabled": true,
+    "test_signing_disabled": true,
+    "tpm_present": true,
+    "tpm_enabled": true,
+    "qga_service_running": true,
+    "prism_files_verified": true
+  },
+  "graphics_driver": {
+    "provider": "Turing Software, LLC",
+    "source": "UTM 5.0.9 Guest Tools ISO (Drivers/viogpu3d/w11/ARM64)",
+    "inf_name": "viogpu3d.inf",
+    "driver_version": "100.6.101.58000",
+    "adapter_description": "Red Hat VirtIO GPU 3D controller",
+    "vendor_id": "0x1AF4",
+    "device_id": "0x1050",
+    "feature_level": "11_1",
+    "whql_signed_required": true,
+    "required_components": [
+      "viogpu3d.sys",
+      "neptune_umd_arm64.dll",
+      "neptune_umd_ec.dll",
+      "vulkan_virtio_arm64.dll"
+    ],
+    "pixel_validation": {
+      "probe": "d3d11_probe.exe",
+      "max_channel_error_lsb": 0,
+      "byte_exact_match": true
+    }
+  },
+  "optimizer": {
+    "profile_id": "anticheat-minimal-win11-arm64",
+    "apply_script": "Whisky/Modules/guest-optimizer/scripts/apply-optimizer.ps1",
+    "profile_path": "Whisky/Modules/guest-optimizer/profiles/anticheat-minimal-win11-arm64.json",
+    "preserve_rollback_snapshot": true,
+    "state_directory": "C:\\graphics-lab\\guest-optimizer"
+  },
+  "hygiene": {
+    "clean_windows_update_download_cache": true,
+    "forbid_commercial_services": [
+      "vgc",
+      "vgk",
+      "ACE-BASE",
+      "ACE-GAME",
+      "AntiCheatExpert Service",
+      "AntiCheatExpert Protection",
+      "EasyAntiCheat",
+      "EasyAntiCheat_EOS",
+      "BEService"
+    ],
+    "forbid_commercial_paths": [
+      "C:\\Riot Games",
+      "C:\\Program Files\\Riot Vanguard",
+      "C:\\Program Files\\AntiCheatExpert",
+      "C:\\Program Files (x86)\\WeGame"
+    ]
+  }
+}

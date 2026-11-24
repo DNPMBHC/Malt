@@ -26474,19 +26474,19 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Prefer KosmicKrisp (Vulkan 1.4 → Metal 4)"
+            "value": "Prefer KosmicKrisp (Vulkan 1.4 features; off by default for higher draw throughput)"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "DXVK 优先使用 KosmicKrisp（Vulkan 1.4 → Metal 4）"
+            "value": "DXVK 优先使用 KosmicKrisp（Vulkan 1.4 特性；高 Draw 吞吐优先请保持关闭）"
           }
         },
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "DXVK 優先使用 KosmicKrisp（Vulkan 1.4 → Metal 4）"
+            "value": "DXVK 優先使用 KosmicKrisp（Vulkan 1.4 特性；高 Draw 吞吐優先請保持關閉）"
           }
         }
       }
@@ -26540,19 +26540,19 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "MoltenVK (Compatibility Fallback)"
+            "value": "MoltenVK (Default High-Throughput)"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "MoltenVK（兼容回退）"
+            "value": "MoltenVK（默认高吞吐）"
           }
         },
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "MoltenVK（相容回退）"
+            "value": "MoltenVK（預設高吞吐）"
           }
         }
       }
@@ -26760,19 +26760,19 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Compatibility ICD selected by your preference."
+            "value": "MoltenVK is selected by default for higher draw throughput. Enable KosmicKrisp when Vulkan 1.4 features are needed."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "根据你的偏好选择兼容 ICD。"
+            "value": "默认使用 MoltenVK 以保障高 Draw 吞吐；如需 Vulkan 1.4 特性可手动开启 KosmicKrisp。"
           }
         },
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "依你的偏好選擇相容 ICD。"
+            "value": "預設使用 MoltenVK 以保障高 Draw 吞吐；如需 Vulkan 1.4 特性可手動開啟 KosmicKrisp。"
           }
         }
       }
@@ -26892,19 +26892,19 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "These defaults apply to new bottles. Existing bottles retain their own settings. MetalFX remains off by default."
+            "value": "These defaults apply to new bottles. Existing bottles retain their own settings. MetalFX remains off and DXVK defaults to MoltenVK for high draw throughput."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "这些默认设置只用于新瓶子；现有瓶子保留各自配置。MetalFX 默认关闭。"
+            "value": "这些默认设置只用于新瓶子；现有瓶子保留各自配置。MetalFX 默认关闭，DXVK 默认使用 MoltenVK 保障高 Draw 吞吐。"
           }
         },
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "這些預設設定只用於新瓶子；現有瓶子保留各自設定。MetalFX 預設關閉。"
+            "value": "這些預設設定只用於新瓶子；現有瓶子保留各自設定。MetalFX 預設關閉，DXVK 預設使用 MoltenVK 保障高 Draw 吞吐。"
           }
         }
       }
@@ -27018,6 +27018,328 @@
           "stringUnit": {
             "state": "translated",
             "value": "設定的輸出高度低於 1080p。為避免額外顯示記憶體及延遲，MetalFX 已關閉。"
+          }
+        }
+      }
+    },
+    "settings.manifest.fingerprint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runtime lock SHA-256"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "运行时锁版 SHA-256"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "執行階段鎖版 SHA-256"
+          }
+        }
+      }
+    },
+    "settings.goldenGuest.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Golden Guest baseline"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "黄金 Guest 基线"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "黃金 Guest 基線"
+          }
+        }
+      }
+    },
+    "settings.goldenGuest.state.ready": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ready"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已就绪"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已就緒"
+          }
+        }
+      }
+    },
+    "settings.goldenGuest.state.uninitialized": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uninitialized"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未初始化"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未初始化"
+          }
+        }
+      }
+    },
+    "settings.goldenGuest.state.invalid": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid manifest"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "清单无效"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "清單無效"
+          }
+        }
+      }
+    },
+    "settings.goldenGuest.id": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Golden Guest ID"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "黄金 Guest 标识"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "黃金 Guest 識別碼"
+          }
+        }
+      }
+    },
+    "settings.goldenGuest.driver": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guest 3D driver"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guest 3D 驱动版本"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guest 3D 驅動版本"
+          }
+        }
+      }
+    },
+    "settings.goldenGuest.fingerprint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Golden manifest SHA-256"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "黄金清单 SHA-256"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "黃金清單 SHA-256"
+          }
+        }
+      }
+    },
+    "settings.goldenGuest.uninitializedNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "golden-guest-manifest.json is not present yet; run Window 6A golden image verification to initialize."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未检测到 golden-guest-manifest.json（黄金 Guest 尚未初始化），不影响宿主机 Wine 运行。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未偵測到 golden-guest-manifest.json（黃金 Guest 尚未初始化），不影響宿主機 Wine 執行。"
+          }
+        }
+      }
+    },
+    "settings.goldenGuest.invalidNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "golden-guest-manifest.json could not be parsed; re-verify the golden Guest baseline."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "golden-guest-manifest.json 解析失败，请重新校验黄金 Guest 基线。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "golden-guest-manifest.json 解析失敗，請重新校驗黃金 Guest 基線。"
+          }
+        }
+      }
+    },
+    "settings.guestSurfaceGate.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Native GuestShell entry"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "原生游戏壳入口状态"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "原生遊戲殼入口狀態"
+          }
+        }
+      }
+    },
+    "settings.guestSurfaceGate.controlledOff": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Controlled Off"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "受控关闭"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "受控關閉"
+          }
+        }
+      }
+    },
+    "settings.guestSurfaceGate.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kept safely closed until real Guest scanout and virtual HID sink are verified."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "真实 Guest scanout 与合法虚拟 HID 尚未就绪，游戏壳入口与光标捕获保持受控关闭。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "真實 Guest scanout 與合法虛擬 HID 尚未就緒，遊戲殼入口與游標捕獲保持受控關閉。"
+          }
+        }
+      }
+    },
+    "runtime.cli.baselineReport": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Print unified host runtime lock, golden guest baseline, and 5C gate self-check JSON."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "输出宿主机运行时锁版、黄金 Guest 基线与 5C 安全门禁统一自检 JSON。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "輸出宿主機執行階段鎖版、黃金 Guest 基線與 5C 安全門禁統一自檢 JSON。"
           }
         }
       }

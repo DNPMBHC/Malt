@@ -106,6 +106,29 @@ extension Whisky {
             try FileHandle.standardOutput.write(contentsOf: data)
         }
     }
+
+    struct BaselineReport: ParsableCommand {
+        static let configuration = CommandConfiguration(
+            commandName: "baseline-report",
+            abstract: RuntimeCLI.localized(
+                "runtime.cli.baselineReport",
+                fallback: "Print unified host runtime lock, golden guest baseline, and 5C gate self-check JSON."
+            )
+        )
+
+        @Option(help: ArgumentHelp("Optional path to golden-guest-manifest.json."))
+        var goldenManifest: String?
+
+        func run() throws {
+            let goldenURL = goldenManifest.map { URL(fileURLWithPath: $0) }
+            let report = UnifiedRuntimeBaselineReport.collect(goldenManifestURL: goldenURL)
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = [.sortedKeys]
+            var data = try encoder.encode(report)
+            data.append(10)
+            try FileHandle.standardOutput.write(contentsOf: data)
+        }
+    }
 }
 
 private enum StorageGuestConfigurationError: LocalizedError {

@@ -149,13 +149,13 @@ public struct BottleDXVKConfig: Codable, Equatable {
     var graphicsRoutingPreference: HostGraphicsRoutingPreference = .performanceFirst
     var dxmtMetalFXPreset: HostDXMTMetalFXPreset = .off
     var dxmtMetalFXOutputHeight: Int = 1080
-    var dxvkPreferKosmicKrisp: Bool = true
+    var dxvkPreferKosmicKrisp: Bool = false
 
     public init(defaults: UserDefaults? = .standard) {
         dxmtMetalFXPreset = defaults?.string(forKey: "runtime.defaultMetalFXPreset")
             .flatMap(HostDXMTMetalFXPreset.init(rawValue:)) ?? .off
         dxmtMetalFXOutputHeight = max(1, defaults?.object(forKey: "runtime.defaultMetalFXOutputHeight") as? Int ?? 1080)
-        dxvkPreferKosmicKrisp = defaults?.object(forKey: "runtime.defaultPreferVulkanDriver") as? Bool ?? true
+        dxvkPreferKosmicKrisp = defaults?.object(forKey: "runtime.defaultPreferVulkanDriver") as? Bool ?? false
     }
 
     public init(from decoder: Decoder) throws {
@@ -184,7 +184,7 @@ public struct BottleDXVKConfig: Codable, Equatable {
         ) ?? .off
         self.dxvkPreferKosmicKrisp = try container.decodeIfPresent(
             Bool.self, forKey: .dxvkPreferKosmicKrisp
-        ) ?? true
+        ) ?? false
     }
 }
 

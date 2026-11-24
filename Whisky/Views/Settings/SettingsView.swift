@@ -26,7 +26,7 @@ struct SettingsView: View {
     @AppStorage("defaultBottleLocation") var defaultBottleLocation = BottleData.defaultBottleDir
     @AppStorage("runtime.defaultMetalFXPreset") private var defaultMetalFXPreset = "off"
     @AppStorage("runtime.defaultMetalFXOutputHeight") private var defaultMetalFXOutputHeight = 1080
-    @AppStorage("runtime.defaultPreferVulkanDriver") private var defaultPreferVulkanDriver = true
+    @AppStorage("runtime.defaultPreferVulkanDriver") private var defaultPreferVulkanDriver = false
     @State private var runtimeFolder = WhiskyWineInstaller.applicationFolder
     @State private var externalVolumes = WhiskyWineInstaller.mountedExternalVolumes()
     @State private var runtimePathChanged = false
@@ -152,11 +152,16 @@ struct SettingsView: View {
 struct SettingsRuntimeManifestSection: View {
     let libraryFolder: URL
     @State private var report: RuntimeManifestVerificationReport?
-    @AppStorage("runtime.defaultPreferVulkanDriver") private var defaultPreferVulkanDriver = true
+    @State private var baselineReport: UnifiedRuntimeBaselineReport?
+    @AppStorage("runtime.defaultPreferVulkanDriver") private var defaultPreferVulkanDriver = false
 
     var body: some View {
         Section("settings.section.manifest") {
             if let report {
+                if let sha = baselineReport?.runtimeManifestSHA256 {
+                    LabeledContent("settings.manifest.fingerprint", value: String(sha.prefix(16)))
+                        .font(.footnote)
+                }
                 if report.hasMismatch {
                     Label("settings.manifest.mismatchWarning", systemImage: "exclamationmark.triangle.fill")
                         .foregroundStyle(.orange)
@@ -181,6 +186,8 @@ struct SettingsRuntimeManifestSection: View {
                     .font(.footnote)
                     .foregroundStyle(.secondary)
             }
+            goldenGuestRows
+            guestSurfaceGateRows
             HStack {
                 Spacer()
                 Button("settings.manifest.recheck") { reload() }
@@ -190,6 +197,46 @@ struct SettingsRuntimeManifestSection: View {
         .onChange(of: libraryFolder) { reload() }
     }
 
+    @ViewBuilder
+    private var goldenGuestRows: some View {
+        let state = baselineReport?.goldenGuestState ?? .uninitialized
+        let stateText = String(localized: String.LocalizationValue(state.localizationKey))
+        LabeledContent("settings.goldenGuest.title", value: stateText)
+            .font(.footnote)
+        if let golden = baselineReport?.goldenGuestManifest {
+            LabeledContent("settings.goldenGuest.id", value: golden.guestID)
+                .font(.caption)
+            if let driver = golden.driverVersion {
+                LabeledContent("settings.goldenGuest.driver", value: driver)
+                    .font(.caption)
+            }
+            if let sha = baselineReport?.goldenGuestManifestSHA256 {
+                LabeledContent("settings.goldenGuest.fingerprint", value: String(sha.prefix(16)))
+                    .font(.caption)
+            }
+        } else {
+            Text(state == .invalid ? "settings.goldenGuest.invalidNote" : "settings.goldenGuest.uninitializedNote")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+        }
+    }
+
+    @ViewBuilder
+    private var guestSurfaceGateRows: some View {
+        let gate = baselineReport?.guestSurfaceGate ?? .current
+        let gateValue = gate.gameShellEntryEnabled
+            ? String(localized: "runtime.on")
+            : String(localized: "settings.guestSurfaceGate.controlledOff")
+        LabeledContent(
+            "settings.guestSurfaceGate.title",
+            value: "\(gateValue) (Rev \(gate.contractRevision)/S\(gate.snapshotRevision))"
+        )
+        .font(.caption)
+        Text("settings.guestSurfaceGate.note")
+            .font(.caption)
+            .foregroundStyle(.secondary)
+    }
+
     private var defaultICDRoute: HostVulkanICDRoute {
         var settings = BottleSettings()
         settings.dxvkPreferKosmicKrisp = defaultPreferVulkanDriver
@@ -197,11 +244,9 @@ struct SettingsRuntimeManifestSection: View {
     }
 
     private func reload() {
-        guard let manifest = try? RuntimeManifest.load() else {
-            report = nil
-            return
-        }
-        report = RuntimeManifestVerifier.verify(manifest: manifest, in: libraryFolder)
+        let unified = UnifiedRuntimeBaselineReport.collect(libraryFolder: libraryFolder)
+        baselineReport = unified
+        report = unified.runtimeVerification
     }
 }
 

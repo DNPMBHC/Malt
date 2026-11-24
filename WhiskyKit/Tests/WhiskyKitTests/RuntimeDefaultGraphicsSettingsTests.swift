@@ -24,15 +24,15 @@ final class RuntimeDefaultGraphicsSettingsTests: XCTestCase {
         let initial = BottleDXVKConfig(defaults: defaults)
         XCTAssertEqual(initial.dxmtMetalFXPreset, .off)
         XCTAssertEqual(initial.dxmtMetalFXOutputHeight, 1080)
-        XCTAssertTrue(initial.dxvkPreferKosmicKrisp)
+        XCTAssertFalse(initial.dxvkPreferKosmicKrisp)
 
         defaults.set("quality", forKey: "runtime.defaultMetalFXPreset")
         defaults.set(1440, forKey: "runtime.defaultMetalFXOutputHeight")
-        defaults.set(false, forKey: "runtime.defaultPreferVulkanDriver")
+        defaults.set(true, forKey: "runtime.defaultPreferVulkanDriver")
         let configured = BottleDXVKConfig(defaults: defaults)
         XCTAssertEqual(configured.dxmtMetalFXPreset, .quality)
         XCTAssertEqual(configured.dxmtMetalFXOutputHeight, 1440)
-        XCTAssertFalse(configured.dxvkPreferKosmicKrisp)
+        XCTAssertTrue(configured.dxvkPreferKosmicKrisp)
         XCTAssertEqual(initial.dxmtMetalFXPreset, .off)
     }
 
@@ -42,17 +42,17 @@ final class RuntimeDefaultGraphicsSettingsTests: XCTestCase {
         defer { defaults.removePersistentDomain(forName: domain) }
         defaults.set("unknown-preset", forKey: "runtime.defaultMetalFXPreset")
         defaults.set(-1, forKey: "runtime.defaultMetalFXOutputHeight")
-        defaults.set(false, forKey: "runtime.defaultPreferVulkanDriver")
+        defaults.set(true, forKey: "runtime.defaultPreferVulkanDriver")
         let invalid = BottleDXVKConfig(defaults: defaults)
         XCTAssertEqual(invalid.dxmtMetalFXPreset, .off)
         XCTAssertEqual(invalid.dxmtMetalFXOutputHeight, 1)
         let old = try JSONDecoder().decode(BottleDXVKConfig.self, from: Data("{}".utf8))
         XCTAssertEqual(old.dxmtMetalFXPreset, .off)
         XCTAssertEqual(old.dxmtMetalFXOutputHeight, 1080)
-        XCTAssertTrue(old.dxvkPreferKosmicKrisp)
+        XCTAssertFalse(old.dxvkPreferKosmicKrisp)
         let oldBottle = try JSONDecoder().decode(BottleSettings.self, from: Data("{}".utf8))
         XCTAssertEqual(oldBottle.dxmtMetalFXPreset, .off)
         XCTAssertEqual(oldBottle.dxmtMetalFXOutputHeight, 1080)
-        XCTAssertTrue(oldBottle.dxvkPreferKosmicKrisp)
+        XCTAssertFalse(oldBottle.dxvkPreferKosmicKrisp)
     }
 }
