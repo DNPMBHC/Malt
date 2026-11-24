@@ -1,0 +1,91 @@
+Owner: @DNPMBHC
+warning: '--skip-update' option is deprecated and will be removed in a future release
+Building for debugging...
+[Pre-planning 42 / 154]
+[Planning deferred tasks]
+[46 / 79]
+[47 / 80] SemanticVersion
+[57 / 118]
+[64 / 118]
+[66 / 118]
+[71 / 118]
+[75 / 118]
+[78 / 118]
+[80 / 118]
+[81 / 118]
+[85 / 118] SemanticVersion
+[92 / 119] ModuleX
+[102 / 200]
+[105 / 200]
+[113 / 200]
+[115 / 200] SemanticVersion
+[118 / 200]
+[124 / 200]
+[127 / 200]
+[136 / 200]
+[141 / 200]
+[142 / 200]
+[156 / 200]
+[158 / 200]
+[163 / 200]
+[175 / 200] ModuleX
+[176 / 200] ModuleX
+[183 / 200] ModuleX
+[190 / 201] ModuleXTests-product
+[194 / 217]
+[195 / 217]
+[206 / 217] ModuleXTests-product
+error: SwiftCompile normal arm64 <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/RuntimeGraphicsRoutingTests.swift failed with a nonzero exit code. Command line:     cd <workspace>/DemoApp
+    builtin-SwiftPerFileCompile RuntimeGraphicsRoutingTests.swift
+[207 / 217] ModuleXTests-product
+<workspace>/DemoApp/ModuleX/Tests/ModuleXTests/RuntimeGraphicsRoutingTests.swift:243:48: error: cannot find 'nominalHost' in scope
+241 |         // Missing target dylib -> must NOT select KosmicKrisp, falls back explicitly to MoltenVK.
+242 |         let fallbackRoute = settings.resolveDXVKVulkanICDRoute(
+243 |             libraryFolder: libs, hostSnapshot: nominalHost, appBundleURL: fakeApp
+    |                                                `- error: cannot find 'nominalHost' in scope
+244 |         )
+245 |         XCTAssertEqual(fallbackRoute.selectedICD, .moltenVK)
+
+<workspace>/DemoApp/ModuleX/Tests/ModuleXTests/RuntimeGraphicsRoutingTests.swift:245:52: error: type 'Equatable' has no member 'moltenVK'
+243 |             libraryFolder: libs, hostSnapshot: nominalHost, appBundleURL: fakeApp
+244 |         )
+245 |         XCTAssertEqual(fallbackRoute.selectedICD, .moltenVK)
+    |                                                    `- error: type 'Equatable' has no member 'moltenVK'
+246 |         XCTAssertTrue(fallbackRoute.usedFallback)
+247 | 
+
+<workspace>/DemoApp/ModuleX/Tests/ModuleXTests/RuntimeGraphicsRoutingTests.swift:251:48: error: cannot find 'nominalHost' in scope
+249 |         try Data("kk".utf8).write(to: frameworks.appending(path: "libvulkan_kosmickrisp.dylib"))
+250 |         let kkRoute = settings.resolveDXVKVulkanICDRoute(
+251 |             libraryFolder: libs, hostSnapshot: nominalHost, appBundleURL: fakeApp
+    |                                                `- error: cannot find 'nominalHost' in scope
+252 |         )
+253 |         XCTAssertEqual(kkRoute.selectedICD, .kosmicKrisp)
+
+<workspace>/DemoApp/ModuleX/Tests/ModuleXTests/RuntimeGraphicsRoutingTests.swift:253:46: error: type 'Equatable' has no member 'kosmicKrisp'
+251 |             libraryFolder: libs, hostSnapshot: nominalHost, appBundleURL: fakeApp
+252 |         )
+253 |         XCTAssertEqual(kkRoute.selectedICD, .kosmicKrisp)
+    |                                              `- error: type 'Equatable' has no member 'kosmicKrisp'
+254 |         XCTAssertFalse(kkRoute.usedFallback)
+255 |         XCTAssertEqual(
+
+<workspace>/DemoApp/ModuleX/Tests/ModuleXTests/RuntimeGraphicsRoutingTests.swift:262:72: error: cannot find 'nominalHost' in scope
+260 |         // DXMT MetalFX policy helper honors preset and thermal/low-res protections.
+261 |         settings.dxmtMetalFXPreset = .quality
+262 |         let activeFX = settings.resolveDXMTMetalFXPolicy(hostSnapshot: nominalHost, outputHeight: 1440)
+    |                                                                        `- error: cannot find 'nominalHost' in scope
+263 |         XCTAssertTrue(activeFX.isActive)
+264 |         XCTAssertEqual(activeFX.effectivePreset, .quality)
+
+<workspace>/DemoApp/ModuleX/Tests/ModuleXTests/RuntimeGraphicsRoutingTests.swift:264:51: error: type 'Equatable' has no member 'quality'
+262 |         let activeFX = settings.resolveDXMTMetalFXPolicy(hostSnapshot: nominalHost, outputHeight: 1440)
+263 |         XCTAssertTrue(activeFX.isActive)
+264 |         XCTAssertEqual(activeFX.effectivePreset, .quality)
+    |                                                   `- error: type 'Equatable' has no member 'quality'
+265 |         let throttledFX = settings.resolveDXMTMetalFXPolicy(hostSnapshot: stressedHost, outputHeight: 1440)
+266 |         XCTAssertFalse(throttledFX.isActive)
+Failed frontend command:
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift-frontend -frontend -c /tmp/guest-shell-p5c-build/out/Intermediates.noindex/ModuleX.build/Debug/ModuleXTests-p.build/DerivedSources/test_entry_point.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/AntiCheatProbeTestSupport.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/AntiCheatProbeTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/GuestSurfacePolicyAndInputTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/GuestSurfaceSessionTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/HostCapabilitiesTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/HostMetalFXBenchmarkTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/HostMetalFXTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/HostResourceExperimentTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/HostResourcePolicyTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/HostWineKosmicKrispAndMetalFXTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/IntegrationBoundaryTests.swift -primary-file <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/RemotePhysicsBackendTests.swift -primary-file <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/RuntimeGraphicsRoutingTests.swift -primary-file <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/RuntimeIntegrityReportTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/RuntimeManifestTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/RuntimeProcessTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/RuntimeRemotePhysicsIntegrationTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/RuntimeStorageTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/RuntimeTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/UTMComputeTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/UTMGuestStoragePreflightTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/UTMHostProcessRunnerTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/UTMInteractiveRealComputeTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/UTMInteractiveRealTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/UTMInteractiveTestSupport.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/UTMInteractiveTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/UTMWindowsGuestOptimizerTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/UTMWindowsGuestProviderTestSupport.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/UTMWindowsGuestProviderTests.swift -supplementary-output-file-map /tmp/guest-shell-p5c-build/out/Intermediates.noindex/ModuleX.build/Debug/ModuleXTests-p.build/Objects-normal/arm64/supplementaryOutputs-15 -target arm64-apple-macos14.0 -module-can-import-version Testing 2084 0 -module-can-import-version XCTest 25228 0 -disable-cross-import-overlay-search -swift-module-cross-import Darwin /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/Darwin.swiftcrossimport/xlocale.swiftoverlay -swift-module-cross-import Testing /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/Testing.framework/Modules/Testing.swiftcrossimport/AppKit.swiftoverlay -swift-module-cross-import Testing /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/Testing.framework/Modules/Testing.swiftcrossimport/CoreGraphics.swiftoverlay -swift-module-cross-import Testing /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/Testing.framework/Modules/Testing.swiftcrossimport/CoreImage.swiftoverlay -swift-module-cross-import Testing /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/Testing.framework/Modules/Testing.swiftcrossimport/CoreTransferable.swiftoverlay -swift-module-cross-import Testing /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/Testing.framework/Modules/Testing.swiftcrossimport/Foundation.swiftoverlay -load-resolved-plugin /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib/swift/host/plugins/libFoundationMacros.dylib\#/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server\#FoundationMacros -load-resolved-plugin /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib/swift/host/plugins/libObservationMacros.dylib\#/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server\#ObservationMacros -load-resolved-plugin /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib/swift/host/plugins/libPreviewsMacros.dylib\#/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server\#PreviewsMacros -load-resolved-plugin /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib/swift/host/plugins/libSwiftMacros.dylib\#/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server\#SwiftMacros -load-resolved-plugin /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib/swift/host/plugins/libSwiftUIMacros.dylib\#/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server\#SwiftUIMacros -load-resolved-plugin /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing/libTestingMacros.dylib\#\#TestingMacros -disable-implicit-swift-modules -Xcc -fno-implicit-modules -Xcc -fno-implicit-module-maps -explicit-swift-module-map-file /tmp/guest-shell-p5c-build/out/Intermediates.noindex/ModuleX.build/Debug/ModuleXTests-p.build/Objects-normal/arm64/ModuleXTests-dependencies-1.json -Xllvm -aarch64-use-tbi -enable-objc-interop -stack-check -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk -I /tmp/guest-shell-p5c-build/out/Products/Debug -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib -F /tmp/guest-shell-p5c-build/out/Products/Debug/PackageFrameworks -F /tmp/guest-shell-p5c-build/out/Products/Debug -F /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks -module-cache-path /tmp/guest-shell-p5c-build/out/Intermediates.noindex/SwiftExplicitPrecompiledModules -no-color-diagnostics -Xcc -fno-color-diagnostics -enable-testing -g -debug-info-format\=dwarf -dwarf-version\=4 -swift-version 6 -Onone -D SWIFT_PACKAGE -D DEBUG -D Xcode -serialize-debugging-options -enable-experimental-feature DebugDescriptionMacro -empty-abi-descriptor -validate-clang-modules-once -clang-build-session-file /tmp/guest-shell-p5c-build/out/ModuleCache.noindex/Session.modulevalidation -Xcc -working-directory -Xcc <workspace>/DemoApp -enable-anonymous-context-mangled-names -file-compilation-dir <workspace>/DemoApp -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -Xcc -ivfsstatcache -Xcc /tmp/guest-shell-p5c-build/out/SDKStatCaches.noindex/macosx27.0-26A425-a0facfad118c1a7a18f0aad9463f65497231f6df4def33e022ae2eb8f782df1a.sdkstatcache -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -Xcc -I/tmp/guest-shell-p5c-build/out/Products/Debug/include -Xcc -I/tmp/guest-shell-p5c-build/out/Intermediates.noindex/ModuleX.build/Debug/ModuleXTests-p.build/DerivedSources-normal/arm64 -Xcc -I/tmp/guest-shell-p5c-build/out/Intermediates.noindex/ModuleX.build/Debug/ModuleXTests-p.build/DerivedSources/arm64 -Xcc -I/tmp/guest-shell-p5c-build/out/Intermediates.noindex/ModuleX.build/Debug/ModuleXTests-p.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\=1 -no-auto-bridging-header-chaining -module-name ModuleXTests -package-name module-x -const-gather-protocols-file /tmp/guest-shell-p5c-build/out/Intermediates.noindex/ModuleX.build/Debug/ModuleXTests-p.build/Objects-normal/arm64/ModuleXTests_const_extract_protocols.json -disable-clang-spi -clang-target arm64-apple-macos27.0 -target-sdk-version 27.0 -target-sdk-name macosx27.0 -in-process-plugin-server-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/libSwiftInProcPluginServer.dylib -parse-as-library -o /tmp/guest-shell-p5c-build/out/Intermediates.noindex/ModuleX.build/Debug/ModuleXTests-p.build/Objects-normal/arm64/RemotePhysicsBackendTests.o -o /tmp/guest-shell-p5c-build/out/Intermediates.noindex/ModuleX.build/Debug/ModuleXTests-p.build/Objects-normal/arm64/RuntimeGraphicsRoutingTests.o -o /tmp/guest-shell-p5c-build/out/Intermediates.noindex/ModuleX.build/Debug/ModuleXTests-p.build/Objects-normal/arm64/RuntimeIntegrityReportTests.o -debug-module-path /tmp/guest-shell-p5c-build/out/Intermediates.noindex/ModuleX.build/Debug/ModuleXTests-p.build/Objects-normal/arm64/ModuleXTests.swiftmodule -index-unit-output-path /ModuleX.build/Debug/ModuleXTests-p.build/Objects-normal/arm64/RemotePhysicsBackendTests.o -index-unit-output-path /ModuleX.build/Debug/ModuleXTests-p.build/Objects-normal/arm64/RuntimeGraphicsRoutingTests.o -index-unit-output-path /ModuleX.build/Debug/ModuleXTests-p.build/Objects-normal/arm64/RuntimeIntegrityReportTests.o -index-store-path /tmp/guest-shell-p5c-build/out -index-system-modules
+error: Build failed
+error: fatalError

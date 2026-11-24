@@ -1,0 +1,19 @@
+{
+  "schema": "task-07-reported-module02-completion-v1",
+  "recordedAt": "2026-11-22T01:44:21+08:00",
+  "provenance": "integration coordinator report; final task-07 gate not yet rerun",
+  "ownerTask": "02",
+  "ownerStatus": "idle",
+  "reportedChecks": {
+    "guestSyntheticTestsPassed": 21,
+    "swiftTestsPassed": 91,
+    "swiftTestsEnvironmentSkipped": 2,
+    "swiftTestTotalIndependentlyVerified": null,
+    "strictSwiftFormat": "passed",
+    "packageSchemeBuild": "passed"
+  },
+  "realGuestVerified": false,
+  "runtimeEnvironmentStatus": "environment_not_verified",
+  "sourceFreezeCondition": "wait for task 05 SwiftLint repair and final source freeze",
+  "task07FinalGateStarted": false
+}

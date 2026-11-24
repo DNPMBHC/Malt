@@ -1,0 +1,341 @@
+warning: '--skip-update' option is deprecated and will be removed in a future release
+Building for debugging...
+[Computing dependencies]
+[Pre-planning 1 / 154]
+[Planning deferred tasks]
+[11 / 46] SemanticVersion_SemanticVersion
+[15 / 48]
+[16 / 49] SemanticVersion
+[24 / 49] ModuleX
+[25 / 54]
+[26 / 54]
+[29 / 54] ModuleX
+[32 / 57] ModuleX
+[40 / 67] ModuleX
+[41 / 67] ModuleX
+[42 / 67] ModuleX
+[49 / 66] ModuleX
+[51 / 66] ModuleX
+[56 / 67] ModuleXTests-product
+[58 / 81]
+[59 / 81]
+[70 / 81] ModuleXTests-product
+[75 / 81] ModuleXTests-product
+[77 / 81] ModuleXTests-product
+Build complete! (9.30秒)
+Test Suite 'All tests' started at 2026-11-22 12:17:58.135.
+Test Suite 'ModuleXTests.xctest' started at 2026-11-22 12:17:58.138.
+Test Suite 'AntiCheatProbeTests' started at 2026-11-22 12:17:58.138.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testAccessDeniedDoesNotMasqueradeAsDriverNotLoaded]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testAccessDeniedDoesNotMasqueradeAsDriverNotLoaded]' passed (0.003 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testCandidateArchitectureMismatchDoesNotClaimRuntimeProbeFailure]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testCandidateArchitectureMismatchDoesNotClaimRuntimeProbeFailure]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testCandidateImageSignatureIsReportedSeparately]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testCandidateImageSignatureIsReportedSeparately]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testDeviceControlFailureFailsSelfProbe]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testDeviceControlFailureFailsSelfProbe]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testDriverArchitectureMismatchFailsSelfProbe]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testDriverArchitectureMismatchFailsSelfProbe]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testDuplicateObjectKeysAreRejected]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testDuplicateObjectKeysAreRejected]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testExcessiveNestingIsRejected]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testExcessiveNestingIsRejected]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testGuestProbeServiceBindsChallengeToGuestReport]' started.
+2026-11-22 12:17:58.147 xctest[71323:8084993] Metal API Validation Enabled
+Test Case '-[ModuleXTests.AntiCheatProbeTests testGuestProbeServiceBindsChallengeToGuestReport]' passed (0.016 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testIncompleteChildCleanupFailsSelfProbe]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testIncompleteChildCleanupFailsSelfProbe]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testInvalidResponseHasDistinctFailure]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testInvalidResponseHasDistinctFailure]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testMismatchedCurrentContextPIDFailsSelfProbe]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testMismatchedCurrentContextPIDFailsSelfProbe]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testMismatchedNonceIsRejected]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testMismatchedNonceIsRejected]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testMissingBoundChildPIDFailsSelfProbe]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testMissingBoundChildPIDFailsSelfProbe]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testMissingDeviceIsReportedAsNotLoaded]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testMissingDeviceIsReportedAsNotLoaded]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testMissingProcessCreateOrExitNotificationFailsSelfProbe]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testMissingProcessCreateOrExitNotificationFailsSelfProbe]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testNotificationFailureStageIsMappedSeparately]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testNotificationFailureStageIsMappedSeparately]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testOversizedPayloadIsRejectedBeforeParsing]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testOversizedPayloadIsRejectedBeforeParsing]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testPreviousReportSchemaVersionIsRejected]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testPreviousReportSchemaVersionIsRejected]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testProtocolRejectionPreservesNativeFailureStage]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testProtocolRejectionPreservesNativeFailureStage]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testRequestorAndObservedPIDMismatchFailsSelfProbe]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testRequestorAndObservedPIDMismatchFailsSelfProbe]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testRequestorContextMismatchFailsSelfProbe]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testRequestorContextMismatchFailsSelfProbe]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testStaleReportHasDistinctError]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testStaleReportHasDistinctError]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testSuccessfulProbeDoesNotAuthorizeProtectedGame]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testSuccessfulProbeDoesNotAuthorizeProtectedGame]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testSuccessfulProbeUsesNotificationResponseByteCount]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testSuccessfulProbeUsesNotificationResponseByteCount]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testTruncatedPayloadIsRejectedAsInvalidJSON]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testTruncatedPayloadIsRejectedAsInvalidJSON]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testUnknownEnumValueIsRejected]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testUnknownEnumValueIsRejected]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testUnmatchedChildPIDFailsSelfProbe]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testUnmatchedChildPIDFailsSelfProbe]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testUnsupportedDriverProtocolFailsSelfProbe]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testUnsupportedDriverProtocolFailsSelfProbe]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testWrongFieldTypeIsRejected]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testWrongFieldTypeIsRejected]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.AntiCheatProbeTests testZeroRequestorPIDFailsSelfProbe]' started.
+Test Case '-[ModuleXTests.AntiCheatProbeTests testZeroRequestorPIDFailsSelfProbe]' passed (0.000 seconds).
+Test Suite 'AntiCheatProbeTests' passed at 2026-11-22 12:17:58.172.
+	 Executed 30 tests, with 0 failures (0 unexpected) in 0.032 (0.035) seconds
+Test Suite 'HostCapabilitiesTests' started at 2026-11-22 12:17:58.172.
+Test Case '-[ModuleXTests.HostCapabilitiesTests testCurrentProviderPreservesStaticCapabilities]' started.
+Test Case '-[ModuleXTests.HostCapabilitiesTests testCurrentProviderPreservesStaticCapabilities]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.HostCapabilitiesTests testExplicitEmptyMetalDeviceListRemainsUnavailable]' started.
+Test Case '-[ModuleXTests.HostCapabilitiesTests testExplicitEmptyMetalDeviceListRemainsUnavailable]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.HostCapabilitiesTests testGameModeEligibilityRequiresAppleSiliconAndSonomaOrLater]' started.
+Test Case '-[ModuleXTests.HostCapabilitiesTests testGameModeEligibilityRequiresAppleSiliconAndSonomaOrLater]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.HostCapabilitiesTests testNotificationBurstCoalescesAndUnchangedStateDoesNotPublish]' started.
+Test Case '-[ModuleXTests.HostCapabilitiesTests testNotificationBurstCoalescesAndUnchangedStateDoesNotPublish]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.HostCapabilitiesTests testOptionalQueueActuallyPausesAndResumesAcrossPowerAndThermalChanges]' started.
+Test Case '-[ModuleXTests.HostCapabilitiesTests testOptionalQueueActuallyPausesAndResumesAcrossPowerAndThermalChanges]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.HostCapabilitiesTests testPolicyPreservesConsumerPauseAndConcurrencyLimit]' started.
+Test Case '-[ModuleXTests.HostCapabilitiesTests testPolicyPreservesConsumerPauseAndConcurrencyLimit]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.HostCapabilitiesTests testStaticMetalCapabilityCacheLoadsOncePerDeviceKey]' started.
+Test Case '-[ModuleXTests.HostCapabilitiesTests testStaticMetalCapabilityCacheLoadsOncePerDeviceKey]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.HostCapabilitiesTests testStopDiscardsScheduledRefreshAndRemovesAllObservers]' started.
+Test Case '-[ModuleXTests.HostCapabilitiesTests testStopDiscardsScheduledRefreshAndRemovesAllObservers]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.HostCapabilitiesTests testThermalPowerAndWakeNotificationsRefreshDynamicState]' started.
+Test Case '-[ModuleXTests.HostCapabilitiesTests testThermalPowerAndWakeNotificationsRefreshDynamicState]' passed (0.001 seconds).
+Test Suite 'HostCapabilitiesTests' passed at 2026-11-22 12:17:58.177.
+	 Executed 9 tests, with 0 failures (0 unexpected) in 0.004 (0.004) seconds
+Test Suite 'HostMetalFXBenchmarkTests' started at 2026-11-22 12:17:58.177.
+Test Case '-[ModuleXTests.HostMetalFXBenchmarkTests testInvalidConfigurationFailsBeforeCreatingDevice]' started.
+Test Case '-[ModuleXTests.HostMetalFXBenchmarkTests testInvalidConfigurationFailsBeforeCreatingDevice]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.HostMetalFXBenchmarkTests testNoDeviceProducesDeterministicCPUFallbackAndSerializableReport]' started.
+Test Case '-[ModuleXTests.HostMetalFXBenchmarkTests testNoDeviceProducesDeterministicCPUFallbackAndSerializableReport]' passed (0.012 seconds).
+Test Case '-[ModuleXTests.HostMetalFXBenchmarkTests testReproducibleMetalFXABWritesSanitizedJSON]' started.
+<workspace>/my-project/module-x/Tests/ModuleXTests/HostMetalFXBenchmarkTests.swift:79: -[ModuleXTests.HostMetalFXBenchmarkTests testReproducibleMetalFXABWritesSanitizedJSON] : Test skipped - Set HOST_RUN_METALFX_AB=1 to run and persist the GPU A/B experiment.
+Test Case '-[ModuleXTests.HostMetalFXBenchmarkTests testReproducibleMetalFXABWritesSanitizedJSON]' skipped (0.001 seconds).
+Test Case '-[ModuleXTests.HostMetalFXBenchmarkTests testUnsupportedAndCreationFailureExecuteActualNearestFallback]' started.
+Test Case '-[ModuleXTests.HostMetalFXBenchmarkTests testUnsupportedAndCreationFailureExecuteActualNearestFallback]' passed (0.065 seconds).
+Test Suite 'HostMetalFXBenchmarkTests' passed at 2026-11-22 12:17:58.256.
+	 Executed 4 tests, with 1 test skipped and 0 failures (0 unexpected) in 0.079 (0.079) seconds
+Test Suite 'HostMetalFXTests' started at 2026-11-22 12:17:58.256.
+Test Case '-[ModuleXTests.HostMetalFXTests testExtendedGraphicsQueriesSeparateSupportFromActualUse]' started.
+Test Case '-[ModuleXTests.HostMetalFXTests testExtendedGraphicsQueriesSeparateSupportFromActualUse]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.HostMetalFXTests testMetalAPIValidationIsEnabledForHostChecks]' started.
+Test Case '-[ModuleXTests.HostMetalFXTests testMetalAPIValidationIsEnabledForHostChecks]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.HostMetalFXTests testMetalFXSpatialCapabilityAndCommandBufferExecution]' started.
+Test Case '-[ModuleXTests.HostMetalFXTests testMetalFXSpatialCapabilityAndCommandBufferExecution]' passed (0.020 seconds).
+Test Case '-[ModuleXTests.HostMetalFXTests testMetalFXTemporalCapabilityAndCommandBufferExecution]' started.
+Test Case '-[ModuleXTests.HostMetalFXTests testMetalFXTemporalCapabilityAndCommandBufferExecution]' passed (0.242 seconds).
+Test Suite 'HostMetalFXTests' passed at 2026-11-22 12:17:58.519.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.263 (0.263) seconds
+Test Suite 'HostResourceExperimentTests' started at 2026-11-22 12:17:58.519.
+Test Case '-[ModuleXTests.HostResourceExperimentTests testMeasuredOptionalConsumerABAndFallback]' started.
+Test Case '-[ModuleXTests.HostResourceExperimentTests testMeasuredOptionalConsumerABAndFallback]' passed (0.281 seconds).
+Test Suite 'HostResourceExperimentTests' passed at 2026-11-22 12:17:58.800.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.281 (0.281) seconds
+Test Suite 'HostResourcePolicyTests' started at 2026-11-22 12:17:58.800.
+Test Case '-[ModuleXTests.HostResourcePolicyTests testGuestLaunchPolicyHonorsFallbackAndPressureLevels]' started.
+Test Case '-[ModuleXTests.HostResourcePolicyTests testGuestLaunchPolicyHonorsFallbackAndPressureLevels]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.HostResourcePolicyTests testMetalHostPolicyRespectsCapabilitiesPressureAndFallback]' started.
+Test Case '-[ModuleXTests.HostResourcePolicyTests testMetalHostPolicyRespectsCapabilitiesPressureAndFallback]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.HostResourcePolicyTests testThreeEngineBackendRouterRoutesByDirectXVersionAndAvailability]' started.
+Test Case '-[ModuleXTests.HostResourcePolicyTests testThreeEngineBackendRouterRoutesByDirectXVersionAndAvailability]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.HostResourcePolicyTests testWinePolicyEmitsDocumentedDXMTOverridesAndHonorsFallback]' started.
+Test Case '-[ModuleXTests.HostResourcePolicyTests testWinePolicyEmitsDocumentedDXMTOverridesAndHonorsFallback]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.HostResourcePolicyTests testWinePolicyEmitsDocumentedDXVKOverridesOnlyUnderThermalOrPowerPressure]' started.
+Test Case '-[ModuleXTests.HostResourcePolicyTests testWinePolicyEmitsDocumentedDXVKOverridesOnlyUnderThermalOrPowerPressure]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.HostResourcePolicyTests testWinePolicyEmitsNoSyntheticEnvVarsForD3DMetal]' started.
+Test Case '-[ModuleXTests.HostResourcePolicyTests testWinePolicyEmitsNoSyntheticEnvVarsForD3DMetal]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.HostResourcePolicyTests testWinePolicyFallbackSwitchDisablesAllOverrides]' started.
+Test Case '-[ModuleXTests.HostResourcePolicyTests testWinePolicyFallbackSwitchDisablesAllOverrides]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.HostResourcePolicyTests testWinePolicyPreservesUserSuppliedEnvironmentValues]' started.
+Test Case '-[ModuleXTests.HostResourcePolicyTests testWinePolicyPreservesUserSuppliedEnvironmentValues]' passed (0.000 seconds).
+Test Suite 'HostResourcePolicyTests' passed at 2026-11-22 12:17:58.802.
+	 Executed 8 tests, with 0 failures (0 unexpected) in 0.002 (0.002) seconds
+Test Suite 'IntegrationBoundaryTests' started at 2026-11-22 12:17:58.802.
+Test Case '-[ModuleXTests.IntegrationBoundaryTests testGuestCapabilityMatrix]' started.
+Test Case '-[ModuleXTests.IntegrationBoundaryTests testGuestCapabilityMatrix]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.IntegrationBoundaryTests testPerformancePolicyForEveryThermalAndPowerCombination]' started.
+Test Case '-[ModuleXTests.IntegrationBoundaryTests testPerformancePolicyForEveryThermalAndPowerCombination]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.IntegrationBoundaryTests testProfileMatchingIsCaseInsensitiveAndRejectsSimilarNames]' started.
+Test Case '-[ModuleXTests.IntegrationBoundaryTests testProfileMatchingIsCaseInsensitiveAndRejectsSimilarNames]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.IntegrationBoundaryTests testReadyUnknownGuestForwardsRequestAndProviderError]' started.
+Test Case '-[ModuleXTests.IntegrationBoundaryTests testReadyUnknownGuestForwardsRequestAndProviderError]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.IntegrationBoundaryTests testRejectedGuestLaunchNeverCallsProvider]' started.
+Test Case '-[ModuleXTests.IntegrationBoundaryTests testRejectedGuestLaunchNeverCallsProvider]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.IntegrationBoundaryTests testWineLaunchWithoutBottleReportsBottleUnavailable]' started.
+Test Case '-[ModuleXTests.IntegrationBoundaryTests testWineLaunchWithoutBottleReportsBottleUnavailable]' passed (0.000 seconds).
+Test Suite 'IntegrationBoundaryTests' passed at 2026-11-22 12:17:58.805.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 0.002 (0.002) seconds
+Test Suite 'RemotePhysicsBackendTests' started at 2026-11-22 12:17:58.805.
+Test Case '-[ModuleXTests.RemotePhysicsBackendTests testAvailabilityCoversAllFourSpecifiedStates]' started.
+Test Case '-[ModuleXTests.RemotePhysicsBackendTests testAvailabilityCoversAllFourSpecifiedStates]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.RemotePhysicsBackendTests testMoonlightInvocationAppliesHostResourcePolicyWithoutShell]' started.
+Test Case '-[ModuleXTests.RemotePhysicsBackendTests testMoonlightInvocationAppliesHostResourcePolicyWithoutShell]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.RemotePhysicsBackendTests testRealProcessSessionReportsExitCodesAndIdempotentCancellation]' started.
+Test Case '-[ModuleXTests.RemotePhysicsBackendTests testRealProcessSessionReportsExitCodesAndIdempotentCancellation]' passed (0.010 seconds).
+Test Case '-[ModuleXTests.RemotePhysicsBackendTests testStartPropagatesTimeoutUnreachableAndCancellationErrors]' started.
+Test Case '-[ModuleXTests.RemotePhysicsBackendTests testStartPropagatesTimeoutUnreachableAndCancellationErrors]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.RemotePhysicsBackendTests testTCPProbeReturnsNonReadyForClosedLoopbackPortWithinTimeout]' started.
+Test Case '-[ModuleXTests.RemotePhysicsBackendTests testTCPProbeReturnsNonReadyForClosedLoopbackPortWithinTimeout]' passed (0.015 seconds).
+Test Suite 'RemotePhysicsBackendTests' passed at 2026-11-22 12:17:58.833.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.027 (0.028) seconds
+Test Suite 'RemotePhysicsConfigurationTests' started at 2026-11-22 12:17:58.833.
+Test Case '-[ModuleXTests.RemotePhysicsConfigurationTests testConfigurationRejectsEmbeddedCredentialsAndInvalidBounds]' started.
+Test Case '-[ModuleXTests.RemotePhysicsConfigurationTests testConfigurationRejectsEmbeddedCredentialsAndInvalidBounds]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.RemotePhysicsConfigurationTests testConfigurationRejectsPlaintextCredentialKeysInJSON]' started.
+Test Case '-[ModuleXTests.RemotePhysicsConfigurationTests testConfigurationRejectsPlaintextCredentialKeysInJSON]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.RemotePhysicsConfigurationTests testConfigurationRejectsShellInterpretersAsExternalClient]' started.
+Test Case '-[ModuleXTests.RemotePhysicsConfigurationTests testConfigurationRejectsShellInterpretersAsExternalClient]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.RemotePhysicsConfigurationTests testExecutionDomainIsStrictlyRemotePhysicalWindows]' started.
+Test Case '-[ModuleXTests.RemotePhysicsConfigurationTests testExecutionDomainIsStrictlyRemotePhysicalWindows]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.RemotePhysicsConfigurationTests testStreamPolicyConsumesHostThermalAndPowerStateWithReversibleFallback]' started.
+Test Case '-[ModuleXTests.RemotePhysicsConfigurationTests testStreamPolicyConsumesHostThermalAndPowerStateWithReversibleFallback]' passed (0.000 seconds).
+Test Suite 'RemotePhysicsConfigurationTests' passed at 2026-11-22 12:17:58.835.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.001 (0.002) seconds
+Test Suite 'RuntimeGraphicsRoutingTests' started at 2026-11-22 12:17:58.835.
+Test Case '-[ModuleXTests.RuntimeGraphicsRoutingTests testAutoRoutingAndExplicitPinningRespectAPIAndAvailability]' started.
+Test Case '-[ModuleXTests.RuntimeGraphicsRoutingTests testAutoRoutingAndExplicitPinningRespectAPIAndAvailability]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.RuntimeGraphicsRoutingTests testAvailableGraphicsBackendsAndEnableDXMTSyncDLLsAndCacheDir]' started.
+Test Case '-[ModuleXTests.RuntimeGraphicsRoutingTests testAvailableGraphicsBackendsAndEnableDXMTSyncDLLsAndCacheDir]' passed (0.010 seconds).
+Test Case '-[ModuleXTests.RuntimeGraphicsRoutingTests testDXMTEnvironmentIsolatesPerBottleCacheAndAppliesAdaptivePolicyNonDestructively]' started.
+Test Case '-[ModuleXTests.RuntimeGraphicsRoutingTests testDXMTEnvironmentIsolatesPerBottleCacheAndAppliesAdaptivePolicyNonDestructively]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.RuntimeGraphicsRoutingTests testLegacyDXVKBoooleanPlistDecodesToCompatibleGraphicsBackendMode]' started.
+Test Case '-[ModuleXTests.RuntimeGraphicsRoutingTests testLegacyDXVKBoooleanPlistDecodesToCompatibleGraphicsBackendMode]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.RuntimeGraphicsRoutingTests testRuntimePlanBackendResourcePolicyOverloadAndRouteDiagnostic]' started.
+Test Case '-[ModuleXTests.RuntimeGraphicsRoutingTests testRuntimePlanBackendResourcePolicyOverloadAndRouteDiagnostic]' passed (0.000 seconds).
+Test Suite 'RuntimeGraphicsRoutingTests' passed at 2026-11-22 12:17:58.847.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.012 (0.013) seconds
+Test Suite 'RuntimeProcessTests' started at 2026-11-22 12:17:58.847.
+Test Case '-[ModuleXTests.RuntimeProcessTests testAliasNamesDoNotHideKnownProfilesOrScripts]' started.
+Test Case '-[ModuleXTests.RuntimeProcessTests testAliasNamesDoNotHideKnownProfilesOrScripts]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.RuntimeProcessTests testArgumentsPreserveSpacesQuotesEmptyValuesAndEscapes]' started.
+Test Case '-[ModuleXTests.RuntimeProcessTests testArgumentsPreserveSpacesQuotesEmptyValuesAndEscapes]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.RuntimeProcessTests testArgumentsRejectIncompleteQuoting]' started.
+Test Case '-[ModuleXTests.RuntimeProcessTests testArgumentsRejectIncompleteQuoting]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.RuntimeProcessTests testExplicitArgumentsReplaceSavedValuesWithoutParsingThem]' started.
+Test Case '-[ModuleXTests.RuntimeProcessTests testExplicitArgumentsReplaceSavedValuesWithoutParsingThem]' passed (0.004 seconds).
+Test Case '-[ModuleXTests.RuntimeProcessTests testProcessSessionCancellationTerminatesSpawnedChild]' started.
+Test Case '-[ModuleXTests.RuntimeProcessTests testProcessSessionCancellationTerminatesSpawnedChild]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.RuntimeProcessTests testProcessSessionReturnsExitCodeAndAllowsAnotherAttempt]' started.
+Test Case '-[ModuleXTests.RuntimeProcessTests testProcessSessionReturnsExitCodeAndAllowsAnotherAttempt]' passed (0.009 seconds).
+Test Case '-[ModuleXTests.RuntimeProcessTests testProgramSettingsFollowSymlinksAndContainerMoves]' started.
+Test Case '-[ModuleXTests.RuntimeProcessTests testProgramSettingsFollowSymlinksAndContainerMoves]' passed (0.006 seconds).
+Test Case '-[ModuleXTests.RuntimeProcessTests testShellQuotingRoundTripsLiteralArguments]' started.
+Test Case '-[ModuleXTests.RuntimeProcessTests testShellQuotingRoundTripsLiteralArguments]' passed (0.073 seconds).
+Test Suite 'RuntimeProcessTests' passed at 2026-11-22 12:17:58.943.
+	 Executed 8 tests, with 0 failures (0 unexpected) in 0.095 (0.095) seconds
+Test Suite 'RuntimeRemotePhysicsIntegrationTests' started at 2026-11-22 12:17:58.943.
+Test Case '-[ModuleXTests.RuntimeRemotePhysicsIntegrationTests testRemotePhysicsAvailabilityMatrixAndDomainIsolation]' started.
+Test Case '-[ModuleXTests.RuntimeRemotePhysicsIntegrationTests testRemotePhysicsAvailabilityMatrixAndDomainIsolation]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.RuntimeRemotePhysicsIntegrationTests testRemotePhysicsLaunchSkipsLocalExecutableAndPropagatesExitCode]' started.
+Test Case '-[ModuleXTests.RuntimeRemotePhysicsIntegrationTests testRemotePhysicsLaunchSkipsLocalExecutableAndPropagatesExitCode]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.RuntimeRemotePhysicsIntegrationTests testRemotePhysicsNeverSilentlyOverridesBlockedLocalBackends]' started.
+Test Case '-[ModuleXTests.RuntimeRemotePhysicsIntegrationTests testRemotePhysicsNeverSilentlyOverridesBlockedLocalBackends]' passed (0.000 seconds).
+Test Suite 'RuntimeRemotePhysicsIntegrationTests' passed at 2026-11-22 12:17:58.944.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.001 (0.002) seconds
+Test Suite 'RuntimeStorageTests' started at 2026-11-22 12:17:58.944.
+Test Case '-[ModuleXTests.RuntimeStorageTests testEqualZeroAndEqualPositiveCapacitiesSortDeterministicallyByPath]' started.
+Test Case '-[ModuleXTests.RuntimeStorageTests testEqualZeroAndEqualPositiveCapacitiesSortDeterministicallyByPath]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.RuntimeStorageTests testFallbackUsesFileSystemFreeSizeWhenVolumeCapacitiesAreMissingOrZero]' started.
+Test Case '-[ModuleXTests.RuntimeStorageTests testFallbackUsesFileSystemFreeSizeWhenVolumeCapacitiesAreMissingOrZero]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.RuntimeStorageTests testSelectorPrefersExternalWritableKnownCapacityAndIgnoresReadOnlyOrNonFileURLs]' started.
+Test Case '-[ModuleXTests.RuntimeStorageTests testSelectorPrefersExternalWritableKnownCapacityAndIgnoresReadOnlyOrNonFileURLs]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.RuntimeStorageTests testZeroImportantUsageFallsBackToRealAvailableCapacityRegardlessOfOrder]' started.
+Test Case '-[ModuleXTests.RuntimeStorageTests testZeroImportantUsageFallsBackToRealAvailableCapacityRegardlessOfOrder]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.RuntimeStorageTests testZeroImportantUsageOnLargerVolumeBeatsPositiveImportantUsageOnSmallerVolume]' started.
+Test Case '-[ModuleXTests.RuntimeStorageTests testZeroImportantUsageOnLargerVolumeBeatsPositiveImportantUsageOnSmallerVolume]' passed (0.000 seconds).
+Test Suite 'RuntimeStorageTests' passed at 2026-11-22 12:17:58.945.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'RuntimeTests' started at 2026-11-22 12:17:58.945.
+Test Case '-[ModuleXTests.RuntimeTests testAmbiguousTargetsAndConflictingProfilesAreBlocked]' started.
+Test Case '-[ModuleXTests.RuntimeTests testAmbiguousTargetsAndConflictingProfilesAreBlocked]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.RuntimeTests testEvidenceMetadataRoundTripsSnakeCaseJSON]' started.
+Test Case '-[ModuleXTests.RuntimeTests testEvidenceMetadataRoundTripsSnakeCaseJSON]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.RuntimeTests testExplicitProfileResolvesAnIndirectLauncher]' started.
+Test Case '-[ModuleXTests.RuntimeTests testExplicitProfileResolvesAnIndirectLauncher]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.RuntimeTests testGuestLaunchPreservesRequestAndReportsNonzeroExit]' started.
+Test Case '-[ModuleXTests.RuntimeTests testGuestLaunchPreservesRequestAndReportsNonzeroExit]' passed (0.002 seconds).
+Test Case '-[ModuleXTests.RuntimeTests testLegacyProfileAndEvidenceJSONUseDefaults]' started.
+Test Case '-[ModuleXTests.RuntimeTests testLegacyProfileAndEvidenceJSONUseDefaults]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.RuntimeTests testProtectedGameRoutesToUnconfiguredGuestAndCannotLaunch]' started.
+Test Case '-[ModuleXTests.RuntimeTests testProtectedGameRoutesToUnconfiguredGuestAndCannotLaunch]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.RuntimeTests testReadyGuestAndSelfProbeDoNotImplyVendorSupportOrGameVerification]' started.
+Test Case '-[ModuleXTests.RuntimeTests testReadyGuestAndSelfProbeDoNotImplyVendorSupportOrGameVerification]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.RuntimeTests testTheFinalsProfileUsesVendorRestrictedStatus]' started.
+Test Case '-[ModuleXTests.RuntimeTests testTheFinalsProfileUsesVendorRestrictedStatus]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.RuntimeTests testUnconfiguredGuestStopsBeforeStartingSession]' started.
+Test Case '-[ModuleXTests.RuntimeTests testUnconfiguredGuestStopsBeforeStartingSession]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.RuntimeTests testUnknownExecutableDefaultsToWine]' started.
+Test Case '-[ModuleXTests.RuntimeTests testUnknownExecutableDefaultsToWine]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.RuntimeTests testWineResourcePolicyWiringRespectsFallbackAndNonDestructiveOverride]' started.
+Test Case '-[ModuleXTests.RuntimeTests testWineResourcePolicyWiringRespectsFallbackAndNonDestructiveOverride]' passed (0.004 seconds).
+Test Suite 'RuntimeTests' passed at 2026-11-22 12:17:58.956.
+	 Executed 11 tests, with 0 failures (0 unexpected) in 0.010 (0.011) seconds
+Test Suite 'UTMGuestStoragePreflightTests' started at 2026-11-22 12:17:58.956.
+Test Case '-[ModuleXTests.UTMGuestStoragePreflightTests testExistingFileCannotBeUsedAsWritableDirectoryTarget]' started.
+Test Case '-[ModuleXTests.UTMGuestStoragePreflightTests testExistingFileCannotBeUsedAsWritableDirectoryTarget]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.UTMGuestStoragePreflightTests testFileVisibilityPromotesConfiguredMappingToVerified]' started.
+Test Case '-[ModuleXTests.UTMGuestStoragePreflightTests testFileVisibilityPromotesConfiguredMappingToVerified]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.UTMGuestStoragePreflightTests testInsufficientSpaceIsReportedBeforeGuestStart]' started.
+Test Case '-[ModuleXTests.UTMGuestStoragePreflightTests testInsufficientSpaceIsReportedBeforeGuestStart]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.UTMGuestStoragePreflightTests testMissingTargetIsCreatableAndMapsToGuestDirectory]' started.
+Test Case '-[ModuleXTests.UTMGuestStoragePreflightTests testMissingTargetIsCreatableAndMapsToGuestDirectory]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.UTMGuestStoragePreflightTests testPushRetriesAfterCreatingMissingGuestParentDirectory]' started.
+Test Case '-[ModuleXTests.UTMGuestStoragePreflightTests testPushRetriesAfterCreatingMissingGuestParentDirectory]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.UTMGuestStoragePreflightTests testRealUTMProviderHostAndVMLifecycleWhenConfigured]' started.
+Test Case '-[ModuleXTests.UTMGuestStoragePreflightTests testRealUTMProviderHostAndVMLifecycleWhenConfigured]' passed (0.003 seconds).
+Test Case '-[ModuleXTests.UTMGuestStoragePreflightTests testTargetOutsideConfiguredMappingIsUnavailable]' started.
+Test Case '-[ModuleXTests.UTMGuestStoragePreflightTests testTargetOutsideConfiguredMappingIsUnavailable]' passed (0.002 seconds).
+Test Case '-[ModuleXTests.UTMGuestStoragePreflightTests testUTMProviderConformsToProbeReportingForProbeService]' started.
+Test Case '-[ModuleXTests.UTMGuestStoragePreflightTests testUTMProviderConformsToProbeReportingForProbeService]' passed (0.002 seconds).
+Test Suite 'UTMGuestStoragePreflightTests' passed at 2026-11-22 12:17:58.971.
+	 Executed 8 tests, with 0 failures (0 unexpected) in 0.014 (0.015) seconds
+Test Suite 'UTMWindowsGuestProviderTests' started at 2026-11-22 12:17:58.971.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testArchitectureMismatchIsReportedBeforeVMStart]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testArchitectureMismatchIsReportedBeforeVMStart]' passed (0.002 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testCancellationFailureIsReturnedByWait]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testCancellationFailureIsReturnedByWait]' passed (0.002 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testCancellationIsIdempotentAndWaitReportsGuestTermination]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testCancellationIsIdempotentAndWaitReportsGuestTermination]' passed (0.002 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testConfigurationRejectsInvalidTimeoutAndGuestPathTraversal]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testConfigurationRejectsInvalidTimeoutAndGuestPathTraversal]' passed (0.002 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testFileOutsideMappingAndUnsupportedLauncherAreRejected]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testFileOutsideMappingAndUnsupportedLauncherAreRejected]' passed (0.002 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testGuestAgentReadinessTimeoutIsReported]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testGuestAgentReadinessTimeoutIsReported]' passed (1.005 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testMappedProgramPreservesArgumentAndEnvironmentBoundariesAndFullExitCode]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testMappedProgramPreservesArgumentAndEnvironmentBoundariesAndFullExitCode]' passed (0.002 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testPushedFileMustBeVisibleBeforeProgramExecution]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testPushedFileMustBeVisibleBeforeProgramExecution]' passed (0.005 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testRequestConfigurationCanStopGuestAfterReadinessFailure]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testRequestConfigurationCanStopGuestAfterReadinessFailure]' passed (1.005 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testStopIsIdempotentWhenGuestAlreadyStopped]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testStopIsIdempotentWhenGuestAlreadyStopped]' passed (0.002 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testStopRequestsVMShutdownAndWaitsForStoppedStatus]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testStopRequestsVMShutdownAndWaitsForStoppedStatus]' passed (0.002 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testStopUsesGuestConfigurationFromLaunchRequest]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testStopUsesGuestConfigurationFromLaunchRequest]' passed (0.003 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testUnconfiguredAndUnavailableStatesAreExplicit]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testUnconfiguredAndUnavailableStatesAreExplicit]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testUnsupportedVMBackendIsReportedBeforeArchitectureValidation]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testUnsupportedVMBackendIsReportedBeforeArchitectureValidation]' passed (0.003 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testVMCrashIsReportedWhileWaitingForProgram]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testVMCrashIsReportedWhileWaitingForProgram]' passed (0.003 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testWindowsStatusCodeParserPreservesHighBitExceptionCode]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testWindowsStatusCodeParserPreservesHighBitExceptionCode]' passed (0.000 seconds).
+Test Suite 'UTMWindowsGuestProviderTests' passed at 2026-11-22 12:18:01.012.
+	 Executed 16 tests, with 0 failures (0 unexpected) in 2.039 (2.041) seconds
+Test Suite 'ModuleXTests.xctest' passed at 2026-11-22 12:18:01.012.
+	 Executed 128 tests, with 1 test skipped and 0 failures (0 unexpected) in 2.861 (2.874) seconds
+Test Suite 'All tests' passed at 2026-11-22 12:18:01.012.
+	 Executed 128 tests, with 1 test skipped and 0 failures (0 unexpected) in 2.861 (2.877) seconds
+◇ Test run started.
+↳ Testing Library Version: 2084
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

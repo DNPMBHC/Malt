@@ -1,0 +1,59 @@
+{
+  "acceptance_record": "m0-m2-guest-final/run-20261122-140047-utc/acceptance.json",
+  "capture_policy": "separate correctness runs; performance audit rejects capture-configured frames",
+  "complete": true,
+  "coordination_message": "module-c M0-M2 Guest acceptance complete and released cleanly to B",
+  "current_guest_owner": "B",
+  "formal_acceptance_entry": "graphics-lab/run_guest_acceptance.py",
+  "guest_benchmarks_started": true,
+  "guest_exclusive_request": "completed and released to B via guest-benchmark-handoff.json",
+  "guest_execution_queue": [
+    "run_m0_fingerprints.py --guest-only",
+    "run_guest_pixel_validation.py",
+    "run_guest_m2_benchmark.py"
+  ],
+  "guest_fingerprint": {
+    "adapter_description": "Microsoft Basic Render Driver",
+    "adapter_flags": 0,
+    "adapter_software_flag": false,
+    "device_id": 140,
+    "requested_driver_type": "hardware",
+    "selected_feature_level": "11_1",
+    "vendor_id": 5140,
+    "windows_session_id": 1
+  },
+  "guest_handoff_record": "guest-benchmark-handoff.json",
+  "guest_handoff_state": "released_to_B",
+  "guest_m0_complete": true,
+  "guest_m0_record": "m0-m2-guest-final/run-20261122-140047-utc/m0-adapters/manifest.json",
+  "guest_operations": "fully_stopped_and_released",
+  "handoff_valid": true,
+  "local_regression_passed": true,
+  "local_regression_tests": 152,
+  "local_validation": {
+    "dxvk_d3d11_vs_metal_frame_0_max_lsb": 0,
+    "final_cpp_command_only_32_frames": true,
+    "final_timing_reference_max_lsb": 0,
+    "final_wine_m0": true,
+    "guest_three_mode_benchmark": true,
+    "guest_warp_pixel_validation": true,
+    "metal_scene_draws_in_final_protocol_test": 512,
+    "native_metal_32_frames": true,
+    "python_tests": 152,
+    "wine_cpp_command_only_32_frames": true
+  },
+  "measurement_boundary": "per-frame GPU completion; main wall time excludes later query collection; not physical screen display",
+  "owner": "@DNPMBHC",
+  "phase": "complete",
+  "readiness_record": "guest-benchmark-readiness.json",
+  "regression_and_input_verification": "152 tests; full M0/pixel/9-run M2 acceptance digests verified",
+  "remaining": [],
+  "source_digests": {
+    "analyze_py": "ee71db86dc7db499d4997343489b341062b51220e547fe6443ace2e2218e1f25",
+    "benchmark_support_py": "34f18b92091ec60bccbab43ba6af68a2b5dbc0c27cf601fb0838bdb9f23e3898",
+    "d3d11_probe_cpp": "11fc000464f0dcf98aec3044c4d956a2b74ce491fc4d69567bf252bbec64af74",
+    "d3d11_probe_exe": "09bb190bf5d763f9749345300b937728db886a4ec26c32c361a920c565cf1bee",
+    "metal_host_binary": "9b0fefb3c181125c943f6d7b8c6f6fdf3ebade939f80cd41f58f3dc17c658a38",
+    "metal_host_swift": "cf6d0f50b9b68dcde7324f12423d3de242950aa35fe25b2cf0d2b0afdd74c734"
+  }
+}

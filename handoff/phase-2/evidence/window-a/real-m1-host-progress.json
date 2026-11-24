@@ -1,0 +1,41 @@
+{
+  "capturedAt" : "2026-11-22T06:49:53Z",
+  "case" : "cancel",
+  "hostTrace" : {
+    "events" : [
+      "listener.ready",
+      "connection.accepted",
+      "request.authenticated",
+      "response.cancelled",
+      "computation.stopped",
+      "session.cleaned"
+    ],
+    "hasActiveComputation" : false,
+    "hasActiveConnection" : false,
+    "request" : {
+      "bias" : -7,
+      "deadlineMilliseconds" : 30000,
+      "operation" : 1,
+      "requestID" : 101,
+      "scale" : 3,
+      "values" : [
+        0,
+        1,
+        -1,
+        2147483647,
+        -2147483647
+      ]
+    },
+    "response" : {
+      "checksum" : 14695981039346656037,
+      "errorCode" : 5,
+      "requestID" : 101,
+      "status" : 3,
+      "values" : [
+
+      ]
+    }
+  },
+  "realRunID" : "run-28badd7853794b1ba8074c3491a045b7",
+  "schemaVersion" : 1
+}

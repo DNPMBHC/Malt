@@ -1,0 +1,56 @@
+{
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-24T04:26:14.934963+00:00",
+  "status": "final_closed_logs_bound",
+  "logs": [
+    {
+      "log_alias": "d3dmetal-retry.stderr.log",
+      "sha256": "1b63568811e0408237e3b2d9a4446a9d4e9a4bcf4934e3b1adc6e4b3e9ed8f34",
+      "line_count": 47374,
+      "exception_code_counts": {
+        "c0000005": 9,
+        "40010006": 2
+      },
+      "unhandled_exception_marker_count": 0,
+      "import_dll_error_marker_count": 0,
+      "limitation": "First-chance SEH and DBG_PRINTEXCEPTION are not crash or vendor policy codes"
+    },
+    {
+      "log_alias": "d3dmetal-retry.stdout.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "line_count": 0,
+      "exception_code_counts": {},
+      "unhandled_exception_marker_count": 0,
+      "import_dll_error_marker_count": 0,
+      "limitation": "First-chance SEH and DBG_PRINTEXCEPTION are not crash or vendor policy codes"
+    }
+  ],
+  "earlier_live_snapshot": {
+    "owner": "@DNPMBHC",
+    "captured_at_utc": "2026-11-24T04:04:37.966602+00:00",
+    "logs": [
+      {
+        "log_alias": "d3dmetal-retry.stdout.log",
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "line_count": 0,
+        "exception_code_counts": {},
+        "unhandled_exception_marker_count": 0,
+        "import_dll_error_marker_count": 0,
+        "limitation": "First-chance SEH and DBG_PRINTEXCEPTION counts are not crash or vendor policy codes"
+      },
+      {
+        "sha256": "5a8b4e83ee8533e53ade173970d7ac67dd8962b4554378f2aa354b36c872a66c",
+        "line_count": 28688,
+        "exception_code_counts": {
+          "c0000005": 9
+        },
+        "unhandled_exception_marker_count": 0,
+        "import_dll_error_marker_count": 0,
+        "limitation": "Earlier live snapshot metadata retained; its exact raw bytes are unavailable after final redacted log sealing. Use final current log binding for byte verification.",
+        "historical_snapshot_file_available": false,
+        "historical_log_alias": "d3dmetal-retry.stderr.log",
+        "log_alias": null
+      }
+    ]
+  }
+}

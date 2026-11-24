@@ -1,0 +1,242 @@
+{
+  "schema_version": "1.0.0",
+  "source_kind": "local_observation_separate_from_public_claims",
+  "captured_at_utc": "2026-11-22T17:01:34.780359+00:00",
+  "report_alias": "real-windows-probe-report.json",
+  "report_relative_ref": "../phase-2/evidence/window-b/real-windows-probe-report.json",
+  "report_sha256": "c4ddb5920405f2a6efa7dbcf164fe6f195e50916f5cba435b516f6e527251da1",
+  "status": "completed_with_blockers",
+  "self_probe_lifecycle": {
+    "cycle": "passed",
+    "before_reboot": "passed",
+    "after_reboot": "passed"
+  },
+  "commercial_sample": {
+    "target_alias": "target-cn",
+    "installer_alias": "installer-x.exe",
+    "installer_version": "2.17.4.510",
+    "installer_sha256": "686ee838411863d2eccdbe8a0596129e509819ae46626408760588ae8b0c800e",
+    "installation_status": "blocked",
+    "started_at": "2026-11-22T14:53:12.755031+00:00",
+    "ended_at": "2026-11-22T16:59:24+00:00",
+    "restored_baseline_verified": true,
+    "official_dialog_summary": "The official installer (2.17.4.510) installed the x64 user-mode launcher and launched it under Prism on ARM64 Windows 11 24H2 without releasing kernel drivers before login. After downloading the client package using an authorized non-personal test account onto an isolated temporary external data disk and clicking launch, three WHQL-signed AMD64 (0x8664) kernel driver binaries were present; SCM registered the user-mode protection service and two kernel driver registrations (Event 7045), after which no vendor kernel driver loaded on the ARM64 kernel and a prompt caused the game launch to exit. System-drive artifacts and services were cleaned, the temporary data disk was detached, and clean boot security was re-verified.",
+    "driver_binaries": [
+      {
+        "binary_id": "driver-330",
+        "role": "vendor_driver",
+        "artifact_alias": "driver-330.sys",
+        "size_bytes": 4125432,
+        "sha256": "dc2456422cc6e75f8c375ac3c9d630531b88a2ad2f8bd17191a62c5de9170615",
+        "file_version": "1.0.2603.17210",
+        "pe_valid": true,
+        "pe_machine": "0x8664",
+        "architecture": "AMD64",
+        "embedded_signature": {
+          "status": "valid",
+          "verification_method": "WinVerifyTrust",
+          "signer_alias": "publisher-x",
+          "signature_digest_matches": true,
+          "native_error_code": 0,
+          "evidence_refs": [
+            "b2-inventory-after-game-launch"
+          ]
+        },
+        "catalog_signature": {
+          "status": "unsigned",
+          "verification_method": "catalog_membership_and_trust",
+          "signer_alias": null,
+          "signature_digest_matches": null,
+          "native_error_code": 0,
+          "evidence_refs": [
+            "b2-inventory-after-game-launch"
+          ]
+        },
+        "kernel_load": {
+          "status": "not_loaded",
+          "source": "loaded_image_list",
+          "service_present": false,
+          "kernel_driver_running": false,
+          "image_identity_verified": true,
+          "native_error_code": null,
+          "ntstatus": null,
+          "captured_at": "2026-11-22T16:59:24+00:00",
+          "evidence_refs": [
+            "b2-inventory-after-game-launch"
+          ]
+        },
+        "evidence_refs": [
+          "b2-inventory-after-game-launch"
+        ]
+      },
+      {
+        "binary_id": "driver-331",
+        "role": "vendor_driver",
+        "artifact_alias": "driver-331.sys",
+        "size_bytes": 3909808,
+        "sha256": "2a8e8928de766d3c6ef1912d7da6d37e2f7509b5b7331805d45bce1dd9cb6f60",
+        "file_version": "29.8.2609.445",
+        "pe_valid": true,
+        "pe_machine": "0x8664",
+        "architecture": "AMD64",
+        "embedded_signature": {
+          "status": "valid",
+          "verification_method": "WinVerifyTrust",
+          "signer_alias": "publisher-x",
+          "signature_digest_matches": true,
+          "native_error_code": 0,
+          "evidence_refs": [
+            "b2-inventory-after-game-launch"
+          ]
+        },
+        "catalog_signature": {
+          "status": "unsigned",
+          "verification_method": "catalog_membership_and_trust",
+          "signer_alias": null,
+          "signature_digest_matches": null,
+          "native_error_code": 0,
+          "evidence_refs": [
+            "b2-inventory-after-game-launch"
+          ]
+        },
+        "kernel_load": {
+          "status": "not_loaded",
+          "source": "loaded_image_list",
+          "service_present": false,
+          "kernel_driver_running": false,
+          "image_identity_verified": true,
+          "native_error_code": null,
+          "ntstatus": null,
+          "captured_at": "2026-11-22T16:59:24+00:00",
+          "evidence_refs": [
+            "b2-inventory-after-game-launch"
+          ]
+        },
+        "evidence_refs": [
+          "b2-inventory-after-game-launch"
+        ]
+      },
+      {
+        "binary_id": "driver-332",
+        "role": "vendor_driver",
+        "artifact_alias": "driver-332.sys",
+        "size_bytes": 2966632,
+        "sha256": "67e1e869d15396f0fe95ab09c5befbd81d023286bcbcb870ec76e478d48138a7",
+        "file_version": "0.1.2610.620",
+        "pe_valid": true,
+        "pe_machine": "0x8664",
+        "architecture": "AMD64",
+        "embedded_signature": {
+          "status": "valid",
+          "verification_method": "WinVerifyTrust",
+          "signer_alias": "publisher-x",
+          "signature_digest_matches": true,
+          "native_error_code": 0,
+          "evidence_refs": [
+            "b2-inventory-after-game-launch"
+          ]
+        },
+        "catalog_signature": {
+          "status": "unsigned",
+          "verification_method": "catalog_membership_and_trust",
+          "signer_alias": null,
+          "signature_digest_matches": null,
+          "native_error_code": 0,
+          "evidence_refs": [
+            "b2-inventory-after-game-launch"
+          ]
+        },
+        "kernel_load": {
+          "status": "not_loaded",
+          "source": "loaded_image_list",
+          "service_present": false,
+          "kernel_driver_running": false,
+          "image_identity_verified": true,
+          "native_error_code": null,
+          "ntstatus": null,
+          "captured_at": "2026-11-22T16:59:24+00:00",
+          "evidence_refs": [
+            "b2-inventory-after-game-launch"
+          ]
+        },
+        "evidence_refs": [
+          "b2-inventory-after-game-launch"
+        ]
+      }
+    ],
+    "evidence_refs": [
+      "b2-sampling-preflight",
+      "b2-inventory-before",
+      "b2-inventory-after-prelogin",
+      "b2-inventory-after-game-launch",
+      "b2-post-commercial-security"
+    ]
+  },
+  "commercial_states": {
+    "publisher_stance": {
+      "permission": "unknown",
+      "support": "unknown",
+      "official_claim_refs": []
+    },
+    "actual_driver_load": {
+      "value": "not_loaded",
+      "evidence_refs": [
+        "b2-inventory-after-game-launch"
+      ]
+    },
+    "actual_game_start": {
+      "value": "rejected",
+      "evidence_refs": [
+        "b2-inventory-after-game-launch"
+      ]
+    },
+    "actual_protected_online_session": {
+      "value": "not_tested",
+      "evidence_refs": []
+    }
+  },
+  "attribution": {
+    "axis_1_native_driver_distribution": "observed_amd64_only_in_sample",
+    "axis_2_guest_policy": "unknown",
+    "signing_or_code_integrity_issue": "observed",
+    "findings": [
+      {
+        "finding_id": "finding-001",
+        "category": "signing_or_code_integrity",
+        "summary": "The initial owned-driver test-signing request returned native exit code 1 and was rejected by Secure Boot policy. Its historical outer wrapper returned 0; the native result determines failure. Later owned-probe success followed the authorized temporary security change and verified restoration.",
+        "scope": "sampled_guest_only",
+        "evidence_refs": [
+          "b2-test-signing-rejection"
+        ]
+      },
+      {
+        "finding_id": "finding-004",
+        "category": "toolchain",
+        "summary": "Native WDK ARM64 builds and owned test signing passed; all three real diagnostic lifecycle phases passed, followed by verified removal of test services and certificate and restoration of boot security. This conclusion is scoped to the owned probe.",
+        "scope": "sampled_guest_only",
+        "evidence_refs": [
+          "b2-build-native",
+          "b2-owned-test-signing",
+          "b2-lifecycle-cycle",
+          "b2-lifecycle-before-reboot",
+          "b2-lifecycle-after-reboot",
+          "b2-cleanup-owned-signing",
+          "b2-restored-security"
+        ]
+      },
+      {
+        "finding_id": "finding-005",
+        "category": "axis_1_architecture",
+        "summary": "All three vendor kernel driver binaries sampled from the official target-cn distribution package have PE Machine 0x8664 (AMD64) with valid WHQL Authenticode signatures, and none loaded into the ARM64 Guest kernel (kernel_load=not_loaded) after SCM registration during launch. Because launch exited before any confirmed virtualized-environment policy dialog was independently captured, axis_2_guest_policy remains unknown. This observation is scoped to the sampled distribution and does not extrapolate to all channels.",
+        "scope": "sampled_guest_only",
+        "evidence_refs": [
+          "b2-inventory-before",
+          "b2-inventory-after-prelogin",
+          "b2-inventory-after-game-launch",
+          "b2-post-commercial-security"
+        ]
+      }
+    ]
+  },
+  "coordination": "Commercial dynamic sampling completed on the restored ARM64 Guest; temporary system-drive artifacts cleaned, temporary data disk detached, clean security baseline re-verified, and Guest released by @DNPMBHC."
+}

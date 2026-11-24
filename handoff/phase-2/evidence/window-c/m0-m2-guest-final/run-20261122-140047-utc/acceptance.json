@@ -1,0 +1,199 @@
+{
+  "artifacts": {
+    "acceptance-inputs.json": "0def3141af8bc7cf0d641d9428a1d2ddba346deebb08fa8a512aa7ee8a8ecdd2",
+    "m0-adapters/manifest.json": "c6b2ffede6e0d3f8b10cf192a91e24c78a8d26a0fd361f40f2ab4b2e8ca7eaf2",
+    "pixel-validation/manifest.json": "8653ecb83e588c2c161eec8bfae9880b24348979856392b1f2e213a0e68faf50",
+    "report.md": "4ee33f8e0e125416118d428fe5f1b64feeb2b5060063d3ac25a813822a94a78a",
+    "three-mode-benchmark/manifest.json": "84756f89d13cab33bc1bcb9cacae855e877dc9a39dd19f52e8a081c7a1000d70"
+  },
+  "comparison": {
+    "command-only": {
+      "fps_including_gpu_drain_mean": 18.921755666666666,
+      "fps_including_gpu_drain_pooled": 18.847024482033508,
+      "frame_interval_ms": {
+        "mean": 53.04500780379042,
+        "p50": 49.01,
+        "p95": 69.56619999999998,
+        "p99": 109.9443199999999,
+        "sample_count": 897
+      },
+      "host_gpu_ms_mean": 0.881398888888889,
+      "mean_total_bytes": 2289.6,
+      "measured_frames": 900,
+      "percentile_scope": "pooled measured frame intervals excluding each round's first frame",
+      "rounds": 3
+    },
+    "direct-present": {
+      "fps_including_gpu_drain_mean": 15.674412666666667,
+      "fps_including_gpu_drain_pooled": 15.672713890445955,
+      "frame_interval_ms": {
+        "mean": 63.78878037904125,
+        "p50": 63.028,
+        "p95": 94.5814,
+        "p99": 125.49788,
+        "sample_count": 897
+      },
+      "host_gpu_ms_mean": null,
+      "mean_total_bytes": 0.0,
+      "measured_frames": 900,
+      "percentile_scope": "pooled measured frame intervals excluding each round's first frame",
+      "rounds": 3
+    },
+    "pixel-readback": {
+      "fps_including_gpu_drain_mean": 7.1916009999999995,
+      "fps_including_gpu_drain_pooled": 7.0956860917039055,
+      "frame_interval_ms": {
+        "mean": 140.9094437012263,
+        "p50": 127.983,
+        "p95": 219.43839999999992,
+        "p99": 332.85255999999873,
+        "sample_count": 897
+      },
+      "host_gpu_ms_mean": 0.20500666666666667,
+      "mean_total_bytes": 3688681.066666667,
+      "measured_frames": 900,
+      "percentile_scope": "pooled measured frame intervals excluding each round's first frame",
+      "rounds": 3
+    }
+  },
+  "complete": true,
+  "explicit_warp_fingerprint": {
+    "adapter_description": "Microsoft Basic Render Driver",
+    "adapter_flags": 2,
+    "adapter_software_flag": true,
+    "device_id": 140,
+    "requested_driver_type": "warp",
+    "selected_feature_level": "11_1",
+    "vendor_id": 5140,
+    "windows_session_id": 1
+  },
+  "guest_display_controllers": [
+    "Red Hat VirtIO GPU DOD controller"
+  ],
+  "guest_enumerated_adapters": [
+    {
+      "adapter_description": "Microsoft Basic Render Driver",
+      "adapter_flags": 0,
+      "adapter_is_software": false,
+      "device_id": 140,
+      "vendor_id": 5140
+    },
+    {
+      "adapter_description": "Microsoft Basic Render Driver",
+      "adapter_flags": 2,
+      "adapter_is_software": true,
+      "device_id": 140,
+      "vendor_id": 5140
+    }
+  ],
+  "guest_fingerprint": {
+    "adapter_description": "Microsoft Basic Render Driver",
+    "adapter_flags": 0,
+    "adapter_software_flag": false,
+    "device_id": 140,
+    "requested_driver_type": "hardware",
+    "selected_feature_level": "11_1",
+    "vendor_id": 5140,
+    "windows_session_id": 1
+  },
+  "guest_preflight": {
+    "architecture": "ARM64",
+    "baseline_comparison_required": true,
+    "baseline_sha256": "ceedbcaf3db809513428a617a91597a66fcdd2de3d00d399cdb0da2ebdf3545f",
+    "baseline_verified": true,
+    "bcd_flags": {
+      "nointegritychecks": "absent",
+      "testsigning": "absent"
+    },
+    "bcd_query_succeeded": true,
+    "bcd_security": [],
+    "boot_time_utc": "2026-11-22T13:58:58.7133020Z",
+    "build": "26100",
+    "captured_at_utc": "2026-11-22T14:01:10.3916085Z",
+    "code_integrity_options": 49157,
+    "code_integrity_query_succeeded": true,
+    "code_integrity_test_signing": false,
+    "console_session_id": 1,
+    "device_guard_query_succeeded": true,
+    "display_version": "24H2",
+    "driver_service_query_succeeded": true,
+    "expected_absent_driver_service_count": 2,
+    "forbidden_process_count": 0,
+    "forbidden_running_task_count": 0,
+    "hvci_configured": false,
+    "hvci_kernel_enforced": false,
+    "hvci_running": false,
+    "hypervisor_present": true,
+    "lifecycle_source_sha256": "fa4ea000db5d3c1c201e0631e3fde57fea59fdf5a81f1aa1e80b93585464d46c",
+    "logged_in": true,
+    "os_product": "Microsoft Windows 11 Enterprise Evaluation",
+    "os_query_succeeded": true,
+    "owned_services_absent": true,
+    "owner": "@DNPMBHC",
+    "passed": true,
+    "preflight_gates_passed": true,
+    "preflight_ps1_sha256": "b64e5bd838aa2d35fb86cc921e82c302178c7da8db06b9e52b9771ee86c9f7b9",
+    "preflight_py_sha256": "e3fdbfa52fbc8e47ba93378d3a446415db1e7373e3697485c40787aa16b48ac5",
+    "quiescence_query_succeeded": true,
+    "read_only": true,
+    "recovered_security_baseline": {
+      "bcd_security": [],
+      "boot_time_utc": "2026-11-22T06:08:17.6999380Z",
+      "captured_at_utc": "2026-11-22T06:08:44.5873348Z",
+      "hypervisor_present": true,
+      "secure_boot_enabled": true,
+      "security_services_running": [
+        0
+      ],
+      "tpm": {
+        "activated": true,
+        "enabled": true,
+        "owned": true,
+        "present": true,
+        "specification_version": "2.0, 0, 1.64"
+      },
+      "vbs_status": 0
+    },
+    "remaining_driver_service_count": 0,
+    "schema_version": 1,
+    "secure_boot_enabled": true,
+    "secure_boot_query_succeeded": true,
+    "security_services_configured": [
+      0
+    ],
+    "security_services_running": [
+      0
+    ],
+    "service_baseline_count": 2,
+    "session_flags": 1,
+    "session_flags_offset": 16,
+    "session_matches_console": true,
+    "session_query_succeeded": true,
+    "session_query_win32_error": 0,
+    "session_state": 0,
+    "temporary_directory_scoped": true,
+    "tpm": {
+      "activated": true,
+      "enabled": true,
+      "owned": true,
+      "present": true,
+      "specification_version": "2.0, 0, 1.64"
+    },
+    "tpm_query_succeeded": true,
+    "unlocked": true,
+    "vbs_status": 0,
+    "wts_info_ex_struct_bytes": 232,
+    "wts_returned_bytes": 232
+  },
+  "owner": "@DNPMBHC",
+  "performance_measurement": true,
+  "pixels_passed": true,
+  "source_digests": {
+    "analyze_py": "ee71db86dc7db499d4997343489b341062b51220e547fe6443ace2e2218e1f25",
+    "benchmark_support_py": "34f18b92091ec60bccbab43ba6af68a2b5dbc0c27cf601fb0838bdb9f23e3898",
+    "d3d11_probe_cpp": "11fc000464f0dcf98aec3044c4d956a2b74ce491fc4d69567bf252bbec64af74",
+    "d3d11_probe_exe": "09bb190bf5d763f9749345300b937728db886a4ec26c32c361a920c565cf1bee",
+    "metal_host_binary": "9b0fefb3c181125c943f6d7b8c6f6fdf3ebade939f80cd41f58f3dc17c658a38",
+    "metal_host_swift": "cf6d0f50b9b68dcde7324f12423d3de242950aa35fe25b2cf0d2b0afdd74c734"
+  }
+}

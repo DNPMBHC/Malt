@@ -1,0 +1,50 @@
+warning: '--skip-update' option is deprecated and will be removed in a future release
+Building for debugging...
+[Using on-disk description]
+[2 / 12] ModuleX
+[4 / 14] ModuleX
+[13 / 18] ModuleXTests-product
+[15 / 20] ModuleXTests-product
+[19 / 22] ModuleXTests-product
+[21 / 25] ModuleXTests-product
+Build complete! (3.09秒)
+Test Suite 'Selected tests' started at 2026-11-22 00:09:15.901.
+Test Suite 'ModuleXTests.xctest' started at 2026-11-22 00:09:15.904.
+Test Suite 'UTMWindowsGuestProviderTests' started at 2026-11-22 00:09:15.904.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testArchitectureMismatchIsReportedBeforeVMStart]' started.
+2026-11-22 00:09:15.908 xctest[387:7330030] Metal API Validation Enabled
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testArchitectureMismatchIsReportedBeforeVMStart]' passed (0.017 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testCancellationFailureIsReturnedByWait]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testCancellationFailureIsReturnedByWait]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testCancellationIsIdempotentAndWaitReportsGuestTermination]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testCancellationIsIdempotentAndWaitReportsGuestTermination]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testConfigurationRejectsInvalidTimeoutAndGuestPathTraversal]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testConfigurationRejectsInvalidTimeoutAndGuestPathTraversal]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testFileOutsideMappingAndUnsupportedLauncherAreRejected]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testFileOutsideMappingAndUnsupportedLauncherAreRejected]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testGuestAgentReadinessTimeoutIsReported]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testGuestAgentReadinessTimeoutIsReported]' passed (1.006 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testMappedProgramPreservesArgumentAndEnvironmentBoundariesAndFullExitCode]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testMappedProgramPreservesArgumentAndEnvironmentBoundariesAndFullExitCode]' passed (0.003 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testRequestConfigurationCanStopGuestAfterReadinessFailure]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testRequestConfigurationCanStopGuestAfterReadinessFailure]' passed (1.005 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testStopIsIdempotentWhenGuestAlreadyStopped]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testStopIsIdempotentWhenGuestAlreadyStopped]' passed (0.002 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testStopRequestsVMShutdownAndWaitsForStoppedStatus]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testStopRequestsVMShutdownAndWaitsForStoppedStatus]' passed (0.001 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testStopUsesGuestConfigurationFromLaunchRequest]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testStopUsesGuestConfigurationFromLaunchRequest]' passed (0.002 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testUnconfiguredAndUnavailableStatesAreExplicit]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testUnconfiguredAndUnavailableStatesAreExplicit]' passed (0.000 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testUnsupportedVMBackendIsReportedBeforeArchitectureValidation]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testUnsupportedVMBackendIsReportedBeforeArchitectureValidation]' passed (0.002 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testVMCrashIsReportedWhileWaitingForProgram]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testVMCrashIsReportedWhileWaitingForProgram]' passed (0.002 seconds).
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testWindowsStatusCodeParserPreservesHighBitExceptionCode]' started.
+Test Case '-[ModuleXTests.UTMWindowsGuestProviderTests testWindowsStatusCodeParserPreservesHighBitExceptionCode]' passed (0.000 seconds).
+Test Suite 'UTMWindowsGuestProviderTests' passed at 2026-11-22 00:09:17.949.
+	 Executed 15 tests, with 0 failures (0 unexpected) in 2.043 (2.045) seconds
+Test Suite 'ModuleXTests.xctest' passed at 2026-11-22 00:09:17.949.
+	 Executed 15 tests, with 0 failures (0 unexpected) in 2.043 (2.045) seconds
+Test Suite 'Selected tests' passed at 2026-11-22 00:09:17.949.
+	 Executed 15 tests, with 0 failures (0 unexpected) in 2.043 (2.048) seconds

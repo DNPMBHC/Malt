@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "phase": "phase-3-c",
+  "recorded_at_utc": "2026-11-22T03:53:30Z",
+  "execution_domain": "remote_physical_windows",
+  "host": {
+    "architecture": "arm64",
+    "os_product": "macOS",
+    "os_version": "27.2.1",
+    "os_build": "26B131"
+  },
+  "local_streaming_clients_checked": {
+    "moonlight_app_installed": false,
+    "parsec_app_installed": false,
+    "steam_link_app_installed": false
+  },
+  "configured_physical_windows_host": false,
+  "observed_availability": {
+    "default_unconfigured_provider": "unconfigured",
+    "moonlight_provider_probe": "clientMissing"
+  },
+  "real_remote_host_verification": "environment_not_verified",
+  "note": "No Moonlight.app installation or physical LAN Windows streaming host is configured on this machine. Real latency and reconnect measurements remain unverified rather than simulated.",
+  "source_digests_sha256": {
+    "RemotePhysicsModels.swift": "43e9e40fac342657348430eaca868c632bacc045844c17d5705236cd1a8aa5c8",
+    "RemotePhysicsBackend.swift": "b12c9ce9ce2fbcdd8da8ecf01d5c99ffd8bfc5a2f9894123f01fa90e1b5a0eda",
+    "RemotePhysicsBackendTests.swift": "1c47535cdfc1be093f83be6bd60819a9811e11682587c5e165828aa3d75e245b"
+  }
+}

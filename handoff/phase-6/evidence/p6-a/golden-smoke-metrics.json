@@ -1,0 +1,27 @@
+{
+  "smoke": {
+    "ephemeral_clone_seconds": 0.0074,
+    "vm_started_seconds": 2.825,
+    "qga_ready_seconds": 27.898,
+    "idle_host_rss_mib": 2289.62,
+    "probe_exit_code": 0,
+    "adapter_description": "Red Hat VirtIO GPU 3D controller",
+    "vendor_id": 6900,
+    "device_id": 4176,
+    "adapter_is_software": false,
+    "feature_level": "11_1",
+    "d3d11_probe_fps": 123.609,
+    "mean_frame_ms": 8.09,
+    "p95_frame_ms": 11.71,
+    "max_channel_error_lsb": 0,
+    "over_threshold_pixels": 0,
+    "byte_exact_match": true
+  },
+  "destroy": {
+    "action": "destroy-ephemeral",
+    "clone_name": "ephemeral-p6a-smoke",
+    "ephemeral_deleted": true,
+    "golden_zero_drift": true,
+    "primary_zero_drift": true
+  }
+}

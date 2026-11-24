@@ -1,0 +1,45 @@
+{
+  "disks": [
+    {
+      "number": 1,
+      "is_offline": false,
+      "is_readonly": false,
+      "size_bytes": 107374182400,
+      "partition_style": "GPT"
+    },
+    {
+      "number": 2,
+      "is_offline": false,
+      "is_readonly": false,
+      "size_bytes": 96636764160,
+      "partition_style": "GPT"
+    },
+    {
+      "number": 0,
+      "is_offline": false,
+      "is_readonly": false,
+      "size_bytes": 38654705664,
+      "partition_style": "GPT"
+    }
+  ],
+  "volumes": [
+    {
+      "free_bytes": 4133629952,
+      "drive": "C:",
+      "size_bytes": 37925941248,
+      "filesystem": "NTFS"
+    },
+    {
+      "free_bytes": 60657631232,
+      "drive": "D:",
+      "size_bytes": 96618934272,
+      "filesystem": "NTFS"
+    },
+    {
+      "free_bytes": 106764054528,
+      "drive": "R:",
+      "size_bytes": 107356352512,
+      "filesystem": "NTFS"
+    }
+  ]
+}

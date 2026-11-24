@@ -1,0 +1,27 @@
+{
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-24T03:49:40.590872+00:00",
+  "evidence_producing_window": "5B",
+  "upstream_evidence": "efi-downstream-consumer-roundtrip.json",
+  "upstream_evidence_sha256": "57d8116a052d204cae7bebd299073e1e6fd0c3b461a0da5e10ea746b012c7350",
+  "upstream_passed": true,
+  "current_C_graphics_sources_match": true,
+  "current_B_sources_match": true,
+  "consumer_snapshot_revision": 4,
+  "scope": "actual_downstream_graphics_subset_and_exact_error_declaration_not_complete_runtime",
+  "origin": "uefi_diagnostic_guest_commands_not_Windows_application_scanout",
+  "frames_consumed": 4,
+  "checks_per_frame": [
+    16,
+    16,
+    16,
+    16
+  ],
+  "all_checks_passed": true,
+  "C_vm_actions": 0,
+  "upstream_efi_vm_actions": 4,
+  "windows_application_scanout_verified": false,
+  "native_fullscreen_verified": false,
+  "virtual_hid_verified": false,
+  "acceptance_complete": false
+}

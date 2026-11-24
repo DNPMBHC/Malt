@@ -1,0 +1,50 @@
+{
+  "schema": "task-07-status-document-audit-v1",
+  "referenceBuild": "final-integrated/build.json",
+  "referenceTests": {
+    "total": 91,
+    "passed": 90,
+    "skipped": 1,
+    "failures": 0,
+    "errors": 0
+  },
+  "configuration": {
+    "MTL_DEBUG_LAYER": "1",
+    "HOST_RUN_METALFX_AB": "not enabled"
+  },
+  "updatedDocuments": [
+    {
+      "file": "handoff/README.md",
+      "beforeSHA256": "1b6330df109df92133c08c20990448042ca42481ade26f920505b0ecd693deb7",
+      "afterSHA256": "2df7ff98eeea26030619d66d0776ee526d94d69df1d5641cb05541dfb0133fdb"
+    },
+    {
+      "file": "handoff/task-01.md",
+      "beforeSHA256": "5ac49d7185c38d98bfe65b09fea478d260b18992453db6fa28ab208f6a706828",
+      "afterSHA256": "97a94f192a94aacfc0c34987e3a9a366ead7400fce1259fc4fe3910fa9703716"
+    },
+    {
+      "file": "handoff/runtime-interface.md",
+      "beforeSHA256": "e4137dce45d466c1567765b106667d9d36f1734b65b4b9b44ca8a0a4f1374d88",
+      "afterSHA256": "29d6873dfee3971bf4161ebc06eb017dc40de1c64376cb83521e667e059fd902"
+    },
+    {
+      "file": "graphics-lab/results.md",
+      "beforeSHA256": "315628a56d2980e3fa06bda5b1f95cde1e10eb2de9d07a401e1861f6bc835367",
+      "afterSHA256": "af0aa39cb36ccbfd4eb553ac0625e03ed80b51bdd52267d3501c831c7ef989a2"
+    },
+    {
+      "file": "graphics-lab/README.md",
+      "beforeSHA256": "826d06ea3d3036715466565b0a96808a78f24ddee2efc4a50718dbf780ccad86",
+      "afterSHA256": "65c6749fd95168577e37a70de6a84ae82e6d5172ed55bd7c855a2423156772ca"
+    }
+  ],
+  "historicalResultsRetained": [
+    "05 independent stage: 91 total, 89 passed, 2 skipped",
+    "old full gate: 85 total, 84 passed, 1 skipped",
+    "module-d explicit opt-in GPU reports with their own instrumentation and acquisition limits"
+  ],
+  "runtimeEnvironmentStatus": "environment_not_verified",
+  "automaticVolumeOrdering": "known gap; not consumed by current GUI, CLI, file-open or shortcut flows",
+  "scope": "status documents reconciled by immutable acquisition; historical raw evidence and archived hardware reports are not rewritten"
+}

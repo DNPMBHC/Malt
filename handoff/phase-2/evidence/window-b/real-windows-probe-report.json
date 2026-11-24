@@ -1,0 +1,1130 @@
+{
+  "schema_version": "1.0.0",
+  "report_id": "b2-local-observations",
+  "captured_on": "2026-11-22",
+  "timezone": "Asia/Shanghai",
+  "source_kind": "local_guest_observation",
+  "status": "completed_with_blockers",
+  "privacy": {
+    "redacted": true,
+    "local_paths_omitted": true,
+    "personal_identifiers_omitted": true,
+    "pid_evidence_policy": "derived_booleans_only",
+    "private_certificate_policy": "neutral_alias_only"
+  },
+  "authorization_scope": {
+    "own_probe_test_signing": true,
+    "official_installer_sampling": true,
+    "hardware_spoofing": false,
+    "virtualization_hiding": false,
+    "accounts_used": true,
+    "protected_online_session_attempted": false
+  },
+  "security_environments": {
+    "before": {
+      "status": "observed",
+      "captured_at": null,
+      "guest_cpu_architecture": "ARM64",
+      "guest_os_build": "10.0.26100.1",
+      "test_signing": "disabled",
+      "secure_boot": "enabled",
+      "tpm": "unknown",
+      "vbs": "disabled",
+      "hvci": "disabled",
+      "hypervisor": "unknown",
+      "reboot_verified": null,
+      "evidence_refs": []
+    },
+    "test": {
+      "status": "observed",
+      "captured_at": "2026-11-22T05:51:26.764615Z",
+      "guest_cpu_architecture": "ARM64",
+      "guest_os_build": "10.0.26100.1",
+      "test_signing": "enabled",
+      "secure_boot": "disabled",
+      "tpm": "enabled",
+      "vbs": "disabled",
+      "hvci": "disabled",
+      "hypervisor": "present",
+      "reboot_verified": true,
+      "evidence_refs": [
+        "b2-test-security",
+        "b2-owned-test-signing",
+        "b2-lifecycle-before-reboot",
+        "b2-lifecycle-after-reboot",
+        "b2-lifecycle-reboot"
+      ]
+    },
+    "restored": {
+      "status": "observed",
+      "captured_at": "2026-11-22T17:00:39.204793Z",
+      "guest_cpu_architecture": "ARM64",
+      "guest_os_build": "10.0.26100.1",
+      "test_signing": "disabled",
+      "secure_boot": "enabled",
+      "tpm": "enabled",
+      "vbs": "disabled",
+      "hvci": "disabled",
+      "hypervisor": "present",
+      "reboot_verified": true,
+      "evidence_refs": [
+        "b2-restored-security",
+        "b2-cleanup-owned-signing",
+        "b2-recovery-boot-security",
+        "b2-test-security",
+        "b2-post-commercial-security"
+      ]
+    }
+  },
+  "self_probe": {
+    "build_status": "passed",
+    "protocol_version": 2,
+    "report_schema_version": 2,
+    "binaries": [
+      {
+        "binary_id": "driver-001",
+        "role": "self_probe_driver",
+        "artifact_alias": "module-x-probe.sys",
+        "size_bytes": 33688,
+        "sha256": "d301f2f26cf1ae93c419e094d83e0a308439527edd55db3d824e567ece90b353",
+        "file_version": null,
+        "pe_valid": true,
+        "pe_machine": "0xaa64",
+        "architecture": "ARM64",
+        "embedded_signature": {
+          "status": "valid",
+          "verification_method": "Authenticode",
+          "signer_alias": "test-signer-x",
+          "signature_digest_matches": true,
+          "native_error_code": null,
+          "evidence_refs": [
+            "b2-owned-test-signing"
+          ]
+        },
+        "catalog_signature": {
+          "status": "not_sampled",
+          "verification_method": "not_sampled",
+          "signer_alias": null,
+          "signature_digest_matches": null,
+          "native_error_code": null,
+          "evidence_refs": []
+        },
+        "kernel_load": {
+          "status": "loaded",
+          "source": "scm_events",
+          "service_present": true,
+          "kernel_driver_running": true,
+          "image_identity_verified": true,
+          "native_error_code": 0,
+          "ntstatus": null,
+          "captured_at": "2026-11-22T05:53:58.729060+00:00",
+          "evidence_refs": [
+            "b2-lifecycle-after-reboot"
+          ]
+        },
+        "evidence_refs": [
+          "b2-build-native",
+          "b2-owned-test-signing",
+          "b2-lifecycle-after-reboot"
+        ]
+      },
+      {
+        "binary_id": "collector-001",
+        "role": "self_probe_collector",
+        "artifact_alias": "module-x-probe.exe",
+        "size_bytes": 160664,
+        "sha256": "9f96cf668c9e2e30909ac287878b4f740773829268b6f49753e1a3474e57b008",
+        "file_version": null,
+        "pe_valid": true,
+        "pe_machine": "0xaa64",
+        "architecture": "ARM64",
+        "embedded_signature": {
+          "status": "valid",
+          "verification_method": "Authenticode",
+          "signer_alias": "test-signer-x",
+          "signature_digest_matches": true,
+          "native_error_code": null,
+          "evidence_refs": [
+            "b2-owned-test-signing"
+          ]
+        },
+        "catalog_signature": {
+          "status": "not_sampled",
+          "verification_method": "not_sampled",
+          "signer_alias": null,
+          "signature_digest_matches": null,
+          "native_error_code": null,
+          "evidence_refs": []
+        },
+        "kernel_load": {
+          "status": "not_attempted",
+          "source": "not_sampled",
+          "service_present": null,
+          "kernel_driver_running": null,
+          "image_identity_verified": null,
+          "native_error_code": null,
+          "ntstatus": null,
+          "captured_at": null,
+          "evidence_refs": []
+        },
+        "evidence_refs": [
+          "b2-build-native",
+          "b2-owned-test-signing",
+          "b2-lifecycle-after-reboot"
+        ]
+      }
+    ],
+    "lifecycle": {
+      "cycle": {
+        "status": "passed",
+        "started_at": "2026-11-22T05:52:17.384020+00:00",
+        "ended_at": "2026-11-22T05:52:26.896880+00:00",
+        "assertions": {
+          "device_control_succeeded": true,
+          "same_process_object": true,
+          "requestor_matches_current_context": true,
+          "child_pid_matched": true,
+          "create_observed": true,
+          "exit_observed": true,
+          "child_cleanup_complete": true,
+          "unload_verified": true,
+          "expected_missing_image_failure": true,
+          "demand_start_preserved": null,
+          "real_reboot_verified": null
+        },
+        "stages": [
+          {
+            "stage_id": "registered-before-start",
+            "load_state": "unknown",
+            "native_error_code": null,
+            "bytes_returned": null,
+            "assertions": {
+              "device_control_succeeded": null,
+              "same_process_object": null,
+              "requestor_matches_current_context": null,
+              "child_pid_matched": null,
+              "create_observed": null,
+              "exit_observed": null,
+              "child_cleanup_complete": null,
+              "unload_verified": null,
+              "expected_missing_image_failure": null,
+              "demand_start_preserved": null,
+              "real_reboot_verified": null
+            },
+            "evidence_refs": [
+              "b2-lifecycle-cycle"
+            ]
+          },
+          {
+            "stage_id": "loaded",
+            "load_state": "loaded",
+            "native_error_code": 0,
+            "bytes_returned": 32,
+            "assertions": {
+              "device_control_succeeded": true,
+              "same_process_object": true,
+              "requestor_matches_current_context": true,
+              "child_pid_matched": true,
+              "create_observed": true,
+              "exit_observed": true,
+              "child_cleanup_complete": true,
+              "unload_verified": null,
+              "expected_missing_image_failure": null,
+              "demand_start_preserved": null,
+              "real_reboot_verified": null
+            },
+            "evidence_refs": [
+              "b2-lifecycle-cycle"
+            ]
+          },
+          {
+            "stage_id": "unloaded",
+            "load_state": "not_loaded",
+            "native_error_code": 2,
+            "bytes_returned": 0,
+            "assertions": {
+              "device_control_succeeded": false,
+              "same_process_object": false,
+              "requestor_matches_current_context": false,
+              "child_pid_matched": false,
+              "create_observed": false,
+              "exit_observed": false,
+              "child_cleanup_complete": false,
+              "unload_verified": true,
+              "expected_missing_image_failure": null,
+              "demand_start_preserved": null,
+              "real_reboot_verified": null
+            },
+            "evidence_refs": [
+              "b2-lifecycle-cycle"
+            ]
+          },
+          {
+            "stage_id": "service-control",
+            "load_state": "unknown",
+            "native_error_code": 2,
+            "bytes_returned": null,
+            "assertions": {
+              "device_control_succeeded": null,
+              "same_process_object": null,
+              "requestor_matches_current_context": null,
+              "child_pid_matched": null,
+              "create_observed": null,
+              "exit_observed": null,
+              "child_cleanup_complete": null,
+              "unload_verified": null,
+              "expected_missing_image_failure": null,
+              "demand_start_preserved": null,
+              "real_reboot_verified": null
+            },
+            "evidence_refs": [
+              "b2-lifecycle-cycle"
+            ]
+          },
+          {
+            "stage_id": "expected-start-failure",
+            "load_state": "not_loaded",
+            "native_error_code": 2,
+            "bytes_returned": null,
+            "assertions": {
+              "device_control_succeeded": null,
+              "same_process_object": null,
+              "requestor_matches_current_context": null,
+              "child_pid_matched": null,
+              "create_observed": null,
+              "exit_observed": null,
+              "child_cleanup_complete": null,
+              "unload_verified": null,
+              "expected_missing_image_failure": true,
+              "demand_start_preserved": null,
+              "real_reboot_verified": null
+            },
+            "evidence_refs": [
+              "b2-lifecycle-cycle"
+            ]
+          },
+          {
+            "stage_id": "after-start-failure",
+            "load_state": "not_loaded",
+            "native_error_code": 2,
+            "bytes_returned": 0,
+            "assertions": {
+              "device_control_succeeded": false,
+              "same_process_object": false,
+              "requestor_matches_current_context": false,
+              "child_pid_matched": false,
+              "create_observed": false,
+              "exit_observed": false,
+              "child_cleanup_complete": false,
+              "unload_verified": null,
+              "expected_missing_image_failure": true,
+              "demand_start_preserved": null,
+              "real_reboot_verified": null
+            },
+            "evidence_refs": [
+              "b2-lifecycle-cycle"
+            ]
+          }
+        ],
+        "failure_summary": null,
+        "evidence_refs": [
+          "b2-lifecycle-cycle"
+        ]
+      },
+      "before_reboot": {
+        "status": "passed",
+        "started_at": "2026-11-22T05:52:46.235877+00:00",
+        "ended_at": "2026-11-22T05:52:51.969418+00:00",
+        "assertions": {
+          "device_control_succeeded": true,
+          "same_process_object": true,
+          "requestor_matches_current_context": true,
+          "child_pid_matched": true,
+          "create_observed": true,
+          "exit_observed": true,
+          "child_cleanup_complete": true,
+          "unload_verified": true,
+          "expected_missing_image_failure": null,
+          "demand_start_preserved": true,
+          "real_reboot_verified": null
+        },
+        "stages": [
+          {
+            "stage_id": "registered-before-start",
+            "load_state": "unknown",
+            "native_error_code": null,
+            "bytes_returned": null,
+            "assertions": {
+              "device_control_succeeded": null,
+              "same_process_object": null,
+              "requestor_matches_current_context": null,
+              "child_pid_matched": null,
+              "create_observed": null,
+              "exit_observed": null,
+              "child_cleanup_complete": null,
+              "unload_verified": null,
+              "expected_missing_image_failure": null,
+              "demand_start_preserved": null,
+              "real_reboot_verified": null
+            },
+            "evidence_refs": [
+              "b2-lifecycle-before-reboot"
+            ]
+          },
+          {
+            "stage_id": "before-reboot-loaded",
+            "load_state": "loaded",
+            "native_error_code": 0,
+            "bytes_returned": 32,
+            "assertions": {
+              "device_control_succeeded": true,
+              "same_process_object": true,
+              "requestor_matches_current_context": true,
+              "child_pid_matched": true,
+              "create_observed": true,
+              "exit_observed": true,
+              "child_cleanup_complete": true,
+              "unload_verified": null,
+              "expected_missing_image_failure": null,
+              "demand_start_preserved": null,
+              "real_reboot_verified": null
+            },
+            "evidence_refs": [
+              "b2-lifecycle-before-reboot"
+            ]
+          },
+          {
+            "stage_id": "before-reboot-unloaded",
+            "load_state": "not_loaded",
+            "native_error_code": 2,
+            "bytes_returned": 0,
+            "assertions": {
+              "device_control_succeeded": false,
+              "same_process_object": false,
+              "requestor_matches_current_context": false,
+              "child_pid_matched": false,
+              "create_observed": false,
+              "exit_observed": false,
+              "child_cleanup_complete": false,
+              "unload_verified": true,
+              "expected_missing_image_failure": null,
+              "demand_start_preserved": null,
+              "real_reboot_verified": null
+            },
+            "evidence_refs": [
+              "b2-lifecycle-before-reboot"
+            ]
+          },
+          {
+            "stage_id": "before-reboot-service",
+            "load_state": "not_loaded",
+            "native_error_code": null,
+            "bytes_returned": null,
+            "assertions": {
+              "device_control_succeeded": null,
+              "same_process_object": null,
+              "requestor_matches_current_context": null,
+              "child_pid_matched": null,
+              "create_observed": null,
+              "exit_observed": null,
+              "child_cleanup_complete": null,
+              "unload_verified": null,
+              "expected_missing_image_failure": null,
+              "demand_start_preserved": true,
+              "real_reboot_verified": null
+            },
+            "evidence_refs": [
+              "b2-lifecycle-before-reboot"
+            ]
+          },
+          {
+            "stage_id": "reboot-baseline",
+            "load_state": "unknown",
+            "native_error_code": null,
+            "bytes_returned": null,
+            "assertions": {
+              "device_control_succeeded": null,
+              "same_process_object": null,
+              "requestor_matches_current_context": null,
+              "child_pid_matched": null,
+              "create_observed": null,
+              "exit_observed": null,
+              "child_cleanup_complete": null,
+              "unload_verified": null,
+              "expected_missing_image_failure": null,
+              "demand_start_preserved": null,
+              "real_reboot_verified": null
+            },
+            "evidence_refs": [
+              "b2-lifecycle-before-reboot"
+            ]
+          }
+        ],
+        "failure_summary": null,
+        "evidence_refs": [
+          "b2-lifecycle-before-reboot"
+        ]
+      },
+      "after_reboot": {
+        "status": "passed",
+        "started_at": "2026-11-22T05:53:48.318179+00:00",
+        "ended_at": "2026-11-22T05:53:58.729060+00:00",
+        "assertions": {
+          "device_control_succeeded": true,
+          "same_process_object": true,
+          "requestor_matches_current_context": true,
+          "child_pid_matched": true,
+          "create_observed": true,
+          "exit_observed": true,
+          "child_cleanup_complete": true,
+          "unload_verified": true,
+          "expected_missing_image_failure": true,
+          "demand_start_preserved": true,
+          "real_reboot_verified": true
+        },
+        "stages": [
+          {
+            "stage_id": "reboot-verified",
+            "load_state": "unknown",
+            "native_error_code": null,
+            "bytes_returned": null,
+            "assertions": {
+              "device_control_succeeded": null,
+              "same_process_object": null,
+              "requestor_matches_current_context": null,
+              "child_pid_matched": null,
+              "create_observed": null,
+              "exit_observed": null,
+              "child_cleanup_complete": null,
+              "unload_verified": null,
+              "expected_missing_image_failure": null,
+              "demand_start_preserved": null,
+              "real_reboot_verified": true
+            },
+            "evidence_refs": [
+              "b2-lifecycle-after-reboot"
+            ]
+          },
+          {
+            "stage_id": "after-reboot-service",
+            "load_state": "not_loaded",
+            "native_error_code": null,
+            "bytes_returned": null,
+            "assertions": {
+              "device_control_succeeded": null,
+              "same_process_object": null,
+              "requestor_matches_current_context": null,
+              "child_pid_matched": null,
+              "create_observed": null,
+              "exit_observed": null,
+              "child_cleanup_complete": null,
+              "unload_verified": null,
+              "expected_missing_image_failure": null,
+              "demand_start_preserved": true,
+              "real_reboot_verified": null
+            },
+            "evidence_refs": [
+              "b2-lifecycle-after-reboot"
+            ]
+          },
+          {
+            "stage_id": "after-reboot-before-start",
+            "load_state": "not_loaded",
+            "native_error_code": 2,
+            "bytes_returned": 0,
+            "assertions": {
+              "device_control_succeeded": false,
+              "same_process_object": false,
+              "requestor_matches_current_context": false,
+              "child_pid_matched": false,
+              "create_observed": false,
+              "exit_observed": false,
+              "child_cleanup_complete": false,
+              "unload_verified": null,
+              "expected_missing_image_failure": null,
+              "demand_start_preserved": null,
+              "real_reboot_verified": null
+            },
+            "evidence_refs": [
+              "b2-lifecycle-after-reboot"
+            ]
+          },
+          {
+            "stage_id": "after-reboot-loaded",
+            "load_state": "loaded",
+            "native_error_code": 0,
+            "bytes_returned": 32,
+            "assertions": {
+              "device_control_succeeded": true,
+              "same_process_object": true,
+              "requestor_matches_current_context": true,
+              "child_pid_matched": true,
+              "create_observed": true,
+              "exit_observed": true,
+              "child_cleanup_complete": true,
+              "unload_verified": null,
+              "expected_missing_image_failure": null,
+              "demand_start_preserved": null,
+              "real_reboot_verified": null
+            },
+            "evidence_refs": [
+              "b2-lifecycle-after-reboot"
+            ]
+          },
+          {
+            "stage_id": "after-reboot-unloaded",
+            "load_state": "not_loaded",
+            "native_error_code": 2,
+            "bytes_returned": 0,
+            "assertions": {
+              "device_control_succeeded": false,
+              "same_process_object": false,
+              "requestor_matches_current_context": false,
+              "child_pid_matched": false,
+              "create_observed": false,
+              "exit_observed": false,
+              "child_cleanup_complete": false,
+              "unload_verified": true,
+              "expected_missing_image_failure": null,
+              "demand_start_preserved": null,
+              "real_reboot_verified": null
+            },
+            "evidence_refs": [
+              "b2-lifecycle-after-reboot"
+            ]
+          },
+          {
+            "stage_id": "service-control",
+            "load_state": "unknown",
+            "native_error_code": 2,
+            "bytes_returned": null,
+            "assertions": {
+              "device_control_succeeded": null,
+              "same_process_object": null,
+              "requestor_matches_current_context": null,
+              "child_pid_matched": null,
+              "create_observed": null,
+              "exit_observed": null,
+              "child_cleanup_complete": null,
+              "unload_verified": null,
+              "expected_missing_image_failure": null,
+              "demand_start_preserved": null,
+              "real_reboot_verified": null
+            },
+            "evidence_refs": [
+              "b2-lifecycle-after-reboot"
+            ]
+          },
+          {
+            "stage_id": "expected-start-failure",
+            "load_state": "not_loaded",
+            "native_error_code": 2,
+            "bytes_returned": null,
+            "assertions": {
+              "device_control_succeeded": null,
+              "same_process_object": null,
+              "requestor_matches_current_context": null,
+              "child_pid_matched": null,
+              "create_observed": null,
+              "exit_observed": null,
+              "child_cleanup_complete": null,
+              "unload_verified": null,
+              "expected_missing_image_failure": true,
+              "demand_start_preserved": null,
+              "real_reboot_verified": null
+            },
+            "evidence_refs": [
+              "b2-lifecycle-after-reboot"
+            ]
+          },
+          {
+            "stage_id": "after-start-failure",
+            "load_state": "not_loaded",
+            "native_error_code": 2,
+            "bytes_returned": 0,
+            "assertions": {
+              "device_control_succeeded": false,
+              "same_process_object": false,
+              "requestor_matches_current_context": false,
+              "child_pid_matched": false,
+              "create_observed": false,
+              "exit_observed": false,
+              "child_cleanup_complete": false,
+              "unload_verified": null,
+              "expected_missing_image_failure": true,
+              "demand_start_preserved": null,
+              "real_reboot_verified": null
+            },
+            "evidence_refs": [
+              "b2-lifecycle-after-reboot"
+            ]
+          }
+        ],
+        "failure_summary": null,
+        "evidence_refs": [
+          "b2-lifecycle-after-reboot",
+          "b2-lifecycle-before-reboot",
+          "b2-lifecycle-reboot"
+        ]
+      }
+    },
+    "evidence_refs": [
+      "b2-build-native",
+      "b2-owned-test-signing",
+      "b2-lifecycle-cycle",
+      "b2-lifecycle-before-reboot",
+      "b2-lifecycle-after-reboot",
+      "b2-lifecycle-reboot",
+      "b2-lifecycle-selftest-retry",
+      "b2-test-security",
+      "b2-source-and-local-verification"
+    ]
+  },
+  "commercial_sample": {
+    "target_alias": "target-cn",
+    "installer_alias": "installer-x.exe",
+    "installer_version": "2.17.4.510",
+    "installer_sha256": "686ee838411863d2eccdbe8a0596129e509819ae46626408760588ae8b0c800e",
+    "installation_status": "blocked",
+    "started_at": "2026-11-22T14:53:12.755031+00:00",
+    "ended_at": "2026-11-22T16:59:24+00:00",
+    "restored_baseline_verified": true,
+    "official_dialog_summary": "The official installer (2.17.4.510) installed the x64 user-mode launcher and launched it under Prism on ARM64 Windows 11 24H2 without releasing kernel drivers before login. After downloading the client package using an authorized non-personal test account onto an isolated temporary external data disk and clicking launch, three WHQL-signed AMD64 (0x8664) kernel driver binaries were present; SCM registered the user-mode protection service and two kernel driver registrations (Event 7045), after which no vendor kernel driver loaded on the ARM64 kernel and a prompt caused the game launch to exit. System-drive artifacts and services were cleaned, the temporary data disk was detached, and clean boot security was re-verified.",
+    "driver_binaries": [
+      {
+        "binary_id": "driver-330",
+        "role": "vendor_driver",
+        "artifact_alias": "driver-330.sys",
+        "size_bytes": 4125432,
+        "sha256": "dc2456422cc6e75f8c375ac3c9d630531b88a2ad2f8bd17191a62c5de9170615",
+        "file_version": "1.0.2603.17210",
+        "pe_valid": true,
+        "pe_machine": "0x8664",
+        "architecture": "AMD64",
+        "embedded_signature": {
+          "status": "valid",
+          "verification_method": "WinVerifyTrust",
+          "signer_alias": "publisher-x",
+          "signature_digest_matches": true,
+          "native_error_code": 0,
+          "evidence_refs": [
+            "b2-inventory-after-game-launch"
+          ]
+        },
+        "catalog_signature": {
+          "status": "unsigned",
+          "verification_method": "catalog_membership_and_trust",
+          "signer_alias": null,
+          "signature_digest_matches": null,
+          "native_error_code": 0,
+          "evidence_refs": [
+            "b2-inventory-after-game-launch"
+          ]
+        },
+        "kernel_load": {
+          "status": "not_loaded",
+          "source": "loaded_image_list",
+          "service_present": false,
+          "kernel_driver_running": false,
+          "image_identity_verified": true,
+          "native_error_code": null,
+          "ntstatus": null,
+          "captured_at": "2026-11-22T16:59:24+00:00",
+          "evidence_refs": [
+            "b2-inventory-after-game-launch"
+          ]
+        },
+        "evidence_refs": [
+          "b2-inventory-after-game-launch"
+        ]
+      },
+      {
+        "binary_id": "driver-331",
+        "role": "vendor_driver",
+        "artifact_alias": "driver-331.sys",
+        "size_bytes": 3909808,
+        "sha256": "2a8e8928de766d3c6ef1912d7da6d37e2f7509b5b7331805d45bce1dd9cb6f60",
+        "file_version": "29.8.2609.445",
+        "pe_valid": true,
+        "pe_machine": "0x8664",
+        "architecture": "AMD64",
+        "embedded_signature": {
+          "status": "valid",
+          "verification_method": "WinVerifyTrust",
+          "signer_alias": "publisher-x",
+          "signature_digest_matches": true,
+          "native_error_code": 0,
+          "evidence_refs": [
+            "b2-inventory-after-game-launch"
+          ]
+        },
+        "catalog_signature": {
+          "status": "unsigned",
+          "verification_method": "catalog_membership_and_trust",
+          "signer_alias": null,
+          "signature_digest_matches": null,
+          "native_error_code": 0,
+          "evidence_refs": [
+            "b2-inventory-after-game-launch"
+          ]
+        },
+        "kernel_load": {
+          "status": "not_loaded",
+          "source": "loaded_image_list",
+          "service_present": false,
+          "kernel_driver_running": false,
+          "image_identity_verified": true,
+          "native_error_code": null,
+          "ntstatus": null,
+          "captured_at": "2026-11-22T16:59:24+00:00",
+          "evidence_refs": [
+            "b2-inventory-after-game-launch"
+          ]
+        },
+        "evidence_refs": [
+          "b2-inventory-after-game-launch"
+        ]
+      },
+      {
+        "binary_id": "driver-332",
+        "role": "vendor_driver",
+        "artifact_alias": "driver-332.sys",
+        "size_bytes": 2966632,
+        "sha256": "67e1e869d15396f0fe95ab09c5befbd81d023286bcbcb870ec76e478d48138a7",
+        "file_version": "0.1.2610.620",
+        "pe_valid": true,
+        "pe_machine": "0x8664",
+        "architecture": "AMD64",
+        "embedded_signature": {
+          "status": "valid",
+          "verification_method": "WinVerifyTrust",
+          "signer_alias": "publisher-x",
+          "signature_digest_matches": true,
+          "native_error_code": 0,
+          "evidence_refs": [
+            "b2-inventory-after-game-launch"
+          ]
+        },
+        "catalog_signature": {
+          "status": "unsigned",
+          "verification_method": "catalog_membership_and_trust",
+          "signer_alias": null,
+          "signature_digest_matches": null,
+          "native_error_code": 0,
+          "evidence_refs": [
+            "b2-inventory-after-game-launch"
+          ]
+        },
+        "kernel_load": {
+          "status": "not_loaded",
+          "source": "loaded_image_list",
+          "service_present": false,
+          "kernel_driver_running": false,
+          "image_identity_verified": true,
+          "native_error_code": null,
+          "ntstatus": null,
+          "captured_at": "2026-11-22T16:59:24+00:00",
+          "evidence_refs": [
+            "b2-inventory-after-game-launch"
+          ]
+        },
+        "evidence_refs": [
+          "b2-inventory-after-game-launch"
+        ]
+      }
+    ],
+    "evidence_refs": [
+      "b2-sampling-preflight",
+      "b2-inventory-before",
+      "b2-inventory-after-prelogin",
+      "b2-inventory-after-game-launch",
+      "b2-post-commercial-security"
+    ]
+  },
+  "attribution": {
+    "axis_1_native_driver_distribution": "observed_amd64_only_in_sample",
+    "axis_2_guest_policy": "unknown",
+    "signing_or_code_integrity_issue": "observed",
+    "findings": [
+      {
+        "finding_id": "finding-001",
+        "category": "signing_or_code_integrity",
+        "summary": "The initial owned-driver test-signing request returned native exit code 1 and was rejected by Secure Boot policy. Its historical outer wrapper returned 0; the native result determines failure. Later owned-probe success followed the authorized temporary security change and verified restoration.",
+        "scope": "sampled_guest_only",
+        "evidence_refs": [
+          "b2-test-signing-rejection"
+        ]
+      },
+      {
+        "finding_id": "finding-004",
+        "category": "toolchain",
+        "summary": "Native WDK ARM64 builds and owned test signing passed; all three real diagnostic lifecycle phases passed, followed by verified removal of test services and certificate and restoration of boot security. This conclusion is scoped to the owned probe.",
+        "scope": "sampled_guest_only",
+        "evidence_refs": [
+          "b2-build-native",
+          "b2-owned-test-signing",
+          "b2-lifecycle-cycle",
+          "b2-lifecycle-before-reboot",
+          "b2-lifecycle-after-reboot",
+          "b2-cleanup-owned-signing",
+          "b2-restored-security"
+        ]
+      },
+      {
+        "finding_id": "finding-005",
+        "category": "axis_1_architecture",
+        "summary": "All three vendor kernel driver binaries sampled from the official target-cn distribution package have PE Machine 0x8664 (AMD64) with valid WHQL Authenticode signatures, and none loaded into the ARM64 Guest kernel (kernel_load=not_loaded) after SCM registration during launch. Because launch exited before any confirmed virtualized-environment policy dialog was independently captured, axis_2_guest_policy remains unknown. This observation is scoped to the sampled distribution and does not extrapolate to all channels.",
+        "scope": "sampled_guest_only",
+        "evidence_refs": [
+          "b2-inventory-before",
+          "b2-inventory-after-prelogin",
+          "b2-inventory-after-game-launch",
+          "b2-post-commercial-security"
+        ]
+      }
+    ]
+  },
+  "commercial_states": {
+    "publisher_stance": {
+      "permission": "unknown",
+      "support": "unknown",
+      "official_claim_refs": []
+    },
+    "actual_driver_load": {
+      "value": "not_loaded",
+      "evidence_refs": [
+        "b2-inventory-after-game-launch"
+      ]
+    },
+    "actual_game_start": {
+      "value": "rejected",
+      "evidence_refs": [
+        "b2-inventory-after-game-launch"
+      ]
+    },
+    "actual_protected_online_session": {
+      "value": "not_tested",
+      "evidence_refs": []
+    }
+  },
+  "five_dimension_status": {
+    "code_implementation": "passed",
+    "local_synthetic_verification": "passed",
+    "real_guest_verification": "passed",
+    "vendor_support": "unknown",
+    "real_game_verification": "blocked"
+  },
+  "attachments": [
+    {
+      "evidence_id": "b2-build-native",
+      "artifact_alias": "b2-build-native-result.json",
+      "sha256": "4032302defe94851f7c329da9084422fe59e8268cb042f9175382be0794ce32b",
+      "kind": "build",
+      "captured_at": "2026-11-22T05:48:25.503379Z",
+      "redacted": true,
+      "privacy_review": "automated_text_review"
+    },
+    {
+      "evidence_id": "b2-owned-test-signing",
+      "artifact_alias": "b2-owned-test-signing-result.json",
+      "sha256": "7b28ea45f4dcc2a48452be3291c9f72808bb3ba5a2810d8d286a6503c9441aa2",
+      "kind": "signature",
+      "captured_at": "2026-11-22T05:50:04.647594Z",
+      "redacted": true,
+      "privacy_review": "automated_text_review"
+    },
+    {
+      "evidence_id": "b2-lifecycle-cycle",
+      "artifact_alias": "b2-lifecycle-cycle-result.json",
+      "sha256": "213d481a9b54853c7443b787ae8bd8e6f73be5a37d5d3c76efbce15547553552",
+      "kind": "lifecycle",
+      "captured_at": "2026-11-22T05:52:26.896880+00:00",
+      "redacted": true,
+      "privacy_review": "automated_text_review"
+    },
+    {
+      "evidence_id": "b2-lifecycle-before-reboot",
+      "artifact_alias": "b2-lifecycle-before-reboot-result.json",
+      "sha256": "aea259bff946ce68aaf26ae4b571e72a2a5b3dc3a93a3770de4c8f13a274b3ef",
+      "kind": "lifecycle",
+      "captured_at": "2026-11-22T05:52:51.969418+00:00",
+      "redacted": true,
+      "privacy_review": "automated_text_review"
+    },
+    {
+      "evidence_id": "b2-lifecycle-after-reboot",
+      "artifact_alias": "b2-lifecycle-after-reboot-result.json",
+      "sha256": "322562e5bd548c99f517703214f3dabf92e2408428d7f25a793392239eb2c164",
+      "kind": "lifecycle",
+      "captured_at": "2026-11-22T05:53:58.729060+00:00",
+      "redacted": true,
+      "privacy_review": "automated_text_review"
+    },
+    {
+      "evidence_id": "b2-lifecycle-reboot",
+      "artifact_alias": "b2-lifecycle-reboot-result.json",
+      "sha256": "d3de3f395678c49206135a86d6c9664ba1ae3fe834229399c8df09864851205f",
+      "kind": "lifecycle",
+      "captured_at": "2026-11-22T05:53:20.855916Z",
+      "redacted": true,
+      "privacy_review": "automated_text_review"
+    },
+    {
+      "evidence_id": "b2-lifecycle-selftest-retry",
+      "artifact_alias": "b2-lifecycle-selftest-retry-result.json",
+      "sha256": "8dedf0adced5c67acefa0963d04dc09b451925f0e93566603f5813148b74a8c4",
+      "kind": "validation",
+      "captured_at": "2026-11-22T05:49:28.986379+00:00",
+      "redacted": true,
+      "privacy_review": "automated_text_review"
+    },
+    {
+      "evidence_id": "b2-test-security",
+      "artifact_alias": "b2-test-security-result.json",
+      "sha256": "c9e429c20e5eafdf9c04d1c9188ff67792b4ff2bffa88f578fc2fdb9d293dd15",
+      "kind": "guest_environment",
+      "captured_at": "2026-11-22T05:51:26.764615Z",
+      "redacted": true,
+      "privacy_review": "automated_text_review"
+    },
+    {
+      "evidence_id": "b2-restored-security",
+      "artifact_alias": "b2-restored-security-result.json",
+      "sha256": "826dc89ccb0792697ee9b7203d25ef69561cee677f50a4dba600dd42e1bdfa86",
+      "kind": "restoration",
+      "captured_at": "2026-11-22T05:57:08.420387Z",
+      "redacted": true,
+      "privacy_review": "automated_text_review"
+    },
+    {
+      "evidence_id": "b2-cleanup-owned-signing",
+      "artifact_alias": "b2-cleanup-owned-signing-result.json",
+      "sha256": "6592af5b48cdb9d9a4236b4596280540f8519c05ae25fab5c0511e01aa0b855c",
+      "kind": "restoration",
+      "captured_at": "2026-11-22T05:54:35.971262Z",
+      "redacted": true,
+      "privacy_review": "automated_text_review"
+    },
+    {
+      "evidence_id": "b2-recovery-boot-security",
+      "artifact_alias": "b2-recovery-boot-security-result.json",
+      "sha256": "ceedbcaf3db809513428a617a91597a66fcdd2de3d00d399cdb0da2ebdf3545f",
+      "kind": "guest_environment",
+      "captured_at": "2026-11-22T06:08:44.587334Z",
+      "redacted": true,
+      "privacy_review": "automated_text_review"
+    },
+    {
+      "evidence_id": "b2-test-signing-rejection",
+      "artifact_alias": "b2-test-signing-rejection-evidence.json",
+      "sha256": "499fd7b8631f9210b2f691bf08df7491beabc6870b3696ad892cee2151d0c226",
+      "kind": "signature",
+      "captured_at": "2026-11-22T06:18:46.619093+00:00",
+      "redacted": true,
+      "privacy_review": "automated_text_review"
+    },
+    {
+      "evidence_id": "b2-source-and-local-verification",
+      "artifact_alias": "b2-source-and-local-verification.md",
+      "sha256": "6edf387f92c063592787f2850b7e62bc8dcff6dd3e1d89d2b901891a6c93c2a7",
+      "kind": "validation",
+      "captured_at": "2026-11-22T06:23:10.054892+00:00",
+      "redacted": true,
+      "privacy_review": "automated_text_review"
+    },
+    {
+      "evidence_id": "b2-controller-local-validation",
+      "artifact_alias": "b2-controller-local-validation.json",
+      "sha256": "fc6336a562ae3fa6875a9e6dba6481e495b9fe78d81f870a82f0f336a0334e25",
+      "kind": "validation",
+      "captured_at": "2026-11-22T06:35:30.977570+00:00",
+      "redacted": true,
+      "privacy_review": "automated_text_review"
+    },
+    {
+      "evidence_id": "b2-transfer-local-validation",
+      "artifact_alias": "b2-transfer-local-checks.json",
+      "sha256": "214b408c5822c188ffcb3b77542bf50afc5e6a885949454a40dfc1a773640600",
+      "kind": "validation",
+      "captured_at": "2026-11-22T06:35:30.977570+00:00",
+      "redacted": true,
+      "privacy_review": "automated_text_review"
+    },
+    {
+      "evidence_id": "b2-ui-local-validation",
+      "artifact_alias": "b2-ui-local-validation.json",
+      "sha256": "cee2f448cdaf16176b45cf2e6135956818373f0f6352005551f5247cc942376f",
+      "kind": "validation",
+      "captured_at": "2026-11-22T06:35:30.977570+00:00",
+      "redacted": true,
+      "privacy_review": "automated_text_review"
+    },
+    {
+      "evidence_id": "b2-screen-privacy-local-validation",
+      "artifact_alias": "b2-screen-ocr-cn-private-markers-validation.json",
+      "sha256": "48729ce51ef28500be50f8c8ff87e089b3ca2e2a89c73330be7b6c56c9459acf",
+      "kind": "validation",
+      "captured_at": "2026-11-22T06:35:30.977570+00:00",
+      "redacted": true,
+      "privacy_review": "automated_text_review"
+    },
+    {
+      "evidence_id": "b2-sampling-preflight",
+      "artifact_alias": "b2-sampling-preflight-result.json",
+      "sha256": "4688806b1cf604ce1a83df009e91ddc11cc235bea8ac5bdd8a83bd9c7cbaa36e",
+      "kind": "guest_environment",
+      "captured_at": "2026-11-22T14:45:31.423194+00:00",
+      "redacted": true,
+      "privacy_review": "automated_text_review"
+    },
+    {
+      "evidence_id": "b2-inventory-before",
+      "artifact_alias": "b2-inventory-before-evidence.json",
+      "sha256": "d7ac319d987d80fa92d23cfd228345add11748b48398cb38f0a1a89f078629be",
+      "kind": "kernel_event",
+      "captured_at": "2026-11-22T14:46:16.873761+00:00",
+      "redacted": true,
+      "privacy_review": "automated_text_review"
+    },
+    {
+      "evidence_id": "b2-inventory-after-prelogin",
+      "artifact_alias": "b2-inventory-after-prelogin-evidence.json",
+      "sha256": "1131a7475f2b034faed4d35fb2885bab55801b8bd83e80fd4c581d6fe008be4c",
+      "kind": "kernel_event",
+      "captured_at": "2026-11-22T15:23:23+00:00",
+      "redacted": true,
+      "privacy_review": "automated_text_review"
+    },
+    {
+      "evidence_id": "b2-inventory-after-game-launch",
+      "artifact_alias": "b2-inventory-after-game-launch-evidence.json",
+      "sha256": "7b59e984ee057f51d4979909131ce5a8ad19eefd7c3c72f231fe26e118b5eb3d",
+      "kind": "kernel_event",
+      "captured_at": "2026-11-22T16:59:24+00:00",
+      "redacted": true,
+      "privacy_review": "automated_text_review"
+    },
+    {
+      "evidence_id": "b2-post-commercial-security",
+      "artifact_alias": "b2-post-commercial-security-result.json",
+      "sha256": "85371ad615fe55ff7cc5e443de18b7c774d8c6eff271886b554d4e34c9bf8246",
+      "kind": "restoration",
+      "captured_at": "2026-11-22T17:00:39.204793Z",
+      "redacted": true,
+      "privacy_review": "automated_text_review"
+    }
+  ],
+  "remaining_tasks": [
+    "Document the separate Windows 11 25H2+ prerequisite for international on-demand distribution; the current 24H2 Guest does not satisfy it."
+  ],
+  "limitations": [
+    "Self-probe success does not establish commercial driver compatibility or publisher support.",
+    "A sampled AMD64 driver does not prove that every publisher channel lacks ARM64 drivers.",
+    "A native ARM64 binary does not prove that virtualized environments are supported.",
+    "Local observations remain separate from official public-document evidence.",
+    "Guest kernel architecture is ARM64; a transport or PowerShell process reporting AMD64 under user-mode emulation must not override the kernel architecture observation.",
+    "The original before-experiment configuration is retained only for fields directly established by the earlier preflight and Secure Boot rejection; unspecified original fields remain unknown.",
+    "The test-signing request was initially rejected with native exit code 1 despite a historical outer wrapper exit code 0. Later success required the approved temporary Secure Boot change and a verified reboot.",
+    "The first inventory operation produced no confirmed result and encountered Guest Agent RPC timeouts. A later normal powerdown confirmed Guest stop and terminated the outstanding execution; its original native exit code is unavailable. The cause remains undetermined."
+  ]
+}

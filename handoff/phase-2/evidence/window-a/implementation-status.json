@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "window": "A",
+  "owner": "@DNPMBHC",
+  "localImplementation": "complete",
+  "realAcceptance": "passed",
+  "guestOperations": "released_to_window_c",
+  "localGate": {
+    "schemaVersion": 1,
+    "label": "full-complete-local",
+    "filter": "",
+    "exitCode": 0,
+    "lockUnchanged": true,
+    "guestEnabled": false,
+    "counts": {
+      "executed": 175,
+      "skipped": 10,
+      "failures": 0
+    }
+  },
+  "realGate": {
+    "schemaVersion": 1,
+    "label": "real-complete-bound",
+    "filter": "UTMInteractiveRealTests",
+    "exitCode": 0,
+    "lockUnchanged": true,
+    "guestEnabled": true,
+    "counts": {
+      "executed": 7,
+      "skipped": 0,
+      "failures": 0
+    },
+    "realRunID": "run-28badd7853794b1ba8074c3491a045b7",
+    "capturedAt": "2026-11-22T06:50:19.213095+00:00",
+    "runStartedAt": "2026-11-22T06:48:55.457953+00:00"
+  },
+  "cleanupAccepted": true,
+  "remainingAssignedTasks": [],
+  "scope": "interactiveDesktopAndExplicitComputeOnly",
+  "transparentPEMigration": false,
+  "probeArchitecture": "x64",
+  "guestArchitecture": "arm64",
+  "probeExecution": "x64EmulationOnARM64",
+  "elevationBoundary": "currentLoggedInTokenAlreadyElevated",
+  "sharedModelProposal": "interface-proposal.md",
+  "sourceFingerprintFile": "source-fingerprints.json",
+  "artifactFingerprintFile": "artifact-fingerprints.json",
+  "sourceStableThroughFinalValidation": true,
+  "commitPerformed": false,
+  "pushPerformed": false,
+  "capturedAt": "2026-11-22T06:52:47.562404+00:00"
+}
