@@ -24,6 +24,9 @@ struct SettingsView: View {
     @AppStorage("killOnTerminate") var killOnTerminate = true
     @AppStorage("checkWhiskyWineUpdates") var checkWhiskyWineUpdates = true
     @AppStorage("defaultBottleLocation") var defaultBottleLocation = BottleData.defaultBottleDir
+    @AppStorage("runtime.defaultMetalFXPreset") private var defaultMetalFXPreset = "off"
+    @AppStorage("runtime.defaultMetalFXOutputHeight") private var defaultMetalFXOutputHeight = 1080
+    @AppStorage("runtime.defaultPreferVulkanDriver") private var defaultPreferVulkanDriver = true
     @State private var runtimeFolder = WhiskyWineInstaller.applicationFolder
     @State private var externalVolumes = WhiskyWineInstaller.mountedExternalVolumes()
     @State private var runtimePathChanged = false
@@ -60,6 +63,23 @@ struct SettingsView: View {
             Section("settings.updates") {
                 Toggle("settings.toggle.whisky.updates", isOn: $whiskyUpdate)
                 Toggle("settings.toggle.whiskywine.updates", isOn: $checkWhiskyWineUpdates)
+            }
+            Section("settings.graphics.defaults") {
+                Picker("config.dxmt.metalFX.preset", selection: $defaultMetalFXPreset) {
+                    ForEach(HostDXMTMetalFXPreset.allCases, id: \.self) { preset in
+                        Text(String(localized: String.LocalizationValue(
+                            "config.dxmt.metalFX.\(preset.rawValue)"
+                        ))).tag(preset.rawValue)
+                    }
+                }
+                Picker("config.dxmt.metalFX.outputHeight", selection: $defaultMetalFXOutputHeight) {
+                    Text("720p").tag(720)
+                    Text("1080p").tag(1080)
+                    Text("1440p").tag(1440)
+                    Text("2160p").tag(2160)
+                }
+                Toggle("config.dxvk.preferKosmicKrisp", isOn: $defaultPreferVulkanDriver)
+                Text("settings.graphics.defaults.note").font(.footnote).foregroundStyle(.secondary)
             }
             SettingsRuntimeManifestSection(libraryFolder: runtimeFolder.appending(path: "Libraries"))
             SettingsRuntimeAndComplianceSections()
@@ -132,6 +152,7 @@ struct SettingsView: View {
 struct SettingsRuntimeManifestSection: View {
     let libraryFolder: URL
     @State private var report: RuntimeManifestVerificationReport?
+    @AppStorage("runtime.defaultPreferVulkanDriver") private var defaultPreferVulkanDriver = true
 
     var body: some View {
         Section("settings.section.manifest") {
@@ -146,6 +167,15 @@ struct SettingsRuntimeManifestSection: View {
                     LabeledContent("\(item.displayName) (\(item.lockedVersion))", value: stateText)
                         .font(.footnote)
                 }
+                let icdRoute = defaultICDRoute
+                let icdLabel = icdRoute.selectedICD.map {
+                    String(localized: String.LocalizationValue("config.dxvk.icd.\($0.rawValue)"))
+                } ?? String(localized: "runtime.unavailable")
+                LabeledContent("settings.vulkanICD.active", value: icdLabel)
+                    .font(.footnote)
+                Text(String(localized: String.LocalizationValue(icdRoute.reason)))
+                    .font(.caption)
+                    .foregroundStyle(icdRoute.usedFallback ? .orange : .secondary)
             } else {
                 Text("settings.manifest.unavailable")
                     .font(.footnote)
@@ -158,6 +188,12 @@ struct SettingsRuntimeManifestSection: View {
         }
         .onAppear(perform: reload)
         .onChange(of: libraryFolder) { reload() }
+    }
+
+    private var defaultICDRoute: HostVulkanICDRoute {
+        var settings = BottleSettings()
+        settings.dxvkPreferKosmicKrisp = defaultPreferVulkanDriver
+        return settings.resolveDXVKVulkanICDRoute(libraryFolder: libraryFolder)
     }
 
     private func reload() {
@@ -196,6 +232,89 @@ struct GraphicsFallbackWarningBanner: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(Color.orange.opacity(0.10), in: RoundedRectangle(cornerRadius: 8))
         }
+    }
+}
+
+/// Reusable DXMT MetalFX Spatial preset picker and DXVK KosmicKrisp ICD toggle with live fallback visibility.
+struct BottleGraphicsAdvancedOptionsView: View {
+    @ObservedObject var bottle: Bottle
+    let selectedBackend: HostWineGraphicsBackend?
+    @State private var hostSnapshot = HostCapabilityProvider.current()
+
+    var body: some View {
+        let showDXMT = bottle.settings.wineGraphicsBackendMode == .dxmt
+            || bottle.settings.wineGraphicsBackendMode == .auto
+            || selectedBackend == .dxmt
+        let showDXVK = bottle.settings.wineGraphicsBackendMode == .dxvk
+            || bottle.settings.wineGraphicsBackendMode == .auto
+            || selectedBackend == .dxvk
+
+        if showDXMT {
+            let fxPolicy = bottle.settings.resolveDXMTMetalFXPolicy(hostSnapshot: hostSnapshot)
+            Picker("config.dxmt.metalFX.preset", selection: $bottle.settings.dxmtMetalFXPreset) {
+                Text("config.dxmt.metalFX.off").tag(HostDXMTMetalFXPreset.off)
+                Text("config.dxmt.metalFX.ultraQuality").tag(HostDXMTMetalFXPreset.ultraQuality)
+                Text("config.dxmt.metalFX.quality").tag(HostDXMTMetalFXPreset.quality)
+                Text("config.dxmt.metalFX.balanced").tag(HostDXMTMetalFXPreset.balanced)
+                Text("config.dxmt.metalFX.performance").tag(HostDXMTMetalFXPreset.performance)
+            }
+            Picker("config.dxmt.metalFX.outputHeight", selection: $bottle.settings.dxmtMetalFXOutputHeight) {
+                Text("720p").tag(720)
+                Text("1080p").tag(1080)
+                Text("1440p").tag(1440)
+                Text("2160p").tag(2160)
+            }
+            LabeledContent("config.dxmt.metalFX.effective", value: String(localized: String.LocalizationValue(
+                "config.dxmt.metalFX.\(fxPolicy.effectivePreset.rawValue)"
+            )))
+            Text("config.dxmt.metalFX.note")
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+                .onReceive(NotificationCenter.default.publisher(
+                    for: ProcessInfo.thermalStateDidChangeNotification
+                )) { _ in hostSnapshot = HostCapabilityProvider.current() }
+            if fxPolicy.fallbackReason != nil {
+                Label(String(localized: String.LocalizationValue(
+                    metalFXFallbackKey
+                )), systemImage: "exclamationmark.triangle.fill")
+                    .font(.footnote)
+                    .foregroundStyle(.orange)
+            }
+        }
+
+        if showDXVK {
+            let icdRoute = bottle.settings.resolveDXVKVulkanICDRoute()
+            let icdLabel = icdRoute.selectedICD.map {
+                String(localized: String.LocalizationValue("config.dxvk.icd.\($0.rawValue)"))
+            } ?? String(localized: "runtime.unavailable")
+            Toggle("config.dxvk.preferKosmicKrisp", isOn: $bottle.settings.dxvkPreferKosmicKrisp)
+            LabeledContent("config.dxvk.icd.active", value: icdLabel)
+            if icdRoute.usedFallback || icdRoute.selectedICD == nil {
+                Label(
+                    String(localized: String.LocalizationValue(icdRoute.reason)),
+                    systemImage: "exclamationmark.triangle.fill"
+                )
+                    .font(.footnote)
+                    .foregroundStyle(.orange)
+            } else {
+                Text(String(localized: String.LocalizationValue(icdRoute.reason)))
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+            }
+        }
+    }
+
+    private var metalFXFallbackKey: String {
+        if !hostSnapshot.isAppleSilicon || !hostSnapshot.metalFXSpatialScalingAvailable {
+            return "runtime.metalfx.reason.unsupported"
+        }
+        if hostSnapshot.performancePolicy != .maximumPerformance {
+            return "runtime.metalfx.reason.pressure"
+        }
+        if bottle.settings.dxmtMetalFXOutputHeight < 1080 {
+            return "runtime.metalfx.reason.lowResolution"
+        }
+        return "runtime.metalfx.reason.protected"
     }
 }
 

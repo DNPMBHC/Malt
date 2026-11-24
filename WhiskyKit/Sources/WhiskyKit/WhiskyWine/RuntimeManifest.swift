@@ -15,21 +15,37 @@ public struct RuntimeLockedArtifact: Codable, Sendable, Equatable {
     public let relativePath: String
     public let alternateRelativePaths: [String]
     public let sha256: String
+    public let alternateSHA256s: [String]
 
     public init(
         name: String,
         relativePath: String,
         alternateRelativePaths: [String] = [],
-        sha256: String
+        sha256: String,
+        alternateSHA256s: [String] = []
     ) {
         self.name = name
         self.relativePath = relativePath
         self.alternateRelativePaths = alternateRelativePaths
         self.sha256 = sha256
+        self.alternateSHA256s = alternateSHA256s
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        name = try container.decode(String.self, forKey: .name)
+        relativePath = try container.decode(String.self, forKey: .relativePath)
+        alternateRelativePaths = try container.decodeIfPresent([String].self, forKey: .alternateRelativePaths) ?? []
+        sha256 = try container.decode(String.self, forKey: .sha256)
+        alternateSHA256s = try container.decodeIfPresent([String].self, forKey: .alternateSHA256s) ?? []
     }
 
     public var candidateRelativePaths: [String] {
         [relativePath] + alternateRelativePaths
+    }
+
+    public var acceptedSHA256s: Set<String> {
+        Set(([sha256] + alternateSHA256s).map { $0.lowercased() })
     }
 }
 
@@ -41,6 +57,7 @@ public struct RuntimeComponentLock: Codable, Sendable, Equatable, Identifiable {
     public let status: RuntimeManifestComponentStatus
     public let supportedAPIs: String
     public let artifacts: [RuntimeLockedArtifact]
+    public let requiredVulkanFeatures: [String]?
 
     public init(
         id: String,
@@ -48,7 +65,8 @@ public struct RuntimeComponentLock: Codable, Sendable, Equatable, Identifiable {
         version: String,
         status: RuntimeManifestComponentStatus,
         supportedAPIs: String,
-        artifacts: [RuntimeLockedArtifact]
+        artifacts: [RuntimeLockedArtifact],
+        requiredVulkanFeatures: [String]? = nil
     ) {
         self.id = id
         self.displayName = displayName
@@ -56,6 +74,7 @@ public struct RuntimeComponentLock: Codable, Sendable, Equatable, Identifiable {
         self.status = status
         self.supportedAPIs = supportedAPIs
         self.artifacts = artifacts
+        self.requiredVulkanFeatures = requiredVulkanFeatures
     }
 }
 
@@ -195,13 +214,30 @@ public enum RuntimeManifestVerifier {
         return hasher.finalize().map { String(format: "%02x", $0) }.joined()
     }
 
+    public static func defaultAppBundleURL(bundle: Bundle = .main) -> URL? {
+        if bundle.bundleURL.pathExtension == "app" {
+            return bundle.bundleURL
+        }
+        if let exe = bundle.executableURL?.resolvingSymlinksInPath() {
+            let candidate = exe
+                .deletingLastPathComponent()
+                .deletingLastPathComponent()
+                .deletingLastPathComponent()
+            if candidate.pathExtension == "app" {
+                return candidate
+            }
+        }
+        return nil
+    }
+
     public static func verify(
         manifest: RuntimeManifest,
         in libraryFolder: URL = WhiskyWineInstaller.libraryFolder,
+        appBundleURL: URL? = defaultAppBundleURL(),
         fileManager: FileManager = .default
     ) -> RuntimeManifestVerificationReport {
         let results = manifest.components.map { component in
-            verifyComponent(component, in: libraryFolder, fileManager: fileManager)
+            verifyComponent(component, in: libraryFolder, appBundleURL: appBundleURL, fileManager: fileManager)
         }
         return RuntimeManifestVerificationReport(
             schemaVersion: manifest.schemaVersion,
@@ -213,6 +249,7 @@ public enum RuntimeManifestVerifier {
     private static func verifyComponent(
         _ component: RuntimeComponentLock,
         in libraryFolder: URL,
+        appBundleURL: URL?,
         fileManager: FileManager
     ) -> RuntimeComponentVerification {
         if component.status == .reserved || component.artifacts.isEmpty {
@@ -226,7 +263,7 @@ public enum RuntimeManifestVerifier {
         }
 
         let artifactResults = component.artifacts.map {
-            verifyArtifact($0, in: libraryFolder, fileManager: fileManager)
+            verifyArtifact($0, in: libraryFolder, appBundleURL: appBundleURL, fileManager: fileManager)
         }
         let anyMismatch = artifactResults.contains { $0.resolvedRelativePath != nil && !$0.matched }
         let anyMissing = artifactResults.contains { $0.resolvedRelativePath == nil }
@@ -244,9 +281,12 @@ public enum RuntimeManifestVerifier {
     private static func verifyArtifact(
         _ artifact: RuntimeLockedArtifact,
         in libraryFolder: URL,
+        appBundleURL: URL?,
         fileManager: FileManager
     ) -> RuntimeArtifactVerification {
-        guard let (relPath, fileURL) = resolveArtifact(artifact, in: libraryFolder, fileManager: fileManager) else {
+        guard let (relPath, fileURL) = resolveArtifact(
+            artifact, in: libraryFolder, appBundleURL: appBundleURL, fileManager: fileManager
+        ) else {
             return RuntimeArtifactVerification(
                 name: artifact.name,
                 expectedSHA256: artifact.sha256,
@@ -256,24 +296,34 @@ public enum RuntimeManifestVerifier {
             )
         }
         let actual = try? sha256Hex(forFileAt: fileURL)
+        let matched = actual.map { artifact.acceptedSHA256s.contains($0.lowercased()) } ?? false
         return RuntimeArtifactVerification(
             name: artifact.name,
             expectedSHA256: artifact.sha256,
             actualSHA256: actual,
             resolvedRelativePath: relPath,
-            matched: actual?.lowercased() == artifact.sha256.lowercased()
+            matched: matched
         )
     }
 
     private static func resolveArtifact(
         _ artifact: RuntimeLockedArtifact,
         in libraryFolder: URL,
+        appBundleURL: URL?,
         fileManager: FileManager
     ) -> (String, URL)? {
         for rel in artifact.candidateRelativePaths {
-            let url = libraryFolder.appending(path: rel)
-            if fileManager.fileExists(atPath: url.path(percentEncoded: false)) {
-                return (rel, url)
+            if rel.hasPrefix("Contents/") {
+                guard let appBundleURL else { continue }
+                let url = appBundleURL.appending(path: rel)
+                if fileManager.fileExists(atPath: url.path(percentEncoded: false)) {
+                    return (rel, url)
+                }
+            } else {
+                let url = libraryFolder.appending(path: rel)
+                if fileManager.fileExists(atPath: url.path(percentEncoded: false)) {
+                    return (rel, url)
+                }
             }
         }
         return nil

@@ -46,9 +46,7 @@ extension UTMWindowsGuestProvider {
     let launchedVM = try await prepareVM(initial, config: config, until: deadline)
     do {
       try await waitForAgent(config, until: deadline)
-      try await transport.pushCreatingParentDirectory(
-        config.identifier, hostURL: helper.helperURL, guestPath: helper.guestHelperPath,
-        until: deadline, pollInterval: pollInterval)
+      try await ensureInteractiveHelper(helper, configuration: config, until: deadline)
       guard
         try await verifyGuestFile(
           config.identifier, guestPath: helper.guestHelperPath, until: deadline)

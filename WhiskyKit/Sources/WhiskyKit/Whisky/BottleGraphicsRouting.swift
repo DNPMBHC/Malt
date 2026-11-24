@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 import Foundation
-
 /// User-selectable graphics translation backend mode persisted per bottle.
 public enum WineGraphicsBackendMode: String, CaseIterable, Codable, Equatable, Sendable {
     case auto
@@ -102,7 +101,12 @@ public extension BottleSettings {
 
         applyCommonWineEnvironment(to: &wineEnv)
 
-        let metalFXOptions = HostDXMTMetalFXOptions(preset: dxmtMetalFXPreset)
+        let metalFXOptions = HostDXMTMetalFXOptions(
+            preset: dxmtMetalFXPreset, outputHeight: dxmtMetalFXOutputHeight
+        )
+        if selectedBackend == .dxmt, dxmtMetalFXPreset == .off {
+            wineEnv["DXMT_METALFX_SPATIAL_SWAPCHAIN"] = "0"
+        }
         if adaptiveResourcePolicyEnabled {
             let policy = HostWineLaunchPolicy.configured(
                 snapshot: resolvedSnapshot,
@@ -156,6 +160,51 @@ public extension BottleSettings {
         applyDXVKVulkanICD(to: &wineEnv, libraryFolder: libraryFolder, hostSnapshot: hostSnapshot)
     }
 
+    /// Resolves the DXVK Vulkan ICD route (KosmicKrisp vs MoltenVK fallback) for UI display and launch.
+    func resolveDXVKVulkanICDRoute(
+        libraryFolder: URL = WhiskyWineInstaller.libraryFolder,
+        hostSnapshot: RuntimeHostSnapshot = HostCapabilityProvider.current(),
+        appBundleURL: URL? = RuntimeManifestVerifier.defaultAppBundleURL()
+    ) -> HostVulkanICDRoute {
+        let installation = Self.discoverVulkanICDInstallation(in: libraryFolder, appBundleURL: appBundleURL)
+        let route = HostWineBackendRouter.routeVulkanICD(
+            hostSnapshot: hostSnapshot, available: installation.availability,
+            preferKosmicKrisp: dxvkPreferKosmicKrisp
+        )
+        let reason: String
+        if route.selectedICD == nil {
+            reason = "runtime.vulkan.reason.none"
+        } else if !dxvkPreferKosmicKrisp, route.selectedICD == .kosmicKrisp {
+            reason = "runtime.vulkan.reason.compatibilityMissing"
+        } else if !hostSnapshot.isAppleSilicon || hostSnapshot.operatingSystemVersion.major < 26 {
+            reason = "runtime.vulkan.reason.hostUnsupported"
+        } else if !dxvkPreferKosmicKrisp {
+            reason = "runtime.vulkan.reason.preference"
+        } else if installation.validation != .verified {
+            reason = installation.validation.localizationKey
+        } else {
+            reason = "runtime.vulkan.reason.selected"
+        }
+        return HostVulkanICDRoute(
+            selectedICD: route.selectedICD, fallbackChain: route.fallbackChain,
+            usedFallback: route.usedFallback, reason: reason, environmentOverrides: route.environmentOverrides
+        )
+    }
+
+    /// Resolves the effective DXMT MetalFX Spatial policy (accounting for thermal/low-res protections).
+    func resolveDXMTMetalFXPolicy(
+        hostSnapshot: RuntimeHostSnapshot = HostCapabilityProvider.current(),
+        outputHeight: Int? = nil,
+        allowLowResolutionUpscaling: Bool = false
+    ) -> HostDXMTMetalFXPolicy {
+        let options = HostDXMTMetalFXOptions(
+            preset: dxmtMetalFXPreset,
+            outputHeight: outputHeight ?? dxmtMetalFXOutputHeight,
+            allowLowResolutionUpscaling: allowLowResolutionUpscaling
+        )
+        return HostDXMTMetalFXPolicy(snapshot: hostSnapshot, options: options, enabled: true)
+    }
+
     private func applyDXVKVulkanICD(
         to wineEnv: inout [String: String],
         libraryFolder: URL,
@@ -166,12 +215,7 @@ public extension BottleSettings {
               wineEnv["VK_ICD_FILENAMES"] == nil else {
             return
         }
-        let availability = Self.discoverVulkanICDAvailability(in: libraryFolder)
-        let route = HostWineBackendRouter.routeVulkanICD(
-            hostSnapshot: hostSnapshot,
-            available: availability,
-            preferKosmicKrisp: dxvkPreferKosmicKrisp
-        )
+        let route = resolveDXVKVulkanICDRoute(libraryFolder: libraryFolder, hostSnapshot: hostSnapshot)
         for binding in route.environmentOverrides where wineEnv[binding.name] == nil {
             wineEnv[binding.name] = binding.value
         }
@@ -179,38 +223,58 @@ public extension BottleSettings {
 
     static func discoverVulkanICDAvailability(
         in libraryFolder: URL,
+        appBundleURL: URL? = RuntimeManifestVerifier.defaultAppBundleURL(),
         fileManager: FileManager = .default
     ) -> HostVulkanICDAvailability {
-        let icdCandidates = [
+        discoverVulkanICDInstallation(in: libraryFolder, appBundleURL: appBundleURL,
+                                     fileManager: fileManager).availability
+    }
+
+    private static func discoverVulkanICDInstallation(
+        in libraryFolder: URL,
+        appBundleURL: URL?,
+        fileManager: FileManager = .default
+    ) -> (availability: HostVulkanICDAvailability, validation: RuntimeVulkanValidationState) {
+        var icdCandidates = [
             libraryFolder.appending(path: "DXVK/vulkan/icd.d/kosmickrisp_icd.json"),
-            libraryFolder.appending(path: "Vulkan/icd.d/kosmickrisp_icd.json"),
-            libraryFolder.appending(path: "KosmicKrisp/kosmickrisp_icd.json")
+            libraryFolder.appending(path: "Vulkan/icd.d/kosmickrisp_icd.json")
         ]
-        let loaderCandidates = [
+        var loaderCandidates = [
             libraryFolder.appending(path: "DXVK/libvulkan.1.dylib"),
-            libraryFolder.appending(path: "Vulkan/libvulkan.1.dylib"),
-            libraryFolder.appending(path: "Wine/lib/libvulkan.1.dylib")
+            libraryFolder.appending(path: "Vulkan/libvulkan.1.dylib")
         ]
-        let moltenCandidates = [
+        var moltenCandidates = [
             libraryFolder.appending(path: "DXVK/libMoltenVK.dylib"),
             libraryFolder.appending(path: "MoltenVK/libMoltenVK.dylib"),
             libraryFolder.appending(path: "Wine/lib/libMoltenVK.dylib")
         ]
-        let icdPath = icdCandidates
-            .first(where: { fileManager.fileExists(atPath: $0.path(percentEncoded: false)) })?
-            .path(percentEncoded: false)
-        let loaderPath = loaderCandidates
-            .first(where: { fileManager.fileExists(atPath: $0.path(percentEncoded: false)) })?
-            .path(percentEncoded: false)
-        let moltenPath = moltenCandidates
-            .first(where: { fileManager.fileExists(atPath: $0.path(percentEncoded: false)) })?
-            .path(percentEncoded: false)
-        return HostVulkanICDAvailability(
-            hasKosmicKrispICD: icdPath != nil && loaderPath != nil,
-            hasMoltenVK: moltenPath != nil,
-            kosmicKrispICDManifestPath: icdPath,
-            vulkanLoaderLibraryPath: loaderPath,
-            moltenVKLibraryPath: moltenPath
+        var manifest = try? RuntimeManifest.load()
+        if let appBundleURL {
+            icdCandidates.insert(
+                appBundleURL.appending(path: "Contents/Resources/vulkan/icd.d/kosmickrisp_icd.json"), at: 0
+            )
+            loaderCandidates.insert(appBundleURL.appending(path: "Contents/Frameworks/libvulkan.1.dylib"), at: 0)
+            moltenCandidates.insert(appBundleURL.appending(path: "Contents/Frameworks/libMoltenVK.dylib"), at: 0)
+            manifest = try? RuntimeManifest.load(
+                fromFileURL: appBundleURL.appending(path: "Contents/Resources/runtime-manifest.json")
+            )
+        }
+        let icdURL = icdCandidates.first { fileManager.fileExists(atPath: $0.path) }
+        let loaderURL = loaderCandidates.first { fileManager.fileExists(atPath: $0.path) }
+        let moltenURL = moltenCandidates.first { fileManager.fileExists(atPath: $0.path) }
+        let component = manifest?.components.first { $0.id == HostVulkanICD.kosmicKrisp.rawValue }
+        let validation = RuntimeVulkanValidator.inspect(manifestURL: icdURL, loaderURL: loaderURL, component: component)
+        return (
+            HostVulkanICDAvailability(
+                hasKosmicKrispICD: validation == .verified,
+                kosmicKrispSupportsProcessArchitecture: validation != .architectureMismatch,
+                kosmicKrispSupportsGeometryShader: validation == .verified,
+                kosmicKrispSupportsFillModeNonSolid: validation == .verified,
+                hasMoltenVK: moltenURL != nil,
+                kosmicKrispICDManifestPath: icdURL?.path(percentEncoded: false),
+                vulkanLoaderLibraryPath: loaderURL?.path(percentEncoded: false),
+                moltenVKLibraryPath: moltenURL?.path(percentEncoded: false)
+            ), validation
         )
     }
 

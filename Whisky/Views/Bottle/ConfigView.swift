@@ -389,6 +389,7 @@ private struct BottleGraphicsBackendSection: View {
                        value: String(localized: route.usedFallback ? "runtime.on" : "runtime.off"))
         GraphicsFallbackWarningBanner(route: route)
         Text(route.reason).font(.footnote).foregroundStyle(.secondary)
+        BottleGraphicsAdvancedOptionsView(bottle: bottle, selectedBackend: route.selectedBackend)
         Toggle("config.dxvk.async", isOn: $bottle.settings.dxvkAsync).disabled(!dxvkConfigurable)
         Picker("config.dxvkHud", selection: $bottle.settings.dxvkHud) {
             Text("config.dxvkHud.full").tag(DXVKHUD.full); Text("config.dxvkHud.partial").tag(DXVKHUD.partial)

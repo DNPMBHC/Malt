@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.1.0",
   "owner": "@DNPMBHC",
-  "capturedAt": "2026-11-23T08:40:00+08:00",
-  "baselineSource": "handoff/phase-2/evidence/window-c/wine-dxmt-three-engine/manifest.json",
+  "capturedAt": "2026-11-23T23:02:00+08:00",
+  "baselineSource": "handoff/phase-4/evidence/p4-a/wine-four-way-benchmark/manifest.json",
   "components": [
     {
       "id": "wine",
@@ -120,10 +120,47 @@
     {
       "id": "kosmicKrisp",
       "displayName": "KosmicKrisp (Mesa Vulkan -> Metal 4)",
-      "version": "pending-p4-a-proposal",
-      "status": "reserved",
-      "supportedAPIs": "Vulkan 1.4 -> Metal 4 (Reserved slot for Window 4A)",
-      "artifacts": []
+      "version": "mesa-27.0.0-devel-git-bb986060e0+fillmode-eval",
+      "status": "locked",
+      "supportedAPIs": "Vulkan 1.4 -> Metal 4 (macOS 26+ Apple Silicon, x86_64 Wine slice)",
+      "artifacts": [
+        {
+          "name": "libvulkan.1.dylib",
+          "relativePath": "Contents/Frameworks/libvulkan.1.dylib",
+          "alternateRelativePaths": [
+            "DXVK/libvulkan.1.dylib",
+            "Vulkan/libvulkan.1.dylib",
+            "Wine/lib/libvulkan.1.dylib"
+          ],
+          "sha256": "0bcd62c6b3bcba4ef7c82344da3eb058892bb00b56b75ac6a6e7c8765a208c85"
+        },
+        {
+          "name": "libvulkan_kosmickrisp.dylib",
+          "relativePath": "Contents/Frameworks/libvulkan_kosmickrisp.dylib",
+          "alternateRelativePaths": [
+            "DXVK/vulkan/lib/libvulkan_kosmickrisp.dylib",
+            "Vulkan/lib/libvulkan_kosmickrisp.dylib"
+          ],
+          "sha256": "ed4615a26f74c7bece748cfb6bb3930fee379a2dcf3a634ca4e57c59a4bfdf63"
+        },
+        {
+          "name": "kosmickrisp_icd.json",
+          "relativePath": "Contents/Resources/vulkan/icd.d/kosmickrisp_icd.json",
+          "alternateRelativePaths": [
+            "DXVK/vulkan/icd.d/kosmickrisp_icd.json",
+            "Vulkan/icd.d/kosmickrisp_icd.json",
+            "KosmicKrisp/kosmickrisp_icd.json"
+          ],
+          "sha256": "1aa4f7ed99d7ce2d69e3e4e6402d11d3f0fbe1dce1fb200054177904a9dadf9d",
+          "alternateSHA256s": [
+            "071ed10b672d291ee4dc6e9e81b444cb8608153bb4a84f9eff377e2818130336"
+          ]
+        }
+      ],
+      "requiredVulkanFeatures": [
+        "geometryShader",
+        "fillModeNonSolid"
+      ]
     }
   ]
 }

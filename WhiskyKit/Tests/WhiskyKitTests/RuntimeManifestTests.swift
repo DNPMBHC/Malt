@@ -5,7 +5,7 @@ import XCTest
 @testable import WhiskyKit
 
 final class RuntimeManifestTests: XCTestCase {
-    func testBundledManifestDecodesAllLockedComponentsAndReservedKosmicKrispSlot() throws {
+    func testBundledManifestDecodesAllFiveLockedComponentsIncludingKosmicKrisp() throws {
         let manifestURL = URL(fileURLWithPath: #filePath)
             .deletingLastPathComponent() // WhiskyKitTests
             .deletingLastPathComponent() // Tests
@@ -14,7 +14,7 @@ final class RuntimeManifestTests: XCTestCase {
             .appending(path: "Whisky/Resources/runtime-manifest.json")
 
         let manifest = try RuntimeManifest.load(fromFileURL: manifestURL)
-        XCTAssertEqual(manifest.schemaVersion, "1.0.0")
+        XCTAssertEqual(manifest.schemaVersion, "1.1.0")
         XCTAssertEqual(manifest.owner, "@DNPMBHC")
 
         let byID = Dictionary(uniqueKeysWithValues: manifest.components.map { ($0.id, $0) })
@@ -22,10 +22,54 @@ final class RuntimeManifestTests: XCTestCase {
         XCTAssertEqual(byID["dxmt"]?.status, .locked)
         XCTAssertEqual(byID["d3dMetal"]?.status, .locked)
         XCTAssertEqual(byID["dxvk"]?.status, .locked)
-        XCTAssertEqual(byID["kosmicKrisp"]?.status, .reserved)
+        XCTAssertEqual(byID["kosmicKrisp"]?.status, .locked)
         XCTAssertEqual(byID["dxmt"]?.artifacts.count, 4)
         XCTAssertEqual(byID["d3dMetal"]?.artifacts.count, 3)
         XCTAssertEqual(byID["dxvk"]?.artifacts.count, 2)
+        XCTAssertEqual(byID["kosmicKrisp"]?.artifacts.count, 3)
+    }
+
+    func testManifestVerifierResolvesContentsBundleRelativeArtifactsAndAlternateSHA256() throws {
+        let root = FileManager.default.temporaryDirectory
+            .appendingPathComponent("whisky-bundle-manifest-\(UUID().uuidString)")
+        let fakeApp = root.appending(path: "Sample.app")
+        let fakeLibs = root.appending(path: "Libraries")
+        try FileManager.default.createDirectory(
+            at: fakeApp.appending(path: "Contents/Resources/vulkan/icd.d"),
+            withIntermediateDirectories: true
+        )
+        defer { try? FileManager.default.removeItem(at: root) }
+
+        let icdFile = fakeApp.appending(path: "Contents/Resources/vulkan/icd.d/kosmickrisp_icd.json")
+        try Data(
+            "{\"ICD\":{\"library_path\":\"../../../Frameworks/libvulkan_kosmickrisp.dylib\"}}".utf8
+        ).write(to: icdFile)
+        let icdSHA = try RuntimeManifestVerifier.sha256Hex(forFileAt: icdFile)
+
+        let manifest = RuntimeManifest(
+            schemaVersion: "1.1.0",
+            owner: "@DNPMBHC",
+            capturedAt: "2026-11-23T00:00:00Z",
+            baselineSource: "unit-test",
+            components: [
+                RuntimeComponentLock(
+                    id: "kosmicKrisp", displayName: "KosmicKrisp", version: "mesa-27",
+                    status: .locked, supportedAPIs: "Vulkan 1.4",
+                    artifacts: [
+                        RuntimeLockedArtifact(
+                            name: "kosmickrisp_icd.json",
+                            relativePath: "Contents/Resources/vulkan/icd.d/kosmickrisp_icd.json",
+                            sha256: String(repeating: "0", count: 64),
+                            alternateSHA256s: [icdSHA]
+                        )
+                    ]
+                )
+            ]
+        )
+
+        let report = RuntimeManifestVerifier.verify(manifest: manifest, in: fakeLibs, appBundleURL: fakeApp)
+        XCTAssertTrue(report.allLockedComponentsVerified)
+        XCTAssertEqual(report.components.first?.state, .verified)
     }
 
     func testManifestVerifierDistinguishesVerifiedMismatchMissingAndReserved() throws {

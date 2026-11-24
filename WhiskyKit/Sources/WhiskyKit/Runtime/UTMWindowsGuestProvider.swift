@@ -15,7 +15,7 @@ public struct UTMWindowsGuestProvider: WindowsGuestProvider {
   let pollInterval: Duration
   public let executionMode: WindowsGuestExecutionMode
   let interactiveConfiguration: WindowsGuestInteractiveConfiguration?
-  private let minimumFreeBytes: Int64
+  let minimumFreeBytes: Int64
   let activeGuest = UTMActiveGuest()
   let storageStatus = UTMGuestStorageStatus()
 

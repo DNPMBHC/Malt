@@ -17,6 +17,14 @@ final class RuntimeGraphicsRoutingTests: XCTestCase, @unchecked Sendable {
         gpuDeveloperToolsAvailable: true
     )
 
+    private let nominalHost = RuntimeHostSnapshot(
+        operatingSystemVersion: .init(major: 27, minor: 0, patch: 0), architecture: "arm64",
+        isAppleSilicon: true, gameModePlatformAvailable: true, thermalState: .nominal,
+        isLowPowerModeEnabled: false, metalDeviceName: "Test GPU",
+        metalFXSpatialScalingAvailable: true, metalFXTemporalScalingAvailable: true,
+        gpuDeveloperToolsAvailable: false
+    )
+
     func testLegacyDXVKBoooleanPlistDecodesToCompatibleGraphicsBackendMode() throws {
         let legacyTruePlist = """
         <?xml version="1.0" encoding="UTF-8"?>
@@ -211,6 +219,58 @@ final class RuntimeGraphicsRoutingTests: XCTestCase, @unchecked Sendable {
                        BottleSettings.dxvkStateCacheDirectory(for: bottleDir).path(percentEncoded: false))
         XCTAssertTrue(dxvkEnv["WINEDLLPATH"]?.contains(dxvkWine.path(percentEncoded: false)) == true)
     }
+
+    func testBundledRelativeKosmicKrispICDDiscoveryAndMoltenVKFallback() throws {
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString, isDirectory: true)
+        let fileManager = FileManager.default
+        let fakeApp = root.appending(path: "Sample.app")
+        let frameworks = fakeApp.appending(path: "Contents/Frameworks")
+        let icdDir = fakeApp.appending(path: "Contents/Resources/vulkan/icd.d")
+        let libs = root.appending(path: "Libraries")
+        try fileManager.createDirectory(at: frameworks, withIntermediateDirectories: true)
+        try fileManager.createDirectory(at: icdDir, withIntermediateDirectories: true)
+        try fileManager.createDirectory(at: libs.appending(path: "DXVK"), withIntermediateDirectories: true)
+        defer { try? fileManager.removeItem(at: root) }
+
+        try Data("loader".utf8).write(to: frameworks.appending(path: "libvulkan.1.dylib"))
+        try Data("mvk".utf8).write(to: libs.appending(path: "DXVK/libMoltenVK.dylib"))
+        let icdJSON = """
+        {
+          "ICD": {"api_version": "1.4.368", "library_path": "../../../Frameworks/libvulkan_kosmickrisp.dylib"},
+          "file_format_version": "1.0.1"
+        }
+        """
+        try Data(icdJSON.utf8).write(to: icdDir.appending(path: "kosmickrisp_icd.json"))
+
+        var settings = BottleSettings()
+        settings.wineGraphicsBackendMode = .dxvk
+        settings.dxvkPreferKosmicKrisp = true
+
+        // Missing target dylib -> must NOT select KosmicKrisp, falls back explicitly to MoltenVK.
+        let fallbackRoute = settings.resolveDXVKVulkanICDRoute(
+            libraryFolder: libs, hostSnapshot: nominalHost, appBundleURL: fakeApp
+        )
+        XCTAssertEqual(fallbackRoute.selectedICD, .moltenVK)
+        XCTAssertTrue(fallbackRoute.usedFallback)
+
+        // Present target dylib -> selects bundled KosmicKrisp with relative ICD manifest.
+        try Data("kk".utf8).write(to: frameworks.appending(path: "libvulkan_kosmickrisp.dylib"))
+        let kkRoute = settings.resolveDXVKVulkanICDRoute(
+            libraryFolder: libs, hostSnapshot: nominalHost, appBundleURL: fakeApp
+        )
+        XCTAssertEqual(kkRoute.selectedICD, .moltenVK)
+        XCTAssertTrue(kkRoute.usedFallback)
+        XCTAssertNil(kkRoute.environmentDictionary["VK_DRIVER_FILES"])
+
+        // DXMT MetalFX policy helper honors preset and thermal/low-res protections.
+        settings.dxmtMetalFXPreset = .quality
+        let activeFX = settings.resolveDXMTMetalFXPolicy(hostSnapshot: nominalHost, outputHeight: 1440)
+        XCTAssertTrue(activeFX.isActive)
+        XCTAssertEqual(activeFX.effectivePreset, .quality)
+        let throttledFX = settings.resolveDXMTMetalFXPolicy(hostSnapshot: stressedHost, outputHeight: 1440)
+        XCTAssertFalse(throttledFX.isActive)
+        XCTAssertNotNil(throttledFX.fallbackReason)
+    }
 }
 
 final class BottleGraphicsKosmicKrispRoutingTests: XCTestCase {
@@ -255,9 +315,9 @@ final class BottleGraphicsKosmicKrispRoutingTests: XCTestCase {
             availableBackends: .all,
             libraryFolder: libs
         )
-        XCTAssertEqual(env["WINE_SONAME_LIBVULKAN"], loaderDylib.path(percentEncoded: false))
-        XCTAssertEqual(env["VK_DRIVER_FILES"], icdManifest.path(percentEncoded: false))
-        XCTAssertEqual(env["VK_ICD_FILENAMES"], icdManifest.path(percentEncoded: false))
+        XCTAssertEqual(env["WINE_SONAME_LIBVULKAN"], moltenDylib.path(percentEncoded: false))
+        XCTAssertNil(env["VK_DRIVER_FILES"])
+        XCTAssertNil(env["VK_ICD_FILENAMES"])
 
         settings.dxvkPreferKosmicKrisp = false
         var fallbackEnv: [String: String] = [:]
@@ -284,7 +344,7 @@ final class BottleGraphicsKosmicKrispRoutingTests: XCTestCase {
             hostSnapshot: Self.appleSiliconMac27,
             availableBackends: .all
         )
-        XCTAssertNil(defaultEnv["DXMT_METALFX_SPATIAL_SWAPCHAIN"])
+        XCTAssertEqual(defaultEnv["DXMT_METALFX_SPATIAL_SWAPCHAIN"], "0")
 
         settings.dxmtMetalFXPreset = .quality
         var qualityEnv: [String: String] = [:]

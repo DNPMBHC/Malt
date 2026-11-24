@@ -148,9 +148,15 @@ public struct BottleDXVKConfig: Codable, Equatable {
     var directXAPIRequirement: HostDirectXAPIRequirement = .unknown
     var graphicsRoutingPreference: HostGraphicsRoutingPreference = .performanceFirst
     var dxmtMetalFXPreset: HostDXMTMetalFXPreset = .off
+    var dxmtMetalFXOutputHeight: Int = 1080
     var dxvkPreferKosmicKrisp: Bool = true
 
-    public init() {}
+    public init(defaults: UserDefaults? = .standard) {
+        dxmtMetalFXPreset = defaults?.string(forKey: "runtime.defaultMetalFXPreset")
+            .flatMap(HostDXMTMetalFXPreset.init(rawValue:)) ?? .off
+        dxmtMetalFXOutputHeight = max(1, defaults?.object(forKey: "runtime.defaultMetalFXOutputHeight") as? Int ?? 1080)
+        dxvkPreferKosmicKrisp = defaults?.object(forKey: "runtime.defaultPreferVulkanDriver") as? Bool ?? true
+    }
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -170,6 +176,9 @@ public struct BottleDXVKConfig: Codable, Equatable {
         self.graphicsRoutingPreference = try container.decodeIfPresent(
             HostGraphicsRoutingPreference.self, forKey: .graphicsRoutingPreference
         ) ?? .performanceFirst
+        self.dxmtMetalFXOutputHeight = try container.decodeIfPresent(
+            Int.self, forKey: .dxmtMetalFXOutputHeight
+        ) ?? 1080
         self.dxmtMetalFXPreset = try container.decodeIfPresent(
             HostDXMTMetalFXPreset.self, forKey: .dxmtMetalFXPreset
         ) ?? .off
@@ -202,7 +211,8 @@ public struct BottleSettings: Codable, Equatable {
         self.info = try container.decodeIfPresent(BottleInfo.self, forKey: .info) ?? BottleInfo()
         self.wineConfig = try container.decodeIfPresent(BottleWineConfig.self, forKey: .wineConfig) ?? BottleWineConfig()
         self.metalConfig = try container.decodeIfPresent(BottleMetalConfig.self, forKey: .metalConfig) ?? BottleMetalConfig()
-        self.dxvkConfig = try container.decodeIfPresent(BottleDXVKConfig.self, forKey: .dxvkConfig) ?? BottleDXVKConfig()
+        self.dxvkConfig = try container.decodeIfPresent(BottleDXVKConfig.self, forKey: .dxvkConfig)
+            ?? BottleDXVKConfig(defaults: nil)
     }
     // swiftlint:enable line_length
 
@@ -319,6 +329,11 @@ public struct BottleSettings: Codable, Equatable {
     public var dxvkHud: DXVKHUD {
         get {  return dxvkConfig.dxvkHud }
         set { dxvkConfig.dxvkHud = newValue }
+    }
+
+    public var dxmtMetalFXOutputHeight: Int {
+        get { return dxvkConfig.dxmtMetalFXOutputHeight }
+        set { dxvkConfig.dxmtMetalFXOutputHeight = max(1, newValue) }
     }
 
     public var dxmtMetalFXPreset: HostDXMTMetalFXPreset {

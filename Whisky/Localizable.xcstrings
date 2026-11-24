@@ -26314,6 +26314,713 @@
           }
         }
       }
+    },
+    "config.dxmt.metalFX.preset": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DXMT MetalFX Spatial"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DXMT MetalFX 空间超分"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DXMT MetalFX 空間超解析"
+          }
+        }
+      }
+    },
+    "config.dxmt.metalFX.off": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Off (Default)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关闭（默认）"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "關閉（預設）"
+          }
+        }
+      }
+    },
+    "config.dxmt.metalFX.ultraQuality": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ultra Quality (1.3×)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "超高画质（1.3×）"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "超高畫質（1.3×）"
+          }
+        }
+      }
+    },
+    "config.dxmt.metalFX.quality": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quality (1.5×)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "画质优先（1.5×）"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "畫質優先（1.5×）"
+          }
+        }
+      }
+    },
+    "config.dxmt.metalFX.balanced": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Balanced (1.7×)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "均衡（1.7×）"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "均衡（1.7×）"
+          }
+        }
+      }
+    },
+    "config.dxmt.metalFX.performance": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Performance (2.0×)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "性能优先（2.0×）"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "效能優先（2.0×）"
+          }
+        }
+      }
+    },
+    "config.dxmt.metalFX.note": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Set the game target output height accurately. Upscaling increases VRAM and cold initialization time; it is disabled below 1080p or under thermal/power pressure."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请准确设置游戏目标输出高度。超分会增加显存与冷启动耗时；目标低于 1080p 或存在温度/电源压力时自动关闭。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "請準確設定遊戲目標輸出高度。超解析會增加顯存與冷啟動耗時；目標低於 1080p 或存在溫度/電源壓力時自動關閉。"
+          }
+        }
+      }
+    },
+    "config.dxvk.preferKosmicKrisp": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prefer KosmicKrisp (Vulkan 1.4 → Metal 4)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DXVK 优先使用 KosmicKrisp（Vulkan 1.4 → Metal 4）"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DXVK 優先使用 KosmicKrisp（Vulkan 1.4 → Metal 4）"
+          }
+        }
+      }
+    },
+    "config.dxvk.icd.active": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verified ICD for next DXVK launch"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下一次 DXVK 启动的已验证 ICD"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下次 DXVK 啟動的已驗證 ICD"
+          }
+        }
+      }
+    },
+    "config.dxvk.icd.kosmicKrisp": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KosmicKrisp (Vulkan 1.4 → Metal 4)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KosmicKrisp（Vulkan 1.4 → Metal 4）"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KosmicKrisp（Vulkan 1.4 → Metal 4）"
+          }
+        }
+      }
+    },
+    "config.dxvk.icd.moltenVK": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MoltenVK (Compatibility Fallback)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MoltenVK（兼容回退）"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MoltenVK（相容回退）"
+          }
+        }
+      }
+    },
+    "settings.vulkanICD.active": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Default DXVK Vulkan ICD"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "默认 DXVK Vulkan ICD"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "預設 DXVK Vulkan ICD"
+          }
+        }
+      }
+    },
+    "runtime.vulkan.validation.verified": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Locked Vulkan driver verified."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已验证锁版 Vulkan 驱动。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已驗證鎖版 Vulkan 驅動。"
+          }
+        }
+      }
+    },
+    "runtime.vulkan.validation.missing": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Required Vulkan files are missing; using the compatibility fallback."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "缺少所需 Vulkan 文件，使用兼容回退。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "缺少所需 Vulkan 檔案，使用相容回退。"
+          }
+        }
+      }
+    },
+    "runtime.vulkan.validation.unlocked": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vulkan driver has no complete release lock; using the compatibility fallback."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vulkan 驱动缺少完整发行锁版，使用兼容回退。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vulkan 驅動缺少完整發行鎖版，使用相容回退。"
+          }
+        }
+      }
+    },
+    "runtime.vulkan.validation.checksumMismatch": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vulkan file fingerprint mismatch; using the compatibility fallback."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vulkan 文件指纹不匹配，使用兼容回退。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vulkan 檔案指紋不符，使用相容回退。"
+          }
+        }
+      }
+    },
+    "runtime.vulkan.validation.invalidPath": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ICD library path is invalid; using the compatibility fallback."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ICD 库路径无效，使用兼容回退。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ICD 程式庫路徑無效，使用相容回退。"
+          }
+        }
+      }
+    },
+    "runtime.vulkan.validation.architectureMismatch": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vulkan driver lacks the x86_64 Wine slice; using the compatibility fallback."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vulkan 驱动缺少 x86_64 Wine 切片，使用兼容回退。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vulkan 驅動缺少 x86_64 Wine 切片，使用相容回退。"
+          }
+        }
+      }
+    },
+    "runtime.vulkan.validation.featureMismatch": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Locked Vulkan driver lacks the required DXVK feature evidence."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "锁版 Vulkan 驱动缺少 DXVK 所需特性证据。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鎖版 Vulkan 驅動缺少 DXVK 所需特性證據。"
+          }
+        }
+      }
+    },
+    "runtime.vulkan.reason.hostUnsupported": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This driver requires macOS 26 or later on Apple Silicon; using the compatibility fallback."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "该驱动要求 Apple Silicon 与 macOS 26 或更高版本，使用兼容回退。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此驅動要求 Apple Silicon 與 macOS 26 或更新版本，使用相容回退。"
+          }
+        }
+      }
+    },
+    "runtime.vulkan.reason.preference": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Compatibility ICD selected by your preference."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "根据你的偏好选择兼容 ICD。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "依你的偏好選擇相容 ICD。"
+          }
+        }
+      }
+    },
+    "runtime.vulkan.reason.selected": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Locked driver verified and selected for the next DXVK launch."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已验证锁版驱动，下一次 DXVK 启动将使用该驱动。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已驗證鎖版驅動，下次 DXVK 啟動將使用此驅動。"
+          }
+        }
+      }
+    },
+    "runtime.metalfx.reason.protected": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MetalFX is off because the output height is below 1080p or the host has thermal, power or GPU limitations."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "输出高度低于 1080p，或宿主存在温度、电源、GPU 限制，MetalFX 已关闭。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "輸出高度低於 1080p，或宿主存在溫度、電源、GPU 限制，MetalFX 已關閉。"
+          }
+        }
+      }
+    },
+    "config.dxmt.metalFX.outputHeight": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Game target output height"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "游戏目标输出高度"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "遊戲目標輸出高度"
+          }
+        }
+      }
+    },
+    "config.dxmt.metalFX.effective": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Effective MetalFX preset"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前生效 MetalFX 档位"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目前生效 MetalFX 檔位"
+          }
+        }
+      }
+    },
+    "settings.graphics.defaults": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Graphics defaults for new bottles"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新瓶子的图形默认设置"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新瓶子的圖形預設設定"
+          }
+        }
+      }
+    },
+    "settings.graphics.defaults.note": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "These defaults apply to new bottles. Existing bottles retain their own settings. MetalFX remains off by default."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这些默认设置只用于新瓶子；现有瓶子保留各自配置。MetalFX 默认关闭。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "這些預設設定只用於新瓶子；現有瓶子保留各自設定。MetalFX 預設關閉。"
+          }
+        }
+      }
+    },
+    "runtime.vulkan.reason.none": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No compatible Vulkan ICD is available."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有可用的兼容 Vulkan ICD。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "沒有可用的相容 Vulkan ICD。"
+          }
+        }
+      }
+    },
+    "runtime.vulkan.reason.compatibilityMissing": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preferred compatibility ICD is missing; the verified optional driver will be used."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "首选兼容 ICD 缺失，将使用已验证的可选驱动。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "首選相容 ICD 缺失，將使用已驗證的選用驅動。"
+          }
+        }
+      }
+    },
+    "runtime.metalfx.reason.unsupported": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MetalFX is off because this GPU does not support Spatial scaling."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此 GPU 不支持 Spatial 缩放，MetalFX 已关闭。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此 GPU 不支援 Spatial 縮放，MetalFX 已關閉。"
+          }
+        }
+      }
+    },
+    "runtime.metalfx.reason.pressure": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MetalFX is off because the host is under thermal or power pressure."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "宿主机处于热压力或电源限制状态，MetalFX 已关闭。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "宿主機處於熱壓力或電源限制狀態，MetalFX 已關閉。"
+          }
+        }
+      }
+    },
+    "runtime.metalfx.reason.lowResolution": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The configured output height is below 1080p. MetalFX is off to avoid extra memory and latency."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配置的输出高度低于 1080p。为避免额外显存和延迟，MetalFX 已关闭。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "設定的輸出高度低於 1080p。為避免額外顯示記憶體及延遲，MetalFX 已關閉。"
+          }
+        }
+      }
     }
   },
   "version": "1.0"
