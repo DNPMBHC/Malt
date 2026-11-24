@@ -1,0 +1,61 @@
+{
+  "schema": "task-07-preservation-v1",
+  "baselineFiles": 117,
+  "unchangedFiles": 87,
+  "changedFiles": [
+    ".swiftlint.yml",
+    "my-projectCmd/Main.swift",
+    "my-project/Localizable.xcstrings",
+    "my-project/AppDelegate.swift",
+    "my-project/Info.plist",
+    "ModuleX/Tests/ModuleXTests/RuntimeTests.swift",
+    "ModuleX/Sources/ModuleX/Runtime/RuntimeModels.swift",
+    "ModuleX/Sources/ModuleX/Runtime/GameCompatibilityDatabase.swift",
+    "ModuleX/Sources/ModuleX/Runtime/RuntimeBackends.swift",
+    "ModuleX/Sources/ModuleX/Runtime/RuntimeCoordinator.swift",
+    "ModuleX/Sources/ModuleX/Wine/Wine.swift",
+    "ModuleX/Sources/ModuleX/Extensions/Process+Extensions.swift",
+    "ModuleX/Sources/ModuleX/Extensions/Program+Extensions.swift",
+    "ModuleX/Sources/ModuleX/my-project/ProgramSettings.swift",
+    "ModuleX/Sources/ModuleX/my-project/Bottle.swift",
+    "ModuleX/Sources/ModuleX/my-project/Program.swift",
+    "my-project/Utils/ProgramShortcut.swift",
+    "my-project/Extensions/Bottle+Extensions.swift",
+    "my-project/Views/FileOpenView.swift",
+    "my-project/Views/ContentView.swift",
+    "my-project/Views/Programs/ProgramMenuView.swift",
+    "my-project/Views/Programs/ProgramView.swift",
+    "my-project/Views/Programs/ProgramsView.swift",
+    "my-project/Views/Bottle/BottleView.swift",
+    "my-project/Views/Bottle/Pins/PinCreationView.swift",
+    "my-project/Views/Bottle/Pins/PinView.swift",
+    "Modules/module-a/WindowsProbe/driver/ModuleAProbe.vcxproj",
+    "Modules/module-a/WindowsProbe/driver/module_a_driver.c",
+    "Modules/module-a/WindowsProbe/shared/module_a_protocol.h"
+  ],
+  "missingFiles": [],
+  "anonymizedEntriesMatchedByContent": [
+    "my-project/Assets.xcassets/AppIcon.appiconset/<email>"
+  ],
+  "globalGitFilesUnchanged": true,
+  "globalGitChecks": {
+    "<home>/.gitconfig": true,
+    "<home>/.config/git/config": true
+  },
+  "currentBuildInputs": 166,
+  "matchesFinalBuildSnapshot": false,
+  "postBuildChangedInputs": [
+    "ModuleX/Documentation/HostCapabilitiesBuild.log",
+    "ModuleX/Documentation/HostCapabilitiesVerification.md",
+    "ModuleX/Documentation/HostGameModeAB.md",
+    "ModuleX/Documentation/HostGameModeObservation.json"
+  ],
+  "taskActions": {
+    "commitInvoked": false,
+    "pushInvoked": false,
+    "resetInvoked": false,
+    "globalGitWriteInvoked": false
+  },
+  "scope": "Concurrent tasks intentionally edit shared files. Presence/hashes do not establish author attribution. No reset or clean used.",
+  "limitation": "Initial anonymized asset names could collide. These entry-level checks cannot prove every original worktree byte was retained."
+}

@@ -1,0 +1,211 @@
+Command line invocation:
+    <system-path> -project <workspace>/my-project/my-project.xcodeproj -scheme my-project -scmProvider system -disableAutomaticPackageResolution -onlyUsePackageVersionsFromResolvedFile -skipPackageUpdates -configuration Debug -destination platform=macOS,arch=arm64 CODE_SIGNING_ALLOWED=NO build
+
+Build settings from command line:
+    CODE_SIGNING_ALLOWED = NO
+
+Resolve Package Graph
+
+
+Resolved source packages:
+  Sparkle: <dependency-remote> @ 2.x (8de8db0)
+  swift-argument-parser: <dependency-remote> @ 1.5.0
+  Progress: <dependency-remote> @ 0.4.0
+  SwiftyTextTable: <dependency-remote> @ 0.9.0
+  SemanticVersion: <dependency-remote> @ 0.4.0
+  ModuleX: <workspace>/my-project/module-x
+
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (16 targets)
+    Target 'my-project' in project 'my-project'
+        ➜ Explicit dependency on target 'my-projectThumbnail' in project 'my-project'
+        ➜ Implicit dependency on target 'my-projectCmd' in project 'my-project' via file 'my-projectCmd' in build phase 'Copy Files'
+        ➜ Explicit dependency on target 'ModuleX-product' in project 'ModuleX'
+        ➜ Explicit dependency on target 'Sparkle-product' in project 'Sparkle'
+        ➜ Explicit dependency on target 'SemanticVersion-product' in project 'SemanticVersion'
+    Target 'Sparkle-product' in project 'Sparkle' (no dependencies)
+    Target 'my-projectCmd' in project 'my-project'
+        ➜ Explicit dependency on target 'ModuleX-product' in project 'ModuleX'
+        ➜ Explicit dependency on target 'Progress-product' in project 'Progress'
+        ➜ Explicit dependency on target 'SemanticVersion-product' in project 'SemanticVersion'
+        ➜ Explicit dependency on target 'SwiftyTextTable-product' in project 'SwiftyTextTable'
+        ➜ Explicit dependency on target 'ArgumentParser-product' in project 'swift-argument-parser'
+    Target 'ArgumentParser-product' in project 'swift-argument-parser'
+        ➜ Explicit dependency on target 'ArgumentParser' in project 'swift-argument-parser'
+        ➜ Explicit dependency on target 'ArgumentParserToolInfo' in project 'swift-argument-parser'
+    Target 'ArgumentParser' in project 'swift-argument-parser'
+        ➜ Explicit dependency on target 'ArgumentParserToolInfo' in project 'swift-argument-parser'
+    Target 'ArgumentParserToolInfo' in project 'swift-argument-parser' (no dependencies)
+    Target 'SwiftyTextTable-product' in project 'SwiftyTextTable'
+        ➜ Explicit dependency on target 'SwiftyTextTable' in project 'SwiftyTextTable'
+    Target 'SwiftyTextTable' in project 'SwiftyTextTable' (no dependencies)
+    Target 'Progress-product' in project 'Progress'
+        ➜ Explicit dependency on target 'Progress' in project 'Progress'
+    Target 'Progress' in project 'Progress' (no dependencies)
+    Target 'my-projectThumbnail' in project 'my-project'
+        ➜ Explicit dependency on target 'ModuleX-product' in project 'ModuleX'
+    Target 'ModuleX-product' in project 'ModuleX'
+        ➜ Explicit dependency on target 'ModuleX' in project 'ModuleX'
+        ➜ Explicit dependency on target 'SemanticVersion-product' in project 'SemanticVersion'
+    Target 'ModuleX' in project 'ModuleX'
+        ➜ Explicit dependency on target 'SemanticVersion-product' in project 'SemanticVersion'
+    Target 'SemanticVersion-product' in project 'SemanticVersion'
+        ➜ Explicit dependency on target 'SemanticVersion' in project 'SemanticVersion'
+        ➜ Explicit dependency on target 'SemanticVersion_SemanticVersion' in project 'SemanticVersion'
+    Target 'SemanticVersion' in project 'SemanticVersion'
+        ➜ Explicit dependency on target 'SemanticVersion_SemanticVersion' in project 'SemanticVersion'
+    Target 'SemanticVersion_SemanticVersion' in project 'SemanticVersion' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool <system-path> --version
+
+ExecuteExternalTool <system-path> --version --output-format xml1
+
+ExecuteExternalTool <system-path> -v -E -dM -isysroot <system-path> -x c -c /dev/null
+
+ExecuteExternalTool <system-path> compile --dry-run --output-directory <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/my-project.build/Debug/my-project.build <workspace>/my-project/my-project/Localizable.xcstrings
+
+ExecuteExternalTool <system-path> -version_details
+
+ReadFileContents <system-path>
+
+Build description signature: 49b958dd5b8e58dc5b90618ad8b179fe
+Build description path: <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/XCBuildData/49b958dd5b8e58dc5b90618ad8b179fe.xcbuilddata
+ClangStatCache <system-path> <system-path> <home>/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/macosx27.0-26A425-7231f6df4def33e022ae2eb8f782df1a.sdkstatcache
+    cd <workspace>/my-project/my-project.xcodeproj
+    <system-path> <system-path> -o <home>/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/macosx27.0-26A425-7231f6df4def33e022ae2eb8f782df1a.sdkstatcache
+
+ProcessInfoPlistFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/SemanticVersion_SemanticVersion.bundle/Contents/Info.plist <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/SemanticVersion.build/Debug/SemanticVersion_SemanticVersion-b.build/empty-SemanticVersion_SemanticVersion.plist (in target 'SemanticVersion_SemanticVersion' from project 'SemanticVersion')
+    cd <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/SourcePackages/checkouts/SemanticVersion
+    builtin-infoPlistUtility <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/SemanticVersion.build/Debug/SemanticVersion_SemanticVersion-b.build/empty-SemanticVersion_SemanticVersion.plist -producttype com.apple.product-type.bundle -expandbuildsettings -platform macosx -o <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/SemanticVersion_SemanticVersion.bundle/Contents/Info.plist
+
+WriteAuxiliaryFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.LinkFileList (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/module-x
+    write-file <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.LinkFileList
+
+WriteAuxiliaryFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.SwiftConstValuesFileList (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/module-x
+    write-file <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.SwiftConstValuesFileList
+
+WriteAuxiliaryFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX-OutputFileMap.json (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/module-x
+    write-file <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX-OutputFileMap.json
+
+WriteAuxiliaryFile <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.SwiftFileList (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/module-x
+    write-file <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.SwiftFileList
+
+SwiftDriver ModuleX normal arm64 com.apple.xcode.tools.swift.compiler (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftDriver -- <system-path> -parse-as-library -module-name ModuleX -Onone @<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.SwiftFileList -DSWIFT_PACKAGE -DDEBUG -DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE -DXcode -plugin-path <system-path> -enable-experimental-feature DebugDescriptionMacro -sdk <system-path> -target arm64-apple-macos14.0 -g -module-cache-path <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 6 -I <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -Isystem <system-path> -F <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/PackageFrameworks -F <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -F <system-path> -c -j10 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc <home>/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/macosx27.0-26A425-7231f6df4def33e022ae2eb8f782df1a.sdkstatcache -output-file-map <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path <home>/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -package-name ModuleX -emit-const-values -const-gather-protocols-list <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX_const_extract_protocols.json -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/include -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/DerivedSources-normal/arm64 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/DerivedSources/arm64 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX-Swift.h -working-directory <workspace>/my-project/my-project.xcodeproj -experimental-emit-module-separately -disable-cmo
+
+SwiftCompile normal arm64 Compiling\ UTMWindowsGuestProvider.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/UTMWindowsGuestProvider.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/UTMWindowsGuestProvider.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile UTMWindowsGuestProvider.swift
+
+SwiftCompile normal arm64 Compiling\ HostGameModeEvidence.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostGameModeEvidence.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostGameModeEvidence.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile HostGameModeEvidence.swift
+
+SwiftCompile normal arm64 Compiling\ HostMetalFXBenchmarkGPUPath.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostMetalFXBenchmarkGPUPath.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostMetalFXBenchmarkGPUPath.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile HostMetalFXBenchmarkGPUPath.swift
+
+SwiftCompile normal arm64 Compiling\ HostResourceExperiment.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostResourceExperiment.swift (in target 'ModuleX' from project 'ModuleX')
+<workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostResourceExperiment.swift:57:60: error: value of type 'SHA256.Digest' (aka 'SHA256Digest') has no subscripts
+ 55 |     static func run() -> HostResourceExperimentReport {
+ 56 |         let digest = SHA256.hash(data: payload)
+ 57 |         let expected = UInt8(truncatingIfNeeded: Int(digest[digest.startIndex]) * iterations)
+    |                                                            `- error: value of type 'SHA256.Digest' (aka 'SHA256Digest') has no subscripts
+ 58 |         _ = measure(round: -1, treatment: "control")
+ 59 |         _ = measure(round: -1, treatment: "nominal")
+
+<workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostResourceExperiment.swift:57:68: error: value of type 'SHA256.Digest' (aka 'SHA256Digest') has no member 'startIndex'
+ 55 |     static func run() -> HostResourceExperimentReport {
+ 56 |         let digest = SHA256.hash(data: payload)
+ 57 |         let expected = UInt8(truncatingIfNeeded: Int(digest[digest.startIndex]) * iterations)
+    |                                                                    `- error: value of type 'SHA256.Digest' (aka 'SHA256Digest') has no member 'startIndex'
+ 58 |         _ = measure(round: -1, treatment: "control")
+ 59 |         _ = measure(round: -1, treatment: "nominal")
+
+<workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostResourceExperiment.swift:156:32: error: value of type 'SHA256.Digest' (aka 'SHA256Digest') has no subscripts
+154 |         for _ in 0..<iterations {
+155 |             let digest = SHA256.hash(data: payload)
+156 |             checksum &+= digest[digest.startIndex]
+    |                                `- error: value of type 'SHA256.Digest' (aka 'SHA256Digest') has no subscripts
+157 |         }
+158 |         return checksum
+
+<workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostResourceExperiment.swift:156:40: error: value of type 'SHA256.Digest' (aka 'SHA256Digest') has no member 'startIndex'
+154 |         for _ in 0..<iterations {
+155 |             let digest = SHA256.hash(data: payload)
+156 |             checksum &+= digest[digest.startIndex]
+    |                                        `- error: value of type 'SHA256.Digest' (aka 'SHA256Digest') has no member 'startIndex'
+157 |         }
+158 |         return checksum
+Failed frontend command:
+<system-path> -frontend -c <workspace>/my-project/module-x/Sources/ModuleX/BitmapInfo.swift <workspace>/my-project/module-x/Sources/ModuleX/Extensions/Bundle+Extensions.swift <workspace>/my-project/module-x/Sources/ModuleX/Extensions/FileHandle+Extensions.swift <workspace>/my-project/module-x/Sources/ModuleX/Extensions/FileManager+Extensions.swift <workspace>/my-project/module-x/Sources/ModuleX/Extensions/Logger+Extensions.swift <workspace>/my-project/module-x/Sources/ModuleX/Extensions/Process+Extensions.swift <workspace>/my-project/module-x/Sources/ModuleX/Extensions/Program+Extensions.swift <workspace>/my-project/module-x/Sources/ModuleX/Extensions/URL+Extensions.swift <workspace>/my-project/module-x/Sources/ModuleX/PE/COFFFileHeader.swift <workspace>/my-project/module-x/Sources/ModuleX/PE/Magic.swift <workspace>/my-project/module-x/Sources/ModuleX/PE/OptionalHeader.swift <workspace>/my-project/module-x/Sources/ModuleX/PE/PortableExecutable.swift <workspace>/my-project/module-x/Sources/ModuleX/PE/RSRC/ResourceDataEntry.swift <workspace>/my-project/module-x/Sources/ModuleX/PE/RSRC/ResourceDirectoryEntry.swift <workspace>/my-project/module-x/Sources/ModuleX/PE/RSRC/ResourceDirectoryTable.swift <workspace>/my-project/module-x/Sources/ModuleX/PE/RSRC/ResourceType.swift <workspace>/my-project/module-x/Sources/ModuleX/PE/Section.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/AntiCheatProbe.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/GameCompatibilityDatabase.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostCapabilities.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostGameModeEvidence.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostMetalFXBenchmark.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostMetalFXBenchmarkGPUContext.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostMetalFXBenchmarkGPUPath.swift -primary-file <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostResourceExperiment.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostResourcePolicy.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostResourceStateMonitor.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/JSONKeyUniquenessScanner.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/RuntimeArguments.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/RuntimeBackends.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/RuntimeCoordinator.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/RuntimeModels.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/UTMWindowsGuestProvider.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/WindowsGuestProbeService.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/WindowsGuestTransport.swift <workspace>/my-project/module-x/Sources/ModuleX/ShellLink.swift <workspace>/my-project/module-x/Sources/ModuleX/Tar.swift <workspace>/my-project/module-x/Sources/ModuleX/Utils/Rosetta2.swift <workspace>/my-project/module-x/Sources/ModuleX/my-project/Bottle.swift <workspace>/my-project/module-x/Sources/ModuleX/my-project/BottleData.swift <workspace>/my-project/module-x/Sources/ModuleX/my-project/BottleSettings.swift <workspace>/my-project/module-x/Sources/ModuleX/my-project/Program.swift <workspace>/my-project/module-x/Sources/ModuleX/my-project/ProgramSettings.swift <workspace>/my-project/module-x/Sources/ModuleX/my-projectWine/my-projectWineInstaller.swift <workspace>/my-project/module-x/Sources/ModuleX/Wine/Wine.swift -emit-dependencies-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/HostResourceExperiment.d -emit-const-values-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/HostResourceExperiment.swiftconstvalues -emit-reference-dependencies-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/HostResourceExperiment.swiftdeps -serialize-diagnostics-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/HostResourceExperiment.dia -target arm64-apple-macos14.0 -disable-cross-import-overlay-search -swift-module-cross-import Darwin <system-path> -load-resolved-plugin <system-path> -load-resolved-plugin <system-path> -load-resolved-plugin <system-path> -load-resolved-plugin <system-path> -load-resolved-plugin <system-path> -disable-implicit-swift-modules -Xcc -fno-implicit-modules -Xcc -fno-implicit-module-maps -explicit-swift-module-map-file <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX-dependencies-1.json -Xllvm -aarch64-use-tbi -enable-objc-interop -stack-check -sdk <system-path> -I <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -Isystem <system-path> -F <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/PackageFrameworks -F <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug -F <system-path> -module-cache-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -no-color-diagnostics -Xcc -fno-color-diagnostics -enable-testing -g -debug-info-format\=dwarf -dwarf-version\=4 -swift-version 6 -Onone -D SWIFT_PACKAGE -D DEBUG -D SWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE -D Xcode -serialize-debugging-options -enable-experimental-feature DebugDescriptionMacro -empty-abi-descriptor -validate-clang-modules-once -clang-build-session-file <home>/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -working-directory -Xcc <workspace>/my-project/my-project.xcodeproj -enable-anonymous-context-mangled-names -file-compilation-dir <workspace>/my-project/my-project.xcodeproj -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -Xcc -ivfsstatcache -Xcc <home>/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/macosx27.0-26A425-7231f6df4def33e022ae2eb8f782df1a.sdkstatcache -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Debug/include -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/DerivedSources-normal/arm64 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/DerivedSources/arm64 -Xcc -I<home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\=1 -no-auto-bridging-header-chaining -module-name ModuleX -package-name ModuleX -const-gather-protocols-file <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX_const_extract_protocols.json -disable-clang-spi -clang-target arm64-apple-macos27.0 -target-sdk-version 27.0 -target-sdk-name macosx27.0 -in-process-plugin-server-path <system-path> -parse-as-library -o <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/HostResourceExperiment.o -debug-module-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/ModuleX.swiftmodule -index-unit-output-path /ModuleX.build/Debug/ModuleX-t.build/Objects-normal/arm64/HostResourceExperiment.o -index-store-path <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Index.noindex/DataStore -index-system-modules
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostResourceExperiment.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile HostResourceExperiment.swift
+
+SwiftCompile normal arm64 Compiling\ HostMetalFXBenchmark.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostMetalFXBenchmark.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostMetalFXBenchmark.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile HostMetalFXBenchmark.swift
+
+SwiftCompile normal arm64 Compiling\ HostMetalFXBenchmarkGPUContext.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostMetalFXBenchmarkGPUContext.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostMetalFXBenchmarkGPUContext.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile HostMetalFXBenchmarkGPUContext.swift
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ ModuleX (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    
+
+SwiftCompile normal arm64 Compiling\ WindowsGuestTransport.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/WindowsGuestTransport.swift (in target 'ModuleX' from project 'ModuleX')
+
+SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/WindowsGuestTransport.swift (in target 'ModuleX' from project 'ModuleX')
+    cd <workspace>/my-project/my-project.xcodeproj
+    builtin-SwiftPerFileCompile WindowsGuestTransport.swift
+
+PruneExplicitPrecompiledModules <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules <home>/Library/Developer/Xcode/DerivedData/my-project-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Intermediates.noindex/ExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules <home>/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules
+
+note: Run script build phase 'SwiftLint' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'my-project' from project 'my-project')
+** BUILD FAILED **
+
+
+The following build commands failed:
+	SwiftCompile normal arm64 Compiling\ HostResourceExperiment.swift <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostResourceExperiment.swift (in target 'ModuleX' from project 'ModuleX')
+	SwiftCompile normal arm64 <workspace>/my-project/module-x/Sources/ModuleX/Runtime/HostResourceExperiment.swift (in target 'ModuleX' from project 'ModuleX')
+	Building project my-project with scheme my-project and configuration Debug
+(3 failures)

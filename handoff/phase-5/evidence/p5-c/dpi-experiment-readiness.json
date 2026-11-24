@@ -1,0 +1,67 @@
+{
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-24T01:20:17.730300+00:00",
+  "status": "prepared_not_executed",
+  "script": "dpi-settings-probe.ps1",
+  "script_sha256": "d3f4cab568433131031b52f38537715e116f8a7cb45c3f542f17c1da94e26617",
+  "production_files_verified": 12,
+  "powershell_parser_available_on_host": false,
+  "windows_csharp_compilation_verified": false,
+  "real_guest_execution": false,
+  "runtime_integrated": false,
+  "acceptance_complete": false,
+  "scope": {
+    "settings_executable": "SystemSettings.exe",
+    "session_id": 1,
+    "default_mode": "Discover",
+    "existing_settings_refuses_new_navigation": true,
+    "control_id_requires_observed_inventory": true,
+    "selection_method": "SelectionItemPattern.Select",
+    "selection_scoped_to_owned_combo_descendants": true,
+    "primary_monitor_limit": 1,
+    "dpi_readback": "new_per_monitor_v2_window_GetDpiForWindow",
+    "roundtrip_restore_in_finally": true,
+    "global_input_used": false,
+    "durable_baseline_before_change": true,
+    "interrupted_operation_recovery_mode": "Restore",
+    "pending_journal_blocks_new_roundtrip": true,
+    "close_own_settings_window_required_for_success": true,
+    "recovery_adopts_only_journal_owned_settings_identity": true
+  },
+  "required_before_run": [
+    "phase5a_current_lease_released_and_clone_cleanup_verified",
+    "phase5c_own_clone_and_disk_isolation_verified",
+    "phase5c_main_source_fingerprint_verified"
+  ],
+  "required_before_runtime_integration": [
+    "windows_powershell_parser_and_csharp_compilation",
+    "actual_settings_automation_id_and_selection_patterns",
+    "apply_and_restore_match_fresh_window_dpi",
+    "failure_cleanup_verified",
+    "interrupted_roundtrip_recovered_from_durable_baseline"
+  ],
+  "official_sources": [
+    {
+      "api": "GetDpiForWindow",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getdpiforwindow",
+      "verified_fetch": true
+    },
+    {
+      "api": "SelectionItemPattern.Select",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.windows.automation.selectionitempattern.select?view=windowsdesktop-10.0",
+      "verified_fetch": true
+    },
+    {
+      "api": "LaunchSettings",
+      "url": "https://learn.microsoft.com/en-us/windows/apps/develop/launch/launch-settings-app",
+      "verified_fetch": true
+    }
+  ],
+  "powershell_syntax_verified": true,
+  "csharp_helper_compilation_verified": true,
+  "syntax_evidence": "dpi-parser-validation.json",
+  "production_snapshot_revision": 3,
+  "public_contract_revision": 2,
+  "production_changes_from_dpi_experiment": false,
+  "parser_runtime_cleaned_after_verification": true
+}

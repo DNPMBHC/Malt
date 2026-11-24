@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "phase": "phase-8a",
+  "owner": "@DNPMBHC",
+  "target_alias": "target-cn",
+  "golden_id": "golden-win11-arm64-v1",
+  "golden_manifest_sha256": "1988c3217b4c97d53818ac72831360715bf0438543288cc1cb4001a9f00fa846",
+  "ephemeral_clone_alias": "ephemeral-p8a-valorant",
+  "captured_at_utc": "2026-11-24T12:29:37.263753+00:00",
+  "five_dimension_status": {
+    "implementation": "completed",
+    "local_gates": "passed",
+    "real_guest_run": "executed_frozen_at_frame_230_with_zero_resize",
+    "vendor_vm_support": "unknown",
+    "protected_lobby_and_match": "not_verified"
+  },
+  "display_and_pointer_config": {
+    "utm_dynamic_resolution": false,
+    "guest_desktop_resolution": "1280x720@120Hz",
+    "game_user_settings_resolution": "1280x720",
+    "game_fullscreen_mode": 2,
+    "windows_mouse_trails": 2,
+    "mouse_trails_api_ok": true,
+    "pointing_devices": [
+      "USB\\VID_0627&PID_0001 (Status=OK)"
+    ],
+    "window_dragged_or_resized": false
+  },
+  "stability_and_performance": {
+    "observed_duration_seconds": 10.6,
+    "shipping_alive_all_samples": true,
+    "freeze_detected": true,
+    "frozen_at_frame": 230,
+    "freeze_timestamp_utc": "2026-11-24T12:21:46.467Z",
+    "cef_gpu_timeout_2m_later_utc": "2026-11-24T12:23:30.551Z",
+    "shipping_ws_mb": 1457.74,
+    "shipping_threads": 132,
+    "shipping_cpu_delta_10s": 12.11,
+    "qemu_render_server_cpu_percent": 0.0,
+    "qemu_worker_cpu_percent_range": [
+      114.7,
+      162.0
+    ],
+    "total_hypervisor_rss_mib_range": [
+      2247.33,
+      2369.55
+    ]
+  },
+  "ace_game_1275_impact": {
+    "status": "did_not_reach_lobby_or_range",
+    "entered_lobby_or_range": false,
+    "observed_duration_seconds": 10.6,
+    "shipping_stayed_alive": true,
+    "kicked_or_anticheat_popup": false,
+    "main_exit_code": null,
+    "ace_game_1275_seen": true,
+    "summary": "Session did not reach lobby or training range; ACE-GAME.sys mid-session impact remains unproven."
+  },
+  "zero_drift_verification": {
+    "ephemeral_deleted": true,
+    "golden_readonly": true,
+    "golden_config_sha256": "5e3b775ca4fd05a81ae9e1f2c5d61abe576334340bd51b851b6d65ab89cff390",
+    "golden_bundle_sha256": "784ba01e8c45bc0e32fb81849a359b909a3d87b15cb8486db49df6467bcf4947",
+    "golden_zero_drift": true,
+    "primary_vm_a_config_sha256": "10793d07678f8621e1d75ada73443b3f14e272036dde4f90b277267c2e1033b7",
+    "primary_vm_a_bundle_sha256": "ccd2d2de4981b8b0ca7705824ee6cc4166828651a03f198fd518ba81771caae5",
+    "primary_zero_drift": true,
+    "cache_disk_untouched": true
+  },
+  "notes": [
+    "Refuted Resize-only and pointer-hardware-only hypotheses: even with DynamicResolution=False, static 1280x720, MouseTrails=2, and zero window drag, neptune_umd froze at frame 230 2.6s after entering character creation screen.",
+    "Native ARM64 ACE-CORE10405 and ACE-CORE20405 remained Running (ExitCode=0).",
+    "Further compliant progress requires upstream utmapp/mesa (neptune_umd) / viogpu-wddm WHQL driver fix (golden-win11-arm64-v2)."
+  ],
+  "compliance": {
+    "modified_game_or_ace_binaries": false,
+    "replaced_signed_system_dlls": false,
+    "hidden_virtualization_or_spoofed_hardware": false,
+    "automated_auth_or_captcha": false,
+    "golden_zero_drift": true,
+    "primary_zero_drift": true
+  }
+}

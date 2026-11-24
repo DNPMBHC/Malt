@@ -1,0 +1,74 @@
+{
+  "tpm_present": true,
+  "video_controllers": [
+    {
+      "Name": "Red Hat VirtIO GPU 3D controller",
+      "Status": "OK",
+      "ConfigManagerErrorCode": 0,
+      "DriverVersion": "100.6.101.58000",
+      "AdapterRAM": 0,
+      "PNPDeviceID": "PCI\\VEN_1AF4&DEV_1050&SUBSYS_11001AF4&REV_01\\3&11583659&0&10"
+    }
+  ],
+  "secure_boot_enabled": true,
+  "vulkan_icds": [],
+  "drives": [
+    {
+      "Name": "C",
+      "Root": "C:\\",
+      "UsedGB": 27.4,
+      "FreeGB": 7.92
+    },
+    {
+      "Name": "D",
+      "Root": "D:\\",
+      "UsedGB": 0,
+      "FreeGB": 0
+    },
+    {
+      "Name": "E",
+      "Root": "E:\\",
+      "UsedGB": 0,
+      "FreeGB": 0
+    },
+    {
+      "Name": "F",
+      "Root": "F:\\",
+      "UsedGB": 33.49,
+      "FreeGB": 56.49
+    }
+  ],
+  "eventlog_baseline_record_ids": {
+    "CodeIntegrity": 150,
+    "System": 2072,
+    "Application": 16960
+  },
+  "tpm_enabled": true,
+  "graphics_binaries": [
+    {
+      "name": "vulkan-1.dll",
+      "in_driverstore": false,
+      "in_system32": true
+    },
+    {
+      "name": "vulkan_virtio_arm64.dll",
+      "in_driverstore": true,
+      "in_system32": false
+    },
+    {
+      "name": "vulkan_virtio_ec.dll",
+      "in_driverstore": true,
+      "in_system32": false
+    },
+    {
+      "name": "neptune_umd_arm64.dll",
+      "in_driverstore": true,
+      "in_system32": false
+    },
+    {
+      "name": "neptune_umd_ec.dll",
+      "in_driverstore": true,
+      "in_system32": false
+    }
+  ]
+}

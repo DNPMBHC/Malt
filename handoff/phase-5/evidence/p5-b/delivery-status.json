@@ -1,0 +1,80 @@
+{
+  "blockers": [
+    "Physical shared-memory commitment maximum not established",
+    "No identical-workload real QEMU measurement",
+    "No native signed Windows/vTPM/Secure Boot joint boot verification",
+    "No complete WDDM/Venus/Neptune application scanout or legal relative virtual HID sink",
+    "Default Hardened Runtime reference renderer loading rejected; self-built production renderer and typed scanout unverified",
+    "Workspace zero-large-file gate depends on outside locked files"
+  ],
+  "captured_at_utc": "2026-11-24T05:00:23.502400+00:00",
+  "cleanup": {
+    "active_other_consumers_before_cleanup": 0,
+    "captured_at_utc": "2026-11-24T05:00:53.577182+00:00",
+    "file_lock_prevents_outside_cleanup": true,
+    "full_workspace_zero_large_files_requirement_met": false,
+    "module_build_removed": true,
+    "outside_owned_large_files_by_group": {
+      "graphics_lab": 129,
+      "historical_handoff": 34,
+      "other_locked_paths": 21
+    },
+    "owned_large_files_count": 0,
+    "owned_pcm_count": 0,
+    "owned_server_stopped": true,
+    "owned_temporary_build_removed": true,
+    "owner": "@DNPMBHC",
+    "scope": "ordinary workspace files excluding Git metadata and symlinks; outside file locks preserved",
+    "workspace_large_files_count_excluding_git": 184,
+    "workspace_pcm_count_excluding_git": 1335
+  },
+  "cross_window_messages_this_finalization": 0,
+  "deliverables_present": true,
+  "file_lock_respected": true,
+  "final_benchmark_sha256": "5b5c1b7a03838147819e378267f08e311a1d786e672f3a47ceebc1d9bd908517",
+  "final_binary_sha256": "ba2880814ac11ee4f213c5d8209e24b0a77f14aaf51c46c6753d41afe837de59",
+  "git_commit_push_reset_actions": 0,
+  "live_capacity_mapping_bracket_bytes": [
+    35184372088832,
+    70368744177664
+  ],
+  "local_efi_consumer_regression_verified": true,
+  "native_host_prototype": "verified_with_real_EFI_commands_and_live_capacity",
+  "note": "Prototype and diagnostic checks are complete; full production task acceptance is not claimed.",
+  "owner": "@DNPMBHC",
+  "phase5_full_acceptance": "not_complete",
+  "physical_commit_maximum_established": false,
+  "quality_gates": {
+    "anticheat_result": {
+      "negative_self_tests_passed": 6,
+      "production_source_count": 127,
+      "result": "passed"
+    },
+    "anticheat_self_test_exit": 0,
+    "max_swift_file_lines": 261,
+    "owned_git_diff_check_exit": 0,
+    "owner": "@DNPMBHC",
+    "scope": "host_prototype_quality; full_task_acceptance_recorded_separately",
+    "strict_swiftlint_exit": 0,
+    "swift_file_count": 25,
+    "unittest_count": 221,
+    "unittest_exit": 0
+  },
+  "real_efi_guest_commands_verified": true,
+  "real_qemu_comparison": false,
+  "same_workload_ipc_advantage_consistently_positive": false,
+  "shared_vm_actions": 0,
+  "supports_efi_diagnostic_guest_commands": true,
+  "supports_efi_diagnostic_surface_lease": true,
+  "supports_real_guest_scanout": false,
+  "supports_signed_windows_vz_boot": false,
+  "supports_virtual_hid_sink": false,
+  "sustained_guest_running_limit_established": false,
+  "tasks": {
+    "B1": "configuration_transport_live_aperture_verified; physical_commit_maximum_unknown",
+    "B2": "Metal4_prototype_three_path_benchmark_and_FFI_assessment_verified; real_QEMU_identical_workload_unverified",
+    "B3": "producer_contract_local_consumer_regression_and_Phase6_plan_delivered; Windows_application_scanout_and_HID_unavailable"
+  },
+  "terminal_capacity_state_regression_passed": true,
+  "verification_and_sealing": "verified_before_owned_binary_removal_and_sealed"
+}

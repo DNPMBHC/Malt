@@ -1,0 +1,158 @@
+<testsuites>
+<testsuite name="TestResults" errors="0" tests="77" failures="0" time="13.128274166999999">
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testCandidateImageSignatureIsReportedSeparately" time="0.126194459">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testInvalidResponseHasDistinctFailure" time="0.166289583">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testCandidateArchitectureMismatchDoesNotClaimRuntimeProbeFailure" time="0.168706">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testDuplicateObjectKeysAreRejected" time="0.168698042">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testGuestProbeServiceBindsChallengeToGuestReport" time="0.169838542">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testExcessiveNestingIsRejected" time="0.168718667">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testDriverArchitectureMismatchFailsSelfProbe" time="0.176575583">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testDeviceControlFailureFailsSelfProbe" time="0.16876">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testAccessDeniedDoesNotMasqueradeAsDriverNotLoaded" time="0.168810084">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testIncompleteChildCleanupFailsSelfProbe" time="0.166298834">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testMismatchedCurrentContextPIDFailsSelfProbe" time="0.27321625">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testMismatchedNonceIsRejected" time="0.255320125">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testRequestorAndObservedPIDMismatchFailsSelfProbe" time="0.245864792">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testMissingProcessCreateOrExitNotificationFailsSelfProbe" time="0.265825041">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testMissingDeviceIsReportedAsNotLoaded" time="0.265921042">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testPreviousReportSchemaVersionIsRejected" time="0.257625583">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testNotificationFailureStageIsMappedSeparately" time="0.263840709">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testProtocolRejectionPreservesNativeFailureStage" time="0.253407333">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testMissingBoundChildPIDFailsSelfProbe" time="0.265923">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testOversizedPayloadIsRejectedBeforeParsing" time="0.259126916">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testRequestorContextMismatchFailsSelfProbe" time="0.1104675">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testSuccessfulProbeDoesNotAuthorizeProtectedGame" time="0.084278708">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testStaleReportHasDistinctError" time="0.097585542">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testTruncatedPayloadIsRejectedAsInvalidJSON" time="0.092748291">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testUnsupportedDriverProtocolFailsSelfProbe" time="0.106768083">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testZeroRequestorPIDFailsSelfProbe" time="0.106741709">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testUnknownEnumValueIsRejected" time="0.106780958">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testSuccessfulProbeUsesNotificationResponseByteCount" time="0.106796292">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testWrongFieldTypeIsRejected" time="0.10676875">
+</testcase>
+<testcase classname="ModuleXTests.AntiCheatProbeTests" name="testUnmatchedChildPIDFailsSelfProbe" time="0.106782">
+</testcase>
+<testcase classname="ModuleXTests.HostCapabilitiesTests" name="testExplicitEmptyMetalDeviceListRemainsUnavailable" time="0.076082625">
+</testcase>
+<testcase classname="ModuleXTests.HostCapabilitiesTests" name="testGameModeEligibilityRequiresAppleSiliconAndSonomaOrLater" time="0.08238475">
+</testcase>
+<testcase classname="ModuleXTests.HostCapabilitiesTests" name="testNotificationBurstCoalescesAndUnchangedStateDoesNotPublish" time="0.07394925">
+</testcase>
+<testcase classname="ModuleXTests.HostCapabilitiesTests" name="testCurrentProviderPreservesStaticCapabilities" time="0.106581875">
+</testcase>
+<testcase classname="ModuleXTests.HostCapabilitiesTests" name="testThermalPowerAndWakeNotificationsRefreshDynamicState" time="0.081100792">
+</testcase>
+<testcase classname="ModuleXTests.IntegrationBoundaryTests" name="testPerformancePolicyForEveryThermalAndPowerCombination" time="0.066822375">
+</testcase>
+<testcase classname="ModuleXTests.HostCapabilitiesTests" name="testStopDiscardsScheduledRefreshAndRemovesAllObservers" time="0.137300208">
+</testcase>
+<testcase classname="ModuleXTests.IntegrationBoundaryTests" name="testGuestCapabilityMatrix" time="0.078093166">
+</testcase>
+<testcase classname="ModuleXTests.HostMetalFXTests" name="testMetalAPIValidationIsEnabledForHostChecks" time="0.1377505">
+</testcase>
+<testcase classname="ModuleXTests.HostMetalFXTests" name="testMetalFXSpatialCapabilityAndCommandBufferExecution" time="0.137709417">
+</testcase>
+<testcase classname="ModuleXTests.HostCapabilitiesTests" name="testStaticMetalCapabilityCacheLoadsOncePerDeviceKey" time="0.137799291">
+</testcase>
+<testcase classname="ModuleXTests.HostCapabilitiesTests" name="testOptionalQueueActuallyPausesAndResumesAcrossPowerAndThermalChanges" time="0.137802292">
+</testcase>
+<testcase classname="ModuleXTests.IntegrationBoundaryTests" name="testReadyUnknownGuestForwardsRequestAndProviderError" time="0.073736541">
+</testcase>
+<testcase classname="ModuleXTests.IntegrationBoundaryTests" name="testProfileMatchingIsCaseInsensitiveAndRejectsSimilarNames" time="0.080853875">
+</testcase>
+<testcase classname="ModuleXTests.IntegrationBoundaryTests" name="testRejectedGuestLaunchNeverCallsProvider" time="0.091689917">
+</testcase>
+<testcase classname="ModuleXTests.RuntimeProcessTests" name="testArgumentsPreserveSpacesQuotesEmptyValuesAndEscapes" time="0.09413775">
+</testcase>
+<testcase classname="ModuleXTests.RuntimeProcessTests" name="testProcessSessionCancellationTerminatesSpawnedChild" time="0.094147459">
+</testcase>
+<testcase classname="ModuleXTests.RuntimeProcessTests" name="testArgumentsRejectIncompleteQuoting" time="0.09413775">
+</testcase>
+<testcase classname="ModuleXTests.IntegrationBoundaryTests" name="testWineLaunchWithoutBottleReportsBottleUnavailable" time="0.109744458">
+</testcase>
+<testcase classname="ModuleXTests.RuntimeProcessTests" name="testAliasNamesDoNotHideKnownProfilesOrScripts" time="0.109743208">
+</testcase>
+<testcase classname="ModuleXTests.RuntimeProcessTests" name="testProcessSessionReturnsExitCodeAndAllowsAnotherAttempt" time="0.109668167">
+</testcase>
+<testcase classname="ModuleXTests.HostMetalFXTests" name="testMetalFXTemporalCapabilityAndCommandBufferExecution" time="0.2280615">
+</testcase>
+<testcase classname="ModuleXTests.RuntimeTests" name="testAmbiguousTargetsAndConflictingProfilesAreBlocked" time="0.09538925">
+</testcase>
+<testcase classname="ModuleXTests.RuntimeTests" name="testGuestLaunchPreservesRequestAndReportsNonzeroExit" time="0.088284458">
+</testcase>
+<testcase classname="ModuleXTests.RuntimeTests" name="testProtectedGameRoutesToUnconfiguredGuestAndCannotLaunch" time="0.088085375">
+</testcase>
+<testcase classname="ModuleXTests.RuntimeTests" name="testExplicitProfileResolvesAnIndirectLauncher" time="0.088314292">
+</testcase>
+<testcase classname="ModuleXTests.RuntimeTests" name="testUnconfiguredGuestStopsBeforeStartingSession" time="0.079687167">
+</testcase>
+<testcase classname="ModuleXTests.RuntimeTests" name="testTheFinalsProfileUsesVendorRestrictedStatus" time="0.08865925">
+</testcase>
+<testcase classname="ModuleXTests.RuntimeTests" name="testReadyGuestAndSelfProbeDoNotImplyVendorSupportOrGameVerification" time="0.088659125">
+</testcase>
+<testcase classname="ModuleXTests.RuntimeProcessTests" name="testProgramSettingsFollowSymlinksAndContainerMoves" time="0.183125167">
+</testcase>
+<testcase classname="ModuleXTests.RuntimeProcessTests" name="testShellQuotingRoundTripsLiteralArguments" time="0.18316875">
+</testcase>
+<testcase classname="ModuleXTests.RuntimeTests" name="testUnknownExecutableDefaultsToWine" time="0.092533542">
+</testcase>
+<testcase classname="ModuleXTests.UTMWindowsGuestProviderTests" name="testConfigurationRejectsInvalidTimeoutAndGuestPathTraversal" time="0.092498041">
+</testcase>
+<testcase classname="ModuleXTests.UTMWindowsGuestProviderTests" name="testArchitectureMismatchIsReportedBeforeVMStart" time="0.106243583">
+</testcase>
+<testcase classname="ModuleXTests.UTMWindowsGuestProviderTests" name="testCancellationIsIdempotentAndWaitReportsGuestTermination" time="0.100151333">
+</testcase>
+<testcase classname="ModuleXTests.UTMWindowsGuestProviderTests" name="testCancellationFailureIsReturnedByWait" time="0.100215542">
+</testcase>
+<testcase classname="ModuleXTests.UTMWindowsGuestProviderTests" name="testStopIsIdempotentWhenGuestAlreadyStopped" time="0.095653291">
+</testcase>
+<testcase classname="ModuleXTests.UTMWindowsGuestProviderTests" name="testFileOutsideMappingAndUnsupportedLauncherAreRejected" time="0.109169667">
+</testcase>
+<testcase classname="ModuleXTests.UTMWindowsGuestProviderTests" name="testStopRequestsVMShutdownAndWaitsForStoppedStatus" time="0.084938708">
+</testcase>
+<testcase classname="ModuleXTests.UTMWindowsGuestProviderTests" name="testUnconfiguredAndUnavailableStatesAreExplicit" time="0.070851542">
+</testcase>
+<testcase classname="ModuleXTests.UTMWindowsGuestProviderTests" name="testStopUsesGuestConfigurationFromLaunchRequest" time="0.086095875">
+</testcase>
+<testcase classname="ModuleXTests.UTMWindowsGuestProviderTests" name="testVMCrashIsReportedWhileWaitingForProgram" time="0.084163792">
+</testcase>
+<testcase classname="ModuleXTests.UTMWindowsGuestProviderTests" name="testUnsupportedVMBackendIsReportedBeforeArchitectureValidation" time="0.084235208">
+</testcase>
+<testcase classname="ModuleXTests.UTMWindowsGuestProviderTests" name="testWindowsStatusCodeParserPreservesHighBitExceptionCode" time="0.072953625">
+</testcase>
+<testcase classname="ModuleXTests.UTMWindowsGuestProviderTests" name="testMappedProgramPreservesArgumentAndEnvironmentBoundariesAndFullExitCode" time="1.114692541">
+</testcase>
+<testcase classname="ModuleXTests.UTMWindowsGuestProviderTests" name="testGuestAgentReadinessTimeoutIsReported" time="1.114728">
+</testcase>
+<testcase classname="ModuleXTests.UTMWindowsGuestProviderTests" name="testRequestConfigurationCanStopGuestAfterReadinessFailure" time="1.115801459">
+</testcase>
+</testsuite>
+</testsuites>

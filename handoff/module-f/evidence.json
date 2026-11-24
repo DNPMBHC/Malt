@@ -1,0 +1,2651 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "module-f-task-06",
+  "snapshot": {
+    "as_of": "2026-11-22",
+    "timezone": "Asia/Shanghai",
+    "method": "current_official_public_document_review",
+    "live_client_tested": false,
+    "vendor_contacted": false,
+    "accounts_used": false
+  },
+  "products": [
+    {
+      "target_id": "target-a",
+      "public_product_name": "VALORANT",
+      "requested_client": "Windows PC"
+    },
+    {
+      "target_id": "target-b",
+      "public_product_name": "League of Legends",
+      "requested_client": "Windows PC; native macOS separate"
+    },
+    {
+      "target_id": "target-c",
+      "public_product_name": "THE FINALS",
+      "requested_client": "Windows PC"
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "S-A01",
+      "title": "Minimum & Recommended PC Specs",
+      "url": "https://support.riotgames.com/en-us/valorant/support-tools/minimum-recommended-pc-specs",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": "2026-05-21",
+      "page_date_kind": "page_display",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "Riot VALORANT Windows PC; China not inferred",
+      "version_scope": "Current public page; not bound to an installed binary build",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "a-riot-win"
+      ]
+    },
+    {
+      "source_id": "S-R01",
+      "title": "What is Vanguard?",
+      "url": "https://support.riotgames.com/en-us/riot/performance/what-is-vanguard",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": "2026-06-02",
+      "page_date_kind": "page_display",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "Riot Vanguard; names both target-a and target-b",
+      "version_scope": "Current public page; not bound to an installed binary build",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "a-riot-win",
+        "b-riot-win"
+      ]
+    },
+    {
+      "source_id": "S-R02",
+      "title": "Vanguard Pre-Check",
+      "url": "https://support.riotgames.com/en-us/riot/performance/vanguard-pre-check",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": "2026-06-24",
+      "page_date_kind": "page_display",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "Riot Vanguard optional on-demand mode",
+      "version_scope": "Windows 11 25H2+ mode eligibility; not general game minimum",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "a-riot-win",
+        "b-riot-win"
+      ]
+    },
+    {
+      "source_id": "S-R03",
+      "title": "VAN 9100",
+      "url": "https://support.riotgames.com/en-us/riot/client/error-van-9100",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": "2026-07-16",
+      "page_date_kind": "page_display",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "Riot client / Vanguard VM rejection; China not inferred",
+      "version_scope": "Current public page; not bound to an installed binary build",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "a-riot-win",
+        "b-riot-win"
+      ]
+    },
+    {
+      "source_id": "S-A02",
+      "title": "Riot Developer Portal - VALORANT",
+      "url": "https://developer.riotgames.com/docs/valorant",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": null,
+      "page_date_kind": "not_displayed",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "Riot public developer documentation; no regional deployment guarantee",
+      "version_scope": "Current public page; not bound to an installed binary build",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "a-riot-win"
+      ]
+    },
+    {
+      "source_id": "S-A03",
+      "title": "VALORANT Patch Notes 13.10",
+      "url": "https://playvalorant.com/en-us/news/game-updates/valorant-patch-notes-13-10/",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": "2026-11-10",
+      "page_date_kind": "publication",
+      "published_at": "2026-11-10",
+      "updated_at": null,
+      "source_timezone": "UTC",
+      "official_scope": "Riot English public patch announcement",
+      "version_scope": "13.10; publication timestamp 2026-11-10T14:00:00Z",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "a-riot-win"
+      ]
+    },
+    {
+      "source_id": "S-A04",
+      "title": "VALORANT《无畏契约》官方网站-腾讯游戏",
+      "url": "https://val.qq.com/main.html",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": null,
+      "page_date_kind": "not_displayed",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "China mainland official product site",
+      "version_scope": "Current public homepage linking to 2026-10-28 version topic page; not an installed binary build",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "a-cn-win"
+      ]
+    },
+    {
+      "source_id": "S-A05",
+      "title": "Game Updates - VALORANT",
+      "url": "https://playvalorant.com/en-us/news/game-updates/",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": null,
+      "page_date_kind": "not_displayed",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "Riot English announcement index",
+      "version_scope": "Newest visible patch on access: 13.10",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "a-riot-win"
+      ]
+    },
+    {
+      "source_id": "S-B01",
+      "title": "Minimum and Recommended System Requirements (League of Legends)",
+      "url": "https://support.riotgames.com/en-us/league-of-legends/performance/minimum-and-recommended-system-requirements-league-of-legends",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": "2026-09-22",
+      "page_date_kind": "page_display",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "Riot Windows and native macOS requirements; China not inferred",
+      "version_scope": "Current public page; not bound to an installed binary build",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "b-riot-win",
+        "b-native-mac"
+      ]
+    },
+    {
+      "source_id": "S-B02",
+      "title": "League of Legends Patch 26.23 Notes",
+      "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-23-notes/",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": "2026-11-17",
+      "page_date_kind": "publication",
+      "published_at": "2026-11-17",
+      "updated_at": null,
+      "source_timezone": "UTC",
+      "official_scope": "Riot English public patch announcement",
+      "version_scope": "26.23; publication timestamp 2026-11-17T19:00:00Z; Asia/Shanghai 2026-11-18 03:00; not installed build",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "b-riot-win"
+      ]
+    },
+    {
+      "source_id": "S-B03",
+      "title": "Patch Notes - League of Legends",
+      "url": "https://www.leagueoflegends.com/en-us/news/tags/patch-notes/",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": null,
+      "page_date_kind": "not_displayed",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "Riot English patch index",
+      "version_scope": "Newest visible patch on access: 26.23",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "b-riot-win"
+      ]
+    },
+    {
+      "source_id": "S-B04",
+      "title": "Vanguard is live on League of Legends",
+      "url": "https://www.riotgames.com/en/DevRel/vanguard-is-live-on-league-of-legends",
+      "accessed_on": "2026-11-21",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": "2024-04-30",
+      "page_date_kind": "publication",
+      "published_at": "2024-04-30",
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "Historical Riot deployment explicitly excluding China",
+      "version_scope": "14.9 rollout; historical only",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "b-riot-win",
+        "b-cn-win"
+      ]
+    },
+    {
+      "source_id": "S-B05",
+      "title": "Riot Developer Portal - League of Legends",
+      "url": "https://developer.riotgames.com/docs/lol",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": null,
+      "page_date_kind": "not_displayed",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "Riot developer APIs; client APIs have separate support caveats",
+      "version_scope": "Current public page; not bound to an installed binary build",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "b-riot-win"
+      ]
+    },
+    {
+      "source_id": "S-B06",
+      "title": "/dev: Vanguard x LoL",
+      "url": "https://www.leagueoflegends.com/en-us/news/dev/dev-vanguard-x-lol/",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": "2024-04-11",
+      "page_date_kind": "publication",
+      "published_at": "2024-04-11",
+      "updated_at": null,
+      "source_timezone": "UTC",
+      "official_scope": "Historical Windows / native Mac distinction",
+      "version_scope": "Historical 2024 explanation; timestamp 2024-04-11T17:00:00Z; not current native Mac protection proof",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "b-riot-win",
+        "b-native-mac"
+      ]
+    },
+    {
+      "source_id": "S-C01",
+      "title": "THE FINALS on Steam",
+      "url": "https://store.steampowered.com/app/2073850/THE_FINALS/",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": null,
+      "page_date_kind": "not_displayed",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "Publisher-managed international Steam PC product listing",
+      "version_scope": "Live store snapshot; original release date is not requirements update date",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "c-steam-win"
+      ]
+    },
+    {
+      "source_id": "S-C02",
+      "title": "System Requirements - PC",
+      "url": "https://id.embark.games/the-finals/support/faq/25-system-requirements---pc",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": "2026-02-12",
+      "page_date_kind": "last_updated",
+      "published_at": null,
+      "updated_at": "2026-02-12",
+      "source_timezone": null,
+      "official_scope": "Embark international PC support",
+      "version_scope": "Current public page; not bound to an installed binary build",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "c-steam-win"
+      ]
+    },
+    {
+      "source_id": "S-C03",
+      "title": "System Integrity Violation",
+      "url": "https://id.embark.games/the-finals/support/faq/78-system-integrity-violation",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": "2026-02-16",
+      "page_date_kind": "last_updated",
+      "published_at": null,
+      "updated_at": "2026-02-16",
+      "source_timezone": null,
+      "official_scope": "Embark international PC security support",
+      "version_scope": "Current public page; not bound to an installed binary build",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "c-steam-win"
+      ]
+    },
+    {
+      "source_id": "S-C04",
+      "title": "セキュリティ | THE FINALS 公式サイト",
+      "url": "https://thefinals-jp.nexon.com/support/faq/security",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": null,
+      "page_date_kind": "not_displayed",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "Nexon Japan official PC security FAQ",
+      "version_scope": "Current public page; not bound to an installed binary build",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "c-jp-win"
+      ]
+    },
+    {
+      "source_id": "S-C05",
+      "title": "Update 12.4.0",
+      "url": "https://www.reachthefinals.com/patchnotes/12-40",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": "2026-11-19",
+      "page_date_kind": "publication",
+      "published_at": "2026-11-19",
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "Embark international public patch announcement",
+      "version_scope": "12.4.0",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "c-steam-win"
+      ]
+    },
+    {
+      "source_id": "S-C06",
+      "title": "THE FINALS official home",
+      "url": "https://www.reachthefinals.com/home",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": null,
+      "page_date_kind": "not_displayed",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "Embark international official announcement index",
+      "version_scope": "Newest visible update on access: 12.4.0",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "c-steam-win"
+      ]
+    },
+    {
+      "source_id": "S-C07",
+      "title": "Content Creators - THE FINALS",
+      "url": "https://www.reachthefinals.com/content-creators",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": null,
+      "page_date_kind": "not_displayed",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "Official content-creator contact and asset kit; not an anti-cheat engineering SDK",
+      "version_scope": "Current public page; not bound to an installed binary build",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "c-steam-win"
+      ]
+    },
+    {
+      "source_id": "S-C08",
+      "title": "Nexon Announces November 18 Open Beta of THE FINALS® in China",
+      "url": "https://www.nexon.co.jp/en/news/detail/?id=20251030-efa85af8",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": "2025-10-30",
+      "page_date_kind": "publication",
+      "published_at": "2025-10-30",
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "Historical announcement of a separate China edition",
+      "version_scope": "Official 2025-10-30 announcement linking to Tencent China official site thefinals.qq.com",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "c-cn-win"
+      ]
+    },
+    {
+      "source_id": "S-P01",
+      "title": "Windows Arm-based PCs FAQ",
+      "url": "https://support.microsoft.com/en-us/windows/windows-arm-based-pcs-faq-477f51df-2e3b-f68f-31b0-06f5e4f8ebb5",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": null,
+      "page_date_kind": "not_displayed",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "Microsoft Windows 10/11 Arm platform documentation",
+      "version_scope": "Native Arm64 driver requirement; not a game support statement",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "platform-arm"
+      ]
+    },
+    {
+      "source_id": "S-C09",
+      "title": "Security - Embark Studios",
+      "url": "https://www.embark-studios.com/security",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": null,
+      "page_date_kind": "not_displayed",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "Responsible vulnerability disclosure and bug-bounty entry; not a game integration SDK",
+      "version_scope": "Current public disclosure policy; no game build binding",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "c-steam-win"
+      ]
+    },
+    {
+      "source_id": "S-B07",
+      "title": "Vanguard FAQ for Third Party Applications",
+      "url": "https://www.riotgames.com/en/DevRel/vanguard-faq",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": "2024-04-01",
+      "page_date_kind": "page_display",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "Historical Riot third-party FAQ; includes a China exclusion in the planned rollout",
+      "version_scope": "Page displays Apr 1 but body includes Apr 16 information; not a verified last-update date; planned patch 14.9 rollout",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "b-riot-win",
+        "b-cn-win"
+      ]
+    },
+    {
+      "source_id": "S-B08",
+      "title": "英雄联盟官方网站—腾讯游戏",
+      "url": "https://lol.qq.com/main.shtml",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": null,
+      "page_date_kind": "not_displayed",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "China mainland official homepage; navigation and placeholder version only",
+      "version_scope": "Static HTML uses version placeholder ***; live version populated via S-B11 OfficialWebsiteCfg",
+      "access_result": "opened_partial",
+      "applicable_scope_ids": [
+        "b-cn-win"
+      ]
+    },
+    {
+      "source_id": "S-B09",
+      "title": "游戏下载-英雄联盟官方网站-腾讯游戏",
+      "url": "https://lol.qq.com/download.shtml?ADTAG=lolweb.v3",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": null,
+      "page_date_kind": "not_displayed",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "China mainland official download page; requirements are linked as an image",
+      "version_scope": "Body and inline OfficialWebsiteCfg script opened; linked requirements image S-B10 read on 2026-11-22",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "b-cn-win"
+      ]
+    },
+    {
+      "source_id": "S-P02",
+      "title": "Limitations of Windows 11 on Apple silicon Macs",
+      "url": "https://kb.parallels.com/129497",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": "2025-08-07",
+      "page_date_kind": "page_display",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "Parallels Desktop for Mac / Windows 11 Arm on Apple silicon; platform constraints only",
+      "version_scope": "Page labels All versions; Last Review 2025-08-07, not a game or installed provider version",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "platform-parallels-arm"
+      ]
+    },
+    {
+      "source_id": "S-P03",
+      "title": "Parallels Desktop x86 emulator: general information and limitations",
+      "url": "https://kb.parallels.com/en/130217",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": "2025-12-17",
+      "page_date_kind": "page_display",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "Parallels x86 emulator on Apple silicon; early technology preview, not normal Arm guest mode",
+      "version_scope": "Introduced in Desktop 20.2.0; page labels All versions; Last Review 2025-12-17; no game qualification",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "platform-parallels-x86"
+      ]
+    },
+    {
+      "source_id": "S-R04",
+      "title": "Vanguard Security Requirements",
+      "url": "https://support.riotgames.com/en-us/riot/performance/vanguard-security-requirements",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": "2026-06-22",
+      "page_date_kind": "page_display",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "Riot Vanguard security requirements; device-dependent conditions; China not inferred",
+      "version_scope": "Current shared Vanguard guidance; no exact game or driver build; not Pre-Check mode requirements",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "a-riot-win",
+        "b-riot-win"
+      ]
+    },
+    {
+      "source_id": "S-A06",
+      "title": "游戏下载-VALORANT《无畏契约》官方网站-腾讯游戏",
+      "url": "https://val.qq.com/download.html",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": null,
+      "page_date_kind": "not_displayed",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "China mainland official download and PC system requirements page",
+      "version_scope": "Current public download page; fetches live installer metadata from S-A08",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "a-cn-win"
+      ]
+    },
+    {
+      "source_id": "S-A07",
+      "title": "无畏契约官方网站-腾讯游戏 (aclos 专题下载页)",
+      "url": "https://val.qq.com/act/a20230708aclos/index.html",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": null,
+      "page_date_kind": "not_displayed",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "China mainland official aclos launcher download page with legacy spec table",
+      "version_scope": "Displays legacy game version 7.0.0 and older Win7/8/10/11 table; conflicts with S-A06",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "a-cn-win"
+      ]
+    },
+    {
+      "source_id": "S-A08",
+      "title": "无畏契约官方下载中心版本与安装包元数据接口 (aclos_download_center)",
+      "url": "https://api.val.qq.com/go/agame/resource/kv?key=aclos_download_center",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": "2026-10-28",
+      "page_date_kind": "page_display",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": "Asia/Shanghai",
+      "official_scope": "China mainland official download metadata endpoint consumed by S-A06",
+      "version_scope": "game_version 13.09; launcher verNum 2.17.4; installer VALORANT_CN_installer_v2.17.4.510.exe; verDate 2026.10.28",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "a-cn-win"
+      ]
+    },
+    {
+      "source_id": "S-T01",
+      "title": "关于解决“未开启或有其他软件占用CPU虚拟化功能”弹框的设置指引 - 腾讯游戏安全中心",
+      "url": "https://gamesafe.qq.com/article/1181.shtml",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": "2026-01-04",
+      "page_date_kind": "publication",
+      "published_at": "2026-01-04",
+      "updated_at": null,
+      "source_timezone": "Asia/Shanghai",
+      "official_scope": "Tencent Game Security Center official CPU virtualization and Hyper-V/VBS/HVCI conflict troubleshooting guide",
+      "version_scope": "Published 2026-01-04 11:24:18; shared Tencent Game Security guidance, not a per-game VM license grant",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "a-cn-win",
+        "b-cn-win",
+        "c-cn-win"
+      ]
+    },
+    {
+      "source_id": "S-B10",
+      "title": "英雄联盟国服官网下载页配置要求表 (pic-down.jpg)",
+      "url": "https://ossweb-img.qq.com/images/lol/down/pic-down.jpg",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": null,
+      "page_date_kind": "not_displayed",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "China mainland official system requirements table image embedded by S-B09",
+      "version_scope": "Current public image on lol.qq.com/download.shtml; contains internal row discrepancies",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "b-cn-win"
+      ]
+    },
+    {
+      "source_id": "S-B11",
+      "title": "英雄联盟国服官网版本与下载配置脚本 (website_cfg.js)",
+      "url": "https://lol.qq.com/act/AutoCMS/publish/LOLWeb/OfficialWebsite/website_cfg.js",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": null,
+      "page_date_kind": "not_displayed",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "China mainland official CMS configuration script consumed by S-B08 and S-B09",
+      "version_scope": "Populates current version Ver 26.23 and patch announcement link S-B12",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "b-cn-win"
+      ]
+    },
+    {
+      "source_id": "S-B12",
+      "title": "26.23版本更新公告 - 英雄联盟官方网站-腾讯游戏",
+      "url": "https://lol.qq.com/gicp/news/410/37102797.html",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": "2026-11-18",
+      "page_date_kind": "publication",
+      "published_at": "2026-11-18",
+      "updated_at": null,
+      "source_timezone": "Asia/Shanghai",
+      "official_scope": "China mainland official patch 26.23 release notes",
+      "version_scope": "Patch 26.23; published 2026-11-18 18:51:48 Asia/Shanghai for 2026-11-19 01:00 maintenance rollout",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "b-cn-win"
+      ]
+    },
+    {
+      "source_id": "S-C10",
+      "title": "银河大师赛！《终极角逐》S3太空主题赛季正式上线-腾讯游戏",
+      "url": "https://thefinals.qq.com/cp/web20250814/index.html",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": null,
+      "page_date_kind": "not_displayed",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "China mainland official THE FINALS (终极角逐) website operated by Tencent",
+      "version_scope": "Current live S3 season official site; provides official downloader, WeGame store link, and START cloud gaming link",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "c-cn-win"
+      ]
+    },
+    {
+      "source_id": "S-C11",
+      "title": "《终极角逐》安全站",
+      "url": "https://thefinals.qq.com/cp/a20251111anquan/",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": null,
+      "page_date_kind": "not_displayed",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": null,
+      "official_scope": "China mainland official THE FINALS (终极角逐) anti-cheat and security center page",
+      "version_scope": "Current public security portal showing 10-year ban enforcement notices and report tools; no driver binary or VM policy table",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "c-cn-win"
+      ]
+    },
+    {
+      "source_id": "S-P04",
+      "title": "How emulation works on Arm | Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/windows/arm/apps-on-arm-x86-emulation",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": "2025-11-06",
+      "page_date_kind": "page_display",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": "UTC",
+      "official_scope": "Microsoft official Windows 11 24H2+ Prism user-mode emulation and kernel-mode Arm64 driver boundary documentation",
+      "version_scope": "Windows 11 24H2+ Prism; ms.date 2025-11-06; applies to all supported Windows 11 on Arm devices",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "platform-arm",
+        "a-riot-win",
+        "a-cn-win",
+        "b-riot-win",
+        "b-cn-win",
+        "c-steam-win",
+        "c-cn-win"
+      ]
+    },
+    {
+      "source_id": "S-P05",
+      "title": "Adjust Emulation Settings on Arm | Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/windows/arm/apps-on-arm-program-compat-troubleshooter",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": "2025-12-05",
+      "page_date_kind": "page_display",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": "UTC",
+      "official_scope": "Microsoft official Prism CPU feature emulation documentation (AVX, AVX2, BMI, FMA, F16C for x64 and 32-bit x86 toggle)",
+      "version_scope": "Windows 11 24H2 and newer; ms.date 2025-12-05",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "platform-arm",
+        "a-riot-win",
+        "a-cn-win",
+        "b-riot-win",
+        "b-cn-win",
+        "c-steam-win",
+        "c-cn-win"
+      ]
+    },
+    {
+      "source_id": "S-P06",
+      "title": "Add support Arm devices to your Windows app | Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/windows/arm/add-arm-support",
+      "accessed_on": "2026-11-22",
+      "access_timezone": "Asia/Shanghai",
+      "page_date": "2025-11-06",
+      "page_date_kind": "page_display",
+      "published_at": null,
+      "updated_at": null,
+      "source_timezone": "UTC",
+      "official_scope": "Microsoft official developer guide on native Arm64 kernel driver requirement and virtualization scenarios",
+      "version_scope": "ms.date 2025-11-06; covers Visual Studio 2022 Arm64 and WDK Arm64 driver requirements",
+      "access_result": "opened",
+      "applicable_scope_ids": [
+        "platform-arm",
+        "a-riot-win",
+        "a-cn-win"
+      ]
+    }
+  ],
+  "scopes": [
+    {
+      "scope_id": "a-riot-win",
+      "target_id": "target-a",
+      "platform": "windows_pc",
+      "distribution": "riot_documented_release",
+      "region": "Riot documentation scope; China not inferred"
+    },
+    {
+      "scope_id": "a-cn-win",
+      "target_id": "target-a",
+      "platform": "windows_pc",
+      "distribution": "china_release",
+      "region": "China mainland; independent verification needed"
+    },
+    {
+      "scope_id": "b-riot-win",
+      "target_id": "target-b",
+      "platform": "windows_pc",
+      "distribution": "riot_documented_release",
+      "region": "Riot documentation scope; China not inferred"
+    },
+    {
+      "scope_id": "b-cn-win",
+      "target_id": "target-b",
+      "platform": "windows_pc",
+      "distribution": "china_release",
+      "region": "China mainland; independent verification needed"
+    },
+    {
+      "scope_id": "b-native-mac",
+      "target_id": "target-b",
+      "platform": "native_macos",
+      "distribution": "riot_documented_release",
+      "region": "Riot documentation scope; China not inferred"
+    },
+    {
+      "scope_id": "c-steam-win",
+      "target_id": "target-c",
+      "platform": "windows_pc",
+      "distribution": "international_steam",
+      "region": "International Steam / Embark support; China not inferred"
+    },
+    {
+      "scope_id": "c-jp-win",
+      "target_id": "target-c",
+      "platform": "windows_pc",
+      "distribution": "japan_official_support",
+      "region": "Japan official FAQ only"
+    },
+    {
+      "scope_id": "c-cn-win",
+      "target_id": "target-c",
+      "platform": "windows_pc",
+      "distribution": "china_release_unverified",
+      "region": "China mainland; current operation and requirements unverified"
+    },
+    {
+      "scope_id": "platform-arm",
+      "target_id": null,
+      "platform": "windows_arm64",
+      "distribution": "microsoft_platform_documentation",
+      "region": "Platform scope; no game authorization"
+    },
+    {
+      "scope_id": "platform-parallels-arm",
+      "target_id": null,
+      "platform": "windows_arm64",
+      "distribution": "parallels_platform_documentation",
+      "region": "Platform-specific documentation; no game authorization or actual guest measurement"
+    },
+    {
+      "scope_id": "platform-parallels-x86",
+      "target_id": null,
+      "platform": "windows_x86_64_emulated",
+      "distribution": "parallels_platform_documentation",
+      "region": "Platform-specific documentation; no game authorization or actual guest measurement"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "A-REQ",
+      "scope_id": "a-riot-win",
+      "topic": "system_requirements",
+      "status": "confirmed",
+      "value": {
+        "os": [
+          "Windows 10 x64: table build 19041+",
+          "Windows 11 x64"
+        ],
+        "os_build_resolution": "conflict; see A-BUILD",
+        "cpu_min": [
+          "Intel i3-540",
+          "AMD Athlon 200GE"
+        ],
+        "cpu_features_any": [
+          "SSE4.2",
+          "AVX"
+        ],
+        "arm_support": "not_supported",
+        "ram_gb_min": 4,
+        "gpu_min": [
+          "Intel HD 4000",
+          "AMD Radeon R5 220"
+        ],
+        "dedicated_vram_gb_min": 1,
+        "directx": "11",
+        "storage_gb_min": null,
+        "win11_security": [
+          "TPM 2.0",
+          "UEFI Secure Boot"
+        ]
+      },
+      "summary_zh": "公开 PC 要求为 x64；ARM 不支持。Windows 10 构建号有内部冲突，不能视为已核清。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-A01",
+          "locator": "specification table; Windows Requirements",
+          "paraphrase_zh": "表格给出 x64、CPU、内存和 DX11；Win11 要求 TPM2 与 Secure Boot。"
+        }
+      ],
+      "limitation_zh": "公开资料结论，不代表本机实测。"
+    },
+    {
+      "claim_id": "A-BUILD",
+      "scope_id": "a-riot-win",
+      "topic": "windows10_build",
+      "status": "conflict",
+      "value": {
+        "table": "19041+",
+        "body": "10904+",
+        "resolved_minimum": null
+      },
+      "summary_zh": "同一页面表格 19041+ 与正文 10904+ 不一致；候选环境可先按更高表格门槛筛选，但该筛选不等于官方冲突已解决。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-A01",
+          "locator": "OS row versus Windows 10 paragraph",
+          "paraphrase_zh": "两处构建号并不一致。"
+        }
+      ],
+      "limitation_zh": "公开资料结论，不代表本机实测。"
+    },
+    {
+      "claim_id": "A-KERNEL",
+      "scope_id": "a-riot-win",
+      "topic": "anticheat_execution_mode",
+      "status": "confirmed",
+      "value": {
+        "product": "Riot Vanguard",
+        "user_mode_client": null,
+        "kernel_mode_driver": true,
+        "client_present": true
+      },
+      "summary_zh": "Vanguard 由客户端与内核模式驱动组成。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-R01",
+          "locator": "opening definition; reinstall paragraph",
+          "paraphrase_zh": "官方说明内核驱动，并列举两款产品使用 Vanguard。"
+        }
+      ],
+      "limitation_zh": "公开资料结论，不代表本机实测。"
+    },
+    {
+      "claim_id": "A-BIN",
+      "scope_id": "a-riot-win",
+      "topic": "driver_binary_architecture",
+      "status": "unknown",
+      "value": {
+        "driver_pe_machine": null,
+        "driver_version": null,
+        "sha256": null,
+        "signature_chain": null,
+        "game_executable_machine": null
+      },
+      "summary_zh": "未取得具体商业驱动的 PE Machine、版本、哈希、签名链或游戏二进制检查结果。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-R01",
+          "locator": "kernel driver description",
+          "paraphrase_zh": "只描述执行层级，没有具体二进制属性。"
+        }
+      ],
+      "limitation_zh": "x64 系统要求不能替代驱动 Machine 证据；本任务未下载安装商业组件。"
+    },
+    {
+      "claim_id": "A-MODE",
+      "scope_id": "a-riot-win",
+      "topic": "driver_start_mode",
+      "status": "confirmed",
+      "value": {
+        "default": "usually_on_boot",
+        "optional": "on_demand_if_precheck_eligible",
+        "on_demand_min_windows": "Windows 11 25H2+",
+        "on_demand_security": [
+          "Secure Boot",
+          "TPM 2.0",
+          "IOMMU",
+          "VBS",
+          "HVCI"
+        ],
+        "actual_device_mode": null
+      },
+      "summary_zh": "通常随开机启动；符合 Pre-Check 条件的设备可按需运行，实际模式未知。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-R01",
+          "locator": "tray status and startup explanation",
+          "paraphrase_zh": "当前 FAQ 承认通常开机与可选按需两种路径。"
+        },
+        {
+          "source_id": "S-R02",
+          "locator": "Requirements",
+          "paraphrase_zh": "按需模式要求 Win11 25H2+ 及列出的安全特性。"
+        }
+      ],
+      "limitation_zh": "Pre-Check 条件不是所有设备的一般最低配置；VBS 不等于允许 VM guest。"
+    },
+    {
+      "claim_id": "B-KERNEL",
+      "scope_id": "b-riot-win",
+      "topic": "anticheat_execution_mode",
+      "status": "confirmed",
+      "value": {
+        "product": "Riot Vanguard",
+        "user_mode_client": null,
+        "kernel_mode_driver": true,
+        "client_present": true
+      },
+      "summary_zh": "Vanguard 由客户端与内核模式驱动组成。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-R01",
+          "locator": "opening definition; reinstall paragraph",
+          "paraphrase_zh": "官方说明内核驱动，并列举两款产品使用 Vanguard。"
+        }
+      ],
+      "limitation_zh": "公开资料结论，不代表本机实测。"
+    },
+    {
+      "claim_id": "B-BIN",
+      "scope_id": "b-riot-win",
+      "topic": "driver_binary_architecture",
+      "status": "unknown",
+      "value": {
+        "driver_pe_machine": null,
+        "driver_version": null,
+        "sha256": null,
+        "signature_chain": null,
+        "game_executable_machine": null
+      },
+      "summary_zh": "未取得具体商业驱动的 PE Machine、版本、哈希、签名链或游戏二进制检查结果。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-R01",
+          "locator": "kernel driver description",
+          "paraphrase_zh": "只描述执行层级，没有具体二进制属性。"
+        }
+      ],
+      "limitation_zh": "x64 系统要求不能替代驱动 Machine 证据；本任务未下载安装商业组件。"
+    },
+    {
+      "claim_id": "B-MODE",
+      "scope_id": "b-riot-win",
+      "topic": "driver_start_mode",
+      "status": "confirmed",
+      "value": {
+        "default": "usually_on_boot",
+        "optional": "on_demand_if_precheck_eligible",
+        "on_demand_min_windows": "Windows 11 25H2+",
+        "on_demand_security": [
+          "Secure Boot",
+          "TPM 2.0",
+          "IOMMU",
+          "VBS",
+          "HVCI"
+        ],
+        "actual_device_mode": null
+      },
+      "summary_zh": "通常随开机启动；符合 Pre-Check 条件的设备可按需运行，实际模式未知。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-R01",
+          "locator": "tray status and startup explanation",
+          "paraphrase_zh": "当前 FAQ 承认通常开机与可选按需两种路径。"
+        },
+        {
+          "source_id": "S-R02",
+          "locator": "Requirements",
+          "paraphrase_zh": "按需模式要求 Win11 25H2+ 及列出的安全特性。"
+        }
+      ],
+      "limitation_zh": "Pre-Check 条件不是所有设备的一般最低配置；VBS 不等于允许 VM guest。"
+    },
+    {
+      "claim_id": "A-VM",
+      "scope_id": "a-riot-win",
+      "topic": "vm_publisher_support",
+      "status": "confirmed",
+      "value": "not_supported",
+      "summary_zh": "规格页明确不支持 VM 与云游戏；通用 VAN 9100 文档另描述该版本 Vanguard 的 VM 运行拒绝，均非本机实测。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-A01",
+          "locator": "Please Note",
+          "paraphrase_zh": "规格页明确排除虚拟机和云游戏。"
+        },
+        {
+          "source_id": "S-R03",
+          "locator": "opening error description; Resolution",
+          "paraphrase_zh": "错误描述称该版本不允许在 VM 或不受支持的虚拟化环境中运行；解决说明称 VM 不受支持，改用物理 Windows 环境。"
+        }
+      ],
+      "limitation_zh": "发行方许可字段指许可或条款立场，保持未知；软件文档的运行拒绝不自动作为许可禁止，也不证明具体驱动加载、游戏启动或在线会话结果。"
+    },
+    {
+      "claim_id": "A-API",
+      "scope_id": "a-riot-win",
+      "topic": "public_cooperation_interface",
+      "status": "confirmed",
+      "value": {
+        "available": [
+          "Developer Portal registration",
+          "Production API key approval",
+          "RSO OAuth",
+          "game data APIs"
+        ],
+        "anticheat_bridge": null
+      },
+      "summary_zh": "存在开发者产品登记、数据与身份接口。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-A02",
+          "locator": "Registration; RSO Integration; Official APIs",
+          "paraphrase_zh": "公开门户提供游戏数据和身份合作入口。"
+        }
+      ],
+      "limitation_zh": "未申请 key，未提交任何产品或联系厂商。"
+    },
+    {
+      "claim_id": "A-XBOUND",
+      "scope_id": "a-riot-win",
+      "topic": "cross_boundary_anticheat_interface",
+      "status": "unknown",
+      "value": null,
+      "summary_zh": "所查公开文档未证实 Wine 游戏与 guest 驱动之间的保护或认证接口。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-A02",
+          "locator": "reviewed portal interface surface",
+          "paraphrase_zh": "已公开接口不能作为反作弊驱动桥接授权或 SDK 的证据。"
+        }
+      ],
+      "limitation_zh": "仅为已审阅文档中的证据缺口，不声称接口绝对不存在。"
+    },
+    {
+      "claim_id": "A-VER",
+      "scope_id": "a-riot-win",
+      "topic": "observed_public_version",
+      "status": "confirmed",
+      "value": {
+        "patch": "13.10",
+        "announced_on": "2026-11-10",
+        "installed_client_build": null,
+        "driver_version": null,
+        "announced_at_utc": "2026-11-10T14:00:00Z",
+        "announced_local_date": "2026-11-10",
+        "announced_local_timezone": "Asia/Shanghai"
+      },
+      "summary_zh": "访问时官方更新列表最新可见补丁参考为 13.10；本地和区域部署版本未知。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-A05",
+          "locator": "newest visible patch item",
+          "paraphrase_zh": "索引首个补丁条目为 13.10。"
+        },
+        {
+          "source_id": "S-A03",
+          "locator": "title and publication date",
+          "paraphrase_zh": "补丁公告为 13.10，日期 2026-11-10。"
+        }
+      ],
+      "limitation_zh": "公开资料结论，不代表本机实测。"
+    },
+    {
+      "claim_id": "A-CN",
+      "scope_id": "a-cn-win",
+      "topic": "regional_evidence_coverage",
+      "status": "unknown",
+      "value": {
+        "official_site_observed": true,
+        "anticheat": "tencent_game_security_cpu_virtualization_guidance_observed_driver_binary_unknown",
+        "system_requirements": "see A-CN-REQ",
+        "vm_policy": null,
+        "public_interface": null,
+        "version": "see A-CN-VER"
+      },
+      "summary_zh": "国服官网、下载页配置要求（A-CN-REQ）、官方下载中心版本接口（A-CN-VER）及腾讯游戏安全中心虚拟化冲突指引（A-CN-SEC）已核实；但国服反作弊内核驱动具体二进制属性、独立 VM 许可/支持条款与跨域接口仍未知。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-A04",
+          "locator": "homepage navigation and version topic link",
+          "paraphrase_zh": "国服官网主页正常可读，提供新闻、赛事与当前版本专题入口。"
+        },
+        {
+          "source_id": "S-A06",
+          "locator": "电脑配置需求; 官方独立安装包",
+          "paraphrase_zh": "官方下载页列出三档 64 位配置要求并提供官方登录器与 WeGame 下载入口，但未声明虚拟机支持政策或内核驱动架构。"
+        }
+      ],
+      "limitation_zh": "系统配置与公开版本已单独建项；未经真实 Guest 安装采样，不得将外层 x86 安装引导器推断为内核驱动架构，也不得外推 VM 允许或支持状态。"
+    },
+    {
+      "claim_id": "B-REQ",
+      "scope_id": "b-riot-win",
+      "topic": "system_requirements",
+      "status": "confirmed",
+      "value": {
+        "os_min": [
+          "Windows 10 x64 build 19041+",
+          "Windows 11 x64"
+        ],
+        "os_editions": "retail_only; Enterprise and Server not_supported",
+        "cpu_min": [
+          "Intel Core i3-530",
+          "AMD FX-4100"
+        ],
+        "cpu_features": [
+          "SSE4.2"
+        ],
+        "arm_support": "not_supported",
+        "ram_gb_min": 2,
+        "storage_gb_min": 16,
+        "storage_type_min": "HDD",
+        "directx": "11 feature level 11_0",
+        "vram_gb_min": 1,
+        "win11_security": [
+          "TPM 2.0"
+        ]
+      },
+      "summary_zh": "Windows 行要求 x64、SSE4.2，ARM 不支持；Enterprise 和 Server 不支持。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-B01",
+          "locator": "Windows System Requirements table",
+          "paraphrase_zh": "最低 CPU 为 i3-530 / FX-4100；Win10 19041+，Win11 启用 TPM2。"
+        }
+      ],
+      "limitation_zh": "公开资料结论，不代表本机实测。"
+    },
+    {
+      "claim_id": "B-VM",
+      "scope_id": "b-riot-win",
+      "topic": "vm_publisher_support",
+      "status": "confirmed",
+      "value": "not_supported",
+      "summary_zh": "通用 VAN 9100 文档描述该版本 Vanguard 的 VM 运行拒绝，并称 VM 不受支持；非本机失败实测。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-R03",
+          "locator": "opening error description; Resolution",
+          "paraphrase_zh": "错误描述称该版本不允许在 VM 或不受支持的虚拟化环境中运行；解决说明称 VM 不受支持，改用物理 Windows 环境。"
+        }
+      ],
+      "limitation_zh": "发行方许可字段指许可或条款立场，保持未知；软件文档的运行拒绝不自动作为许可禁止，也不证明具体驱动加载、游戏启动或在线会话结果。"
+    },
+    {
+      "claim_id": "B-API",
+      "scope_id": "b-riot-win",
+      "topic": "public_cooperation_interface",
+      "status": "confirmed",
+      "value": {
+        "available": [
+          "Riot REST APIs",
+          "Game Client API: Live Client Data / Replay",
+          "League Client API documentation"
+        ],
+        "anticheat_bridge": null
+      },
+      "summary_zh": "存在游戏数据和客户端接口，但支持级别不同，不能统称为驱动 SDK。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-B05",
+          "locator": "Game Client API; League Client API",
+          "paraphrase_zh": "公开本机游戏数据接口；League Client API 文档明确不受开发者支持团队官方支持。"
+        }
+      ],
+      "limitation_zh": "本机 HTTPS / 客户端 API 不是内核保护 ABI 或跨 guest 认证协议。"
+    },
+    {
+      "claim_id": "B-XBOUND",
+      "scope_id": "b-riot-win",
+      "topic": "cross_boundary_anticheat_interface",
+      "status": "unknown",
+      "value": null,
+      "summary_zh": "已审阅公开开发者文档未证实跨 Wine / guest 的商业反作弊接口。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-B05",
+          "locator": "reviewed API surface",
+          "paraphrase_zh": "数据 API 不包含已证实的跨执行域反作弊保护协议。"
+        }
+      ],
+      "limitation_zh": "公开资料结论，不代表本机实测。"
+    },
+    {
+      "claim_id": "B-VER",
+      "scope_id": "b-riot-win",
+      "topic": "observed_public_version",
+      "status": "confirmed",
+      "value": {
+        "patch": "26.23",
+        "announced_on": "2026-11-17",
+        "installed_client_build": null,
+        "driver_version": null,
+        "announced_at_utc": "2026-11-17T19:00:00Z",
+        "announced_local_date": "2026-11-18",
+        "announced_local_timezone": "Asia/Shanghai"
+      },
+      "summary_zh": "官方索引最新可见为 26.23；公告源时间 2026-11-17 19:00 UTC，对应上海 11-18 03:00。实际安装与驱动版本未知。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-B03",
+          "locator": "first patch entry",
+          "paraphrase_zh": "最新可见条目为 26.23，日期 2026-11-17。"
+        },
+        {
+          "source_id": "S-B02",
+          "locator": "article heading",
+          "paraphrase_zh": "独立补丁页确认 26.23。"
+        }
+      ],
+      "limitation_zh": "公开资料结论，不代表本机实测。"
+    },
+    {
+      "claim_id": "B-MAC",
+      "scope_id": "b-native-mac",
+      "topic": "native_macos_requirements",
+      "status": "conflict",
+      "value": {
+        "intro": "Intel-only native support",
+        "table": "Apple M1, macOS 12, 8 GB UMA, 40 GB",
+        "note": "Intel may continue; support focuses Apple Silicon",
+        "resolved_cpu_support": null
+      },
+      "summary_zh": "当前要求页的 Intel-only 开头与 Apple Silicon 表格、附注互相矛盾；保持 CPU 支持细节未知。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-B01",
+          "locator": "intro; macOS System Requirements; closing note",
+          "paraphrase_zh": "同一页的开头与 macOS 表格和附注不一致。"
+        }
+      ],
+      "limitation_zh": "原生 macOS 是独立客户端，不可用于证明 Windows ARM、VM 或 Wine 可用。"
+    },
+    {
+      "claim_id": "B-MAC-AC",
+      "scope_id": "b-native-mac",
+      "topic": "current_native_anticheat_implementation",
+      "status": "unknown",
+      "value": null,
+      "summary_zh": "2024 官方曾解释 Mac 与 Windows Vanguard 路线不同；未将历史材料视为 2026 当前实现证据。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-B06",
+          "locator": "platform discussion",
+          "paraphrase_zh": "历史开发文说明当时 Mac 不部署 Windows Vanguard。"
+        }
+      ],
+      "limitation_zh": "公开资料结论，不代表本机实测。"
+    },
+    {
+      "claim_id": "B-CN",
+      "scope_id": "b-cn-win",
+      "topic": "regional_evidence_coverage",
+      "status": "unknown",
+      "value": {
+        "anticheat": "historical_riot_faq_excluded_china_current_cn_driver_unknown",
+        "system_requirements": "see B-CN-REQ",
+        "vm_policy": null,
+        "public_interface": null,
+        "version": "see B-CN-VER"
+      },
+      "summary_zh": "国服下载页配置要求图片（B-CN-REQ）与 26.23 版本动态配置及公告（B-CN-VER）已读取核实；2024 历史 FAQ 曾将中国排除在当时的 Vanguard 计划外，当前国服实际反作弊驱动二进制、独立 VM 政策及合作接口仍未知。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-B07",
+          "locator": "Vanguard will be released with patch 14.9",
+          "paraphrase_zh": "2024 历史 FAQ 记载除中国以外的 Vanguard 部署计划，不代表 2026 国服现行反作弊实现。"
+        },
+        {
+          "source_id": "S-B09",
+          "locator": "game download; specification image link and OfficialWebsiteCfg script",
+          "paraphrase_zh": "下载页通过脚本加载当前版本号并引用配置图片，未列出虚拟机支持条款或反作弊驱动架构。"
+        },
+        {
+          "source_id": "S-T01",
+          "locator": "安全学院 > 公告：关于解决“未开启或有其他软件占用CPU虚拟化功能”弹框的设置指引",
+          "paraphrase_zh": "腾讯游戏安全中心提供通用 CPU 虚拟化与 Hyper-V/VBS/HVCI 占用排查指引，未单独规定《英雄联盟》国服 VM 许可状态。"
+        }
+      ],
+      "limitation_zh": "不从国际服 Vanguard 政策或腾讯通用排障文章外推国服 VM 许可、支持或驱动加载状态。"
+    },
+    {
+      "claim_id": "C-REQ",
+      "scope_id": "c-steam-win",
+      "topic": "system_requirements",
+      "status": "confirmed",
+      "value": {
+        "os": "Windows 10 64-bit or later, latest update",
+        "cpu_min": [
+          "Intel Core i5-6600K",
+          "AMD Ryzen 5 1600"
+        ],
+        "ram_gb_min": 12,
+        "gpu_min": [
+          "GeForce GTX 1050 Ti",
+          "Radeon RX 580"
+        ],
+        "directx": "12",
+        "storage_gb_min": null,
+        "exact_guest_isa": null,
+        "arm_support": null
+      },
+      "summary_zh": "国际 PC 要求 64 位 Windows10+、12GB 与 DX12；64 位不等于已证实驱动 AMD64。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-C02",
+          "locator": "Minimum",
+          "paraphrase_zh": "官方最低配置列出 OS、CPU、GPU、内存和 DX12。"
+        },
+        {
+          "source_id": "S-C01",
+          "locator": "System Requirements",
+          "paraphrase_zh": "Steam 同样列出 64 位 Windows 及上述最低 CPU 型号，不作为具体驱动 ISA 的证据。"
+        }
+      ],
+      "limitation_zh": "当前所开要求页和 Steam 要求段未列存储容量；不沿用旧 22GB。ARM 支持与二进制 Machine 保持未知。"
+    },
+    {
+      "claim_id": "C-KERNEL",
+      "scope_id": "c-steam-win",
+      "topic": "anticheat_execution_mode",
+      "status": "confirmed",
+      "value": {
+        "store_kernel_anticheat": "Denuvo",
+        "support_mentions": "Easy Anti-Cheat",
+        "complete_current_stack": null
+      },
+      "summary_zh": "当前 Steam 标注内核级 Denuvo；Embark 排障文仍提 EAC，完整现行组件组合未知。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-C01",
+          "locator": "third-party anti-cheat disclosure",
+          "paraphrase_zh": "商店标注内核级 Denuvo 且需手工卸载。"
+        },
+        {
+          "source_id": "S-C03",
+          "locator": "antivirus exceptions",
+          "paraphrase_zh": "官方排障仍列 Easy Anti-Cheat。"
+        }
+      ],
+      "limitation_zh": "可以并存、分阶段或文档滞后；没有证据选择其中一种解释，不宣布 EAC 已移除。"
+    },
+    {
+      "claim_id": "C-BIN",
+      "scope_id": "c-steam-win",
+      "topic": "driver_binary_architecture",
+      "status": "unknown",
+      "value": {
+        "driver_pe_machine": null,
+        "driver_version": null,
+        "sha256": null,
+        "signature_chain": null,
+        "game_executable_machine": null
+      },
+      "summary_zh": "未取得当前商业驱动具体 Machine、版本、哈希、签名链与实际加载结果。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-C01",
+          "locator": "kernel anti-cheat disclosure",
+          "paraphrase_zh": "商店只标注内核级产品，没有驱动二进制属性。"
+        }
+      ],
+      "limitation_zh": "公开资料结论，不代表本机实测。"
+    },
+    {
+      "claim_id": "C-VM",
+      "scope_id": "c-steam-win",
+      "topic": "vm_publisher_permission",
+      "status": "confirmed",
+      "value": "prohibited",
+      "summary_zh": "国际支持页明确禁止 VM，记录为发行方许可层面的禁止。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-C03",
+          "locator": "VM error-code section: TFAV11014, TFAV10014, TFAV9004, TFAV8004, TFAV7004, TFAV6004, TFAV5004, TFAV4004, TFAV3004, TFAV2004, TFAV1004, TFAV0004",
+          "paraphrase_zh": "官方称 VM 被明确禁止，并列出相应完整性错误码。"
+        }
+      ],
+      "limitation_zh": "没有在本机触发这些代码，不记录为实测错误或自动推定封禁结果。"
+    },
+    {
+      "claim_id": "C-SEC",
+      "scope_id": "c-steam-win",
+      "topic": "security_conditions",
+      "status": "confirmed",
+      "value": {
+        "troubleshooting": [
+          "Core Isolation",
+          "Memory Integrity",
+          "Secure Boot if available",
+          "current Windows updates"
+        ],
+        "unconditional_all_devices": false
+      },
+      "summary_zh": "完整性排障页要求检查系统安全设置；不能将所有可能安全项改写成统一最低规格。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-C03",
+          "locator": "Check your system security Settings",
+          "paraphrase_zh": "列出内核隔离、内存完整性与可用时 Secure Boot。"
+        }
+      ],
+      "limitation_zh": "公开资料结论，不代表本机实测。"
+    },
+    {
+      "claim_id": "C-JP",
+      "scope_id": "c-jp-win",
+      "topic": "regional_anticheat_and_vm_policy",
+      "status": "confirmed",
+      "value": {
+        "anticheat_includes": "Easy Anti-Cheat",
+        "multiple_systems": true,
+        "vm_connection": "connection_unavailable",
+        "complete_stack": null
+      },
+      "summary_zh": "日本官方 FAQ 写有包含 EAC 的多重系统，并称无法从虚拟 OS 连接。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-C04",
+          "locator": "アンチチートシステム",
+          "paraphrase_zh": "日本 FAQ 同时说明多系统、EAC 与虚拟 OS 连接限制。"
+        }
+      ],
+      "limitation_zh": "FAQ 未见更新日期；不得据此判定所有区域的当前完整驱动组合。"
+    },
+    {
+      "claim_id": "C-API",
+      "scope_id": "c-steam-win",
+      "topic": "public_cooperation_interface",
+      "status": "confirmed",
+      "value": {
+        "available": [
+          "Official content-creator contact and asset kit",
+          "Official vulnerability disclosure / bug-bounty entry"
+        ],
+        "developer_game_api": null,
+        "anticheat_bridge": null
+      },
+      "summary_zh": "存在创作者素材及联系入口、公开安全漏洞披露入口；均不是已证实的反作弊集成 SDK。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-C07",
+          "locator": "Content Creator kit / Need to get in touch",
+          "paraphrase_zh": "页面提供创作者素材包、品牌素材及联系入口，没有核准正式技术合作计划。"
+        },
+        {
+          "source_id": "S-C09",
+          "locator": "Security researcher / Security Bug Bounty Program hosted by Intigriti",
+          "paraphrase_zh": "官方引导研究者使用公开漏洞赏金入口；提交需注册，没有提供已证实的跨域保护 SDK。"
+        }
+      ],
+      "limitation_zh": "未联系任何公开渠道；创作者合作不等于内核驱动技术合作。"
+    },
+    {
+      "claim_id": "C-XBOUND",
+      "scope_id": "c-steam-win",
+      "topic": "cross_boundary_anticheat_interface",
+      "status": "unknown",
+      "value": null,
+      "summary_zh": "已审阅官方产品、支持和合作页面未提供已证实的跨 Wine / guest 保护接口。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-C07",
+          "locator": "reviewed partnership surface",
+          "paraphrase_zh": "公开合作页面不能证明工程接口存在。"
+        },
+        {
+          "source_id": "S-C09",
+          "locator": "Security Bug Bounty Program hosted by Intigriti",
+          "paraphrase_zh": "公开技术合作入口为漏洞披露，不提供已证实的跨域保护集成接口。"
+        }
+      ],
+      "limitation_zh": "未找到不等于不存在；通用 EAC SDK 或其他游戏兼容性不能替代本产品授权。"
+    },
+    {
+      "claim_id": "C-VER",
+      "scope_id": "c-steam-win",
+      "topic": "observed_public_version",
+      "status": "confirmed",
+      "value": {
+        "patch": "12.4.0",
+        "announced_on": "2026-11-19",
+        "installed_client_build": null,
+        "driver_version": null
+      },
+      "summary_zh": "官方首页最新可见更新参考为 12.4.0；精确客户端和驱动 build 未采集。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-C06",
+          "locator": "latest update tile",
+          "paraphrase_zh": "首页顶部最新更新为 12.4.0。"
+        },
+        {
+          "source_id": "S-C05",
+          "locator": "heading and date",
+          "paraphrase_zh": "独立公告显示 12.4.0 / 2026.11.19。"
+        }
+      ],
+      "limitation_zh": "公开资料结论，不代表本机实测。"
+    },
+    {
+      "claim_id": "C-CN",
+      "scope_id": "c-cn-win",
+      "topic": "regional_evidence_coverage",
+      "status": "unknown",
+      "value": {
+        "anticheat": "official_security_portal_observed_driver_stack_unknown",
+        "system_requirements": null,
+        "vm_policy": null,
+        "public_interface": null,
+        "version": "Season 3 (S3 太空主题赛季)",
+        "current_operation": "live_official_cn_site_and_security_portal_verified"
+      },
+      "summary_zh": "已通过 Nexon 官方公告内嵌链接核实腾讯运营的国服《终极角逐》官网（当前为 S3 太空主题赛季，提供官网下载器、WeGame 入口与腾讯 START 云游戏入口）及《终极角逐》安全站；但公开页面未列出 PC 最低硬件配置表、具体反作弊驱动二进制或本地 VM 政策。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-C08",
+          "locator": "Official announcement body; Official website link to thefinals.qq.com",
+          "paraphrase_zh": "Nexon 2025-10-30 英文公告宣布与腾讯合作于 11 月 18 日在中国开启公测，并给出 thefinals.qq.com 官方网站链接。"
+        },
+        {
+          "source_id": "S-C10",
+          "locator": "navigation bar; 官网下载; WeGame下载; 云游戏体验; 安全站",
+          "paraphrase_zh": "国服《终极角逐》官网当前展示 S3 太空主题赛季，提供官网客户端下载器、WeGame 商店页及腾讯 START 云游戏链接，未刊载本地 PC 硬件最低配置表。"
+        },
+        {
+          "source_id": "S-C11",
+          "locator": "《终极角逐》安全站：累计封禁10年作弊账号 / 账号状态 / 处罚情况",
+          "paraphrase_zh": "官方安全站展示封禁处罚公示与举报查询功能，未公开具体内核反作弊驱动名称、PE 架构或本地虚拟机策略。"
+        }
+      ],
+      "limitation_zh": "已确认国服《终极角逐》在线运营及安全站存在，但本地 PC 最低配置、驱动二进制架构及 VM 许可/支持状态仍无官方公开文档证实，继续保持未知。"
+    },
+    {
+      "claim_id": "P-ARM",
+      "scope_id": "platform-arm",
+      "topic": "kernel_driver_emulation_boundary",
+      "status": "confirmed",
+      "value": {
+        "native_arm64_driver_required": true,
+        "x64_user_emulation_proves_kernel_support": false
+      },
+      "summary_zh": "微软明确 ARM Windows 的内核驱动须为原生 Arm64；用户态 x64 转译不能证明驱动可运行。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-P01",
+          "locator": "Limitations / drivers and gaming",
+          "paraphrase_zh": "驱动须为 Arm64；依赖未适配反作弊驱动的游戏可能不能运行。"
+        }
+      ],
+      "limitation_zh": "这是平台约束；没有据此为三款产品臆造具体驱动 Machine 或 ARM 支持状态。"
+    },
+    {
+      "claim_id": "B-HIST-API",
+      "scope_id": "b-riot-win",
+      "topic": "historical_interface_policy",
+      "status": "confirmed",
+      "value": {
+        "reference_period": "2024 patch 14.9 planning",
+        "vanguard_allowlist_offered": false,
+        "current_cross_boundary_sdk": null
+      },
+      "summary_zh": "2024 历史 FAQ 明确不提供 Vanguard allowlist；这不证明 2026 私有合作接口不存在。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-B07",
+          "locator": "Can I have a Vanguard allowlist?",
+          "paraphrase_zh": "官方历史回答为没有 allowlist。"
+        }
+      ],
+      "limitation_zh": "历史规则仅用于澄清公开入口，不能覆盖当前个别合作；跨执行域接口继续未知。"
+    },
+    {
+      "claim_id": "P-PDARM",
+      "scope_id": "platform-parallels-arm",
+      "topic": "virtualization_platform_constraints",
+      "status": "confirmed",
+      "value": {
+        "documented_guest_isa": "ARM64",
+        "documented_mode": "Windows 11 Arm on Apple silicon",
+        "nested_virtualization_supported": false,
+        "unavailable_features": [
+          "Hyper-V",
+          "VBS",
+          "Windows Sandbox",
+          "WSL2"
+        ],
+        "directx12_supported": false,
+        "game_specific_support": null
+      },
+      "summary_zh": "Parallels 的 ARM guest 限制页列出无嵌套虚拟化、VBS 和 DX12；这只是该路径的平台约束。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-P02",
+          "locator": "Limitations; nested virtualization and DirectX 12",
+          "paraphrase_zh": "官方平台页分别列出嵌套虚拟化相关安全功能及 DX12 限制。"
+        }
+      ],
+      "limitation_zh": "不从这些平台资料赋予任何游戏许可或实测状态；也不外推到其他 provider 或 x86 预览模式。"
+    },
+    {
+      "claim_id": "P-PDX86",
+      "scope_id": "platform-parallels-x86",
+      "topic": "virtualization_platform_constraints",
+      "status": "confirmed",
+      "value": {
+        "mode": "x86_64_emulation_early_technology_preview",
+        "introduced_in": "Parallels Desktop 20.2.0",
+        "documented_guest_os": [
+          "Windows 11 x86_64",
+          "Windows Server 2022 x86_64"
+        ],
+        "vcpu_max": 1,
+        "ram_gb_max": 8,
+        "nested_virtualization_supported": false,
+        "game_specific_support": null
+      },
+      "summary_zh": "Parallels 另有 x86 早期预览仿真，文档限制单 vCPU、8GB 和无嵌套虚拟化；不能概括为 Apple silicon 永远不能启动 x86 guest。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-P03",
+          "locator": "Supported guest OS; limitations; enable nested virtualization",
+          "paraphrase_zh": "官方列 Windows11/Server2022 x86 预览路径及资源、安全功能限制。"
+        }
+      ],
+      "limitation_zh": "这是另一条 CPU 仿真路径，不等于厂商反作弊支持；未安装该后端、未启动 guest、未做性能测量。"
+    },
+    {
+      "claim_id": "A-SEC",
+      "scope_id": "a-riot-win",
+      "topic": "security_conditions",
+      "status": "confirmed",
+      "value": {
+        "documented_features_as_applicable": [
+          "Secure Boot",
+          "TPM 2.0",
+          "IOMMU",
+          "VBS",
+          "HVCI (Memory Integrity)"
+        ],
+        "all_features_required_on_all_devices": false,
+        "device_specific_restrictions_possible": true,
+        "actual_device_state": null
+      },
+      "summary_zh": "Vanguard 通用安全页按设备适用性列出安全特性；不满足适用条件可能导致受限或阻止启动，但并非所有设备统一要求全部特性。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-R04",
+          "locator": "Requirements Overview; Compatibility note; Why Vanguard Has These Requirements",
+          "paraphrase_zh": "按适用设备列出 Secure Boot、TPM2、IOMMU、VBS、HVCI；部分较旧配置不要求每项特性。"
+        }
+      ],
+      "limitation_zh": "该共享 Vanguard 指引与 Pre-Check 按需模式门槛分开；具体设备、二进制版本和运行结果未知，不适用到中国发行。"
+    },
+    {
+      "claim_id": "B-SEC",
+      "scope_id": "b-riot-win",
+      "topic": "security_conditions",
+      "status": "confirmed",
+      "value": {
+        "documented_features_as_applicable": [
+          "Secure Boot",
+          "TPM 2.0",
+          "IOMMU",
+          "VBS",
+          "HVCI (Memory Integrity)"
+        ],
+        "all_features_required_on_all_devices": false,
+        "device_specific_restrictions_possible": true,
+        "actual_device_state": null
+      },
+      "summary_zh": "Vanguard 通用安全页按设备适用性列出安全特性；不满足适用条件可能导致受限或阻止启动，但并非所有设备统一要求全部特性。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-R04",
+          "locator": "Requirements Overview; Compatibility note; Why Vanguard Has These Requirements",
+          "paraphrase_zh": "按适用设备列出 Secure Boot、TPM2、IOMMU、VBS、HVCI；部分较旧配置不要求每项特性。"
+        }
+      ],
+      "limitation_zh": "该共享 Vanguard 指引与 Pre-Check 按需模式门槛分开；具体设备、二进制版本和运行结果未知，不适用到中国发行。"
+    },
+    {
+      "claim_id": "A-CN-REQ",
+      "scope_id": "a-cn-win",
+      "topic": "system_requirements",
+      "status": "conflict",
+      "value": {
+        "download_page_os": "Win10、11 (64位)",
+        "legacy_aclos_page_os": "Win 7、8、10、11 (64位)",
+        "architecture": "64-bit",
+        "cpu_min_download_page": [
+          "Intel i3-540",
+          "AMD Athlon 200GE"
+        ],
+        "cpu_min_legacy_aclos_page": [
+          "Intel Core 2 Duo E8400",
+          "AMD Athlon 200GE"
+        ],
+        "cpu_features_any": [
+          "SSE4.2",
+          "AVX Support"
+        ],
+        "gpu_min": [
+          "Intel HD 4000",
+          "AMD Radeon R5 200"
+        ],
+        "vram_gb_min": 1,
+        "ram_gb_min": 4,
+        "recommended_cpu": [
+          "Intel i3-4150",
+          "AMD Ryzen 3 1200"
+        ],
+        "recommended_gpu": [
+          "Nvidia GeForce GT730",
+          "AMD Radeon R7 240"
+        ],
+        "recommended_ram_gb": 8,
+        "high_tier_cpu": [
+          "Intel i5-9400F 2.90GHz",
+          "AMD Ryzen 5 2600X"
+        ],
+        "high_tier_gpu": [
+          "Nvidia GTX 1050 Ti",
+          "AMD Radeon R7 370",
+          "Intel Arc A310"
+        ],
+        "high_tier_ram_gb": 16,
+        "arm_support": null
+      },
+      "summary_zh": "国服主下载页要求 Win10/11 64位、i3-540 / Athlon 200GE、SSE4.2 或 AVX、4GB 内存及 1GB 显存；但站内旧 aclos 专题页仍显示 Win7/8/10/11 与 Core 2 Duo E8400，两页未同步。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-A06",
+          "locator": "电脑配置需求 table (最低配置 / 推荐配置 / 高等配置 / 其他需求)",
+          "paraphrase_zh": "主下载页列出 Win10、11 64位，最低 i3-540 / Athlon 200GE，要求 CPU 支持 SSE4.2 指令集或打开 AVX Support 设置。"
+        },
+        {
+          "source_id": "S-A07",
+          "locator": "最低配置 / 中等配置 / 推荐配置 table",
+          "paraphrase_zh": "aclos 专题页仍列出 Win 7、8、10、11 64位及最低 Intel Core 2 Dou E8400。"
+        }
+      ],
+      "limitation_zh": "官方主下载页已收敛至 Win10/11 64位，但因同站专题页存在旧表格，按 conflict 记录；两页均未声明 Windows ARM 支持状态。"
+    },
+    {
+      "claim_id": "A-CN-VER",
+      "scope_id": "a-cn-win",
+      "topic": "observed_public_version",
+      "status": "confirmed",
+      "value": {
+        "patch": "13.09",
+        "launcher_version": "2.17.4",
+        "installer_filename": "VALORANT_CN_installer_v2.17.4.510.exe",
+        "announced_on": "2026-10-28",
+        "installed_client_build": null,
+        "driver_version": null
+      },
+      "summary_zh": "国服官方下载中心接口返回当前公开游戏版本 13.09、登录器版本 2.17.4（更新日期 2026.10.28）及官方独立安装包 VALORANT_CN_installer_v2.17.4.510.exe。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-A08",
+          "locator": "JSON fields: game_version, aclos_download_center.verNum, verDate, verUrl",
+          "paraphrase_zh": "官方接口返回 game_version=13.09，verNum=2.17.4，verDate=2026.10.28，下载链接指向 VALORANT_CN_installer_v2.17.4.510.exe。"
+        },
+        {
+          "source_id": "S-A06",
+          "locator": "inline script $.get('https://api.val.qq.com/go/agame/resource/kv?key=aclos_download_center')",
+          "paraphrase_zh": "主下载页通过该接口动态渲染游戏版本、登录器版本、更新时间与下载按钮链接。"
+        }
+      ],
+      "limitation_zh": "公开接口版本与安装包文件名已核实（与工作区静态取证样本一致），但未在 Guest 中执行安装，实际落地游戏客户端 build 与内核反作弊驱动版本仍为 null。"
+    },
+    {
+      "claim_id": "A-CN-SEC",
+      "scope_id": "a-cn-win",
+      "topic": "security_conditions",
+      "status": "confirmed",
+      "value": {
+        "bios_virtualization_features": [
+          "Intel VT-x",
+          "Intel VT-d",
+          "AMD SVM",
+          "AMD IOMMU"
+        ],
+        "conflicting_windows_features_to_disable_when_prompted": [
+          "HVCI (Memory Integrity / 内存完整性)",
+          "VBS (Virtualization-based Security / bcdedit /set hypervisorlaunchtype off)",
+          "Hyper-V",
+          "Windows Sandbox (Windows 沙盒)",
+          "WSL2",
+          "Third-party hypervisors / 虚拟机监控程序"
+        ],
+        "unconditional_all_accounts": false
+      },
+      "summary_zh": "腾讯游戏安全中心官方指引说明：针对可能存在异常登录环境或风险的账号会弹窗要求在 BIOS 开启 VT-x/VT-d 或 SVM/IOMMU，并在冲突时关闭 Windows HVCI、VBS、Hyper-V、沙盒、WSL2 或虚拟机监控程序。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-T01",
+          "locator": "Part1 BIOS VT-X/VT-D/SVM/IOMMU; Part2 情况一 HVCI / 情况二 VBS / 情况三 HYPERV; Part3 Q&A",
+          "paraphrase_zh": "官方文章说明该功能由腾讯游戏安全团队与微软合作开启系统硬件安全特性；若 BIOS 开启后仍弹窗，需关闭 HVCI、VBS（hypervisorlaunchtype off）及 Hyper-V / 虚拟机监控程序。"
+        }
+      ],
+      "limitation_zh": "该指引证明腾讯安全组件会检测并接管宿主 CPU 虚拟化特性且与 Hyper-V/VBS/虚拟机监控程序冲突，但属于通用安全排障文档，不自动等同于发行方许可条款或本机 Guest 实测失败。"
+    },
+    {
+      "claim_id": "B-CN-REQ",
+      "scope_id": "b-cn-win",
+      "topic": "system_requirements",
+      "status": "conflict",
+      "value": {
+        "os_row": {
+          "minimum": "win10",
+          "recommended": "win10,win11"
+        },
+        "os_version_row": {
+          "minimum": "Win10\\Win11",
+          "recommended": "Win10\\Win11"
+        },
+        "architecture": "64位",
+        "cpu_min": [
+          "Intel(R) Core(TM) i5-4460 CPU @ 3.20GHz"
+        ],
+        "cpu_recommended": [
+          "Intel(R) Core(TM) i5-10400F CPU @ 2.90GHz"
+        ],
+        "cpu_features_min": [
+          "SSE2"
+        ],
+        "cpu_features_recommended": [
+          "SSE4"
+        ],
+        "gpu_min": [
+          "NVIDIA GeForce GTX 750 Ti"
+        ],
+        "gpu_recommended": [
+          "NVIDIA GeForce GTX 1660"
+        ],
+        "vram_gb_min": 1,
+        "vram_gb_recommended": 3,
+        "storage_min": "30GB HDD",
+        "storage_recommended": "30GB SSD",
+        "ram_row": {
+          "minimum": "4G",
+          "recommended": "16G"
+        },
+        "ram_duplicate_row": {
+          "minimum": "4G",
+          "recommended": "4G"
+        },
+        "arm_support": null
+      },
+      "summary_zh": "国服下载页官方配置表图片列出 64 位系统、最低 i5-4460（SSE2）/ GTX 750 Ti / 1GB 显存 / 30GB HDD；但同一张表格内部“系统（win10）”与“操作系统版本（Win10\\Win11）”、推荐档“内存（16G）”与“内存RAM（4G）”存在行间矛盾。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-B09",
+          "locator": "specification image reference //ossweb-img.qq.com/images/lol/down/pic-down.jpg",
+          "paraphrase_zh": "国服官网下载页通过图片提供电脑配置要求。"
+        },
+        {
+          "source_id": "S-B10",
+          "locator": "最低配置（可用） vs 推荐配置（流畅） rows",
+          "paraphrase_zh": "官方图片给出 CPU、SSE2/SSE4、GPU、30GB 存储与 64 位架构，但系统行与操作系统版本行、推荐内存 16G 行与 4G 行不一致。"
+        }
+      ],
+      "limitation_zh": "官方配置图片已直接读取并如实记录行间不一致；图片未提及 ARM 支持或虚拟机政策。"
+    },
+    {
+      "claim_id": "B-CN-VER",
+      "scope_id": "b-cn-win",
+      "topic": "observed_public_version",
+      "status": "confirmed",
+      "value": {
+        "patch": "26.23",
+        "announced_on": "2026-11-18",
+        "announced_at_local": "2026-11-18T18:51:48+08:00",
+        "scheduled_maintenance_date": "2026-11-19",
+        "installed_client_build": null,
+        "driver_version": null
+      },
+      "summary_zh": "国服官网 CMS 配置脚本与版本更新公告确认当前公开版本为 Ver 26.23（公告发布于 2026-11-18 18:51:48，定于 11 月 19 日凌晨停机更新）。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-B11",
+          "locator": "OfficialWebsiteCfg.button.version and button.href",
+          "paraphrase_zh": "动态配置脚本返回 version='Ver 26.23' 及版本公告链接。"
+        },
+        {
+          "source_id": "S-B12",
+          "locator": "heading '26.23版本更新公告'; timestamp '2026-11-18 18:51:48'; opening maintenance notice",
+          "paraphrase_zh": "国服官方公告确认 11 月 19 日凌晨 1 点全区停机发布 26.23 版本。"
+        }
+      ],
+      "limitation_zh": "公开版本参考不等于实际安装客户端 build 或反作弊内核驱动版本。"
+    },
+    {
+      "claim_id": "P-WOA-PRISM",
+      "scope_id": "platform-arm",
+      "topic": "prism_user_mode_isa_vs_kernel_driver_split",
+      "status": "confirmed",
+      "value": {
+        "emulator": "Prism (Windows 11 24H2+)",
+        "emulated_user_mode_isas": [
+          "x86 (via WOW64)",
+          "x64 (via Arm64X system binaries)"
+        ],
+        "emulated_cpu_extensions_win11_24h2_plus": [
+          "AVX",
+          "AVX2",
+          "BMI",
+          "FMA",
+          "F16C",
+          "SSE4.2"
+        ],
+        "x86_32bit_newer_cpu_features_default": "hidden_by_default_can_enable_via_Show_newer_emulated_CPU_features",
+        "kernel_mode_driver_emulation": false,
+        "native_arm64_kernel_driver_required": true
+      },
+      "summary_zh": "Windows 11 24H2+ 的 Prism 转译器在用户态支持 x86/x64 及 AVX、AVX2、BMI、FMA、F16C 等指令集扩展（64位默认暴露，32位 x86 可通过“Show newer emulated CPU features”开启）；但内核态无任何转译，内核驱动必须编译为原生 Arm64。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-P04",
+          "locator": "Prism; How emulation works; Detecting emulation",
+          "paraphrase_zh": "Windows 11 24H2 引入 Prism 转译 x86（WOW64）与 x64（Arm64X）；官方明确指出转译仅支持用户态代码，不支持驱动，任何内核态组件必须编译为 Arm64。"
+        },
+        {
+          "source_id": "S-P05",
+          "locator": "Hide newer emulated CPU features; Show newer emulated CPU features",
+          "paraphrase_zh": "Windows 11 24H2+ 中 Prism 新增支持 AVX、AVX2、BMI、FMA、F16C 等指令集扩展；32位 x86 应用默认不暴露这些新特性，可通过勾选 Show newer emulated CPU features 开启。"
+        },
+        {
+          "source_id": "S-P06",
+          "locator": "Emulation on Arm-based devices for x86 or x64 Windows apps",
+          "paraphrase_zh": "内核不包含转译，内核驱动须构建为原生 Arm64，该限制直接影响虚拟化与底层驱动场景。"
+        }
+      ],
+      "limitation_zh": "Prism 解决了用户态 SSE4.2/AVX/AVX2 游戏与登录器的指令集门槛，但不能替反作弊厂商生成原生 Arm64 内核驱动，也不消除反作弊对 Hypervisor/VM 的策略拦截。"
+    },
+    {
+      "claim_id": "A-WOA-SPLIT",
+      "scope_id": "a-riot-win",
+      "topic": "bare_metal_woa_vs_virtualized_arm64_guest_split",
+      "status": "confirmed",
+      "value": {
+        "bare_metal_woa_axis": {
+          "user_mode_isa_requirement": "SSE4.2 or AVX (satisfied by Windows 11 24H2+ Prism user-mode emulation)",
+          "documented_arm_policy": "not_supported (S-A01)",
+          "on_demand_precheck_mode": "Windows 11 25H2+ optional on-demand driver startup (S-R02)",
+          "native_arm64_driver_binary_distributed": "unknown_pending_guest_sampling"
+        },
+        "virtualized_arm64_guest_axis": {
+          "documented_vm_rejection": "VAN 9100 disallows running in VM or unsupported virtualization environment (S-R03)",
+          "hardware_trust_root_requirements": [
+            "Secure Boot",
+            "TPM 2.0",
+            "IOMMU",
+            "VBS",
+            "HVCI"
+          ],
+          "apple_silicon_arm64_vm_gap": "Hypervisor presence exposed; nested virtualization, VBS, and guest IOMMU unavailable on standard Apple Silicon ARM64 VM paths (S-P02)"
+        },
+        "diagnostic_separation_required": true
+      },
+      "summary_zh": "国际服 VALORANT（Vanguard / On-Demand）在 ARM64 下必须拆分为两个正交维度：（1）裸金属 WoA 驱动可用性：Prism 已满足用户态 SSE4.2/AVX，但公开规格页仍标 ARM 不支持，On-Demand 模式是否已分发原生 ARM64 驱动二进制待实测核查；（2）虚拟化 ARM64 Guest 策略：VAN 9100 明确拒绝 VM，且 On-Demand 要求 IOMMU/VBS/HVCI 硬件信任根，与“有无 ARM64 驱动”属不同层级的独立阻塞。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-A01",
+          "locator": "Windows Requirements: SSE4.2 / AVX; ARM not supported; Please Note: VM excluded",
+          "paraphrase_zh": "规格页同时列出 CPU 指令集要求、ARM 不支持与 VM 不支持，需在工程诊断中解耦。"
+        },
+        {
+          "source_id": "S-R02",
+          "locator": "Vanguard Pre-Check Requirements (Win11 25H2+, Secure Boot, TPM 2.0, IOMMU, VBS, HVCI)",
+          "paraphrase_zh": "On-Demand 按需模式要求 Win11 25H2+ 及完整硬件虚拟化安全信任根。"
+        },
+        {
+          "source_id": "S-R03",
+          "locator": "VAN 9100 error description and resolution",
+          "paraphrase_zh": "VAN 9100 专门针对虚拟机或不受支持的虚拟化环境拒绝运行。"
+        },
+        {
+          "source_id": "S-P05",
+          "locator": "Hide newer emulated CPU features (AVX/AVX2 in Windows 11 24H2+)",
+          "paraphrase_zh": "Windows 11 24H2+ Prism 已在用户态提供 AVX/AVX2 转译，排除纯用户态 SSE4.2/AVX 指令集缺失问题。"
+        }
+      ],
+      "limitation_zh": "随着 Windows on ARM 生态（如 Snapdragon X 及 NVIDIA N1/N1X 平台）演进，即使未来裸金属 WoA 获得原生 ARM64 Vanguard 驱动，虚拟化 ARM64 Guest 仍受 VAN 9100 与 vTPM/IOMMU/VBS 策略独立限制，二者严禁混为一谈。"
+    },
+    {
+      "claim_id": "A-CN-WOA-SPLIT",
+      "scope_id": "a-cn-win",
+      "topic": "bare_metal_woa_vs_virtualized_arm64_guest_split",
+      "status": "confirmed",
+      "value": {
+        "bare_metal_woa_axis": {
+          "documented_os_and_isa": "Win10、11 (64位); CPU requires SSE4.2 or AVX Support (S-A06)",
+          "explicit_arm_prohibition_in_cn_specs": false,
+          "outer_installer_binary": "PE32 32-bit x86 NSIS launcher (VALORANT_CN_installer_v2.17.4.510.exe, runs under WOW64; 32-bit AVX exposure controllable via S-P05)",
+          "ace_kernel_driver_arm64_binary_distributed": "unknown_pending_authorized_dynamic_sampling"
+        },
+        "virtualized_arm64_guest_axis": {
+          "tencent_gamesafe_virtualization_rule": "Requires physical BIOS VT-x/VT-d or SVM/IOMMU enabled and rejects conflicting Hyper-V, VBS (hypervisorlaunchtype off), HVCI, Windows Sandbox, WSL2, or third-party hypervisors (S-T01)",
+          "vm_guest_conflict_mechanism": "Inside a virtualized ARM64 Guest, hypervisor presence is active and physical VT-x/SVM hardware virtualization is owned by the host hypervisor"
+        },
+        "diagnostic_separation_required": true
+      },
+      "summary_zh": "国服《无畏契约》（腾讯 ACE）在 ARM64 下同样必须拆分为两个正交维度：（1）裸金属 WoA 驱动可用性：国服下载页要求 64 位 Win10/11 与 SSE4.2/AVX（未明文禁止 ARM），外层 32 位 x86 安装器可经 WOW64/Prism 运行，实际释放的 ACE 内核驱动是否含原生 ARM64 二进制待动态采样；（2）虚拟化 ARM64 Guest 策略：腾讯安全中心明确检测并排斥 Hyper-V、VBS 及虚拟机监控程序占用 CPU 虚拟化功能。",
+      "updated_on": "2026-11-22",
+      "evidence": [
+        {
+          "source_id": "S-A06",
+          "locator": "电脑配置需求：Win10、11 64位；其他需求：CPU需要支持SSE4.2指令集 或 打开AVX Support设置",
+          "paraphrase_zh": "国服配置表仅规定 64 位系统与 SSE4.2/AVX 指令集，未显式列明 ARM 架构限制。"
+        },
+        {
+          "source_id": "S-T01",
+          "locator": "Part1 BIOS VT-X/VT-D/SVM/IOMMU; Part2 情况一 HVCI / 情况二 VBS / 情况三 HYPERV 与虚拟机监控程序",
+          "paraphrase_zh": "腾讯游戏安全中心针对异常/风险环境要求独占开启硬件虚拟化，并要求关闭 Hyper-V、VBS（hypervisorlaunchtype off）及虚拟机监控程序。"
+        },
+        {
+          "source_id": "S-P04",
+          "locator": "How emulation works: WOW64 for x86, Arm64X for x64, native Arm64 required for kernel drivers",
+          "paraphrase_zh": "外层 32 位 x86 安装器与 64 位用户态组件可由 WOW64/Prism 转译，但 ACE 内核驱动必须具有原生 Arm64 二进制才能在 Arm 内核加载。"
+        },
+        {
+          "source_id": "S-P05",
+          "locator": "Show newer emulated CPU features for 32-bit x86 apps",
+          "paraphrase_zh": "若 32 位 x86 启动器/安装器检测 AVX，可在 Windows 11 24H2+ Prism 设置中为 32 位应用显式开启新 CPU 特性暴露。"
+        }
+      ],
+      "limitation_zh": "在阶段 B2 真实 Windows 11 ARM64 Guest 动态采样中，必须根据实际产物与错误码严格区分“ACE 未释放 ARM64 驱动 / 驱动 PE Machine 为 AMD64 无法加载”与“ACE 检测到 Hypervisor/虚拟化占用而弹窗拒绝”。"
+    }
+  ],
+  "compatibility_matrix": [
+    {
+      "record_id": "VM-A-RIOT",
+      "scope_id": "a-riot-win",
+      "environment": "virtual_machine",
+      "guest_cpu_architecture": "unknown",
+      "publisher_permission": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "official_documentation"
+      },
+      "publisher_support": {
+        "value": "not_supported",
+        "basis_claim_ids": [
+          "A-VM"
+        ],
+        "updated_on": "2026-11-22",
+        "verification_method": "official_documentation"
+      },
+      "driver_load": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "not_tested"
+      },
+      "game_start": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "not_tested"
+      },
+      "protected_session": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "not_tested"
+      },
+      "binary_architecture_claim_id": "A-BIN",
+      "updated_on": "2026-11-22"
+    },
+    {
+      "record_id": "VM-A-CN",
+      "scope_id": "a-cn-win",
+      "environment": "virtual_machine",
+      "guest_cpu_architecture": "unknown",
+      "publisher_permission": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "official_documentation"
+      },
+      "publisher_support": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "official_documentation"
+      },
+      "driver_load": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "not_tested"
+      },
+      "game_start": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "not_tested"
+      },
+      "protected_session": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "not_tested"
+      },
+      "binary_architecture_claim_id": null,
+      "updated_on": "2026-11-22"
+    },
+    {
+      "record_id": "VM-B-RIOT",
+      "scope_id": "b-riot-win",
+      "environment": "virtual_machine",
+      "guest_cpu_architecture": "unknown",
+      "publisher_permission": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "official_documentation"
+      },
+      "publisher_support": {
+        "value": "not_supported",
+        "basis_claim_ids": [
+          "B-VM"
+        ],
+        "updated_on": "2026-11-22",
+        "verification_method": "official_documentation"
+      },
+      "driver_load": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "not_tested"
+      },
+      "game_start": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "not_tested"
+      },
+      "protected_session": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "not_tested"
+      },
+      "binary_architecture_claim_id": "B-BIN",
+      "updated_on": "2026-11-22"
+    },
+    {
+      "record_id": "VM-B-CN",
+      "scope_id": "b-cn-win",
+      "environment": "virtual_machine",
+      "guest_cpu_architecture": "unknown",
+      "publisher_permission": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "official_documentation"
+      },
+      "publisher_support": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "official_documentation"
+      },
+      "driver_load": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "not_tested"
+      },
+      "game_start": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "not_tested"
+      },
+      "protected_session": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "not_tested"
+      },
+      "binary_architecture_claim_id": null,
+      "updated_on": "2026-11-22"
+    },
+    {
+      "record_id": "VM-C-STEAM",
+      "scope_id": "c-steam-win",
+      "environment": "virtual_machine",
+      "guest_cpu_architecture": "unknown",
+      "publisher_permission": {
+        "value": "prohibited",
+        "basis_claim_ids": [
+          "C-VM"
+        ],
+        "updated_on": "2026-11-22",
+        "verification_method": "official_documentation"
+      },
+      "publisher_support": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "official_documentation"
+      },
+      "driver_load": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "not_tested"
+      },
+      "game_start": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "not_tested"
+      },
+      "protected_session": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "not_tested"
+      },
+      "binary_architecture_claim_id": "C-BIN",
+      "updated_on": "2026-11-22"
+    },
+    {
+      "record_id": "VM-C-JP",
+      "scope_id": "c-jp-win",
+      "environment": "virtual_machine",
+      "guest_cpu_architecture": "unknown",
+      "publisher_permission": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "official_documentation"
+      },
+      "publisher_support": {
+        "value": "not_supported",
+        "basis_claim_ids": [
+          "C-JP"
+        ],
+        "updated_on": "2026-11-22",
+        "verification_method": "official_documentation"
+      },
+      "driver_load": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "not_tested"
+      },
+      "game_start": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "not_tested"
+      },
+      "protected_session": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "not_tested"
+      },
+      "binary_architecture_claim_id": null,
+      "updated_on": "2026-11-22"
+    },
+    {
+      "record_id": "VM-C-CN",
+      "scope_id": "c-cn-win",
+      "environment": "virtual_machine",
+      "guest_cpu_architecture": "unknown",
+      "publisher_permission": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "official_documentation"
+      },
+      "publisher_support": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "official_documentation"
+      },
+      "driver_load": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "not_tested"
+      },
+      "game_start": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "not_tested"
+      },
+      "protected_session": {
+        "value": "unknown",
+        "basis_claim_ids": [],
+        "updated_on": "2026-11-22",
+        "verification_method": "not_tested"
+      },
+      "binary_architecture_claim_id": null,
+      "updated_on": "2026-11-22"
+    }
+  ],
+  "research_log": [
+    {
+      "log_id": "L-01",
+      "scope_id": "b-cn-win",
+      "official_hosts": [
+        "lol.qq.com"
+      ],
+      "attempts": [
+        "2026-11-21: historical official-domain review; superseded access detail in L-06"
+      ],
+      "outcome": "historical insufficient technical coverage; do not interpret as current availability",
+      "implication": "current release facts unknown; no claim of absence"
+    },
+    {
+      "log_id": "L-02",
+      "scope_id": "c-cn-win",
+      "official_hosts": [
+        "nexon.co.jp"
+      ],
+      "attempts": [
+        "official-domain search",
+        "open announcement"
+      ],
+      "outcome": "partial_body_navigation_only",
+      "implication": "historical search lead only"
+    },
+    {
+      "log_id": "L-03",
+      "scope_id": "c-steam-win",
+      "official_hosts": [
+        "reachthefinals.com",
+        "id.embark.games",
+        "thefinals-jp.nexon.com"
+      ],
+      "attempts": [
+        "official patch index",
+        "PC requirements",
+        "security FAQ",
+        "content-creator contact and assets"
+      ],
+      "outcome": "no_public_cross_boundary_anticheat_interface_evidenced",
+      "implication": "interface remains unknown; not a universal nonexistence claim"
+    },
+    {
+      "log_id": "L-04",
+      "scope_id": "a-cn-win",
+      "official_hosts": [
+        "val.qq.com"
+      ],
+      "attempts": [
+        "2026-11-22: open S-A04 twice"
+      ],
+      "outcome": "timeout; previous partial success remains dated 2026-11-21",
+      "implication": "No new China technical evidence; not a successful current-body review"
+    },
+    {
+      "log_id": "L-05",
+      "scope_id": "b-cn-win",
+      "official_hosts": [
+        "www.riotgames.com"
+      ],
+      "attempts": [
+        "2026-11-22: reopen historical S-B04; use successfully opened S-B07 as historical planning context"
+      ],
+      "outcome": "S-B04 body unavailable; previous success remains dated 2026-11-21",
+      "implication": "S-B07 establishes historical planning language only; no current China deployment inference"
+    },
+    {
+      "log_id": "L-06",
+      "scope_id": "b-cn-win",
+      "official_hosts": [
+        "lol.qq.com",
+        "ossweb-img.qq.com"
+      ],
+      "attempts": [
+        "2026-11-22: open homepage",
+        "2026-11-22: follow actual download link",
+        "2026-11-22: follow requirements image"
+      ],
+      "outcome": "home and download partially readable; version placeholder; requirements image timeout",
+      "implication": "No new current build or technical requirements accepted"
+    },
+    {
+      "log_id": "L-07",
+      "scope_id": "b-riot-win",
+      "official_hosts": [
+        "www.leagueoflegends.com"
+      ],
+      "attempts": [
+        "2026-11-22: resolve patch URL from official index"
+      ],
+      "outcome": "canonical patch URL corrected; source timestamp UTC retained",
+      "implication": "Public patch reference unchanged; Shanghai date is 2026-11-18, not source UTC date 2026-11-17"
+    },
+    {
+      "log_id": "L-08",
+      "scope_id": "a-cn-win",
+      "official_hosts": [
+        "val.qq.com",
+        "api.val.qq.com",
+        "gamesafe.qq.com"
+      ],
+      "attempts": [
+        "2026-11-22: open val.qq.com/main.html, val.qq.com/download.html, and val.qq.com/act/a20230708aclos/index.html",
+        "2026-11-22: query api.val.qq.com/go/agame/resource/kv?key=aclos_download_center referenced by download.html",
+        "2026-11-22: open gamesafe.qq.com/article/1181.shtml for official CPU virtualization & Hyper-V/VBS/HVCI guidance"
+      ],
+      "outcome": "CN official specs (with conflict between download.html Win10/11 and legacy aclos page Win7-11), live version 13.09 / launcher 2.17.4 (VALORANT_CN_installer_v2.17.4.510.exe), and Tencent Game Security CPU virtualization conflict guide verified",
+      "implication": "A-CN-REQ, A-CN-VER, and A-CN-SEC established from first-party sources; VM permission/support and kernel driver PE Machine remain unknown pending Guest dynamic sampling"
+    },
+    {
+      "log_id": "L-09",
+      "scope_id": "b-cn-win",
+      "official_hosts": [
+        "lol.qq.com",
+        "ossweb-img.qq.com"
+      ],
+      "attempts": [
+        "2026-11-22: download and visually inspect ossweb-img.qq.com/images/lol/down/pic-down.jpg linked by lol.qq.com/download.shtml",
+        "2026-11-22: fetch lol.qq.com/act/AutoCMS/publish/LOLWeb/OfficialWebsite/website_cfg.js and patch notes 37102797.html"
+      ],
+      "outcome": "CN official requirements image read (revealing internal row discrepancy between 16G and 4G recommended RAM) and live CN patch Ver 26.23 (2026-11-18) verified",
+      "implication": "B-CN-REQ and B-CN-VER established; current CN anti-cheat kernel binary and VM policy remain unknown"
+    },
+    {
+      "log_id": "L-10",
+      "scope_id": "c-cn-win",
+      "official_hosts": [
+        "www.nexon.co.jp",
+        "thefinals.qq.com"
+      ],
+      "attempts": [
+        "2026-11-22: verify full announcement text of S-C08 and follow official China link to thefinals.qq.com/cp/web20250814/index.html",
+        "2026-11-22: open official security center thefinals.qq.com/cp/a20251111anquan/"
+      ],
+      "outcome": "Confirmed active Tencent operation of THE FINALS China Edition (《终极角逐》 S3 season) and official security portal",
+      "implication": "C-CN operational status confirmed; PC hardware requirements table, kernel driver binary, and VM policy are not published on the public portal and remain unknown"
+    },
+    {
+      "log_id": "L-11",
+      "scope_id": "platform-arm",
+      "official_hosts": [
+        "learn.microsoft.com",
+        "support.riotgames.com",
+        "val.qq.com",
+        "gamesafe.qq.com"
+      ],
+      "attempts": [
+        "2026-11-22: open learn.microsoft.com Windows on Arm Prism emulation docs (apps-on-arm-x86-emulation, apps-on-arm-program-compat-troubleshooter, add-arm-support)",
+        "2026-11-22: cross-reference Prism AVX/AVX2 user-mode emulation and native Arm64 kernel driver requirement with VALORANT global Vanguard/On-Demand (S-A01, S-R02, S-R03) and CN ACE (S-A06, S-T01)"
+      ],
+      "outcome": "Orthogonally split 'Bare-Metal Windows on ARM Driver Availability (Prism user-mode AVX/AVX2 + native Arm64 kernel driver binary)' from 'Virtualized ARM64 Guest Policy (Hypervisor / vTPM / VBS / CPU virtualization conflict)' in P-WOA-PRISM, A-WOA-SPLIT, and A-CN-WOA-SPLIT",
+      "implication": "Prevents conflating missing ARM64 driver binaries with VM/Hypervisor/vTPM policy rejections during Stage B2 dynamic sampling"
+    }
+  ],
+  "consumption_rules": [
+    "Unknown is not false, not unsupported, and not permission.",
+    "Publisher support and publisher permission are separate.",
+    "Never promote driver_load, game_start, or protected_session from policy, version, VM readiness, or another state.",
+    "A public patch identifier is not an installed build or driver version.",
+    "Do not apply one distribution, client platform, or historical source to a different scope.",
+    "On-demand security requirements are mode-specific.",
+    "Cross-boundary interface remains unknown until an applicable official interface and authorization are evidenced.",
+    "Software-documented VM rejection is separate from publisher license/terms permission and from observed runtime results."
+  ]
+}

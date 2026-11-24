@@ -1,0 +1,225 @@
+{
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-24T13:12:20.565955+00:00",
+  "winning_utm_setting": {
+    "key": "QEMUDirectXDriver",
+    "value": 2,
+    "type": "int",
+    "requested_value": 2,
+    "observed_plist_value": 2,
+    "backup_saved": true
+  },
+  "d3dmetal_probe": {
+    "label": "d3dmetal",
+    "exit_code": 0,
+    "adapter_description": "Red Hat VirtIO GPU 3D controller",
+    "feature_level": "11_1",
+    "fps": 129.938,
+    "mean_frame_ms": 7.696,
+    "p95_frame_ms": 10.605,
+    "gpu_ms_mean": 0.0,
+    "pixel_compare": {
+      "max_channel_error_lsb": 0,
+      "over_threshold_pixels": 0,
+      "byte_exact_match": true
+    },
+    "render_server_lsof": {
+      "render_server_count": 13,
+      "top_workers": [
+        {
+          "pid": 2004,
+          "rss_kb": 78764,
+          "cpu": 0.0,
+          "active_backend": "d3dmetal-native",
+          "dxmt_native_loaded": false,
+          "d3dmetal_native_loaded": true,
+          "virglrenderer_loaded": false,
+          "kosmickrisp_loaded": false,
+          "dxmt_evidence_count": 0,
+          "d3dmetal_evidence_count": 8
+        },
+        {
+          "pid": 2014,
+          "rss_kb": 33480,
+          "cpu": 0.0,
+          "active_backend": "d3dmetal-native",
+          "dxmt_native_loaded": false,
+          "d3dmetal_native_loaded": true,
+          "virglrenderer_loaded": false,
+          "kosmickrisp_loaded": false,
+          "dxmt_evidence_count": 0,
+          "d3dmetal_evidence_count": 8
+        },
+        {
+          "pid": 2018,
+          "rss_kb": 18396,
+          "cpu": 0.0,
+          "active_backend": "d3dmetal-native",
+          "dxmt_native_loaded": false,
+          "d3dmetal_native_loaded": true,
+          "virglrenderer_loaded": false,
+          "kosmickrisp_loaded": false,
+          "dxmt_evidence_count": 0,
+          "d3dmetal_evidence_count": 8
+        },
+        {
+          "pid": 2017,
+          "rss_kb": 18128,
+          "cpu": 0.0,
+          "active_backend": "d3dmetal-native",
+          "dxmt_native_loaded": false,
+          "d3dmetal_native_loaded": true,
+          "virglrenderer_loaded": false,
+          "kosmickrisp_loaded": false,
+          "dxmt_evidence_count": 0,
+          "d3dmetal_evidence_count": 8
+        },
+        {
+          "pid": 2015,
+          "rss_kb": 17576,
+          "cpu": 0.0,
+          "active_backend": "d3dmetal-native",
+          "dxmt_native_loaded": false,
+          "d3dmetal_native_loaded": true,
+          "virglrenderer_loaded": false,
+          "kosmickrisp_loaded": false,
+          "dxmt_evidence_count": 0,
+          "d3dmetal_evidence_count": 8
+        },
+        {
+          "pid": 2002,
+          "rss_kb": 4576,
+          "cpu": 0.0,
+          "active_backend": "none_detected",
+          "dxmt_native_loaded": false,
+          "d3dmetal_native_loaded": false,
+          "virglrenderer_loaded": false,
+          "kosmickrisp_loaded": false,
+          "dxmt_evidence_count": 0,
+          "d3dmetal_evidence_count": 0
+        }
+      ],
+      "overall": {
+        "active_backend": "d3dmetal-native",
+        "dxmt_native_loaded": false,
+        "d3dmetal_native_loaded": true,
+        "virglrenderer_loaded": false,
+        "kosmickrisp_loaded": false,
+        "dxmt_evidence_count": 0,
+        "d3dmetal_evidence_count": 40
+      }
+    }
+  },
+  "dxmt_probe": {
+    "label": "dxmt-2",
+    "exit_code": 0,
+    "adapter_description": "Red Hat VirtIO GPU 3D controller",
+    "feature_level": "11_1",
+    "fps": 119.46,
+    "mean_frame_ms": 8.371,
+    "p95_frame_ms": 12.352,
+    "gpu_ms_mean": 1.6213,
+    "pixel_compare": {
+      "max_channel_error_lsb": 0,
+      "over_threshold_pixels": 0,
+      "byte_exact_match": true
+    },
+    "render_server_lsof": {
+      "render_server_count": 13,
+      "top_workers": [
+        {
+          "pid": 2407,
+          "rss_kb": 141856,
+          "cpu": 0.0,
+          "active_backend": "dxmt-native",
+          "dxmt_native_loaded": true,
+          "d3dmetal_native_loaded": false,
+          "virglrenderer_loaded": false,
+          "kosmickrisp_loaded": false,
+          "dxmt_evidence_count": 1,
+          "d3dmetal_evidence_count": 0
+        },
+        {
+          "pid": 2417,
+          "rss_kb": 49152,
+          "cpu": 0.0,
+          "active_backend": "dxmt-native",
+          "dxmt_native_loaded": true,
+          "d3dmetal_native_loaded": false,
+          "virglrenderer_loaded": false,
+          "kosmickrisp_loaded": false,
+          "dxmt_evidence_count": 1,
+          "d3dmetal_evidence_count": 0
+        },
+        {
+          "pid": 2423,
+          "rss_kb": 39200,
+          "cpu": 0.0,
+          "active_backend": "dxmt-native",
+          "dxmt_native_loaded": true,
+          "d3dmetal_native_loaded": false,
+          "virglrenderer_loaded": false,
+          "kosmickrisp_loaded": false,
+          "dxmt_evidence_count": 1,
+          "d3dmetal_evidence_count": 0
+        },
+        {
+          "pid": 2422,
+          "rss_kb": 34336,
+          "cpu": 0.0,
+          "active_backend": "dxmt-native",
+          "dxmt_native_loaded": true,
+          "d3dmetal_native_loaded": false,
+          "virglrenderer_loaded": false,
+          "kosmickrisp_loaded": false,
+          "dxmt_evidence_count": 1,
+          "d3dmetal_evidence_count": 0
+        },
+        {
+          "pid": 2418,
+          "rss_kb": 31952,
+          "cpu": 0.0,
+          "active_backend": "dxmt-native",
+          "dxmt_native_loaded": true,
+          "d3dmetal_native_loaded": false,
+          "virglrenderer_loaded": false,
+          "kosmickrisp_loaded": false,
+          "dxmt_evidence_count": 1,
+          "d3dmetal_evidence_count": 0
+        },
+        {
+          "pid": 2451,
+          "rss_kb": 16528,
+          "cpu": 0.0,
+          "active_backend": "dxmt-native",
+          "dxmt_native_loaded": true,
+          "d3dmetal_native_loaded": false,
+          "virglrenderer_loaded": false,
+          "kosmickrisp_loaded": false,
+          "dxmt_evidence_count": 1,
+          "d3dmetal_evidence_count": 0
+        }
+      ],
+      "overall": {
+        "active_backend": "dxmt-native",
+        "dxmt_native_loaded": true,
+        "d3dmetal_native_loaded": false,
+        "virglrenderer_loaded": false,
+        "kosmickrisp_loaded": false,
+        "dxmt_evidence_count": 6,
+        "d3dmetal_evidence_count": 0
+      }
+    }
+  },
+  "comparison": {
+    "d3dmetal_fps": 129.938,
+    "dxmt_fps": 119.46,
+    "dxmt_vs_d3dmetal_fps_ratio": 0.919,
+    "d3dmetal_gpu_ms_mean": 0.0,
+    "dxmt_gpu_ms_mean": 1.6213,
+    "timestamp_query_recovered_in_dxmt": true,
+    "d3dmetal_max_lsb": 0,
+    "dxmt_max_lsb": 0,
+    "both_zero_lsb": true
+  }
+}

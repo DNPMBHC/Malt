@@ -1,0 +1,80 @@
+{
+  "schema": "task-07-cli-v1",
+  "checks": {
+    "help": {
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "requiredDiagnosticsPresent": true,
+      "forbiddenDiagnosticsAbsent": true,
+      "passed": true
+    },
+    "run-help": {
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "requiredDiagnosticsPresent": true,
+      "forbiddenDiagnosticsAbsent": true,
+      "passed": true
+    },
+    "storage-help": {
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "requiredDiagnosticsPresent": true,
+      "forbiddenDiagnosticsAbsent": true,
+      "passed": true
+    },
+    "unknown-option": {
+      "exitCode": 64,
+      "expectedExitCode": 64,
+      "requiredDiagnosticsPresent": true,
+      "forbiddenDiagnosticsAbsent": true,
+      "passed": true
+    },
+    "empty-override-flag-rejects-value": {
+      "exitCode": 64,
+      "expectedExitCode": 64,
+      "requiredDiagnosticsPresent": true,
+      "forbiddenDiagnosticsAbsent": true,
+      "passed": true
+    }
+  },
+  "storagePreflight": {
+    "passed": false,
+    "status": "synthetic_local_execution",
+    "homeIsolationVerified": true,
+    "checks": {
+      "storage-local-capacity": {
+        "exitCode": 1,
+        "passed": false,
+        "reason": "one complete JSON preflight report required"
+      },
+      "storage-file-target": {
+        "exitCode": 1,
+        "passed": false,
+        "reason": "one complete JSON preflight report required"
+      },
+      "storage-missing-installer": {
+        "exitCode": 1,
+        "passed": false,
+        "reason": "one complete JSON preflight report required"
+      },
+      "storage-invalid-guest-config": {
+        "exitCode": 1,
+        "passed": false
+      }
+    },
+    "preservation": {
+      "metadataRegistryAndInstallerUnchanged": true,
+      "savedProgramSettingsNotCreated": true,
+      "noPersistentStagingFiles": true
+    },
+    "fixtureInstallerExecuted": false,
+    "realGuestExecuted": false,
+    "realInstallationVerified": false,
+    "scope": "temporary synthetic registry, inert installer and local staging; capacity pass is not guest mapping or installation proof"
+  },
+  "binarySHA256": "95ef1fcd8a7c60a565c8f484b85cde061cb16b55dc5b4f38181078703363fad8",
+  "passed": false,
+  "scope": "parser checks and isolated synthetic storage-preflight execution; no installer or game launch",
+  "savedArgumentOverrideEndToEnd": "not_verified",
+  "emptyOverrideRuntimeBranch": "not_verified"
+}

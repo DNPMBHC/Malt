@@ -1,0 +1,43 @@
+{
+  "schema": "task-07-preflight-environment-v1",
+  "capturedAt": "2026-11-22T00:55:41+08:00",
+  "storage": {
+    "externalVolumes": [
+      {
+        "alias": "volume-a",
+        "availableBytes": 423956480,
+        "totalBytes": 524247040,
+        "readOnly": false,
+        "writableAccessReported": false,
+        "filesystem": "hfs",
+        "probe": "read-only diskutil metadata and statvfs; no write probe"
+      },
+      {
+        "alias": "volume-b",
+        "availableBytes": 64326328320,
+        "totalBytes": 512104882176,
+        "readOnly": false,
+        "writableAccessReported": true,
+        "filesystem": "apfs",
+        "probe": "read-only diskutil metadata and statvfs; no write probe"
+      }
+    ],
+    "externalVolumeCount": 2,
+    "unclassifiedMountCount": 1,
+    "userReportedSpaceSufficient": true,
+    "spaceBudgetVerified": false,
+    "reason": "Capacity is measured; installer/staging/guest requirements and selected target mapping are not yet bound to a final preflight.",
+    "classificationLimitation": "diskutil Internal=false may include virtual mounts; writable capacity is not proof of selected target, successful write, guest visibility or installation."
+  },
+  "runtimeEnvironment": {
+    "status": "environment_not_verified",
+    "utmCLIOnPATH": false,
+    "utmApplicationInStandardLocations": false,
+    "guestConfiguration": "not_probed",
+    "personalVMInventoryInspected": false,
+    "realGuestExecuted": false,
+    "installerExecuted": false,
+    "gameExecuted": false,
+    "absenceClassification": "environment prerequisite; not a feature failure"
+  }
+}

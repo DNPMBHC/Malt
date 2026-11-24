@@ -1,0 +1,98 @@
+{
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-24T00:59:34.802839+00:00",
+  "scope": "complete_runtime_native_nswindow_cametal_layer",
+  "consumer_module_alias": "ModuleC",
+  "source_subset_recompiled": false,
+  "vm_actions": 0,
+  "visible_window_created": true,
+  "pointer_capture_used": false,
+  "native_fullscreen_verified": false,
+  "real_guest_verified": false,
+  "virtual_hid_verified": false,
+  "passed": false,
+  "source_fingerprint_before": "da34065993aec399e53349256ffc4ec8231036ec5ce847eff4ccaa9983524e26",
+  "production_archive_sha256": "657c7b430a71328c43980ca28af8990abd52eee9b2e53c8b9b075c5e28f3c16f",
+  "consumer_module_sha256": {
+    "arm64-apple-macos.swiftdoc": "2a4d514643302827625423843b892f10eb0207d5055f8355b3f66f901e3f1394",
+    "arm64-apple-macos.swiftmodule": "28e2d1d29744779f72215356fef38b28734a811967b570942875591a7c198304",
+    "arm64-apple-macos.abi.json": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "production_contract_revision": 2,
+  "archive_member_count": 3,
+  "complete_runtime_object_in_archive": true,
+  "runs": [
+    {
+      "owner": "@DNPMBHC",
+      "framesConsumed": 12,
+      "realGuestVerified": false,
+      "sourceOrigin": "host_synthetic_not_guest_scanout",
+      "hostBackingScale": 2,
+      "entryState": {
+        "application_active_after_request": true,
+        "window_key_after_request": true,
+        "window_key_before_request": false,
+        "application_active_before_request": true
+      },
+      "virtualHIDVerified": false,
+      "producerSnapshot": {
+        "produced": 12,
+        "leased": 0,
+        "failures": 0,
+        "generation": 2,
+        "pool_size": 3,
+        "dropped": 0,
+        "released": 12
+      },
+      "checks": {
+        "producer_release_idempotent": true,
+        "resized_frames_presented": true,
+        "no_producer_render_failure": true,
+        "presentation_error_absent": true,
+        "origin_explicitly_synthetic": true,
+        "frame_id_increases": true,
+        "consumption_succeeded": true,
+        "native_cametal_layer_attached": true,
+        "window_fullscreen_style_observed": true,
+        "backing_scale_matches_screen": true,
+        "window_closed_automatically": true,
+        "released_after_native_gpu_present": true,
+        "native_fullscreen_primary_behavior": true,
+        "consumer_receipt_once_per_frame": true,
+        "actual_gpu_present_count": true,
+        "producer_resize_succeeded": true,
+        "input_state_released": true,
+        "window_on_active_space": true,
+        "all_producer_leases_returned": true,
+        "producer_write_complete": true,
+        "native_fullscreen_presentation_ended": true,
+        "layout_matches_producer": true,
+        "cursor_release_verified": true,
+        "native_fullscreen_transition_notified": true,
+        "missing_hid_refuses_capture": true,
+        "supported_format": true,
+        "twelve_frames_presented": true,
+        "no_cursor_capture": true
+      }
+    },
+    {
+      "checks": {
+        "native_fullscreen_primary_behavior": true,
+        "window_fullscreen_style_observed": false,
+        "native_fullscreen_transition_notified": false,
+        "window_on_active_space": true
+      },
+      "entryState": {
+        "application_active_before_request": true,
+        "window_key_before_request": false,
+        "window_key_after_request": true,
+        "application_active_after_request": true
+      },
+      "error": "native_window_failed",
+      "passed": false,
+      "owner": "@DNPMBHC",
+      "phase": "opening"
+    }
+  ],
+  "error": "native_roundtrip_reported_failure"
+}

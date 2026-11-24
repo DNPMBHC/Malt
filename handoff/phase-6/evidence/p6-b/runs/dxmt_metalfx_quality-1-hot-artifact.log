@@ -1,0 +1,984 @@
+
+
+msync: bootstrapped mach port on wine-58c8116-msync.
+msync: up and running.
+Failed to open /etc/machine-id, error No such file or directory.
+[mvk-info] MoltenVK version 1.3.0, supporting Vulkan version 1.3.313.
+	The following 126 Vulkan extensions are supported:
+	VK_KHR_16bit_storage v1
+	VK_KHR_8bit_storage v1
+	VK_KHR_bind_memory2 v1
+	VK_KHR_buffer_device_address v1
+	VK_KHR_calibrated_timestamps v1
+	VK_KHR_copy_commands2 v1
+	VK_KHR_create_renderpass2 v1
+	VK_KHR_dedicated_allocation v3
+	VK_KHR_deferred_host_operations v4
+	VK_KHR_depth_stencil_resolve v1
+	VK_KHR_descriptor_update_template v1
+	VK_KHR_device_group v4
+	VK_KHR_device_group_creation v1
+	VK_KHR_driver_properties v1
+	VK_KHR_dynamic_rendering v1
+	VK_KHR_external_fence v1
+	VK_KHR_external_fence_capabilities v1
+	VK_KHR_external_memory v1
+	VK_KHR_external_memory_capabilities v1
+	VK_KHR_external_semaphore v1
+	VK_KHR_external_semaphore_capabilities v1
+	VK_KHR_fragment_shader_barycentric v1
+	VK_KHR_format_feature_flags2 v2
+	VK_KHR_get_memory_requirements2 v1
+	VK_KHR_get_physical_device_properties2 v2
+	VK_KHR_get_surface_capabilities2 v1
+	VK_KHR_imageless_framebuffer v1
+	VK_KHR_image_format_list v1
+	VK_KHR_incremental_present v2
+	VK_KHR_index_type_uint8 v1
+	VK_KHR_load_store_op_none v1
+	VK_KHR_maintenance1 v2
+	VK_KHR_maintenance2 v1
+	VK_KHR_maintenance3 v1
+	VK_KHR_maintenance4 v2
+	VK_KHR_maintenance6 v1
+	VK_KHR_maintenance7 v1
+	VK_KHR_map_memory2 v1
+	VK_KHR_multiview v1
+	VK_KHR_portability_subset v1
+	VK_KHR_push_descriptor v2
+	VK_KHR_relaxed_block_layout v1
+	VK_KHR_sampler_mirror_clamp_to_edge v3
+	VK_KHR_sampler_ycbcr_conversion v14
+	VK_KHR_separate_depth_stencil_layouts v1
+	VK_KHR_shader_draw_parameters v1
+	VK_KHR_shader_expect_assume v1
+	VK_KHR_shader_float_controls v4
+	VK_KHR_shader_float16_int8 v1
+	VK_KHR_shader_integer_dot_product v1
+	VK_KHR_shader_non_semantic_info v1
+	VK_KHR_shader_subgroup_extended_types v1
+	VK_KHR_shader_subgroup_rotate v2
+	VK_KHR_shader_terminate_invocation v1
+	VK_KHR_spirv_1_4 v1
+	VK_KHR_storage_buffer_storage_class v1
+	VK_KHR_surface v25
+	VK_KHR_swapchain v70
+	VK_KHR_swapchain_mutable_format v1
+	VK_KHR_synchronization2 v1
+	VK_KHR_timeline_semaphore v2
+	VK_KHR_uniform_buffer_standard_layout v1
+	VK_KHR_variable_pointers v1
+	VK_KHR_vertex_attribute_divisor v1
+	VK_KHR_vulkan_memory_model v3
+	VK_KHR_zero_initialize_workgroup_memory v1
+	VK_EXT_4444_formats v1
+	VK_EXT_buffer_device_address v2
+	VK_EXT_calibrated_timestamps v2
+	VK_EXT_debug_marker v4
+	VK_EXT_debug_report v10
+	VK_EXT_debug_utils v2
+	VK_EXT_descriptor_indexing v2
+	VK_EXT_depth_clip_control v1
+	VK_EXT_extended_dynamic_state v1
+	VK_EXT_extended_dynamic_state2 v1
+	VK_EXT_extended_dynamic_state3 v2
+	VK_EXT_external_memory_host v1
+	VK_EXT_external_memory_metal v1
+	VK_EXT_fragment_shader_interlock v1
+	VK_EXT_hdr_metadata v3
+	VK_EXT_headless_surface v1
+	VK_EXT_host_image_copy v1
+	VK_EXT_host_query_reset v1
+	VK_EXT_image_2d_view_of_3d v1
+	VK_EXT_image_robustness v1
+	VK_EXT_index_type_uint8 v1
+	VK_EXT_inline_uniform_block v1
+	VK_EXT_layer_settings v2
+	VK_EXT_load_store_op_none v1
+	VK_EXT_memory_budget v1
+	VK_EXT_metal_objects v2
+	VK_EXT_metal_surface v1
+	VK_EXT_pipeline_creation_cache_control v3
+	VK_EXT_pipeline_creation_feedback v1
+	VK_EXT_pipeline_robustness v1
+	VK_EXT_post_depth_coverage v1
+	VK_EXT_private_data v1
+	VK_EXT_robustness2 v1
+	VK_EXT_sample_locations v1
+	VK_EXT_scalar_block_layout v1
+	VK_EXT_separate_stencil_usage v1
+	VK_EXT_shader_atomic_float v1
+	VK_EXT_shader_demote_to_helper_invocation v1
+	VK_EXT_shader_stencil_export v1
+	VK_EXT_shader_subgroup_ballot v1
+	VK_EXT_shader_subgroup_vote v1
+	VK_EXT_shader_viewport_index_layer v1
+	VK_EXT_subgroup_size_control v2
+	VK_EXT_surface_maintenance1 v1
+	VK_EXT_swapchain_colorspace v5
+	VK_EXT_swapchain_maintenance1 v1
+	VK_EXT_texel_buffer_alignment v1
+	VK_EXT_texture_compression_astc_hdr v1
+	VK_EXT_tooling_info v1
+	VK_EXT_vertex_attribute_divisor v3
+	VK_AMD_gpu_shader_half_float v2
+	VK_AMD_negative_viewport_height v1
+	VK_AMD_shader_image_load_store_lod v1
+	VK_AMD_shader_trinary_minmax v1
+	VK_IMG_format_pvrtc v1
+	VK_INTEL_shader_integer_functions2 v1
+	VK_GOOGLE_display_timing v1
+	VK_MVK_macos_surface v3
+	VK_MVK_moltenvk v37
+	VK_NV_fragment_shader_barycentric v1
+[mvk-info] GPU device:
+	model: Apple M4
+	type: Integrated
+	vendorID: 0x106b
+	deviceID: 0x1b020209
+	pipelineCacheUUID: 0000283C-1B02-0209-0000-000100000000
+	GPU memory available: 12124 MB
+	GPU memory used: 0 MB
+	Metal Shading Language 3.2
+	supports the following GPU Features:
+		GPU Family Metal 3
+		GPU Family Apple 9
+		GPU Family Mac 2
+		Read-Write Texture Tier 2
+[mvk-info] Created VkInstance for Vulkan version 1.0.0, as requested by app, with the following 3 Vulkan extensions enabled:
+	VK_KHR_external_memory_capabilities v1
+	VK_KHR_external_semaphore_capabilities v1
+	VK_KHR_get_physical_device_properties2 v2
+[mvk-info] MoltenVK version 1.3.0, supporting Vulkan version 1.3.313.
+	The following 126 Vulkan extensions are supported:
+	VK_KHR_16bit_storage v1
+	VK_KHR_8bit_storage v1
+	VK_KHR_bind_memory2 v1
+	VK_KHR_buffer_device_address v1
+	VK_KHR_calibrated_timestamps v1
+	VK_KHR_copy_commands2 v1
+	VK_KHR_create_renderpass2 v1
+	VK_KHR_dedicated_allocation v3
+	VK_KHR_deferred_host_operations v4
+	VK_KHR_depth_stencil_resolve v1
+	VK_KHR_descriptor_update_template v1
+	VK_KHR_device_group v4
+	VK_KHR_device_group_creation v1
+	VK_KHR_driver_properties v1
+	VK_KHR_dynamic_rendering v1
+	VK_KHR_external_fence v1
+	VK_KHR_external_fence_capabilities v1
+	VK_KHR_external_memory v1
+	VK_KHR_external_memory_capabilities v1
+	VK_KHR_external_semaphore v1
+	VK_KHR_external_semaphore_capabilities v1
+	VK_KHR_fragment_shader_barycentric v1
+	VK_KHR_format_feature_flags2 v2
+	VK_KHR_get_memory_requirements2 v1
+	VK_KHR_get_physical_device_properties2 v2
+	VK_KHR_get_surface_capabilities2 v1
+	VK_KHR_imageless_framebuffer v1
+	VK_KHR_image_format_list v1
+	VK_KHR_incremental_present v2
+	VK_KHR_index_type_uint8 v1
+	VK_KHR_load_store_op_none v1
+	VK_KHR_maintenance1 v2
+	VK_KHR_maintenance2 v1
+	VK_KHR_maintenance3 v1
+	VK_KHR_maintenance4 v2
+	VK_KHR_maintenance6 v1
+	VK_KHR_maintenance7 v1
+	VK_KHR_map_memory2 v1
+	VK_KHR_multiview v1
+	VK_KHR_portability_subset v1
+	VK_KHR_push_descriptor v2
+	VK_KHR_relaxed_block_layout v1
+	VK_KHR_sampler_mirror_clamp_to_edge v3
+	VK_KHR_sampler_ycbcr_conversion v14
+	VK_KHR_separate_depth_stencil_layouts v1
+	VK_KHR_shader_draw_parameters v1
+	VK_KHR_shader_expect_assume v1
+	VK_KHR_shader_float_controls v4
+	VK_KHR_shader_float16_int8 v1
+	VK_KHR_shader_integer_dot_product v1
+	VK_KHR_shader_non_semantic_info v1
+	VK_KHR_shader_subgroup_extended_types v1
+	VK_KHR_shader_subgroup_rotate v2
+	VK_KHR_shader_terminate_invocation v1
+	VK_KHR_spirv_1_4 v1
+	VK_KHR_storage_buffer_storage_class v1
+	VK_KHR_surface v25
+	VK_KHR_swapchain v70
+	VK_KHR_swapchain_mutable_format v1
+	VK_KHR_synchronization2 v1
+	VK_KHR_timeline_semaphore v2
+	VK_KHR_uniform_buffer_standard_layout v1
+	VK_KHR_variable_pointers v1
+	VK_KHR_vertex_attribute_divisor v1
+	VK_KHR_vulkan_memory_model v3
+	VK_KHR_zero_initialize_workgroup_memory v1
+	VK_EXT_4444_formats v1
+	VK_EXT_buffer_device_address v2
+	VK_EXT_calibrated_timestamps v2
+	VK_EXT_debug_marker v4
+	VK_EXT_debug_report v10
+	VK_EXT_debug_utils v2
+	VK_EXT_descriptor_indexing v2
+	VK_EXT_depth_clip_control v1
+	VK_EXT_extended_dynamic_state v1
+	VK_EXT_extended_dynamic_state2 v1
+	VK_EXT_extended_dynamic_state3 v2
+	VK_EXT_external_memory_host v1
+	VK_EXT_external_memory_metal v1
+	VK_EXT_fragment_shader_interlock v1
+	VK_EXT_hdr_metadata v3
+	VK_EXT_headless_surface v1
+	VK_EXT_host_image_copy v1
+	VK_EXT_host_query_reset v1
+	VK_EXT_image_2d_view_of_3d v1
+	VK_EXT_image_robustness v1
+	VK_EXT_index_type_uint8 v1
+	VK_EXT_inline_uniform_block v1
+	VK_EXT_layer_settings v2
+	VK_EXT_load_store_op_none v1
+	VK_EXT_memory_budget v1
+	VK_EXT_metal_objects v2
+	VK_EXT_metal_surface v1
+	VK_EXT_pipeline_creation_cache_control v3
+	VK_EXT_pipeline_creation_feedback v1
+	VK_EXT_pipeline_robustness v1
+	VK_EXT_post_depth_coverage v1
+	VK_EXT_private_data v1
+	VK_EXT_robustness2 v1
+	VK_EXT_sample_locations v1
+	VK_EXT_scalar_block_layout v1
+	VK_EXT_separate_stencil_usage v1
+	VK_EXT_shader_atomic_float v1
+	VK_EXT_shader_demote_to_helper_invocation v1
+	VK_EXT_shader_stencil_export v1
+	VK_EXT_shader_subgroup_ballot v1
+	VK_EXT_shader_subgroup_vote v1
+	VK_EXT_shader_viewport_index_layer v1
+	VK_EXT_subgroup_size_control v2
+	VK_EXT_surface_maintenance1 v1
+	VK_EXT_swapchain_colorspace v5
+	VK_EXT_swapchain_maintenance1 v1
+	VK_EXT_texel_buffer_alignment v1
+	VK_EXT_texture_compression_astc_hdr v1
+	VK_EXT_tooling_info v1
+	VK_EXT_vertex_attribute_divisor v3
+	VK_AMD_gpu_shader_half_float v2
+	VK_AMD_negative_viewport_height v1
+	VK_AMD_shader_image_load_store_lod v1
+	VK_AMD_shader_trinary_minmax v1
+	VK_IMG_format_pvrtc v1
+	VK_INTEL_shader_integer_functions2 v1
+	VK_GOOGLE_display_timing v1
+	VK_MVK_macos_surface v3
+	VK_MVK_moltenvk v37
+	VK_NV_fragment_shader_barycentric v1
+[mvk-info] GPU device:
+	model: Apple M4
+	type: Integrated
+	vendorID: 0x106b
+	deviceID: 0x1b020209
+	pipelineCacheUUID: 0000283C-1B02-0209-0000-000100000000
+	GPU memory available: 12124 MB
+	GPU memory used: 0 MB
+	Metal Shading Language 3.2
+	supports the following GPU Features:
+		GPU Family Metal 3
+		GPU Family Apple 9
+		GPU Family Mac 2
+		Read-Write Texture Tier 2
+[mvk-info] Created VkInstance for Vulkan version 1.0.0, as requested by app, with the following 3 Vulkan extensions enabled:
+	VK_KHR_external_memory_capabilities v1
+	VK_KHR_external_semaphore_capabilities v1
+	VK_KHR_get_physical_device_properties2 v2
+info:  Found config env: d3d11.metalSpatialUpscaleFactor=1.5
+[mvk-info] MoltenVK version 1.3.0, supporting Vulkan version 1.3.313.
+	The following 126 Vulkan extensions are supported:
+	VK_KHR_16bit_storage v1
+	VK_KHR_8bit_storage v1
+	VK_KHR_bind_memory2 v1
+	VK_KHR_buffer_device_address v1
+	VK_KHR_calibrated_timestamps v1
+	VK_KHR_copy_commands2 v1
+	VK_KHR_create_renderpass2 v1
+	VK_KHR_dedicated_allocation v3
+	VK_KHR_deferred_host_operations v4
+	VK_KHR_depth_stencil_resolve v1
+	VK_KHR_descriptor_update_template v1
+	VK_KHR_device_group v4
+	VK_KHR_device_group_creation v1
+	VK_KHR_driver_properties v1
+	VK_KHR_dynamic_rendering v1
+	VK_KHR_external_fence v1
+	VK_KHR_external_fence_capabilities v1
+	VK_KHR_external_memory v1
+	VK_KHR_external_memory_capabilities v1
+	VK_KHR_external_semaphore v1
+	VK_KHR_external_semaphore_capabilities v1
+	VK_KHR_fragment_shader_barycentric v1
+	VK_KHR_format_feature_flags2 v2
+	VK_KHR_get_memory_requirements2 v1
+	VK_KHR_get_physical_device_properties2 v2
+	VK_KHR_get_surface_capabilities2 v1
+	VK_KHR_imageless_framebuffer v1
+	VK_KHR_image_format_list v1
+	VK_KHR_incremental_present v2
+	VK_KHR_index_type_uint8 v1
+	VK_KHR_load_store_op_none v1
+	VK_KHR_maintenance1 v2
+	VK_KHR_maintenance2 v1
+	VK_KHR_maintenance3 v1
+	VK_KHR_maintenance4 v2
+	VK_KHR_maintenance6 v1
+	VK_KHR_maintenance7 v1
+	VK_KHR_map_memory2 v1
+	VK_KHR_multiview v1
+	VK_KHR_portability_subset v1
+	VK_KHR_push_descriptor v2
+	VK_KHR_relaxed_block_layout v1
+	VK_KHR_sampler_mirror_clamp_to_edge v3
+	VK_KHR_sampler_ycbcr_conversion v14
+	VK_KHR_separate_depth_stencil_layouts v1
+	VK_KHR_shader_draw_parameters v1
+	VK_KHR_shader_expect_assume v1
+	VK_KHR_shader_float_controls v4
+	VK_KHR_shader_float16_int8 v1
+	VK_KHR_shader_integer_dot_product v1
+	VK_KHR_shader_non_semantic_info v1
+	VK_KHR_shader_subgroup_extended_types v1
+	VK_KHR_shader_subgroup_rotate v2
+	VK_KHR_shader_terminate_invocation v1
+	VK_KHR_spirv_1_4 v1
+	VK_KHR_storage_buffer_storage_class v1
+	VK_KHR_surface v25
+	VK_KHR_swapchain v70
+	VK_KHR_swapchain_mutable_format v1
+	VK_KHR_synchronization2 v1
+	VK_KHR_timeline_semaphore v2
+	VK_KHR_uniform_buffer_standard_layout v1
+	VK_KHR_variable_pointers v1
+	VK_KHR_vertex_attribute_divisor v1
+	VK_KHR_vulkan_memory_model v3
+	VK_KHR_zero_initialize_workgroup_memory v1
+	VK_EXT_4444_formats v1
+	VK_EXT_buffer_device_address v2
+	VK_EXT_calibrated_timestamps v2
+	VK_EXT_debug_marker v4
+	VK_EXT_debug_report v10
+	VK_EXT_debug_utils v2
+	VK_EXT_descriptor_indexing v2
+	VK_EXT_depth_clip_control v1
+	VK_EXT_extended_dynamic_state v1
+	VK_EXT_extended_dynamic_state2 v1
+	VK_EXT_extended_dynamic_state3 v2
+	VK_EXT_external_memory_host v1
+	VK_EXT_external_memory_metal v1
+	VK_EXT_fragment_shader_interlock v1
+	VK_EXT_hdr_metadata v3
+	VK_EXT_headless_surface v1
+	VK_EXT_host_image_copy v1
+	VK_EXT_host_query_reset v1
+	VK_EXT_image_2d_view_of_3d v1
+	VK_EXT_image_robustness v1
+	VK_EXT_index_type_uint8 v1
+	VK_EXT_inline_uniform_block v1
+	VK_EXT_layer_settings v2
+	VK_EXT_load_store_op_none v1
+	VK_EXT_memory_budget v1
+	VK_EXT_metal_objects v2
+	VK_EXT_metal_surface v1
+	VK_EXT_pipeline_creation_cache_control v3
+	VK_EXT_pipeline_creation_feedback v1
+	VK_EXT_pipeline_robustness v1
+	VK_EXT_post_depth_coverage v1
+	VK_EXT_private_data v1
+	VK_EXT_robustness2 v1
+	VK_EXT_sample_locations v1
+	VK_EXT_scalar_block_layout v1
+	VK_EXT_separate_stencil_usage v1
+	VK_EXT_shader_atomic_float v1
+	VK_EXT_shader_demote_to_helper_invocation v1
+	VK_EXT_shader_stencil_export v1
+	VK_EXT_shader_subgroup_ballot v1
+	VK_EXT_shader_subgroup_vote v1
+	VK_EXT_shader_viewport_index_layer v1
+	VK_EXT_subgroup_size_control v2
+	VK_EXT_surface_maintenance1 v1
+	VK_EXT_swapchain_colorspace v5
+	VK_EXT_swapchain_maintenance1 v1
+	VK_EXT_texel_buffer_alignment v1
+	VK_EXT_texture_compression_astc_hdr v1
+	VK_EXT_tooling_info v1
+	VK_EXT_vertex_attribute_divisor v3
+	VK_AMD_gpu_shader_half_float v2
+	VK_AMD_negative_viewport_height v1
+	VK_AMD_shader_image_load_store_lod v1
+	VK_AMD_shader_trinary_minmax v1
+	VK_IMG_format_pvrtc v1
+	VK_INTEL_shader_integer_functions2 v1
+	VK_GOOGLE_display_timing v1
+	VK_MVK_macos_surface v3
+	VK_MVK_moltenvk v37
+	VK_NV_fragment_shader_barycentric v1
+[mvk-info] GPU device:
+	model: Apple M4
+	type: Integrated
+	vendorID: 0x106b
+	deviceID: 0x1b020209
+	pipelineCacheUUID: 0000283C-1B02-0209-0000-000100000000
+	GPU memory available: 12124 MB
+	GPU memory used: 0 MB
+	Metal Shading Language 3.2
+	supports the following GPU Features:
+		GPU Family Metal 3
+		GPU Family Apple 9
+		GPU Family Mac 2
+		Read-Write Texture Tier 2
+[mvk-info] Created VkInstance for Vulkan version 1.0.0, as requested by app, with the following 3 Vulkan extensions enabled:
+	VK_KHR_external_memory_capabilities v1
+	VK_KHR_external_semaphore_capabilities v1
+	VK_KHR_get_physical_device_properties2 v2
+info:  Maximum supported feature level: D3D_FEATURE_LEVEL_11_1
+info:  Using feature level D3D_FEATURE_LEVEL_11_1
+info:  Found config env: d3d11.metalSpatialUpscaleFactor=1.5
+info:  DXMT: CommandChunk encode frame=4 chunk=6 totalMs=38.136 executeMs=0.025 flushMs=38.111 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=37.93 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=4 chunk=6 seq=6 totalMs=39.251 commandBufferMs=0.009 encodeMs=39.229 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=8 chunk=10 totalMs=8.063 executeMs=0.028 flushMs=8.035 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.916 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=8 chunk=10 seq=10 totalMs=8.366 commandBufferMs=0.008 encodeMs=8.348 metalCommitMs=0.009 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=9 chunk=11 totalMs=16.326 executeMs=0.025 flushMs=16.301 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=16.194 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=9 chunk=11 seq=11 totalMs=16.402 commandBufferMs=0.009 encodeMs=16.381 metalCommitMs=0.01 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=10 chunk=12 totalMs=8.365 executeMs=0.024 flushMs=8.341 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.24 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=10 chunk=12 seq=12 totalMs=8.438 commandBufferMs=0.005 encodeMs=8.421 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=11 chunk=13 seq=13 totalMs=8.013 commandBufferMs=0.006 encodeMs=7.995 metalCommitMs=0.007 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=12 chunk=14 totalMs=8.772 executeMs=0.029 flushMs=8.743 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.649 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=12 chunk=14 seq=14 totalMs=8.84 commandBufferMs=0.004 encodeMs=8.825 metalCommitMs=0.009 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=18 chunk=20 totalMs=15.843 executeMs=0.015 flushMs=15.828 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=15.747 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=18 chunk=20 seq=20 totalMs=15.903 commandBufferMs=0.005 encodeMs=15.892 metalCommitMs=0.005 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=19 chunk=21 totalMs=8.283 executeMs=0.015 flushMs=8.268 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.194 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=19 chunk=21 seq=21 totalMs=8.339 commandBufferMs=0.004 encodeMs=8.327 metalCommitMs=0.007 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=21 chunk=23 totalMs=8.039 executeMs=0.011 flushMs=8.028 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.968 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=21 chunk=23 seq=23 totalMs=8.079 commandBufferMs=0.001 encodeMs=8.071 metalCommitMs=0.005 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=24 chunk=26 totalMs=8.328 executeMs=0.015 flushMs=8.313 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.228 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=24 chunk=26 seq=26 totalMs=8.393 commandBufferMs=0.002 encodeMs=8.381 metalCommitMs=0.009 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=25 chunk=27 totalMs=8.042 executeMs=0.021 flushMs=8.021 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.923 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=25 chunk=27 seq=27 totalMs=8.083 commandBufferMs=0.005 encodeMs=8.069 metalCommitMs=0.007 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=26 chunk=28 totalMs=8.4 executeMs=0.017 flushMs=8.383 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.313 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=26 chunk=28 seq=28 totalMs=8.535 commandBufferMs=0.004 encodeMs=8.522 metalCommitMs=0.008 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=27 chunk=29 totalMs=8.384 executeMs=0.018 flushMs=8.366 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.281 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=27 chunk=29 seq=29 totalMs=8.423 commandBufferMs=0.004 encodeMs=8.411 metalCommitMs=0.007 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=28 chunk=30 totalMs=8.02 executeMs=0.016 flushMs=8.004 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.933 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=28 chunk=30 seq=30 totalMs=8.069 commandBufferMs=0.005 encodeMs=8.056 metalCommitMs=0.007 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=29 chunk=31 totalMs=8.502 executeMs=0.02 flushMs=8.482 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.394 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=29 chunk=31 seq=31 totalMs=8.546 commandBufferMs=0.005 encodeMs=8.532 metalCommitMs=0.007 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=30 chunk=32 totalMs=8.241 executeMs=0.016 flushMs=8.225 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.153 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=30 chunk=32 seq=32 totalMs=8.282 commandBufferMs=0.005 encodeMs=8.269 metalCommitMs=0.007 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=32 chunk=34 totalMs=8.107 executeMs=0.012 flushMs=8.095 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.033 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=32 chunk=34 seq=34 totalMs=8.164 commandBufferMs=0.002 encodeMs=8.151 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=34 chunk=36 totalMs=8.227 executeMs=0.015 flushMs=8.212 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.112 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=34 chunk=36 seq=36 totalMs=8.279 commandBufferMs=0.002 encodeMs=8.264 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=39 chunk=41 totalMs=8.034 executeMs=0.035 flushMs=7.999 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.71 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=39 chunk=41 seq=41 totalMs=8.171 commandBufferMs=0.009 encodeMs=8.125 metalCommitMs=0.035 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=40 chunk=42 totalMs=8.118 executeMs=0.049 flushMs=8.069 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.637 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=40 chunk=42 seq=42 totalMs=8.244 commandBufferMs=0.014 encodeMs=8.207 metalCommitMs=0.02 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=41 chunk=43 totalMs=8.168 executeMs=0.046 flushMs=8.122 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.804 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=41 chunk=43 seq=43 totalMs=8.316 commandBufferMs=0.012 encodeMs=8.283 metalCommitMs=0.018 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=43 chunk=45 totalMs=8.027 executeMs=0.029 flushMs=7.998 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.815 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=43 chunk=45 seq=45 totalMs=8.148 commandBufferMs=0.005 encodeMs=8.12 metalCommitMs=0.022 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=48 chunk=50 totalMs=8.335 executeMs=0.064 flushMs=8.271 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.014 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=48 chunk=50 seq=50 totalMs=8.482 commandBufferMs=0.013 encodeMs=8.444 metalCommitMs=0.021 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=49 chunk=51 totalMs=8.133 executeMs=0.05 flushMs=8.083 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.821 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=49 chunk=51 seq=51 totalMs=8.273 commandBufferMs=0.015 encodeMs=8.234 metalCommitMs=0.021 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=52 chunk=54 seq=54 totalMs=8.009 commandBufferMs=0.005 encodeMs=7.982 metalCommitMs=0.021 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=58 chunk=60 totalMs=8.396 executeMs=0.055 flushMs=8.341 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.966 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=58 chunk=60 seq=60 totalMs=8.614 commandBufferMs=0.032 encodeMs=8.548 metalCommitMs=0.029 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=60 chunk=62 totalMs=15.022 executeMs=0.052 flushMs=14.97 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=14.549 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=60 chunk=62 seq=62 totalMs=15.214 commandBufferMs=0.025 encodeMs=15.15 metalCommitMs=0.035 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=63 chunk=65 totalMs=10.555 executeMs=0.062 flushMs=10.493 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=10.19 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=63 chunk=65 seq=65 totalMs=10.654 commandBufferMs=0.011 encodeMs=10.628 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=64 chunk=66 totalMs=8.188 executeMs=0.032 flushMs=8.156 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.963 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=64 chunk=66 seq=66 totalMs=8.316 commandBufferMs=0.009 encodeMs=8.286 metalCommitMs=0.019 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=66 chunk=68 totalMs=8.035 executeMs=0.045 flushMs=7.99 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.724 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=66 chunk=68 seq=68 totalMs=8.172 commandBufferMs=0.008 encodeMs=8.139 metalCommitMs=0.023 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=72 chunk=74 totalMs=8.357 executeMs=0.032 flushMs=8.325 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.195 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=72 chunk=74 seq=74 totalMs=8.455 commandBufferMs=0.006 encodeMs=8.434 metalCommitMs=0.013 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=76 chunk=78 totalMs=8.085 executeMs=0.012 flushMs=8.073 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.985 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=76 chunk=78 seq=78 totalMs=8.209 commandBufferMs=0.002 encodeMs=8.183 metalCommitMs=0.023 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=92 chunk=94 totalMs=8.051 executeMs=0.03 flushMs=8.021 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.848 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=92 chunk=94 seq=94 totalMs=8.21 commandBufferMs=0.005 encodeMs=8.182 metalCommitMs=0.022 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=98 chunk=100 totalMs=8.296 executeMs=0.011 flushMs=8.285 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.177 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=98 chunk=100 seq=100 totalMs=8.412 commandBufferMs=0.002 encodeMs=8.388 metalCommitMs=0.021 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=106 chunk=108 totalMs=8.389 executeMs=0.011 flushMs=8.378 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.278 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=106 chunk=108 seq=108 totalMs=8.531 commandBufferMs=0.002 encodeMs=8.51 metalCommitMs=0.018 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=110 chunk=112 totalMs=8.007 executeMs=0.031 flushMs=7.976 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.789 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=110 chunk=112 seq=112 totalMs=8.171 commandBufferMs=0.005 encodeMs=8.141 metalCommitMs=0.023 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=124 chunk=131 totalMs=8.322 executeMs=0.011 flushMs=8.311 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.236 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=124 chunk=131 seq=131 totalMs=8.398 commandBufferMs=0.003 encodeMs=8.387 metalCommitMs=0.008 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=128 chunk=139 totalMs=8.124 executeMs=0.015 flushMs=8.109 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.014 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=128 chunk=139 seq=139 totalMs=8.209 commandBufferMs=0.001 encodeMs=8.198 metalCommitMs=0.009 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=130 chunk=143 totalMs=8.052 executeMs=0.015 flushMs=8.037 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.948 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=130 chunk=143 seq=143 totalMs=8.097 commandBufferMs=0.002 encodeMs=8.087 metalCommitMs=0.008 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=132 chunk=147 totalMs=8.082 executeMs=0.014 flushMs=8.068 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.976 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=132 chunk=147 seq=147 totalMs=8.163 commandBufferMs=0.004 encodeMs=8.147 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=136 chunk=155 totalMs=8.216 executeMs=0.014 flushMs=8.202 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.104 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=136 chunk=155 seq=155 totalMs=8.287 commandBufferMs=0.003 encodeMs=8.274 metalCommitMs=0.009 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=138 chunk=159 totalMs=8.055 executeMs=0.014 flushMs=8.041 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.93 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=138 chunk=159 seq=159 totalMs=8.178 commandBufferMs=0.001 encodeMs=8.16 metalCommitMs=0.015 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=148 chunk=179 totalMs=8.012 executeMs=0.027 flushMs=7.985 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.852 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=148 chunk=179 seq=179 totalMs=8.104 commandBufferMs=0.002 encodeMs=8.089 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=152 chunk=187 totalMs=8.375 executeMs=0.015 flushMs=8.36 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.258 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=152 chunk=187 seq=187 totalMs=8.511 commandBufferMs=0.002 encodeMs=8.494 metalCommitMs=0.015 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=154 chunk=191 totalMs=8.223 executeMs=0.019 flushMs=8.204 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.037 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=154 chunk=191 seq=191 totalMs=8.316 commandBufferMs=0.01 encodeMs=8.291 metalCommitMs=0.015 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=164 chunk=211 totalMs=18.825 executeMs=0.015 flushMs=18.81 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=18.719 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=164 chunk=211 seq=211 totalMs=18.905 commandBufferMs=0.005 encodeMs=18.889 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=168 chunk=219 totalMs=8.139 executeMs=0.011 flushMs=8.128 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.056 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=168 chunk=219 seq=219 totalMs=8.192 commandBufferMs=0.002 encodeMs=8.181 metalCommitMs=0.009 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=174 chunk=231 totalMs=8.607 executeMs=0.008 flushMs=8.599 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.532 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=174 chunk=231 seq=231 totalMs=8.683 commandBufferMs=0.001 encodeMs=8.67 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=176 chunk=235 totalMs=8.01 executeMs=0.01 flushMs=8 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.931 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=176 chunk=235 seq=235 totalMs=8.122 commandBufferMs=0.002 encodeMs=8.111 metalCommitMs=0.009 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=178 chunk=239 totalMs=8.228 executeMs=0.009 flushMs=8.219 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.146 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=178 chunk=239 seq=239 totalMs=8.305 commandBufferMs=0.003 encodeMs=8.29 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=182 chunk=247 totalMs=8.404 executeMs=0.008 flushMs=8.396 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.332 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=182 chunk=247 seq=247 totalMs=8.467 commandBufferMs=0.001 encodeMs=8.456 metalCommitMs=0.01 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=186 chunk=255 totalMs=8.245 executeMs=0.01 flushMs=8.235 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.169 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=186 chunk=255 seq=255 totalMs=8.312 commandBufferMs=0.002 encodeMs=8.302 metalCommitMs=0.008 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=188 chunk=259 totalMs=8.013 executeMs=0.012 flushMs=8.001 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.928 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=188 chunk=259 seq=259 totalMs=8.09 commandBufferMs=0.001 encodeMs=8.077 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=190 chunk=263 totalMs=8.112 executeMs=0.012 flushMs=8.1 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.026 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=190 chunk=263 seq=263 totalMs=8.183 commandBufferMs=0.002 encodeMs=8.171 metalCommitMs=0.01 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=192 chunk=267 totalMs=8.216 executeMs=0.011 flushMs=8.205 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.121 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=192 chunk=267 seq=267 totalMs=8.287 commandBufferMs=0.001 encodeMs=8.275 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=194 chunk=271 totalMs=8.355 executeMs=0.013 flushMs=8.342 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.255 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=194 chunk=271 seq=271 totalMs=8.426 commandBufferMs=0.001 encodeMs=8.414 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=198 chunk=279 totalMs=8.326 executeMs=0.011 flushMs=8.315 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.245 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=198 chunk=279 seq=279 totalMs=8.399 commandBufferMs=0.001 encodeMs=8.388 metalCommitMs=0.01 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=200 chunk=283 totalMs=8.089 executeMs=0.012 flushMs=8.077 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.999 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=200 chunk=283 seq=283 totalMs=8.159 commandBufferMs=0.001 encodeMs=8.147 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=206 chunk=295 totalMs=8.156 executeMs=0.011 flushMs=8.145 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.072 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=206 chunk=295 seq=295 totalMs=8.231 commandBufferMs=0.001 encodeMs=8.219 metalCommitMs=0.01 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=208 chunk=299 totalMs=8.209 executeMs=0.012 flushMs=8.197 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.119 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=208 chunk=299 seq=299 totalMs=8.271 commandBufferMs=0.001 encodeMs=8.26 metalCommitMs=0.01 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=210 chunk=303 totalMs=8.05 executeMs=0.012 flushMs=8.038 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.967 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=210 chunk=303 seq=303 totalMs=8.116 commandBufferMs=0 encodeMs=8.104 metalCommitMs=0.01 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=212 chunk=307 totalMs=8.01 executeMs=0.01 flushMs=8 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.933 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=212 chunk=307 seq=307 totalMs=8.074 commandBufferMs=0.001 encodeMs=8.063 metalCommitMs=0.01 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=214 chunk=311 totalMs=8.173 executeMs=0.01 flushMs=8.163 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.086 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=214 chunk=311 seq=311 totalMs=8.247 commandBufferMs=0.001 encodeMs=8.236 metalCommitMs=0.01 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=218 chunk=319 totalMs=8.413 executeMs=0.009 flushMs=8.404 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.331 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=218 chunk=319 seq=319 totalMs=8.484 commandBufferMs=0.001 encodeMs=8.471 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=226 chunk=335 totalMs=8.288 executeMs=0.01 flushMs=8.278 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.211 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=226 chunk=335 seq=335 totalMs=8.358 commandBufferMs=0.001 encodeMs=8.347 metalCommitMs=0.01 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=230 chunk=343 totalMs=8.171 executeMs=0.01 flushMs=8.161 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.092 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=230 chunk=343 seq=343 totalMs=8.24 commandBufferMs=0.001 encodeMs=8.229 metalCommitMs=0.01 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=232 chunk=347 totalMs=8.246 executeMs=0.015 flushMs=8.231 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.157 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=232 chunk=347 seq=347 totalMs=8.306 commandBufferMs=0.002 encodeMs=8.295 metalCommitMs=0.009 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=236 chunk=355 totalMs=8.383 executeMs=0.012 flushMs=8.371 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.286 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=236 chunk=355 seq=355 totalMs=8.459 commandBufferMs=0.001 encodeMs=8.447 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=246 chunk=375 totalMs=8.145 executeMs=0.011 flushMs=8.134 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.066 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=246 chunk=375 seq=375 totalMs=8.224 commandBufferMs=0.001 encodeMs=8.214 metalCommitMs=0.009 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=248 chunk=379 seq=379 totalMs=8.012 commandBufferMs=0.001 encodeMs=8.003 metalCommitMs=0.008 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=250 chunk=383 totalMs=8.103 executeMs=0.012 flushMs=8.091 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.017 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=250 chunk=383 seq=383 totalMs=8.18 commandBufferMs=0.002 encodeMs=8.166 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=256 chunk=395 totalMs=8.048 executeMs=0.012 flushMs=8.036 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.961 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=256 chunk=395 seq=395 totalMs=8.151 commandBufferMs=0.001 encodeMs=8.135 metalCommitMs=0.015 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=260 chunk=403 totalMs=8.134 executeMs=0.026 flushMs=8.108 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.953 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=260 chunk=403 seq=403 totalMs=8.234 commandBufferMs=0.003 encodeMs=8.213 metalCommitMs=0.017 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=264 chunk=411 totalMs=8.228 executeMs=0.026 flushMs=8.202 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.053 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=264 chunk=411 seq=411 totalMs=8.326 commandBufferMs=0.003 encodeMs=8.308 metalCommitMs=0.015 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=272 chunk=427 totalMs=8.284 executeMs=0.024 flushMs=8.26 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.099 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=272 chunk=427 seq=427 totalMs=8.392 commandBufferMs=0.003 encodeMs=8.372 metalCommitMs=0.017 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=284 chunk=451 totalMs=8.31 executeMs=0.034 flushMs=8.276 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.122 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=284 chunk=451 seq=451 totalMs=8.417 commandBufferMs=0.003 encodeMs=8.397 metalCommitMs=0.017 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=292 chunk=467 totalMs=8.302 executeMs=0.027 flushMs=8.275 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.117 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=292 chunk=467 seq=467 totalMs=8.422 commandBufferMs=0.003 encodeMs=8.401 metalCommitMs=0.018 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=302 chunk=487 totalMs=8.035 executeMs=0.028 flushMs=8.007 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.854 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=302 chunk=487 seq=487 totalMs=8.135 commandBufferMs=0.003 encodeMs=8.117 metalCommitMs=0.015 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=310 chunk=503 totalMs=8.362 executeMs=0.024 flushMs=8.338 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.181 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=310 chunk=503 seq=503 totalMs=8.474 commandBufferMs=0.003 encodeMs=8.454 metalCommitMs=0.017 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=316 chunk=515 totalMs=8.291 executeMs=0.023 flushMs=8.268 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.107 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=316 chunk=515 seq=515 totalMs=8.414 commandBufferMs=0.005 encodeMs=8.39 metalCommitMs=0.019 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=326 chunk=535 totalMs=8.09 executeMs=0.012 flushMs=8.078 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.997 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=326 chunk=535 seq=535 totalMs=8.171 commandBufferMs=0.001 encodeMs=8.159 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=330 chunk=543 totalMs=8.058 executeMs=0.009 flushMs=8.049 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.955 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=330 chunk=543 seq=543 totalMs=8.169 commandBufferMs=0.001 encodeMs=8.15 metalCommitMs=0.017 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=334 chunk=551 totalMs=8.241 executeMs=0.022 flushMs=8.219 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.078 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=334 chunk=551 seq=551 totalMs=8.338 commandBufferMs=0.003 encodeMs=8.32 metalCommitMs=0.015 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=338 chunk=559 totalMs=8.06 executeMs=0.023 flushMs=8.037 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.883 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=338 chunk=559 seq=559 totalMs=8.171 commandBufferMs=0.003 encodeMs=8.152 metalCommitMs=0.016 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=342 chunk=567 totalMs=8.035 executeMs=0.012 flushMs=8.023 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.946 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=342 chunk=567 seq=567 totalMs=8.119 commandBufferMs=0.006 encodeMs=8.102 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=346 chunk=575 totalMs=8.111 executeMs=0.011 flushMs=8.1 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.021 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=346 chunk=575 seq=575 totalMs=8.186 commandBufferMs=0.001 encodeMs=8.175 metalCommitMs=0.01 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=348 chunk=579 seq=579 totalMs=8.015 commandBufferMs=0.001 encodeMs=8 metalCommitMs=0.014 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=356 chunk=595 totalMs=8.05 executeMs=0.012 flushMs=8.038 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.955 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=356 chunk=595 seq=595 totalMs=8.152 commandBufferMs=0.002 encodeMs=8.135 metalCommitMs=0.015 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=366 chunk=615 totalMs=8.142 executeMs=0.012 flushMs=8.13 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.06 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=366 chunk=615 seq=615 totalMs=8.218 commandBufferMs=0.001 encodeMs=8.206 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=368 chunk=619 totalMs=8.025 executeMs=0.012 flushMs=8.013 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.914 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=368 chunk=619 seq=619 totalMs=8.124 commandBufferMs=0.001 encodeMs=8.108 metalCommitMs=0.014 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=372 chunk=627 totalMs=8.165 executeMs=0.012 flushMs=8.153 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.062 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=372 chunk=627 seq=627 totalMs=8.293 commandBufferMs=0.001 encodeMs=8.276 metalCommitMs=0.016 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=376 chunk=635 totalMs=8.086 executeMs=0.013 flushMs=8.073 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.987 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=376 chunk=635 seq=635 totalMs=8.186 commandBufferMs=0.001 encodeMs=8.17 metalCommitMs=0.015 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=380 chunk=643 totalMs=8.036 executeMs=0.012 flushMs=8.024 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.935 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=380 chunk=643 seq=643 totalMs=8.13 commandBufferMs=0.001 encodeMs=8.113 metalCommitMs=0.016 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=384 chunk=651 seq=651 totalMs=8.001 commandBufferMs=0.002 encodeMs=7.981 metalCommitMs=0.017 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=392 chunk=667 totalMs=8.144 executeMs=0.028 flushMs=8.116 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.96 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=392 chunk=667 seq=667 totalMs=8.246 commandBufferMs=0.003 encodeMs=8.227 metalCommitMs=0.016 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=420 chunk=723 seq=723 totalMs=8.007 commandBufferMs=0.003 encodeMs=7.978 metalCommitMs=0.026 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=440 chunk=763 seq=763 totalMs=8.012 commandBufferMs=0.002 encodeMs=7.996 metalCommitMs=0.013 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=442 chunk=767 totalMs=8.114 executeMs=0.024 flushMs=8.09 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.943 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=442 chunk=767 seq=767 totalMs=8.227 commandBufferMs=0.002 encodeMs=8.205 metalCommitMs=0.018 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=444 chunk=771 seq=771 totalMs=8.017 commandBufferMs=0.002 encodeMs=7.999 metalCommitMs=0.015 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=466 chunk=815 seq=815 totalMs=8.003 commandBufferMs=0.011 encodeMs=7.969 metalCommitMs=0.022 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=494 chunk=871 totalMs=8.154 executeMs=0.012 flushMs=8.142 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.061 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=494 chunk=871 seq=871 totalMs=8.227 commandBufferMs=0.001 encodeMs=8.215 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=498 chunk=879 totalMs=8.022 executeMs=0.012 flushMs=8.01 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.938 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=498 chunk=879 seq=879 totalMs=8.077 commandBufferMs=0.001 encodeMs=8.065 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=500 chunk=883 totalMs=8.175 executeMs=0.012 flushMs=8.163 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.089 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=500 chunk=883 seq=883 totalMs=8.24 commandBufferMs=0.001 encodeMs=8.23 metalCommitMs=0.009 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=504 chunk=891 totalMs=8.016 executeMs=0.013 flushMs=8.003 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.919 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=504 chunk=891 seq=891 totalMs=8.099 commandBufferMs=0.002 encodeMs=8.085 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=506 chunk=895 seq=895 totalMs=8.007 commandBufferMs=0.001 encodeMs=7.992 metalCommitMs=0.013 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=508 chunk=899 totalMs=8.035 executeMs=0.012 flushMs=8.023 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.941 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=508 chunk=899 seq=899 totalMs=8.118 commandBufferMs=0.001 encodeMs=8.103 metalCommitMs=0.013 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=512 chunk=907 totalMs=8.106 executeMs=0.013 flushMs=8.093 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.013 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=512 chunk=907 seq=907 totalMs=8.185 commandBufferMs=0.001 encodeMs=8.174 metalCommitMs=0.01 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=516 chunk=915 totalMs=8.063 executeMs=0.013 flushMs=8.05 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.972 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=516 chunk=915 seq=915 totalMs=8.143 commandBufferMs=0.001 encodeMs=8.132 metalCommitMs=0.01 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=520 chunk=923 totalMs=8.109 executeMs=0.011 flushMs=8.098 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.019 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=520 chunk=923 seq=923 totalMs=8.168 commandBufferMs=0.001 encodeMs=8.155 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=522 chunk=927 totalMs=8.051 executeMs=0.012 flushMs=8.039 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.957 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=522 chunk=927 seq=927 totalMs=8.127 commandBufferMs=0.001 encodeMs=8.113 metalCommitMs=0.013 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=526 chunk=935 totalMs=8.004 executeMs=0.012 flushMs=7.992 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.913 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=526 chunk=935 seq=935 totalMs=8.081 commandBufferMs=0.002 encodeMs=8.067 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=528 chunk=939 totalMs=8.003 executeMs=0.012 flushMs=7.991 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.909 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=528 chunk=939 seq=939 totalMs=8.071 commandBufferMs=0.001 encodeMs=8.058 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=530 chunk=943 totalMs=8.014 executeMs=0.012 flushMs=8.002 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.923 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=530 chunk=943 seq=943 totalMs=8.086 commandBufferMs=0.001 encodeMs=8.074 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=532 chunk=947 totalMs=8.008 executeMs=0.012 flushMs=7.996 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.923 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=532 chunk=947 seq=947 totalMs=8.075 commandBufferMs=0.001 encodeMs=8.061 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=534 chunk=951 totalMs=8.068 executeMs=0.011 flushMs=8.057 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.982 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=534 chunk=951 seq=951 totalMs=8.151 commandBufferMs=0.001 encodeMs=8.138 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=536 chunk=955 totalMs=8.001 executeMs=0.012 flushMs=7.989 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.907 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=536 chunk=955 seq=955 totalMs=8.089 commandBufferMs=0.002 encodeMs=8.074 metalCommitMs=0.013 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=538 chunk=959 seq=959 totalMs=8.008 commandBufferMs=0.003 encodeMs=7.992 metalCommitMs=0.013 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=542 chunk=967 seq=967 totalMs=8.012 commandBufferMs=0.004 encodeMs=7.997 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=544 chunk=971 totalMs=8.041 executeMs=0.011 flushMs=8.03 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.961 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=544 chunk=971 seq=971 totalMs=8.098 commandBufferMs=0.002 encodeMs=8.087 metalCommitMs=0.009 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=546 chunk=975 totalMs=8.081 executeMs=0.011 flushMs=8.07 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.003 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=546 chunk=975 seq=975 totalMs=8.157 commandBufferMs=0.001 encodeMs=8.144 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=550 chunk=983 totalMs=8.091 executeMs=0.011 flushMs=8.08 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.998 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=550 chunk=983 seq=983 totalMs=8.165 commandBufferMs=0.001 encodeMs=8.153 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=554 chunk=991 totalMs=8.161 executeMs=0.01 flushMs=8.151 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.079 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=554 chunk=991 seq=991 totalMs=8.232 commandBufferMs=0.001 encodeMs=8.22 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=556 chunk=995 seq=995 totalMs=8.011 commandBufferMs=0.001 encodeMs=8.001 metalCommitMs=0.009 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=558 chunk=999 totalMs=8.083 executeMs=0.01 flushMs=8.073 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.003 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=558 chunk=999 seq=999 totalMs=8.151 commandBufferMs=0.001 encodeMs=8.138 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=560 chunk=1003 totalMs=8.031 executeMs=0.011 flushMs=8.02 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.948 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=560 chunk=1003 seq=1003 totalMs=8.099 commandBufferMs=0.001 encodeMs=8.087 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=562 chunk=1007 totalMs=8.022 executeMs=0.011 flushMs=8.011 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.936 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=562 chunk=1007 seq=1007 totalMs=8.092 commandBufferMs=0.001 encodeMs=8.079 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=566 chunk=1015 totalMs=8.027 executeMs=0.012 flushMs=8.015 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.943 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=566 chunk=1015 seq=1015 totalMs=8.099 commandBufferMs=0.001 encodeMs=8.088 metalCommitMs=0.01 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=568 chunk=1019 totalMs=8.181 executeMs=0.009 flushMs=8.172 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.082 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=568 chunk=1019 seq=1019 totalMs=8.249 commandBufferMs=0.001 encodeMs=8.232 metalCommitMs=0.015 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=572 chunk=1027 totalMs=8.15 executeMs=0.011 flushMs=8.139 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.066 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=572 chunk=1027 seq=1027 totalMs=8.22 commandBufferMs=0.001 encodeMs=8.207 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=576 chunk=1035 totalMs=8.027 executeMs=0.013 flushMs=8.014 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.939 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=576 chunk=1035 seq=1035 totalMs=8.097 commandBufferMs=0.003 encodeMs=8.083 metalCommitMs=0.01 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=578 chunk=1039 seq=1039 totalMs=8.014 commandBufferMs=0.001 encodeMs=8.003 metalCommitMs=0.01 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=582 chunk=1047 totalMs=8.089 executeMs=0.012 flushMs=8.077 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.003 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=582 chunk=1047 seq=1047 totalMs=8.16 commandBufferMs=0.001 encodeMs=8.149 metalCommitMs=0.01 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=584 chunk=1051 totalMs=8.068 executeMs=0.01 flushMs=8.058 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.989 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=584 chunk=1051 seq=1051 totalMs=8.132 commandBufferMs=0.002 encodeMs=8.121 metalCommitMs=0.009 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=586 chunk=1055 totalMs=8.031 executeMs=0.011 flushMs=8.02 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.942 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=586 chunk=1055 seq=1055 totalMs=8.089 commandBufferMs=0.001 encodeMs=8.08 metalCommitMs=0.008 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=590 chunk=1063 totalMs=8.18 executeMs=0.011 flushMs=8.169 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.094 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=590 chunk=1063 seq=1063 totalMs=8.253 commandBufferMs=0.001 encodeMs=8.242 metalCommitMs=0.01 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=594 chunk=1071 totalMs=8.127 executeMs=0.013 flushMs=8.114 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.036 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=594 chunk=1071 seq=1071 totalMs=8.195 commandBufferMs=0.002 encodeMs=8.184 metalCommitMs=0.009 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=596 chunk=1075 totalMs=8.048 executeMs=0.012 flushMs=8.036 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.962 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=596 chunk=1075 seq=1075 totalMs=8.118 commandBufferMs=0.002 encodeMs=8.105 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=598 chunk=1079 totalMs=8.304 executeMs=0.011 flushMs=8.293 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.217 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=598 chunk=1079 seq=1079 totalMs=8.394 commandBufferMs=0.001 encodeMs=8.38 metalCommitMs=0.013 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=602 chunk=1087 totalMs=8.11 executeMs=0.011 flushMs=8.099 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.023 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=602 chunk=1087 seq=1087 totalMs=8.188 commandBufferMs=0.001 encodeMs=8.174 metalCommitMs=0.013 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=604 chunk=1091 seq=1091 totalMs=8.007 commandBufferMs=0.001 encodeMs=7.991 metalCommitMs=0.015 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=674 chunk=1231 totalMs=8.052 executeMs=0.024 flushMs=8.028 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.881 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=674 chunk=1231 seq=1231 totalMs=8.169 commandBufferMs=0.006 encodeMs=8.144 metalCommitMs=0.019 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=702 chunk=1287 totalMs=8.016 executeMs=0.023 flushMs=7.993 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.839 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=702 chunk=1287 seq=1287 totalMs=8.123 commandBufferMs=0.002 encodeMs=8.104 metalCommitMs=0.016 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=706 chunk=1295 seq=1295 totalMs=8.017 commandBufferMs=0.002 encodeMs=8 metalCommitMs=0.015 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=726 chunk=1335 totalMs=8.013 executeMs=0.021 flushMs=7.992 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.831 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=726 chunk=1335 seq=1335 totalMs=8.145 commandBufferMs=0.003 encodeMs=8.126 metalCommitMs=0.016 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=744 chunk=1371 seq=1371 totalMs=8.047 commandBufferMs=0.002 encodeMs=8.021 metalCommitMs=0.023 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=750 chunk=1383 seq=1383 totalMs=8.008 commandBufferMs=0.006 encodeMs=7.983 metalCommitMs=0.018 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=758 chunk=1399 seq=1399 totalMs=8.005 commandBufferMs=0.003 encodeMs=7.987 metalCommitMs=0.015 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=766 chunk=1415 totalMs=8.079 executeMs=0.036 flushMs=8.043 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.862 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=766 chunk=1415 seq=1415 totalMs=8.179 commandBufferMs=0.002 encodeMs=8.161 metalCommitMs=0.015 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=772 chunk=1427 seq=1427 totalMs=8.013 commandBufferMs=0.003 encodeMs=7.995 metalCommitMs=0.014 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=782 chunk=1447 totalMs=8.043 executeMs=0.021 flushMs=8.022 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.871 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=782 chunk=1447 seq=1447 totalMs=8.153 commandBufferMs=0.004 encodeMs=8.13 metalCommitMs=0.017 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=792 chunk=1467 totalMs=8.006 executeMs=0.026 flushMs=7.98 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.814 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=792 chunk=1467 seq=1467 totalMs=8.125 commandBufferMs=0.003 encodeMs=8.106 metalCommitMs=0.016 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=804 chunk=1491 seq=1491 totalMs=8.033 commandBufferMs=0.003 encodeMs=8.011 metalCommitMs=0.019 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=818 chunk=1519 seq=1519 totalMs=8.014 commandBufferMs=0.003 encodeMs=7.995 metalCommitMs=0.016 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=822 chunk=1527 seq=1527 totalMs=8.003 commandBufferMs=0.003 encodeMs=7.985 metalCommitMs=0.015 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=828 chunk=1539 totalMs=8.233 executeMs=0.026 flushMs=8.207 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.063 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=828 chunk=1539 seq=1539 totalMs=8.359 commandBufferMs=0.002 encodeMs=8.342 metalCommitMs=0.014 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=846 chunk=1575 seq=1575 totalMs=8.004 commandBufferMs=0.003 encodeMs=7.976 metalCommitMs=0.025 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=878 chunk=1639 totalMs=8.304 executeMs=0.03 flushMs=8.274 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.085 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=878 chunk=1639 seq=1639 totalMs=8.441 commandBufferMs=0.003 encodeMs=8.409 metalCommitMs=0.027 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=900 chunk=1683 totalMs=8.045 executeMs=0.03 flushMs=8.015 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.845 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=900 chunk=1683 seq=1683 totalMs=8.169 commandBufferMs=0.003 encodeMs=8.148 metalCommitMs=0.017 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=910 chunk=1703 seq=1703 totalMs=8.005 commandBufferMs=0.003 encodeMs=7.986 metalCommitMs=0.016 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=926 chunk=1735 totalMs=8.036 executeMs=0.03 flushMs=8.006 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.835 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=926 chunk=1735 seq=1735 totalMs=8.143 commandBufferMs=0.002 encodeMs=8.123 metalCommitMs=0.016 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=960 chunk=1803 totalMs=8.121 executeMs=0.027 flushMs=8.094 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.928 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=960 chunk=1803 seq=1803 totalMs=8.243 commandBufferMs=0.003 encodeMs=8.222 metalCommitMs=0.018 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=1000 chunk=1883 seq=1883 totalMs=8.018 commandBufferMs=0.003 encodeMs=7.998 metalCommitMs=0.016 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1014 chunk=1911 totalMs=8.119 executeMs=0.025 flushMs=8.094 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.931 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1014 chunk=1911 seq=1911 totalMs=8.273 commandBufferMs=0.002 encodeMs=8.239 metalCommitMs=0.032 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1018 chunk=1919 totalMs=8.023 executeMs=0.024 flushMs=7.999 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.827 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1018 chunk=1919 seq=1919 totalMs=8.148 commandBufferMs=0.003 encodeMs=8.13 metalCommitMs=0.015 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1046 chunk=1975 totalMs=8.03 executeMs=0.026 flushMs=8.004 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.851 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1046 chunk=1975 seq=1975 totalMs=8.144 commandBufferMs=0.003 encodeMs=8.124 metalCommitMs=0.017 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1082 chunk=2047 totalMs=8.041 executeMs=0.023 flushMs=8.018 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.859 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1082 chunk=2047 seq=2047 totalMs=8.165 commandBufferMs=0.002 encodeMs=8.144 metalCommitMs=0.018 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=1086 chunk=2055 seq=2055 totalMs=8.028 commandBufferMs=0.002 encodeMs=8.007 metalCommitMs=0.018 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1090 chunk=2063 totalMs=8.039 executeMs=0.023 flushMs=8.016 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.86 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1090 chunk=2063 seq=2063 totalMs=8.162 commandBufferMs=0.002 encodeMs=8.142 metalCommitMs=0.017 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1096 chunk=2075 totalMs=8.076 executeMs=0.027 flushMs=8.049 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.908 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1096 chunk=2075 seq=2075 totalMs=8.212 commandBufferMs=0.002 encodeMs=8.182 metalCommitMs=0.027 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1130 chunk=2143 totalMs=8.005 executeMs=0.022 flushMs=7.983 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.825 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1130 chunk=2143 seq=2143 totalMs=8.137 commandBufferMs=0.003 encodeMs=8.116 metalCommitMs=0.018 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1150 chunk=2183 totalMs=8.075 executeMs=0.034 flushMs=8.041 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.812 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1150 chunk=2183 seq=2183 totalMs=8.275 commandBufferMs=0.003 encodeMs=8.25 metalCommitMs=0.021 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1154 chunk=2191 totalMs=8.58 executeMs=0.03 flushMs=8.55 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.352 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1154 chunk=2191 seq=2191 totalMs=8.749 commandBufferMs=0.003 encodeMs=8.723 metalCommitMs=0.022 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=1164 chunk=2211 seq=2211 totalMs=8.024 commandBufferMs=0.003 encodeMs=8.005 metalCommitMs=0.015 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1166 chunk=2215 totalMs=8.129 executeMs=0.018 flushMs=8.111 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.006 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1166 chunk=2215 seq=2215 totalMs=8.219 commandBufferMs=0.002 encodeMs=8.205 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1174 chunk=2231 totalMs=8.056 executeMs=0.017 flushMs=8.039 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.928 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1174 chunk=2231 seq=2231 totalMs=8.155 commandBufferMs=0.002 encodeMs=8.142 metalCommitMs=0.01 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1176 chunk=2235 totalMs=8.006 executeMs=0.015 flushMs=7.991 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.873 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1176 chunk=2235 seq=2235 totalMs=8.121 commandBufferMs=0.001 encodeMs=8.105 metalCommitMs=0.013 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1180 chunk=2243 totalMs=8.029 executeMs=0.017 flushMs=8.012 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.905 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1180 chunk=2243 seq=2243 totalMs=8.132 commandBufferMs=0.002 encodeMs=8.118 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1186 chunk=2255 totalMs=8.082 executeMs=0.016 flushMs=8.066 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.946 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1186 chunk=2255 seq=2255 totalMs=8.205 commandBufferMs=0.004 encodeMs=8.187 metalCommitMs=0.014 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1188 chunk=2259 totalMs=8.003 executeMs=0.018 flushMs=7.985 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.854 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1188 chunk=2259 seq=2259 totalMs=8.121 commandBufferMs=0.001 encodeMs=8.1 metalCommitMs=0.019 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1192 chunk=2267 totalMs=8.129 executeMs=0.015 flushMs=8.114 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.991 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1192 chunk=2267 seq=2267 totalMs=8.293 commandBufferMs=0.002 encodeMs=8.272 metalCommitMs=0.019 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1200 chunk=2283 totalMs=8.283 executeMs=0.016 flushMs=8.267 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.145 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1200 chunk=2283 seq=2283 totalMs=8.437 commandBufferMs=0.002 encodeMs=8.414 metalCommitMs=0.02 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1204 chunk=2291 totalMs=8.021 executeMs=0.025 flushMs=7.996 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.851 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1204 chunk=2291 seq=2291 totalMs=8.185 commandBufferMs=0.004 encodeMs=8.16 metalCommitMs=0.019 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1208 chunk=2299 totalMs=8.021 executeMs=0.019 flushMs=8.002 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.872 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1208 chunk=2299 seq=2299 totalMs=8.171 commandBufferMs=0.002 encodeMs=8.152 metalCommitMs=0.016 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=1212 chunk=2307 seq=2307 totalMs=8.009 commandBufferMs=0.002 encodeMs=7.993 metalCommitMs=0.013 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1216 chunk=2315 totalMs=8.001 executeMs=0.02 flushMs=7.981 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.855 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1216 chunk=2315 seq=2315 totalMs=8.133 commandBufferMs=0.002 encodeMs=8.113 metalCommitMs=0.017 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=1220 chunk=2323 seq=2323 totalMs=8.006 commandBufferMs=0.002 encodeMs=7.989 metalCommitMs=0.014 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1222 chunk=2327 totalMs=8.066 executeMs=0.02 flushMs=8.046 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.91 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1222 chunk=2327 seq=2327 totalMs=8.174 commandBufferMs=0.003 encodeMs=8.156 metalCommitMs=0.015 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=1232 chunk=2347 seq=2347 totalMs=8.011 commandBufferMs=0.003 encodeMs=7.992 metalCommitMs=0.016 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1234 chunk=2351 totalMs=8.309 executeMs=0.023 flushMs=8.286 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.14 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1234 chunk=2351 seq=2351 totalMs=8.398 commandBufferMs=0.003 encodeMs=8.379 metalCommitMs=0.016 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=1238 chunk=2359 seq=2359 totalMs=8.003 commandBufferMs=0.002 encodeMs=7.989 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1242 chunk=2367 totalMs=8.206 executeMs=0.01 flushMs=8.196 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.127 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1242 chunk=2367 seq=2367 totalMs=8.267 commandBufferMs=0.001 encodeMs=8.257 metalCommitMs=0.008 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1246 chunk=2375 totalMs=8.582 executeMs=0.01 flushMs=8.572 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.51 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1246 chunk=2375 seq=2375 totalMs=8.632 commandBufferMs=0.002 encodeMs=8.625 metalCommitMs=0.005 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1248 chunk=2379 totalMs=8.465 executeMs=0.01 flushMs=8.455 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.384 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1248 chunk=2379 seq=2379 totalMs=8.524 commandBufferMs=0.001 encodeMs=8.514 metalCommitMs=0.009 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1250 chunk=2383 totalMs=8.308 executeMs=0.013 flushMs=8.295 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.207 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1250 chunk=2383 seq=2383 totalMs=8.362 commandBufferMs=0.002 encodeMs=8.351 metalCommitMs=0.009 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1254 chunk=2391 totalMs=8.16 executeMs=0.011 flushMs=8.149 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.079 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1254 chunk=2391 seq=2391 totalMs=8.215 commandBufferMs=0.002 encodeMs=8.205 metalCommitMs=0.008 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1256 chunk=2395 totalMs=8.293 executeMs=0.013 flushMs=8.28 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.201 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1256 chunk=2395 seq=2395 totalMs=8.349 commandBufferMs=0.001 encodeMs=8.337 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1262 chunk=2407 totalMs=8.483 executeMs=0.014 flushMs=8.469 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.379 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1262 chunk=2407 seq=2407 totalMs=8.573 commandBufferMs=0.001 encodeMs=8.559 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1264 chunk=2411 totalMs=8.044 executeMs=0.015 flushMs=8.029 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.937 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1264 chunk=2411 seq=2411 totalMs=8.124 commandBufferMs=0.001 encodeMs=8.113 metalCommitMs=0.009 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1266 chunk=2415 totalMs=8.001 executeMs=0.016 flushMs=7.985 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.881 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1266 chunk=2415 seq=2415 totalMs=8.074 commandBufferMs=0.001 encodeMs=8.061 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1270 chunk=2423 totalMs=8.556 executeMs=0.013 flushMs=8.543 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.444 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1270 chunk=2423 seq=2423 totalMs=8.655 commandBufferMs=0.001 encodeMs=8.639 metalCommitMs=0.013 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1274 chunk=2431 totalMs=8.093 executeMs=0.013 flushMs=8.08 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.992 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1274 chunk=2431 seq=2431 totalMs=8.178 commandBufferMs=0.002 encodeMs=8.165 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1278 chunk=2439 totalMs=8.095 executeMs=0.013 flushMs=8.082 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.996 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1278 chunk=2439 seq=2439 totalMs=8.187 commandBufferMs=0.001 encodeMs=8.174 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1282 chunk=2447 totalMs=8.33 executeMs=0.014 flushMs=8.316 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.219 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1282 chunk=2447 seq=2447 totalMs=8.415 commandBufferMs=0.002 encodeMs=8.402 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1286 chunk=2455 totalMs=8.105 executeMs=0.013 flushMs=8.092 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.012 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1286 chunk=2455 seq=2455 totalMs=8.17 commandBufferMs=0.003 encodeMs=8.158 metalCommitMs=0.009 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1288 chunk=2459 totalMs=8.284 executeMs=0.017 flushMs=8.267 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.175 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1288 chunk=2459 seq=2459 totalMs=8.344 commandBufferMs=0.002 encodeMs=8.333 metalCommitMs=0.009 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1290 chunk=2463 totalMs=8.337 executeMs=0.02 flushMs=8.317 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.224 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1290 chunk=2463 seq=2463 totalMs=8.407 commandBufferMs=0.002 encodeMs=8.394 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1294 chunk=2471 totalMs=8.321 executeMs=0.018 flushMs=8.303 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.184 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1294 chunk=2471 seq=2471 totalMs=8.409 commandBufferMs=0.002 encodeMs=8.396 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1300 chunk=2483 totalMs=8.051 executeMs=0.02 flushMs=8.031 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.908 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1300 chunk=2483 seq=2483 totalMs=8.149 commandBufferMs=0.003 encodeMs=8.133 metalCommitMs=0.013 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1306 chunk=2495 totalMs=8.219 executeMs=0.015 flushMs=8.204 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.098 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1306 chunk=2495 seq=2495 totalMs=8.311 commandBufferMs=0.002 encodeMs=8.297 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1310 chunk=2503 totalMs=8.161 executeMs=0.017 flushMs=8.144 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.017 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1310 chunk=2503 seq=2503 totalMs=8.295 commandBufferMs=0.002 encodeMs=8.275 metalCommitMs=0.018 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1312 chunk=2507 totalMs=8.063 executeMs=0.03 flushMs=8.033 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.857 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1312 chunk=2507 seq=2507 totalMs=8.211 commandBufferMs=0.003 encodeMs=8.188 metalCommitMs=0.019 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1328 chunk=2539 totalMs=8.138 executeMs=0.025 flushMs=8.113 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.968 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1328 chunk=2539 seq=2539 totalMs=8.246 commandBufferMs=0.006 encodeMs=8.226 metalCommitMs=0.014 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1344 chunk=2571 totalMs=8.166 executeMs=0.036 flushMs=8.13 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.89 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1344 chunk=2571 seq=2571 totalMs=8.378 commandBufferMs=0.003 encodeMs=8.344 metalCommitMs=0.029 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1352 chunk=2587 totalMs=8.057 executeMs=0.028 flushMs=8.029 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.852 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1352 chunk=2587 seq=2587 totalMs=8.228 commandBufferMs=0.003 encodeMs=8.203 metalCommitMs=0.021 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1364 chunk=2611 totalMs=8.024 executeMs=0.014 flushMs=8.01 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.915 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1364 chunk=2611 seq=2611 totalMs=8.195 commandBufferMs=0.001 encodeMs=8.166 metalCommitMs=0.027 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1398 chunk=2679 totalMs=8.074 executeMs=0.032 flushMs=8.042 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.857 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1398 chunk=2679 seq=2679 totalMs=8.256 commandBufferMs=0.003 encodeMs=8.225 metalCommitMs=0.027 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=1424 chunk=2731 seq=2731 totalMs=8.017 commandBufferMs=0.007 encodeMs=7.992 metalCommitMs=0.018 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1440 chunk=2763 totalMs=8.086 executeMs=0.015 flushMs=8.071 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.984 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1440 chunk=2763 seq=2763 totalMs=8.165 commandBufferMs=0.001 encodeMs=8.152 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1444 chunk=2771 totalMs=8.073 executeMs=0.01 flushMs=8.063 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.988 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1444 chunk=2771 seq=2771 totalMs=8.151 commandBufferMs=0.003 encodeMs=8.137 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1446 chunk=2775 totalMs=8.446 executeMs=0.01 flushMs=8.436 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.356 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1446 chunk=2775 seq=2775 totalMs=8.545 commandBufferMs=0.001 encodeMs=8.527 metalCommitMs=0.016 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1458 chunk=2799 totalMs=8.046 executeMs=0.02 flushMs=8.026 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.889 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1458 chunk=2799 seq=2799 totalMs=8.171 commandBufferMs=0.004 encodeMs=8.151 metalCommitMs=0.015 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1462 chunk=2807 totalMs=8.002 executeMs=0.019 flushMs=7.983 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.813 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1462 chunk=2807 seq=2807 totalMs=8.125 commandBufferMs=0.002 encodeMs=8.106 metalCommitMs=0.016 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=1490 chunk=2863 seq=2863 totalMs=8.028 commandBufferMs=0.006 encodeMs=8.003 metalCommitMs=0.019 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1494 chunk=2871 totalMs=8.006 executeMs=0.021 flushMs=7.985 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.831 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1494 chunk=2871 seq=2871 totalMs=8.116 commandBufferMs=0.005 encodeMs=8.093 metalCommitMs=0.017 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=1520 chunk=2923 seq=2923 totalMs=8.025 commandBufferMs=0.004 encodeMs=8.004 metalCommitMs=0.016 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1538 chunk=2959 totalMs=8.044 executeMs=0.021 flushMs=8.023 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.877 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1538 chunk=2959 seq=2959 totalMs=8.153 commandBufferMs=0.002 encodeMs=8.134 metalCommitMs=0.016 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=1554 chunk=2991 seq=2991 totalMs=8.015 commandBufferMs=0.003 encodeMs=7.998 metalCommitMs=0.014 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=1578 chunk=3039 seq=3039 totalMs=8.017 commandBufferMs=0.003 encodeMs=7.997 metalCommitMs=0.016 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=1592 chunk=3067 seq=3067 totalMs=8.031 commandBufferMs=0.002 encodeMs=8.001 metalCommitMs=0.028 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1600 chunk=3083 totalMs=8.193 executeMs=0.028 flushMs=8.165 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.002 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1600 chunk=3083 seq=3083 totalMs=8.304 commandBufferMs=0.002 encodeMs=8.283 metalCommitMs=0.018 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1608 chunk=3099 totalMs=8.017 executeMs=0.027 flushMs=7.99 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.822 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1608 chunk=3099 seq=3099 totalMs=8.126 commandBufferMs=0.003 encodeMs=8.108 metalCommitMs=0.015 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=1620 chunk=3123 seq=3123 totalMs=8.024 commandBufferMs=0.008 encodeMs=8 metalCommitMs=0.016 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=1634 chunk=3151 seq=3151 totalMs=8.005 commandBufferMs=0.006 encodeMs=7.978 metalCommitMs=0.019 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1644 chunk=3171 totalMs=8.183 executeMs=0.022 flushMs=8.161 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.023 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1644 chunk=3171 seq=3171 totalMs=8.296 commandBufferMs=0.002 encodeMs=8.277 metalCommitMs=0.016 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=1662 chunk=3207 seq=3207 totalMs=8.009 commandBufferMs=0.005 encodeMs=7.988 metalCommitMs=0.016 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=1674 chunk=3231 seq=3231 totalMs=8.001 commandBufferMs=0.004 encodeMs=7.979 metalCommitMs=0.017 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1690 chunk=3263 totalMs=8.108 executeMs=0.011 flushMs=8.097 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.015 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1690 chunk=3263 seq=3263 totalMs=8.175 commandBufferMs=0.002 encodeMs=8.16 metalCommitMs=0.013 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1692 chunk=3267 totalMs=8.029 executeMs=0.017 flushMs=8.012 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.904 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1692 chunk=3267 seq=3267 totalMs=8.096 commandBufferMs=0.007 encodeMs=8.077 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1696 chunk=3275 totalMs=8.035 executeMs=0.012 flushMs=8.023 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.934 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1696 chunk=3275 seq=3275 totalMs=8.107 commandBufferMs=0.003 encodeMs=8.094 metalCommitMs=0.01 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1698 chunk=3279 totalMs=8.126 executeMs=0.011 flushMs=8.115 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.034 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1698 chunk=3279 seq=3279 totalMs=8.214 commandBufferMs=0.001 encodeMs=8.201 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1702 chunk=3287 totalMs=8.097 executeMs=0.013 flushMs=8.084 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.007 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1702 chunk=3287 seq=3287 totalMs=8.177 commandBufferMs=0.001 encodeMs=8.164 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1706 chunk=3295 totalMs=8.081 executeMs=0.013 flushMs=8.068 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.992 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1706 chunk=3295 seq=3295 totalMs=8.161 commandBufferMs=0.001 encodeMs=8.151 metalCommitMs=0.009 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1710 chunk=3303 totalMs=8.099 executeMs=0.01 flushMs=8.089 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.014 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1710 chunk=3303 seq=3303 totalMs=8.158 commandBufferMs=0.001 encodeMs=8.145 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1712 chunk=3307 totalMs=8.023 executeMs=0.011 flushMs=8.012 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.935 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1712 chunk=3307 seq=3307 totalMs=8.076 commandBufferMs=0.001 encodeMs=8.064 metalCommitMs=0.01 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1714 chunk=3311 totalMs=8.003 executeMs=0.011 flushMs=7.992 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.917 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1714 chunk=3311 seq=3311 totalMs=8.063 commandBufferMs=0.006 encodeMs=8.046 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1716 chunk=3315 totalMs=8.073 executeMs=0.013 flushMs=8.06 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.977 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1716 chunk=3315 seq=3315 totalMs=8.132 commandBufferMs=0.001 encodeMs=8.119 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1720 chunk=3323 totalMs=8.028 executeMs=0.018 flushMs=8.01 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.9 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1720 chunk=3323 seq=3323 totalMs=8.105 commandBufferMs=0.004 encodeMs=8.088 metalCommitMs=0.013 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1722 chunk=3327 totalMs=8.024 executeMs=0.012 flushMs=8.012 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.931 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1722 chunk=3327 seq=3327 totalMs=8.108 commandBufferMs=0.001 encodeMs=8.096 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1724 chunk=3331 totalMs=16.568 executeMs=0.013 flushMs=16.555 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=16.475 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1724 chunk=3331 seq=3331 totalMs=16.64 commandBufferMs=0.001 encodeMs=16.627 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1727 chunk=3337 totalMs=13.912 executeMs=0.029 flushMs=13.883 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=13.757 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1727 chunk=3337 seq=3337 totalMs=13.993 commandBufferMs=0.001 encodeMs=13.976 metalCommitMs=0.015 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1729 chunk=3341 totalMs=8.194 executeMs=0.012 flushMs=8.182 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.112 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1729 chunk=3341 seq=3341 totalMs=8.25 commandBufferMs=0.009 encodeMs=8.229 metalCommitMs=0.01 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1731 chunk=3345 totalMs=8.071 executeMs=0.011 flushMs=8.06 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.991 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1731 chunk=3345 seq=3345 totalMs=8.122 commandBufferMs=0.002 encodeMs=8.111 metalCommitMs=0.009 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1735 chunk=3353 totalMs=8.107 executeMs=0.01 flushMs=8.097 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.024 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1735 chunk=3353 seq=3353 totalMs=8.174 commandBufferMs=0.001 encodeMs=8.161 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1737 chunk=3357 totalMs=8.015 executeMs=0.012 flushMs=8.003 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.922 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1737 chunk=3357 seq=3357 totalMs=8.081 commandBufferMs=0.002 encodeMs=8.067 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1739 chunk=3361 totalMs=8.094 executeMs=0.012 flushMs=8.082 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.008 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1739 chunk=3361 seq=3361 totalMs=8.169 commandBufferMs=0.002 encodeMs=8.155 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1741 chunk=3365 totalMs=8.042 executeMs=0.013 flushMs=8.029 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.948 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1741 chunk=3365 seq=3365 totalMs=8.122 commandBufferMs=0.001 encodeMs=8.108 metalCommitMs=0.013 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1743 chunk=3369 totalMs=8.185 executeMs=0.012 flushMs=8.173 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.089 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1743 chunk=3369 seq=3369 totalMs=8.265 commandBufferMs=0.001 encodeMs=8.253 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1747 chunk=3377 totalMs=8.137 executeMs=0.011 flushMs=8.126 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.05 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1747 chunk=3377 seq=3377 totalMs=8.199 commandBufferMs=0.004 encodeMs=8.183 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1749 chunk=3381 totalMs=8.249 executeMs=0.012 flushMs=8.237 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.159 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1749 chunk=3381 seq=3381 totalMs=8.324 commandBufferMs=0.001 encodeMs=8.31 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1755 chunk=3393 totalMs=8.111 executeMs=0.013 flushMs=8.098 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.01 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1755 chunk=3393 seq=3393 totalMs=8.297 commandBufferMs=0.001 encodeMs=8.284 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1759 chunk=3401 totalMs=8.096 executeMs=0.012 flushMs=8.084 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.004 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1759 chunk=3401 seq=3401 totalMs=8.172 commandBufferMs=0.001 encodeMs=8.159 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1763 chunk=3409 totalMs=8.049 executeMs=0.012 flushMs=8.037 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.961 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1763 chunk=3409 seq=3409 totalMs=8.12 commandBufferMs=0.001 encodeMs=8.109 metalCommitMs=0.01 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1765 chunk=3413 totalMs=8.043 executeMs=0.01 flushMs=8.033 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.949 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1765 chunk=3413 seq=3413 totalMs=8.104 commandBufferMs=0.001 encodeMs=8.091 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1769 chunk=3421 totalMs=8.358 executeMs=0.011 flushMs=8.347 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.266 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1769 chunk=3421 seq=3421 totalMs=8.428 commandBufferMs=0.002 encodeMs=8.414 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1775 chunk=3433 totalMs=8.474 executeMs=0.011 flushMs=8.463 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.383 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1775 chunk=3433 seq=3433 totalMs=8.553 commandBufferMs=0.001 encodeMs=8.539 metalCommitMs=0.013 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1777 chunk=3437 totalMs=8.031 executeMs=0.013 flushMs=8.018 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.939 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1777 chunk=3437 seq=3437 totalMs=8.107 commandBufferMs=0.002 encodeMs=8.094 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1783 chunk=3449 totalMs=8.106 executeMs=0.011 flushMs=8.095 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.022 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1783 chunk=3449 seq=3449 totalMs=8.188 commandBufferMs=0.003 encodeMs=8.174 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1787 chunk=3457 totalMs=8.06 executeMs=0.011 flushMs=8.049 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.972 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1787 chunk=3457 seq=3457 totalMs=8.111 commandBufferMs=0.002 encodeMs=8.099 metalCommitMs=0.01 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1789 chunk=3461 totalMs=8.094 executeMs=0.011 flushMs=8.083 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.007 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1789 chunk=3461 seq=3461 totalMs=8.166 commandBufferMs=0.001 encodeMs=8.152 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1793 chunk=3469 totalMs=8.41 executeMs=0.012 flushMs=8.398 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.313 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1793 chunk=3469 seq=3469 totalMs=8.489 commandBufferMs=0.004 encodeMs=8.473 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1799 chunk=3481 totalMs=8.119 executeMs=0.012 flushMs=8.107 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.031 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1799 chunk=3481 seq=3481 totalMs=8.2 commandBufferMs=0.003 encodeMs=8.184 metalCommitMs=0.013 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1805 chunk=3493 totalMs=8.114 executeMs=0.01 flushMs=8.104 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.027 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1805 chunk=3493 seq=3493 totalMs=8.174 commandBufferMs=0.001 encodeMs=8.161 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1807 chunk=3497 totalMs=8.048 executeMs=0.011 flushMs=8.037 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.963 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1807 chunk=3497 seq=3497 totalMs=8.118 commandBufferMs=0.001 encodeMs=8.106 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1809 chunk=3501 totalMs=8.012 executeMs=0.01 flushMs=8.002 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.93 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1809 chunk=3501 seq=3501 totalMs=8.079 commandBufferMs=0.001 encodeMs=8.066 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1811 chunk=3505 totalMs=8.013 executeMs=0.011 flushMs=8.002 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.931 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1811 chunk=3505 seq=3505 totalMs=8.086 commandBufferMs=0.001 encodeMs=8.073 metalCommitMs=0.012 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=1813 chunk=3509 seq=3509 totalMs=8.013 commandBufferMs=0.002 encodeMs=8 metalCommitMs=0.011 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1815 chunk=3513 totalMs=8.032 executeMs=0.01 flushMs=8.022 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.937 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1815 chunk=3513 seq=3513 totalMs=8.146 commandBufferMs=0.002 encodeMs=8.13 metalCommitMs=0.014 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1819 chunk=3521 totalMs=8.264 executeMs=0.023 flushMs=8.241 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.1 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1819 chunk=3521 seq=3521 totalMs=8.365 commandBufferMs=0.004 encodeMs=8.345 metalCommitMs=0.016 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1837 chunk=3557 totalMs=8.02 executeMs=0.026 flushMs=7.994 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.836 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1837 chunk=3557 seq=3557 totalMs=8.189 commandBufferMs=0.003 encodeMs=8.159 metalCommitMs=0.027 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1843 chunk=3569 totalMs=8.048 executeMs=0.045 flushMs=8.003 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.701 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1843 chunk=3569 seq=3569 totalMs=8.135 commandBufferMs=0.005 encodeMs=8.114 metalCommitMs=0.015 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1849 chunk=3581 totalMs=8.131 executeMs=0.036 flushMs=8.095 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.877 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1849 chunk=3581 seq=3581 totalMs=8.254 commandBufferMs=0.007 encodeMs=8.226 metalCommitMs=0.02 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1853 chunk=3589 totalMs=8.025 executeMs=0.027 flushMs=7.998 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.853 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1853 chunk=3589 seq=3589 totalMs=8.137 commandBufferMs=0.004 encodeMs=8.117 metalCommitMs=0.015 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=1857 chunk=3597 seq=3597 totalMs=8.005 commandBufferMs=0.005 encodeMs=7.976 metalCommitMs=0.024 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1861 chunk=3605 totalMs=8.099 executeMs=0.029 flushMs=8.07 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.909 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1861 chunk=3605 seq=3605 totalMs=8.271 commandBufferMs=0.002 encodeMs=8.24 metalCommitMs=0.028 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1871 chunk=3625 totalMs=8.218 executeMs=0.024 flushMs=8.194 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.037 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1871 chunk=3625 seq=3625 totalMs=8.317 commandBufferMs=0.002 encodeMs=8.299 metalCommitMs=0.015 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1881 chunk=3645 totalMs=8.052 executeMs=0.025 flushMs=8.027 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.889 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1881 chunk=3645 seq=3645 totalMs=8.155 commandBufferMs=0.002 encodeMs=8.138 metalCommitMs=0.014 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1891 chunk=3665 totalMs=8.221 executeMs=0.025 flushMs=8.196 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.032 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1891 chunk=3665 seq=3665 totalMs=8.336 commandBufferMs=0.005 encodeMs=8.314 metalCommitMs=0.016 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1897 chunk=3677 totalMs=8.074 executeMs=0.027 flushMs=8.047 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.897 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1897 chunk=3677 seq=3677 totalMs=8.185 commandBufferMs=0.002 encodeMs=8.166 metalCommitMs=0.015 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1901 chunk=3685 totalMs=8.13 executeMs=0.011 flushMs=8.119 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=8.032 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1901 chunk=3685 seq=3685 totalMs=8.23 commandBufferMs=0.002 encodeMs=8.211 metalCommitMs=0.016 waitsInitializer=0
+info:  DXMT: CommitChunkInternal frame=1907 chunk=3697 seq=3697 totalMs=8.002 commandBufferMs=0.004 encodeMs=7.983 metalCommitMs=0.015 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=1911 chunk=3705 totalMs=8.009 executeMs=0.022 flushMs=7.987 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=7.823 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=1911 chunk=3705 seq=3705 totalMs=8.128 commandBufferMs=0.003 encodeMs=8.107 metalCommitMs=0.017 waitsInitializer=0

@@ -1,0 +1,39 @@
+# 窗口 5C 原生游戏壳验收报告
+
+署名：@DNPMBHC  
+证据时间（UTC）：2026-11-24T07:22:14.045897+00:00
+
+按用户最新指示，本轮收尾=True；未完成的真实联调延期到下一阶段，任务书完整验收仍为 False。当前验证为 snapshot 4，契约 revision 2；生产指纹 `3627d20d3e6a9acf0f333ab3c8a757221a88bf9cd1b5ae84bc9442532e134c27`。历史 snapshot 3 发行证据单独保留，当前候选不冒充已封版产物。
+
+| 验收要求 | 状态 | 证据 |
+| --- | --- | --- |
+| 本地 Swift、Strict SwiftLint、格式和安全门禁 | passed | local-validation.json |
+| 极简优化 / Session 1 / 安全不变量 | passed | guest-minimal-apply.json |
+| WHQL 3D / 硬件适配器 / FL 11_1 / 根退出码 | deferred | guest-d3d-hardware-probe.json |
+| 真实标准缩放控件发现及设置窗口关闭 | deferred | guest-dpi-controls.json |
+| 真实 Guest 原生点对点 / 退出恢复 | deferred | guest-runtime-real-display-lifecycle.json |
+| 真实 Guest 高性能 / 退出恢复 | deferred | guest-runtime-real-display-lifecycle.json |
+| 真实 Guest 窗口跟随及动态切换 / 退出恢复 | deferred | guest-supported-display-lifecycle.json |
+| 真实 DPI Apply 150% / Restore 基线 | deferred | guest-dpi-real-roundtrip.json |
+| 真实冷后台启动 / 挂起归位 | deferred | guest-runtime-real-display-lifecycle.json |
+| 完整运行时 IOSurface GPU 逐像素互操作 | passed | runtime-binary-roundtrip.json |
+| 宿主合成帧原生全屏窗口 / 关闭 / 无 HID 拒绝捕获 | passed | native-fullscreen-probe.json |
+| 真实 Windows scanout / 合法虚拟 HID | deferred | interface-proposal.md |
+| target-cn DX11 / 大厅或训练场 / 精确退出取证 | deferred | target-game-real-validation.json |
+| 自有克隆删除 / 主源与原备份独立复核 | passed | own-cleanup-proof.json |
+
+本地 SwiftPM 252 项：242 通过、10 项既有显式跳过、0 失败。Strict SwiftLint、严格格式、format_check、防外挂审计和租约反例门禁见 local-validation.json。完整运行时互操作和原生窗口以本轮源码指纹绑定，宿主合成帧不作为 Guest 游戏帧。
+
+C1 原型已实现，但当前真实生命周期验收未通过，不能作为后台启动到退游归位的完整实证。Headless 编排使用 Session 1 helper 监控真实根及子进程树。退游先释放光标和关闭窗口，再恢复显示，恢复成功后才按策略挂起；失败与取消路径有独立行为测试。窗口捕获只接受聚焦窗口相对位移，缺少合法 HID sink 时拒绝捕获。热键、失焦、Cmd+Tab、关闭和退游释放均有状态机测试；系统调用失败保留 releasePending，自动重试不伪造成功回执。
+
+宿主读取 NSScreen 逻辑尺寸、Backing Scale Factor 与刷新上限。Guest 分辨率采用标准枚举和 ChangeDisplaySettingsExW，DPI 通过已验证签名的系统设置窗口、限定 UIA 控件和新建 Per-Monitor V2 窗口回读。改变前保留恢复基线，DPI 恢复失败仍尝试分辨率恢复。默认 Restricted 的失败记录保留；当前仅使用脚本进程 RemoteSigned，持久与组织策略不被覆盖。
+
+C 自有克隆已独立验证硬件适配器、FL 11_1、Session 1、根退出码 0；AdapterRAM=0。游戏是否检查该值仍须由未修改日志或对应进程的实际证据证明，未取得时为 unknown。最新 supported-lifecycle 在取消树时失败，baselineRestored=false；恢复日志早于该次失败，不能据此认定本次已恢复。原生点对点首次返回 -2 并恢复基线；后续系统盘被更新下载缓存占满，引发传输失败。失败、空间诊断及清理后回读均保留，未隐藏或计作成功。
+
+真实 Windows scanout 与合法 HID 的完整链路仍未实证。本轮没有完成 target-cn 官方客户端安装或本窗口登录，也没有运行游戏，因此缺少显卡/DX11 弹窗、大厅/训练场、AdapterRAM 检查行为、精确弹窗截图和实际游戏退出码均未取得。先前登录等待已撤销，不要求本阶段再登录。
+
+下一阶段须重新创建独立克隆，并先检查租约与源保护，再继续三档分辨率、DPI 150% 往返、进程取消及退游归位。游戏登录、协议、实名或验证码仍须本人完成；自然退出时记录精确弹窗文本、完整脱敏截图与根/子进程退出码。主动终止安装器或停机不作为游戏自然退出证据。
+
+当前 C 租约=released，清理通过=True。自有克隆、内部游戏盘副本与安装光盘的删除，以及主源八份文件与原游戏备份的独立 SHA/size/mtime、进程和句柄复核，见 own-cleanup-proof.json。优化回滚验证=True；安装器终态回执=False。未取得回执不填造成功，最新失败的显示恢复仍为未验证；测试环境删除与显示恢复分开记录。原备份仅用于创建独立副本。没有跨窗口汇报、修改主 UI、Git commit/push/reset 或全局 Git 配置改动。最小主 App 接线见 interface-proposal.md。
+
+五维口径：代码=implemented_prototype；本机验证=True；真实 Guest=见逐项实证；厂商支持=unknown；真实游戏=见单独取证。未完成项保持明确状态。

@@ -1,0 +1,12 @@
+{
+  "exit_code": 0,
+  "signal": 0,
+  "stdout": "{\"stage\": \"sampling-preflight\", \"captured_at\": \"2026-11-22T14:45:31.4231941+00:00\", \"source_parsers\": [{\"artifact_alias\": \"b2-driver-inventory.ps1\", \"sha256\": \"437cb8e37f056453e0dec6240bc2a8b0d17640b18a935cde172293b5533ca2b8\", \"parser_error_count\": 0, \"parser_error_lines\": []}, {\"artifact_alias\": \"b2-ui-worker.ps1\", \"sha256\": \"72e65f5e34b3fae7d5c9992ab93d39fddbe8be6e38844eda2e6f04a67fc467ed\", \"parser_error_count\": 0, \"parser_error_lines\": []}, {\"artifact_alias\": \"b2-ui-dispatch.ps1\", \"sha256\": \"446d29ecb6e30a8ec84d64f43039c493208f17fa234f4b247375dd10bfa03f83\", \"parser_error_count\": 0, \"parser_error_lines\": []}], \"secure_boot_enabled\": true, \"bcd_native_exit_code\": 0, \"test_signing_entry_present\": false, \"no_integrity_checks_entry_present\": false, \"system_disk_size_bytes\": 37925941248, \"system_disk_free_bytes\": 3382091776, \"installer_sha256\": \"686ee838411863d2eccdbe8a0596129e509819ae46626408760588ae8b0c800e\", \"installer_signature_status\": \"Valid\", \"interactive_user_present\": true}",
+  "response_marker_verified": true,
+  "recovery_pending": false,
+  "stage": "sampling-preflight",
+  "started_at_utc": "2026-11-22T14:45:26.903709+00:00",
+  "ended_at_utc": "2026-11-22T14:45:36.273149+00:00",
+  "stage_source_sha256": "9441e01ac7e51abbff1346679401af50ab66334a44abd2011e8281db8541b9a6",
+  "wrapper_validation_status": "passed"
+}

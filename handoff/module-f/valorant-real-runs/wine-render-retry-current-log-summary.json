@@ -1,0 +1,43 @@
+{
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-24T04:45:04.263391+00:00",
+  "logs": [
+    {
+      "owner": "@DNPMBHC",
+      "line_count": 0,
+      "input_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "graphics_module_loads": [],
+      "wine_debug_prefix_pid_binding": false,
+      "loader_tag_establishes_backend_byte_identity": false,
+      "exception_code_counts": {},
+      "chromium_gpu_process_exit_codes": [],
+      "unhandled_exception_markers": 0,
+      "import_dll_error_markers": 0,
+      "disable_gpu_argument_honored": "not_established_by_log_metadata",
+      "raw_content_exported": false,
+      "limitation": "Wine debug prefixes are not bound to process IDs. Builtin/native tags and first-chance exceptions do not prove renderer identity, a crash, or vendor rejection. No backend absence claim is made.",
+      "log_alias": "installer.stdout.log"
+    },
+    {
+      "owner": "@DNPMBHC",
+      "line_count": 1023,
+      "input_text_sha256": "890fc5b7a46ec707825c83ef60e98d4756ad3db5019c2b6f543ff240fb8bdf01",
+      "graphics_module_loads": [],
+      "wine_debug_prefix_pid_binding": false,
+      "loader_tag_establishes_backend_byte_identity": false,
+      "exception_code_counts": {
+        "80000026": 42
+      },
+      "chromium_gpu_process_exit_codes": [],
+      "unhandled_exception_markers": 0,
+      "import_dll_error_markers": 0,
+      "disable_gpu_argument_honored": "not_established_by_log_metadata",
+      "raw_content_exported": false,
+      "limitation": "Wine debug prefixes are not bound to process IDs. Builtin/native tags and first-chance exceptions do not prove renderer identity, a crash, or vendor rejection. No backend absence claim is made.",
+      "log_alias": "installer.stderr.log"
+    }
+  ],
+  "capture_phase": "before any user authentication; raw content stays disposable",
+  "installation_completed": false,
+  "vendor_rejection": "not_established"
+}

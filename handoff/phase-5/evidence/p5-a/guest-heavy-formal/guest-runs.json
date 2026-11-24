@@ -1,0 +1,3053 @@
+{
+  "runs": [
+    {
+      "arm": "guest_qemu_viogpu3d",
+      "domain": "guest_qemu_viogpu3d",
+      "round": 1,
+      "metadata": {
+        "schema_version": 1,
+        "adapter_description": "Red Hat VirtIO GPU 3D controller",
+        "vendor_id": 6900,
+        "device_id": 4176,
+        "adapter_flags": 0,
+        "adapter_is_software": false,
+        "selected_feature_level": "11_1",
+        "width": 1280,
+        "height": 720,
+        "draws_per_frame": 16384,
+        "cb_updates_per_frame": 4096,
+        "passes_per_frame": 2,
+        "dynamic_vertex_bytes_per_frame": 9436608,
+        "geometry_objects": 16383,
+        "scene_variant": "dense_configurable_grid",
+        "async_swapchain": true,
+        "initialization_ms": 307.406
+      },
+      "completion": {
+        "measured_frames": 900,
+        "warmup_ms": 1930.837,
+        "measurement_wall_ms": 12250.127,
+        "gpu_drain_ms": 10.596,
+        "throughput_including_gpu_drain_fps": 73.468624,
+        "draws_per_frame": 16384,
+        "total_draw_calls": 14745600,
+        "async_swapchain": true
+      },
+      "csv_summary": {
+        "frame_count": 900,
+        "interval_sample_count": 899,
+        "derived_fps_from_intervals": 73.53210033174146,
+        "frame_interval_ms": {
+          "mean": 13.599502740823137,
+          "p50": 12.988833,
+          "p95": 17.4535295,
+          "p99": 22.384986999999995
+        },
+        "cpu_submit_ms": {
+          "mean": 13.583109695555557,
+          "p95": 17.434622899999997,
+          "p99": 22.359272499999996
+        },
+        "process_resident_mib_mean": 34.14923177083333,
+        "device_memory_mib_mean": null
+      },
+      "host_cpu": {
+        "method": "libproc RUSAGE_INFO_V0 user+system counter deltas; PID family and creation-time binding",
+        "scope": "measurement phase only; roots and descendants",
+        "sample_count": 153,
+        "sample_errors": 0,
+        "covered_wall_seconds": 12.245844832999865,
+        "cpu_seconds": 16.959523666666666,
+        "host_cpu_percent_mean": 138.4920672926091,
+        "host_cpu_percent_peak": 262.6166100665708,
+        "host_logical_cpu_count": 10,
+        "host_capacity_percent_mean": 13.84920672926091,
+        "units": "100 percent equals one logical CPU; zeros retained",
+        "samples": [
+          {
+            "wall_seconds": 0.0871582079998916,
+            "cpu_seconds": 0.10351233333333432,
+            "cpu_percent": 118.76372370283596,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07633483399695251,
+            "cpu_seconds": 0.08673225000000295,
+            "cpu_percent": 113.62080122354826,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07424812499812106,
+            "cpu_seconds": 0.09775499999999734,
+            "cpu_percent": 131.65989040460101,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07607325000572018,
+            "cpu_seconds": 0.08165141666664974,
+            "cpu_percent": 107.33262567395256,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07608916599565418,
+            "cpu_seconds": 0.10475379166666768,
+            "cpu_percent": 137.6724140630621,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07679150000330992,
+            "cpu_seconds": 0.10530595833334566,
+            "cpu_percent": 137.13231064480664,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07789512499584816,
+            "cpu_seconds": 0.11678520833333408,
+            "cpu_percent": 149.92620955362582,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07923129200207768,
+            "cpu_seconds": 0.10931075000000948,
+            "cpu_percent": 137.96411397297803,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07641183299710974,
+            "cpu_seconds": 0.11690970833332998,
+            "cpu_percent": 152.99948155641295,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08006916700105648,
+            "cpu_seconds": 0.10980720833333651,
+            "cpu_percent": 137.14044050425508,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07856316700053867,
+            "cpu_seconds": 0.13124899999999445,
+            "cpu_percent": 167.0617479041986,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08641733300464693,
+            "cpu_seconds": 0.11449662499999186,
+            "cpu_percent": 132.492662084162,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07709558299393393,
+            "cpu_seconds": 0.11828874999999617,
+            "cpu_percent": 153.43129321598542,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0822636250013602,
+            "cpu_seconds": 0.12708508333333027,
+            "cpu_percent": 154.48514860757592,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08009675000357674,
+            "cpu_seconds": 0.1203502916666887,
+            "cpu_percent": 150.256148546994,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07965687500109198,
+            "cpu_seconds": 0.1111523333333102,
+            "cpu_percent": 139.53890776130305,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07936841699847719,
+            "cpu_seconds": 0.11251366666668164,
+            "cpu_percent": 141.76125834642815,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07655854200129397,
+            "cpu_seconds": 0.11352412499999412,
+            "cpu_percent": 148.28407390265525,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07977133299573325,
+            "cpu_seconds": 0.10376037500000865,
+            "cpu_percent": 130.07225917305217,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07853112500015413,
+            "cpu_seconds": 0.12427587499999068,
+            "cpu_percent": 158.25047075251598,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08211991700227372,
+            "cpu_seconds": 0.10616474999999387,
+            "cpu_percent": 129.28014771015222,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07646354100143071,
+            "cpu_seconds": 0.11238404166666413,
+            "cpu_percent": 146.9772916540202,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07859120899956906,
+            "cpu_seconds": 0.11473516666666458,
+            "cpu_percent": 145.98982268779415,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07959074999962468,
+            "cpu_seconds": 0.10956950000002327,
+            "cpu_percent": 137.66612326248963,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07645162499829894,
+            "cpu_seconds": 0.10232958333331987,
+            "cpu_percent": 133.84880090592807,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07490808299917262,
+            "cpu_seconds": 0.11205054166667039,
+            "cpu_percent": 149.58404644784198,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08190925000235438,
+            "cpu_seconds": 0.10472349999999916,
+            "cpu_percent": 127.85308130276985,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08420366700011073,
+            "cpu_seconds": 0.08959212500000413,
+            "cpu_percent": 106.3993151270791,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07387300000118557,
+            "cpu_seconds": 0.10345270833332584,
+            "cpu_percent": 140.04129835212535,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0836231659995974,
+            "cpu_seconds": 0.17374845833335176,
+            "cpu_percent": 207.77550844485876,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.10004191700136289,
+            "cpu_seconds": 0.14251316666666256,
+            "cpu_percent": 142.45345445021917,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.12512929199874634,
+            "cpu_seconds": 0.0881440833333319,
+            "cpu_percent": 70.44240555138362,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08833449999656295,
+            "cpu_seconds": 0.10295983333333555,
+            "cpu_percent": 116.55676246239202,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07901516600395553,
+            "cpu_seconds": 0.1011033749999905,
+            "cpu_percent": 127.95439168593182,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07377045899920631,
+            "cpu_seconds": 0.0979837916666634,
+            "cpu_percent": 132.8225322113254,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07855016599933151,
+            "cpu_seconds": 0.10645287499999684,
+            "cpu_percent": 135.5221515393141,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07882283399521839,
+            "cpu_seconds": 0.09761595833332748,
+            "cpu_percent": 123.84223376090377,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07631566600321094,
+            "cpu_seconds": 0.09015045833335442,
+            "cpu_percent": 118.12837790023531,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07923329200275475,
+            "cpu_seconds": 0.09984654166665355,
+            "cpu_percent": 126.01589450957322,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07905979199858848,
+            "cpu_seconds": 0.10038758333333436,
+            "cpu_percent": 126.97678655052201,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07450416599749587,
+            "cpu_seconds": 0.08746287500000097,
+            "cpu_percent": 117.39326765021522,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0763007089990424,
+            "cpu_seconds": 0.10529304166666065,
+            "cpu_percent": 137.99746168542433,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08041049999883398,
+            "cpu_seconds": 0.10650683333333727,
+            "cpu_percent": 132.45388765755928,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07885179100412643,
+            "cpu_seconds": 0.10398199999999011,
+            "cpu_percent": 131.87018161014072,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07546108400129015,
+            "cpu_seconds": 0.08774295833334883,
+            "cpu_percent": 116.27577246551175,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07752412500121864,
+            "cpu_seconds": 0.14808591666666998,
+            "cpu_percent": 191.0191397379102,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.10351970799820265,
+            "cpu_seconds": 0.10295645833332903,
+            "cpu_percent": 99.4559010300885,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07582295799511485,
+            "cpu_seconds": 0.10066733333332631,
+            "cpu_percent": 132.76629664040823,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07975637500203447,
+            "cpu_seconds": 0.10558037500001127,
+            "cpu_percent": 132.3786029609772,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07727520900516538,
+            "cpu_seconds": 0.08136116666666293,
+            "cpu_percent": 105.28754009739971,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07510483299847692,
+            "cpu_seconds": 0.09697687499998578,
+            "cpu_percent": 129.12201669092642,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08021549999830313,
+            "cpu_seconds": 0.12436954166668271,
+            "cpu_percent": 155.0442765666406,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07901400000264402,
+            "cpu_seconds": 0.10175541666667307,
+            "cpu_percent": 128.78150285173268,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07549624999955995,
+            "cpu_seconds": 0.10246408333331214,
+            "cpu_percent": 135.72075875809642,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07572112499474315,
+            "cpu_seconds": 0.10797770833335577,
+            "cpu_percent": 142.59918660856133,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07686754200403811,
+            "cpu_seconds": 0.08406483333330897,
+            "cpu_percent": 109.36323855508839,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07493945799797075,
+            "cpu_seconds": 0.08610866666668629,
+            "cpu_percent": 114.90430938133818,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07831083299970487,
+            "cpu_seconds": 0.10884145833333808,
+            "cpu_percent": 138.98646478929456,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07596766699862201,
+            "cpu_seconds": 0.1012122916666435,
+            "cpu_percent": 133.23074890331884,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07479774999956135,
+            "cpu_seconds": 0.1016532083333376,
+            "cpu_percent": 135.90409916599597,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07571175000339281,
+            "cpu_seconds": 0.1081635416666809,
+            "cpu_percent": 142.86229239429002,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08301887499692384,
+            "cpu_seconds": 0.11986491666666474,
+            "cpu_percent": 144.38272823030448,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08054383299895562,
+            "cpu_seconds": 0.12158004166666528,
+            "cpu_percent": 150.9489145720713,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0841951250040438,
+            "cpu_seconds": 0.13145200000000393,
+            "cpu_percent": 156.12780430421645,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.079965833996539,
+            "cpu_seconds": 0.11651579166664494,
+            "cpu_percent": 145.70696739270906,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07978608300618362,
+            "cpu_seconds": 0.12869929166669386,
+            "cpu_percent": 161.30543926654397,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08426616699580336,
+            "cpu_seconds": 0.11812149999998306,
+            "cpu_percent": 140.1766618931009,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0798825410020072,
+            "cpu_seconds": 0.12787874999999674,
+            "cpu_percent": 160.0834780615999,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0810921669981326,
+            "cpu_seconds": 0.2129615000000183,
+            "cpu_percent": 262.6166100665708,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08346945799712557,
+            "cpu_seconds": 0.18388649999998283,
+            "cpu_percent": 220.3039344119322,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08458220900502056,
+            "cpu_seconds": 0.12593283333333335,
+            "cpu_percent": 148.88808747695197,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08670104100019671,
+            "cpu_seconds": 0.14080962499999838,
+            "cpu_percent": 162.40822875434554,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08740787499846192,
+            "cpu_seconds": 0.13558262500001003,
+            "cpu_percent": 155.11488524620444,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0919228339989786,
+            "cpu_seconds": 0.1771689583333392,
+            "cpu_percent": 192.73661464278595,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.09876408299896866,
+            "cpu_seconds": 0.14734058333332783,
+            "cpu_percent": 149.18437842921745,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.09738312500121538,
+            "cpu_seconds": 0.15799795833333405,
+            "cpu_percent": 162.24367243437933,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.09248766700329725,
+            "cpu_seconds": 0.13864837499999408,
+            "cpu_percent": 149.91012260591586,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.09057362499879673,
+            "cpu_seconds": 0.12667983333332988,
+            "cpu_percent": 139.86393206081,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08621404099540086,
+            "cpu_seconds": 0.15127466666668288,
+            "cpu_percent": 175.4640716524965,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.09246004200394964,
+            "cpu_seconds": 0.1487020833333113,
+            "cpu_percent": 160.82848342958698,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.09224374999757856,
+            "cpu_seconds": 0.12814129166668214,
+            "cpu_percent": 138.91596088628867,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0805072920047678,
+            "cpu_seconds": 0.1240515416666626,
+            "cpu_percent": 154.0873361624386,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0841864159956458,
+            "cpu_seconds": 0.13424941666667012,
+            "cpu_percent": 159.46683925066202,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08411979200172937,
+            "cpu_seconds": 0.12316262500000616,
+            "cpu_percent": 146.4133732017242,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07908591700106626,
+            "cpu_seconds": 0.121539791666669,
+            "cpu_percent": 153.68070103433251,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08030029099609237,
+            "cpu_seconds": 0.12159895833332282,
+            "cpu_percent": 151.43028353314455,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0804580000040005,
+            "cpu_seconds": 0.12103766666666635,
+            "cpu_percent": 150.4358381523878,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07971050000196556,
+            "cpu_seconds": 0.11169366666665473,
+            "cpu_percent": 140.12415762528212,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07792520899965893,
+            "cpu_seconds": 0.09578508333333705,
+            "cpu_percent": 122.91925111648565,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07724874999985332,
+            "cpu_seconds": 0.10067358333332918,
+            "cpu_percent": 130.32389952396684,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0800962499997695,
+            "cpu_seconds": 0.10793525000001905,
+            "cpu_percent": 134.75693306531787,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07748604099469958,
+            "cpu_seconds": 0.09988304166664488,
+            "cpu_percent": 128.90456188551093,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07410716700542253,
+            "cpu_seconds": 0.10151825000002732,
+            "cpu_percent": 136.98843728920184,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07523199999559438,
+            "cpu_seconds": 0.0937863750000009,
+            "cpu_percent": 124.66287617701651,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07630733300175052,
+            "cpu_seconds": 0.09206308333332167,
+            "cpu_percent": 120.64775390749105,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07492737499705981,
+            "cpu_seconds": 0.09288679166666441,
+            "cpu_percent": 123.9690989712496,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07448208400455769,
+            "cpu_seconds": 0.10019950000001121,
+            "cpu_percent": 134.5283249511115,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07710383299854584,
+            "cpu_seconds": 0.10161420833332288,
+            "cpu_percent": 131.78878971586187,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07695729199622292,
+            "cpu_seconds": 0.0973399166666635,
+            "cpu_percent": 126.48563136998241,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07477625000319676,
+            "cpu_seconds": 0.1132660000000136,
+            "cpu_percent": 151.4732284584629,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07721033300185809,
+            "cpu_seconds": 0.09133779166665792,
+            "cpu_percent": 118.29736787232851,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07524366700090468,
+            "cpu_seconds": 0.10129791666665222,
+            "cpu_percent": 134.6265017432421,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07539600000018254,
+            "cpu_seconds": 0.10589741666667654,
+            "cpu_percent": 140.45495340126817,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07835791599791264,
+            "cpu_seconds": 0.09902270833334126,
+            "cpu_percent": 126.37230976890592,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07547574999625795,
+            "cpu_seconds": 0.095175333333332,
+            "cpu_percent": 126.10054664981898,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07473554200259969,
+            "cpu_seconds": 0.10481191666665429,
+            "cpu_percent": 140.24373659189948,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08106929199857404,
+            "cpu_seconds": 0.10194804166668678,
+            "cpu_percent": 125.75420255117065,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07683004100545077,
+            "cpu_seconds": 0.08502758333332053,
+            "cpu_percent": 110.66970968724094,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0760232919928967,
+            "cpu_seconds": 0.09855804166665988,
+            "cpu_percent": 129.6419019527183,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07900987500033807,
+            "cpu_seconds": 0.10159325000001507,
+            "cpu_percent": 128.5829777601602,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07530445800512098,
+            "cpu_seconds": 0.10269474999998701,
+            "cpu_percent": 136.37273638302185,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07462058399687521,
+            "cpu_seconds": 0.09574474999999907,
+            "cpu_percent": 128.30876531870678,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07563658300205134,
+            "cpu_seconds": 0.10139062500001589,
+            "cpu_percent": 134.04971638825367,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07677225000225008,
+            "cpu_seconds": 0.09013320833331978,
+            "cpu_percent": 117.4033694866024,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07633312499820022,
+            "cpu_seconds": 0.09963208333333676,
+            "cpu_percent": 130.52273614592076,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07593700000143144,
+            "cpu_seconds": 0.09214900000000087,
+            "cpu_percent": 121.34927637154988,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07894037499499973,
+            "cpu_seconds": 0.10686491666665615,
+            "cpu_percent": 135.3742196859658,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.078802292002365,
+            "cpu_seconds": 0.10229325000001047,
+            "cpu_percent": 129.8099933399659,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07667349999974249,
+            "cpu_seconds": 0.09669404166665793,
+            "cpu_percent": 126.1114226779561,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07810070800042013,
+            "cpu_seconds": 0.1008585000000016,
+            "cpu_percent": 129.13903418066204,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07851854200271191,
+            "cpu_seconds": 0.0978188333333391,
+            "cpu_percent": 124.58055236170915,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07868412499374244,
+            "cpu_seconds": 0.09614737500000858,
+            "cpu_percent": 122.19412112373995,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07514754099975107,
+            "cpu_seconds": 0.1098613333333183,
+            "cpu_percent": 146.19418263291172,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07785695900383871,
+            "cpu_seconds": 0.11187958333333664,
+            "cpu_percent": 143.6988867338377,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08049537499755388,
+            "cpu_seconds": 0.11193158333332592,
+            "cpu_percent": 139.0534342336157,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08286358300392749,
+            "cpu_seconds": 0.11533745833335568,
+            "cpu_percent": 139.18956211184957,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07940858299843967,
+            "cpu_seconds": 0.12097458333332986,
+            "cpu_percent": 152.34446802269088,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08128362499701325,
+            "cpu_seconds": 0.11390166666665752,
+            "cpu_percent": 140.12867495863136,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08242970900028013,
+            "cpu_seconds": 0.0818684583333314,
+            "cpu_percent": 99.31911603988942,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08330891600053292,
+            "cpu_seconds": 0.1144469166666818,
+            "cpu_percent": 137.37655242801347,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08288237500528339,
+            "cpu_seconds": 0.10969704166666575,
+            "cpu_percent": 132.35267650049005,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08301383399521,
+            "cpu_seconds": 0.14918058333331133,
+            "cpu_percent": 179.70569018884157,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.09113962500123307,
+            "cpu_seconds": 0.11738245833335778,
+            "cpu_percent": 128.79409843058895,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08463629100151593,
+            "cpu_seconds": 0.13936483333331645,
+            "cpu_percent": 164.66320969904066,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08749129199713934,
+            "cpu_seconds": 0.10176620833333305,
+            "cpu_percent": 116.31581384883476,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07961904200055869,
+            "cpu_seconds": 0.11713416666667967,
+            "cpu_percent": 147.11828191283405,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08280450000165729,
+            "cpu_seconds": 0.11238187499997851,
+            "cpu_percent": 135.71952610996897,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08333783299895003,
+            "cpu_seconds": 0.13370400000001867,
+            "cpu_percent": 160.4361370923854,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08340004199999385,
+            "cpu_seconds": 0.11291929166666467,
+            "cpu_percent": 135.39476594828693,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07659116599825211,
+            "cpu_seconds": 0.09852695833333203,
+            "cpu_percent": 128.6401075753051,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07628920899878722,
+            "cpu_seconds": 0.09894895833334219,
+            "cpu_percent": 129.70243056906673,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0812794160010526,
+            "cpu_seconds": 0.11889025000000031,
+            "cpu_percent": 146.27350422702426,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08031970899901353,
+            "cpu_seconds": 0.10854491666666213,
+            "cpu_percent": 135.14107311817483,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07667133300128626,
+            "cpu_seconds": 0.09857470833331539,
+            "cpu_percent": 128.56788120751946,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07893699999840464,
+            "cpu_seconds": 0.10171429166668952,
+            "cpu_percent": 128.85502574045785,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07814491700264625,
+            "cpu_seconds": 0.1000980833333211,
+            "cpu_percent": 128.09289096811176,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0765729580016341,
+            "cpu_seconds": 0.0858447083333316,
+            "cpu_percent": 112.1083873127895,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0757514579963754,
+            "cpu_seconds": 0.10044424999999238,
+            "cpu_percent": 132.59711780702426,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07675454200216336,
+            "cpu_seconds": 0.10421075000001231,
+            "cpu_percent": 135.77144398448118,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07551266699738335,
+            "cpu_seconds": 0.08742537500000244,
+            "cpu_percent": 115.77577441812761,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07540754100045888,
+            "cpu_seconds": 0.11089595833332536,
+            "cpu_percent": 147.062159648795,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08002458400005708,
+            "cpu_seconds": 0.09257366666667813,
+            "cpu_percent": 115.68153439774471,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.050609916004759725,
+            "cpu_seconds": 0.10012916666666077,
+            "cpu_percent": 197.84495721598094,
+            "live_process_count": 15
+          }
+        ],
+        "limitation": "Counter sampling can miss CPU between the final available counter and process exit",
+        "boundary_method": "two token-bound UDP markers outside frame loop; no repeated QGA polling"
+      },
+      "host_runtime_isolation": {
+        "source_registration_state": "stopped",
+        "source_runtime_absent_verified": true,
+        "all_hypervisor_workers_bound_to_owned_clone": true,
+        "root_pids": [
+          18477,
+          18478
+        ],
+        "worker_count": 14,
+        "captured_at_utc": "2026-11-24T03:50:21.652424+00:00",
+        "method": "live executable inventory, package and UUID arguments, descendant binding"
+      },
+      "native_exit_code": 0,
+      "probe_sha256": "7a71fc3710fc13316c092f822a904e9558b7f7ad81bc52754717f8d1f797bec5",
+      "files": {
+        "csv": "guest-qemu-r1.csv",
+        "csv_sha256": "0d227c27d9b668614df765aa2b8fe80d13892c60fe30f479a00dd1f43d0dad0b"
+      }
+    },
+    {
+      "arm": "guest_qemu_viogpu3d",
+      "domain": "guest_qemu_viogpu3d",
+      "round": 2,
+      "metadata": {
+        "schema_version": 1,
+        "adapter_description": "Red Hat VirtIO GPU 3D controller",
+        "vendor_id": 6900,
+        "device_id": 4176,
+        "adapter_flags": 0,
+        "adapter_is_software": false,
+        "selected_feature_level": "11_1",
+        "width": 1280,
+        "height": 720,
+        "draws_per_frame": 16384,
+        "cb_updates_per_frame": 4096,
+        "passes_per_frame": 2,
+        "dynamic_vertex_bytes_per_frame": 9436608,
+        "geometry_objects": 16383,
+        "scene_variant": "dense_configurable_grid",
+        "async_swapchain": true,
+        "initialization_ms": 231.537
+      },
+      "completion": {
+        "measured_frames": 900,
+        "warmup_ms": 2039.376,
+        "measurement_wall_ms": 12438.972,
+        "gpu_drain_ms": 14.967,
+        "throughput_including_gpu_drain_fps": 72.353247,
+        "draws_per_frame": 16384,
+        "total_draw_calls": 14745600,
+        "async_swapchain": true
+      },
+      "csv_summary": {
+        "frame_count": 900,
+        "interval_sample_count": 899,
+        "derived_fps_from_intervals": 72.43018201833729,
+        "frame_interval_ms": {
+          "mean": 13.806399102335929,
+          "p50": 13.505292,
+          "p95": 17.215442,
+          "p99": 19.45380799999999
+        },
+        "cpu_submit_ms": {
+          "mean": 13.787375149999999,
+          "p95": 17.19834825,
+          "p99": 19.436661339999997
+        },
+        "process_resident_mib_mean": 33.733311631944446,
+        "device_memory_mib_mean": null
+      },
+      "host_cpu": {
+        "method": "libproc RUSAGE_INFO_V0 user+system counter deltas; PID family and creation-time binding",
+        "scope": "measurement phase only; roots and descendants",
+        "sample_count": 155,
+        "sample_errors": 0,
+        "covered_wall_seconds": 12.43534075000207,
+        "cpu_seconds": 23.81422195833335,
+        "host_cpu_percent_mean": 191.50437802300982,
+        "host_cpu_percent_peak": 604.4144173352768,
+        "host_logical_cpu_count": 10,
+        "host_capacity_percent_mean": 19.15043780230098,
+        "units": "100 percent equals one logical CPU; zeros retained",
+        "samples": [
+          {
+            "wall_seconds": 0.0867857909979648,
+            "cpu_seconds": 0.4121434166666623,
+            "cpu_percent": 474.8973442856878,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0842607919985312,
+            "cpu_seconds": 0.5092843750000119,
+            "cpu_percent": 604.4144173352768,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08395425000344403,
+            "cpu_seconds": 0.4220049583333227,
+            "cpu_percent": 502.6606256574395,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08270370800164528,
+            "cpu_seconds": 0.44715454166668867,
+            "cpu_percent": 540.6704880243012,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08308520900027361,
+            "cpu_seconds": 0.4093427499999938,
+            "cpu_percent": 492.6782455330236,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08343004099879181,
+            "cpu_seconds": 0.4094535833333396,
+            "cpu_percent": 490.77475982454456,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08329266699729487,
+            "cpu_seconds": 0.4229240416666439,
+            "cpu_percent": 507.7566332224413,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08283058300003177,
+            "cpu_seconds": 0.41776508333334905,
+            "cpu_percent": 504.3609113957206,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.09173925000504823,
+            "cpu_seconds": 0.38420070833332937,
+            "cpu_percent": 418.7964347999221,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.09036916699551512,
+            "cpu_seconds": 0.31818254166665483,
+            "cpu_percent": 352.0919271972992,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08510787499835715,
+            "cpu_seconds": 0.3071185000000153,
+            "cpu_percent": 360.85791121672776,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08321124999929452,
+            "cpu_seconds": 0.31394825000000637,
+            "cpu_percent": 377.2906307772904,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08425712500320515,
+            "cpu_seconds": 0.3096468333333262,
+            "cpu_percent": 367.5022537518901,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08726975000172388,
+            "cpu_seconds": 0.3775826249999859,
+            "cpu_percent": 432.6615178713442,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08744716699584387,
+            "cpu_seconds": 0.4046107916666909,
+            "cpu_percent": 462.691709253338,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.09066133300075307,
+            "cpu_seconds": 0.30232212499998923,
+            "cpu_percent": 333.46313692241654,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0837958330012043,
+            "cpu_seconds": 0.3190198749999854,
+            "cpu_percent": 380.7109059890848,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08460654199734563,
+            "cpu_seconds": 0.2882102083333461,
+            "cpu_percent": 340.6476633241767,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08128837500407826,
+            "cpu_seconds": 0.2935863750000144,
+            "cpu_percent": 361.1664951910837,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07964270799857331,
+            "cpu_seconds": 0.30678408333331775,
+            "cpu_percent": 385.20046724028185,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08617962500284193,
+            "cpu_seconds": 0.3110923750000102,
+            "cpu_percent": 360.9813514386392,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08475554199685575,
+            "cpu_seconds": 0.2991823749999939,
+            "cpu_percent": 352.99446850459987,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08136020800156984,
+            "cpu_seconds": 0.28352225000000775,
+            "cpu_percent": 348.47778412087786,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07988195899815764,
+            "cpu_seconds": 0.2689654583333341,
+            "cpu_percent": 336.7036333442165,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0797637499999837,
+            "cpu_seconds": 0.28175345833331555,
+            "cpu_percent": 353.23496993731254,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08326500000111992,
+            "cpu_seconds": 0.1875152500000051,
+            "cpu_percent": 225.20296642945175,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0771268329990562,
+            "cpu_seconds": 0.20346716666667705,
+            "cpu_percent": 263.80853297731915,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0815570420018048,
+            "cpu_seconds": 0.21161879166665887,
+            "cpu_percent": 259.4733532169741,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08387045800191117,
+            "cpu_seconds": 0.19730099999999937,
+            "cpu_percent": 235.2449297409386,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0833802079941961,
+            "cpu_seconds": 0.21156812499999894,
+            "cpu_percent": 253.73902283228378,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07988091700099176,
+            "cpu_seconds": 0.22139029166666008,
+            "cpu_percent": 277.15041336332104,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08355487500375602,
+            "cpu_seconds": 0.2474775833333276,
+            "cpu_percent": 296.18569032890395,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.09844070799590554,
+            "cpu_seconds": 0.21602170833335715,
+            "cpu_percent": 219.4434728591572,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08454337500006659,
+            "cpu_seconds": 0.19898070833332263,
+            "cpu_percent": 235.35931506539205,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07985870900301961,
+            "cpu_seconds": 0.19435829166667454,
+            "cpu_percent": 243.37770306219886,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0838982080022106,
+            "cpu_seconds": 0.11651979166664783,
+            "cpu_percent": 138.8823366329561,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08072537499538157,
+            "cpu_seconds": 0.11018358333333061,
+            "cpu_percent": 136.49188169102268,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08365379200404277,
+            "cpu_seconds": 0.11844733333333315,
+            "cpu_percent": 141.59230621321854,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.09200795799551997,
+            "cpu_seconds": 0.10460829166667007,
+            "cpu_percent": 113.69483025779535,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07526470800075913,
+            "cpu_seconds": 0.10653200000001975,
+            "cpu_percent": 141.54309879066463,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0830359590036096,
+            "cpu_seconds": 0.1297398333333287,
+            "cpu_percent": 156.24536031153545,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08357383299880894,
+            "cpu_seconds": 0.12464108333332974,
+            "cpu_percent": 149.1388857743381,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08820312500029104,
+            "cpu_seconds": 0.11593474999998801,
+            "cpu_percent": 131.44063773205934,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07824245799565688,
+            "cpu_seconds": 0.109556625000019,
+            "cpu_percent": 140.02196225238774,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08239908399991691,
+            "cpu_seconds": 0.10979145833331291,
+            "cpu_percent": 133.2435422867366,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08333483300521038,
+            "cpu_seconds": 0.11784687500002489,
+            "cpu_percent": 141.41370511015086,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07943195799452951,
+            "cpu_seconds": 0.10812299999997468,
+            "cpu_percent": 136.12027542795954,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08053150000341702,
+            "cpu_seconds": 0.10982516666668365,
+            "cpu_percent": 136.37541416964004,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0768462920023012,
+            "cpu_seconds": 0.08962495833331846,
+            "cpu_percent": 116.62886522961264,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08064466699579498,
+            "cpu_seconds": 0.1085246666666693,
+            "cpu_percent": 134.57141148878208,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07695612500538118,
+            "cpu_seconds": 0.10174583333334142,
+            "cpu_percent": 132.2127814078825,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07605724999302765,
+            "cpu_seconds": 0.1030614166666752,
+            "cpu_percent": 135.50505267561354,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07997129100112943,
+            "cpu_seconds": 0.0897154583333179,
+            "cpu_percent": 112.18458175453345,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07459779200144112,
+            "cpu_seconds": 0.09840437500001839,
+            "cpu_percent": 131.91325421282892,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07596433300204808,
+            "cpu_seconds": 0.08906224999998255,
+            "cpu_percent": 117.24219311921206,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07576308400166454,
+            "cpu_seconds": 0.09441233333334506,
+            "cpu_percent": 124.615219374215,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08211954099533614,
+            "cpu_seconds": 0.11009066666664863,
+            "cpu_percent": 134.06147347182696,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0788141250013723,
+            "cpu_seconds": 0.1179860000000004,
+            "cpu_percent": 149.7015921929553,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08831125000142492,
+            "cpu_seconds": 0.11823841666667803,
+            "cpu_percent": 133.88828338945518,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08250058400153648,
+            "cpu_seconds": 0.15023100000000855,
+            "cpu_percent": 182.09689278952337,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08025929099676432,
+            "cpu_seconds": 0.1132841666666487,
+            "cpu_percent": 141.1477291410608,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07856220900430344,
+            "cpu_seconds": 0.13108366666666843,
+            "cpu_percent": 166.8533361370834,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07844374999694992,
+            "cpu_seconds": 0.11277054166667516,
+            "cpu_percent": 143.7597535444952,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07998537499952363,
+            "cpu_seconds": 0.1151487083333192,
+            "cpu_percent": 143.962203507835,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0770839580000029,
+            "cpu_seconds": 0.10654708333334348,
+            "cpu_percent": 138.2221231210513,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07872895799664548,
+            "cpu_seconds": 0.13489516666665757,
+            "cpu_percent": 171.34123211995927,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08518279200507095,
+            "cpu_seconds": 0.12041954166668958,
+            "cpu_percent": 141.3660421690815,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07620954199956032,
+            "cpu_seconds": 0.10590504166666989,
+            "cpu_percent": 138.96559261211792,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07882716599851847,
+            "cpu_seconds": 0.11844174999999707,
+            "cpu_percent": 150.25498950732688,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08009937500173692,
+            "cpu_seconds": 0.1078904999999902,
+            "cpu_percent": 134.695807548624,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07700408399978187,
+            "cpu_seconds": 0.11202058333332163,
+            "cpu_percent": 145.4735612901245,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08233108300191816,
+            "cpu_seconds": 0.10046995833335307,
+            "cpu_percent": 122.03162483725899,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07730104199436028,
+            "cpu_seconds": 0.09024166666665731,
+            "cpu_percent": 116.74055658039016,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07684183300443692,
+            "cpu_seconds": 0.09774512500000176,
+            "cpu_percent": 127.20301062359856,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0772988329990767,
+            "cpu_seconds": 0.10549145833333096,
+            "cpu_percent": 136.47225221963055,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07623604199761758,
+            "cpu_seconds": 0.08840591666667155,
+            "cpu_percent": 115.96341356419617,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0770037920010509,
+            "cpu_seconds": 0.09931908333332007,
+            "cpu_percent": 128.97947068887805,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07858537499851082,
+            "cpu_seconds": 0.10055000000000741,
+            "cpu_percent": 127.95001614729563,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08010204099991824,
+            "cpu_seconds": 0.11194550000000786,
+            "cpu_percent": 139.7536175140932,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07971079200069653,
+            "cpu_seconds": 0.10332383333331882,
+            "cpu_percent": 129.6233931942565,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07409233300131746,
+            "cpu_seconds": 0.10445866666666559,
+            "cpu_percent": 140.98444796549757,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0751964590017451,
+            "cpu_seconds": 0.10230404166666959,
+            "cpu_percent": 136.04901484030705,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08220649999566376,
+            "cpu_seconds": 0.12701587500000117,
+            "cpu_percent": 154.5083113947206,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08677200000238372,
+            "cpu_seconds": 0.10683104166667537,
+            "cpu_percent": 123.1169520856274,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07893479100312106,
+            "cpu_seconds": 0.09982779166666511,
+            "cpu_percent": 126.46868433808602,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08620845899713458,
+            "cpu_seconds": 0.10533624999998428,
+            "cpu_percent": 122.18783542283882,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07667324999783887,
+            "cpu_seconds": 0.10906800000002312,
+            "cpu_percent": 142.25039372023141,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07978337500389898,
+            "cpu_seconds": 0.11394504166665181,
+            "cpu_percent": 142.81802651377353,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07825041600153781,
+            "cpu_seconds": 0.10611462500001204,
+            "cpu_percent": 135.60902346886772,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07941141699848231,
+            "cpu_seconds": 0.10630937499999099,
+            "cpu_percent": 133.87165097686488,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07745687499846099,
+            "cpu_seconds": 0.1046632916666557,
+            "cpu_percent": 135.12459890582377,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0743814579982427,
+            "cpu_seconds": 0.09779783333333861,
+            "cpu_percent": 131.4814685881112,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07887420900078723,
+            "cpu_seconds": 0.10743641666667514,
+            "cpu_percent": 136.21235385777732,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07676783300121315,
+            "cpu_seconds": 0.10510391666667471,
+            "cpu_percent": 136.9114022861812,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08021529200050281,
+            "cpu_seconds": 0.10172270833331795,
+            "cpu_percent": 126.8121149925881,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07652904099813895,
+            "cpu_seconds": 0.09765441666668373,
+            "cpu_percent": 127.60439095148011,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0798627089970978,
+            "cpu_seconds": 0.09283716666666417,
+            "cpu_percent": 116.24595237564237,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07570645800296916,
+            "cpu_seconds": 0.09330379166665259,
+            "cpu_percent": 123.2441645374471,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07625070799986133,
+            "cpu_seconds": 0.09355291666668158,
+            "cpu_percent": 122.6912105089591,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07568899999751011,
+            "cpu_seconds": 0.10152974999999423,
+            "cpu_percent": 134.14069416075543,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08005104200128699,
+            "cpu_seconds": 0.11580566666666775,
+            "cpu_percent": 144.6647835824622,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0808011670014821,
+            "cpu_seconds": 0.1103369166666725,
+            "cpu_percent": 136.55361767813162,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0794406249988242,
+            "cpu_seconds": 0.10337516666664531,
+            "cpu_percent": 130.12884360889075,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07609466600115411,
+            "cpu_seconds": 0.08747516666667537,
+            "cpu_percent": 114.95571406456882,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08095829199737636,
+            "cpu_seconds": 0.10629287500000187,
+            "cpu_percent": 131.2933763516732,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07853650000470225,
+            "cpu_seconds": 0.10441474999999825,
+            "cpu_percent": 132.95060257809627,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08308558299904689,
+            "cpu_seconds": 0.10883729166665945,
+            "cpu_percent": 130.99419627097998,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08454920900112484,
+            "cpu_seconds": 0.12275958333334341,
+            "cpu_percent": 145.1930595018461,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08360395799536491,
+            "cpu_seconds": 0.13324524999999765,
+            "cpu_percent": 159.37672473279903,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08337470800324809,
+            "cpu_seconds": 0.1264841250000155,
+            "cpu_percent": 151.70562875625058,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08592762499756645,
+            "cpu_seconds": 0.11437483333333007,
+            "cpu_percent": 133.10601024591247,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08166750000236789,
+            "cpu_seconds": 0.1257257499999985,
+            "cpu_percent": 153.9483270534217,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08013212499645306,
+            "cpu_seconds": 0.12092841666665549,
+            "cpu_percent": 150.91128142677888,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08073354200314498,
+            "cpu_seconds": 0.10517612499999276,
+            "cpu_percent": 130.2756232296802,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07596408300014446,
+            "cpu_seconds": 0.10182766666668228,
+            "cpu_percent": 134.04712154096381,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07727241700195009,
+            "cpu_seconds": 0.10551658333331518,
+            "cpu_percent": 136.55142083966692,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08130312499997672,
+            "cpu_seconds": 0.11682000000000525,
+            "cpu_percent": 143.68451397168153,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.080458083000849,
+            "cpu_seconds": 0.10573762500001282,
+            "cpu_percent": 131.41951815940865,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07672083399666008,
+            "cpu_seconds": 0.12334899999999407,
+            "cpu_percent": 160.77640658255083,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07807970800058683,
+            "cpu_seconds": 0.10551450000000412,
+            "cpu_percent": 135.13690394335373,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07549933299742406,
+            "cpu_seconds": 0.10783391666667261,
+            "cpu_percent": 142.8276414976431,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07974933399964357,
+            "cpu_seconds": 0.10430345833330992,
+            "cpu_percent": 130.78912776096175,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07573383300041314,
+            "cpu_seconds": 0.08972520833334072,
+            "cpu_percent": 118.47440539930317,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07895370800542878,
+            "cpu_seconds": 0.09597204166668066,
+            "cpu_percent": 121.55482508824248,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07785308399616042,
+            "cpu_seconds": 0.09722566666666455,
+            "cpu_percent": 124.88351350533466,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07855145799840102,
+            "cpu_seconds": 0.10667320833333319,
+            "cpu_percent": 135.8004180336215,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07702150000113761,
+            "cpu_seconds": 0.10238699999998416,
+            "cpu_percent": 132.9330122088922,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0804634169981,
+            "cpu_seconds": 0.10430170833334107,
+            "cpu_percent": 129.62624783360116,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07575379100308055,
+            "cpu_seconds": 0.09822991666667891,
+            "cpu_percent": 129.6699681507482,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07518304199766135,
+            "cpu_seconds": 0.08726091666664512,
+            "cpu_percent": 116.06462620834027,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07349491700006183,
+            "cpu_seconds": 0.10107683333335299,
+            "cpu_percent": 137.52901215368126,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07868950000556652,
+            "cpu_seconds": 0.11011666666666534,
+            "cpu_percent": 139.9381958951012,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0796934579993831,
+            "cpu_seconds": 0.10482754166666386,
+            "cpu_percent": 131.5384528394731,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07927708299393998,
+            "cpu_seconds": 0.10292358333332866,
+            "cpu_percent": 129.82766197539866,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07566104200668633,
+            "cpu_seconds": 0.1032122083333317,
+            "cpu_percent": 136.41393985059128,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07949254199775169,
+            "cpu_seconds": 0.09913858333332845,
+            "cpu_percent": 124.71432016368583,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07544433300063247,
+            "cpu_seconds": 0.08431908333333343,
+            "cpu_percent": 111.7633094226263,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07460883299791021,
+            "cpu_seconds": 0.11015050000001478,
+            "cpu_percent": 147.63734476734155,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07952858399949037,
+            "cpu_seconds": 0.17581949999998464,
+            "cpu_percent": 221.07711612357053,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08202512500429293,
+            "cpu_seconds": 0.15848525000001126,
+            "cpu_percent": 193.2154934134104,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0767000409978209,
+            "cpu_seconds": 0.09097070833331877,
+            "cpu_percent": 118.60581448177231,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07687450000230456,
+            "cpu_seconds": 0.11104937500000128,
+            "cpu_percent": 144.45541108777581,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08070608399430057,
+            "cpu_seconds": 0.10738745833334787,
+            "cpu_percent": 133.05992933684098,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07659570800024085,
+            "cpu_seconds": 0.096161208333338,
+            "cpu_percent": 125.5438598896894,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07586412499949802,
+            "cpu_seconds": 0.0792499583333246,
+            "cpu_percent": 104.46302298200762,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07532070800516522,
+            "cpu_seconds": 0.09428200000000012,
+            "cpu_percent": 125.17407562543703,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07643999999709195,
+            "cpu_seconds": 0.0966545416666609,
+            "cpu_percent": 126.44497863728152,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07718754200323019,
+            "cpu_seconds": 0.08836125000000652,
+            "cpu_percent": 114.47605106573899,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07873991700034821,
+            "cpu_seconds": 0.1011004999999863,
+            "cpu_percent": 128.39802713982948,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07924574999924516,
+            "cpu_seconds": 0.12119625000002562,
+            "cpu_percent": 152.93722376427763,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0799651659981464,
+            "cpu_seconds": 0.09640737499998281,
+            "cpu_percent": 120.5617143372372,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.076147250001668,
+            "cpu_seconds": 0.1181907083333412,
+            "cpu_percent": 155.21336401610333,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07669029200042132,
+            "cpu_seconds": 0.09918474999998647,
+            "cpu_percent": 129.3315586794761,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07455304199538659,
+            "cpu_seconds": 0.09798158333334142,
+            "cpu_percent": 131.42533250273624,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07781025000440422,
+            "cpu_seconds": 0.11300433333334393,
+            "cpu_percent": 145.23065190890358,
+            "live_process_count": 15
+          }
+        ],
+        "limitation": "Counter sampling can miss CPU between the final available counter and process exit",
+        "boundary_method": "two token-bound UDP markers outside frame loop; no repeated QGA polling"
+      },
+      "host_runtime_isolation": {
+        "source_registration_state": "stopped",
+        "source_runtime_absent_verified": true,
+        "all_hypervisor_workers_bound_to_owned_clone": true,
+        "root_pids": [
+          18477,
+          18478
+        ],
+        "worker_count": 15,
+        "captured_at_utc": "2026-11-24T03:51:02.846608+00:00",
+        "method": "live executable inventory, package and UUID arguments, descendant binding"
+      },
+      "native_exit_code": 0,
+      "probe_sha256": "7a71fc3710fc13316c092f822a904e9558b7f7ad81bc52754717f8d1f797bec5",
+      "files": {
+        "csv": "guest-qemu-r2.csv",
+        "csv_sha256": "26a0353b1db13cbc512c9d3475bacfd21238deda252f85e41fdb51212d04a6de"
+      }
+    },
+    {
+      "arm": "guest_qemu_viogpu3d",
+      "domain": "guest_qemu_viogpu3d",
+      "round": 3,
+      "metadata": {
+        "schema_version": 1,
+        "adapter_description": "Red Hat VirtIO GPU 3D controller",
+        "vendor_id": 6900,
+        "device_id": 4176,
+        "adapter_flags": 0,
+        "adapter_is_software": false,
+        "selected_feature_level": "11_1",
+        "width": 1280,
+        "height": 720,
+        "draws_per_frame": 16384,
+        "cb_updates_per_frame": 4096,
+        "passes_per_frame": 2,
+        "dynamic_vertex_bytes_per_frame": 9436608,
+        "geometry_objects": 16383,
+        "scene_variant": "dense_configurable_grid",
+        "async_swapchain": true,
+        "initialization_ms": 263.997
+      },
+      "completion": {
+        "measured_frames": 900,
+        "warmup_ms": 1972.613,
+        "measurement_wall_ms": 12464.097,
+        "gpu_drain_ms": 13.556,
+        "throughput_including_gpu_drain_fps": 72.207395,
+        "draws_per_frame": 16384,
+        "total_draw_calls": 14745600,
+        "async_swapchain": true
+      },
+      "csv_summary": {
+        "frame_count": 900,
+        "interval_sample_count": 899,
+        "derived_fps_from_intervals": 72.29328952352483,
+        "frame_interval_ms": {
+          "mean": 13.832542502780868,
+          "p50": 13.346833,
+          "p95": 17.7252542,
+          "p99": 19.89121916
+        },
+        "cpu_submit_ms": {
+          "mean": 13.816315829999999,
+          "p95": 17.7080226,
+          "p99": 19.87620259
+        },
+        "process_resident_mib_mean": 34.094500868055555,
+        "device_memory_mib_mean": null
+      },
+      "host_cpu": {
+        "method": "libproc RUSAGE_INFO_V0 user+system counter deltas; PID family and creation-time binding",
+        "scope": "measurement phase only; roots and descendants",
+        "sample_count": 156,
+        "sample_errors": 0,
+        "covered_wall_seconds": 12.469785166002112,
+        "cpu_seconds": 23.36014720833335,
+        "host_cpu_percent_mean": 187.33399892103154,
+        "host_cpu_percent_peak": 595.68230815188,
+        "host_logical_cpu_count": 10,
+        "host_capacity_percent_mean": 18.733399892103154,
+        "units": "100 percent equals one logical CPU; zeros retained",
+        "samples": [
+          {
+            "wall_seconds": 0.08925095800077543,
+            "cpu_seconds": 0.531652166666684,
+            "cpu_percent": 595.68230815188,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.09358162499847822,
+            "cpu_seconds": 0.4974402083333368,
+            "cpu_percent": 531.5575662865717,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08380529200076126,
+            "cpu_seconds": 0.4692268333333318,
+            "cpu_percent": 559.9011973242328,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08369483300339198,
+            "cpu_seconds": 0.4704683749999683,
+            "cpu_percent": 562.1235602213354,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08937216699996497,
+            "cpu_seconds": 0.4138935416667154,
+            "cpu_percent": 463.112348687794,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08615037499839673,
+            "cpu_seconds": 0.43782983333328307,
+            "cpu_percent": 508.2158183773792,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08601141599501716,
+            "cpu_seconds": 0.4085739166666744,
+            "cpu_percent": 475.02289311263524,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08675750000111293,
+            "cpu_seconds": 0.3492111666667045,
+            "cpu_percent": 402.51409579831693,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08608179200382438,
+            "cpu_seconds": 0.30979812499999215,
+            "cpu_percent": 359.8880992001522,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08563316700019641,
+            "cpu_seconds": 0.29995704166667353,
+            "cpu_percent": 350.28138299029104,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08127541599969845,
+            "cpu_seconds": 0.2915699166666199,
+            "cpu_percent": 358.7430628072106,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08589179199771024,
+            "cpu_seconds": 0.27415020833337006,
+            "cpu_percent": 319.1809158442969,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08005262500228127,
+            "cpu_seconds": 0.37825149999999375,
+            "cpu_percent": 472.50355624092856,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08625841699540615,
+            "cpu_seconds": 0.31718516666663366,
+            "cpu_percent": 367.7150331700684,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08585283300635638,
+            "cpu_seconds": 0.3124730416666986,
+            "cpu_percent": 363.9635766516449,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.09305845799826784,
+            "cpu_seconds": 0.3240163333333464,
+            "cpu_percent": 348.18579665201145,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.09224112499941839,
+            "cpu_seconds": 0.29097024999998955,
+            "cpu_percent": 315.44525286505797,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08435583399841562,
+            "cpu_seconds": 0.2817220833333519,
+            "cpu_percent": 333.96870136882677,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08677095799794188,
+            "cpu_seconds": 0.305159124999978,
+            "cpu_percent": 351.6834803266965,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08331670800544089,
+            "cpu_seconds": 0.277634583333309,
+            "cpu_percent": 333.22798029319455,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08234658400033368,
+            "cpu_seconds": 0.26262191666669354,
+            "cpu_percent": 318.9226606723958,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07820404099766165,
+            "cpu_seconds": 0.28422691666667965,
+            "cpu_percent": 363.4427493013797,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08404387500195298,
+            "cpu_seconds": 0.25813116666661906,
+            "cpu_percent": 307.1385828659384,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07878237499971874,
+            "cpu_seconds": 0.19797779166669321,
+            "cpu_percent": 251.29705935801,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07835733399406308,
+            "cpu_seconds": 0.19530083333330758,
+            "cpu_percent": 249.24384659144349,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07859404100599932,
+            "cpu_seconds": 0.19809629166666642,
+            "cpu_percent": 252.05001439173378,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0821812089998275,
+            "cpu_seconds": 0.18725662500005402,
+            "cpu_percent": 227.85820174590893,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07736070799728623,
+            "cpu_seconds": 0.17904470833330027,
+            "cpu_percent": 231.44140348299433,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07708491700032027,
+            "cpu_seconds": 0.16734416666669774,
+            "cpu_percent": 217.09067503569142,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08097137499862583,
+            "cpu_seconds": 0.20563454166665882,
+            "cpu_percent": 253.9595525828092,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08823850000044331,
+            "cpu_seconds": 0.22113591666662932,
+            "cpu_percent": 250.6115999994541,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08369204100017669,
+            "cpu_seconds": 0.225944375000043,
+            "cpu_percent": 269.9711612954522,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08219049999752315,
+            "cpu_seconds": 0.11289749999999765,
+            "cpu_percent": 137.36076554273288,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0773866250019637,
+            "cpu_seconds": 0.1278608333333034,
+            "cpu_percent": 165.223426309209,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07765870900038863,
+            "cpu_seconds": 0.10774779166670101,
+            "cpu_percent": 138.74527796510472,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07631750000291504,
+            "cpu_seconds": 0.09211112499997975,
+            "cpu_percent": 120.6946309777724,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07688024999515619,
+            "cpu_seconds": 0.10030587500000321,
+            "cpu_percent": 130.47027683484762,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08019733300170628,
+            "cpu_seconds": 0.08644999999997599,
+            "cpu_percent": 107.79660216149168,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0740278329976718,
+            "cpu_seconds": 0.11116783333335362,
+            "cpu_percent": 150.1703195024632,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07623895900178468,
+            "cpu_seconds": 0.10381299999998092,
+            "cpu_percent": 136.16791383202224,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07730845799960662,
+            "cpu_seconds": 0.11165479166666428,
+            "cpu_percent": 144.42765326820052,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08043991700105835,
+            "cpu_seconds": 0.10890441666669176,
+            "cpu_percent": 135.38603808512,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07845266599906608,
+            "cpu_seconds": 0.116746791666684,
+            "cpu_percent": 148.81175824932933,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0775237499983632,
+            "cpu_seconds": 0.10941012499996366,
+            "cpu_percent": 141.13110498688943,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08066066700121155,
+            "cpu_seconds": 0.1266082083333236,
+            "cpu_percent": 156.96399873735473,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07930366700020386,
+            "cpu_seconds": 0.1188193333333428,
+            "cpu_percent": 149.8282965061847,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07926616600161651,
+            "cpu_seconds": 0.11523391666667868,
+            "cpu_percent": 145.37591822509577,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07727570900169667,
+            "cpu_seconds": 0.10538187500001156,
+            "cpu_percent": 136.37128194798936,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07553854100115132,
+            "cpu_seconds": 0.11570737499997882,
+            "cpu_percent": 153.17660821409734,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0762204999991809,
+            "cpu_seconds": 0.10545429166666154,
+            "cpu_percent": 138.3542375972275,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07919829199818196,
+            "cpu_seconds": 0.1345988333333518,
+            "cpu_percent": 169.95168700916125,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08366045800357824,
+            "cpu_seconds": 0.1298300833333245,
+            "cpu_percent": 155.18691438166826,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08105962499394082,
+            "cpu_seconds": 0.12033583333335265,
+            "cpu_percent": 148.45347895743132,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07700750000367407,
+            "cpu_seconds": 0.11194141666663388,
+            "cpu_percent": 145.3643043356726,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07571604199620197,
+            "cpu_seconds": 0.11099354166669681,
+            "cpu_percent": 146.59184334049635,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07548833300097613,
+            "cpu_seconds": 0.10450774999997878,
+            "cpu_percent": 138.44225437939846,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07796641700406326,
+            "cpu_seconds": 0.07878837500001726,
+            "cpu_percent": 101.05424620950731,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07396041700121714,
+            "cpu_seconds": 0.09573662500000527,
+            "cpu_percent": 129.44305735651784,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07569524999416899,
+            "cpu_seconds": 0.09626908333329742,
+            "cpu_percent": 127.17982084835349,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07587870800489327,
+            "cpu_seconds": 0.10576804166667925,
+            "cpu_percent": 139.39093646647024,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07872820799821056,
+            "cpu_seconds": 0.10148112499999884,
+            "cpu_percent": 128.9005905003013,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07893250000051921,
+            "cpu_seconds": 0.09987104166665522,
+            "cpu_percent": 126.52714872327404,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07925766699918313,
+            "cpu_seconds": 0.10408116666666628,
+            "cpu_percent": 131.31999793501237,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07694370800163597,
+            "cpu_seconds": 0.10097112500002489,
+            "cpu_percent": 131.22726681937144,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07684824999887496,
+            "cpu_seconds": 0.09465987499997366,
+            "cpu_percent": 123.17765856914043,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07552716699865414,
+            "cpu_seconds": 0.10187083333334992,
+            "cpu_percent": 134.8797225972546,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07914554200397106,
+            "cpu_seconds": 0.10337491666668633,
+            "cpu_percent": 130.61369478207575,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07876420799584594,
+            "cpu_seconds": 0.09990029166665945,
+            "cpu_percent": 126.83462985107174,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07564012500370154,
+            "cpu_seconds": 0.09206358333331338,
+            "cpu_percent": 121.71262716555285,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07507549999718321,
+            "cpu_seconds": 0.09816304166669443,
+            "cpu_percent": 130.75243144618076,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07883204199606553,
+            "cpu_seconds": 0.09882729166665857,
+            "cpu_percent": 125.3643685540849,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07789600000251085,
+            "cpu_seconds": 0.10376604166663847,
+            "cpu_percent": 133.21100141636765,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07634600000164937,
+            "cpu_seconds": 0.09894691666670757,
+            "cpu_percent": 129.60327543626377,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07565225000143982,
+            "cpu_seconds": 0.0936409583333041,
+            "cpu_percent": 123.7781537647881,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07542979099525837,
+            "cpu_seconds": 0.0991018333333207,
+            "cpu_percent": 131.3828820492826,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07885125000029802,
+            "cpu_seconds": 0.10855004166668855,
+            "cpu_percent": 137.664325760566,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07670125000004191,
+            "cpu_seconds": 0.10685075000000041,
+            "cpu_percent": 139.30770359015273,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08065491700108396,
+            "cpu_seconds": 0.12182012499999878,
+            "cpu_percent": 151.0386837275669,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08358845800103154,
+            "cpu_seconds": 0.11941637500002833,
+            "cpu_percent": 142.8622777065162,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08084129200142343,
+            "cpu_seconds": 0.11077354166664402,
+            "cpu_percent": 137.02594172380813,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08025812499545282,
+            "cpu_seconds": 0.10968441666666198,
+            "cpu_percent": 136.66456408354466,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07672666700091213,
+            "cpu_seconds": 0.10024479166664932,
+            "cpu_percent": 130.6518262619926,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08018900000024587,
+            "cpu_seconds": 0.10284441666665894,
+            "cpu_percent": 128.2525242444021,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07477095800277311,
+            "cpu_seconds": 0.0991006666666936,
+            "cpu_percent": 132.53898213129506,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0762730830028886,
+            "cpu_seconds": 0.08938420833331154,
+            "cpu_percent": 117.1897146597921,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07613870899513131,
+            "cpu_seconds": 0.1046100833333301,
+            "cpu_percent": 137.39408602268185,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08050350000121398,
+            "cpu_seconds": 0.1014768750000245,
+            "cpu_percent": 126.05274925747855,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0758890830038581,
+            "cpu_seconds": 0.1008214999999873,
+            "cpu_percent": 132.85375973624778,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0773427919993992,
+            "cpu_seconds": 0.09889833333337081,
+            "cpu_percent": 127.87013602268075,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07524966599885374,
+            "cpu_seconds": 0.09609962499999403,
+            "cpu_percent": 127.70770969462893,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07514545899903169,
+            "cpu_seconds": 0.10211366666666702,
+            "cpu_percent": 135.88800710896297,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07965929099736968,
+            "cpu_seconds": 0.11090679166665443,
+            "cpu_percent": 139.2264358344798,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08309454200207256,
+            "cpu_seconds": 0.10813366666663718,
+            "cpu_percent": 130.13329643713553,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07971883299615001,
+            "cpu_seconds": 0.1319167083333793,
+            "cpu_percent": 165.47747047394705,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08532100000593346,
+            "cpu_seconds": 0.12350212499999697,
+            "cpu_percent": 144.7499736189312,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07874658399668988,
+            "cpu_seconds": 0.11814358333330716,
+            "cpu_percent": 150.030105862463,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08051837499806425,
+            "cpu_seconds": 0.12069095833336824,
+            "cpu_percent": 149.8924417392549,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08000358300341759,
+            "cpu_seconds": 0.11907699999998334,
+            "cpu_percent": 148.8395838407595,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07846308300213423,
+            "cpu_seconds": 0.11083462499997745,
+            "cpu_percent": 141.2570354863098,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08177991699631093,
+            "cpu_seconds": 0.12155524999999312,
+            "cpu_percent": 148.63704252167,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07775891700293869,
+            "cpu_seconds": 0.11664000000002964,
+            "cpu_percent": 150.00208914383614,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08291487499809591,
+            "cpu_seconds": 0.11759741666667753,
+            "cpu_percent": 141.82909480280597,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0782942079968052,
+            "cpu_seconds": 0.11675216666664368,
+            "cpu_percent": 149.11980037068355,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07940391699958127,
+            "cpu_seconds": 0.11504737500000714,
+            "cpu_percent": 144.8887905625787,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07878000000346219,
+            "cpu_seconds": 0.10849383333331572,
+            "cpu_percent": 137.7174832807155,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07600100000126986,
+            "cpu_seconds": 0.10750733333333382,
+            "cpu_percent": 141.4551562894403,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0793397500019637,
+            "cpu_seconds": 0.10028291666670361,
+            "cpu_percent": 126.3968145402797,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07578320799802896,
+            "cpu_seconds": 0.08285466666666691,
+            "cpu_percent": 109.33116828311343,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07607712499884656,
+            "cpu_seconds": 0.10433445833332061,
+            "cpu_percent": 137.14300893324042,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08146229200065136,
+            "cpu_seconds": 0.10126845833332276,
+            "cpu_percent": 124.31329372921772,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07425362499634502,
+            "cpu_seconds": 0.12138045833332317,
+            "cpu_percent": 163.46738403586068,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08554362500581192,
+            "cpu_seconds": 0.10842245833336134,
+            "cpu_percent": 126.74522306717188,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07673883299867157,
+            "cpu_seconds": 0.08230737499995389,
+            "cpu_percent": 107.25648512452452,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07698099999834085,
+            "cpu_seconds": 0.10599670833334435,
+            "cpu_percent": 137.69203873115296,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08006949999980861,
+            "cpu_seconds": 0.09593999999998679,
+            "cpu_percent": 119.82090558854009,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07813650000025518,
+            "cpu_seconds": 0.09586400000003667,
+            "cpu_percent": 122.68786034660319,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07752212500054156,
+            "cpu_seconds": 0.10992799999998226,
+            "cpu_percent": 141.80209843217574,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07507158299995353,
+            "cpu_seconds": 0.10036337499998962,
+            "cpu_percent": 133.69023402643813,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07919716699689161,
+            "cpu_seconds": 0.1027930833333599,
+            "cpu_percent": 129.79388939176877,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07963795800606022,
+            "cpu_seconds": 0.10849900000000046,
+            "cpu_percent": 136.24030891367656,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07934720899356762,
+            "cpu_seconds": 0.09922562500002,
+            "cpu_percent": 125.05244514405523,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07445216600171989,
+            "cpu_seconds": 0.09143283333328492,
+            "cpu_percent": 122.80748599197607,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07508112500363495,
+            "cpu_seconds": 0.10387075000002438,
+            "cpu_percent": 138.34469048645133,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07882329199492233,
+            "cpu_seconds": 0.11631670833332958,
+            "cpu_percent": 147.56641772944795,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07947866700123996,
+            "cpu_seconds": 0.10380050000000107,
+            "cpu_percent": 130.60171227882026,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07576525000331458,
+            "cpu_seconds": 0.09790458333334587,
+            "cpu_percent": 129.22095991112383,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07759470799646806,
+            "cpu_seconds": 0.11229149999995933,
+            "cpu_percent": 144.7154102378613,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08447691699984716,
+            "cpu_seconds": 0.13458516666667522,
+            "cpu_percent": 159.3159071689592,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.09261387500009732,
+            "cpu_seconds": 0.10332587500000126,
+            "cpu_percent": 111.56630148548767,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0771602079985314,
+            "cpu_seconds": 0.1078435000000253,
+            "cpu_percent": 139.76569373954757,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08082566700613825,
+            "cpu_seconds": 0.1132977083333006,
+            "cpu_percent": 140.17540780046554,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07618874999752734,
+            "cpu_seconds": 0.09940208333333425,
+            "cpu_percent": 130.46819029917185,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08182891600154107,
+            "cpu_seconds": 0.10627183333332763,
+            "cpu_percent": 129.87075782761954,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07518933399842354,
+            "cpu_seconds": 0.1023294583333399,
+            "cpu_percent": 136.09571051059635,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0771887910013902,
+            "cpu_seconds": 0.09971195833333585,
+            "cpu_percent": 129.1793238885423,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07609499999671243,
+            "cpu_seconds": 0.09391774999999208,
+            "cpu_percent": 123.42170971029589,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07951312500517815,
+            "cpu_seconds": 0.18237750000000438,
+            "cpu_percent": 229.36779303810204,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0848462499998277,
+            "cpu_seconds": 0.17131166666669798,
+            "cpu_percent": 201.90835383655244,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07906808400002774,
+            "cpu_seconds": 0.09908679166667178,
+            "cpu_percent": 125.31831638494872,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0800376659972244,
+            "cpu_seconds": 0.10201404166665928,
+            "cpu_percent": 127.4575418905856,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08028441699570976,
+            "cpu_seconds": 0.12391066666664236,
+            "cpu_percent": 154.33962318399085,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08695075000287034,
+            "cpu_seconds": 0.12129279166668999,
+            "cpu_percent": 139.4959694570616,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08062862500082701,
+            "cpu_seconds": 0.13008562500001897,
+            "cpu_percent": 161.33925761314256,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08285833300033119,
+            "cpu_seconds": 0.12319395833329821,
+            "cpu_percent": 148.68022789307844,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08374191699840594,
+            "cpu_seconds": 0.119690666666671,
+            "cpu_percent": 142.92802333262728,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08298541700060014,
+            "cpu_seconds": 0.13078591666664663,
+            "cpu_percent": 157.6010838936928,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.09971037499781232,
+            "cpu_seconds": 0.09009470833334571,
+            "cpu_percent": 90.35640306770726,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.11263999999937369,
+            "cpu_seconds": 0.14260312499999575,
+            "cpu_percent": 126.60078568962062,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08405608300381573,
+            "cpu_seconds": 0.11963537500004245,
+            "cpu_percent": 142.32803947646667,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07863695800187998,
+            "cpu_seconds": 0.11529449999999727,
+            "cpu_percent": 146.6161750525,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08202262499980861,
+            "cpu_seconds": 0.11133429166663561,
+            "cpu_percent": 135.73607485360947,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07983650000096532,
+            "cpu_seconds": 0.11370637499999331,
+            "cpu_percent": 142.42404789616086,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.08027504199708346,
+            "cpu_seconds": 0.1180177916667029,
+            "cpu_percent": 147.01679218179754,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.07871954199799802,
+            "cpu_seconds": 0.12012537499999365,
+            "cpu_percent": 152.59917925214637,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.0846553750016028,
+            "cpu_seconds": 0.11115091666665444,
+            "cpu_percent": 131.29812095752925,
+            "live_process_count": 17
+          },
+          {
+            "wall_seconds": 0.024003541002457496,
+            "cpu_seconds": 0.10952070833333975,
+            "cpu_percent": 456.2689659918383,
+            "live_process_count": 15
+          }
+        ],
+        "limitation": "Counter sampling can miss CPU between the final available counter and process exit",
+        "boundary_method": "two token-bound UDP markers outside frame loop; no repeated QGA polling"
+      },
+      "host_runtime_isolation": {
+        "source_registration_state": "stopped",
+        "source_runtime_absent_verified": true,
+        "all_hypervisor_workers_bound_to_owned_clone": true,
+        "root_pids": [
+          18477,
+          18478
+        ],
+        "worker_count": 15,
+        "captured_at_utc": "2026-11-24T03:51:39.957420+00:00",
+        "method": "live executable inventory, package and UUID arguments, descendant binding"
+      },
+      "native_exit_code": 0,
+      "probe_sha256": "7a71fc3710fc13316c092f822a904e9558b7f7ad81bc52754717f8d1f797bec5",
+      "files": {
+        "csv": "guest-qemu-r3.csv",
+        "csv_sha256": "44486f6a4397a1b8e2852f98970af724ca8a1fb72fb1aa14070078556af49cde"
+      }
+    }
+  ],
+  "digests": {
+    "guest_probe_exe": "7a71fc3710fc13316c092f822a904e9558b7f7ad81bc52754717f8d1f797bec5"
+  },
+  "captured_at_utc": "2026-11-24T03:52:16.886339+00:00"
+}
