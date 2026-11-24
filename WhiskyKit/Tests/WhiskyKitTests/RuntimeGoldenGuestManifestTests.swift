@@ -170,4 +170,18 @@ final class RuntimeGoldenGuestManifestTests: XCTestCase {
             "settings.goldenGuest.advisory.pointerModeCheck"
         ])
     }
+
+    func testCompatibilitySummaryReflectsPhase8AFindings() throws {
+        let report = UnifiedRuntimeBaselineReport.collect(environment: [:])
+        if let compat = report.compatibilitySummary {
+            XCTAssertEqual(compat.visualStage, "entered_character_creation_ui_then_froze")
+            XCTAssertEqual(compat.rootCauseCode, "neptune_umd_wddm2_render_thread_deadlock")
+            XCTAssertEqual(
+                compat.mitigationStatus,
+                "host_and_utm_tuning_exhausted_awaiting_upstream_whql_viogpu3d_fix"
+            )
+            XCTAssertEqual(compat.protectedLobbyAndMatch, "not_verified")
+            XCTAssertEqual(compat.vendorVMSupport, "unknown")
+        }
+    }
 }

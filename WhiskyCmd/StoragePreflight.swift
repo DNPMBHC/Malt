@@ -155,9 +155,10 @@ extension Whisky {
                 lines.append("  DXVK/Venus Status  : \(compat.dxvkVenusStatus)")
                 lines.append("  ACE ARM64 Coverage : \(compat.aceArm64Coverage)")
                 lines.append("  Vendor VM Support  : \(compat.vendorVMSupport)")
+                lines.append("  Mitigation Status  : \(compat.mitigationStatus)")
+                lines.append("  Lobby / Match      : \(compat.protectedLobbyAndMatch)")
                 lines.append("  Display Guidance   : \(compat.recommendedDisplayMode)")
                 lines.append("  Pointer Guidance   : \(compat.pointerGuidanceCode)")
-                lines.append("  Phase 8 Status     : \(compat.phase8VerificationStatus)")
                 lines.append("  Boundary           : \(compat.boundaryNote)")
             }
             for key in report.advisoryLocalizationKeys {

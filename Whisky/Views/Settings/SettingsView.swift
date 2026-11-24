@@ -231,8 +231,8 @@ struct SettingsRuntimeManifestSection: View {
         if let compat = baselineReport?.compatibilitySummary {
             LabeledContent("settings.compatibility.targetSummary", value: "\(compat.targetID): \(compat.visualStage)")
                 .font(.caption)
-            let detail = "\(compat.rootCauseCode) | \(compat.recommendedDisplayMode)"
-                + " | 8A: \(compat.phase8VerificationStatus)"
+            let detail = "\(compat.rootCauseCode) | \(compat.mitigationStatus)"
+                + " | Lobby: \(compat.protectedLobbyAndMatch)"
             Text(detail).font(.caption2).foregroundStyle(.secondary)
         }
         if let advisories = baselineReport?.advisoryLocalizationKeys, !advisories.isEmpty {

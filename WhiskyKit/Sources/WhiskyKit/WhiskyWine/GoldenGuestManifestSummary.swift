@@ -14,9 +14,10 @@ public struct CompatibilityTargetSummary: Codable, Sendable, Equatable {
     public let dxvkVenusStatus: String
     public let aceArm64Coverage: String
     public let vendorVMSupport: String
+    public let mitigationStatus: String
+    public let protectedLobbyAndMatch: String
     public let recommendedDisplayMode: String
     public let pointerGuidanceCode: String
-    public let phase8VerificationStatus: String
     public let fiveDimensionStates: BundledMatrixFiveDimensionStates
     public let boundaryNote: String
 }
@@ -132,18 +133,19 @@ public struct UnifiedRuntimeBaselineReport: Codable, Sendable, Equatable {
             targetID: record.targetID ?? record.recordID,
             productName: record.productName,
             updatedOn: record.updatedOn,
-            visualStage: "entered_game_ui_freeze_on_resize",
-            rootCauseCode: "neptune_umd_swapchain_resize_deadlock",
+            visualStage: "entered_character_creation_ui_then_froze",
+            rootCauseCode: "neptune_umd_wddm2_render_thread_deadlock",
             dxvkVenusStatus: "probe_passed_0lsb_launcher_purges_dropin_dll",
             aceArm64Coverage: "partial_core_arm64_running_ace_game_x64_blocked_1275",
             vendorVMSupport: "unknown",
+            mitigationStatus: "host_and_utm_tuning_exhausted_awaiting_upstream_whql_viogpu3d_fix",
+            protectedLobbyAndMatch: "not_verified",
             recommendedDisplayMode: "1280x720_windowed_static_no_dynamic_resolution",
             pointerGuidanceCode: "utm_check_usb_tablet_or_capture_cursor_on_window_mode",
-            phase8VerificationStatus: "pending_8a_verification",
             fiveDimensionStates: record.fiveDimensionStates,
-            boundaryNote: "Entered fullscreen/windowed UI on WHQL viogpu3d; SwapChain resize "
-                + "triggers neptune_umd deadlock. ACE-CORE runs natively on ARM64 while "
-                + "ACE-GAME.sys (x64) is blocked with 1275; vendor VM support remains unknown."
+            boundaryNote: "Synthetic D3D11 (123.6 FPS, 0 LSB) and native ARM64 ACE-CORE load are verified, "
+                + "but target-cn freezes in character creation/UI due to neptune_umd WDDM2 deadlock; "
+                + "awaiting upstream WHQL viogpu3d fix for golden-win11-arm64-v2."
         )
     }
 
