@@ -34,11 +34,26 @@ class GuestOptimizerProfileTests(unittest.TestCase):
         runner.validate_profile(profile)
         self.assertEqual(profile["owner"], "@DNPMBHC")
         self.assertEqual(profile["profile_id"], "anticheat-minimal-win11-arm64")
-        self.assertGreaterEqual(len(profile["optimization_blacklist"]["services"]), 10)
+        self.assertGreaterEqual(profile.get("profile_revision", 1), 2)
+        self.assertGreaterEqual(len(profile["optimization_blacklist"]["services"]), 20)
+        self.assertGreaterEqual(len(profile["optimization_blacklist"]["registry_tweaks"]), 12)
         self.assertGreaterEqual(len(profile["optimization_blacklist"]["uwp_packages"]), 15)
 
     def test_protected_core_and_anticheat_services_cannot_enter_blacklist(self):
-        for service in ("CryptSvc", "cryptsvc", "TBS", "Winmgmt", "EventLog", "QEMU-GA", "vgc", "ACE-BASE", "BEService"):
+        for service in (
+            "CryptSvc",
+            "cryptsvc",
+            "TBS",
+            "Winmgmt",
+            "EventLog",
+            "QEMU-GA",
+            "vgc",
+            "ACE-BASE",
+            "ACE-CORE10405",
+            "ACE-CORE20405",
+            "AntiCheatExpert",
+            "BEService",
+        ):
             profile = self.load_profile()
             profile["optimization_blacklist"]["services"].append({
                 "name": service,

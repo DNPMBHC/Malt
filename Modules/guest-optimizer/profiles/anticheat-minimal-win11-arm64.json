@@ -1,5 +1,6 @@
 {
   "schema_version": 1,
+  "profile_revision": 2,
   "profile_id": "anticheat-minimal-win11-arm64",
   "owner": "@DNPMBHC",
   "target_os": {
@@ -54,10 +55,14 @@
       "vgk",
       "ACE-BASE",
       "ACE-GAME",
+      "ACE-CORE10405",
+      "ACE-CORE20405",
+      "AntiCheatExpert",
       "AntiCheatExpert Service",
       "AntiCheatExpert Protection",
       "EasyAntiCheat",
       "EasyAntiCheat_EOS",
+      "EasyAntiCheat_EOSSys",
       "BEService"
     ],
     "prism_files": [
@@ -190,6 +195,42 @@
         "target_start_type": "Disabled",
         "stop_running": true,
         "reason": "Disable optional Xbox Live Networking background service"
+      },
+      {
+        "name": "wisvc",
+        "target_start_type": "Disabled",
+        "stop_running": true,
+        "reason": "Disable Windows Insider background service"
+      },
+      {
+        "name": "RemoteRegistry",
+        "target_start_type": "Disabled",
+        "stop_running": true,
+        "reason": "Disable Remote Registry background service"
+      },
+      {
+        "name": "WalletService",
+        "target_start_type": "Disabled",
+        "stop_running": true,
+        "reason": "Disable Windows Wallet background service"
+      },
+      {
+        "name": "TrkWks",
+        "target_start_type": "Disabled",
+        "stop_running": true,
+        "reason": "Disable Distributed Link Tracking Client background service"
+      },
+      {
+        "name": "diagnosticshub.standardcollector.service",
+        "target_start_type": "Disabled",
+        "stop_running": true,
+        "reason": "Disable Microsoft Diagnostics Hub Standard Collector telemetry service"
+      },
+      {
+        "name": "diagsvc",
+        "target_start_type": "Disabled",
+        "stop_running": true,
+        "reason": "Disable Diagnostic Execution Service"
       }
     ],
     "scheduled_tasks": [
@@ -227,6 +268,26 @@
         "task_path": "\\Microsoft\\Windows\\Windows Error Reporting\\",
         "task_name": "QueueReporting",
         "reason": "Disable background error report queue task"
+      },
+      {
+        "task_path": "\\Microsoft\\Windows\\Feedback\\Siuf\\",
+        "task_name": "DmClient",
+        "reason": "Disable Windows Feedback SIUF telemetry task"
+      },
+      {
+        "task_path": "\\Microsoft\\Windows\\Autochk\\",
+        "task_name": "Proxy",
+        "reason": "Disable background Autochk SQM telemetry proxy task"
+      },
+      {
+        "task_path": "\\Microsoft\\Windows\\DiskDiagnostic\\",
+        "task_name": "Microsoft-Windows-DiskDiagnosticDataCollector",
+        "reason": "Disable background disk diagnostic telemetry collector"
+      },
+      {
+        "task_path": "\\Microsoft\\Windows\\Power Efficiency Diagnostics\\",
+        "task_name": "AnalyzeSystem",
+        "reason": "Disable background power efficiency diagnostic analysis task"
       }
     ],
     "uwp_packages": [
@@ -291,6 +352,62 @@
         "kind": "DWord",
         "value": 0,
         "reason": "Disable Start menu web search telemetry queries"
+      },
+      {
+        "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\GameDVR",
+        "name": "AppCaptureEnabled",
+        "kind": "DWord",
+        "value": 0,
+        "reason": "Disable GameDVR background capture overlay to avoid D3D11 SwapChain interference"
+      },
+      {
+        "path": "HKCU:\\System\\GameConfigStore",
+        "name": "GameDVR_Enabled",
+        "kind": "DWord",
+        "value": 0,
+        "reason": "Disable GameConfigStore GameDVR hooks"
+      },
+      {
+        "path": "HKCU:\\Software\\Microsoft\\GameBar",
+        "name": "AutoGameModeEnabled",
+        "kind": "DWord",
+        "value": 0,
+        "reason": "Disable background GameBar AutoGameMode overlay"
+      },
+      {
+        "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+        "name": "TaskbarDa",
+        "kind": "DWord",
+        "value": 0,
+        "reason": "Disable Windows Widgets taskbar background entry"
+      },
+      {
+        "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+        "name": "ShowCopilotButton",
+        "kind": "DWord",
+        "value": 0,
+        "reason": "Disable Copilot taskbar button"
+      },
+      {
+        "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+        "name": "SubscribedContent-338388Enabled",
+        "kind": "DWord",
+        "value": 0,
+        "reason": "Disable Start menu suggested consumer content"
+      },
+      {
+        "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+        "name": "SubscribedContent-338389Enabled",
+        "kind": "DWord",
+        "value": 0,
+        "reason": "Disable Windows tips and Spotlight background content"
+      },
+      {
+        "path": "HKCU:\\Software\\Microsoft\\Edge\\Main",
+        "name": "AllowPrelaunch",
+        "kind": "DWord",
+        "value": 0,
+        "reason": "Disable Microsoft Edge background prelaunch at user sign-in"
       }
     ]
   }

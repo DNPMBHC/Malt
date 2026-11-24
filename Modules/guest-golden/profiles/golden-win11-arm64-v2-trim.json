@@ -1,0 +1,31 @@
+{
+  "schema_version": 2,
+  "profile_id": "golden-win11-arm64-v2-trim",
+  "base_profile": "golden-win11-arm64-v1",
+  "owner": "@DNPMBHC",
+  "utm_hardware_trim": {
+    "dynamic_resolution": false,
+    "usb_sharing": false,
+    "maximum_usb_shares": 0,
+    "remove_empty_cdrom_slots": true,
+    "clipboard_sharing": false,
+    "directory_share_mode": "None",
+    "mouse_trails": 0,
+    "utm_preferences_plist": "~/Library/Containers/com.utmapp.UTM/Data/Library/Preferences/com.utmapp.UTM.plist",
+    "qemu_directx_driver_enum": {
+      "D3DMetal": 0,
+      "SoftwareFallback": 1,
+      "DXMT": 2
+    },
+    "recommended_qemu_directx_driver": 2,
+    "recommended_directx_driver_name": "dxmt-native.framework",
+    "optional_renderer_fps_limit": 120,
+    "preserve_tpm_and_uefi": true,
+    "preserve_virtio_ramfb_gl": true
+  },
+  "notes": [
+    "QEMUDirectXDriver is an integer enum in com.utmapp.UTM.plist (0=d3dmetal-native, 1=none, 2=dxmt-native); string values are ignored by UTM 5.0.9.",
+    "Keep Windows MouseTrails=0 so SPICE does not hide the host cursor.",
+    "Applied exclusively to ephemeral clones spawned from sealed golden-win11-arm64-v1."
+  ]
+}

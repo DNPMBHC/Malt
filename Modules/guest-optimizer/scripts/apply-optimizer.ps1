@@ -299,6 +299,34 @@ $snapshotPath = Join-Path $StateDirectory 'snapshot-initial.json'
 $snapshotReused = $false
 if (Test-Path -LiteralPath $snapshotPath) {
     $snapshotReused = $true
+    if (-not $DryRun) {
+        $existingSnap = Get-Content -Raw -LiteralPath $snapshotPath | ConvertFrom-Json
+        if ([string]$existingSnap.profile_sha256 -ne $profileSha) {
+            $freshSnap = Capture-InitialSnapshot $profileData $profileSha
+            $svcSeen = @{}
+            foreach ($s in @($existingSnap.services)) { $svcSeen[[string]$s.name] = $true }
+            $mergedServices = @($existingSnap.services) + @($freshSnap.services | Where-Object { -not $svcSeen.ContainsKey([string]$_.name) })
+
+            $taskSeen = @{}
+            foreach ($t in @($existingSnap.scheduled_tasks)) { $taskSeen[([string]$t.task_path + [string]$t.task_name)] = $true }
+            $mergedTasks = @($existingSnap.scheduled_tasks) + @($freshSnap.scheduled_tasks | Where-Object { -not $taskSeen.ContainsKey([string]$_.task_path + [string]$_.task_name) })
+
+            $uwpSeen = @{}
+            foreach ($u in @($existingSnap.uwp_packages)) { $uwpSeen[[string]$u.name] = $true }
+            $mergedUwp = @($existingSnap.uwp_packages) + @($freshSnap.uwp_packages | Where-Object { -not $uwpSeen.ContainsKey([string]$_.name) })
+
+            $regSeen = @{}
+            foreach ($r in @($existingSnap.registry_tweaks)) { $regSeen[([string]$r.path + '|' + [string]$r.name)] = $true }
+            $mergedReg = @($existingSnap.registry_tweaks) + @($freshSnap.registry_tweaks | Where-Object { -not $regSeen.ContainsKey([string]$_.path + '|' + [string]$_.name) })
+
+            $existingSnap.profile_sha256 = $profileSha
+            $existingSnap.services = $mergedServices
+            $existingSnap.scheduled_tasks = $mergedTasks
+            $existingSnap.uwp_packages = $mergedUwp
+            $existingSnap.registry_tweaks = $mergedReg
+            $existingSnap | ConvertTo-Json -Depth 8 | Set-Content -Encoding UTF8 -LiteralPath $snapshotPath
+        }
+    }
 } elseif (-not $DryRun) {
     $initialSnapshot = Capture-InitialSnapshot $profileData $profileSha
     $initialSnapshot | ConvertTo-Json -Depth 8 | Set-Content -Encoding UTF8 -LiteralPath $snapshotPath
