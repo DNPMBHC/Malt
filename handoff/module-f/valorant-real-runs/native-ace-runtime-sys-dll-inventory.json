@@ -1,0 +1,56 @@
+{
+  "owner": "@DNPMBHC",
+  "errors": [],
+  "captured_at_utc": "2026-11-24T02:51:05.2011745+00:00",
+  "files": [
+    {
+      "pe_valid": true,
+      "artifact_alias": "artifact-0001.sys",
+      "extension": ".sys",
+      "pe_machine": "0x8664",
+      "signature": {
+        "signer_alias": "publisher-x",
+        "status": "Valid",
+        "whql_publisher": true,
+        "signature_type": "Authenticode"
+      },
+      "file_version": "1.0.2603.17210",
+      "size_bytes": 4125432,
+      "sha256": "dc2456422cc6e75f8c375ac3c9d630531b88a2ad2f8bd17191a62c5de9170615"
+    },
+    {
+      "pe_valid": true,
+      "artifact_alias": "artifact-0002.sys",
+      "extension": ".sys",
+      "pe_machine": "0xaa64",
+      "signature": {
+        "signer_alias": "publisher-x",
+        "status": "Valid",
+        "whql_publisher": true,
+        "signature_type": "Authenticode"
+      },
+      "file_version": "0.6.6.6",
+      "size_bytes": 1704168,
+      "sha256": "abf69136be347884d8de4aae6860a10b698b0bfdd92cf0555bf6c581b8ed50ee"
+    },
+    {
+      "pe_valid": true,
+      "artifact_alias": "artifact-0003.sys",
+      "extension": ".sys",
+      "pe_machine": "0xaa64",
+      "signature": {
+        "signer_alias": "publisher-x",
+        "status": "Valid",
+        "whql_publisher": true,
+        "signature_type": "Authenticode"
+      },
+      "file_version": "21.0.2506.56",
+      "size_bytes": 1596640,
+      "sha256": "47e61a173c6505c8c68767ad99ce8bc8cd3f446ade1144ad978396285fd1c4bf"
+    }
+  ],
+  "directories_scanned": 1,
+  "root_count": 1,
+  "inventory_complete": true,
+  "signature_method": "Get-AuthenticodeSignature; trust does not prove kernel acceptance"
+}

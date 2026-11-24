@@ -1,0 +1,49 @@
+{
+  "owner": "@DNPMBHC",
+  "stage": "before",
+  "limitations": [
+    "Raw messages and identities are withheld. Numeric event codes do not independently prove vendor attribution.",
+    "A reset bookmark, disabled channel, read error or sampling limit prevents a complete absence claim."
+  ],
+  "guest_capture_time_utc": "2026-11-23T17:27:21.6249456+00:00",
+  "events": [],
+  "selection": "record IDs after baseline; System SCM, all Application and CodeIntegrity events",
+  "coverage": [
+    {
+      "possibly_truncated": false,
+      "enabled": true,
+      "record_id_reset": false,
+      "log_alias": "system",
+      "baseline_record_id": 2544,
+      "sampled": 0,
+      "latest_record_id": 2544,
+      "status": "available",
+      "no_matching_events": false
+    },
+    {
+      "possibly_truncated": false,
+      "enabled": true,
+      "record_id_reset": false,
+      "log_alias": "application",
+      "baseline_record_id": 17666,
+      "sampled": 0,
+      "latest_record_id": 17666,
+      "status": "available",
+      "no_matching_events": false
+    },
+    {
+      "possibly_truncated": false,
+      "enabled": true,
+      "record_id_reset": false,
+      "log_alias": "code-integrity",
+      "baseline_record_id": 186,
+      "sampled": 0,
+      "latest_record_id": 186,
+      "status": "available",
+      "no_matching_events": false
+    }
+  ],
+  "host_query_started_utc": "2026-11-23T17:27:16.516684+00:00",
+  "host_query_completed_utc": "2026-11-23T17:27:22.629775+00:00",
+  "collector_sha256": "67e60337e1ad12b5c5604676e6e410e61501b07413a133039859a1feaf4be852"
+}

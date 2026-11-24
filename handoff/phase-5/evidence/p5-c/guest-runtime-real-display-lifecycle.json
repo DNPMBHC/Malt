@@ -1,0 +1,44 @@
+{
+  "baselineRestored": true,
+  "coldHeadlessStartVerified": false,
+  "failures": [
+    {
+      "baselineRestored": true,
+      "errorCode": "changeDisplaySettingsFailed(-2)",
+      "preset": "native_retina_point_to_point"
+    },
+    {
+      "baselineRestored": true,
+      "errorCode": "changeDisplaySettingsFailed(-2)",
+      "preset": "high_performance"
+    },
+    {
+      "baselineRestored": true,
+      "errorCode": "sessionIncomplete",
+      "preset": "follow_window"
+    }
+  ],
+  "hostDisplay": {
+    "backingScaleFactor": 2,
+    "logicalHeight": 982,
+    "logicalWidth": 1512,
+    "maxRefreshRateHz": 120
+  },
+  "nativeGuestScanoutVerified": false,
+  "owner": "@DNPMBHC",
+  "passed": false,
+  "runs": [],
+  "scope": "headless_guest_display_and_lifecycle_only",
+  "systemDPIScalingImplemented": true,
+  "targetGameVerified": false,
+  "virtualHIDVerified": false,
+  "production_snapshot_revision": 4,
+  "production_fingerprint": "37896f4e4b23d3dc954c79f78fdd5facd1f98ca68f156740a80506fcb9508707",
+  "frozen_probe_sha256": "09bb190bf5d763f9749345300b937728db886a4ec26c32c361a920c565cf1bee",
+  "helper_sha256": "c5d9c5fad2c424b923a3213f0584b47e2319b4a091ad912612da165989cf64f8",
+  "runtime_binary_sha256": "5c6b0786fee5aa7f10aaf6e7e6a71e286f27af018854dfa5b67c811ea11283db",
+  "executed": true,
+  "target_game_verified": false,
+  "Windows_scanout_verified": false,
+  "virtual_hid_verified": false
+}

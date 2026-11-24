@@ -1,0 +1,54 @@
+{
+  "comparison": {
+    "command-only": {
+      "fps_including_gpu_drain_mean": 18.921755666666666,
+      "fps_including_gpu_drain_pooled": 18.847024482033508,
+      "frame_interval_ms": {
+        "mean": 53.04500780379042,
+        "p50": 49.01,
+        "p95": 69.56619999999998,
+        "p99": 109.9443199999999,
+        "sample_count": 897
+      },
+      "host_gpu_ms_mean": 0.881398888888889,
+      "mean_total_bytes": 2289.6,
+      "measured_frames": 900,
+      "percentile_scope": "pooled measured frame intervals excluding each round's first frame",
+      "rounds": 3
+    },
+    "direct-present": {
+      "fps_including_gpu_drain_mean": 15.674412666666667,
+      "fps_including_gpu_drain_pooled": 15.672713890445955,
+      "frame_interval_ms": {
+        "mean": 63.78878037904125,
+        "p50": 63.028,
+        "p95": 94.5814,
+        "p99": 125.49788,
+        "sample_count": 897
+      },
+      "host_gpu_ms_mean": null,
+      "mean_total_bytes": 0.0,
+      "measured_frames": 900,
+      "percentile_scope": "pooled measured frame intervals excluding each round's first frame",
+      "rounds": 3
+    },
+    "pixel-readback": {
+      "fps_including_gpu_drain_mean": 7.1916009999999995,
+      "fps_including_gpu_drain_pooled": 7.0956860917039055,
+      "frame_interval_ms": {
+        "mean": 140.9094437012263,
+        "p50": 127.983,
+        "p95": 219.43839999999992,
+        "p99": 332.85255999999873,
+        "sample_count": 897
+      },
+      "host_gpu_ms_mean": 0.20500666666666667,
+      "mean_total_bytes": 3688681.066666667,
+      "measured_frames": 900,
+      "percentile_scope": "pooled measured frame intervals excluding each round's first frame",
+      "rounds": 3
+    }
+  },
+  "complete": true,
+  "directory": "m0-m2-guest-final/run-20261122-140047-utc"
+}

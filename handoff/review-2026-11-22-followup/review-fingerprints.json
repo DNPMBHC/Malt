@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-11-22T13:37:51.289585+08:00",
+  "source_kind": "read-only-review",
+  "contains_private_paths": false,
+  "files": [
+    {
+      "file_alias": "A/desktop-helper.cpp",
+      "sha256": "69ab2d0b136b7efb1118572c37e36c18e5fb61464e61627b242cdfb65ae297fc",
+      "byte_count": 42992
+    },
+    {
+      "file_alias": "A/desktop-tests.swift",
+      "sha256": "5824da4b26dac05d85d31202556b33bf42a5c4c00d443f9f0b6f61b7deb85f3f",
+      "byte_count": 12601
+    },
+    {
+      "file_alias": "A/models.swift",
+      "sha256": "54c1327fb3a0a8f1970a9ee577b348f6765371e03179a872bb0666fd746246e2",
+      "byte_count": 8698
+    },
+    {
+      "file_alias": "A/session.swift",
+      "sha256": "183e52e051c5e1caaa06c751eba7fe4b7a6d6e2c01b2687b5752ea23729225f7",
+      "byte_count": 7885
+    },
+    {
+      "file_alias": "A/transport.swift",
+      "sha256": "798766ddee5662ca092a3c1f3fc926e185bb814ff5137445579964dcb8de70ba",
+      "byte_count": 12885
+    },
+    {
+      "file_alias": "B/control.py",
+      "sha256": "db7269143210c8365caef0a18b419b6b3d391fcf2f79d887857971dd40d159e5",
+      "byte_count": 8413
+    },
+    {
+      "file_alias": "B/evidence.py",
+      "sha256": "cc2950cadf4aa50e7ea3d4bd15e2506fea9964d5948100b15cd69744f71716ae",
+      "byte_count": 28652
+    },
+    {
+      "file_alias": "B/lifecycle-self-test.ps1",
+      "sha256": "fcf9da017828b332886a5caa5d6486bf15f01a917cb5aeac98c9bc5c35c17910",
+      "byte_count": 6971
+    },
+    {
+      "file_alias": "B/lifecycle.ps1",
+      "sha256": "fa4ea000db5d3c1c201e0631e3fde57fea59fdf5a81f1aa1e80b93585464d46c",
+      "byte_count": 21520
+    },
+    {
+      "file_alias": "B/observations.json",
+      "sha256": "5c84b0e25b554c4b12f93712657794d27ac10bf122b1b4b297636c471fbfbd2a",
+      "byte_count": 8059
+    },
+    {
+      "file_alias": "B/schema.json",
+      "sha256": "3f2c905cd543bfe83bc5f0a503fc7ea0fd31d89da6fcede45c9865e7746c91ab",
+      "byte_count": 28593
+    },
+    {
+      "file_alias": "C/analyzer.py",
+      "sha256": "ee71db86dc7db499d4997343489b341062b51220e547fe6443ace2e2218e1f25",
+      "byte_count": 9494
+    },
+    {
+      "file_alias": "C/benchmark-support.py",
+      "sha256": "e2dd6aa179902db978bb28af350a208639d461bd31921f19c4c451095c0e6585",
+      "byte_count": 14520
+    },
+    {
+      "file_alias": "C/d3d11-probe.cpp",
+      "sha256": "ad2191fc031d5298b829ced6bbac7474fbf1237159cdc02e4aa3d98a7527f56c",
+      "byte_count": 40580
+    },
+    {
+      "file_alias": "C/metal-host.swift",
+      "sha256": "a0c63a096b92ffda7a5317150c621428b3c6f8e94eab61afa3b49efb7254769c",
+      "byte_count": 49419
+    },
+    {
+      "file_alias": "C/pixel-compare.py",
+      "sha256": "2dbe1454c4eccbb12685c9b2a39f45d895b9fa65658d1b129e952aa74231b056",
+      "byte_count": 3455
+    }
+  ],
+  "report_sha256": "b62f5bf5c725ee987c8270a884d3a79eabac52908e713d8fbeef25c080159f6d",
+  "independent_checks": {
+    "graphics_tests": {
+      "total": 22,
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0
+    },
+    "control_cli_cases": {
+      "total": 5,
+      "passed": 5
+    },
+    "evidence_regressions": {
+      "total": 17,
+      "passed": 17
+    },
+    "inconsistent_summary_cases_rejected": 3,
+    "startup_failure_redaction": "passed",
+    "powershell_execution": "not_performed",
+    "guest_execution": "not_performed"
+  },
+  "findings": {
+    "R1": {
+      "observed_source_sha256": "040812756ac0ee042719f96193e8414b9d106260681f9a0e7b7a6c90c7c9adee",
+      "latest_source_sha256": "69ab2d0b136b7efb1118572c37e36c18e5fb61464e61627b242cdfb65ae297fc",
+      "status": "source_fix_review_passed",
+      "real_bootstrap_verification": "not_observed"
+    },
+    "R2": {
+      "status": "reported",
+      "reproduction": "static_control_flow"
+    },
+    "R3": {
+      "status": "reported",
+      "reproduction": "static_metric_calculation"
+    },
+    "R4": {
+      "status": "verification_risk",
+      "final_orchestration": "under_development"
+    },
+    "R5": {
+      "status": "reported",
+      "description": "root exit success and session cancellation are conflated",
+      "guest_reproduction": "not_performed"
+    }
+  }
+}

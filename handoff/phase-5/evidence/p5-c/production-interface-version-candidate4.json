@@ -1,0 +1,97 @@
+{
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-24T05:51:29.544621+00:00",
+  "contract_revision": 2,
+  "snapshot_revision": 4,
+  "phase": "candidate",
+  "production_sources_frozen_for_packaging": false,
+  "real_guest_validation": "not_tested",
+  "system_dpi_scaling": "standard_settings_implementation_pending_real_guest_validation",
+  "files": [
+    {
+      "file": "GuestSurfaceCoordinator.swift",
+      "sha256": "101ca20b83c7ce87c4f9b12cefbdee521fabd53d0fe3b95b4e308ae9658259d2"
+    },
+    {
+      "file": "GuestSurfaceDPIDisplaySync.swift",
+      "sha256": "b2856c67093f8c29956f1f7bfc6db4757740f0ffa2a462be1be7daa147ff3f16"
+    },
+    {
+      "file": "GuestSurfaceDPIExecutor.swift",
+      "sha256": "0825e7ee223caa482b1f734b0df82de6123246184f30344b1d4eefeb6b1dc840"
+    },
+    {
+      "file": "GuestSurfaceDPIModels.swift",
+      "sha256": "c9ed2efb6ae03405e6ac36743e9f8814f1601ff2926d0bcff7aafe8983052a14"
+    },
+    {
+      "file": "GuestSurfaceDPIScript.swift",
+      "sha256": "e15ed8ed411d2c2872498efce60fbfb749d0e1e73b861648e3829dbea2756a44"
+    },
+    {
+      "file": "GuestSurfaceDisplayModels.swift",
+      "sha256": "4d1439fe3ce8b48ad506ef1466e952f626d3ed443e57081d6cfe100f5ba08837"
+    },
+    {
+      "file": "GuestSurfaceDisplaySync.swift",
+      "sha256": "6ad6ca1c406bd4e6a893e09bd2d9d1f805ec4d77e769984a0eb94b9578154b99"
+    },
+    {
+      "file": "GuestSurfaceInputCapture.swift",
+      "sha256": "3eba0baa62537f6a7f7cb9d934693cb6fa918c8d5cf3252e0b6a49add5f7752c"
+    },
+    {
+      "file": "GuestSurfaceMetalPresenter.swift",
+      "sha256": "1ad5bf9d36d0557c5c075223b9563fd3969177f3aa8fe2fd7dd6442b08190c04"
+    },
+    {
+      "file": "GuestSurfaceModels.swift",
+      "sha256": "f2941c0eecc6be849ed7dc6c09828cb9bd90e25ecf60788561c7069bbd6c0af7"
+    },
+    {
+      "file": "GuestSurfacePushFrameSource.swift",
+      "sha256": "9a58945e839c04cc5e6b946e193ca2adb63b2a6ea39890197d3fa7bb75b685aa"
+    },
+    {
+      "file": "GuestSurfaceSession.swift",
+      "sha256": "9c594dc92aa443d61e89f4deae6931ea683b90f1e20bad32afb23d855496282a"
+    },
+    {
+      "file": "GuestSurfaceWindowBridge.swift",
+      "sha256": "d076477590240d8057e5ebb6eddd6a52db98c90b5a5a363fc358f4737b4cbf2d"
+    },
+    {
+      "file": "GuestSurfaceWindowController.swift",
+      "sha256": "83a9305273d0b691a404a3b6d8cb63470ffe464367b3328e4d2340c67dc05a57"
+    },
+    {
+      "file": "UTMGuestCommandBridge.swift",
+      "sha256": "7bf8739ae6948f17ddc34e3a2c7471eba3df516eb9b28cccab94424674a2c3c6"
+    },
+    {
+      "file": "UTMHeadlessGuestTransport.swift",
+      "sha256": "4537fe14b57c99564cf0ab1e911629ddfbc5c8d4d3666ddc45de5f6dc1c011f4"
+    },
+    {
+      "file": "UTMInteractiveHelperVerification.swift",
+      "sha256": "778df007ff713cf4672863aa1461168758f78292fa33ce851b294378d810076f"
+    },
+    {
+      "file": "UTMWindowsGuestProvider+Interactive.swift",
+      "sha256": "20d59e300a6abc65faf9d4a9d99a3bbacbbbd5438a2e0cccea6e4b5238c3d0c3"
+    },
+    {
+      "file": "UTMWindowsGuestProvider.swift",
+      "sha256": "9d4e76cbc95b4ce83375454e9037c4e77a6e11b139b5180eee8b0038adf98550"
+    }
+  ],
+  "production_fingerprint": "3627d20d3e6a9acf0f333ab3c8a757221a88bf9cd1b5ae84bc9442532e134c27",
+  "fingerprint_method": "sha256_canonical_source_hash_manifest",
+  "local_validation_source_fingerprint": "ccd61d5c3d71971d5fe239cae66866d8cd5919047768dbf4c230a8e5aea5dfbd",
+  "local_tests": {
+    "status": "pending_revalidation"
+  },
+  "last_local_validation_utc": "2026-11-24T05:36:00.434181+00:00",
+  "candidate_iteration": 5,
+  "previous_candidate_fingerprint": "7ba05e223d668b557f1e9c7ee458e31957f9fa8aa30b57f769dab9b26ae2a415"
+}

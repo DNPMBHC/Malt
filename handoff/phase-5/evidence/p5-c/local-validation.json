@@ -1,0 +1,54 @@
+{
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-24T05:55:04.006312+00:00",
+  "schema_version": 1,
+  "gates": {
+    "swift_test": {
+      "exit_code": 0,
+      "passed": true,
+      "duration_seconds": 8.964,
+      "log": "swift-test-final.log",
+      "total": 252,
+      "skipped": 10,
+      "failed": 0,
+      "passed_tests": 242
+    },
+    "swiftlint": {
+      "exit_code": 0,
+      "passed": true,
+      "duration_seconds": 0.127,
+      "log": "swiftlint-final.log"
+    },
+    "format_owned": {
+      "exit_code": 0,
+      "passed": true,
+      "duration_seconds": 0.179,
+      "log": "format-owned-final.log"
+    },
+    "format_required": {
+      "exit_code": 0,
+      "passed": true,
+      "duration_seconds": 0.384,
+      "log": "format-required-final.log"
+    },
+    "anticheat": {
+      "exit_code": 0,
+      "passed": true,
+      "duration_seconds": 0.765,
+      "log": "anticheat-final.log"
+    },
+    "lease_self_test": {
+      "exit_code": 0,
+      "passed": true,
+      "duration_seconds": 0.025,
+      "log": "lease-self-test.log"
+    }
+  },
+  "inputs_stable": true,
+  "input_fingerprint_before": "224e57d8216be813254fd3d5702d63ab0c155f11bd5c7a995d088f08d2fdd0bf",
+  "input_fingerprint_after": "224e57d8216be813254fd3d5702d63ab0c155f11bd5c7a995d088f08d2fdd0bf",
+  "input_fingerprint_scope": "all_repository_swift_inputs",
+  "owned_swift_files_checked": 27,
+  "real_guest_executed": false,
+  "all_local_gates_passed": true
+}

@@ -1,0 +1,90 @@
+{
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-24T02:47:21.526462+00:00",
+  "contract_revision": 2,
+  "snapshot_revision": 4,
+  "phase": "candidate",
+  "production_sources_frozen_for_packaging": false,
+  "real_guest_validation": "not_tested",
+  "system_dpi_scaling": "standard_settings_implementation_pending_real_guest_validation",
+  "files": [
+    {
+      "file": "GuestSurfaceCoordinator.swift",
+      "sha256": "101ca20b83c7ce87c4f9b12cefbdee521fabd53d0fe3b95b4e308ae9658259d2"
+    },
+    {
+      "file": "GuestSurfaceDPIDisplaySync.swift",
+      "sha256": "b2856c67093f8c29956f1f7bfc6db4757740f0ffa2a462be1be7daa147ff3f16"
+    },
+    {
+      "file": "GuestSurfaceDPIExecutor.swift",
+      "sha256": "6dc4878173aefeb0b0ac02feb3ab01eb2fb03a2ac3a5ff1b4f04c854d1427115"
+    },
+    {
+      "file": "GuestSurfaceDPIModels.swift",
+      "sha256": "c9ed2efb6ae03405e6ac36743e9f8814f1601ff2926d0bcff7aafe8983052a14"
+    },
+    {
+      "file": "GuestSurfaceDPIScript.swift",
+      "sha256": "e638cb1b0666283a6423ceed7ccf919b400d5d97ad47c4030fba464ef3e130f0"
+    },
+    {
+      "file": "GuestSurfaceDisplayModels.swift",
+      "sha256": "4d1439fe3ce8b48ad506ef1466e952f626d3ed443e57081d6cfe100f5ba08837"
+    },
+    {
+      "file": "GuestSurfaceDisplaySync.swift",
+      "sha256": "bcfdf8f2c92dcf8f0ae1cd0850ceb70ad711a26fb967fcc56252b5a7334b235f"
+    },
+    {
+      "file": "GuestSurfaceInputCapture.swift",
+      "sha256": "b971bc4e01f043ce812e703a7525306fc92ccfafc1f615881241c9441b8eb4dd"
+    },
+    {
+      "file": "GuestSurfaceMetalPresenter.swift",
+      "sha256": "1ad5bf9d36d0557c5c075223b9563fd3969177f3aa8fe2fd7dd6442b08190c04"
+    },
+    {
+      "file": "GuestSurfaceModels.swift",
+      "sha256": "f2941c0eecc6be849ed7dc6c09828cb9bd90e25ecf60788561c7069bbd6c0af7"
+    },
+    {
+      "file": "GuestSurfacePushFrameSource.swift",
+      "sha256": "9a58945e839c04cc5e6b946e193ca2adb63b2a6ea39890197d3fa7bb75b685aa"
+    },
+    {
+      "file": "GuestSurfaceSession.swift",
+      "sha256": "9c594dc92aa443d61e89f4deae6931ea683b90f1e20bad32afb23d855496282a"
+    },
+    {
+      "file": "GuestSurfaceWindowBridge.swift",
+      "sha256": "29678ce7589fc0c0cd5a706ee3673e568db4d83145da8046530d039a903cc6db"
+    },
+    {
+      "file": "GuestSurfaceWindowController.swift",
+      "sha256": "562d89e26100de3e287e7b241f6db163159d3353ce2e76aae88d5b560ad31a24"
+    },
+    {
+      "file": "UTMHeadlessGuestTransport.swift",
+      "sha256": "c10554123eb677e16ebe922705cd76d0ede752ed0964f46b5f963d2e2ddffb26"
+    },
+    {
+      "file": "UTMWindowsGuestProvider.swift",
+      "sha256": "9d4e76cbc95b4ce83375454e9037c4e77a6e11b139b5180eee8b0038adf98550"
+    }
+  ],
+  "production_fingerprint": "4cc1dd4d6bb740cd8a036ce0762e8696b8a2f3f30ca6ad903524c3e4443a98c8",
+  "fingerprint_method": "sha256_canonical_source_hash_manifest",
+  "local_validation_source_fingerprint": "ce580e5dedf51a235cbe627654a266ed1793ce9db252bea189e69843a7ab9239",
+  "local_tests": {
+    "exit_code": 0,
+    "passed": true,
+    "duration_seconds": 10.6,
+    "log": "swift-test-final.log",
+    "total": 245,
+    "skipped": 10,
+    "failed": 0,
+    "passed_tests": 235
+  },
+  "last_local_validation_utc": "2026-11-24T03:11:21.995079+00:00"
+}

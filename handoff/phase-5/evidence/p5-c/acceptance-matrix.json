@@ -1,0 +1,79 @@
+{
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-24T07:02:55.793137+00:00",
+  "snapshot_revision": 4,
+  "production_fingerprint": "3627d20d3e6a9acf0f333ab3c8a757221a88bf9cd1b5ae84bc9442532e134c27",
+  "acceptance_complete": false,
+  "items": [
+    {
+      "requirement": "本地 Swift、Strict SwiftLint、格式和安全门禁",
+      "status": "passed",
+      "evidence": "local-validation.json"
+    },
+    {
+      "requirement": "极简优化 / Session 1 / 安全不变量",
+      "status": "passed",
+      "evidence": "guest-minimal-apply.json"
+    },
+    {
+      "requirement": "WHQL 3D / 硬件适配器 / FL 11_1 / 根退出码",
+      "status": "pending",
+      "evidence": "guest-d3d-hardware-probe.json"
+    },
+    {
+      "requirement": "真实标准缩放控件发现及设置窗口关闭",
+      "status": "pending",
+      "evidence": "guest-dpi-controls.json"
+    },
+    {
+      "requirement": "真实 Guest 原生点对点 / 退出恢复",
+      "status": "pending",
+      "evidence": "guest-runtime-real-display-lifecycle.json"
+    },
+    {
+      "requirement": "真实 Guest 高性能 / 退出恢复",
+      "status": "pending",
+      "evidence": "guest-runtime-real-display-lifecycle.json"
+    },
+    {
+      "requirement": "真实 Guest 窗口跟随及动态切换 / 退出恢复",
+      "status": "failed",
+      "evidence": "guest-supported-display-lifecycle.json"
+    },
+    {
+      "requirement": "真实 DPI Apply 150% / Restore 基线",
+      "status": "failed_prior_snapshot",
+      "evidence": "guest-dpi-real-roundtrip.json"
+    },
+    {
+      "requirement": "真实冷后台启动 / 挂起归位",
+      "status": "pending",
+      "evidence": "guest-runtime-real-display-lifecycle.json"
+    },
+    {
+      "requirement": "完整运行时 IOSurface GPU 逐像素互操作",
+      "status": "passed",
+      "evidence": "runtime-binary-roundtrip.json"
+    },
+    {
+      "requirement": "真实原生全屏窗口 / 关闭 / 输入释放回执",
+      "status": "passed",
+      "evidence": "native-fullscreen-probe.json"
+    },
+    {
+      "requirement": "真实 Windows scanout / 合法虚拟 HID",
+      "status": "pending_upstream_capability",
+      "evidence": "interface-proposal.md"
+    },
+    {
+      "requirement": "target-cn DX11 / 大厅或训练场 / 精确退出取证",
+      "status": "pending",
+      "evidence": "target-game-real-validation.json"
+    },
+    {
+      "requirement": "自有克隆删除 / 主源与原备份独立复核",
+      "status": "pending",
+      "evidence": "own-cleanup-proof.json"
+    }
+  ]
+}

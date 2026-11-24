@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "maintainer": "@DNPMBHC",
+  "guestArchitecture": "arm64",
+  "artifactArchitecture": "x86_64",
+  "executionRequiresGuestEmulation": true,
+  "compiler": "x86_64-w64-mingw32-g++",
+  "result": "built",
+  "nativeExitResolutionTests": {
+    "schemaVersion": 1,
+    "test": "native-exit-resolution",
+    "passed": 7,
+    "failed": 0
+  },
+  "sha256": {
+    "desktop-helper.cpp": "ac3dd39c900df690326e3b75889bcf451f72ecbe2cd4bdf12bd4fd50a3763fa0",
+    "desktop-helper.exe": "c5d9c5fad2c424b923a3213f0584b47e2319b4a091ad912612da165989cf64f8",
+    "desktop-probe.cpp": "f401a3c5883995a3e29db5bff28621c0ed35c2a09b76bce9c76443e507270b22",
+    "desktop-probe.exe": "6aa71e60b3a9457d08f0e2a24852db51d149233945344430ebd84b16470ef528",
+    "build.py": "44d48c6f3595eb8c09e7d2b9a2984536da515b17d1fa93783481d262eb356ec3",
+    "desktop-elevation-probe.exe": "17f23f8559c77d67be5054fbc4b9ff3b97b5ab2703de183ac78e1a3b6ffcd3be",
+    "elevation.manifest": "219a16c2f0ad6d44fee9b7c0f4a3b2a2334f221716cb6d77aa37a7afa225fb99",
+    "elevation.rc": "cb32c4afdd6617585f6acf2a91cf668a761358bb8ccc9090aa0b5f6b3a54e5e9",
+    "verify-cancel-contract.ps1": "b43fd0dc846a7db6958a2e46fbb05cbd0e917e60a1eb453883194376d0d52b2a",
+    "cancel-contract-plan.md": "ee5ba1bab742530fb54a026f7881c8ad43563065a3033bdd58f866750bc8c34c",
+    "force-cancel-plan.md": "38437f3603071550de4acc1a60cd34f0c6d0af47695186dc162dc79d9b470445",
+    "protocol.md": "447ac7a7a6abbe1d997f11631a13e29fddfe6df6d484565f657acb920b455ab6",
+    "review.md": "24e6f1706b8dbe2273eecd9ccb7664176afaf4f4ab9cfd1f9e526b39593712d3",
+    "exit-resolution.hpp": "aef9620c1e663ac537c76ab59739a34c97e2f2ee84db508b213bb9254dd1891b",
+    "exit-resolution-test.cpp": "172a1a6eaa5f32a4951446c2aef6158dd4970a90ecdcb3ca6c8dd93d08448605",
+    "exit-resolution-test": "f107e56847c6ce87a3fa09b7f4e063be3e9e31aaa65067b57e5ad929397194ea",
+    "exit-resolution-tests.json": "27bad9f8abf8dadddf12016fd66dfd17840f0a54fa9bce9fd2086bbb669fd360"
+  }
+}

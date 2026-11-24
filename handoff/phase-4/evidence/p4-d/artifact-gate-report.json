@@ -1,0 +1,165 @@
+{
+  "schema": "task-07-artifact-perf-gate-v1",
+  "owner": "@DNPMBHC",
+  "capturedAt": "2026-11-23T00:59:39.257832+00:00",
+  "passed": true,
+  "packagedArtifacts": {
+    "appBinarySHA256": "599e63abe18122d5a7e8563f502d94bbb8d3a9d770599558ee88b8bbf641c5b5",
+    "cliBinarySHA256": "c30e2d5458e9d988dab132e2e87dbc33d66f821c0fa5208d04be67b604f51cc3",
+    "runtimeManifestSHA256": "cf6ad8ac4143ab537f25ba1d5599da42336adffad2898d4edf4d14f15a50f9bd",
+    "compatibilityMatrixSHA256": "0545f3c83c69d3cb3b81ef2b18f742446bf3ce2b5a45e8a084b7cfee71c3c34a",
+    "probeBinarySHA256": "09bb190bf5d763f9749345300b937728db886a4ec26c32c361a920c565cf1bee",
+    "dmg": {
+      "filename": "my-project-Release-arm64.dmg",
+      "sizeBytes": 8679684,
+      "sha256": "97915cbacc5b760dd4d90da42e9006100d741d3a58a911e1be35a7de2ccbcf13"
+    },
+    "hardenedRuntimeEnabled": true
+  },
+  "cliIntegrityReport": {
+    "schemaVersion": "1.1.0",
+    "hostSIPStatus": "enabled",
+    "hostExecutionNature": "physical_hardware",
+    "isOfficialBuild": false
+  },
+  "runtimeManifestVerification": {
+    "schemaVersion": "1.0.0",
+    "allLockedComponentsVerified": true,
+    "components": [
+      {
+        "id": "wine",
+        "version": "wine-10000073",
+        "state": "verified",
+        "matchedArtifacts": 1,
+        "expectedArtifacts": 1
+      },
+      {
+        "id": "dxmt",
+        "version": "v0.80 (dxmt-wine-builtin-7641370)",
+        "state": "verified",
+        "matchedArtifacts": 4,
+        "expectedArtifacts": 4
+      },
+      {
+        "id": "d3dMetal",
+        "version": "Apple GPTK 4.0-1",
+        "state": "verified",
+        "matchedArtifacts": 3,
+        "expectedArtifacts": 3
+      },
+      {
+        "id": "dxvk",
+        "version": "DXVK 1.10.3 + MoltenVK 1.2.1",
+        "state": "verified",
+        "matchedArtifacts": 2,
+        "expectedArtifacts": 2
+      },
+      {
+        "id": "kosmicKrisp",
+        "version": "pending-p4-a-proposal",
+        "state": "reserved"
+      }
+    ]
+  },
+  "workload": {
+    "width": 1280,
+    "height": 720,
+    "warmupFrames": 60,
+    "measuredFrames": 180,
+    "commandsPerFrame": 64,
+    "resourceBytes": 262144
+  },
+  "backends": {
+    "dxmt": {
+      "passed": true,
+      "exitCode": 0,
+      "measured": {
+        "frameCount": 180,
+        "intervalCount": 179,
+        "frameIntervalMeanMs": 2.4465,
+        "frameIntervalP50Ms": 0.933,
+        "frameIntervalP95Ms": 7.6512,
+        "derivedFPS": 408.75,
+        "deviceMemoryMiBMean": 20.75,
+        "gpuMsCoverage": 1.0
+      },
+      "consistency": {
+        "passed": true,
+        "errors": [],
+        "labBaselineColdFPS": 366.98,
+        "labBaselineDeviceMemoryMiB": 20.15,
+        "fpsRatioToLabBaseline": 1.1138,
+        "minRequiredFPSRatio": 0.5
+      },
+      "envChecks": {
+        "dxmtShaderCacheEnabled": true,
+        "dxmtBottleScopedCachePath": true,
+        "dxmtWineDllPathInjected": true,
+        "d3dMetalSharedDylibInjected": null,
+        "dxvkMoltenVKInjected": null
+      },
+      "dxmtBottleCacheDirPresent": true
+    },
+    "d3dMetal": {
+      "passed": true,
+      "exitCode": 0,
+      "measured": {
+        "frameCount": 180,
+        "intervalCount": 179,
+        "frameIntervalMeanMs": 1.2672,
+        "frameIntervalP50Ms": 0.497,
+        "frameIntervalP95Ms": 7.4085,
+        "derivedFPS": 789.12,
+        "deviceMemoryMiBMean": 67.55,
+        "gpuMsCoverage": 0.0
+      },
+      "consistency": {
+        "passed": true,
+        "errors": [],
+        "labBaselineColdFPS": 309.55,
+        "labBaselineDeviceMemoryMiB": 67.34,
+        "fpsRatioToLabBaseline": 2.5492,
+        "minRequiredFPSRatio": 0.5
+      },
+      "envChecks": {
+        "dxmtShaderCacheEnabled": null,
+        "dxmtBottleScopedCachePath": null,
+        "dxmtWineDllPathInjected": null,
+        "d3dMetalSharedDylibInjected": true,
+        "dxvkMoltenVKInjected": null
+      },
+      "dxmtBottleCacheDirPresent": null
+    },
+    "dxvk": {
+      "passed": true,
+      "exitCode": 0,
+      "measured": {
+        "frameCount": 180,
+        "intervalCount": 179,
+        "frameIntervalMeanMs": 2.5223,
+        "frameIntervalP50Ms": 1.489,
+        "frameIntervalP95Ms": 7.6989,
+        "derivedFPS": 396.46,
+        "deviceMemoryMiBMean": 223.7,
+        "gpuMsCoverage": 1.0
+      },
+      "consistency": {
+        "passed": true,
+        "errors": [],
+        "labBaselineColdFPS": 324.12,
+        "labBaselineDeviceMemoryMiB": 223.72,
+        "fpsRatioToLabBaseline": 1.2232,
+        "minRequiredFPSRatio": 0.5
+      },
+      "envChecks": {
+        "dxmtShaderCacheEnabled": null,
+        "dxmtBottleScopedCachePath": null,
+        "dxmtWineDllPathInjected": null,
+        "d3dMetalSharedDylibInjected": null,
+        "dxvkMoltenVKInjected": true
+      },
+      "dxmtBottleCacheDirPresent": null
+    }
+  },
+  "scope": "Direct execution of packaged Release Hardened Runtime .app embedded CLI against real Wine + DXMT/D3DMetal/DXVK and d3d11_probe.exe in isolated CFFIXED_USER_HOME; verifies zero packaging degradation versus laboratory three-engine baseline without claiming commercial game pass."
+}

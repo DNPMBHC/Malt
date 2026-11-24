@@ -1,0 +1,15 @@
+Command line invocation:
+    <system-path> -project <workspace>/my-project/my-project.xcodeproj -scheme my-project -scmProvider system -disableAutomaticPackageResolution -onlyUsePackageVersionsFromResolvedFile -skipPackageUpdates -resolvePackageDependencies
+
+Resolve Package Graph
+
+
+Resolved source packages:
+  swift-argument-parser: <dependency-remote> @ 1.5.0
+  SemanticVersion: <dependency-remote> @ 0.4.0
+  Progress: <dependency-remote> @ 0.4.0
+  SwiftyTextTable: <dependency-remote> @ 0.9.0
+  ModuleX: <workspace>/my-project/module-x
+  Sparkle: <dependency-remote> @ 2.x (8de8db0)
+
+resolved source packages: swift-argument-parser, SemanticVersion, Progress, SwiftyTextTable, ModuleX, Sparkle

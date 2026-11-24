@@ -1,0 +1,45 @@
+{
+  "host": {
+    "architecture": "arm64",
+    "gpu": "Apple M4",
+    "macos_sdk": "27.0",
+    "os": "macOS 27.2.1 (26B131)",
+    "python": "3.12.8",
+    "swift": "Apple Swift 6.4",
+    "xcode": "Xcode 27.0"
+  },
+  "limitations": [
+    "Host validates and retains command records but does not replay them.",
+    "No D3D device or Windows guest participated.",
+    "Protocol byte counts exclude TCP/IP, link-layer, retransmission and host OS overhead.",
+    "Frame request-to-ACK timing is not input-to-photon latency.",
+    "Power and temperature were not sampled."
+  ],
+  "observed": {
+    "application_protocol_bytes_mean_per_measured_frame": 232681.06666666668,
+    "application_protocol_bytes_total": 13960864,
+    "command_payload_is_executed_by_receiver": false,
+    "command_updates_measured": 2,
+    "resource_updates_measured": 2
+  },
+  "receiver": {
+    "api": "AppKit + Metal",
+    "bind": "127.0.0.1",
+    "protocol_version": 1
+  },
+  "recorded_date": "2026-11-22",
+  "scope": "Native synthetic sender to Metal receiver over loopback TCP only; no D3D, Wine, Windows guest or game workload.",
+  "sender": "synthetic_client.py",
+  "workload": {
+    "command_resend_interval_frames": 30,
+    "commands_per_batch": 16,
+    "format": "RGBA8",
+    "height": 180,
+    "measured_frames": 60,
+    "pixels": "deterministic synthetic image",
+    "resource_bytes": 65536,
+    "resource_resend_interval_frames": 30,
+    "warmup_frames": 5,
+    "width": 320
+  }
+}

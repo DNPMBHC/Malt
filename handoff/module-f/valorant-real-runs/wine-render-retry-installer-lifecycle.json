@@ -1,0 +1,26 @@
+{
+  "owner": "@DNPMBHC",
+  "started_at_utc": "2026-11-24T04:43:30.922244+00:00",
+  "scope": "fresh isolated official installation; same installer version previously authorized by user",
+  "backend_requested": "d3dmetal",
+  "graphics_dll_overrides": "d3d11,dxgi=n,b",
+  "installer_arguments": [
+    "/S",
+    "/D=R:\\"
+  ],
+  "official_installer_sha256": "686ee838411863d2eccdbe8a0596129e509819ae46626408760588ae8b0c800e",
+  "owned_graphics_d3d11_sha256": "05fa6f700fb5ee5561dc3a46d98f0aed845d4fa8ab274bff1dc604b0b3f6edd1",
+  "owned_graphics_dxgi_sha256": "249711d3d786a9b0bb7c3558f36e472ab07ee21b8dbf118e34c975046832f9a2",
+  "root_drive_mapping_removed": true,
+  "host_personal_directory_links_removed": 0,
+  "sandbox_disabled": false,
+  "protected_binaries_modified": false,
+  "authentication_automated": false,
+  "visual_observation": "human confirmation pending",
+  "host_pid": 26186,
+  "supervisor_ended_at_utc": "2026-11-24T04:43:37.158810+00:00",
+  "installer_still_running": false,
+  "official_bootstrap_native_exit_code": 0,
+  "installation_completion": "not_verified: requested R data directory contains installer only",
+  "silent_argument_honored": "not_verified"
+}

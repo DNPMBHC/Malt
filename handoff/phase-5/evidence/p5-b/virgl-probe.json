@@ -1,0 +1,80 @@
+{
+  "dylibLoaded": false,
+  "dylibLogicalSource": "reference-app-renderer-framework",
+  "embeddingAssessment": "Loader boundary blocks embedding; inspect signing and dependency evidence",
+  "iosurfaceExportTested": false,
+  "kosmicKrispIcdPresent": true,
+  "librarySHA256": "681afed647368b927b13e967d556191e1443aac60473a703fb752f25363a0250",
+  "loadError": "dlopen(<reference-app>/Contents/Frameworks/virglrenderer.1.framework/virglrenderer.1, 0x0006): tried: '<reference-app>/Contents/Frameworks/virglrenderer.1.framework/virglrenderer.1' (code signature in <1881DFDC-1D17-344D-8B03-07F19B14ABA6> '<reference-app>/Contents/Frameworks/virglrenderer.1.framework/Versions/A/virglrenderer.1' not valid for use in process: mapping process and mapped file (non-platform) have different Team IDs), '/System<local-path>' (no such file), '<reference-app>/Contents/Frameworks/virglrenderer.1.framework/virglrenderer.1' (code signature in <1881DFDC-1D17-344D-8B03-07F19B14ABA6> '<reference-app>/Contents/Frameworks/virglrenderer.1.framework/Versions/A/virglrenderer.1' not valid for use in process: mapping process and mapped file (non-platform) have different Team IDs), '<reference-app>/Contents/Frameworks/virglrenderer.1.framework/Versions/A/virglrenderer.1' (code signature in <1881DFDC-1D17-344D-8B03-07F19B14ABA6> '<reference-app>/Contents/Frameworks/virglrenderer.1.framework/Versions/A/virglrenderer.1' not valid for use in process: mapping process and mapped file (non-platform) have different Team IDs), '/System<local-path>' (no such file), '<reference-app>/Contents/Frameworks/virglrenderer.1.framework/Versions/A/virglrenderer.1' (code signature in <1881DFDC-1D17-344D-8B03-07F19B14ABA6> '<reference-app>/Contents/Frameworks/virglrenderer.1.framework/Versions/A/virglrenderer.1' not valid for use in process: mapping process and mapped file (non-platform) have different Team IDs)",
+  "owner": "@DNPMBHC",
+  "rendererInitializationTested": false,
+  "requiredSymbolsResolved": 0,
+  "requiredSymbolsTotal": 16,
+  "symbols": [
+    {
+      "resolved": false,
+      "symbol": "virgl_renderer_init"
+    },
+    {
+      "resolved": false,
+      "symbol": "virgl_renderer_cleanup"
+    },
+    {
+      "resolved": false,
+      "symbol": "virgl_renderer_get_cap_set"
+    },
+    {
+      "resolved": false,
+      "symbol": "virgl_renderer_context_create_with_flags"
+    },
+    {
+      "resolved": false,
+      "symbol": "virgl_renderer_resource_create_blob"
+    },
+    {
+      "resolved": false,
+      "symbol": "virgl_renderer_resource_map"
+    },
+    {
+      "resolved": false,
+      "symbol": "virgl_renderer_resource_map_fixed"
+    },
+    {
+      "resolved": false,
+      "symbol": "virgl_renderer_resource_unmap"
+    },
+    {
+      "resolved": false,
+      "symbol": "virgl_renderer_resource_export_blob"
+    },
+    {
+      "resolved": false,
+      "symbol": "virgl_renderer_submit_cmd"
+    },
+    {
+      "resolved": false,
+      "symbol": "virgl_renderer_submit_cmd2"
+    },
+    {
+      "resolved": false,
+      "symbol": "virgl_renderer_context_create_fence"
+    },
+    {
+      "resolved": false,
+      "symbol": "virgl_renderer_export_fence"
+    },
+    {
+      "resolved": false,
+      "symbol": "virgl_renderer_poll"
+    },
+    {
+      "resolved": false,
+      "symbol": "virgl_renderer_create_handle_for_scanout"
+    },
+    {
+      "resolved": false,
+      "symbol": "virgl_renderer_release_handle_for_scanout"
+    }
+  ],
+  "venusNeptuneSubmissionTested": false
+}

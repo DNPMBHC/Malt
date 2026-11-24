@@ -1,0 +1,59 @@
+{
+  "schema": "task-07-format-manifest-v1",
+  "state": "task 05 verified explicit six-file scope; task 07 independent rerun pending",
+  "strictCommand": "xcrun swift-format lint --strict followed by the frozen explicit input files",
+  "inputs": [
+    {
+      "role": "owner reported strict-format scope",
+      "file": "ModuleX/Sources/ModuleX/Runtime/UTMWindowsGuestProvider.swift",
+      "uniqueInput": true,
+      "sha256AtPreparation": "969fd49232ae8a558003ad2bd17f39259753f87c07b308d1add320f213aa520f",
+      "sha256AtTask05Check": "969fd49232ae8a558003ad2bd17f39259753f87c07b308d1add320f213aa520f"
+    },
+    {
+      "role": "owner reported strict-format scope",
+      "file": "ModuleX/Sources/ModuleX/Runtime/WindowsGuestTransport.swift",
+      "uniqueInput": true,
+      "sha256AtPreparation": "2a5be19f10d9def279132615f91addc46356db436c6a87122140da98de14a11d",
+      "sha256AtTask05Check": "2a5be19f10d9def279132615f91addc46356db436c6a87122140da98de14a11d"
+    },
+    {
+      "role": "owner reported strict-format scope",
+      "file": "ModuleX/Tests/ModuleXTests/UTMWindowsGuestProviderTests.swift",
+      "uniqueInput": true,
+      "sha256AtPreparation": "91fd082398d75a742820e522e8533fcce9d0a0fd466b4c48452406bada242b68",
+      "sha256AtTask05Check": "91fd082398d75a742820e522e8533fcce9d0a0fd466b4c48452406bada242b68"
+    },
+    {
+      "role": "additional guest storage/session scope to check after freeze",
+      "file": "ModuleX/Sources/ModuleX/Runtime/UTMGuestSession.swift",
+      "uniqueInput": true,
+      "sha256AtPreparation": "4f048f7b2a59885cf0ec874f97e5ff65ec62e18c71af48b15bd79ee659a7425e",
+      "sha256AtTask05Check": "4f048f7b2a59885cf0ec874f97e5ff65ec62e18c71af48b15bd79ee659a7425e"
+    },
+    {
+      "role": "additional guest storage/session scope to check after freeze",
+      "file": "ModuleX/Sources/ModuleX/Runtime/UTMGuestStoragePreflight.swift",
+      "uniqueInput": true,
+      "sha256AtPreparation": "469323dadd5f53743a04782c9ccddecb11e8fc89de4cdc77494c84e78f23b339",
+      "sha256AtTask05Check": "469323dadd5f53743a04782c9ccddecb11e8fc89de4cdc77494c84e78f23b339"
+    },
+    {
+      "role": "additional guest storage/session scope to check after freeze",
+      "file": "ModuleX/Tests/ModuleXTests/UTMGuestStoragePreflightTests.swift",
+      "uniqueInput": true,
+      "sha256AtPreparation": "beeade82c8a047c2037e1b47fc5185cc9adcacb76c37494d38c49cd01926b302",
+      "sha256AtTask05Check": "beeade82c8a047c2037e1b47fc5185cc9adcacb76c37494d38c49cd01926b302"
+    }
+  ],
+  "repositoryWideFormatClaim": false,
+  "ownerReportedSuccessScopeCount": 3,
+  "plannedInputCount": 6,
+  "task05ObservedRun": {
+    "checkedAt": "2026-11-22T01:59:41+08:00",
+    "exitCode": 0,
+    "inputCount": 6,
+    "inputsStable": true,
+    "diagnosticsEmpty": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "schema": "task-07-reported-stage-evidence-v1",
+  "recordedAt": "2026-11-22T01:32:42+08:00",
+  "source": "task-02 report relayed by integration coordinator",
+  "provenance": "reported; raw runner logs and immutable source snapshot not independently inspected by task 07",
+  "swiftTests": {
+    "reportedPassed": 91,
+    "reportedEnvironmentSkipped": 2,
+    "verifiedTotal": null,
+    "countingStatus": "pending raw-log reconciliation; do not infer total"
+  },
+  "strictSwiftFormat": "reported_passed",
+  "xcodeAppBuild": {
+    "status": "reported_blocked",
+    "reason": "SwiftLint executable unavailable in the reporting task environment",
+    "classification": "build-tool prerequisite; application compile success not established"
+  },
+  "finalSourceFrozen": false,
+  "task07FinalGateStarted": false,
+  "runtimeEnvironmentStatus": "environment_not_verified",
+  "scope": "intermediate synthetic/local checks; no real guest, installer, driver protection or game claim"
+}

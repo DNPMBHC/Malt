@@ -1,0 +1,119 @@
+{
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-23T17:25:04.394780+00:00",
+  "scope": "exact_production_graphics_sources_with_exact_error_enum_declaration",
+  "vm_actions": 0,
+  "visible_window_created": false,
+  "pointer_capture_used": false,
+  "native_fullscreen_verified": false,
+  "real_guest_verified": false,
+  "virtual_hid_verified": false,
+  "passed": true,
+  "runs": [
+    {
+      "virtualHIDVerified": false,
+      "nativeFullscreenVerified": false,
+      "checks": {
+        "consumer_gpu_completed": true,
+        "producer_resize_succeeded": true,
+        "consumer_receipt_once_per_frame": true,
+        "consumer_rendered_twelve_frames": true,
+        "same_iosurface_imported": true,
+        "producer_write_complete": true,
+        "released_after_gpu_completion": true,
+        "producer_release_idempotent": true,
+        "resized_frames_imported_by_consumer": true,
+        "origin_explicitly_synthetic": true,
+        "all_producer_leases_returned": true,
+        "supported_format": true,
+        "frame_id_increases": true,
+        "not_released_before_gpu_commit": true,
+        "layout_matches_producer": true,
+        "shared_texture_storage": true,
+        "gpu_byte_exact_pixels": true,
+        "no_producer_render_failure": true
+      },
+      "producerSnapshot": {
+        "leased": 0,
+        "released": 14,
+        "produced": 14,
+        "dropped": 0,
+        "pool_size": 3,
+        "failures": 0,
+        "generation": 2
+      },
+      "framesConsumed": 12,
+      "sourceOrigin": "host_synthetic_not_guest_scanout",
+      "realGuestVerified": false,
+      "owner": "@DNPMBHC"
+    },
+    {
+      "sourceOrigin": "host_synthetic_not_guest_scanout",
+      "virtualHIDVerified": false,
+      "owner": "@DNPMBHC",
+      "nativeFullscreenVerified": false,
+      "realGuestVerified": false,
+      "producerSnapshot": {
+        "released": 12,
+        "produced": 12,
+        "generation": 2,
+        "pool_size": 3,
+        "leased": 0,
+        "dropped": 0,
+        "failures": 0
+      },
+      "checks": {
+        "origin_explicitly_synthetic": true,
+        "frame_id_increases": true,
+        "layout_matches_producer": true,
+        "no_producer_render_failure": true,
+        "supported_format": true,
+        "same_iosurface_imported": true,
+        "producer_resize_succeeded": true,
+        "consumer_rendered_twelve_frames": true,
+        "released_after_gpu_completion": true,
+        "producer_release_idempotent": true,
+        "consumer_gpu_completed": true,
+        "producer_write_complete": true,
+        "not_released_before_gpu_commit": true,
+        "shared_texture_storage": true,
+        "resized_frames_imported_by_consumer": true,
+        "consumer_receipt_once_per_frame": true,
+        "gpu_byte_exact_pixels": true,
+        "all_producer_leases_returned": true
+      },
+      "framesConsumed": 12
+    }
+  ],
+  "automatic_relaunch_verified": true,
+  "inputs_stable": true,
+  "production_revision_2_unchanged": true,
+  "production_source_hashes": {
+    "consumer": {
+      "GuestSurfaceModels.swift": "3d180e0a93d5439b6ab9f2d53c8131a831713490e2727e19e3d5f2794452b685",
+      "GuestSurfaceDisplayModels.swift": "4d1439fe3ce8b48ad506ef1466e952f626d3ed443e57081d6cfe100f5ba08837",
+      "GuestSurfaceMetalPresenter.swift": "1ad5bf9d36d0557c5c075223b9563fd3969177f3aa8fe2fd7dd6442b08190c04",
+      "GuestSurfacePushFrameSource.swift": "9a58945e839c04cc5e6b946e193ca2adb63b2a6ea39890197d3fa7bb75b685aa"
+    },
+    "producer": {
+      "SurfaceFrameProducer.swift": "ea332729175ea30f079f109bd84c2f8f161989fe49ffc2113cf5ce06b27f2a2c",
+      "SurfaceFrameLease.swift": "b7f3b3104d8caad4cd7e5eee377d84ef66495e5900380b0900b8c7beccfdda71",
+      "InProcessZeroCopyRenderer.swift": "331df6197816ca936353afec83a0ce5717ea8f1c0d0aa04c45d42be9cf9cbd92",
+      "IOSurfacePresentBridge.swift": "d94fe82aaf495dabfc1d23451a8652525ae29544df30cdadecfbc112bda7ff2b",
+      "SharedCommandRing.swift": "679b384efc61a0d3b19e61aa5736e71087d704cef42452a66d1a8575c0da137e",
+      "GPUShader.swift": "64e7aaea490ac8dc8483beec5d2ab116c4dc27612a1f6c5a5443367f22bdbf30",
+      "Metal4Engine.swift": "3b93ff0a4725a2bab61f8f3d5bcff76625587adc2e18ba6ccf6d93f7ef2692ae",
+      "BenchmarkStatistics.swift": "ffba66c1e2a06643790d4fae3da3a5689ac28079f753357e76719f13764338d9"
+    }
+  },
+  "binary_hashes": {
+    "consumer_library": "36868bd22efd946c0705c491aa53e4765f84cdce38e703ca7f92809960cc8a87",
+    "producer_library": "27d6f02bc9e0aa85261ebfd2a4d29424ea6875a54cbb392f8de0da0a95c01e26",
+    "executable": "69594ba6acf0ad20f1cf2866cc3873223c872b550f3524eabda94a14a64d1041"
+  },
+  "diagnostic_target_readback": false,
+  "gpu_byte_exact_comparison": true,
+  "gpu_comparison_statistic_bytes_read": 4,
+  "client_source_sha256": "94e39334e0c24b2ce803325902866d0f4069131ece41090056e393463431fd9a",
+  "source_pixel_readback_used": false
+}

@@ -1,0 +1,311 @@
+{
+  "schema_version": 1,
+  "owner": "@DNPMBHC",
+  "action": "apply",
+  "captured_at_utc": "2026-11-24T04:41:23.2354553Z",
+  "profile_id": "minimal-profile",
+  "profile_sha256": "906b01c178307f7cec917a90a1d96de62e123d69e41282f3b0276659ef77f76a",
+  "script_sha256": "84c0b2fbac89240c25176b09bd7c108b6b8318265cd7ae3c9f5a5bdffa8a4a11",
+  "snapshot_reused": false,
+  "whitelist_guard_passed": true,
+  "security_invariants_passed": true,
+  "security_invariants": {
+    "secure_boot_enabled": true,
+    "tpm_present": true,
+    "tpm_enabled": true,
+    "bcd_safe": true,
+    "prism_files_verified": true,
+    "prism_signatures_valid": true,
+    "prism_files": [
+      {
+        "relative_path": "System32\\xtajit.dll",
+        "exists": true,
+        "signature_status": "Valid"
+      },
+      {
+        "relative_path": "System32\\xtajit64.dll",
+        "exists": true,
+        "signature_status": "Valid"
+      },
+      {
+        "relative_path": "System32\\wow64.dll",
+        "exists": true,
+        "signature_status": "Valid"
+      },
+      {
+        "relative_path": "System32\\wow64win.dll",
+        "exists": true,
+        "signature_status": "Valid"
+      }
+    ],
+    "qga_service_running": true
+  },
+  "metrics_before": {
+    "process_count": 116,
+    "running_service_count": 80,
+    "system_drive_total_bytes": 37925941248,
+    "system_drive_used_bytes": 33972117504,
+    "system_drive_free_bytes": 3953823744
+  },
+  "metrics_after": {
+    "process_count": 117,
+    "running_service_count": 80,
+    "system_drive_total_bytes": 37925941248,
+    "system_drive_used_bytes": 33991532544,
+    "system_drive_free_bytes": 3934408704
+  },
+  "changes": {
+    "services": [
+      {
+        "name": "WSearch",
+        "status": "applied",
+        "target_start_type": "Disabled",
+        "running_after": false
+      },
+      {
+        "name": "SysMain",
+        "status": "applied",
+        "target_start_type": "Disabled",
+        "running_after": false
+      },
+      {
+        "name": "Spooler",
+        "status": "applied",
+        "target_start_type": "Disabled",
+        "running_after": false
+      },
+      {
+        "name": "bthserv",
+        "status": "applied",
+        "target_start_type": "Disabled",
+        "running_after": false
+      },
+      {
+        "name": "lfsvc",
+        "status": "applied",
+        "target_start_type": "Disabled",
+        "running_after": false
+      },
+      {
+        "name": "DiagTrack",
+        "status": "applied",
+        "target_start_type": "Disabled",
+        "running_after": false
+      },
+      {
+        "name": "dmwappushservice",
+        "status": "applied",
+        "target_start_type": "Disabled",
+        "running_after": false
+      },
+      {
+        "name": "WbioSrvc",
+        "status": "applied",
+        "target_start_type": "Disabled",
+        "running_after": false
+      },
+      {
+        "name": "MapsBroker",
+        "status": "applied",
+        "target_start_type": "Disabled",
+        "running_after": false
+      },
+      {
+        "name": "WerSvc",
+        "status": "applied",
+        "target_start_type": "Disabled",
+        "running_after": false
+      },
+      {
+        "name": "Fax",
+        "status": "not_present"
+      },
+      {
+        "name": "RetailDemo",
+        "status": "applied",
+        "target_start_type": "Disabled",
+        "running_after": false
+      },
+      {
+        "name": "XblAuthManager",
+        "status": "applied",
+        "target_start_type": "Disabled",
+        "running_after": false
+      },
+      {
+        "name": "XblGameSave",
+        "status": "applied",
+        "target_start_type": "Disabled",
+        "running_after": false
+      },
+      {
+        "name": "XboxNetApiSvc",
+        "status": "applied",
+        "target_start_type": "Disabled",
+        "running_after": false
+      }
+    ],
+    "scheduled_tasks": [
+      {
+        "task": "\\Microsoft\\Windows\\Application Experience\\Microsoft Compatibility Appraiser",
+        "status": "disabled"
+      },
+      {
+        "task": "\\Microsoft\\Windows\\Application Experience\\ProgramDataUpdater",
+        "status": "not_present"
+      },
+      {
+        "task": "\\Microsoft\\Windows\\Customer Experience Improvement Program\\Consolidator",
+        "status": "disabled"
+      },
+      {
+        "task": "\\Microsoft\\Windows\\Customer Experience Improvement Program\\UsbCeip",
+        "status": "disabled"
+      },
+      {
+        "task": "\\Microsoft\\Windows\\Maps\\MapsUpdateTask",
+        "status": "disabled"
+      },
+      {
+        "task": "\\Microsoft\\Windows\\Maps\\MapsToastTask",
+        "status": "disabled"
+      },
+      {
+        "task": "\\Microsoft\\Windows\\Windows Error Reporting\\QueueReporting",
+        "status": "disabled"
+      }
+    ],
+    "uwp_packages": [
+      {
+        "name": "MicrosoftWindows.Client.WebExperience",
+        "status": "not_present"
+      },
+      {
+        "name": "Microsoft.Copilot",
+        "status": "not_present"
+      },
+      {
+        "name": "Microsoft.BingNews",
+        "status": "not_present"
+      },
+      {
+        "name": "Microsoft.BingWeather",
+        "status": "not_present"
+      },
+      {
+        "name": "Microsoft.BingSearch",
+        "status": "not_present"
+      },
+      {
+        "name": "Microsoft.MicrosoftSolitaireCollection",
+        "status": "not_present"
+      },
+      {
+        "name": "Clipchamp.Clipchamp",
+        "status": "not_present"
+      },
+      {
+        "name": "MSTeams",
+        "status": "not_present"
+      },
+      {
+        "name": "Microsoft.WindowsFeedbackHub",
+        "status": "not_present"
+      },
+      {
+        "name": "Microsoft.GetHelp",
+        "status": "not_present"
+      },
+      {
+        "name": "Microsoft.Getstarted",
+        "status": "not_present"
+      },
+      {
+        "name": "Microsoft.People",
+        "status": "not_present"
+      },
+      {
+        "name": "Microsoft.Todos",
+        "status": "not_present"
+      },
+      {
+        "name": "Microsoft.WindowsMaps",
+        "status": "not_present"
+      },
+      {
+        "name": "Microsoft.ZuneMusic",
+        "status": "not_present"
+      },
+      {
+        "name": "Microsoft.ZuneVideo",
+        "status": "not_present"
+      },
+      {
+        "name": "Microsoft.PowerAutomateDesktop",
+        "status": "not_present"
+      },
+      {
+        "name": "Microsoft.OutlookForWindows",
+        "status": "removed_user_registration",
+        "removed_count": 1,
+        "skipped_non_removable": 0,
+        "failed_count": 0
+      },
+      {
+        "name": "Microsoft.YourPhone",
+        "status": "not_present"
+      },
+      {
+        "name": "Microsoft.XboxGamingOverlay",
+        "status": "not_present"
+      },
+      {
+        "name": "Microsoft.GamingApp",
+        "status": "not_present"
+      },
+      {
+        "name": "Microsoft.MicrosoftOfficeHub",
+        "status": "not_present"
+      },
+      {
+        "name": "Microsoft.MicrosoftStickyNotes",
+        "status": "not_present"
+      },
+      {
+        "name": "Microsoft.WindowsAlarms",
+        "status": "not_present"
+      },
+      {
+        "name": "Microsoft.WindowsSoundRecorder",
+        "status": "not_present"
+      }
+    ],
+    "registry_tweaks": [
+      {
+        "name": "EnableTransparency",
+        "status": "applied"
+      },
+      {
+        "name": "VisualFXSetting",
+        "status": "applied"
+      },
+      {
+        "name": "MinAnimate",
+        "status": "applied"
+      },
+      {
+        "name": "GlobalUserDisabled",
+        "status": "applied"
+      },
+      {
+        "name": "BingSearchEnabled",
+        "status": "applied"
+      }
+    ]
+  },
+  "session_id": 1,
+  "request_id": "e1e7fe84b47247ae80b69cdc1353ee40",
+  "primary_vm_control_actions": 0,
+  "script_process_execution_policy": "RemoteSigned",
+  "persistent_execution_policy_changed": false
+}

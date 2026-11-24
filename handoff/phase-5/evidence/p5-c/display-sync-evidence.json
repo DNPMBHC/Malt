@@ -1,0 +1,210 @@
+{
+  "owner": "@DNPMBHC",
+  "schema_version": 3,
+  "captured_at_utc": "2026-11-24T07:02:55.793137+00:00",
+  "production_snapshot_revision": 4,
+  "production_fingerprint": "3627d20d3e6a9acf0f333ab3c8a757221a88bf9cd1b5ae84bc9442532e134c27",
+  "acceptance_complete": false,
+  "host_measurement": {
+    "backingScaleFactor": 2,
+    "logicalHeight": 982,
+    "logicalWidth": 1512,
+    "maxRefreshRateHz": 120
+  },
+  "display_api": "ChangeDisplaySettingsExW",
+  "dpi_api": "GetDpiForWindow and scoped signed SystemSettings UIA",
+  "real_display_lifecycle": {
+    "baselineRestored": true,
+    "coldHeadlessStartVerified": false,
+    "failures": [
+      {
+        "baselineRestored": true,
+        "errorCode": "changeDisplaySettingsFailed(-2)",
+        "preset": "native_retina_point_to_point"
+      },
+      {
+        "baselineRestored": true,
+        "errorCode": "changeDisplaySettingsFailed(-2)",
+        "preset": "high_performance"
+      },
+      {
+        "baselineRestored": true,
+        "errorCode": "sessionIncomplete",
+        "preset": "follow_window"
+      }
+    ],
+    "hostDisplay": {
+      "backingScaleFactor": 2,
+      "logicalHeight": 982,
+      "logicalWidth": 1512,
+      "maxRefreshRateHz": 120
+    },
+    "nativeGuestScanoutVerified": false,
+    "owner": "@DNPMBHC",
+    "passed": false,
+    "runs": [],
+    "scope": "headless_guest_display_and_lifecycle_only",
+    "systemDPIScalingImplemented": true,
+    "targetGameVerified": false,
+    "virtualHIDVerified": false,
+    "production_snapshot_revision": 4,
+    "production_fingerprint": "37896f4e4b23d3dc954c79f78fdd5facd1f98ca68f156740a80506fcb9508707",
+    "frozen_probe_sha256": "09bb190bf5d763f9749345300b937728db886a4ec26c32c361a920c565cf1bee",
+    "helper_sha256": "c5d9c5fad2c424b923a3213f0584b47e2319b4a091ad912612da165989cf64f8",
+    "runtime_binary_sha256": "5c6b0786fee5aa7f10aaf6e7e6a71e286f27af018854dfa5b67c811ea11283db",
+    "executed": true,
+    "target_game_verified": false,
+    "Windows_scanout_verified": false,
+    "virtual_hid_verified": false
+  },
+  "supported_display_lifecycle": {
+    "baselineRestored": false,
+    "coldHeadlessStartVerified": false,
+    "errorCode": "cancellationFailed",
+    "failures": [],
+    "hostDisplay": {
+      "backingScaleFactor": 2,
+      "logicalHeight": 982,
+      "logicalWidth": 1512,
+      "maxRefreshRateHz": 120
+    },
+    "nativeGuestScanoutVerified": false,
+    "owner": "@DNPMBHC",
+    "passed": false,
+    "runs": [],
+    "scope": "supported_window_follow_headless_lifecycle_only",
+    "systemDPIScalingImplemented": true,
+    "targetGameVerified": false,
+    "virtualHIDVerified": false,
+    "production_snapshot_revision": 4,
+    "production_fingerprint": "3627d20d3e6a9acf0f333ab3c8a757221a88bf9cd1b5ae84bc9442532e134c27",
+    "frozen_probe_sha256": "09bb190bf5d763f9749345300b937728db886a4ec26c32c361a920c565cf1bee",
+    "helper_sha256": "c5d9c5fad2c424b923a3213f0584b47e2319b4a091ad912612da165989cf64f8",
+    "runtime_binary_sha256": "9f7d272bf9aabba55d78b05b4021e592bcc59f66272d7569fa990ff1818dc720",
+    "executed": true,
+    "target_game_verified": false,
+    "Windows_scanout_verified": false,
+    "virtual_hid_verified": false
+  },
+  "real_dpi_roundtrip": {
+    "errorCode": "operationFailed(\"scale_option_not_unique_within_control\")",
+    "owner": "@DNPMBHC",
+    "production_snapshot_revision": 4,
+    "production_fingerprint": "7ba05e223d668b557f1e9c7ee458e31957f9fa8aa30b57f769dab9b26ae2a415",
+    "frozen_probe_sha256": "09bb190bf5d763f9749345300b937728db886a4ec26c32c361a920c565cf1bee",
+    "helper_sha256": "c5d9c5fad2c424b923a3213f0584b47e2319b4a091ad912612da165989cf64f8",
+    "runtime_binary_sha256": "d41b8dbca0f97ea00a410c0474b8787a886af99470e996f02911255b295a15f2",
+    "executed": true,
+    "target_game_verified": false,
+    "Windows_scanout_verified": false,
+    "virtual_hid_verified": false
+  },
+  "real_control_discovery": {
+    "controls": [
+      {
+        "automationID": "SystemSettings_Display_Scaling_ItemSizeOverride_ComboBox",
+        "enabled": true,
+        "ownerMatches": true,
+        "selectedPercent": 100
+      },
+      {
+        "automationID": "SystemSettings_Display_Resolution_ComboBox",
+        "enabled": true,
+        "ownerMatches": true
+      },
+      {
+        "automationID": "SystemSettings_Display_Orientation_ComboBox",
+        "enabled": false,
+        "ownerMatches": true
+      }
+    ],
+    "currentPercent": 100,
+    "owner": "@DNPMBHC",
+    "passed": true,
+    "scope": "actual_session_one_standard_settings_control_discovery",
+    "settingsWindowClosed": true,
+    "production_snapshot_revision": 4,
+    "production_fingerprint": "37896f4e4b23d3dc954c79f78fdd5facd1f98ca68f156740a80506fcb9508707",
+    "frozen_probe_sha256": "09bb190bf5d763f9749345300b937728db886a4ec26c32c361a920c565cf1bee",
+    "helper_sha256": "c5d9c5fad2c424b923a3213f0584b47e2319b4a091ad912612da165989cf64f8",
+    "runtime_binary_sha256": "d91bf93c14265a4e440efd53452f68153a06e12dfddd70d57df492b9db86da34",
+    "executed": true,
+    "target_game_verified": false,
+    "Windows_scanout_verified": false,
+    "virtual_hid_verified": false
+  },
+  "hardware_probe": {
+    "activeProcessCount": 0,
+    "cancelled": false,
+    "exitCode": 0,
+    "owner": "@DNPMBHC",
+    "passed": true,
+    "rootExitCode": 0,
+    "scope": "actual_session_one_frozen_d3d_probe",
+    "sessionID": 1,
+    "production_snapshot_revision": 4,
+    "production_fingerprint": "37896f4e4b23d3dc954c79f78fdd5facd1f98ca68f156740a80506fcb9508707",
+    "frozen_probe_sha256": "09bb190bf5d763f9749345300b937728db886a4ec26c32c361a920c565cf1bee",
+    "helper_sha256": "c5d9c5fad2c424b923a3213f0584b47e2319b4a091ad912612da165989cf64f8",
+    "runtime_binary_sha256": "d91bf93c14265a4e440efd53452f68153a06e12dfddd70d57df492b9db86da34",
+    "executed": true,
+    "target_game_verified": false,
+    "Windows_scanout_verified": false,
+    "virtual_hid_verified": false,
+    "actual_adapter": {
+      "adapter_description": "Red Hat VirtIO GPU 3D controller",
+      "selected_feature_level": "11_1",
+      "device_id": 4176,
+      "windows_session_id": 1,
+      "adapter_flags": 0,
+      "device_create_hresult": "0x00000000",
+      "vendor_id": 6900
+    },
+    "hardware_FL_11_1_verified": true
+  },
+  "local_gates": {
+    "swift_test": {
+      "exit_code": 0,
+      "passed": true,
+      "duration_seconds": 8.964,
+      "log": "swift-test-final.log",
+      "total": 252,
+      "skipped": 10,
+      "failed": 0,
+      "passed_tests": 242
+    },
+    "swiftlint": {
+      "exit_code": 0,
+      "passed": true,
+      "duration_seconds": 0.127,
+      "log": "swiftlint-final.log"
+    },
+    "format_owned": {
+      "exit_code": 0,
+      "passed": true,
+      "duration_seconds": 0.179,
+      "log": "format-owned-final.log"
+    },
+    "format_required": {
+      "exit_code": 0,
+      "passed": true,
+      "duration_seconds": 0.384,
+      "log": "format-required-final.log"
+    },
+    "anticheat": {
+      "exit_code": 0,
+      "passed": true,
+      "duration_seconds": 0.765,
+      "log": "anticheat-final.log"
+    },
+    "lease_self_test": {
+      "exit_code": 0,
+      "passed": true,
+      "duration_seconds": 0.025,
+      "log": "lease-self-test.log"
+    }
+  },
+  "clone_lease_status": "held",
+  "real_windows_scanout_verified": false,
+  "virtual_hid_verified": false
+}
