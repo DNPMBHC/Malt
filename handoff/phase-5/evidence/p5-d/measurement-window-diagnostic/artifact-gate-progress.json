@@ -1,0 +1,616 @@
+{
+  "owner": "@DNPMBHC",
+  "complete": false,
+  "backends": {
+    "dxvk_moltenvk": {
+      "passed": true,
+      "envChecks": {
+        "dxmtShaderCacheEnabled": null,
+        "dxmtMetalFXExplicit": null,
+        "dxmtMetalFXFactor": null,
+        "dxvkICDIsBundled": null,
+        "dxvkMoltenVKExplicit": true
+      },
+      "runs": [
+        {
+          "round": 1,
+          "cacheState": "cold",
+          "artifact": {
+            "frameCount": 9000,
+            "intervalCount": 8999,
+            "frameIntervalMeanMs": 3.646,
+            "frameIntervalP50Ms": 2.276,
+            "frameIntervalP95Ms": 10.2552,
+            "derivedFPS": 274.27,
+            "gpuMsMean": 0.4065,
+            "deviceMemoryMiBMean": 223.97,
+            "gpuMsCoverage": 0.9102,
+            "csvSHA256": "0134dc36f5494d9e22d007550092c9385fc8f4211bda4db8b1e16cab7e812d1d"
+          },
+          "reference": {
+            "frameCount": 9000,
+            "intervalCount": 8999,
+            "frameIntervalMeanMs": 3.365,
+            "frameIntervalP50Ms": 2.619,
+            "frameIntervalP95Ms": 9.3382,
+            "derivedFPS": 297.18,
+            "gpuMsMean": 0.3311,
+            "deviceMemoryMiBMean": 223.97,
+            "gpuMsCoverage": 0.9102,
+            "csvSHA256": "b77e678d4112f7372aa9720d2f04848b3c36d82a29875261934f916a00963830"
+          },
+          "pairedConsistency": {
+            "passed": true,
+            "errors": [],
+            "fpsRatio": 0.9229,
+            "tolerances": {
+              "minimumFPSRatio": 0.85,
+              "maximumP95Ratio": 1.35,
+              "maximumGPUTimeRatio": 1.3,
+              "maximumVRAMRatio": 1.2
+            }
+          },
+          "historicalConsistency": {
+            "passed": true,
+            "errors": [],
+            "labBaselineKey": "dxvk_moltenvk",
+            "labBaselineColdFPS": 274.01,
+            "labBaselineDeviceMemoryMiB": 223.72,
+            "fpsRatioToLabBaseline": 1.001,
+            "minRequiredFPSRatio": 0.8
+          },
+          "optionalDriverLogEvidence": {
+            "passed": true,
+            "evidenceLines": [
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290.",
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290.",
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290.",
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290.",
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290."
+            ]
+          },
+          "errors": [],
+          "integrityPassed": true,
+          "passed": true
+        },
+        {
+          "round": 1,
+          "cacheState": "hot",
+          "artifact": {
+            "frameCount": 9000,
+            "intervalCount": 8999,
+            "frameIntervalMeanMs": 4.3078,
+            "frameIntervalP50Ms": 3.858,
+            "frameIntervalP95Ms": 12.0674,
+            "derivedFPS": 232.13,
+            "gpuMsMean": 0.4102,
+            "deviceMemoryMiBMean": 223.97,
+            "gpuMsCoverage": 0.9102,
+            "csvSHA256": "aa24e370d04a088d217aa3721d6b4f2b9d24bfcd941ae77069ce698e70126530"
+          },
+          "reference": {
+            "frameCount": 9000,
+            "intervalCount": 8999,
+            "frameIntervalMeanMs": 3.8219,
+            "frameIntervalP50Ms": 2.529,
+            "frameIntervalP95Ms": 10.7006,
+            "derivedFPS": 261.65,
+            "gpuMsMean": 0.3827,
+            "deviceMemoryMiBMean": 223.97,
+            "gpuMsCoverage": 0.9102,
+            "csvSHA256": "a515762c10d4df974bed09a84483a5d952be016954d0de67bdd400c0c4f65c77"
+          },
+          "pairedConsistency": {
+            "passed": true,
+            "errors": [],
+            "fpsRatio": 0.8872,
+            "tolerances": {
+              "minimumFPSRatio": 0.85,
+              "maximumP95Ratio": 1.35,
+              "maximumGPUTimeRatio": 1.3,
+              "maximumVRAMRatio": 1.2
+            }
+          },
+          "historicalConsistency": {
+            "passed": true,
+            "errors": [],
+            "labBaselineKey": "dxvk_moltenvk",
+            "labBaselineColdFPS": 274.01,
+            "labBaselineDeviceMemoryMiB": 223.72,
+            "fpsRatioToLabBaseline": 0.8472,
+            "minRequiredFPSRatio": 0.8
+          },
+          "optionalDriverLogEvidence": {
+            "passed": true,
+            "evidenceLines": [
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290.",
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290.",
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290.",
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290.",
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290."
+            ]
+          },
+          "errors": [],
+          "integrityPassed": true,
+          "passed": true
+        },
+        {
+          "round": 2,
+          "cacheState": "cold",
+          "artifact": {
+            "frameCount": 9000,
+            "intervalCount": 8999,
+            "frameIntervalMeanMs": 3.3073,
+            "frameIntervalP50Ms": 2.253,
+            "frameIntervalP95Ms": 9.8621,
+            "derivedFPS": 302.36,
+            "gpuMsMean": 0.4411,
+            "deviceMemoryMiBMean": 223.97,
+            "gpuMsCoverage": 0.9102,
+            "csvSHA256": "42022e5f276a9d0a43e5f6e35bbb6ce37ceb5e8823bd2cd3824d28582bdade5e"
+          },
+          "reference": {
+            "frameCount": 9000,
+            "intervalCount": 8999,
+            "frameIntervalMeanMs": 3.5724,
+            "frameIntervalP50Ms": 2.366,
+            "frameIntervalP95Ms": 10.9507,
+            "derivedFPS": 279.93,
+            "gpuMsMean": 0.4379,
+            "deviceMemoryMiBMean": 223.97,
+            "gpuMsCoverage": 0.9102,
+            "csvSHA256": "9631f6834bd60cdef60ace03842685fe07c0f6424a7371407b51593b242c0bb4"
+          },
+          "pairedConsistency": {
+            "passed": true,
+            "errors": [],
+            "fpsRatio": 1.0801,
+            "tolerances": {
+              "minimumFPSRatio": 0.85,
+              "maximumP95Ratio": 1.35,
+              "maximumGPUTimeRatio": 1.3,
+              "maximumVRAMRatio": 1.2
+            }
+          },
+          "historicalConsistency": {
+            "passed": true,
+            "errors": [],
+            "labBaselineKey": "dxvk_moltenvk",
+            "labBaselineColdFPS": 274.01,
+            "labBaselineDeviceMemoryMiB": 223.72,
+            "fpsRatioToLabBaseline": 1.1035,
+            "minRequiredFPSRatio": 0.8
+          },
+          "optionalDriverLogEvidence": {
+            "passed": true,
+            "evidenceLines": [
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290.",
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290.",
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290.",
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290.",
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290."
+            ]
+          },
+          "errors": [],
+          "integrityPassed": true,
+          "passed": true
+        },
+        {
+          "round": 2,
+          "cacheState": "hot",
+          "artifact": {
+            "frameCount": 9000,
+            "intervalCount": 8999,
+            "frameIntervalMeanMs": 3.4745,
+            "frameIntervalP50Ms": 2.346,
+            "frameIntervalP95Ms": 10.4332,
+            "derivedFPS": 287.81,
+            "gpuMsMean": 0.4111,
+            "deviceMemoryMiBMean": 223.97,
+            "gpuMsCoverage": 0.9102,
+            "csvSHA256": "50d737fc9e25243a550395107bdb099c306be9451557ba7cc418ab6c67478de9"
+          },
+          "reference": {
+            "frameCount": 9000,
+            "intervalCount": 8999,
+            "frameIntervalMeanMs": 3.3661,
+            "frameIntervalP50Ms": 2.324,
+            "frameIntervalP95Ms": 10.1766,
+            "derivedFPS": 297.08,
+            "gpuMsMean": 0.4763,
+            "deviceMemoryMiBMean": 223.97,
+            "gpuMsCoverage": 0.9102,
+            "csvSHA256": "7381f2bcf46820a5852f26e1231e08dee620c5ae606324e0fdd1bb41be078ab2"
+          },
+          "pairedConsistency": {
+            "passed": true,
+            "errors": [],
+            "fpsRatio": 0.9688,
+            "tolerances": {
+              "minimumFPSRatio": 0.85,
+              "maximumP95Ratio": 1.35,
+              "maximumGPUTimeRatio": 1.3,
+              "maximumVRAMRatio": 1.2
+            }
+          },
+          "historicalConsistency": {
+            "passed": true,
+            "errors": [],
+            "labBaselineKey": "dxvk_moltenvk",
+            "labBaselineColdFPS": 274.01,
+            "labBaselineDeviceMemoryMiB": 223.72,
+            "fpsRatioToLabBaseline": 1.0504,
+            "minRequiredFPSRatio": 0.8
+          },
+          "optionalDriverLogEvidence": {
+            "passed": true,
+            "evidenceLines": [
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290.",
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290.",
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290.",
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290.",
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290."
+            ]
+          },
+          "errors": [],
+          "integrityPassed": true,
+          "passed": true
+        },
+        {
+          "round": 3,
+          "cacheState": "cold",
+          "artifact": {
+            "frameCount": 9000,
+            "intervalCount": 8999,
+            "frameIntervalMeanMs": 3.4769,
+            "frameIntervalP50Ms": 2.343,
+            "frameIntervalP95Ms": 10.5354,
+            "derivedFPS": 287.61,
+            "gpuMsMean": 0.4417,
+            "deviceMemoryMiBMean": 223.97,
+            "gpuMsCoverage": 0.9102,
+            "csvSHA256": "d348f2f9c3b2b2a67b77196e8db071b41ebf9ce9a645520cc27ac6bbbac7cb10"
+          },
+          "reference": {
+            "frameCount": 9000,
+            "intervalCount": 8999,
+            "frameIntervalMeanMs": 3.7207,
+            "frameIntervalP50Ms": 2.517,
+            "frameIntervalP95Ms": 10.8004,
+            "derivedFPS": 268.77,
+            "gpuMsMean": 0.5259,
+            "deviceMemoryMiBMean": 223.97,
+            "gpuMsCoverage": 0.9102,
+            "csvSHA256": "5a341d798dab45d43eaf45fbc053528af2d6a4fb218c87c2b8fcdf5e901efc7b"
+          },
+          "pairedConsistency": {
+            "passed": true,
+            "errors": [],
+            "fpsRatio": 1.0701,
+            "tolerances": {
+              "minimumFPSRatio": 0.85,
+              "maximumP95Ratio": 1.35,
+              "maximumGPUTimeRatio": 1.3,
+              "maximumVRAMRatio": 1.2
+            }
+          },
+          "historicalConsistency": {
+            "passed": true,
+            "errors": [],
+            "labBaselineKey": "dxvk_moltenvk",
+            "labBaselineColdFPS": 274.01,
+            "labBaselineDeviceMemoryMiB": 223.72,
+            "fpsRatioToLabBaseline": 1.0496,
+            "minRequiredFPSRatio": 0.8
+          },
+          "optionalDriverLogEvidence": {
+            "passed": true,
+            "evidenceLines": [
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290.",
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290.",
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290.",
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290.",
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290."
+            ]
+          },
+          "errors": [],
+          "integrityPassed": true,
+          "passed": true
+        },
+        {
+          "round": 3,
+          "cacheState": "hot",
+          "artifact": {
+            "frameCount": 9000,
+            "intervalCount": 8999,
+            "frameIntervalMeanMs": 3.1956,
+            "frameIntervalP50Ms": 2.412,
+            "frameIntervalP95Ms": 9.3671,
+            "derivedFPS": 312.93,
+            "gpuMsMean": 0.5113,
+            "deviceMemoryMiBMean": 223.97,
+            "gpuMsCoverage": 0.9102,
+            "csvSHA256": "5e5f763d62ac0e42f1af8fccac9af7411f405aaf674de3a8949942747204bdf2"
+          },
+          "reference": {
+            "frameCount": 9000,
+            "intervalCount": 8999,
+            "frameIntervalMeanMs": 3.229,
+            "frameIntervalP50Ms": 2.232,
+            "frameIntervalP95Ms": 9.741,
+            "derivedFPS": 309.69,
+            "gpuMsMean": 0.455,
+            "deviceMemoryMiBMean": 223.97,
+            "gpuMsCoverage": 0.9102,
+            "csvSHA256": "67762665b08c0e0a42d4f55fb3445aee0de86e161c61202666433805b64386ab"
+          },
+          "pairedConsistency": {
+            "passed": true,
+            "errors": [],
+            "fpsRatio": 1.0105,
+            "tolerances": {
+              "minimumFPSRatio": 0.85,
+              "maximumP95Ratio": 1.35,
+              "maximumGPUTimeRatio": 1.3,
+              "maximumVRAMRatio": 1.2
+            }
+          },
+          "historicalConsistency": {
+            "passed": true,
+            "errors": [],
+            "labBaselineKey": "dxvk_moltenvk",
+            "labBaselineColdFPS": 274.01,
+            "labBaselineDeviceMemoryMiB": 223.72,
+            "fpsRatioToLabBaseline": 1.1421,
+            "minRequiredFPSRatio": 0.8
+          },
+          "optionalDriverLogEvidence": {
+            "passed": true,
+            "evidenceLines": [
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290.",
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290.",
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290.",
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290.",
+              "[mvk-info] MoltenVK version 1.2.10, supporting Vulkan version 1.2.290."
+            ]
+          },
+          "errors": [],
+          "integrityPassed": true,
+          "passed": true
+        }
+      ],
+      "aggregateConsistency": {
+        "cold": {
+          "passed": true,
+          "errors": [],
+          "fpsRatio": 1.0217,
+          "tolerances": {
+            "minimumFPSRatio": 0.85,
+            "maximumP95Ratio": 1.35,
+            "maximumGPUTimeRatio": 1.3,
+            "maximumVRAMRatio": 1.2
+          },
+          "method": "arithmetic mean of all rounds; no discarded samples",
+          "roundCount": 3,
+          "artifact": {
+            "derivedFPS": 288.08,
+            "frameIntervalP95Ms": 10.217566666666666,
+            "deviceMemoryMiBMean": 223.97
+          },
+          "reference": {
+            "derivedFPS": 281.96,
+            "frameIntervalP95Ms": 10.363100000000001,
+            "deviceMemoryMiBMean": 223.97
+          }
+        },
+        "hot": {
+          "passed": true,
+          "errors": [],
+          "fpsRatio": 0.9591,
+          "tolerances": {
+            "minimumFPSRatio": 0.85,
+            "maximumP95Ratio": 1.35,
+            "maximumGPUTimeRatio": 1.3,
+            "maximumVRAMRatio": 1.2
+          },
+          "method": "arithmetic mean of all rounds; no discarded samples",
+          "roundCount": 3,
+          "artifact": {
+            "derivedFPS": 277.62333333333333,
+            "frameIntervalP95Ms": 10.622566666666666,
+            "deviceMemoryMiBMean": 223.97
+          },
+          "reference": {
+            "derivedFPS": 289.4733333333333,
+            "frameIntervalP95Ms": 10.206066666666667,
+            "deviceMemoryMiBMean": 223.97
+          }
+        }
+      },
+      "rawPerformanceOutlierCount": 0,
+      "gpuValidation": {
+        "passed": true,
+        "completionMode": "gpu-complete",
+        "timestampSupport": "required",
+        "method": "arithmetic mean of every GPU round; no discarded samples",
+        "roundCount": 3,
+        "measuredFramesPerRound": 120,
+        "artifact": {
+          "derivedFPS": 313.58666666666664,
+          "frameIntervalP95Ms": 7.899766666666667,
+          "deviceMemoryMiBMean": 223.69999999999996,
+          "gpuMsMean": 0.4323666666666666,
+          "gpuMsCoverage": 1.0
+        },
+        "reference": {
+          "derivedFPS": 265.1333333333333,
+          "frameIntervalP95Ms": 10.995433333333333,
+          "deviceMemoryMiBMean": 223.69999999999996,
+          "gpuMsMean": 0.3839333333333333,
+          "gpuMsCoverage": 1.0
+        },
+        "pairedConsistency": {
+          "passed": true,
+          "errors": [],
+          "fpsRatio": 1.1828,
+          "tolerances": {
+            "minimumFPSRatio": 0.85,
+            "maximumP95Ratio": 1.35,
+            "maximumGPUTimeRatio": 1.3,
+            "maximumVRAMRatio": 1.2
+          }
+        },
+        "runs": [
+          {
+            "passed": true,
+            "round": 1,
+            "completionMode": "gpu-complete",
+            "artifact": {
+              "frameCount": 120,
+              "intervalCount": 119,
+              "frameIntervalMeanMs": 3.5344,
+              "frameIntervalP50Ms": 3.027,
+              "frameIntervalP95Ms": 8.7217,
+              "derivedFPS": 282.94,
+              "gpuMsMean": 0.405,
+              "deviceMemoryMiBMean": 223.7,
+              "gpuMsCoverage": 1.0
+            },
+            "reference": {
+              "frameCount": 120,
+              "intervalCount": 119,
+              "frameIntervalMeanMs": 4.6171,
+              "frameIntervalP50Ms": 3.696,
+              "frameIntervalP95Ms": 14.7673,
+              "derivedFPS": 216.59,
+              "gpuMsMean": 0.3492,
+              "deviceMemoryMiBMean": 223.7,
+              "gpuMsCoverage": 1.0
+            },
+            "pairedConsistency": {
+              "passed": true,
+              "errors": [],
+              "fpsRatio": 1.3063,
+              "tolerances": {
+                "minimumFPSRatio": 0.85,
+                "maximumP95Ratio": 1.35,
+                "maximumGPUTimeRatio": 1.3,
+                "maximumVRAMRatio": 1.2
+              }
+            },
+            "actualMappedLibraries": {
+              "driver": {
+                "filename": "libMoltenVK.dylib",
+                "sha256": "952ef0be316e7a8694781ac8d68d4dccca403ef0710854c608414449e317de6e"
+              }
+            },
+            "driverMappingRequired": true,
+            "driverMappingVerified": true,
+            "timestampSupport": "required",
+            "warmupFrames": 9000,
+            "measuredFrames": 120
+          },
+          {
+            "passed": true,
+            "round": 2,
+            "completionMode": "gpu-complete",
+            "artifact": {
+              "frameCount": 120,
+              "intervalCount": 119,
+              "frameIntervalMeanMs": 2.8865,
+              "frameIntervalP50Ms": 2.65,
+              "frameIntervalP95Ms": 7.1662,
+              "derivedFPS": 346.44,
+              "gpuMsMean": 0.4191,
+              "deviceMemoryMiBMean": 223.7,
+              "gpuMsCoverage": 1.0
+            },
+            "reference": {
+              "frameCount": 120,
+              "intervalCount": 119,
+              "frameIntervalMeanMs": 3.9743,
+              "frameIntervalP50Ms": 3.689,
+              "frameIntervalP95Ms": 10.1536,
+              "derivedFPS": 251.62,
+              "gpuMsMean": 0.429,
+              "deviceMemoryMiBMean": 223.7,
+              "gpuMsCoverage": 1.0
+            },
+            "pairedConsistency": {
+              "passed": true,
+              "errors": [],
+              "fpsRatio": 1.3768,
+              "tolerances": {
+                "minimumFPSRatio": 0.85,
+                "maximumP95Ratio": 1.35,
+                "maximumGPUTimeRatio": 1.3,
+                "maximumVRAMRatio": 1.2
+              }
+            },
+            "actualMappedLibraries": {
+              "driver": {
+                "filename": "libMoltenVK.dylib",
+                "sha256": "952ef0be316e7a8694781ac8d68d4dccca403ef0710854c608414449e317de6e"
+              }
+            },
+            "driverMappingRequired": true,
+            "driverMappingVerified": true,
+            "timestampSupport": "required",
+            "warmupFrames": 9000,
+            "measuredFrames": 120
+          },
+          {
+            "passed": true,
+            "round": 3,
+            "completionMode": "gpu-complete",
+            "artifact": {
+              "frameCount": 120,
+              "intervalCount": 119,
+              "frameIntervalMeanMs": 3.2115,
+              "frameIntervalP50Ms": 3.442,
+              "frameIntervalP95Ms": 7.8114,
+              "derivedFPS": 311.38,
+              "gpuMsMean": 0.473,
+              "deviceMemoryMiBMean": 223.7,
+              "gpuMsCoverage": 1.0
+            },
+            "reference": {
+              "frameCount": 120,
+              "intervalCount": 119,
+              "frameIntervalMeanMs": 3.0563,
+              "frameIntervalP50Ms": 2.474,
+              "frameIntervalP95Ms": 8.0654,
+              "derivedFPS": 327.19,
+              "gpuMsMean": 0.3736,
+              "deviceMemoryMiBMean": 223.7,
+              "gpuMsCoverage": 1.0
+            },
+            "pairedConsistency": {
+              "passed": true,
+              "errors": [],
+              "fpsRatio": 0.9517,
+              "tolerances": {
+                "minimumFPSRatio": 0.85,
+                "maximumP95Ratio": 1.35,
+                "maximumGPUTimeRatio": 1.3,
+                "maximumVRAMRatio": 1.2
+              }
+            },
+            "actualMappedLibraries": {
+              "driver": {
+                "filename": "libMoltenVK.dylib",
+                "sha256": "952ef0be316e7a8694781ac8d68d4dccca403ef0710854c608414449e317de6e"
+              }
+            },
+            "driverMappingRequired": true,
+            "driverMappingVerified": true,
+            "timestampSupport": "required",
+            "warmupFrames": 9000,
+            "measuredFrames": 120
+          }
+        ],
+        "rawPerformanceOutlierCount": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "phase": "phase-9a",
+  "owner": "@DNPMBHC",
+  "target_alias": "target-cn",
+  "golden_id": "golden-win11-arm64-v1",
+  "golden_manifest_sha256": "1988c3217b4c97d53818ac72831360715bf0438543288cc1cb4001a9f00fa846",
+  "captured_at_utc": "2026-11-24T14:25:49.722350+00:00",
+  "five_dimension_status": {
+    "implementation": "completed",
+    "local_gates": "passed",
+    "real_guest_run": "executed_dxmt_native_broke_deadlock_63m_stable",
+    "vendor_vm_support": "unknown",
+    "protected_lobby_and_match": "not_verified"
+  },
+  "utm_native_backend_config": {
+    "preference_key": "QEMUDirectXDriver",
+    "value_type": "int",
+    "enum_mapping": {
+      "0": "d3dmetal-native",
+      "1": "disabled_software_fallback",
+      "2": "dxmt-native"
+    },
+    "selected_value": 2,
+    "lsof_verified_backend": "dxmt-native",
+    "defaults_restored": true
+  },
+  "d3d11_probe_comparison": {
+    "d3dmetal_fps": 129.938,
+    "dxmt_fps": 119.46,
+    "dxmt_vs_d3dmetal_fps_ratio": 0.919,
+    "d3dmetal_gpu_ms_mean": 0.0,
+    "dxmt_gpu_ms_mean": 1.6213,
+    "timestamp_query_recovered_in_dxmt": true,
+    "d3dmetal_max_lsb": 0,
+    "dxmt_max_lsb": 0,
+    "both_zero_lsb": true
+  },
+  "valorant_dxmt_run": {
+    "deadlock_broken": true,
+    "continuous_stable_minutes": 63,
+    "shipping_alive_after_63m": true,
+    "frame_progression_observed": [
+      "189 -> 838 -> 925 (active)",
+      "867 -> 49 (+182 frames / 15.4s)",
+      "422 -> 735 (+313 frames / 11.3s at 63m)"
+    ],
+    "ace_arm64_drivers_running": [
+      "ACE-CORE10405",
+      "ACE-CORE20405"
+    ],
+    "ace_kick_or_popup_in_63m": false,
+    "host_render_server_cpu_active_percent": [
+      24.1,
+      33.9
+    ],
+    "host_render_server_cpu_idle_63m_percent": [
+      5.2,
+      6.0
+    ],
+    "remaining_ui_blocker": "in_game_cursor_invisible_even_with_capture_mouse_and_trails_0"
+  },
+  "host_render_server_stack_capture": {
+    "target_worker_pid": 2719,
+    "target_worker_cpu": 28.8,
+    "thread_count": 51,
+    "active_metal_pipeline_verified": "npt_transport_dispatch -> dxmt::MTLD3D11ImmediateContext::Commit() -> AGXMetalG16G_B0"
+  },
+  "zero_drift_verification": {
+    "ephemeral_deleted": true,
+    "utm_defaults_restored": true,
+    "golden_readonly": true,
+    "golden_config_sha256": "5e3b775ca4fd05a81ae9e1f2c5d61abe576334340bd51b851b6d65ab89cff390",
+    "golden_bundle_sha256": "784ba01e8c45bc0e32fb81849a359b909a3d87b15cb8486db49df6467bcf4947",
+    "golden_zero_drift": true,
+    "primary_vm_a_config_sha256": "10793d07678f8621e1d75ada73443b3f14e272036dde4f90b277267c2e1033b7",
+    "primary_vm_a_bundle_sha256": "ccd2d2de4981b8b0ca7705824ee6cc4166828651a03f198fd518ba81771caae5",
+    "primary_zero_drift": true,
+    "cache_disk_untouched": true
+  },
+  "compliance": {
+    "modified_game_or_ace_binaries": false,
+    "replaced_signed_system_dlls": false,
+    "hidden_virtualization_or_spoofed_hardware": false,
+    "automated_auth_or_captcha": false,
+    "utm_defaults_restored": true,
+    "golden_zero_drift": true,
+    "primary_zero_drift": true
+  }
+}

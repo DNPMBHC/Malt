@@ -1,0 +1,1 @@
+Earlier local validation used the receiver before the display-sync option and the probe before its final rebuild. These results retain their original digests. Current final-binding validation is stored outside this archive. CPU comparisons are auxiliary and are not Guest D3D11 software reference frames.

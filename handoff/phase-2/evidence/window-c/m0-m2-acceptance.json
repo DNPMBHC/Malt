@@ -1,0 +1,39 @@
+{
+  "checks": {
+    "actual_guest_hardware_adapter_fingerprint": {
+      "passed": false,
+      "reason": "shared Guest exclusive slot pending"
+    },
+    "actual_wine_adapter_fingerprints": {
+      "manifest": "m0-adapters/manifest.json",
+      "passed": true
+    },
+    "command_only_removes_guest_raster_and_pixels": {
+      "implemented": true,
+      "local_executed": true
+    },
+    "neutral_outputs_and_no_commit": {
+      "passed": true
+    },
+    "real_guest_warp_vs_metal_pixels": {
+      "passed": false,
+      "reason": "not executed"
+    },
+    "real_metal_16_draw_scene": {
+      "manifest": "local-metal-protocol/manifest.json",
+      "passed": true
+    },
+    "same_guest_three_mode_benchmark": {
+      "passed": false,
+      "reason": "not executed"
+    }
+  },
+  "complete": false,
+  "owner": "@DNPMBHC",
+  "regression_tests": {
+    "count": 73,
+    "log": "m0-m2-local-tests.log",
+    "passed": true,
+    "sha256": "e8685924e223ccfd65084119efd3b83ed73f3a57c649d76c382766568b2bf85a"
+  }
+}

@@ -1,0 +1,312 @@
+{
+  "digests": {
+    "analyze_py": "ee71db86dc7db499d4997343489b341062b51220e547fe6443ace2e2218e1f25",
+    "benchmark_support_py": "cbf939f44c8695f37b793e87b7e75fd44290fcbeb436b2b4c276adf59cd6f454",
+    "d3d11_probe_cpp": "d2e21a9dbcfa123ba5d32f9edb63c942caf845efc1e8c16a4285369eb3fdd29d",
+    "d3d11_probe_exe": "3c21589e89ccde8b93e1436c7142720a4442823c82b7890937e4ae6f4ea39215",
+    "metal_host_binary": "2c461360a615a50ebd961cd56c0cc04df4f775eb96d728fd0c5a2db665203979",
+    "metal_host_swift": "a0c63a096b92ffda7a5317150c621428b3c6f8e94eab61afa3b49efb7254769c"
+  },
+  "guest_d3d11_reference_validated": false,
+  "guest_paired_performance_measured": false,
+  "kind": "local-real-Metal-command-replay-validation",
+  "owner": "@DNPMBHC",
+  "passed": true,
+  "receivers_stopped": true,
+  "reference_scope": "auxiliary CPU oracle only; Guest software reference remains required",
+  "runs": [
+    {
+      "ack_bytes_each_frame": 56,
+      "ack_count": 32,
+      "application_frame_bytes_total": 134912,
+      "cadence": 30,
+      "captures": [
+        {
+          "actual_rgba_sha256": "db3a7df7f0018da65d4d1267997201bb1e1291f1fdb8b95fdc64d613bb643d39",
+          "capture_metadata_sha256": "b25d75a1b08cbd534bdf5ea58fed29545b61b8a2865ecc6fd81a404a4583ae25",
+          "channel_maximum_errors_lsb": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "cpu_oracle_rgba_sha256": "3ae42a56026c5619d89ae2a67334ab637669dc07ac235173566e0f6562f529fe",
+          "differing_pixels": 26485,
+          "first_failure": null,
+          "frame_sequence": 0,
+          "is_guest_d3d11_reference": false,
+          "maximum_channel_error_lsb": 1,
+          "passed": true,
+          "pixel_count": 921600,
+          "pixels_exceeding_one_lsb": 0,
+          "reference_kind": "independent-scalar-float32-CPU-auxiliary-oracle",
+          "resource_epoch": 0,
+          "resource_sha256": "91b89c64622612ba4a9bed1bcdc76a1b5be08ae7cefc57631e506842145a0185"
+        },
+        {
+          "actual_rgba_sha256": "554462387255c85ec6bdf8e3b4fa1645d3c47d7a352d48919e9c854576c4a38f",
+          "capture_metadata_sha256": "2395122ff3254d3f6a7312e284ee6a87831ebc1de25ab3b2425fc97a1559998c",
+          "channel_maximum_errors_lsb": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "cpu_oracle_rgba_sha256": "b60607081ba263918dba3b9d782c4ea21a0394f319e9e3e5b2aa4bdf4d5b9f86",
+          "differing_pixels": 24877,
+          "first_failure": null,
+          "frame_sequence": 30,
+          "is_guest_d3d11_reference": false,
+          "maximum_channel_error_lsb": 1,
+          "passed": true,
+          "pixel_count": 921600,
+          "pixels_exceeding_one_lsb": 0,
+          "reference_kind": "independent-scalar-float32-CPU-auxiliary-oracle",
+          "resource_epoch": 1,
+          "resource_sha256": "d4d2eba39fc3a74aa7b828dcc5141b5c85b1405f225694709b4438fd85fc3127"
+        },
+        {
+          "actual_rgba_sha256": "554462387255c85ec6bdf8e3b4fa1645d3c47d7a352d48919e9c854576c4a38f",
+          "capture_metadata_sha256": "b46452b516d6e1863826fcc2e6a4d6f7d7bef7ec6b5de89f49e742888b30591c",
+          "channel_maximum_errors_lsb": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "cpu_oracle_rgba_sha256": "b60607081ba263918dba3b9d782c4ea21a0394f319e9e3e5b2aa4bdf4d5b9f86",
+          "differing_pixels": 24877,
+          "first_failure": null,
+          "frame_sequence": 31,
+          "is_guest_d3d11_reference": false,
+          "maximum_channel_error_lsb": 1,
+          "passed": true,
+          "pixel_count": 921600,
+          "pixels_exceeding_one_lsb": 0,
+          "reference_kind": "independent-scalar-float32-CPU-auxiliary-oracle",
+          "resource_epoch": 1,
+          "resource_sha256": "d4d2eba39fc3a74aa7b828dcc5141b5c85b1405f225694709b4438fd85fc3127"
+        }
+      ],
+      "client_kind": "independent-native-Python-wire-client",
+      "completion_scope": "gpu-command-complete",
+      "digests": {
+        "metal_host_binary": "2c461360a615a50ebd961cd56c0cc04df4f775eb96d728fd0c5a2db665203979",
+        "metal_host_swift": "a0c63a096b92ffda7a5317150c621428b3c6f8e94eab61afa3b49efb7254769c"
+      },
+      "frame_count": 32,
+      "guest_d3d11_pixel_validation_completed": false,
+      "height": 720,
+      "host_gpu_ms_maximum": 5.219999991822988,
+      "host_gpu_ms_median": 0.8260833274107426,
+      "host_gpu_ms_minimum": 0.623999978415668,
+      "passed": true,
+      "performance_measurement": false,
+      "pixel_bytes_each_frame": 0,
+      "retained_frame_roundtrip_bytes": 88,
+      "scene_draw_count_each_frame": 16,
+      "seed": 7,
+      "updated_frame_roundtrip_bytes": 66136,
+      "width": 1280
+    },
+    {
+      "ack_bytes_each_frame": 56,
+      "ack_count": 3,
+      "application_frame_bytes_total": 66312,
+      "cadence": 30,
+      "captures": [
+        {
+          "actual_rgba_sha256": "db3a7df7f0018da65d4d1267997201bb1e1291f1fdb8b95fdc64d613bb643d39",
+          "capture_metadata_sha256": "7b8b3842e0a73d33c7b9b81d77817b2ec64104327b93ef5281d9b01851bd4933",
+          "channel_maximum_errors_lsb": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "cpu_oracle_rgba_sha256": "3ae42a56026c5619d89ae2a67334ab637669dc07ac235173566e0f6562f529fe",
+          "differing_pixels": 26485,
+          "first_failure": null,
+          "frame_sequence": 0,
+          "is_guest_d3d11_reference": false,
+          "maximum_channel_error_lsb": 1,
+          "passed": true,
+          "pixel_count": 921600,
+          "pixels_exceeding_one_lsb": 0,
+          "reference_kind": "independent-scalar-float32-CPU-auxiliary-oracle",
+          "resource_epoch": 0,
+          "resource_sha256": "91b89c64622612ba4a9bed1bcdc76a1b5be08ae7cefc57631e506842145a0185"
+        },
+        {
+          "actual_rgba_sha256": "db3a7df7f0018da65d4d1267997201bb1e1291f1fdb8b95fdc64d613bb643d39",
+          "capture_metadata_sha256": "65f499016be8827d2c7639b58a5e74ceaf39a7263f5bfe151f956c674ca795d5",
+          "channel_maximum_errors_lsb": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "cpu_oracle_rgba_sha256": "3ae42a56026c5619d89ae2a67334ab637669dc07ac235173566e0f6562f529fe",
+          "differing_pixels": 26485,
+          "first_failure": null,
+          "frame_sequence": 2,
+          "is_guest_d3d11_reference": false,
+          "maximum_channel_error_lsb": 1,
+          "passed": true,
+          "pixel_count": 921600,
+          "pixels_exceeding_one_lsb": 0,
+          "reference_kind": "independent-scalar-float32-CPU-auxiliary-oracle",
+          "resource_epoch": 0,
+          "resource_sha256": "91b89c64622612ba4a9bed1bcdc76a1b5be08ae7cefc57631e506842145a0185"
+        }
+      ],
+      "client_kind": "real-C++-EXE-under-host-Wine-DXVK",
+      "completion_scope": "gpu-command-complete",
+      "digests": {
+        "d3d11_probe_cpp": "d2e21a9dbcfa123ba5d32f9edb63c942caf845efc1e8c16a4285369eb3fdd29d",
+        "d3d11_probe_exe": "3c21589e89ccde8b93e1436c7142720a4442823c82b7890937e4ae6f4ea39215",
+        "metal_host_binary": "2c461360a615a50ebd961cd56c0cc04df4f775eb96d728fd0c5a2db665203979",
+        "metal_host_swift": "a0c63a096b92ffda7a5317150c621428b3c6f8e94eab61afa3b49efb7254769c"
+      },
+      "engine_digests": {
+        "d3dmetal_d3d11_dll": "05fa6f700fb5ee5561dc3a46d98f0aed845d4fa8ab274bff1dc604b0b3f6edd1",
+        "d3dmetal_dxgi_dll": "249711d3d786a9b0bb7c3558f36e472ab07ee21b8dbf118e34c975046832f9a2",
+        "d3dmetal_libd3dshared_dylib": "66005073540dc91001ea11685160a71e302bfd79c2ee7b9fe5be560ae17621e2",
+        "dxmt_d3d11_dll": "1cbe930e2370c4382ac4b435faf8cc563943324cfade33380cc6de0b8d94d801",
+        "dxmt_dxgi_dll": "3831a078756a054027413e0c9c901a28a0a57a8dd3f327d3e2fb41a8616d251c",
+        "dxmt_winemetal_dll": "39e5cfb3ac9b93976c9fc48e215c14b90f626e1b0bcf677b6eef1fb6e3fabf26",
+        "dxmt_winemetal_so": "76843f2ab3226a9c7dc107c9d4d9ace9593ec7210edf9e74d5a6cf146384c52a",
+        "dxvk_d3d11_dll": "7a0442591dfee7e3729d26a598d3b490f917fbe8ebf9da3bb75410e8d095d302",
+        "moltenvk_dylib": "952ef0be316e7a8694781ac8d68d4dccca403ef0710854c608414449e317de6e",
+        "wine": "78010eb35647a71f2e6995f295215b99e919dee2450f28990e8a13b32b21b607"
+      },
+      "environment": "host-wine",
+      "frame_count": 3,
+      "guest_d3d11_pixel_validation_completed": false,
+      "height": 720,
+      "host_gpu_ms_maximum": 3.8792499690316617,
+      "host_gpu_ms_median": 2.0771250128746033,
+      "host_gpu_ms_minimum": 1.5280000516213477,
+      "is_windows_guest_run": false,
+      "passed": true,
+      "performance_measurement": false,
+      "pixel_bytes_each_frame": 0,
+      "retained_frame_roundtrip_bytes": 88,
+      "scene_draw_count_each_frame": 16,
+      "seed": 7,
+      "updated_frame_roundtrip_bytes": 66136,
+      "width": 1280
+    },
+    {
+      "ack_bytes_each_frame": 56,
+      "ack_count": 32,
+      "application_frame_bytes_total": 134912,
+      "cadence": 30,
+      "captures": [
+        {
+          "actual_rgba_sha256": "db3a7df7f0018da65d4d1267997201bb1e1291f1fdb8b95fdc64d613bb643d39",
+          "capture_metadata_sha256": "56bf08b8b5476e02b7e1ca77b88d2721fd0379930697509e2ef36818d958e1c8",
+          "channel_maximum_errors_lsb": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "cpu_oracle_rgba_sha256": "3ae42a56026c5619d89ae2a67334ab637669dc07ac235173566e0f6562f529fe",
+          "differing_pixels": 26485,
+          "first_failure": null,
+          "frame_sequence": 0,
+          "is_guest_d3d11_reference": false,
+          "maximum_channel_error_lsb": 1,
+          "passed": true,
+          "pixel_count": 921600,
+          "pixels_exceeding_one_lsb": 0,
+          "reference_kind": "independent-scalar-float32-CPU-auxiliary-oracle",
+          "resource_epoch": 0,
+          "resource_sha256": "91b89c64622612ba4a9bed1bcdc76a1b5be08ae7cefc57631e506842145a0185"
+        },
+        {
+          "actual_rgba_sha256": "554462387255c85ec6bdf8e3b4fa1645d3c47d7a352d48919e9c854576c4a38f",
+          "capture_metadata_sha256": "9bb0ca266224654bc86f02b41d41a61b10deeb5171c84478f5f6cdd5403580bf",
+          "channel_maximum_errors_lsb": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "cpu_oracle_rgba_sha256": "b60607081ba263918dba3b9d782c4ea21a0394f319e9e3e5b2aa4bdf4d5b9f86",
+          "differing_pixels": 24877,
+          "first_failure": null,
+          "frame_sequence": 30,
+          "is_guest_d3d11_reference": false,
+          "maximum_channel_error_lsb": 1,
+          "passed": true,
+          "pixel_count": 921600,
+          "pixels_exceeding_one_lsb": 0,
+          "reference_kind": "independent-scalar-float32-CPU-auxiliary-oracle",
+          "resource_epoch": 1,
+          "resource_sha256": "d4d2eba39fc3a74aa7b828dcc5141b5c85b1405f225694709b4438fd85fc3127"
+        },
+        {
+          "actual_rgba_sha256": "554462387255c85ec6bdf8e3b4fa1645d3c47d7a352d48919e9c854576c4a38f",
+          "capture_metadata_sha256": "f6574e19595008083f98d4957349a788d6032a1ae2c7f994e0ec2ca6491887f5",
+          "channel_maximum_errors_lsb": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "cpu_oracle_rgba_sha256": "b60607081ba263918dba3b9d782c4ea21a0394f319e9e3e5b2aa4bdf4d5b9f86",
+          "differing_pixels": 24877,
+          "first_failure": null,
+          "frame_sequence": 31,
+          "is_guest_d3d11_reference": false,
+          "maximum_channel_error_lsb": 1,
+          "passed": true,
+          "pixel_count": 921600,
+          "pixels_exceeding_one_lsb": 0,
+          "reference_kind": "independent-scalar-float32-CPU-auxiliary-oracle",
+          "resource_epoch": 1,
+          "resource_sha256": "d4d2eba39fc3a74aa7b828dcc5141b5c85b1405f225694709b4438fd85fc3127"
+        }
+      ],
+      "client_kind": "real-C++-EXE-under-host-Wine-DXVK",
+      "completion_scope": "gpu-command-complete",
+      "digests": {
+        "d3d11_probe_cpp": "d2e21a9dbcfa123ba5d32f9edb63c942caf845efc1e8c16a4285369eb3fdd29d",
+        "d3d11_probe_exe": "3c21589e89ccde8b93e1436c7142720a4442823c82b7890937e4ae6f4ea39215",
+        "metal_host_binary": "2c461360a615a50ebd961cd56c0cc04df4f775eb96d728fd0c5a2db665203979",
+        "metal_host_swift": "a0c63a096b92ffda7a5317150c621428b3c6f8e94eab61afa3b49efb7254769c"
+      },
+      "engine_digests": {
+        "d3dmetal_d3d11_dll": "05fa6f700fb5ee5561dc3a46d98f0aed845d4fa8ab274bff1dc604b0b3f6edd1",
+        "d3dmetal_dxgi_dll": "249711d3d786a9b0bb7c3558f36e472ab07ee21b8dbf118e34c975046832f9a2",
+        "d3dmetal_libd3dshared_dylib": "66005073540dc91001ea11685160a71e302bfd79c2ee7b9fe5be560ae17621e2",
+        "dxmt_d3d11_dll": "1cbe930e2370c4382ac4b435faf8cc563943324cfade33380cc6de0b8d94d801",
+        "dxmt_dxgi_dll": "3831a078756a054027413e0c9c901a28a0a57a8dd3f327d3e2fb41a8616d251c",
+        "dxmt_winemetal_dll": "39e5cfb3ac9b93976c9fc48e215c14b90f626e1b0bcf677b6eef1fb6e3fabf26",
+        "dxmt_winemetal_so": "76843f2ab3226a9c7dc107c9d4d9ace9593ec7210edf9e74d5a6cf146384c52a",
+        "dxvk_d3d11_dll": "7a0442591dfee7e3729d26a598d3b490f917fbe8ebf9da3bb75410e8d095d302",
+        "moltenvk_dylib": "952ef0be316e7a8694781ac8d68d4dccca403ef0710854c608414449e317de6e",
+        "wine": "78010eb35647a71f2e6995f295215b99e919dee2450f28990e8a13b32b21b607"
+      },
+      "environment": "host-wine",
+      "frame_count": 32,
+      "guest_d3d11_pixel_validation_completed": false,
+      "height": 720,
+      "host_gpu_ms_maximum": 6.268833356443793,
+      "host_gpu_ms_median": 0.8261458424385637,
+      "host_gpu_ms_minimum": 0.8242916665039957,
+      "is_windows_guest_run": false,
+      "passed": true,
+      "performance_measurement": false,
+      "pixel_bytes_each_frame": 0,
+      "retained_frame_roundtrip_bytes": 88,
+      "scene_draw_count_each_frame": 16,
+      "seed": 7,
+      "updated_frame_roundtrip_bytes": 66136,
+      "width": 1280
+    }
+  ],
+  "validator_sha256": "d73360e212acb73b2f3e12766ffee2ecd8451979d54e899e65d7f48895219b63"
+}

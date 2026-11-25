@@ -1,0 +1,87 @@
+{
+  "schema": "agent-review-evidence-manifest-v1",
+  "owner": "@DNPMBHC",
+  "date": "2026-11-24",
+  "taskScope": "D1-D3",
+  "releaseSnapshotRevision": 3,
+  "reportFile": "agent-work-report.md",
+  "evidenceFiles": [
+    {
+      "file": "agent-work-report.md",
+      "sizeBytes": 11154,
+      "sha256": "a07a1f45036df282bd2079a0f97120adceb5ad71189910b24303fc1681c7806f"
+    },
+    {
+      "file": "report.md",
+      "sizeBytes": 4801,
+      "sha256": "9a41720e2c4412b126ed4d9ae3224b1620447d0d77eb8e669f5475705b14e336"
+    },
+    {
+      "file": "release-package-manifest.json",
+      "sizeBytes": 1763,
+      "sha256": "8666508c09d55e07bd0b3217108013a0a0e5c9ac48af1764af092f61230e4cfb"
+    },
+    {
+      "file": "artifact-gate-report.json",
+      "sizeBytes": 161445,
+      "sha256": "415c1bd4f4f7a156f858852f455eaeca4cc1455d44022524d09024e2a3d54018"
+    },
+    {
+      "file": "verification-summary.json",
+      "sizeBytes": 2976,
+      "sha256": "10ab176c68b1ce895ff610b4584f31d3123b612280a28568a7b2c9f0b0f02135"
+    },
+    {
+      "file": "bundle-relocation-fallback-smoke.json",
+      "sizeBytes": 3041,
+      "sha256": "7b32c12b261f5b42466a407e0bb2824d1bd60bc590172d6d98efe5f157c1e2a4"
+    },
+    {
+      "file": "production-interface-binding.json",
+      "sizeBytes": 3051,
+      "sha256": "024c733fe5ffb546a8027be78f77dee479ad1e7c99530db020ab5f647df71375"
+    },
+    {
+      "file": "interface-assessment.md",
+      "sizeBytes": 2262,
+      "sha256": "f2be62d37bdfa314a8a499e5d3fdea5edc44a078d31bbeb848ddb44579041bb5"
+    },
+    {
+      "file": "final-audit.json",
+      "sizeBytes": 648,
+      "sha256": "a80bb12253a9bb4cea608418b3bc060ba8af943feccf0ec56f03fcc159c8f02b"
+    },
+    {
+      "file": "continuation-audit.json",
+      "sizeBytes": 2584,
+      "sha256": "0ac858c44d4f66746cfa8779ba2e3cbf07a5c5a3755f8386b3f10e2766f08388"
+    },
+    {
+      "file": "artifact-evidence-index.json",
+      "sizeBytes": 221780,
+      "sha256": "4ca5c905668a944b671440540d03c8bce1b2947e6a3ba869689ee7ea15e4387a"
+    }
+  ],
+  "finalGateSourceChecks": [
+    {
+      "file": "artifact_perf_gate.py",
+      "sha256": "0ff65546ffd0d9883051a5f0eea83a0c6d331c3bf727dd65ff5fd3878ad666b1",
+      "matchedExpected": true
+    },
+    {
+      "file": "wine_reference_launch.swift",
+      "sha256": "d3ae8ec21351bafc38c1c124e8a31b9001da6bf311da9cce5fa329ed1929e0b0",
+      "matchedExpected": true
+    },
+    {
+      "file": "artifact_real3d_gate.py",
+      "sha256": "6a1624cadf913341c99a657412cef4368a84aa8f808f363bd9bc390445ed5fa3",
+      "matchedExpected": true
+    }
+  ],
+  "reportLinksVerified": true,
+  "historicalEvidenceIndexUnmodified": true,
+  "historicalIndexScope": "1118 indexed historical evidence files; later review documents and continuation audit are independently bound here.",
+  "acceptanceScope": "Synthetic D3D11 release-artifact validation; no commercial-game or newer-shared-candidate acceptance claim.",
+  "passed": true
+}

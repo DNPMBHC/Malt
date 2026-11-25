@@ -1,0 +1,119 @@
+{
+  "arm": "wine_d3dmetal",
+  "domain": "host_wine",
+  "backend": "d3dmetal",
+  "round": 1,
+  "metadata": {
+    "schema_version": 1,
+    "adapter_description": "AMD Compatibility Mode",
+    "vendor_id": 4098,
+    "device_id": 26287,
+    "adapter_flags": 0,
+    "adapter_is_software": false,
+    "selected_feature_level": "11_1",
+    "width": 1280,
+    "height": 720,
+    "draws_per_frame": 16384,
+    "cb_updates_per_frame": 4096,
+    "passes_per_frame": 2,
+    "dynamic_vertex_bytes_per_frame": 9436608,
+    "geometry_objects": 16383,
+    "scene_variant": "dense_configurable_grid",
+    "async_swapchain": true,
+    "initialization_ms": 357.766
+  },
+  "completion": {
+    "measured_frames": 120,
+    "warmup_ms": 417.266,
+    "measurement_wall_ms": 517.259,
+    "gpu_drain_ms": 15.171,
+    "throughput_including_gpu_drain_fps": 231.991873,
+    "draws_per_frame": 16384,
+    "total_draw_calls": 1966080,
+    "async_swapchain": true
+  },
+  "csv_summary": {
+    "frame_count": 120,
+    "interval_sample_count": 119,
+    "derived_fps_from_intervals": 238.0231358488045,
+    "frame_interval_ms": {
+      "mean": 4.201272268907563,
+      "p50": 2.942,
+      "p95": 7.306939999999999,
+      "p99": 8.121132
+    },
+    "cpu_submit_ms": {
+      "mean": 4.171941666666666,
+      "p95": 7.297635,
+      "p99": 8.117392
+    },
+    "process_resident_mib_mean": 191.31578776041667,
+    "device_memory_mib_mean": 129.52708333333334
+  },
+  "host_cpu": {
+    "method": "libproc RUSAGE_INFO_V0 user+system counter deltas; PID family and creation-time binding",
+    "scope": "measurement phase only; roots and descendants",
+    "sample_count": 6,
+    "sample_errors": 0,
+    "covered_wall_seconds": 0.5193907079992641,
+    "cpu_seconds": 0.4866042083333332,
+    "host_cpu_percent_mean": 93.68750746577133,
+    "host_cpu_percent_peak": 113.60218081589342,
+    "host_logical_cpu_count": 10,
+    "host_capacity_percent_mean": 9.368750746577133,
+    "units": "100 percent equals one logical CPU; zeros retained",
+    "samples": [
+      {
+        "wall_seconds": 0.08945991699874867,
+        "cpu_seconds": 0.10162841666666664,
+        "cpu_percent": 113.60218081589342,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.09282458300003782,
+        "cpu_seconds": 0.08393737499999987,
+        "cpu_percent": 90.42580347488948,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.09103266700185486,
+        "cpu_seconds": 0.1003406250000001,
+        "cpu_percent": 110.22485477433676,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.09115129099882324,
+        "cpu_seconds": 0.07622862500000005,
+        "cpu_percent": 83.62868387786648,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.0780748750003113,
+        "cpu_seconds": 0.08344887499999984,
+        "cpu_percent": 106.88313621977252,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07684737499948824,
+        "cpu_seconds": 0.04102029166666665,
+        "cpu_percent": 53.37891068750211,
+        "live_process_count": 2
+      }
+    ],
+    "limitation": "Counter sampling can miss CPU between the final available counter and process exit"
+  },
+  "native_exit_code": 0,
+  "probe_sha256": "7a71fc3710fc13316c092f822a904e9558b7f7ad81bc52754717f8d1f797bec5",
+  "backend_binding": {
+    "dll_sha256": "05fa6f700fb5ee5561dc3a46d98f0aed845d4fa8ab274bff1dc604b0b3f6edd1",
+    "requested_backend": "d3dmetal",
+    "library_load_log": "wine_d3dmetal-r1.stderr.log",
+    "backend_logs": []
+  },
+  "files": {
+    "csv": "wine_d3dmetal-r1.csv",
+    "csv_sha256": "8f3f57225388f315bc2579bff2788a275642e2a2c368fc926af82d1226a208fc",
+    "stdout": "wine_d3dmetal-r1.stdout.log",
+    "stderr": "wine_d3dmetal-r1.stderr.log"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "channel_maximum_errors_lsb": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "differing_pixels": 0,
+  "digests": {
+    "d3d11_probe_cpp": "d2e21a9dbcfa123ba5d32f9edb63c942caf845efc1e8c16a4285369eb3fdd29d",
+    "d3d11_probe_exe": "c31287c16171e753ac331ccc14d1c2078f47d3bb5f8b9ac332fab6ed318f973a",
+    "metal_host_binary": "9b0fefb3c181125c943f6d7b8c6f6fdf3ebade939f80cd41f58f3dc17c658a38",
+    "metal_host_swift": "cf6d0f50b9b68dcde7324f12423d3de242950aa35fe25b2cf0d2b0afdd74c734",
+    "reference_validator_py": "aeac320274187cafd7c94934e304e68ff8305b5b440576f93fd6b403950a250f"
+  },
+  "engine_digests": {
+    "d3dmetal_d3d11_dll": "05fa6f700fb5ee5561dc3a46d98f0aed845d4fa8ab274bff1dc604b0b3f6edd1",
+    "d3dmetal_dxgi_dll": "249711d3d786a9b0bb7c3558f36e472ab07ee21b8dbf118e34c975046832f9a2",
+    "d3dmetal_libd3dshared_dylib": "66005073540dc91001ea11685160a71e302bfd79c2ee7b9fe5be560ae17621e2",
+    "dxmt_d3d11_dll": "1cbe930e2370c4382ac4b435faf8cc563943324cfade33380cc6de0b8d94d801",
+    "dxmt_dxgi_dll": "3831a078756a054027413e0c9c901a28a0a57a8dd3f327d3e2fb41a8616d251c",
+    "dxmt_winemetal_dll": "39e5cfb3ac9b93976c9fc48e215c14b90f626e1b0bcf677b6eef1fb6e3fabf26",
+    "dxmt_winemetal_so": "76843f2ab3226a9c7dc107c9d4d9ace9593ec7210edf9e74d5a6cf146384c52a",
+    "dxvk_d3d11_dll": "7a0442591dfee7e3729d26a598d3b490f917fbe8ebf9da3bb75410e8d095d302",
+    "moltenvk_dylib": "952ef0be316e7a8694781ac8d68d4dccca403ef0710854c608414449e317de6e",
+    "wine": "78010eb35647a71f2e6995f295215b99e919dee2450f28990e8a13b32b21b607"
+  },
+  "first_failure": null,
+  "guest_d3d11_software_reference_still_required": true,
+  "is_warp_software_reference": false,
+  "is_windows_guest_run": false,
+  "maximum_channel_error_lsb": 0,
+  "metal_capture": "cpp-dxvk-32-frames/host-captures/frame-000000.rgba",
+  "metal_rgba_sha256": "db3a7df7f0018da65d4d1267997201bb1e1291f1fdb8b95fdc64d613bb643d39",
+  "passed": true,
+  "pixel_count": 921600,
+  "pixels_exceeding_one_lsb": 0,
+  "receiver_was_not_started": true,
+  "reference_adapter_description": "Apple M4",
+  "reference_adapter_software_flag": false,
+  "reference_gpu_ms": 12.772542,
+  "reference_kind": "real-D3D11-hardware-API-under-host-Wine-DXVK",
+  "reference_rgba_sha256": "db3a7df7f0018da65d4d1267997201bb1e1291f1fdb8b95fdc64d613bb643d39"
+}

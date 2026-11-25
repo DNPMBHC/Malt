@@ -1,0 +1,87 @@
+{
+  "captured_at_utc": "2026-11-24T10:49:20.0046980Z",
+  "schema_version": 1,
+  "graphics_driver": {
+    "components_present": {
+      "neptune_umd_arm64.dll": true,
+      "viogpu3d.sys": true,
+      "vulkan_virtio_arm64.dll": true,
+      "neptune_umd_ec.dll": true
+    },
+    "signer": "Microsoft Windows Hardware Compatibility Publisher",
+    "driver_version": "100.6.101.58000",
+    "pnp_device_id": "PCI\\VEN_1AF4&DEV_1050&SUBSYS_11001AF4&REV_01\\3&11583659&0&10",
+    "config_manager_error_code": 0,
+    "inf_name": "oem11.inf",
+    "whql_ready": true,
+    "adapter_present": true,
+    "is_signed": true,
+    "adapter_name": "Red Hat VirtIO GPU 3D controller",
+    "status": "OK",
+    "all_components_present": true
+  },
+  "security_invariants": {
+    "qga_service_running": true,
+    "prism_signatures_valid": true,
+    "tpm_ready": true,
+    "prism_files": [
+      {
+        "relative_path": "System32\\xtajit.dll",
+        "signature_status": "Valid",
+        "exists": true
+      },
+      {
+        "relative_path": "System32\\xtajit64.dll",
+        "signature_status": "Valid",
+        "exists": true
+      },
+      {
+        "relative_path": "System32\\wow64.dll",
+        "signature_status": "Valid",
+        "exists": true
+      },
+      {
+        "relative_path": "System32\\wow64win.dll",
+        "signature_status": "Valid",
+        "exists": true
+      }
+    ],
+    "prism_files_verified": true,
+    "secure_boot_enabled": true,
+    "bcd_safe": true,
+    "tpm_present": true,
+    "tpm_enabled": true,
+    "nointegritychecks_disabled": true,
+    "test_signing_disabled": true
+  },
+  "cache_cleanup": {
+    "freed_bytes": 3469998434,
+    "removed_entries": 3,
+    "windows_update_download_dir_exists": true,
+    "cleaned": true
+  },
+  "disk": {
+    "system_drive_total_bytes": 37925941248,
+    "system_drive_used_bytes": 29443059712,
+    "system_drive_free_bytes": 8482881536
+  },
+  "os": {
+    "version": "10.0.26100",
+    "caption": "Microsoft Windows 11 Enterprise Evaluation",
+    "architecture": "ARM 64-bit Processor",
+    "build_number": "26100",
+    "total_physical_memory_bytes": 6432751616,
+    "logical_processors": 6
+  },
+  "owner": "@DNPMBHC",
+  "all_golden_checks_passed": true,
+  "optimizer": {
+    "rollback_snapshot_present": true,
+    "state_dir": "C:\\graphics-lab\\guest-optimizer"
+  },
+  "commercial_residue": {
+    "zero_commercial_residue": true,
+    "found_services": [],
+    "found_paths": []
+  }
+}

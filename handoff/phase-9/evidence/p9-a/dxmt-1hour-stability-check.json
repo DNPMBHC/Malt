@@ -1,0 +1,165 @@
+{
+  "captured_at_utc": "2026-11-24T14:23:45.006411+00:00",
+  "guest_t0": {
+    "captured_at_utc": "2026-11-24T14:23:26.916206+00:00",
+    "elapsed_seconds": 0.0,
+    "shipping_alive": true,
+    "shipping_pid": 4888,
+    "shipping_ws_mb": 394.69,
+    "shipping_threads": 137,
+    "shipping_cpu_s": 3753.88,
+    "ace_drivers": [
+      {
+        "Name": "ACE-CORE10405",
+        "State": "Running",
+        "ExitCode": 0
+      },
+      {
+        "Name": "ACE-CORE20405",
+        "State": "Running",
+        "ExitCode": 0
+      },
+      {
+        "Name": "Filetrace",
+        "State": "Stopped",
+        "ExitCode": 1077
+      },
+      {
+        "Name": "spaceparser",
+        "State": "Stopped",
+        "ExitCode": 1077
+      },
+      {
+        "Name": "spaceport",
+        "State": "Running",
+        "ExitCode": 0
+      }
+    ],
+    "last_frame_timestamp": "2026.11.24-14.23.25:418",
+    "last_frame_number": 422
+  },
+  "guest_t4": {
+    "captured_at_utc": "2026-11-24T14:23:38.461612+00:00",
+    "elapsed_seconds": 4.0,
+    "shipping_alive": true,
+    "shipping_pid": 4888,
+    "shipping_ws_mb": 402.34,
+    "shipping_threads": 137,
+    "shipping_cpu_s": 3755.92,
+    "ace_drivers": [
+      {
+        "Name": "ACE-CORE10405",
+        "State": "Running",
+        "ExitCode": 0
+      },
+      {
+        "Name": "ACE-CORE20405",
+        "State": "Running",
+        "ExitCode": 0
+      },
+      {
+        "Name": "Filetrace",
+        "State": "Stopped",
+        "ExitCode": 1077
+      },
+      {
+        "Name": "spaceparser",
+        "State": "Stopped",
+        "ExitCode": 1077
+      },
+      {
+        "Name": "spaceport",
+        "State": "Running",
+        "ExitCode": 0
+      }
+    ],
+    "last_frame_timestamp": "2026.11.24-14.23.36:739",
+    "last_frame_number": 735
+  },
+  "host_t0": {
+    "captured_at_utc": "2026-11-24T14:23:26.939095+00:00",
+    "elapsed_seconds": 0.0,
+    "qemu_render_server_cpu": 5.2,
+    "qemu_worker_cpu": 59.1,
+    "total_hypervisor_rss_mib": 1230.63
+  },
+  "host_t4": {
+    "captured_at_utc": "2026-11-24T14:23:38.481289+00:00",
+    "elapsed_seconds": 4.0,
+    "qemu_render_server_cpu": 6.0,
+    "qemu_worker_cpu": 144.6,
+    "total_hypervisor_rss_mib": 1194.73
+  },
+  "sys_events_recent": [
+    {
+      "RecordId": 2420,
+      "Id": 19,
+      "LevelDisplayName": "Information",
+      "ProviderName": "Microsoft-Windows-WindowsUpdateClient",
+      "Msg": "Installation Successful: Windows successfully installed the following update: Update for Microsoft Defender Antivirus antimalware platform - KB4052623 (Version "
+    },
+    {
+      "RecordId": 2419,
+      "Id": 7040,
+      "LevelDisplayName": "Information",
+      "ProviderName": "Service Control Manager",
+      "Msg": "The start type of the Microsoft WdAiNisDrv Driver service was changed from demand start to disabled."
+    },
+    {
+      "RecordId": 2418,
+      "Id": 7045,
+      "LevelDisplayName": "Information",
+      "ProviderName": "Service Control Manager",
+      "Msg": "A service was installed in the system.\n\nService Name:  Microsoft WdAiNisDrv Driver\nService File Name:  system32\\drivers\\wd\\WdAiNisDrv.sys\nService Type:  ker"
+    },
+    {
+      "RecordId": 2417,
+      "Id": 6,
+      "LevelDisplayName": "Information",
+      "ProviderName": "Microsoft-Windows-FilterManager",
+      "Msg": "File System Filter 'WdFilter' (10.0, ?2087?-?12?-?02T18:59:01.000000000Z) has successfully loaded and registered with Filter Manager."
+    },
+    {
+      "RecordId": 2416,
+      "Id": 7045,
+      "LevelDisplayName": "Information",
+      "ProviderName": "Service Control Manager",
+      "Msg": "A service was installed in the system.\n\nService Name:  Microsoft Defender Core Service\nService File Name:  \"C:\\ProgramData\\Microsoft\\Windows Defender\\Platfor"
+    },
+    {
+      "RecordId": 2415,
+      "Id": 1,
+      "LevelDisplayName": "Information",
+      "ProviderName": "Microsoft-Windows-FilterManager",
+      "Msg": "File System Filter 'WdFilter' (Version 10.0, ?2075?-?05?-?27T12:05:35.000000000Z) unloaded successfully."
+    },
+    {
+      "RecordId": 2414,
+      "Id": 43,
+      "LevelDisplayName": "Information",
+      "ProviderName": "Microsoft-Windows-WindowsUpdateClient",
+      "Msg": "Installation Started: Windows has started installing the following update: Update for Microsoft Defender Antivirus antimalware platform - KB4052623 (Version 4.1"
+    },
+    {
+      "RecordId": 2413,
+      "Id": 44,
+      "LevelDisplayName": "Information",
+      "ProviderName": "Microsoft-Windows-WindowsUpdateClient",
+      "Msg": "Windows Update started downloading an update."
+    },
+    {
+      "RecordId": 2412,
+      "Id": 44,
+      "LevelDisplayName": "Information",
+      "ProviderName": "Microsoft-Windows-WindowsUpdateClient",
+      "Msg": "Windows Update started downloading an update."
+    },
+    {
+      "RecordId": 2403,
+      "Id": 7040,
+      "LevelDisplayName": "Information",
+      "ProviderName": "Service Control Manager",
+      "Msg": "The start type of the Background Intelligent Transfer Service service was changed from auto start to demand start."
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "environment_telemetry": {
+    "note": "Missing readings remain null and are not inferred.",
+    "power_w": {
+      "coverage": 0.0,
+      "max": null,
+      "mean": null,
+      "missing": 90,
+      "p95": null,
+      "p99": null,
+      "sample_count": 0
+    },
+    "temperature_c": {
+      "coverage": 0.0,
+      "max": null,
+      "mean": null,
+      "missing": 90,
+      "p95": null,
+      "p99": null,
+      "sample_count": 0
+    }
+  },
+  "frame_count": 90,
+  "memory": {
+    "device_memory_bytes": {
+      "coverage": 0.0,
+      "max": null,
+      "mean": null,
+      "missing": 90,
+      "p95": null,
+      "p99": null,
+      "sample_count": 0
+    },
+    "host_resident_bytes": {
+      "coverage": 1.0,
+      "max": 88080384.0,
+      "mean": 87861566.57777777,
+      "missing": 0,
+      "p95": 88064000.0,
+      "p99": 88080384.0,
+      "sample_count": 90
+    },
+    "host_texture_bytes": {
+      "coverage": 1.0,
+      "max": 3686400.0,
+      "mean": 3686400.0,
+      "missing": 0,
+      "p95": 3686400.0,
+      "p99": 3686400.0,
+      "sample_count": 90
+    },
+    "process_resident_bytes": {
+      "max": 36421632.0,
+      "mean": 33978595.55555555,
+      "p95": 36406886.4,
+      "p99": 36421632.0,
+      "sample_count": 90
+    }
+  },
+  "run": {
+    "initialization_ms": 16.085042036138475,
+    "warmup_ms": 552.6332079898566
+  },
+  "schema_version": 1,
+  "timing": {
+    "cpu_frame_interval_ms": {
+      "max": 67.18604202615097,
+      "mean": 24.378039786497947,
+      "p95": 65.93175039160997,
+      "p99": 66.46059108665213,
+      "sample_count": 89
+    },
+    "cpu_submit_ms": {
+      "max": 67.14845902752131,
+      "mean": 24.45782356792026,
+      "p95": 65.88338997680694,
+      "p99": 66.42103172605857,
+      "sample_count": 90
+    },
+    "derived_fps_from_mean_interval": 41.02052538916034,
+    "gpu_ms": {
+      "coverage": 0.0,
+      "max": null,
+      "mean": null,
+      "missing": 90,
+      "p95": null,
+      "p99": null,
+      "sample_count": 0
+    },
+    "host_gpu_ms": {
+      "coverage": 1.0,
+      "max": 0.253,
+      "mean": 0.15452222222222223,
+      "missing": 0,
+      "p95": 0.23554999999999998,
+      "p99": 0.24677,
+      "sample_count": 90
+    },
+    "host_receive_to_present_ms": {
+      "coverage": 1.0,
+      "max": 66.424,
+      "mean": 23.35288888888889,
+      "missing": 0,
+      "p95": 64.6003,
+      "p99": 65.76273,
+      "sample_count": 90
+    },
+    "latency_note": "Synthetic frame-request-to-Present-return proxy; it is not physical input-to-photon latency.",
+    "process_cpu_ms": {
+      "max": 1.6330000000000233,
+      "mean": 0.8201444444444432,
+      "p95": 1.296349999999989,
+      "p99": 1.4113899999999993,
+      "sample_count": 90
+    },
+    "synthetic_input_to_present_return_ms": {
+      "max": 67.14845902752131,
+      "mean": 24.45782356792026,
+      "p95": 65.88338997680694,
+      "p99": 66.42103172605857,
+      "sample_count": 90
+    }
+  },
+  "transfer": {
+    "command_bytes": {
+      "coverage": 1.0,
+      "per_frame_max": 256,
+      "per_frame_mean": 256.0,
+      "per_frame_min": 256,
+      "sample_count": 90,
+      "total": 23040
+    },
+    "network_bytes_in": {
+      "coverage": 1.0,
+      "per_frame_max": 56,
+      "per_frame_mean": 56.0,
+      "per_frame_min": 56,
+      "sample_count": 90,
+      "total": 5040
+    },
+    "network_bytes_out": {
+      "coverage": 1.0,
+      "per_frame_max": 987424,
+      "per_frame_mean": 987424.0,
+      "per_frame_min": 987424,
+      "sample_count": 90,
+      "total": 88868160
+    },
+    "network_bytes_total": {
+      "coverage": 1.0,
+      "per_frame_max": 987480,
+      "per_frame_mean": 987480.0,
+      "per_frame_min": 987480,
+      "sample_count": 90,
+      "total": 88873200
+    },
+    "resource_bytes": {
+      "coverage": 1.0,
+      "per_frame_max": 65536,
+      "per_frame_mean": 65536.0,
+      "per_frame_min": 65536,
+      "sample_count": 90,
+      "total": 5898240
+    },
+    "transferred_bytes": {
+      "coverage": 1.0,
+      "per_frame_max": 987480,
+      "per_frame_mean": 987480.0,
+      "per_frame_min": 987480,
+      "sample_count": 90,
+      "total": 88873200
+    }
+  },
+  "transport_mode": "offload_tcp"
+}
