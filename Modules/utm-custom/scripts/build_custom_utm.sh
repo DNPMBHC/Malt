@@ -117,6 +117,7 @@ UTM_PATCHES=(
     "$PATCHES_DIR/05-render-thread-qos-and-dxmt-cache.patch"
     "$PATCHES_DIR/06-high-polling-mouse-coalescing.patch"
     "$PATCHES_DIR/07-game-shell-key-guard-and-mapping.patch"
+    "$PATCHES_DIR/08-seamless-app-shell-window.patch"
 )
 SPICE_PATCHES=(
     "$PATCHES_DIR/02-cocoaspice-cursor-overlay.patch"
@@ -128,7 +129,7 @@ python3 -B "$REPO_ROOT/graphics-lab/utm_custom_patch_verify.py" \
     --utm-repo "$UTM_DIR" \
     --cocoaspice-repo "$SPICE_DIR" >/dev/null
 
-echo "[utm-custom] Compliance + standalone/stacked git apply --check passed (7 UTM + 2 CocoaSpice patches)."
+echo "[utm-custom] Compliance + standalone/stacked git apply --check passed (8 UTM + 2 CocoaSpice patches)."
 
 if [ "$CHECK_ONLY" -eq 1 ]; then
     echo "[utm-custom] Check-only completed successfully."

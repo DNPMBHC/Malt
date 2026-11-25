@@ -1,0 +1,436 @@
+diff --git a/Platform/macOS/AppDelegate.swift b/Platform/macOS/AppDelegate.swift
+index 78f1d08..9639e53 100644
+--- a/Platform/macOS/AppDelegate.swift
++++ b/Platform/macOS/AppDelegate.swift
+@@ -317,6 +317,7 @@ enum UTMQuitPolicy: Int {
+     
+     func applicationWillFinishLaunching(_ notification: Notification) {
+         NSApp.scriptingDelegate = self
++        registerAppShellLaunchObserverIfNeeded()
+     }
+     
+     func applicationDidFinishLaunching(_ notification: Notification) {
+@@ -336,3 +337,107 @@ enum UTMQuitPolicy: Int {
+         }
+     }
+ }
++
++// MARK: - Seamless App Shell Launch (--app-shell-vm)
++
++@MainActor
++private final class UTMAppShellLaunchCoordinator {
++    static let shared = UTMAppShellLaunchCoordinator()
++
++    private var launchObserver: NSObjectProtocol?
++    private var stopObserver: AnyCancellable?
++    private var hasStarted = false
++
++    static var requestedAppShellTarget: String? {
++        if let idx = CommandLine.arguments.firstIndex(of: "--app-shell-vm"),
++           idx + 1 < CommandLine.arguments.count {
++            return CommandLine.arguments[idx + 1]
++        }
++        if let env = ProcessInfo.processInfo.environment["UTM_APP_SHELL_VM"], !env.isEmpty {
++            return env
++        }
++        return nil
++    }
++
++    func register(delegate: AppDelegate) {
++        guard Self.requestedAppShellTarget != nil else {
++            return
++        }
++        if let existing = launchObserver {
++            NotificationCenter.default.removeObserver(existing)
++        }
++        launchObserver = NotificationCenter.default.addObserver(
++            forName: NSApplication.didFinishLaunchingNotification,
++            object: nil,
++            queue: .main
++        ) { [weak self, weak delegate] _ in
++            Task { @MainActor [weak self, weak delegate] in
++                guard let self = self,
++                      let delegate = delegate,
++                      let target = Self.requestedAppShellTarget,
++                      let data = delegate.data else {
++                    return
++                }
++                self.launchAppShellVM(target: target, data: data)
++            }
++        }
++    }
++
++    private func hideNonDisplayWindows(closeWindows: Bool) {
++        for window in NSApp.windows where !(window is VMDisplayWindow) {
++            window.orderOut(nil)
++            if closeWindows {
++                window.close()
++            }
++        }
++    }
++
++    private func launchAppShellVM(target: String, data: UTMData) {
++        hideNonDisplayWindows(closeWindows: false)
++        Task { @MainActor [weak self] in
++            guard let self = self else { return }
++            var vm: VMData?
++            if let uuid = UUID(uuidString: target) {
++                vm = data.virtualMachines.first(where: { $0.id == uuid })
++                if vm == nil {
++                    await data.listRefresh()
++                    vm = data.virtualMachines.first(where: { $0.id == uuid })
++                }
++            }
++            if vm == nil {
++                let candidateURL = URL(fileURLWithPath: target)
++                if FileManager.default.fileExists(atPath: candidateURL.path) {
++                    vm = try? VMData(url: candidateURL)
++                }
++            }
++            guard let resolvedVM = vm else {
++                NSLog("[UTM-Custom] App shell target not found: %@", target)
++                return
++            }
++            NSLog("[UTM-Custom] Launching app shell VM: %@", resolvedVM.id.uuidString)
++            self.hasStarted = false
++            data.run(vm: resolvedVM)
++            self.hideNonDisplayWindows(closeWindows: false)
++            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
++                self?.hideNonDisplayWindows(closeWindows: true)
++            }
++            self.stopObserver = resolvedVM.$state
++                .sink { [weak self] state in
++                    guard let self = self else { return }
++                    if state == .started {
++                        self.hasStarted = true
++                    } else if self.hasStarted && state == .stopped {
++                        DispatchQueue.main.async {
++                            NSApp.terminate(nil)
++                        }
++                    }
++                }
++        }
++    }
++}
++
++private extension AppDelegate {
++    func registerAppShellLaunchObserverIfNeeded() {
++        UTMAppShellLaunchCoordinator.shared.register(delegate: self)
++    }
++}
+diff --git a/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift b/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
+index 1e4c926..1b82fff 100644
+--- a/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
++++ b/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
+@@ -113,6 +113,7 @@ class VMDisplayQemuMetalWindowController: VMDisplayQemuWindowController {
+         vmDisplay?.addRenderer(renderer) // can be nil if primary
+         metalView.delegate = renderer
+         metalView.inputDelegate = self
++        configureAppShellWindowIfNeeded()
+ 
+         screenChangedToken = NotificationCenter.default.addObserver(forName: NSWindow.didChangeScreenNotification, object: nil, queue: .main) { [weak self] _ in
+             // update minSize when we change screens
+@@ -147,6 +148,7 @@ class VMDisplayQemuMetalWindowController: VMDisplayQemuWindowController {
+     }
+ 
+     override func windowWillClose(_ notification: Notification) {
++        stopAppShellStateMonitoring()
+         if #available(macOS 14, *), let link = displayLink as? CAMetalDisplayLink {
+             link.invalidate()
+         }
+@@ -212,6 +214,7 @@ class VMDisplayQemuMetalWindowController: VMDisplayQemuWindowController {
+             displaySize = .zero
+         }
+         stopAllCapture()
++        handleAppShellSuspendedIfNeeded()
+         super.enterSuspended(isBusy: busy)
+     }
+ 
+@@ -790,6 +793,272 @@ extension VMDisplayQemuMetalWindowController {
+     }
+ }
+ 
++// MARK: - Seamless Dual-Form App Shell (--app-shell-vm)
++
++private enum UTMAppShellPhase: String {
++    case compact
++    case fullscreen
++    case exiting
++}
++
++@MainActor
++private final class UTMAppShellRuntimeState {
++    static let shared = UTMAppShellRuntimeState()
++
++    var currentPhase: UTMAppShellPhase = .compact
++    var statePollTimer: Timer?
++    var distributedObserver: NSObjectProtocol?
++    var keyGuardMonitor: Any?
++    var lastObservedRawState: String = ""
++
++    static var isAppShellMode: Bool {
++        CommandLine.arguments.contains("--app-shell-vm")
++            || ProcessInfo.processInfo.environment["UTM_APP_SHELL_VM"] != nil
++    }
++
++    static var windowTitle: String {
++        if let idx = CommandLine.arguments.firstIndex(of: "--window-title"),
++           idx + 1 < CommandLine.arguments.count {
++            let value = CommandLine.arguments[idx + 1].trimmingCharacters(in: .whitespacesAndNewlines)
++            if !value.isEmpty {
++                return value
++            }
++        }
++        if let env = ProcessInfo.processInfo.environment["UTM_APP_SHELL_WINDOW_TITLE"],
++           !env.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
++            return env
++        }
++        return "Whisky App"
++    }
++
++    static var windowSize: CGSize {
++        let raw: String?
++        if let idx = CommandLine.arguments.firstIndex(of: "--window-size"),
++           idx + 1 < CommandLine.arguments.count {
++            raw = CommandLine.arguments[idx + 1]
++        } else {
++            raw = ProcessInfo.processInfo.environment["UTM_APP_SHELL_WINDOW_SIZE"]
++        }
++        if let raw = raw {
++            let normalized = raw.lowercased().replacingOccurrences(of: " ", with: "")
++            let parts = normalized.split(separator: "x")
++            if parts.count == 2,
++               let width = Double(parts[0]),
++               let height = Double(parts[1]),
++               width >= 320,
++               height >= 240 {
++                return CGSize(width: width, height: height)
++            }
++        }
++        return CGSize(width: 1024, height: 680)
++    }
++
++    static var stateFilePath: String? {
++        if let idx = CommandLine.arguments.firstIndex(of: "--app-shell-state-file"),
++           idx + 1 < CommandLine.arguments.count {
++            return CommandLine.arguments[idx + 1]
++        }
++        if let env = ProcessInfo.processInfo.environment["UTM_APP_SHELL_STATE_FILE"], !env.isEmpty {
++            return env
++        }
++        return nil
++    }
++
++    static func parseSignal(_ rawText: String) -> UTMAppShellPhase? {
++        let trimmed = rawText.trimmingCharacters(in: .whitespacesAndNewlines)
++        guard !trimmed.isEmpty else {
++            return nil
++        }
++        var token = trimmed.lowercased()
++        if token.hasPrefix("{"),
++           let data = trimmed.data(using: .utf8),
++           let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
++            if let state = (json["state"] as? String) ?? (json["mode"] as? String) ?? (json["phase"] as? String) {
++                token = state.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
++            }
++        }
++        switch token {
++        case "fullscreen", "game_foreground", "game-foreground", "game_active", "gameplay":
++            return .fullscreen
++        case "compact", "launcher", "installer", "windowed":
++            return .compact
++        case "exit", "exited", "quit", "stopped":
++            return .exiting
++        default:
++            return nil
++        }
++    }
++}
++
++private extension VMDisplayQemuMetalWindowController {
++    func configureAppShellWindowIfNeeded() {
++        guard UTMAppShellRuntimeState.isAppShellMode, let window = window else {
++            return
++        }
++        window.toolbar?.isVisible = false
++        window.title = UTMAppShellRuntimeState.windowTitle
++        window.titleVisibility = .visible
++        window.setContentSize(UTMAppShellRuntimeState.windowSize)
++        window.center()
++        window.makeKeyAndOrderFront(nil)
++        NSApp.activate(ignoringOtherApps: true)
++        startAppShellStateMonitoring()
++    }
++
++    func startAppShellStateMonitoring() {
++        guard UTMAppShellRuntimeState.isAppShellMode else {
++            return
++        }
++        let runtime = UTMAppShellRuntimeState.shared
++        runtime.currentPhase = .compact
++        runtime.lastObservedRawState = ""
++
++        if let observer = runtime.distributedObserver {
++            DistributedNotificationCenter.default().removeObserver(observer)
++        }
++        runtime.distributedObserver = DistributedNotificationCenter.default().addObserver(
++            forName: Notification.Name("com.utmapp.utm.appShellStateChanged"),
++            object: nil,
++            queue: .main
++        ) { [weak self] notification in
++            let raw = (notification.userInfo?["state"] as? String)
++                ?? (notification.object as? String)
++                ?? ""
++            Task { @MainActor [weak self] in
++                self?.applyAppShellSignal(raw)
++            }
++        }
++
++        runtime.statePollTimer?.invalidate()
++        if UTMAppShellRuntimeState.stateFilePath != nil {
++            runtime.statePollTimer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true) { [weak self] _ in
++                Task { @MainActor [weak self] in
++                    self?.pollAppShellStateFile()
++                }
++            }
++        }
++    }
++
++    func stopAppShellStateMonitoring() {
++        let runtime = UTMAppShellRuntimeState.shared
++        runtime.statePollTimer?.invalidate()
++        runtime.statePollTimer = nil
++        if let observer = runtime.distributedObserver {
++            DistributedNotificationCenter.default().removeObserver(observer)
++            runtime.distributedObserver = nil
++        }
++        if let monitor = runtime.keyGuardMonitor {
++            NSEvent.removeMonitor(monitor)
++            runtime.keyGuardMonitor = nil
++        }
++    }
++
++    func pollAppShellStateFile() {
++        guard let path = UTMAppShellRuntimeState.stateFilePath,
++              let content = try? String(contentsOfFile: path, encoding: .utf8) else {
++            return
++        }
++        let runtime = UTMAppShellRuntimeState.shared
++        guard content != runtime.lastObservedRawState else {
++            return
++        }
++        runtime.lastObservedRawState = content
++        applyAppShellSignal(content)
++    }
++
++    func applyAppShellSignal(_ rawSignal: String) {
++        guard let phase = UTMAppShellRuntimeState.parseSignal(rawSignal) else {
++            return
++        }
++        let runtime = UTMAppShellRuntimeState.shared
++        guard phase != runtime.currentPhase else {
++            return
++        }
++        runtime.currentPhase = phase
++        switch phase {
++        case .fullscreen:
++            transitionAppShellToGameFullScreen()
++        case .compact:
++            transitionAppShellToCompactWindow()
++        case .exiting:
++            stopAppShellStateMonitoring()
++            NSApp.terminate(nil)
++        }
++    }
++
++    func transitionAppShellToGameFullScreen() {
++        guard let window = window else {
++            return
++        }
++        window.toolbar?.isVisible = false
++        window.titleVisibility = .hidden
++        window.titlebarAppearsTransparent = true
++        window.styleMask.insert(.fullSizeContentView)
++        window.backgroundColor = .black
++        metalView.clearColor = MTLClearColor(red: 0, green: 0, blue: 0, alpha: 1)
++        installAppShellKeyGuardIfNeeded()
++        NSApp.activate(ignoringOtherApps: true)
++        window.makeKeyAndOrderFront(nil)
++        if !window.styleMask.contains(.fullScreen) {
++            window.toggleFullScreen(nil)
++        }
++        NSApp.presentationOptions = [.fullScreen, .autoHideMenuBar, .autoHideDock]
++        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) { [weak self] in
++            self?.captureMouse()
++        }
++    }
++
++    func transitionAppShellToCompactWindow() {
++        guard let window = window else {
++            return
++        }
++        if let monitor = UTMAppShellRuntimeState.shared.keyGuardMonitor {
++            NSEvent.removeMonitor(monitor)
++            UTMAppShellRuntimeState.shared.keyGuardMonitor = nil
++        }
++        releaseMouse()
++        NSApp.presentationOptions = []
++        if window.styleMask.contains(.fullScreen) {
++            window.toggleFullScreen(nil)
++        }
++        window.title = UTMAppShellRuntimeState.windowTitle
++        window.titleVisibility = .visible
++        window.setContentSize(UTMAppShellRuntimeState.windowSize)
++        window.center()
++    }
++
++    func installAppShellKeyGuardIfNeeded() {
++        let runtime = UTMAppShellRuntimeState.shared
++        guard runtime.keyGuardMonitor == nil else {
++            return
++        }
++        runtime.keyGuardMonitor = NSEvent.addLocalMonitorForEvents(matching: [.keyDown, .keyUp]) { event in
++            let flags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
++            if flags.contains(.command) && !flags.contains(.option) && !flags.contains(.control) {
++                switch Int(event.keyCode) {
++                case kVK_ANSI_W, kVK_ANSI_Q, kVK_ANSI_H, kVK_ANSI_M:
++                    return nil
++                default:
++                    break
++                }
++            }
++            return event
++        }
++    }
++
++    func handleAppShellSuspendedIfNeeded() {
++        guard UTMAppShellRuntimeState.isAppShellMode else {
++            return
++        }
++        if vm.state == .stopped {
++            stopAppShellStateMonitoring()
++            DispatchQueue.main.async {
++                NSApp.terminate(nil)
++            }
++        }
++    }
++}
++
+ // MARK: - Display link
+ 
+ @available(macOS 14, *)
+diff --git a/Platform/macOS/Display/VMDisplayWindowController.swift b/Platform/macOS/Display/VMDisplayWindowController.swift
+index ea82729..b1b5b02 100644
+--- a/Platform/macOS/Display/VMDisplayWindowController.swift
++++ b/Platform/macOS/Display/VMDisplayWindowController.swift
+@@ -450,6 +450,10 @@ extension VMDisplayWindowController: NSWindowDelegate {
+     }
+     
+     func windowShouldClose(_ sender: NSWindow) -> Bool {
++        if CommandLine.arguments.contains("--app-shell-vm")
++            || ProcessInfo.processInfo.environment["UTM_APP_SHELL_VM"] != nil {
++            return true
++        }
+         guard !isSecondary else {
+             return true
+         }

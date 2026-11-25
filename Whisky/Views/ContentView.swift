@@ -44,17 +44,26 @@ struct ContentView: View {
 
     @ObservedObject private var fileQueue = FileOpenQueue.shared
     @StateObject private var launcher = RuntimeLaunchController()
-    @State private var selected: URL?
+    @StateObject private var libraryStore = UnifiedGameLibraryStore()
+    @StateObject private var orchestrator: UnifiedRuntimeOrchestrator
+    @StateObject private var preferences = UnifiedPreferencesModel()
+
+    @State private var selectedSection: UnifiedSidebarSection? = .library
+    @State private var selectedBottle: URL?
     @State private var showBottleCreation: Bool = false
     @State private var showComplianceDisclaimer: Bool = false
+    @State private var showOnboarding: Bool = false
     @State private var bottlesLoaded: Bool = false
-    @State private var showBottleSelection: Bool = false
     @State private var newlyCreatedBottleURL: URL?
     @State private var openedFileURL: URL?
-    @State private var triggerRefresh: Bool = false
     @State private var refreshAnimation: Angle = .degrees(0)
 
-    @State private var bottleFilter = ""
+    init(showSetup: Binding<Bool>) {
+        self._showSetup = showSetup
+        let store = UnifiedGameLibraryStore()
+        _libraryStore = StateObject(wrappedValue: store)
+        _orchestrator = StateObject(wrappedValue: UnifiedRuntimeOrchestrator(libraryStore: store))
+    }
 
     var body: some View {
         NavigationSplitView {
@@ -65,19 +74,16 @@ struct ContentView: View {
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button {
-                    showBottleCreation.toggle()
+                    selectedSection = .install
                 } label: {
                     Image(systemName: "plus")
-                        .help("button.createBottle")
+                        .help("一键安装游戏")
                 }
             }
             ToolbarItem(placement: .primaryAction) {
                 Button {
                     bottleVM.loadBottles()
-                    if let bottle = bottleVM.bottles.first(where: { $0.url == selected }) {
-                        bottle.updateInstalledPrograms()
-                    }
-                    triggerRefresh.toggle()
+                    libraryStore.load()
                     withAnimation(.default) {
                         refreshAnimation = .degrees(360)
                     } completion: {
@@ -93,7 +99,7 @@ struct ContentView: View {
         .sheet(isPresented: $showBottleCreation, onDismiss: presentNextFile) {
             BottleCreationView(newlyCreatedBottleURL: $newlyCreatedBottleURL)
         }
-        .sheet(isPresented: $showSetup, onDismiss: presentNextFile) {
+        .sheet(isPresented: $showSetup, onDismiss: continueStartupFlow) {
             SetupView(showSetup: $showSetup, firstTime: false)
         }
         .sheet(isPresented: $showComplianceDisclaimer, onDismiss: continueStartupFlow) {
@@ -104,54 +110,47 @@ struct ContentView: View {
                 hasAcceptedDisclaimer = true
             }
         }
+        .sheet(isPresented: $showOnboarding, onDismiss: presentNextFile) {
+            FirstRunOnboardingView(
+                orchestrator: orchestrator,
+                preferences: preferences,
+                isPresented: $showOnboarding,
+                onOpenWineSetup: {
+                    showOnboarding = false
+                    showSetup = true
+                }
+            )
+        }
         .sheet(item: $openedFileURL, onDismiss: presentNextFile) { url in
             FileOpenView(fileURL: url,
-                         currentBottle: selected,
+                         currentBottle: selectedBottle,
                          bottles: bottleVM.bottles,
                          launcher: launcher)
         }
         .runtimeLaunchFeedback($launcher.failure)
-        .onChange(of: selected) {
-            selectedBottleURL = selected
+        .onChange(of: selectedBottle) {
+            selectedBottleURL = selectedBottle
+        }
+        .onChange(of: newlyCreatedBottleURL) { _, url in
+            selectedBottle = url
         }
         .onChange(of: fileQueue.pending) { presentNextFile() }
         .onChange(of: bottlesLoaded) { presentNextFile() }
         .task {
             bottleVM.loadBottles()
+            libraryStore.load()
             bottlesLoaded = true
 
             if !bottleVM.bottles.isEmpty || bottleVM.countActive() != 0 {
                 if let bottle = bottleVM.bottles.first(where: { $0.url == selectedBottleURL && $0.isAvailable }) {
-                    selected = bottle.url
+                    selectedBottle = bottle.url
                 } else {
-                    selected = bottleVM.bottles[0].url
+                    selectedBottle = bottleVM.bottles[0].url
                 }
             }
 
             continueStartupFlow()
-            guard hasAcceptedDisclaimer, WhiskyWineInstaller.isWhiskyWineInstalled() else { return }
-            let task = Task.detached {
-                return await WhiskyWineInstaller.shouldUpdateWhiskyWine()
-            }
-            let updateInfo = await task.value
-            if updateInfo.0 {
-                let alert = NSAlert()
-                alert.messageText = String(localized: "update.whiskywine.title")
-                alert.informativeText = String(format: String(localized: "update.whiskywine.description"),
-                                               String(WhiskyWineInstaller.whiskyWineVersion()
-                                                      ?? SemanticVersion(0, 0, 0)),
-                                               String(updateInfo.1))
-                alert.alertStyle = .warning
-                alert.addButton(withTitle: String(localized: "update.whiskywine.update"))
-                alert.addButton(withTitle: String(localized: "button.removeAlert.cancel"))
-
-                let response = alert.runModal()
-
-                if response == .alertFirstButtonReturn {
-                    WhiskyWineInstaller.uninstall()
-                    showSetup = true
-                }
-            }
+            await checkWhiskyWineUpdateIfReady()
         }
     }
 
@@ -160,8 +159,8 @@ struct ContentView: View {
             showComplianceDisclaimer = true
             return
         }
-        if !WhiskyWineInstaller.isWhiskyWineInstalled() {
-            showSetup = true
+        if !preferences.hasCompletedOnboarding {
+            showOnboarding = true
             return
         }
         presentNextFile()
@@ -169,83 +168,74 @@ struct ContentView: View {
 
     private func presentNextFile() {
         guard bottlesLoaded, !showSetup, !showBottleCreation,
-              !showComplianceDisclaimer, openedFileURL == nil else { return }
+              !showComplianceDisclaimer, !showOnboarding, openedFileURL == nil else { return }
         openedFileURL = fileQueue.takeFirst()
     }
 
-    var sidebar: some View {
-        ScrollViewReader { proxy in
-            List(selection: $selected) {
-                Section {
-                    ForEach(filteredBottles) { bottle in
-                        Group {
-                            if bottle.inFlight {
-                                HStack {
-                                    Text(bottle.settings.name)
-                                    Spacer()
-                                    ProgressView().controlSize(.small)
-                                }
-                                .opacity(0.5)
-                            } else {
-                                BottleListEntry(bottle: bottle, selected: $selected, refresh: $triggerRefresh)
-                                    .selectionDisabled(!bottle.isAvailable)
-                            }
-                        }
-                        .id(bottle.url)
-                    }
-                }
+    private func checkWhiskyWineUpdateIfReady() async {
+        guard hasAcceptedDisclaimer, WhiskyWineInstaller.isWhiskyWineInstalled() else { return }
+        let task = Task.detached {
+            return await WhiskyWineInstaller.shouldUpdateWhiskyWine()
+        }
+        let updateInfo = await task.value
+        if updateInfo.0 {
+            let alert = NSAlert()
+            alert.messageText = String(localized: "update.whiskywine.title")
+            alert.informativeText = String(format: String(localized: "update.whiskywine.description"),
+                                           String(WhiskyWineInstaller.whiskyWineVersion()
+                                                  ?? SemanticVersion(0, 0, 0)),
+                                           String(updateInfo.1))
+            alert.alertStyle = .warning
+            alert.addButton(withTitle: String(localized: "update.whiskywine.update"))
+            alert.addButton(withTitle: String(localized: "button.removeAlert.cancel"))
+
+            let response = alert.runModal()
+            if response == .alertFirstButtonReturn {
+                WhiskyWineInstaller.uninstall()
+                showSetup = true
             }
-            .animation(.default, value: bottleVM.bottles)
-            .animation(.default, value: bottleFilter)
-            .listStyle(.sidebar)
-            .searchable(text: $bottleFilter, placement: .sidebar)
-            .onChange(of: newlyCreatedBottleURL) { _, url in
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                    selected = url
-                    withAnimation {
-                        proxy.scrollTo(url, anchor: .center)
-                    }
+        }
+    }
+
+    var sidebar: some View {
+        List(selection: $selectedSection) {
+            Section("Whisky") {
+                ForEach(UnifiedSidebarSection.allCases) { section in
+                    Label(section.title, systemImage: section.systemImage)
+                        .tag(section)
                 }
             }
         }
+        .listStyle(.sidebar)
+        .navigationSplitViewColumnWidth(min: 190, ideal: 210, max: 250)
     }
 
     @ViewBuilder
     var detail: some View {
-        if let bottle = selected {
-            if let bottle = bottleVM.bottles.first(where: { $0.url == bottle }) {
-                BottleView(bottle: bottle, launchController: launcher)
-                    .disabled(bottle.inFlight)
-                    .id(bottle.url)
-            }
-        } else {
-            if (bottleVM.bottles.isEmpty || bottleVM.countActive() == 0) && bottlesLoaded {
-                VStack {
-                    Text("main.createFirst")
-                    Button {
-                        showBottleCreation.toggle()
-                    } label: {
-                        HStack {
-                            Image(systemName: "plus")
-                            Text("button.createBottle")
-                        }
-                        .padding(6)
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .tint(.accentColor)
-                }
-            }
-        }
-    }
-
-    var filteredBottles: [Bottle] {
-        if bottleFilter.isEmpty {
-            bottleVM.bottles
-                .sorted()
-        } else {
-            bottleVM.bottles
-                .filter { $0.settings.name.localizedCaseInsensitiveContains(bottleFilter) }
-                .sorted()
+        switch selectedSection ?? .library {
+        case .library:
+            UnifiedGameLibraryView(
+                libraryStore: libraryStore,
+                orchestrator: orchestrator,
+                onOpenInstaller: { selectedSection = .install }
+            )
+        case .install:
+            UnifiedInstallerView(
+                libraryStore: libraryStore,
+                orchestrator: orchestrator,
+                onInstallCompleted: { selectedSection = .library }
+            )
+        case .performance:
+            UnifiedPerformanceView(preferences: preferences)
+        case .runtimes:
+            UnifiedRuntimeStorageView(
+                orchestrator: orchestrator,
+                preferences: preferences,
+                launcher: launcher,
+                onOpenSetup: { showSetup = true },
+                onTriggerOnboarding: { showOnboarding = true },
+                onCreateBottle: { showBottleCreation = true }
+            )
         }
     }
 }

@@ -16,6 +16,7 @@ MODULE_DIR = Path(__file__).resolve().parent.parent
 PROFILE_PATH = MODULE_DIR / "profiles" / "anticheat-minimal-win11-arm64.json"
 APPLY_SCRIPT_PATH = MODULE_DIR / "scripts" / "apply-optimizer.ps1"
 ROLLBACK_SCRIPT_PATH = MODULE_DIR / "scripts" / "rollback-optimizer.ps1"
+KIOSK_SCRIPT_PATH = MODULE_DIR / "scripts" / "kiosk-app-shell.ps1"
 RUNNER_PATH = MODULE_DIR / "scripts" / "benchmark-optimizer-clone.py"
 
 spec = importlib.util.spec_from_file_location("benchmark_optimizer_clone", RUNNER_PATH)
@@ -214,6 +215,42 @@ class GuestOptimizerProfileTests(unittest.TestCase):
         apply_text = APPLY_SCRIPT_PATH.read_text(encoding="utf-8")
         self.assertIn("effective_available_mb", apply_text)
         self.assertIn("current_pagefile_mb", apply_text)
+
+    def test_kiosk_app_shell_script_is_compliant_reversible_and_zero_injection(self):
+        self.assertTrue(KIOSK_SCRIPT_PATH.is_file())
+        kiosk_text = KIOSK_SCRIPT_PATH.read_text(encoding="utf-8")
+        lowered = kiosk_text.lower()
+
+        # Required compliant Win32 APIs and restoration lifecycle
+        for required in (
+            "Shell_TrayWnd",
+            "SHELLDLL_DefView",
+            "SPI_SETDESKWALLPAPER",
+            "GetForegroundWindow",
+            "GetWindowThreadProcessId",
+            "game_foreground_detected",
+            "enter_fullscreen_gamemode",
+            "PriorityClass = 'High'",
+            "Restore-KioskDesktop",
+            "Save-DesktopState",
+            "ProtectedProcessPrefixes",
+        ):
+            self.assertIn(required, kiosk_text)
+
+        # Forbidden DWM hook, injection, or security-weakening primitives
+        for forbidden in (
+            "setwindowshookex",
+            "createremotethread",
+            "writeprocessmemory",
+            "virtualallocex",
+            "ntinject",
+            "dwm.exe",
+            "testsigning on",
+            "nointegritychecks on",
+            "kvm=off",
+            "hv_vendor_id",
+        ):
+            self.assertNotIn(forbidden, lowered)
 
 
 if __name__ == "__main__":

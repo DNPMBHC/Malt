@@ -95,11 +95,21 @@
   - **防误触快捷键屏蔽**：游戏壳全屏期（或 `UTM_GAME_SHELL_KEY_GUARD=1`）在 `handleCaptureKeys(for:)` 与 `VMMetalView.performKeyEquivalent(with:)` 双层拦截并吞掉 `Cmd+W`、`Cmd+Q`、`Cmd+H`、`Cmd+M`，杜绝游戏中误关窗/退应用/隐藏/最小化；
   - **键位映射与安全逃生**：支持 `UTM_BLOCK_WIN_KEY`（游戏壳全屏默认 `1`，可设 `0` 关闭）屏蔽左 `Command` 防误弹 Windows 开始菜单，保持 `Option → Alt` 精准对齐与 `F1–F12` 游戏直通，并严格保留 `Cmd+Option+G` 与 `Cmd+Tab` 最高优先级安全逃生热键。
 
+### 位置 8：双形态无桌面应用壳窗口与状态驱动无缝全屏（`08-seamless-app-shell-window.patch`）
+- **目标文件**：
+  - `UTM/Platform/macOS/AppDelegate.swift`
+  - `UTM/Platform/macOS/Display/VMDisplayWindowController.swift`
+  - `UTM/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift`
+- **改造内容**：
+  - **紧凑无桌面安装器/启动器窗口模式**：支持 `--app-shell-vm <UUID-or-path>`、`--window-title "<AppName>"`、`--window-size <WxH>`（默认 `1024x680`）与 `--app-shell-state-file <path>`（以及 `UTM_APP_SHELL_*` 环境变量）；启动后隐藏 UTM 管理窗与显示窗口工具栏，按指定标题与尺寸居中呈现原生独立窗口，**不强制立即全屏**；
+  - **游戏前景自动无缝切全屏**：通过轮询 `--app-shell-state-file`（支持纯文本或 JSON 状态）及监听分布式通知 `com.utmapp.utm.appShellStateChanged`，感知 Guest 内游戏主进程进入前景后自动切入无边框原生全屏、设置 `[.fullScreen, .autoHideMenuBar, .autoHideDock]` 触发 macOS Game Mode、自动捕获纯相对鼠标并启用 `Cmd+W/Q/H/M` 防误触拦截；
+  - **优雅退出**：收到退出信号或 VM 进入 `.stopped` 状态时自动关闭应用壳，全程零 UTM 管理窗曝光。
+
 ---
 
 ## 3. 自动化合规与白名单门禁
 
-所有 9 份补丁必须通过 `graphics-lab/utm_custom_patch_verify.py` 的：
+所有 10 份补丁必须通过 `graphics-lab/utm_custom_patch_verify.py` 的：
 1. **严格白名单文件范围检查**（仅允许上述 14 个宿主机/渲染层源码与 `Info.plist` 文件）；
 2. **5 类违规模式黑名单拦截**（CPUID/Hypervisor 伪装、SMBIOS/ACPI 伪装、TPM/Secure Boot 篡改、Windows 内核/驱动修改、反作弊/游戏篡改）；
 3. **独立与全量堆叠 `git apply --check` 校验**（0 冲突）。
