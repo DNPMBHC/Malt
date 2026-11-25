@@ -1,14 +1,245 @@
 diff --git a/Sources/CocoaSpice/CSCursor.m b/Sources/CocoaSpice/CSCursor.m
-index e1030ab..6bbb42a 100644
+index e1030ab..8f8bb97 100644
 --- a/Sources/CocoaSpice/CSCursor.m
 +++ b/Sources/CocoaSpice/CSCursor.m
-@@ -147,6 +147,9 @@ - (void)setDisplay:(CSDisplay *)display {
+@@ -29,6 +29,7 @@ @interface CSCursor ()
+ @property (nonatomic, readwrite) CGPoint cursorHotspot;
+ @property (nonatomic, readwrite) BOOL hasCursor;
+ @property (nonatomic, readwrite) BOOL cursorHidden;
++@property (nonatomic, readwrite) BOOL hasServerCursorMove;
+ @property (nonatomic) CGPoint mouseGuest;
+ 
+ @property (nonatomic, nullable, readwrite) id<MTLTexture> texture;
+@@ -39,6 +40,31 @@ @interface CSCursor ()
+ 
+ @implementation CSCursor
+ 
++static BOOL cs_cursor_debug_enabled(void)
++{
++    static BOOL enabled = NO;
++    static dispatch_once_t onceToken;
++    dispatch_once(&onceToken, ^{
++        const char *flag = getenv("UTM_CURSOR_DEBUG");
++        enabled = (flag != NULL && flag[0] != '\0' && flag[0] != '0');
++    });
++    return enabled;
++}
++
++static BOOL cs_keep_cursor_visible_on_inhibit(void)
++{
++    const char *flag = getenv("UTM_KEEP_CURSOR_VISIBLE_ON_INHIBIT");
++    return (flag != NULL && flag[0] != '\0' && flag[0] != '0');
++}
++
++static BOOL cs_cursor_point_is_valid(CGPoint point, CGSize displaySize)
++{
++    if (displaySize.width <= 0 || displaySize.height <= 0) {
++        return point.x >= 0 && point.y >= 0;
++    }
++    return point.x >= 0 && point.y >= 0 && point.x <= displaySize.width && point.y <= displaySize.height;
++}
++
+ #pragma mark - Cursor events
+ 
+ static void cs_cursor_invalidate(CSCursor *self)
+@@ -63,13 +89,36 @@ static void cs_cursor_set(SpiceCursorChannel *channel,
+     
+     CGPoint hotspot = CGPointMake(cursor_shape->hot_spot_x, cursor_shape->hot_spot_y);
+     CGSize newSize = CGSizeMake(cursor_shape->width, cursor_shape->height);
+-    if (!CGSizeEqualToSize(newSize, self.cursorSize) || !CGPointEqualToPoint(hotspot, self.cursorHotspot)) {
++    if (!self.texture || !self.vertices ||
++        !CGSizeEqualToSize(newSize, self.cursorSize) ||
++        !CGPointEqualToPoint(hotspot, self.cursorHotspot)) {
+         [self rebuildCursorWithSize:newSize center:hotspot];
+     }
++    if (cs_cursor_debug_enabled()) {
++        const uint32_t *pixels = (const uint32_t *)cursor_shape->data;
++        NSUInteger total = (NSUInteger)cursor_shape->width * (NSUInteger)cursor_shape->height;
++        NSUInteger opaqueCount = 0;
++        for (NSUInteger i = 0; i < total; i++) {
++            if ((pixels[i] & 0xFF000000u) != 0) {
++                opaqueCount++;
++            }
++        }
++        NSLog(@"[UTM-Custom Cursor] set %dx%d hotspot=(%d,%d) nonZeroAlpha=%lu/%lu hasDevice=%d hasTexture=%d pos=(%.1f,%.1f)",
++              cursor_shape->width, cursor_shape->height,
++              cursor_shape->hot_spot_x, cursor_shape->hot_spot_y,
++              (unsigned long)opaqueCount, (unsigned long)total,
++              self.device != nil, self.texture != nil,
++              self.mouseGuest.x, self.mouseGuest.y);
++    }
+     [self drawCursor:cursor_shape->data];
+     // this has to be after drawCursor: which runs in the same serial queue
+     g_boxed_free(SPICE_TYPE_CURSOR_SHAPE, cursor_shape);
+     self.cursorHidden = NO;
++    CGSize displaySize = self.display.displaySize;
++    if (!cs_cursor_point_is_valid(self.mouseGuest, displaySize) &&
++        displaySize.width > 0 && displaySize.height > 0) {
++        self.mouseGuest = CGPointMake(displaySize.width / 2.0, displaySize.height / 2.0);
++    }
+     cs_cursor_invalidate(self);
+ }
+ 
+@@ -77,12 +126,16 @@ static void cs_cursor_move(SpiceCursorChannel *channel, gint x, gint y, gpointer
+ {
+     CSCursor *self = (__bridge CSCursor *)data;
+     
++    self.hasServerCursorMove = YES;
+     self.mouseGuest = CGPointMake(x, y);
+ 
+     /* apparently we have to restore cursor when "cursor_move" */
+     if (self.hasCursor) {
+         self.cursorHidden = NO;
+     }
++    if (cs_cursor_debug_enabled()) {
++        NSLog(@"[UTM-Custom Cursor] move (%d,%d) visible=%d", x, y, self.isVisible);
++    }
+     
+     cs_cursor_invalidate(self);
+ }
+@@ -92,6 +145,9 @@ static void cs_cursor_hide(SpiceCursorChannel *channel, gpointer data)
+     CSCursor *self = (__bridge CSCursor *)data;
+     
+     self.cursorHidden = YES;
++    if (cs_cursor_debug_enabled()) {
++        NSLog(@"[UTM-Custom Cursor] hide");
++    }
+     cs_cursor_invalidate(self);
+ }
+ 
+@@ -100,6 +156,10 @@ static void cs_cursor_reset(SpiceCursorChannel *channel, gpointer data)
+     CSCursor *self = (__bridge CSCursor *)data;
+     
+     SPICE_DEBUG("[CocoaSpice] %s",  __FUNCTION__);
++    self.hasServerCursorMove = NO;
++    if (cs_cursor_debug_enabled()) {
++        NSLog(@"[UTM-Custom Cursor] reset");
++    }
+     [self destroyCursor];
+     cs_cursor_invalidate(self);
+ }
+@@ -115,7 +175,19 @@ static void cs_update_mouse_mode(SpiceChannel *channel, gpointer data)
+     SPICE_DEBUG("[CocoaSpice] mouse mode %u", mouse_mode);
+     
+     if (mouse_mode == SPICE_MOUSE_MODE_SERVER) {
+-        self.mouseGuest = CGPointMake(-1, -1);
++        CGSize displaySize = self.display.displaySize;
++        if (!cs_cursor_point_is_valid(self.mouseGuest, displaySize)) {
++            if (displaySize.width > 0 && displaySize.height > 0) {
++                self.mouseGuest = CGPointMake(displaySize.width / 2.0, displaySize.height / 2.0);
++            } else {
++                self.mouseGuest = CGPointMake(-1, -1);
++            }
++        }
++        cs_cursor_invalidate(self);
++    }
++    if (cs_cursor_debug_enabled()) {
++        NSLog(@"[UTM-Custom Cursor] mouse_mode=%u pos=(%.1f,%.1f) hasCursor=%d visible=%d",
++              mouse_mode, self.mouseGuest.x, self.mouseGuest.y, self.hasCursor, self.isVisible);
+     }
+ }
+ 
+@@ -139,7 +211,18 @@ - (void)setSpiceMain:(SpiceMainChannel *)spiceMain {
+ 
+ - (void)setDisplay:(CSDisplay *)display {
+     _display = display;
+-    cs_cursor_set(self.channel, NULL, (__bridge void *)self);
++    if (!self.channel || !display) {
++        return;
++    }
++    if (CSMain.sharedInstance.isCurrentContextMain) {
++        cs_cursor_set(self.channel, NULL, (__bridge void *)self);
++    } else {
++        [CSMain.sharedInstance asyncWith:^{
++            if (self.display && self.channel) {
++                cs_cursor_set(self.channel, NULL, (__bridge void *)self);
++            }
++        }];
++    }
+ }
+ 
+ - (id<MTLDevice>)device {
+@@ -147,7 +230,13 @@ - (void)setDisplay:(CSDisplay *)display {
  }
  
  - (BOOL)isVisible {
-+    if (getenv("UTM_KEEP_CURSOR_VISIBLE_ON_INHIBIT") != NULL && self.hasCursor) {
-+        return YES;
+-    return !self.isInhibited && self.hasCursor && !self.cursorHidden;
++    if (!self.hasCursor || !self.texture || !self.vertices) {
++        return NO;
 +    }
-     return !self.isInhibited && self.hasCursor && !self.cursorHidden;
++    if (cs_keep_cursor_visible_on_inhibit()) {
++        return !self.cursorHidden;
++    }
++    return !self.isInhibited && !self.cursorHidden;
  }
  
+ - (BOOL)isInverted {
+@@ -268,7 +357,7 @@ - (void)destroyCursor {
+ 
+ - (void)drawCursor:(const void *)buffer {
+     CGSize cursorSize = self.cursorSize;
+-    if (CGSizeEqualToSize(cursorSize, CGSizeZero)) {
++    if (!self.texture || CGSizeEqualToSize(cursorSize, CGSizeZero)) {
+         return;
+     }
+     const NSInteger pixelSize = 4;
+@@ -289,4 +378,27 @@ - (void)moveTo:(CGPoint)point {
+     }];
+ }
+ 
++- (void)applyRelativeFallbackDelta:(CGPoint)delta {
++    if (delta.x == 0 && delta.y == 0) {
++        return;
++    }
++    [CSMain.sharedInstance asyncWith:^{
++        if (self.hasServerCursorMove) {
++            return;
++        }
++        CGSize displaySize = self.display.displaySize;
++        if (displaySize.width <= 0 || displaySize.height <= 0) {
++            return;
++        }
++        CGPoint current = self.mouseGuest;
++        if (!cs_cursor_point_is_valid(current, displaySize)) {
++            current = CGPointMake(displaySize.width / 2.0, displaySize.height / 2.0);
++        }
++        CGFloat nextX = MIN(MAX(current.x + delta.x, 0.0), displaySize.width - 1.0);
++        CGFloat nextY = MIN(MAX(current.y + delta.y, 0.0), displaySize.height - 1.0);
++        self.mouseGuest = CGPointMake(nextX, nextY);
++        cs_cursor_invalidate(self);
++    }];
++}
++
+ @end
+diff --git a/Sources/CocoaSpice/CSDisplay.m b/Sources/CocoaSpice/CSDisplay.m
+index 656fc1d..fbb8496 100644
+--- a/Sources/CocoaSpice/CSDisplay.m
++++ b/Sources/CocoaSpice/CSDisplay.m
+@@ -269,9 +269,9 @@ - (void)setDevice:(id<MTLDevice>)device {
+             [self rebuildDisplayVertices];
+             [self rebuildCanvasTexture];
+         }
++        // retrigger cursor rebuild on the SPICE thread after `_device` is ready
++        self.cursor.display = self;
+     }];
+-    // possibly retrigger cursor rebuild
+-    self.cursor.display = self;
+ }
+ 
+ - (SpiceChannel *)spiceChannel {
+diff --git a/Sources/CocoaSpice/include/CSCursor.h b/Sources/CocoaSpice/include/CSCursor.h
+index 0061697..8ddce45 100644
+--- a/Sources/CocoaSpice/include/CSCursor.h
++++ b/Sources/CocoaSpice/include/CSCursor.h
+@@ -43,6 +43,11 @@ NS_ASSUME_NONNULL_BEGIN
+ /// @param point Point relative to the display
+ - (void)moveTo:(CGPoint)point NS_SWIFT_NAME(move(to:));
+ 
++/// Apply a relative motion delta as a host-side fallback when SPICE server mode
++/// has not yet emitted server-side cursor-move events.
++/// @param delta Relative motion delta in guest display coordinates
++- (void)applyRelativeFallbackDelta:(CGPoint)delta NS_SWIFT_NAME(applyRelativeFallback(delta:));
++
+ @end
+ 
+ NS_ASSUME_NONNULL_END

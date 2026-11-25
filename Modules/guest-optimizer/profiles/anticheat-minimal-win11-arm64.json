@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "profile_revision": 2,
+  "profile_revision": 3,
   "profile_id": "anticheat-minimal-win11-arm64",
   "owner": "@DNPMBHC",
   "target_os": {
@@ -410,5 +410,59 @@
         "reason": "Disable Microsoft Edge background prelaunch at user sign-in"
       }
     ]
+  },
+  "gaming_session_controls": {
+    "locale_and_ime": {
+      "enabled": true,
+      "ui_language": "zh-CN",
+      "system_locale": "zh-CN",
+      "preferred_languages": [
+        "zh-CN",
+        "en-US"
+      ],
+      "default_input_tip": "0804:{81D4E9C9-1D3B-41BC-9E6C-4B40BF79E35E}{FA550B04-5AD7-411F-A5AC-CA038EC515D7}",
+      "reason": "Pre-configure zh-CN UI and Microsoft Pinyin IME priority while retaining en-US"
+    },
+    "update_pause_services": [
+      {
+        "name": "wuauserv",
+        "target_start_type": "Manual",
+        "stop_running": true,
+        "reason": "Pause Windows Update background downloads during gaming session (reversible to initial state)"
+      },
+      {
+        "name": "UsoSvc",
+        "target_start_type": "Manual",
+        "stop_running": true,
+        "reason": "Pause Update Orchestrator scheduling during gaming session"
+      },
+      {
+        "name": "BITS",
+        "target_start_type": "Manual",
+        "stop_running": true,
+        "reason": "Pause Background Intelligent Transfer Service during gaming session"
+      },
+      {
+        "name": "TrustedInstaller",
+        "target_start_type": "Manual",
+        "stop_running": true,
+        "reason": "Pause Windows Modules Installer background patching during gaming session"
+      }
+    ],
+    "pagefile": {
+      "enabled": true,
+      "path": "C:\\pagefile.sys",
+      "initial_size_mb": 8192,
+      "maximum_size_mb": 12288,
+      "reason": "Pre-allocate fixed pagefile to eliminate System Event 26 (Virtual Memory Minimum Too Low)"
+    },
+    "cpu_and_memory_tuning": {
+      "power_plan": "HighPerformance",
+      "disable_core_parking": true,
+      "disable_usb_selective_suspend": true,
+      "win32_priority_separation": 38,
+      "memory_compression": "preserve",
+      "reason": "Maximize foreground game quantum (0x26), disable core parking jitter, and control memory compression"
+    }
   }
 }

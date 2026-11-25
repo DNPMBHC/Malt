@@ -243,6 +243,184 @@ foreach ($reg in @($snapshot.registry_tweaks)) {
     }
 }
 
+$restoredGaming = [ordered]@{
+    update_pause_services = @()
+    pagefile = $null
+    power_scheme_guid = $null
+    win32_priority_separation = $null
+    memory_compression = $null
+    locale_and_ime = $null
+}
+
+if ($null -ne $snapshot.PSObject.Properties['gaming_session'] -and $null -ne $snapshot.gaming_session) {
+    $gs = $snapshot.gaming_session
+
+    # 1. Restore update pause services
+    foreach ($svc in @($gs.update_pause_services)) {
+        if (-not $svc.exists) { continue }
+        $name = [string]$svc.name
+        $targetStartup = Convert-StartModeToStartupType ([string]$svc.start_mode)
+        try {
+            try {
+                Set-Service -Name $name -StartupType $targetStartup -ErrorAction Stop | Out-Null
+            } catch {
+                $scMode = if ($targetStartup -eq 'Automatic') { 'auto' } elseif ($targetStartup -eq 'Disabled') { 'disabled' } else { 'demand' }
+                & sc.exe config $name start= $scMode 2>$null | Out-Null
+            }
+            if ($null -ne $svc.delayed_autostart) {
+                Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\$name" -Name 'DelayedAutostart' -Value ([int]$svc.delayed_autostart) -ErrorAction SilentlyContinue | Out-Null
+            }
+            if ($svc.state -eq 'Running') {
+                Start-Service -Name $name -ErrorAction SilentlyContinue | Out-Null
+            }
+            $afterCim = Get-CimInstance Win32_Service -Filter ("Name='" + $name.Replace("'", "''") + "'") -ErrorAction SilentlyContinue
+            $modeMatches = ($null -ne $afterCim -and [string]$afterCim.StartMode -eq [string]$svc.start_mode)
+            if (-not $modeMatches) { $mismatches += "gaming_update_service:$name" }
+            $restoredGaming.update_pause_services += [ordered]@{
+                name = $name
+                expected_start_mode = [string]$svc.start_mode
+                actual_start_mode = if ($null -ne $afterCim) { [string]$afterCim.StartMode } else { $null }
+                matched = $modeMatches
+            }
+        } catch {
+            $restoredGaming.update_pause_services += [ordered]@{ name = $name; matched = $false }
+            $mismatches += "gaming_update_service:$name:error"
+        }
+    }
+
+    # 2. Restore pagefile configuration
+    if ($null -ne $gs.pagefile) {
+        try {
+            $cs = Get-CimInstance Win32_ComputerSystem -ErrorAction Stop
+            if ($gs.pagefile.automatic_managed -eq $true) {
+                foreach ($pf in @(Get-CimInstance Win32_PageFileSetting -ErrorAction SilentlyContinue)) {
+                    Remove-CimInstance -InputObject $pf -ErrorAction SilentlyContinue
+                }
+                Set-CimInstance -InputObject $cs -Property @{ AutomaticManagedPagefile = $true } | Out-Null
+            } else {
+                Set-CimInstance -InputObject $cs -Property @{ AutomaticManagedPagefile = $false } | Out-Null
+                foreach ($pf in @(Get-CimInstance Win32_PageFileSetting -ErrorAction SilentlyContinue)) {
+                    Remove-CimInstance -InputObject $pf -ErrorAction SilentlyContinue
+                }
+                foreach ($entry in @($gs.pagefile.entries)) {
+                    New-CimInstance -ClassName Win32_PageFileSetting -Property @{
+                        Name = [string]$entry.name
+                        InitialSize = [int]$entry.initial_size_mb
+                        MaximumSize = [int]$entry.maximum_size_mb
+                    } | Out-Null
+                }
+            }
+            $afterAuto = [bool](Get-CimInstance Win32_ComputerSystem).AutomaticManagedPagefile
+            $pfMatched = ($afterAuto -eq [bool]$gs.pagefile.automatic_managed)
+            if (-not $pfMatched) { $mismatches += 'gaming_pagefile' }
+            $restoredGaming.pagefile = [ordered]@{
+                expected_automatic = [bool]$gs.pagefile.automatic_managed
+                actual_automatic = $afterAuto
+                matched = $pfMatched
+            }
+        } catch {
+            $restoredGaming.pagefile = [ordered]@{ matched = $false; error = $_.Exception.Message }
+            $mismatches += 'gaming_pagefile:error'
+        }
+    }
+
+    # 3. Restore active power scheme
+    if (-not [string]::IsNullOrWhiteSpace([string]$gs.power_scheme_guid)) {
+        try {
+            & powercfg.exe /setactive ([string]$gs.power_scheme_guid) 2>$null | Out-Null
+            $line = (& powercfg.exe /getactivescheme 2>$null | Out-String)
+            $actualGuid = if ($line -match '([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})') { $Matches[1].ToLowerInvariant() } else { $null }
+            $pMatched = ($actualGuid -eq ([string]$gs.power_scheme_guid).ToLowerInvariant())
+            if (-not $pMatched) { $mismatches += 'gaming_power_scheme' }
+            $restoredGaming.power_scheme_guid = [ordered]@{ expected = [string]$gs.power_scheme_guid; actual = $actualGuid; matched = $pMatched }
+        } catch {
+            $restoredGaming.power_scheme_guid = [ordered]@{ matched = $false }
+            $mismatches += 'gaming_power_scheme:error'
+        }
+    }
+
+    # 4. Restore Win32PrioritySeparation
+    if ($null -ne $gs.win32_priority_separation) {
+        try {
+            $prioPath = 'HKLM:\SYSTEM\CurrentControlSet\Control\PriorityControl'
+            New-ItemProperty -Path $prioPath -Name 'Win32PrioritySeparation' -Value ([int]$gs.win32_priority_separation) -PropertyType DWord -Force | Out-Null
+            $actualPrio = [int](Get-ItemProperty -Path $prioPath -Name 'Win32PrioritySeparation').Win32PrioritySeparation
+            $prMatched = ($actualPrio -eq [int]$gs.win32_priority_separation)
+            if (-not $prMatched) { $mismatches += 'gaming_win32_priority_separation' }
+            $restoredGaming.win32_priority_separation = [ordered]@{ expected = [int]$gs.win32_priority_separation; actual = $actualPrio; matched = $prMatched }
+        } catch {
+            $restoredGaming.win32_priority_separation = [ordered]@{ matched = $false }
+            $mismatches += 'gaming_win32_priority_separation:error'
+        }
+    }
+
+    # 5. Restore MemoryCompression
+    if ($null -ne $gs.memory_compression) {
+        try {
+            if ($gs.memory_compression -eq $true) {
+                Enable-MMAgent -MemoryCompression -ErrorAction SilentlyContinue
+            } else {
+                Disable-MMAgent -MemoryCompression -ErrorAction SilentlyContinue
+            }
+            Start-Sleep -Milliseconds 500
+            $actualMc = [bool](Get-MMAgent -ErrorAction SilentlyContinue).MemoryCompression
+            $mcMatched = ($actualMc -eq [bool]$gs.memory_compression)
+            if (-not $mcMatched) { $mismatches += 'gaming_memory_compression' }
+            $restoredGaming.memory_compression = [ordered]@{ expected = [bool]$gs.memory_compression; actual = $actualMc; matched = $mcMatched }
+        } catch {
+            $restoredGaming.memory_compression = [ordered]@{ matched = $false }
+            $mismatches += 'gaming_memory_compression:error'
+        }
+    }
+
+    # 6. Restore Locale & IME
+    if ($null -ne $gs.locale_and_ime) {
+        try {
+            if (-not [string]::IsNullOrWhiteSpace([string]$gs.locale_and_ime.system_locale)) {
+                Set-WinSystemLocale -SystemLocale ([string]$gs.locale_and_ime.system_locale) -ErrorAction SilentlyContinue
+            }
+            $iu = $gs.locale_and_ime.interactive_user
+            $user = (Get-CimInstance Win32_ComputerSystem -ErrorAction SilentlyContinue).UserName
+            if ($null -ne $iu -and -not [string]::IsNullOrWhiteSpace($user)) {
+                $origLangs = @($iu.langs | Where-Object { -not [string]::IsNullOrWhiteSpace([string]$_) })
+                if ($origLangs.Count -eq 0) { $origLangs = @('en-US') }
+                $langCsv = ($origLangs | ForEach-Object { "'" + [string]$_ + "'" }) -join ', '
+                $origUi = if ($iu.ui) { [string]$iu.ui } else { '' }
+                $origCul = if ($iu.culture) { [string]$iu.culture } else { 'en-US' }
+                $rbOut = Join-Path $StateDirectory 'locale-rollback-tmp.json'
+                $rbScript = Join-Path $StateDirectory 'WhiskyOpt_RollbackLocale.ps1'
+                $rbBody = @"
+`$ErrorActionPreference = 'Continue'
+Set-WinUserLanguageList -LanguageList @($langCsv) -Force
+if ([string]::IsNullOrWhiteSpace('$origUi')) {
+    Set-WinUILanguageOverride -ErrorAction SilentlyContinue
+} else {
+    Set-WinUILanguageOverride -Language '$origUi' -ErrorAction SilentlyContinue
+}
+Set-Culture '$origCul' -ErrorAction SilentlyContinue
+Set-WinDefaultInputMethodOverride -ErrorAction SilentlyContinue
+@{ langs = @(Get-WinUserLanguageList | ForEach-Object { `$_.LanguageTag }) } | ConvertTo-Json -Compress | Set-Content -Encoding UTF8 -LiteralPath '$rbOut'
+"@
+                Set-Content -LiteralPath $rbScript -Value $rbBody -Encoding UTF8
+                if (Test-Path -LiteralPath $rbOut) { Remove-Item -LiteralPath $rbOut -Force -ErrorAction SilentlyContinue }
+                $act = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument ('-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "' + $rbScript + '"')
+                $princ = New-ScheduledTaskPrincipal -UserId $user -LogonType Interactive
+                Register-ScheduledTask -TaskName 'WhiskyOpt_RollbackLocale' -Action $act -Principal $princ -Force | Out-Null
+                Start-ScheduledTask -TaskName 'WhiskyOpt_RollbackLocale'
+                for ($i = 0; $i -lt 20; $i++) {
+                    if (Test-Path -LiteralPath $rbOut) { break }
+                    Start-Sleep -Milliseconds 500
+                }
+                Unregister-ScheduledTask -TaskName 'WhiskyOpt_RollbackLocale' -Confirm:$false -ErrorAction SilentlyContinue
+            }
+            $restoredGaming.locale_and_ime = [ordered]@{ matched = $true; system_locale = [string]$gs.locale_and_ime.system_locale }
+        } catch {
+            $restoredGaming.locale_and_ime = [ordered]@{ matched = $false; error = $_.Exception.Message }
+            $mismatches += 'gaming_locale:error'
+        }
+    }
+}
+
 $metricsAfter = Read-GuestMetrics
 $invariants = Read-SecurityAndPrismInvariants $profileData
 $invariantsPassed = (
@@ -275,6 +453,7 @@ $report = [ordered]@{
         scheduled_tasks = $restoredTasks
         uwp_packages = $restoredUwp
         registry_tweaks = $restoredRegistry
+        gaming_session = $restoredGaming
     }
 }
 

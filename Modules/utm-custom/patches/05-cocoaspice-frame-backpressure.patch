@@ -1,0 +1,84 @@
+diff --git a/Sources/CocoaSpiceRenderer/CSMetalRenderer.m b/Sources/CocoaSpiceRenderer/CSMetalRenderer.m
+index 9c7bad9..d592277 100644
+--- a/Sources/CocoaSpiceRenderer/CSMetalRenderer.m
++++ b/Sources/CocoaSpiceRenderer/CSMetalRenderer.m
+@@ -109,6 +109,9 @@ @implementation CSMetalRenderer
+ 
+     // The command Queue from which we'll obtain command buffers
+     id<MTLCommandQueue> _commandQueue;
++
++    // Triple-buffered in-flight frame backpressure semaphore to prevent unbounded GPU queue buildup
++    dispatch_semaphore_t _inFlightFramesSemaphore;
+ }
+ 
+ @synthesize device = _device;
+@@ -167,6 +170,7 @@ - (nonnull instancetype)initWithMetalKitView:(nonnull MTKView *)mtkView
+ 
+         // Create the command queue
+         _commandQueue = [_device newCommandQueue];
++        _inFlightFramesSemaphore = dispatch_semaphore_create(3);
+ 
+         // Sampler
+         [self _initializeUpscaler:MTLSamplerMinMagFilterLinear downscaler:MTLSamplerMinMagFilterLinear];
+@@ -274,18 +278,27 @@ static matrix_float4x4 matrix_scale_translate(CGFloat scale, CGPoint translate)
+ /// Called whenever the view needs to render a frame
+ - (void)drawInMTKView:(nonnull MTKView *)view
+ {
+-    // Obtain a renderPassDescriptor generated from the view's drawable textures
+-    MTLRenderPassDescriptor *renderPassDescriptor = view.currentRenderPassDescriptor;
+-    id<CAMetalDrawable> currentDrawable = view.currentDrawable;
++    const _CSRendererSourceData *sourceData = self.renderSourceData;
+ 
+-    if (renderPassDescriptor == nil || currentDrawable == nil) {
++    if (!self.renderNeedsUpdate || !sourceData.isVisible) {
++        [self _completeDraw];
+         return;
+     }
+ 
+-    const _CSRendererSourceData *sourceData = self.renderSourceData;
++    dispatch_semaphore_t inFlightSemaphore = _inFlightFramesSemaphore;
++    if (inFlightSemaphore && dispatch_semaphore_wait(inFlightSemaphore, DISPATCH_TIME_NOW) != 0) {
++        // Backpressure: GPU still has 3 frames in flight; keep renderNeedsUpdate=YES for next vsync
++        return;
++    }
+ 
+-    if (!self.renderNeedsUpdate || !sourceData.isVisible) {
+-        [self _completeDraw];
++    // Obtain a renderPassDescriptor generated from the view's drawable textures
++    MTLRenderPassDescriptor *renderPassDescriptor = view.currentRenderPassDescriptor;
++    id<CAMetalDrawable> currentDrawable = view.currentDrawable;
++
++    if (renderPassDescriptor == nil || currentDrawable == nil) {
++        if (inFlightSemaphore) {
++            dispatch_semaphore_signal(inFlightSemaphore);
++        }
+         return;
+     }
+ 
+@@ -296,6 +309,13 @@ - (void)drawInMTKView:(nonnull MTKView *)view
+ 
+     // synchronize with rendererQueue in order to access currentCommandBuffer
+     id<MTLCommandBuffer> commandBuffer = [_commandQueue commandBuffer];
++    if (commandBuffer == nil) {
++        self.renderNeedsUpdate = YES;
++        if (inFlightSemaphore) {
++            dispatch_semaphore_signal(inFlightSemaphore);
++        }
++        return;
++    }
+     commandBuffer.label = @"Draw Frame";
+ 
+     [self _renderCommand:commandBuffer
+@@ -308,7 +328,11 @@ - (void)drawInMTKView:(nonnull MTKView *)view
+ 
+     [commandBuffer presentDrawable:currentDrawable];
+ 
+-    [commandBuffer addCompletedHandler:^(id<MTLCommandBuffer> commandBuffer) {
++    [commandBuffer addCompletedHandler:^(id<MTLCommandBuffer> completedBuffer) {
++        (void)completedBuffer;
++        if (inFlightSemaphore) {
++            dispatch_semaphore_signal(inFlightSemaphore);
++        }
+         dispatch_async(dispatch_get_main_queue(), ^{
+             [self _completeDraw];
+         });

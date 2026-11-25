@@ -1,0 +1,62 @@
+diff --git a/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift b/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
+index 5b9fb40..590f5c3 100644
+--- a/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
++++ b/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
+@@ -117,6 +117,8 @@ class VMDisplayQemuMetalWindowController: VMDisplayQemuWindowController {
+         if #available(macOS 14, *), let layer = metalView.layer as? CAMetalLayer {
+             // A CAMetalDisplayLink paces the layer at the rate it requests; MTKView's own
+             // timer can stay at 60 Hz on a ProMotion display.
++            layer.maximumDrawableCount = 3
++            layer.allowsNextDrawableTimeout = false
+             let link = CAMetalDisplayLink(metalLayer: layer)
+             link.delegate = self
+             link.add(to: .main, forMode: .common)
+diff --git a/QEMUHelper/QEMUHelper.m b/QEMUHelper/QEMUHelper.m
+index 8732be8..43ea60f 100644
+--- a/QEMUHelper/QEMUHelper.m
++++ b/QEMUHelper/QEMUHelper.m
+@@ -138,7 +138,7 @@ - (void)startQemuTask:(NSString *)binName standardOutput:(NSFileHandle *)standar
+     if (self.currentDirectoryPath) {
+         task.currentDirectoryURL = [NSURL fileURLWithPath:self.currentDirectoryPath];
+     }
+-    task.qualityOfService = NSQualityOfServiceUserInitiated;
++    task.qualityOfService = NSQualityOfServiceUserInteractive;
+     task.terminationHandler = ^(NSTask *task) {
+         _self.childTask = nil;
+         [_self.connection.remoteObjectProxy processHasExited:task.terminationStatus message:nil];
+diff --git a/Services/UTMQemuSystem.m b/Services/UTMQemuSystem.m
+index c8bbd58..6326ff7 100644
+--- a/Services/UTMQemuSystem.m
++++ b/Services/UTMQemuSystem.m
+@@ -140,6 +140,22 @@ - (void)setDirectXDriver:(UTMQEMUDirectXDriver)directXDriver {
+         self.mutableEnvironment[@"NPT_D3D12_LIBRARY_PATH"] = library.path;
+         self.mutableEnvironment[@"NPT_DXGI_LIBRARY_PATH"] = library.path;
+         self.mutableEnvironment[@"NPT_BACKEND"] = backend;
++        if (directXDriver == kQEMUDirectXDriverDXMT) {
++            NSString *overrideCache = NSProcessInfo.processInfo.environment[@"UTM_DXMT_SHADER_CACHE_PATH"];
++            NSURL *cacheURL = nil;
++            if (overrideCache.length > 0) {
++                cacheURL = [NSURL fileURLWithPath:overrideCache isDirectory:YES];
++            } else {
++                NSURL *cachesRoot = [NSFileManager.defaultManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask].firstObject;
++                cacheURL = [cachesRoot URLByAppendingPathComponent:@"dxmt-shader-cache" isDirectory:YES];
++            }
++            if (cacheURL) {
++                [NSFileManager.defaultManager createDirectoryAtURL:cacheURL withIntermediateDirectories:YES attributes:nil error:nil];
++                self.mutableEnvironment[@"DXMT_SHADER_CACHE"] = @"1";
++                self.mutableEnvironment[@"DXMT_SHADER_CACHE_PATH"] = cacheURL.path;
++                self.resources = [self.resources arrayByAddingObject:cacheURL];
++            }
++        }
+         if (directXDriver == kQEMUDirectXDriverD3DMetal) {
+             self.mutableEnvironment[@"NPT_CAPSET_D3D12"] = @"1";
+         }
+@@ -152,6 +168,8 @@ - (void)setDirectXDriver:(UTMQEMUDirectXDriver)directXDriver {
+         [self.mutableEnvironment removeObjectForKey:@"NPT_BACKEND"];
+         [self.mutableEnvironment removeObjectForKey:@"NPT_CAPSET_D3D12"];
+         [self.mutableEnvironment removeObjectForKey:@"D3DMETAL_FRAMEWORK_PATH"];
++        [self.mutableEnvironment removeObjectForKey:@"DXMT_SHADER_CACHE"];
++        [self.mutableEnvironment removeObjectForKey:@"DXMT_SHADER_CACHE_PATH"];
+         _directXDriver = kQEMUDirectXDriverDisabled;
+     }
+ }

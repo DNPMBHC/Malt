@@ -1,29 +1,176 @@
 diff --git a/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift b/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
-index 1e4c926..da36cd5 100644
+index 1e4c926..f091629 100644
 --- a/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
 +++ b/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
-@@ -128,6 +128,14 @@ class VMDisplayQemuMetalWindowController: VMDisplayQemuWindowController {
-             restoreDynamicResolution(for: window)
+@@ -45,9 +45,18 @@ class VMDisplayQemuMetalWindowController: VMDisplayQemuWindowController {
+     private var globalEventMonitor: Any? = nil
+     private var ctrlKeyDown: Bool = false
+     private var screenChangedToken: Any?
++    private var resignActiveToken: Any?
++    private var wasCapturedBeforeDeactivate: Bool = false
++    private var lastNonCapturedCursorPoint: CGPoint?
+     /// `CAMetalDisplayLink` on macOS 14 and later
+     private var displayLink: AnyObject?
+ 
++    private var isPureRelativeMouseMode: Bool {
++        (vmQemuConfig?.input.isPureRelativeMouse ?? false)
++            || CommandLine.arguments.contains("--pure-relative-mouse")
++            || ProcessInfo.processInfo.environment["UTM_PURE_RELATIVE_MOUSE"] == "1"
++    }
++
+     private var displayConfig: UTMQemuConfigurationDisplay? {
+         vmQemuConfig?.displays[id]
+     }
+@@ -129,6 +138,18 @@ class VMDisplayQemuMetalWindowController: VMDisplayQemuWindowController {
          }
  
-+        NotificationCenter.default.addObserver(
+         super.windowDidLoad()
++
++        resignActiveToken = NotificationCenter.default.addObserver(
 +            forName: NSApplication.didResignActiveNotification,
 +            object: nil,
 +            queue: .main
 +        ) { [weak self] _ in
-+            self?.releaseMouse()
++            guard let self = self else { return }
++            if self.metalView?.isMouseCaptured == true {
++                self.wasCapturedBeforeDeactivate = true
++            }
++            self.releaseMouse()
 +        }
-+
-         super.windowDidLoad()
      }
      
-@@ -564,7 +572,8 @@ extension VMDisplayQemuMetalWindowController: VMMetalViewInputDelegate {
+     /// Refresh at the rate of the screen the window is on, unless the user set a limit.
+@@ -157,6 +178,10 @@ class VMDisplayQemuMetalWindowController: VMDisplayQemuWindowController {
+             NotificationCenter.default.removeObserver(screenChangedToken)
+         }
+         screenChangedToken = nil
++        if let resignActiveToken = resignActiveToken {
++            NotificationCenter.default.removeObserver(resignActiveToken)
++        }
++        resignActiveToken = nil
+         super.windowWillClose(notification)
+     }
+     
+@@ -552,7 +577,10 @@ extension VMDisplayQemuMetalWindowController: VMMetalViewInputDelegate {
+             return // don't capture if modal is shown
+         }
+         let action = { () -> Void in
+-            self.qemuVM.requestInputTablet(false)
++            if !self.isPureRelativeMouseMode {
++                self.qemuVM.requestInputTablet(false)
++            }
++            self.lastNonCapturedCursorPoint = nil
+             self.metalView?.captureMouse()
+             
+             self.captureMouseToolbarButton.state = .on
+@@ -564,7 +592,10 @@ extension VMDisplayQemuMetalWindowController: VMMetalViewInputDelegate {
              self.window?.makeFirstResponder(self.metalView)
              self.syncCapsLock()
          }
 -        if !isCursorCaptureAlertShown || (isFullScreen && !isFullscreenCursorCaptureAlertShown) {
 +        let skipPrompt = CommandLine.arguments.contains("--game-shell-vm")
++            || ProcessInfo.processInfo.environment["UTM_GAME_SHELL_VM"] != nil
++            || isPureRelativeMouseMode
 +        if !skipPrompt && (!isCursorCaptureAlertShown || (isFullScreen && !isFullscreenCursorCaptureAlertShown)) {
              let alert = NSAlert()
              alert.messageText = NSLocalizedString("Captured mouse", comment: "VMDisplayQemuMetalWindowController")
              
+@@ -589,7 +620,10 @@ extension VMDisplayQemuMetalWindowController: VMMetalViewInputDelegate {
+     
+     func releaseMouse() {
+         syncCapsLock()
+-        qemuVM.requestInputTablet(true)
++        lastNonCapturedCursorPoint = nil
++        if !isPureRelativeMouseMode {
++            qemuVM.requestInputTablet(true)
++        }
+         metalView?.releaseMouse()
+         self.captureMouseToolbarButton.state = .off
+         self.window?.subtitle = defaultSubtitle
+@@ -597,17 +631,31 @@ extension VMDisplayQemuMetalWindowController: VMMetalViewInputDelegate {
+     
+     func mouseMove(absolutePoint: CGPoint, buttonMask: CSInputButton) {
+         guard let window = self.window else { return }
+-        guard let vmInput = vmInput, !vmInput.serverModeCursor else {
+-            logger.trace("requesting client mode cursor")
+-            qemuVM.requestInputTablet(true)
+-            return
+-        }
++        guard let vmInput = vmInput else { return }
+         let currentScreenScale = window.screen?.backingScaleFactor ?? 1.0
+         let viewportScale = renderer?.viewportScale ?? 1.0
+         let frameSize = metalView.frame.size
+         let newX = absolutePoint.x * currentScreenScale / viewportScale
+         let newY = (frameSize.height - absolutePoint.y) * currentScreenScale / viewportScale
+         let point = CGPoint(x: newX, y: newY)
++        if vmInput.serverModeCursor {
++            if isPureRelativeMouseMode {
++                if let previous = lastNonCapturedCursorPoint {
++                    let dx = point.x - previous.x
++                    let dy = point.y - previous.y
++                    if abs(dx) <= 120 && abs(dy) <= 120 && (dx != 0 || dy != 0) {
++                        let delta = CGPoint(x: dx, y: dy)
++                        vmInput.sendMouseMotion(buttonMask, relativePoint: delta, forMonitorID: vmDisplay?.monitorID ?? 0)
++                        vmDisplay?.cursor?.applyRelativeFallback(delta: delta)
++                    }
++                }
++                lastNonCapturedCursorPoint = point
++                return
++            }
++            logger.trace("requesting client mode cursor")
++            qemuVM.requestInputTablet(true)
++            return
++        }
+         logger.trace("move cursor: cocoa (\(absolutePoint.x), \(absolutePoint.y)), native (\(newX), \(newY))")
+         vmInput.sendMousePosition(buttonMask, absolutePoint: point, forMonitorID: vmDisplay?.monitorID ?? 0)
+         vmDisplay?.cursor?.move(to: point) // required to show cursor on screen
+@@ -621,6 +669,7 @@ extension VMDisplayQemuMetalWindowController: VMMetalViewInputDelegate {
+         }
+         let translated = CGPoint(x: relativePoint.x, y: -relativePoint.y)
+         vmInput.sendMouseMotion(buttonMask, relativePoint: translated, forMonitorID: vmDisplay?.monitorID ?? 0)
++        vmDisplay?.cursor?.applyRelativeFallback(delta: translated)
+     }
+     
+     private func modifyMouseButton(_ button: CSInputButton) -> CSInputButton {
+@@ -677,6 +726,24 @@ extension VMDisplayQemuMetalWindowController: VMMetalViewInputDelegate {
+     }
+     
+     private func handleCaptureKeys(for event: NSEvent) -> Bool {
++        // Explicit Cmd+Option+G safe cursor release at any time
++        if event.type == .keyDown &&
++            event.keyCode == kVK_ANSI_G &&
++            event.modifierFlags.isSuperset(of: [.command, .option]) {
++            wasCapturedBeforeDeactivate = false
++            releaseMouse()
++            return true
++        }
++        // Allow Cmd+Tab to cleanly release mouse capture and switch back to host apps
++        if event.type == .keyDown &&
++            event.keyCode == kVK_Tab &&
++            event.modifierFlags.contains(.command) {
++            if metalView?.isMouseCaptured == true {
++                wasCapturedBeforeDeactivate = true
++                releaseMouse()
++            }
++            return false
++        }
+         // if captured we route all keyevents to view
+         if let metalView = metalView, metalView.isMouseCaptured {
+             if event.type == .keyDown {
+diff --git a/Platform/macOS/Display/VMMetalView.swift b/Platform/macOS/Display/VMMetalView.swift
+index 8b14a04..a396dda 100644
+--- a/Platform/macOS/Display/VMMetalView.swift
++++ b/Platform/macOS/Display/VMMetalView.swift
+@@ -389,7 +389,11 @@ extension VMMetalView {
+         CGWarpMouseCursorPosition(screenCenter ?? .zero)
+         isMouseCaptured = true
+         NSCursor.tryHide()
+-        CGSSetGlobalHotKeyOperatingMode(CGSMainConnectionID(), .disable)
++        let keepHostHotKeys = CommandLine.arguments.contains("--game-shell-vm")
++            || ProcessInfo.processInfo.environment["UTM_GAME_SHELL_VM"] != nil
++        if !keepHostHotKeys {
++            CGSSetGlobalHotKeyOperatingMode(CGSMainConnectionID(), .disable)
++        }
+         if isCapsLockKey {
+             CapsLockRemapper.shared.apply()
+         }

@@ -7,6 +7,8 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$ProfilePath,
     [string]$StateDirectory = (Join-Path $env:SystemDrive 'graphics-lab\guest-optimizer'),
+    [ValidateSet('auto', 'preserve', 'disable')]
+    [string]$MemoryCompressionOverride = 'auto',
     [switch]$DryRun
 )
 
@@ -20,9 +22,13 @@ $HardProtectedServices = @(
     'SecurityHealthService', 'Sense', 'SystemEventsBroker', 'TBS',
     'TrustedInstaller', 'UserManager', 'VaultSvc', 'VirtioFsSvc', 'WinDefend',
     'Winmgmt', 'Audiosrv', 'AudioEndpointBuilder', 'wuauserv',
-    'vgc', 'vgk', 'ACE-BASE', 'ACE-GAME', 'AntiCheatExpert Service',
-    'AntiCheatExpert Protection', 'EasyAntiCheat', 'EasyAntiCheat_EOS', 'BEService'
+    'vgc', 'vgk', 'ACE-BASE', 'ACE-GAME', 'ACE-CORE10405', 'ACE-CORE20405',
+    'AntiCheatExpert', 'AntiCheatExpert Service',
+    'AntiCheatExpert Protection', 'EasyAntiCheat', 'EasyAntiCheat_EOS',
+    'EasyAntiCheat_EOSSys', 'BEService'
 )
+
+$AllowedUpdatePauseServices = @('wuauserv', 'UsoSvc', 'BITS', 'TrustedInstaller')
 
 $HardProtectedAppxPrefixes = @(
     'Microsoft.VCLibs', 'Microsoft.UI.Xaml', 'Microsoft.NET', 'Microsoft.DirectX',
@@ -111,6 +117,150 @@ function Assert-ProfileSafe($Profile) {
         }
         if ($regPath -match '(?i)DeviceGuard|CodeIntegrity|Lsa|Policies\\System|CurrentControlSet') {
             throw "whitelist violation: forbidden security registry path ($regPath)"
+        }
+    }
+
+    if ($null -ne $Profile.gaming_session_controls) {
+        $gc = $Profile.gaming_session_controls
+        foreach ($uEntry in @($gc.update_pause_services)) {
+            $uName = [string]$uEntry.name
+            if ($AllowedUpdatePauseServices -notcontains $uName) {
+                throw "whitelist violation: '$uName' is not allowed in update_pause_services"
+            }
+            if ([string]$uEntry.target_start_type -ne 'Manual') {
+                throw "update_pause_services '$uName' must use target_start_type='Manual'"
+            }
+        }
+        if ($null -ne $gc.pagefile) {
+            $initMb = [int]$gc.pagefile.initial_size_mb
+            $maxMb = [int]$gc.pagefile.maximum_size_mb
+            if ($initMb -lt 4096 -or $maxMb -lt $initMb -or $maxMb -gt 32768) {
+                throw 'pagefile size out of safe bounds'
+            }
+        }
+        if ($null -ne $gc.cpu_and_memory_tuning) {
+            $prio = [int]$gc.cpu_and_memory_tuning.win32_priority_separation
+            if ($prio -lt 0 -or $prio -gt 63) {
+                throw 'win32_priority_separation out of safe range (0..63)'
+            }
+            if ([string]$gc.cpu_and_memory_tuning.memory_compression -notin @('preserve', 'disable')) {
+                throw 'memory_compression must be preserve or disable'
+            }
+        }
+    }
+}
+
+function Invoke-InteractiveUserScript([string]$ScriptBody, [string]$OutFile, [string]$TaskName) {
+    $user = $null
+    try { $user = (Get-CimInstance Win32_ComputerSystem -ErrorAction SilentlyContinue).UserName } catch { }
+    if ([string]::IsNullOrWhiteSpace($user)) {
+        return $null
+    }
+    $scriptFile = Join-Path $StateDirectory ($TaskName + '.ps1')
+    Set-Content -LiteralPath $scriptFile -Value $ScriptBody -Encoding UTF8
+    if (Test-Path -LiteralPath $OutFile) { Remove-Item -LiteralPath $OutFile -Force -ErrorAction SilentlyContinue }
+    $act = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument ('-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "' + $scriptFile + '"')
+    $princ = New-ScheduledTaskPrincipal -UserId $user -LogonType Interactive
+    Register-ScheduledTask -TaskName $TaskName -Action $act -Principal $princ -Force | Out-Null
+    Start-ScheduledTask -TaskName $TaskName
+    for ($i = 0; $i -lt 20; $i++) {
+        if (Test-Path -LiteralPath $OutFile) { break }
+        Start-Sleep -Milliseconds 500
+    }
+    Unregister-ScheduledTask -TaskName $TaskName -Confirm:$false -ErrorAction SilentlyContinue
+    if (Test-Path -LiteralPath $OutFile) {
+        try { return (Get-Content -Raw -LiteralPath $OutFile | ConvertFrom-Json) } catch { return $null }
+    }
+    return $null
+}
+
+function Get-ActivePowerSchemeGuid {
+    try {
+        $line = (& powercfg.exe /getactivescheme 2>$null | Out-String)
+        if ($line -match '([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})') {
+            return $Matches[1].ToLowerInvariant()
+        }
+    } catch { }
+    return $null
+}
+
+function Capture-GamingSessionSnapshot($Profile) {
+    if ($null -eq $Profile.gaming_session_controls) {
+        return $null
+    }
+    $gc = $Profile.gaming_session_controls
+
+    # 1. Update pause services snapshot
+    $updSnap = @()
+    foreach ($uEntry in @($gc.update_pause_services)) {
+        $name = [string]$uEntry.name
+        $cim = Get-CimInstance Win32_Service -Filter ("Name='" + $name.Replace("'", "''") + "'") -ErrorAction SilentlyContinue
+        if ($null -eq $cim) {
+            $updSnap += [ordered]@{ name = $name; exists = $false; start_mode = $null; state = $null; delayed_autostart = $null }
+            continue
+        }
+        $delayed = $null
+        try {
+            $prop = Get-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\$name" -Name 'DelayedAutostart' -ErrorAction SilentlyContinue
+            if ($null -ne $prop) { $delayed = [int]$prop.DelayedAutostart }
+        } catch { }
+        $updSnap += [ordered]@{
+            name = $name
+            exists = $true
+            start_mode = [string]$cim.StartMode
+            state = [string]$cim.State
+            delayed_autostart = $delayed
+        }
+    }
+
+    # 2. Pagefile snapshot
+    $cs = Get-CimInstance Win32_ComputerSystem -ErrorAction SilentlyContinue
+    $autoPf = if ($null -ne $cs) { [bool]$cs.AutomaticManagedPagefile } else { $true }
+    $pfEntries = @()
+    foreach ($pf in @(Get-CimInstance Win32_PageFileSetting -ErrorAction SilentlyContinue)) {
+        $pfEntries += [ordered]@{
+            name = [string]$pf.Name
+            initial_size_mb = [int]$pf.InitialSize
+            maximum_size_mb = [int]$pf.MaximumSize
+        }
+    }
+
+    # 3. CPU & memory tuning snapshot
+    $activePower = Get-ActivePowerSchemeGuid
+    $prioVal = $null
+    try {
+        $prioVal = (Get-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\PriorityControl' -Name 'Win32PrioritySeparation' -ErrorAction SilentlyContinue).Win32PrioritySeparation
+    } catch { }
+    $memComp = $null
+    try {
+        $memComp = [bool](Get-MMAgent -ErrorAction SilentlyContinue).MemoryCompression
+    } catch { }
+
+    # 4. Locale & IME snapshot (interactive user + system locale)
+    $sysLocale = $null
+    try { $sysLocale = (Get-WinSystemLocale -ErrorAction SilentlyContinue).Name } catch { }
+    $localeOut = Join-Path $StateDirectory 'locale-snap-tmp.json'
+    $snapLocaleBody = @"
+`$ErrorActionPreference = 'Continue'
+`$langs = @(Get-WinUserLanguageList -ErrorAction SilentlyContinue | ForEach-Object { `$_.LanguageTag })
+`$ui = (Get-WinUILanguageOverride -ErrorAction SilentlyContinue).Name
+`$cul = (Get-Culture -ErrorAction SilentlyContinue).Name
+@{ langs = `$langs; ui = `$ui; culture = `$cul } | ConvertTo-Json -Depth 4 -Compress | Set-Content -Encoding UTF8 -LiteralPath '$localeOut'
+"@
+    $userLocale = Invoke-InteractiveUserScript -ScriptBody $snapLocaleBody -OutFile $localeOut -TaskName 'WhiskyOpt_SnapLocale'
+
+    return [ordered]@{
+        update_pause_services = $updSnap
+        pagefile = [ordered]@{
+            automatic_managed = $autoPf
+            entries = $pfEntries
+        }
+        power_scheme_guid = $activePower
+        win32_priority_separation = if ($null -ne $prioVal) { [int]$prioVal } else { $null }
+        memory_compression = $memComp
+        locale_and_ime = [ordered]@{
+            system_locale = $sysLocale
+            interactive_user = $userLocale
         }
     }
 }
@@ -275,6 +425,8 @@ function Capture-InitialSnapshot($Profile, [string]$ProfileSha) {
         }
     }
 
+    $gamingSnap = Capture-GamingSessionSnapshot $Profile
+
     return [ordered]@{
         schema_version = 1
         owner = '@DNPMBHC'
@@ -285,6 +437,7 @@ function Capture-InitialSnapshot($Profile, [string]$ProfileSha) {
         scheduled_tasks = $taskSnap
         uwp_packages = $uwpSnap
         registry_tweaks = $regSnap
+        gaming_session = $gamingSnap
     }
 }
 
@@ -324,6 +477,9 @@ if (Test-Path -LiteralPath $snapshotPath) {
             $existingSnap.scheduled_tasks = $mergedTasks
             $existingSnap.uwp_packages = $mergedUwp
             $existingSnap.registry_tweaks = $mergedReg
+            if ($null -eq $existingSnap.PSObject.Properties['gaming_session'] -or $null -eq $existingSnap.gaming_session) {
+                $existingSnap | Add-Member -NotePropertyName 'gaming_session' -NotePropertyValue $freshSnap.gaming_session -Force
+            }
             $existingSnap | ConvertTo-Json -Depth 8 | Set-Content -Encoding UTF8 -LiteralPath $snapshotPath
         }
     }
@@ -444,6 +600,181 @@ foreach ($regEntry in @($profileData.optimization_blacklist.registry_tweaks)) {
     }
 }
 
+$gamingChanges = [ordered]@{
+    update_pause_services = @()
+    pagefile = $null
+    cpu_and_memory_tuning = $null
+    locale_and_ime = $null
+}
+
+if ($null -ne $profileData.gaming_session_controls) {
+    $gc = $profileData.gaming_session_controls
+
+    # 1. Pause background Windows Update services (Manual + Stop, never Disabled)
+    foreach ($uEntry in @($gc.update_pause_services)) {
+        $name = [string]$uEntry.name
+        $svcObj = Get-Service -Name $name -ErrorAction SilentlyContinue
+        if ($null -eq $svcObj) {
+            $gamingChanges.update_pause_services += [ordered]@{ name = $name; status = 'not_present' }
+            continue
+        }
+        if ($DryRun) {
+            $gamingChanges.update_pause_services += [ordered]@{ name = $name; status = 'dry_run'; target_start_type = 'Manual' }
+            continue
+        }
+        try {
+            Set-Service -Name $name -StartupType Manual -ErrorAction Stop | Out-Null
+            if ($uEntry.stop_running -eq $true -and $svcObj.Status -eq 'Running') {
+                Stop-Service -Name $name -Force -ErrorAction SilentlyContinue | Out-Null
+            }
+            $after = Get-Service -Name $name -ErrorAction SilentlyContinue
+            $gamingChanges.update_pause_services += [ordered]@{
+                name = $name
+                status = 'paused_manual'
+                running_after = ($null -ne $after -and $after.Status -eq 'Running')
+            }
+        } catch {
+            try {
+                & sc.exe config $name start= demand 2>$null | Out-Null
+                if ($uEntry.stop_running -eq $true) { & sc.exe stop $name 2>$null | Out-Null }
+                $gamingChanges.update_pause_services += [ordered]@{ name = $name; status = 'paused_manual_sc' }
+            } catch {
+                $gamingChanges.update_pause_services += [ordered]@{ name = $name; status = 'skipped_protected' }
+            }
+        }
+    }
+
+    # 2. Pre-allocate fixed pagefile (8192-12288 MiB) to eliminate System Event 26
+    if ($null -ne $gc.pagefile -and $gc.pagefile.enabled -eq $true) {
+        $pfPath = [string]$gc.pagefile.path
+        $initMb = [int]$gc.pagefile.initial_size_mb
+        $maxMb = [int]$gc.pagefile.maximum_size_mb
+        if ($DryRun) {
+            $gamingChanges.pagefile = [ordered]@{ status = 'dry_run'; path = $pfPath; initial_size_mb = $initMb; maximum_size_mb = $maxMb }
+        } else {
+            try {
+                $cs = Get-CimInstance Win32_ComputerSystem -ErrorAction Stop
+                $driveLetter = Split-Path -Qualifier $pfPath
+                $disk = Get-CimInstance Win32_LogicalDisk -Filter "DeviceID='$driveLetter'" -ErrorAction SilentlyContinue
+                $freeMb = if ($null -ne $disk) { [int][math]::Floor($disk.FreeSpace / 1MB) } else { $maxMb + 2048 }
+                $safeMaxMb = [Math]::Min($maxMb, [Math]::Max(4096, $freeMb - 2048))
+                $safeInitMb = [Math]::Min($initMb, $safeMaxMb)
+                if ($cs.AutomaticManagedPagefile) {
+                    Set-CimInstance -InputObject $cs -Property @{ AutomaticManagedPagefile = $false } | Out-Null
+                }
+                $existingPf = Get-CimInstance Win32_PageFileSetting -ErrorAction SilentlyContinue | Where-Object { $_.Name -ieq $pfPath } | Select-Object -First 1
+                if ($null -ne $existingPf) {
+                    Set-CimInstance -InputObject $existingPf -Property @{ InitialSize = $safeInitMb; MaximumSize = $safeMaxMb } | Out-Null
+                } else {
+                    New-CimInstance -ClassName Win32_PageFileSetting -Property @{ Name = $pfPath; InitialSize = $safeInitMb; MaximumSize = $safeMaxMb } | Out-Null
+                }
+                $gamingChanges.pagefile = [ordered]@{
+                    status = 'applied'
+                    path = $pfPath
+                    requested_initial_mb = $initMb
+                    requested_maximum_mb = $maxMb
+                    applied_initial_mb = $safeInitMb
+                    applied_maximum_mb = $safeMaxMb
+                    drive_free_mb = $freeMb
+                }
+            } catch {
+                $gamingChanges.pagefile = [ordered]@{ status = 'error'; message = $_.Exception.Message }
+            }
+        }
+    }
+
+    # 3. CPU & memory tuning (High Performance, disable Core Parking & USB suspend, Win32PrioritySeparation=0x26, MemoryCompression)
+    if ($null -ne $gc.cpu_and_memory_tuning) {
+        $cm = $gc.cpu_and_memory_tuning
+        $targetMemComp = if ($MemoryCompressionOverride -ne 'auto') { $MemoryCompressionOverride } else { [string]$cm.memory_compression }
+        if ($DryRun) {
+            $gamingChanges.cpu_and_memory_tuning = [ordered]@{
+                status = 'dry_run'
+                power_plan = [string]$cm.power_plan
+                win32_priority_separation = [int]$cm.win32_priority_separation
+                memory_compression = $targetMemComp
+            }
+        } else {
+            $appliedScheme = Get-ActivePowerSchemeGuid
+            if ([string]$cm.power_plan -eq 'HighPerformance') {
+                $hpGuid = '8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c'
+                & powercfg.exe /setactive $hpGuid 2>$null | Out-Null
+                if ($LASTEXITCODE -ne 0) {
+                    & powercfg.exe /duplicatescheme $hpGuid 2>$null | Out-Null
+                    & powercfg.exe /setactive $hpGuid 2>$null | Out-Null
+                }
+                $appliedScheme = Get-ActivePowerSchemeGuid
+            }
+            if ($cm.disable_core_parking -eq $true) {
+                # SUB_PROCESSOR: PROCTHROTTLEMIN=100, CPMINCORES=100 (disable core parking)
+                & powercfg.exe /setacvalueindex SCHEME_CURRENT 54533251-82be-4824-96c1-47b60b740d00 893dee8e-2bef-41e0-89c6-b55d0929964c 100 2>$null | Out-Null
+                & powercfg.exe /setacvalueindex SCHEME_CURRENT 54533251-82be-4824-96c1-47b60b740d00 0cc5b647-c1df-4637-891a-dec35c318583 100 2>$null | Out-Null
+            }
+            if ($cm.disable_usb_selective_suspend -eq $true) {
+                & powercfg.exe /setacvalueindex SCHEME_CURRENT 2a737441-1930-4402-8d77-b2bebba308a3 48e6b7a6-50f5-4782-a5d4-53bb8f07e226 0 2>$null | Out-Null
+            }
+            & powercfg.exe /setactive SCHEME_CURRENT 2>$null | Out-Null
+
+            $prioPath = 'HKLM:\SYSTEM\CurrentControlSet\Control\PriorityControl'
+            New-ItemProperty -Path $prioPath -Name 'Win32PrioritySeparation' -Value ([int]$cm.win32_priority_separation) -PropertyType DWord -Force | Out-Null
+
+            $memCompActual = $null
+            try {
+                if ($targetMemComp -eq 'disable') {
+                    Disable-MMAgent -MemoryCompression -ErrorAction SilentlyContinue
+                }
+                # 'preserve' keeps OS memory compression enabled/untouched (avoids P1 Low regression measured in 11A)
+                $memCompActual = [bool](Get-MMAgent -ErrorAction SilentlyContinue).MemoryCompression
+            } catch { }
+
+            $gamingChanges.cpu_and_memory_tuning = [ordered]@{
+                status = 'applied'
+                active_power_scheme = $appliedScheme
+                disable_core_parking = [bool]$cm.disable_core_parking
+                disable_usb_selective_suspend = [bool]$cm.disable_usb_selective_suspend
+                win32_priority_separation = [int]$cm.win32_priority_separation
+                memory_compression_target = $targetMemComp
+                memory_compression_actual = $memCompActual
+            }
+        }
+    }
+
+    # 4. Locale & zh-CN Microsoft Pinyin IME priority
+    if ($null -ne $gc.locale_and_ime -and $gc.locale_and_ime.enabled -eq $true) {
+        $loc = $gc.locale_and_ime
+        if ($DryRun) {
+            $gamingChanges.locale_and_ime = [ordered]@{ status = 'dry_run'; ui_language = [string]$loc.ui_language; preferred_languages = @($loc.preferred_languages) }
+        } else {
+            try { Set-WinSystemLocale -SystemLocale ([string]$loc.system_locale) -ErrorAction SilentlyContinue } catch { }
+            $langCsv = (@($loc.preferred_languages) | ForEach-Object { "'" + [string]$_ + "'" }) -join ', '
+            $uiLang = [string]$loc.ui_language
+            $inputTip = [string]$loc.default_input_tip
+            $locOut = Join-Path $StateDirectory 'locale-apply-tmp.json'
+            $applyLocBody = @"
+`$ErrorActionPreference = 'Continue'
+Set-WinUserLanguageList -LanguageList @($langCsv) -Force
+Set-WinUILanguageOverride -Language '$uiLang'
+Set-Culture '$uiLang'
+if (-not [string]::IsNullOrWhiteSpace('$inputTip')) {
+    try { Set-WinDefaultInputMethodOverride -InputTip '$inputTip' -ErrorAction SilentlyContinue } catch { }
+}
+`$rawL = Get-WinUserLanguageList -ErrorAction SilentlyContinue
+`$l = @()
+foreach (`$it in `$rawL) {
+    `$l += @{ tag = [string]`$it.LanguageTag; tips = @(`$it.InputMethodTips) }
+}
+@{ langs = `$l; ui = (Get-WinUILanguageOverride -ErrorAction SilentlyContinue).Name; culture = (Get-Culture -ErrorAction SilentlyContinue).Name } | ConvertTo-Json -Depth 5 -Compress | Set-Content -Encoding UTF8 -LiteralPath '$locOut'
+"@
+            $locRes = Invoke-InteractiveUserScript -ScriptBody $applyLocBody -OutFile $locOut -TaskName 'WhiskyOpt_ApplyLocale'
+            $gamingChanges.locale_and_ime = [ordered]@{
+                status = if ($null -ne $locRes) { 'applied' } else { 'applied_system_only_no_interactive_user' }
+                system_locale = [string]$loc.system_locale
+                interactive_result = $locRes
+            }
+        }
+    }
+}
+
 $metricsAfter = Read-GuestMetrics
 $invariants = Read-SecurityAndPrismInvariants $profileData
 $invariantsPassed = (
@@ -458,6 +789,7 @@ $invariantsPassed = (
 
 $report = [ordered]@{
     schema_version = 1
+    profile_revision = if ($null -ne $profileData.profile_revision) { [int]$profileData.profile_revision } else { 1 }
     owner = '@DNPMBHC'
     action = if ($DryRun) { 'dry_run' } else { 'apply' }
     captured_at_utc = [DateTime]::UtcNow.ToString('o')
@@ -475,6 +807,7 @@ $report = [ordered]@{
         scheduled_tasks = $taskChanges
         uwp_packages = $uwpChanges
         registry_tweaks = $registryChanges
+        gaming_session = $gamingChanges
     }
 }
 

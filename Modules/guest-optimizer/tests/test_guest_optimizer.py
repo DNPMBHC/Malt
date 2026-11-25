@@ -150,6 +150,54 @@ class GuestOptimizerProfileTests(unittest.TestCase):
         for text in (apply_text, rollback_text):
             for forbidden in ("testsigning on", "nointegritychecks on", "kvm=off", "hv_vendor_id"):
                 self.assertNotIn(forbidden, text.lower())
+        self.assertIn("Capture-GamingSessionSnapshot", apply_text)
+        self.assertIn("Win32PrioritySeparation", apply_text)
+        self.assertIn("Win32PrioritySeparation", rollback_text)
+        self.assertIn("AutomaticManagedPagefile", apply_text)
+        self.assertIn("AutomaticManagedPagefile", rollback_text)
+
+    def test_v3_gaming_session_controls_validation_and_guards(self):
+        profile = self.load_profile()
+        self.assertGreaterEqual(profile.get("profile_revision", 1), 3)
+        gc = profile["gaming_session_controls"]
+        self.assertTrue(gc["locale_and_ime"]["enabled"])
+        self.assertEqual(gc["locale_and_ime"]["ui_language"], "zh-CN")
+        self.assertEqual(gc["pagefile"]["initial_size_mb"], 8192)
+        self.assertEqual(gc["pagefile"]["maximum_size_mb"], 12288)
+        self.assertEqual(gc["cpu_and_memory_tuning"]["win32_priority_separation"], 38)
+
+        # Reject ACE/security service in update_pause_services
+        bad_svc = copy.deepcopy(profile)
+        bad_svc["gaming_session_controls"]["update_pause_services"].append({
+            "name": "ACE-CORE10405",
+            "target_start_type": "Manual",
+            "stop_running": True,
+        })
+        with self.assertRaisesRegex(ValueError, "whitelist violation"):
+            runner.validate_profile(bad_svc)
+
+        # Reject Disabled start type in update_pause_services (must be Manual)
+        bad_mode = copy.deepcopy(profile)
+        bad_mode["gaming_session_controls"]["update_pause_services"][0]["target_start_type"] = "Disabled"
+        with self.assertRaisesRegex(ValueError, "Manual"):
+            runner.validate_profile(bad_mode)
+
+        # Reject unsafe pagefile bounds
+        bad_pf = copy.deepcopy(profile)
+        bad_pf["gaming_session_controls"]["pagefile"]["initial_size_mb"] = 512
+        with self.assertRaisesRegex(ValueError, "pagefile"):
+            runner.validate_profile(bad_pf)
+
+        # Reject invalid memory_compression or Win32PrioritySeparation
+        bad_mc = copy.deepcopy(profile)
+        bad_mc["gaming_session_controls"]["cpu_and_memory_tuning"]["memory_compression"] = "invalid"
+        with self.assertRaisesRegex(ValueError, "memory_compression"):
+            runner.validate_profile(bad_mc)
+
+        bad_prio = copy.deepcopy(profile)
+        bad_prio["gaming_session_controls"]["cpu_and_memory_tuning"]["win32_priority_separation"] = 999
+        with self.assertRaisesRegex(ValueError, "win32_priority_separation"):
+            runner.validate_profile(bad_prio)
 
 
 if __name__ == "__main__":

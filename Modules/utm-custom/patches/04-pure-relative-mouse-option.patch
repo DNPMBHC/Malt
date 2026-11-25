@@ -1,0 +1,54 @@
+diff --git a/Configuration/UTMQemuConfiguration+Arguments.swift b/Configuration/UTMQemuConfiguration+Arguments.swift
+index eec2af0..fab94cb 100644
+--- a/Configuration/UTMQemuConfiguration+Arguments.swift
++++ b/Configuration/UTMQemuConfiguration+Arguments.swift
+@@ -1110,7 +1110,10 @@ import Virtualization // for getting network interfaces
+         } else {
+             f("-usb")
+         }
+-        if !isClassicMacNewWorld {
++        let pureRelativeMouse = input.isPureRelativeMouse
++            || CommandLine.arguments.contains("--pure-relative-mouse")
++            || ProcessInfo.processInfo.environment["UTM_PURE_RELATIVE_MOUSE"] == "1"
++        if !isClassicMacNewWorld && !pureRelativeMouse {
+             f("-device")
+             f("usb-tablet,bus=usb-bus.0")
+         }
+diff --git a/Configuration/UTMQemuConfigurationInput.swift b/Configuration/UTMQemuConfigurationInput.swift
+index 1b581fb..54e66bf 100644
+--- a/Configuration/UTMQemuConfigurationInput.swift
++++ b/Configuration/UTMQemuConfigurationInput.swift
+@@ -26,11 +26,15 @@ struct UTMQemuConfigurationInput: Codable {
+     
+     /// The maximum number of USB devices that can be forwarded concurrently.
+     var maximumUsbShare: Int = 3
++
++    /// When enabled, omit QEMU's absolute `usb-tablet` device and keep only relative `usb-mouse` + `usb-kbd`.
++    var isPureRelativeMouse: Bool = false
+     
+     enum CodingKeys: String, CodingKey {
+         case usbBusSupport = "UsbBusSupport"
+         case hasUsbSharing = "UsbSharing"
+         case maximumUsbShare = "MaximumUsbShare"
++        case isPureRelativeMouse = "PureRelativeMouse"
+     }
+     
+     init() {
+@@ -41,6 +45,7 @@ struct UTMQemuConfigurationInput: Codable {
+         usbBusSupport = try values.decode(QEMUUSBBus.self, forKey: .usbBusSupport)
+         hasUsbSharing = try values.decode(Bool.self, forKey: .hasUsbSharing)
+         maximumUsbShare = try values.decode(Int.self, forKey: .maximumUsbShare)
++        isPureRelativeMouse = try values.decodeIfPresent(Bool.self, forKey: .isPureRelativeMouse) ?? false
+     }
+     
+     func encode(to encoder: Encoder) throws {
+@@ -48,6 +53,9 @@ struct UTMQemuConfigurationInput: Codable {
+         try container.encode(usbBusSupport, forKey: .usbBusSupport)
+         try container.encode(hasUsbSharing, forKey: .hasUsbSharing)
+         try container.encode(maximumUsbShare, forKey: .maximumUsbShare)
++        if isPureRelativeMouse {
++            try container.encode(isPureRelativeMouse, forKey: .isPureRelativeMouse)
++        }
+     }
+ }
+ 

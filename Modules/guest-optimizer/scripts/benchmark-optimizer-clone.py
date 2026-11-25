@@ -39,8 +39,14 @@ HARD_PROTECTED_SERVICES = frozenset({
     "securityhealthservice", "sense", "systemeventsbroker", "tbs",
     "trustedinstaller", "usermanager", "vaultsvc", "virtiofssvc", "windefend",
     "winmgmt", "audiosrv", "audioendpointbuilder", "wuauserv",
-    "vgc", "vgk", "ace-base", "ace-game", "anticheatexpert service",
-    "anticheatexpert protection", "easyanticheat", "easyanticheat_eos", "beservice",
+    "vgc", "vgk", "ace-base", "ace-game", "ace-core10405", "ace-core20405",
+    "anticheatexpert", "anticheatexpert service",
+    "anticheatexpert protection", "easyanticheat", "easyanticheat_eos",
+    "easyanticheat_eossys", "beservice",
+})
+
+ALLOWED_UPDATE_PAUSE_SERVICES = frozenset({
+    "wuauserv", "usosvc", "bits", "trustedinstaller",
 })
 
 HARD_PROTECTED_APPX_PREFIXES = (
@@ -226,6 +232,60 @@ def validate_profile(profile: dict[str, Any]) -> None:
             raise ValueError(f"whitelist violation: forbidden security registry path '{path}'")
         if kind not in ("DWord", "String", "QWord"):
             raise ValueError(f"unsupported registry kind '{kind}'")
+
+    gaming_controls = profile.get("gaming_session_controls")
+    if gaming_controls is not None:
+        if not isinstance(gaming_controls, dict):
+            raise ValueError("gaming_session_controls must be an object")
+
+        locale_cfg = gaming_controls.get("locale_and_ime")
+        if locale_cfg is not None:
+            if not isinstance(locale_cfg, dict) or type(locale_cfg.get("enabled")) is not bool:
+                raise ValueError("gaming_session_controls.locale_and_ime requires boolean enabled")
+            langs = locale_cfg.get("preferred_languages", [])
+            if not isinstance(langs, list) or not all(isinstance(x, str) and x.strip() for x in langs):
+                raise ValueError("locale_and_ime.preferred_languages must be a list of non-empty strings")
+
+        seen_pause: set[str] = set()
+        for entry in gaming_controls.get("update_pause_services", []):
+            if not isinstance(entry, dict):
+                raise ValueError("update_pause_services entry must be an object")
+            name = entry.get("name")
+            if not isinstance(name, str) or not name.strip():
+                raise ValueError("update_pause_services service name must be a non-empty string")
+            lowered = name.lower()
+            if lowered not in ALLOWED_UPDATE_PAUSE_SERVICES:
+                raise ValueError(f"whitelist violation: '{name}' is not allowed in update_pause_services")
+            if lowered in seen_pause:
+                raise ValueError(f"duplicate update_pause_services entry '{name}'")
+            seen_pause.add(lowered)
+            if entry.get("target_start_type") != "Manual":
+                raise ValueError(f"update_pause_services '{name}' must use target_start_type='Manual'")
+            if type(entry.get("stop_running")) is not bool:
+                raise ValueError(f"update_pause_services '{name}' stop_running must be boolean")
+
+        pagefile = gaming_controls.get("pagefile")
+        if pagefile is not None:
+            if not isinstance(pagefile, dict) or type(pagefile.get("enabled")) is not bool:
+                raise ValueError("gaming_session_controls.pagefile requires boolean enabled")
+            init_mb = pagefile.get("initial_size_mb")
+            max_mb = pagefile.get("maximum_size_mb")
+            if type(init_mb) is not int or type(max_mb) is not int:
+                raise ValueError("pagefile sizes must be integers")
+            if init_mb < 4096 or max_mb < init_mb or max_mb > 32768:
+                raise ValueError("pagefile size out of safe bounds (4096 <= initial <= maximum <= 32768)")
+
+        cpu_mem = gaming_controls.get("cpu_and_memory_tuning")
+        if cpu_mem is not None:
+            if not isinstance(cpu_mem, dict):
+                raise ValueError("cpu_and_memory_tuning must be an object")
+            if cpu_mem.get("power_plan") not in ("HighPerformance", "Balanced"):
+                raise ValueError("cpu_and_memory_tuning.power_plan must be HighPerformance or Balanced")
+            prio = cpu_mem.get("win32_priority_separation")
+            if type(prio) is not int or prio < 0 or prio > 0x3F:
+                raise ValueError("win32_priority_separation must be an integer in 0..63")
+            if cpu_mem.get("memory_compression") not in ("preserve", "disable"):
+                raise ValueError("memory_compression must be 'preserve' or 'disable'")
 
 
 def assert_clone_vm_safe(target_vm_id: str, primary_vm_id: str) -> None:

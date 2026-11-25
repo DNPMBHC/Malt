@@ -1,63 +1,256 @@
 diff --git a/Platform/macOS/AppDelegate.swift b/Platform/macOS/AppDelegate.swift
-index 78f1d08..c2581a1 100644
+index 78f1d08..527c071 100644
 --- a/Platform/macOS/AppDelegate.swift
 +++ b/Platform/macOS/AppDelegate.swift
-@@ -319,12 +319,37 @@ enum UTMQuitPolicy: Int {
-         NSApp.scriptingDelegate = self
-     }
-     
+@@ -39,6 +39,71 @@ enum UTMQuitPolicy: Int {
+     private var powerDownAttemptID: UUID?
+     private var isPowerDownRequestComplete = false
+     private var arePowerDownCandidatesStopped = false
 +    private var gameShellStopObserver: AnyCancellable?
++    private var gameShellHasStarted = false
 +
-+    private static var requestedGameShellVMUUID: UUID? {
-+        guard let idx = CommandLine.arguments.firstIndex(of: "--game-shell-vm"),
-+              idx + 1 < CommandLine.arguments.count else {
-+            return nil
++    private static var requestedGameShellTarget: String? {
++        if let idx = CommandLine.arguments.firstIndex(of: "--game-shell-vm"),
++           idx + 1 < CommandLine.arguments.count {
++            return CommandLine.arguments[idx + 1]
 +        }
-+        return UUID(uuidString: CommandLine.arguments[idx + 1])
++        if let env = ProcessInfo.processInfo.environment["UTM_GAME_SHELL_VM"], !env.isEmpty {
++            return env
++        }
++        return nil
 +    }
 +
-     func applicationDidFinishLaunching(_ notification: Notification) {
-         CapsLockRemapper.shared.recoverAtLaunch()
-         UTMAppleVirtualMachine.removeStaleDisposableOverlayDirectories()
-         if isDockIconHidden {
-             NSApp.setActivationPolicy(.accessory)
-         }
-+        if let targetID = Self.requestedGameShellVMUUID, let data = data {
-+            NSApp.windows.filter { $0.title == "UTM" || $0.identifier?.rawValue == "home" }.forEach { $0.close() }
-+            if let vm = data.virtualMachines.first(where: { $0.id == targetID }) {
-+                data.run(vm: vm)
-+                gameShellStopObserver = vm.$state
-+                    .dropFirst()
-+                    .filter { $0 == .stopped }
-+                    .prefix(1)
-+                    .sink { _ in
++    private func hideNonDisplayWindowsForGameShell(closeWindows: Bool) {
++        for window in NSApp.windows where !(window is VMDisplayWindow) {
++            window.orderOut(nil)
++            if closeWindows {
++                window.close()
++            }
++        }
++    }
++
++    private func launchGameShellVM(target: String, data: UTMData) {
++        hideNonDisplayWindowsForGameShell(closeWindows: false)
++        Task { @MainActor [weak self] in
++            guard let self = self else { return }
++            var vm: VMData?
++            if let uuid = UUID(uuidString: target) {
++                vm = data.virtualMachines.first(where: { $0.id == uuid })
++                if vm == nil {
++                    await data.listRefresh()
++                    vm = data.virtualMachines.first(where: { $0.id == uuid })
++                }
++            }
++            if vm == nil {
++                let candidateURL = URL(fileURLWithPath: target)
++                if FileManager.default.fileExists(atPath: candidateURL.path) {
++                    vm = try? VMData(url: candidateURL)
++                }
++            }
++            guard let resolvedVM = vm else {
++                NSLog("[UTM-Custom] Game shell target not found: %@", target)
++                return
++            }
++            NSLog("[UTM-Custom] Launching game shell VM: %@", resolvedVM.id.uuidString)
++            self.gameShellHasStarted = false
++            data.run(vm: resolvedVM)
++            self.hideNonDisplayWindowsForGameShell(closeWindows: true)
++            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
++                self?.hideNonDisplayWindowsForGameShell(closeWindows: true)
++            }
++            self.gameShellStopObserver = resolvedVM.$state
++                .sink { [weak self] state in
++                    guard let self = self else { return }
++                    if state == .started {
++                        self.gameShellHasStarted = true
++                    } else if self.gameShellHasStarted {
 +                        DispatchQueue.main.async {
 +                            NSApp.terminate(nil)
 +                        }
 +                    }
-+            }
++                }
++        }
++    }
+     
+     private var runningVirtualMachines: [VMData] {
+         guard let vmList = data?.vmWindows.keys else {
+@@ -73,13 +138,19 @@ enum UTMQuitPolicy: Int {
+     }
+     
+     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+-        !isKeepRunningAfterLastWindowClosed && runningVirtualMachines.isEmpty
++        if Self.requestedGameShellTarget != nil && !gameShellHasStarted {
++            return false
++        }
++        return !isKeepRunningAfterLastWindowClosed && runningVirtualMachines.isEmpty
+     }
+     
+     func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
+         guard let data = data else {
+             return .terminateNow
+         }
++        if Self.requestedGameShellTarget != nil && runningVirtualMachines.isEmpty {
++            return .terminateNow
++        }
+         guard !isNoQuitConfirmation else {
+             return .terminateNow
+         }
+@@ -325,6 +396,9 @@ enum UTMQuitPolicy: Int {
+         if isDockIconHidden {
+             NSApp.setActivationPolicy(.accessory)
+         }
++        if let target = Self.requestedGameShellTarget, let data = data {
++            launchGameShellVM(target: target, data: data)
 +        }
      }
      
      func application(_ sender: NSApplication, delegateHandlesKey key: String) -> Bool {
 diff --git a/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift b/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
-index 1e4c926..79874ae 100644
+index 1e4c926..720b611 100644
 --- a/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
 +++ b/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
-@@ -127,6 +127,16 @@ class VMDisplayQemuMetalWindowController: VMDisplayQemuWindowController {
-         if isSecondary && isDisplaySizeDynamic, let window = window {
-             restoreDynamicResolution(for: window)
+@@ -72,6 +72,19 @@ class VMDisplayQemuMetalWindowController: VMDisplayQemuWindowController {
+     @Setting("IsNumLockForced") private var isNumLockForced: Bool = false
+     @Setting("InvertScroll") private var isInvertScroll: Bool = false
+     @Setting("QEMURendererFPSLimit") private var rendererFpsLimit: Int = 0
++
++    private var isGameShellMode: Bool {
++        CommandLine.arguments.contains("--game-shell-vm")
++            || ProcessInfo.processInfo.environment["UTM_GAME_SHELL_VM"] != nil
++    }
++
++    private var shouldAutoCaptureInShellOrRelativeMode: Bool {
++        isGameShellMode
++            || CommandLine.arguments.contains("--pure-relative-mouse")
++            || ProcessInfo.processInfo.environment["UTM_PURE_RELATIVE_MOUSE"] == "1"
++    }
++
++    private var hasEnteredGameShellFullScreen: Bool = false
+     
+     // MARK: - Init
+     
+@@ -92,6 +105,14 @@ class VMDisplayQemuMetalWindowController: VMDisplayQemuWindowController {
+             return
          }
-+        if CommandLine.arguments.contains("--game-shell-vm"), let window = window {
+         displayView.addSubview(metalView)
++        if isGameShellMode, let window = window {
 +            window.toolbar?.isVisible = false
 +            window.titleVisibility = .hidden
 +            window.titlebarAppearsTransparent = true
-+            if !window.styleMask.contains(.fullScreen) {
-+                DispatchQueue.main.async {
-+                    window.toggleFullScreen(nil)
-+                }
++            window.styleMask.insert(.fullSizeContentView)
++            window.backgroundColor = .black
++            metalView.clearColor = MTLClearColor(red: 0, green: 0, blue: 0, alpha: 1)
++        }
+         (window as? VMDisplayWindow)?.isCameraHousingAreaAllowed = true
+         renderer = CSMetalRenderer.init(metalKitView: metalView)
+         guard let renderer = self.renderer else {
+@@ -192,6 +213,16 @@ class VMDisplayQemuMetalWindowController: VMDisplayQemuWindowController {
+             link.isPaused = false
+         }
+         setControl(.resize, isEnabled: false) // disable item
++        if isGameShellMode && !hasEnteredGameShellFullScreen,
++           let window = window,
++           !window.styleMask.contains(.fullScreen) {
++            hasEnteredGameShellFullScreen = true
++            DispatchQueue.main.async {
++                window.makeKeyAndOrderFront(nil)
++                NSApp.activate(ignoringOtherApps: true)
++                window.toggleFullScreen(nil)
 +            }
 +        }
- 
-         super.windowDidLoad()
+         if isWindowFocusAutoCapture {
+             captureMouse()
+         }
+@@ -408,7 +439,14 @@ extension VMDisplayQemuMetalWindowController {
+         let targetContentSize = window.contentRect(forFrameRect: CGRect(origin: .zero, size: frameSize)).size
+         let targetScaleX = targetContentSize.width * currentScreenScale / displaySize.width
+         let targetScaleY = targetContentSize.height * currentScreenScale / displaySize.height
+-        let targetScale = min(targetScaleX, targetScaleY)
++        let fillScale = isGameShellMode && ProcessInfo.processInfo.environment["UTM_GAME_SHELL_FILL_SCALE"] == "1"
++        var targetScale = fillScale ? max(targetScaleX, targetScaleY) : min(targetScaleX, targetScaleY)
++        if isGameShellMode {
++            let nearestInt = round(targetScale)
++            if nearestInt >= 1.0 && abs(targetScale - nearestInt) < 0.02 {
++                targetScale = nearestInt
++            }
++        }
+         let scaledSize = CGSize(width: displaySize.width * targetScale / currentScreenScale, height: displaySize.height * targetScale / currentScreenScale)
+         let targetFrameSize = window.frameRect(forContentRect: CGRect(origin: .zero, size: scaledSize)).size
+         renderer.viewportScale = targetScale
+@@ -475,13 +513,22 @@ extension VMDisplayQemuMetalWindowController {
+     
+     func windowDidEnterFullScreen(_ notification: Notification) {
+         isFullScreen = true
+-        if isFullScreenAutoCapture {
++        if let window = window, displaySize != .zero {
++            _ = updateHostScaling(for: window, frameSize: window.frame.size)
++        }
++        if isGameShellMode {
++            NSApp.presentationOptions = [.fullScreen, .autoHideMenuBar, .autoHideDock]
++        }
++        if isFullScreenAutoCapture || shouldAutoCaptureInShellOrRelativeMode {
+             captureMouse()
+         }
      }
+     
+     func windowDidExitFullScreen(_ notification: Notification) {
+         isFullScreen = false
++        if isGameShellMode {
++            NSApp.presentationOptions = []
++        }
+         if isFullScreenAutoCapture {
+             releaseMouse()
+         }
+@@ -491,8 +538,15 @@ extension VMDisplayQemuMetalWindowController {
+         // Do not capture mouse if user did not clicked inside the metalView because the window will be draged if user hold the mouse button.
+         guard let window = window,
+               window.mouseLocationOutsideOfEventStream.y < metalView.frame.height,
+-              captureMouseToolbarButton.state == .off,
+-              isWindowFocusAutoCapture else {
++              captureMouseToolbarButton.state == .off else {
++            return
++        }
++        if shouldAutoCaptureInShellOrRelativeMode || (isGameShellMode && wasCapturedBeforeDeactivate) {
++            wasCapturedBeforeDeactivate = false
++            captureMouse()
++            return
++        }
++        guard isWindowFocusAutoCapture else {
+             return
+         }
+         captureMouse()
+@@ -503,6 +557,9 @@ extension VMDisplayQemuMetalWindowController {
+     }
+     
+     override func windowDidBecomeKey(_ notification: Notification) {
++        if isGameShellMode && isFullScreen {
++            NSApp.presentationOptions = [.fullScreen, .autoHideMenuBar, .autoHideDock]
++        }
+         if isFullScreen && isFullScreenAutoCapture {
+             captureMouse()
+         }
+@@ -510,6 +567,9 @@ extension VMDisplayQemuMetalWindowController {
+     }
+     
+     override func windowDidResignKey(_ notification: Notification) {
++        if isGameShellMode {
++            NSApp.presentationOptions = []
++        }
+         releaseMouse()
+         super.windowDidResignKey(notification)
+     }
+diff --git a/Platform/macOS/Display/VMDisplayWindowController.swift b/Platform/macOS/Display/VMDisplayWindowController.swift
+index ea82729..8cc5bf6 100644
+--- a/Platform/macOS/Display/VMDisplayWindowController.swift
++++ b/Platform/macOS/Display/VMDisplayWindowController.swift
+@@ -442,6 +442,10 @@ class VMDisplayWindowController: NSWindowController, UTMVirtualMachineDelegate {
+ extension VMDisplayWindowController: NSWindowDelegate {
+     func window(_ window: NSWindow, willUseFullScreenPresentationOptions proposedOptions: NSApplication.PresentationOptions = []) -> NSApplication.PresentationOptions {
+         var options = proposedOptions.union([.autoHideToolbar])
++        if CommandLine.arguments.contains("--game-shell-vm")
++            || ProcessInfo.processInfo.environment["UTM_GAME_SHELL_VM"] != nil {
++            options.formUnion([.fullScreen, .autoHideMenuBar, .autoHideDock])
++        }
+         if #available(macOS 27, *) {
+             // the guest owns the whole screen, so its corners should not trigger Hot Corners on the host
+             options.insert(.disableScreenCornerInteractions)
