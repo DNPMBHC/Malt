@@ -1,0 +1,38 @@
+{
+  "engine": "d3dmetal",
+  "engine_digests": {
+    "d3dmetal_d3d11_dll": "05fa6f700fb5ee5561dc3a46d98f0aed845d4fa8ab274bff1dc604b0b3f6edd1",
+    "d3dmetal_dxgi_dll": "249711d3d786a9b0bb7c3558f36e472ab07ee21b8dbf118e34c975046832f9a2",
+    "d3dmetal_libd3dshared_dylib": "66005073540dc91001ea11685160a71e302bfd79c2ee7b9fe5be560ae17621e2",
+    "dxmt_d3d11_dll": "1cbe930e2370c4382ac4b435faf8cc563943324cfade33380cc6de0b8d94d801",
+    "dxmt_dxgi_dll": "3831a078756a054027413e0c9c901a28a0a57a8dd3f327d3e2fb41a8616d251c",
+    "dxmt_winemetal_dll": "39e5cfb3ac9b93976c9fc48e215c14b90f626e1b0bcf677b6eef1fb6e3fabf26",
+    "dxmt_winemetal_so": "76843f2ab3226a9c7dc107c9d4d9ace9593ec7210edf9e74d5a6cf146384c52a",
+    "dxvk_d3d11_dll": "7a0442591dfee7e3729d26a598d3b490f917fbe8ebf9da3bb75410e8d095d302",
+    "moltenvk_dylib": "952ef0be316e7a8694781ac8d68d4dccca403ef0710854c608414449e317de6e",
+    "wine": "78010eb35647a71f2e6995f295215b99e919dee2450f28990e8a13b32b21b607"
+  },
+  "engine_versions": {
+    "d3dmetal": "Apple GPTK 4.0-1",
+    "dxmt": "dxmt-v0.80 (dxmt-wine-builtin-7641370)",
+    "dxvk": "dxvk-1.10.3 (cxaddon-1.10.3-1-25-g737aacd)",
+    "moltenvk": "MoltenVK-v1.2.1",
+    "wine": "wine-11.0-ge1cd80458f5"
+  },
+  "environment": "host-wine",
+  "fingerprint": {
+    "adapter_description": "AMD Compatibility Mode",
+    "adapter_flags": 0,
+    "adapter_software_flag": false,
+    "device_id": 26287,
+    "requested_driver_type": "hardware",
+    "selected_feature_level": "11_1",
+    "vendor_id": 4098,
+    "windows_session_id": 1
+  },
+  "metadata": "d3dmetal/metadata.json",
+  "metadata_sha256": "0b07a422f23a567ed225a17c24cd10131c5bdc9407ec4691a794fae47dc8e456",
+  "probe_binary_sha256": "09bb190bf5d763f9749345300b937728db886a4ec26c32c361a920c565cf1bee",
+  "probe_source_sha256": "11fc000464f0dcf98aec3044c4d956a2b74ce491fc4d69567bf252bbec64af74",
+  "session_semantics": "Wine ProcessIdToSessionId result, not a Windows desktop session"
+}

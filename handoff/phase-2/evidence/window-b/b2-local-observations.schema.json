@@ -1,0 +1,1290 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/my-project/b2-local-observations.schema.json",
+  "title": "B2 isolated and redacted local Guest observations",
+  "description": "Local measurements only. This dataset does not replace official public-document evidence or prove publisher support.",
+  "type": "object",
+  "$defs": {
+    "signature": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "unknown",
+            "not_sampled",
+            "valid",
+            "untrusted",
+            "invalid",
+            "unsigned",
+            "not_applicable"
+          ]
+        },
+        "verification_method": {
+          "enum": [
+            "not_sampled",
+            "Authenticode",
+            "WinVerifyTrust",
+            "SignTool",
+            "catalog_membership_and_trust"
+          ]
+        },
+        "signer_alias": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^(publisher-x|test-signer-x|unknown)$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "signature_digest_matches": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "native_error_code": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+          }
+        }
+      },
+      "required": [
+        "status",
+        "verification_method",
+        "signer_alias",
+        "signature_digest_matches",
+        "native_error_code",
+        "evidence_refs"
+      ],
+      "additionalProperties": false
+    },
+    "kernel_load": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "unknown",
+            "not_attempted",
+            "not_loaded",
+            "loaded",
+            "rejected"
+          ]
+        },
+        "source": {
+          "enum": [
+            "not_sampled",
+            "official_installer",
+            "scm_events",
+            "loaded_image_list",
+            "vendor_diagnostic"
+          ]
+        },
+        "service_present": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "kernel_driver_running": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "image_identity_verified": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "native_error_code": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "ntstatus": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^0x[0-9a-fA-F]{8}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "captured_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+          }
+        }
+      },
+      "required": [
+        "status",
+        "source",
+        "service_present",
+        "kernel_driver_running",
+        "image_identity_verified",
+        "native_error_code",
+        "ntstatus",
+        "captured_at",
+        "evidence_refs"
+      ],
+      "additionalProperties": false
+    },
+    "binary": {
+      "type": "object",
+      "properties": {
+        "binary_id": {
+          "type": "string",
+          "pattern": "^(driver|collector)-[0-9]{3}$"
+        },
+        "role": {
+          "enum": [
+            "self_probe_driver",
+            "self_probe_collector",
+            "vendor_driver"
+          ]
+        },
+        "artifact_alias": {
+          "type": "string",
+          "pattern": "^(module-x-probe|driver-[0-9]{3})\\.(sys|exe)$"
+        },
+        "size_bytes": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "file_version": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "pe_valid": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "pe_machine": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^0x[0-9a-fA-F]{4}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "architecture": {
+          "enum": [
+            "unknown",
+            "ARM64",
+            "AMD64",
+            "I386",
+            "ARM64EC",
+            "other"
+          ]
+        },
+        "embedded_signature": {
+          "$ref": "#/$defs/signature"
+        },
+        "catalog_signature": {
+          "$ref": "#/$defs/signature"
+        },
+        "kernel_load": {
+          "$ref": "#/$defs/kernel_load"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+          }
+        }
+      },
+      "required": [
+        "binary_id",
+        "role",
+        "artifact_alias",
+        "size_bytes",
+        "sha256",
+        "file_version",
+        "pe_valid",
+        "pe_machine",
+        "architecture",
+        "embedded_signature",
+        "catalog_signature",
+        "kernel_load",
+        "evidence_refs"
+      ],
+      "additionalProperties": false
+    },
+    "security_environment": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "not_sampled",
+            "observed",
+            "blocked"
+          ]
+        },
+        "captured_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "guest_cpu_architecture": {
+          "enum": [
+            "unknown",
+            "ARM64",
+            "AMD64",
+            "other"
+          ]
+        },
+        "guest_os_build": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "test_signing": {
+          "enum": [
+            "unknown",
+            "enabled",
+            "disabled",
+            "unavailable",
+            "not_supported"
+          ]
+        },
+        "secure_boot": {
+          "enum": [
+            "unknown",
+            "enabled",
+            "disabled",
+            "unavailable",
+            "not_supported"
+          ]
+        },
+        "tpm": {
+          "enum": [
+            "unknown",
+            "enabled",
+            "disabled",
+            "unavailable",
+            "not_supported"
+          ]
+        },
+        "vbs": {
+          "enum": [
+            "unknown",
+            "enabled",
+            "disabled",
+            "unavailable",
+            "not_supported"
+          ]
+        },
+        "hvci": {
+          "enum": [
+            "unknown",
+            "enabled",
+            "disabled",
+            "unavailable",
+            "not_supported"
+          ]
+        },
+        "hypervisor": {
+          "enum": [
+            "unknown",
+            "present",
+            "absent"
+          ]
+        },
+        "reboot_verified": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+          }
+        }
+      },
+      "required": [
+        "status",
+        "captured_at",
+        "guest_cpu_architecture",
+        "guest_os_build",
+        "test_signing",
+        "secure_boot",
+        "tpm",
+        "vbs",
+        "hvci",
+        "hypervisor",
+        "reboot_verified",
+        "evidence_refs"
+      ],
+      "additionalProperties": false
+    },
+    "assertions": {
+      "type": "object",
+      "properties": {
+        "device_control_succeeded": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "same_process_object": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "requestor_matches_current_context": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "child_pid_matched": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "create_observed": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "exit_observed": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "child_cleanup_complete": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unload_verified": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "expected_missing_image_failure": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "demand_start_preserved": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "real_reboot_verified": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "device_control_succeeded",
+        "same_process_object",
+        "requestor_matches_current_context",
+        "child_pid_matched",
+        "create_observed",
+        "exit_observed",
+        "child_cleanup_complete",
+        "unload_verified",
+        "expected_missing_image_failure",
+        "demand_start_preserved",
+        "real_reboot_verified"
+      ],
+      "additionalProperties": false
+    },
+    "stage": {
+      "type": "object",
+      "properties": {
+        "stage_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "load_state": {
+          "enum": [
+            "unknown",
+            "not_loaded",
+            "loaded"
+          ]
+        },
+        "native_error_code": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "bytes_returned": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "assertions": {
+          "$ref": "#/$defs/assertions"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+          }
+        }
+      },
+      "required": [
+        "stage_id",
+        "load_state",
+        "native_error_code",
+        "bytes_returned",
+        "assertions",
+        "evidence_refs"
+      ],
+      "additionalProperties": false
+    },
+    "lifecycle_phase": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "pending",
+            "in_progress",
+            "passed",
+            "failed",
+            "blocked",
+            "not_tested"
+          ]
+        },
+        "started_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "ended_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "assertions": {
+          "$ref": "#/$defs/assertions"
+        },
+        "stages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/stage"
+          }
+        },
+        "failure_summary": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+          }
+        }
+      },
+      "required": [
+        "status",
+        "started_at",
+        "ended_at",
+        "assertions",
+        "stages",
+        "failure_summary",
+        "evidence_refs"
+      ],
+      "additionalProperties": false
+    },
+    "commercial_state": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "enum": [
+            "unknown",
+            "not_tested",
+            "loaded",
+            "not_loaded",
+            "started",
+            "established",
+            "rejected"
+          ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+          }
+        }
+      },
+      "required": [
+        "value",
+        "evidence_refs"
+      ],
+      "additionalProperties": false
+    },
+    "finding": {
+      "type": "object",
+      "properties": {
+        "finding_id": {
+          "type": "string",
+          "pattern": "finding-[0-9]{3}$"
+        },
+        "category": {
+          "enum": [
+            "axis_1_architecture",
+            "axis_2_guest_policy",
+            "signing_or_code_integrity",
+            "toolchain",
+            "network",
+            "storage",
+            "installer_stage",
+            "no_driver_released",
+            "unknown"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "enum": [
+            "observed_binary_only",
+            "sampled_installer_stage_only",
+            "sampled_guest_only"
+          ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+          }
+        }
+      },
+      "required": [
+        "finding_id",
+        "category",
+        "summary",
+        "scope",
+        "evidence_refs"
+      ],
+      "additionalProperties": false
+    },
+    "attachment": {
+      "type": "object",
+      "properties": {
+        "evidence_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+        },
+        "artifact_alias": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*\\.(json|txt|md|png)$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "kind": {
+          "enum": [
+            "guest_environment",
+            "build",
+            "signature",
+            "lifecycle",
+            "installer",
+            "kernel_event",
+            "official_dialog",
+            "restoration",
+            "validation"
+          ]
+        },
+        "captured_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "redacted": {
+          "const": true
+        },
+        "privacy_review": {
+          "enum": [
+            "automated_text_review",
+            "manual_visual_review_completed"
+          ]
+        }
+      },
+      "required": [
+        "evidence_id",
+        "artifact_alias",
+        "sha256",
+        "kind",
+        "captured_at",
+        "redacted",
+        "privacy_review"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "report_id": {
+      "const": "b2-local-observations"
+    },
+    "captured_on": {
+      "type": "string",
+      "format": "date"
+    },
+    "timezone": {
+      "const": "Asia/Shanghai"
+    },
+    "source_kind": {
+      "const": "local_guest_observation"
+    },
+    "status": {
+      "enum": [
+        "pending",
+        "in_progress",
+        "partial",
+        "passed",
+        "completed_with_blockers",
+        "failed"
+      ]
+    },
+    "privacy": {
+      "type": "object",
+      "properties": {
+        "redacted": {
+          "const": true
+        },
+        "local_paths_omitted": {
+          "const": true
+        },
+        "personal_identifiers_omitted": {
+          "const": true
+        },
+        "pid_evidence_policy": {
+          "const": "derived_booleans_only"
+        },
+        "private_certificate_policy": {
+          "const": "neutral_alias_only"
+        }
+      },
+      "required": [
+        "redacted",
+        "local_paths_omitted",
+        "personal_identifiers_omitted",
+        "pid_evidence_policy",
+        "private_certificate_policy"
+      ],
+      "additionalProperties": false
+    },
+    "authorization_scope": {
+      "type": "object",
+      "properties": {
+        "own_probe_test_signing": {
+          "const": true
+        },
+        "official_installer_sampling": {
+          "const": true
+        },
+        "hardware_spoofing": {
+          "const": false
+        },
+        "virtualization_hiding": {
+          "const": false
+        },
+        "accounts_used": {
+          "type": "boolean"
+        },
+        "protected_online_session_attempted": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "own_probe_test_signing",
+        "official_installer_sampling",
+        "hardware_spoofing",
+        "virtualization_hiding",
+        "accounts_used",
+        "protected_online_session_attempted"
+      ],
+      "additionalProperties": false
+    },
+    "security_environments": {
+      "type": "object",
+      "properties": {
+        "before": {
+          "$ref": "#/$defs/security_environment"
+        },
+        "test": {
+          "$ref": "#/$defs/security_environment"
+        },
+        "restored": {
+          "$ref": "#/$defs/security_environment"
+        }
+      },
+      "required": [
+        "before",
+        "test",
+        "restored"
+      ],
+      "additionalProperties": false
+    },
+    "self_probe": {
+      "type": "object",
+      "properties": {
+        "build_status": {
+          "enum": [
+            "pending",
+            "in_progress",
+            "passed",
+            "failed",
+            "blocked",
+            "not_tested"
+          ]
+        },
+        "protocol_version": {
+          "const": 2
+        },
+        "report_schema_version": {
+          "const": 2
+        },
+        "binaries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/binary"
+          }
+        },
+        "lifecycle": {
+          "type": "object",
+          "properties": {
+            "cycle": {
+              "$ref": "#/$defs/lifecycle_phase"
+            },
+            "before_reboot": {
+              "$ref": "#/$defs/lifecycle_phase"
+            },
+            "after_reboot": {
+              "$ref": "#/$defs/lifecycle_phase"
+            }
+          },
+          "required": [
+            "cycle",
+            "before_reboot",
+            "after_reboot"
+          ],
+          "additionalProperties": false
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+          }
+        }
+      },
+      "required": [
+        "build_status",
+        "protocol_version",
+        "report_schema_version",
+        "binaries",
+        "lifecycle",
+        "evidence_refs"
+      ],
+      "additionalProperties": false
+    },
+    "commercial_sample": {
+      "type": "object",
+      "properties": {
+        "target_alias": {
+          "const": "target-cn"
+        },
+        "installer_alias": {
+          "const": "installer-x.exe"
+        },
+        "installer_version": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "installer_sha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "installation_status": {
+          "enum": [
+            "pending",
+            "in_progress",
+            "passed",
+            "failed",
+            "blocked",
+            "not_tested"
+          ]
+        },
+        "started_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "ended_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "restored_baseline_verified": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "official_dialog_summary": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "driver_binaries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/binary"
+          }
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+          }
+        }
+      },
+      "required": [
+        "target_alias",
+        "installer_alias",
+        "installer_version",
+        "installer_sha256",
+        "installation_status",
+        "started_at",
+        "ended_at",
+        "restored_baseline_verified",
+        "official_dialog_summary",
+        "driver_binaries",
+        "evidence_refs"
+      ],
+      "additionalProperties": false
+    },
+    "attribution": {
+      "type": "object",
+      "properties": {
+        "axis_1_native_driver_distribution": {
+          "enum": [
+            "unknown",
+            "observed_arm64_in_sample",
+            "observed_amd64_only_in_sample",
+            "no_driver_released_in_sample"
+          ]
+        },
+        "axis_2_guest_policy": {
+          "enum": [
+            "unknown",
+            "explicit_rejection_observed",
+            "no_rejection_observed_at_sampled_stage"
+          ]
+        },
+        "signing_or_code_integrity_issue": {
+          "enum": [
+            "unknown",
+            "observed",
+            "not_observed"
+          ]
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/finding"
+          }
+        }
+      },
+      "required": [
+        "axis_1_native_driver_distribution",
+        "axis_2_guest_policy",
+        "signing_or_code_integrity_issue",
+        "findings"
+      ],
+      "additionalProperties": false
+    },
+    "commercial_states": {
+      "type": "object",
+      "properties": {
+        "publisher_stance": {
+          "type": "object",
+          "properties": {
+            "permission": {
+              "enum": [
+                "unknown",
+                "allowed",
+                "prohibited"
+              ]
+            },
+            "support": {
+              "enum": [
+                "unknown",
+                "supported",
+                "not_supported",
+                "conflict"
+              ]
+            },
+            "official_claim_refs": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+              }
+            }
+          },
+          "required": [
+            "permission",
+            "support",
+            "official_claim_refs"
+          ],
+          "additionalProperties": false
+        },
+        "actual_driver_load": {
+          "$ref": "#/$defs/commercial_state"
+        },
+        "actual_game_start": {
+          "$ref": "#/$defs/commercial_state"
+        },
+        "actual_protected_online_session": {
+          "$ref": "#/$defs/commercial_state"
+        }
+      },
+      "required": [
+        "publisher_stance",
+        "actual_driver_load",
+        "actual_game_start",
+        "actual_protected_online_session"
+      ],
+      "additionalProperties": false
+    },
+    "five_dimension_status": {
+      "type": "object",
+      "properties": {
+        "code_implementation": {
+          "enum": [
+            "unknown",
+            "passed",
+            "failed"
+          ]
+        },
+        "local_synthetic_verification": {
+          "enum": [
+            "unknown",
+            "not_tested",
+            "passed",
+            "failed"
+          ]
+        },
+        "real_guest_verification": {
+          "enum": [
+            "pending",
+            "partial",
+            "passed",
+            "blocked",
+            "failed"
+          ]
+        },
+        "vendor_support": {
+          "enum": [
+            "unknown",
+            "supported",
+            "not_supported",
+            "conflict"
+          ]
+        },
+        "real_game_verification": {
+          "enum": [
+            "not_tested",
+            "partial",
+            "passed",
+            "blocked",
+            "failed"
+          ]
+        }
+      },
+      "required": [
+        "code_implementation",
+        "local_synthetic_verification",
+        "real_guest_verification",
+        "vendor_support",
+        "real_game_verification"
+      ],
+      "additionalProperties": false
+    },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/attachment"
+      }
+    },
+    "remaining_tasks": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "report_id",
+    "captured_on",
+    "timezone",
+    "source_kind",
+    "status",
+    "privacy",
+    "authorization_scope",
+    "security_environments",
+    "self_probe",
+    "commercial_sample",
+    "attribution",
+    "commercial_states",
+    "five_dimension_status",
+    "attachments",
+    "remaining_tasks",
+    "limitations"
+  ],
+  "additionalProperties": false
+}

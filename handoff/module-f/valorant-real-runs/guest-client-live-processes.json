@@ -1,0 +1,41 @@
+{
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-24T02:50:56.380687+00:00",
+  "processes": [
+    {
+      "pid": 6716,
+      "graphics_modules": [],
+      "alias": "exe-1",
+      "visible_window": false,
+      "responding": true,
+      "rss_bytes": 3055616,
+      "module_inventory": "available",
+      "cpu_seconds": 0.734375
+    },
+    {
+      "pid": 5228,
+      "graphics_modules": [
+        "dxgi.dll",
+        "d3d11.dll",
+        "neptune_umd.dll",
+        "neptune_umd_ec.DLL"
+      ],
+      "alias": "exe-3",
+      "visible_window": false,
+      "responding": true,
+      "rss_bytes": 15609856,
+      "module_inventory": "available",
+      "cpu_seconds": 0.875
+    },
+    {
+      "pid": 3816,
+      "graphics_modules": [],
+      "alias": "exe-4",
+      "visible_window": false,
+      "responding": true,
+      "rss_bytes": 440291328,
+      "module_inventory": "available",
+      "cpu_seconds": 978.171875
+    }
+  ]
+}

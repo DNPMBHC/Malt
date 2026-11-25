@@ -1,0 +1,94 @@
+{
+  "schema": "phase-2-window-d-gate-summary-v5",
+  "capturedAt": "2026-11-23T08:39:30+08:00",
+  "owner": "@DNPMBHC",
+  "window": "window-d",
+  "overallLocalGatePassed": true,
+  "overallPhase2EvidencePassed": true,
+  "overallPhase2RealWorldStatus": "all_3_windows_validated_commercial_game_blocked_arch",
+  "remotePhysicsBackendStatus": "frozen_green",
+  "fiveDimensionStatus": {
+    "codeImplementation": "passed",
+    "localSyntheticAndIsolatedVerification": "passed",
+    "realGuestOrWineVerification": "passed_on_self_owned_probes (Window A A2+M0/M1 verified; Window B native ARM64 driver lifecycle + commercial installer sampling observed_amd64_only_in_sample + Secure Boot restored; Window C Wine three-engine 18 runs/16,200 frames + M2 9-run cross-VM 18.847 vs 15.673 vs 7.096 FPS, 88 B cached frame, 0.881 ms Metal GPU)",
+    "vendorSupport": "blocked_arch_axis1_cn / unknown_axis2_cn / not_supported_riot_global_vm (module-f 42 sources / 45 claims)",
+    "realCommercialGameVerification": "not_tested_or_blocked_on_arm64_arch"
+  },
+  "gates": {
+    "build": {
+      "passed": true,
+      "gateProfile": "locked-cache-fast-gate",
+      "swiftTests": {
+        "total": 183,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 10,
+        "executed": 173,
+        "passed": 173
+      },
+      "strictSwiftLint": {
+        "filesChecked": 125,
+        "violations": 0
+      },
+      "globalGitUnchanged": true,
+      "lockfilesUnchanged": true,
+      "sourcesStableDuringRun": true,
+      "artifactSHA256": "916503777a03120a997c4b904cb354977564f51f72ac3ab1075434f63adb320f"
+    },
+    "cli": {
+      "passed": true,
+      "schema": "task-07-cli-v2",
+      "binarySHA256": "b61c7bbc73fc3ef792f62d830a9f6f80d03d83e8d69bd1c0ea88fd74e22bf9e2",
+      "integrityReportChecked": true,
+      "backendOptionExposed": true,
+      "savedArgumentOverrideEndToEnd": "synthetic_cli_verified",
+      "emptyOverrideRuntimeBranch": "synthetic_cli_verified"
+    },
+    "integration": {
+      "localStagesPassed": true,
+      "overallPassed": true,
+      "schema": "task-07-integration-v2",
+      "stageCount": 10,
+      "graphicsLabPythonTests": 152,
+      "anticheatHardeningAudit": "passed",
+      "compatibilityMatrixCompile": "passed",
+      "moduleACanonicalSymlinkConsistent": true,
+      "artifactSHA256": "8305dc8b36618824c1116a0172e35e381814f478be22cb4383126516dcf5b941"
+    },
+    "strictSwiftFormat": {
+      "passed": true,
+      "inputCount": 6,
+      "artifactSHA256": "b0a544588b1f2091116eba32ff86fa1ccd22729f0d7862632d894abadfba0037"
+    },
+    "phase2EvidenceValidator": {
+      "schema": "task-07-phase2-evidence-v2",
+      "passed": true,
+      "allWindowsHaveRealEvidence": true,
+      "completedWindowCount": 3,
+      "expectedWindowCount": 3,
+      "realByteDigestRecomputationEnabled": true,
+      "windowStatuses": {
+        "window-a": {
+          "status": "real_evidence_validated",
+          "realExecutionArtifacts": 14,
+          "verifiedEvidenceDigestCount": 17
+        },
+        "window-b": {
+          "status": "real_evidence_validated",
+          "realExecutionArtifacts": 2
+        },
+        "window-c": {
+          "status": "real_evidence_validated",
+          "realExecutionArtifacts": 15,
+          "verifiedEvidenceDigestCount": 144
+        }
+      },
+      "artifactSHA256": "92e16224be07ac38e5f6ec5274d7e23ddeadd92e00002ac4216d0ce0e1959fc2"
+    }
+  },
+  "devRestartScript": {
+    "path": "handoff/task-07/dev_restart.sh",
+    "syntaxAndUnitTestsPassed": true,
+    "liveStopAndRelaunchCycleVerified": true
+  }
+}

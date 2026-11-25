@@ -1,0 +1,42 @@
+{
+  "adapter_description": "Apple M4",
+  "adapter_enumeration_hresult": "0x00000000",
+  "adapter_flags": 0,
+  "adapter_get_desc1_hresult": "0x00000000",
+  "adapter_is_software": false,
+  "capture_frame": 0,
+  "capture_requested": false,
+  "command_every": 1,
+  "commands": 16,
+  "completion_mode": "submit-only",
+  "device_create_attempts": [
+    "0x00000000"
+  ],
+  "device_create_hresult": "0x00000000",
+  "device_id": 0,
+  "enumerated_adapters": [
+    {
+      "adapter_description": "Apple M4",
+      "adapter_flags": 0,
+      "adapter_is_software": false,
+      "device_id": 0,
+      "vendor_id": 4203
+    }
+  ],
+  "height": 720,
+  "offload_mode": "pixel-readback",
+  "requested_driver_type": "hardware",
+  "resource_bytes": 65536,
+  "resource_every": 1,
+  "resource_pattern": "legacy",
+  "schema_version": 1,
+  "seed": 1,
+  "selected_feature_level": "11_1",
+  "selected_feature_level_value": "0x0000b100",
+  "session_api_error": 0,
+  "session_api_success": true,
+  "transport_mode": "direct_present",
+  "vendor_id": 4203,
+  "width": 1280,
+  "windows_session_id": 1
+}

@@ -1,0 +1,58 @@
+{
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-24T05:03:00.794736+00:00",
+  "status": "experiments_sealed_with_commercial_evidence_gaps",
+  "A1": "official dual-end attempts and host retry archived; client freshness and commercial success not established",
+  "A2": "orthogonal mechanism analysis and bounded readonly architecture watcher delivered",
+  "A3": "five-way 15-round real stress baseline verified; no new performance measurement",
+  "unittest": {
+    "run": 220,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "safety": {
+    "production_sources": 127,
+    "negative_self_tests": 6,
+    "passed": true
+  },
+  "cleanup": {
+    "owner": "@DNPMBHC",
+    "status": "released",
+    "released_at": "2026-11-24T04:01:12.236415+00:00",
+    "verified_at": "2026-11-24T05:01:54.809818+00:00",
+    "next_window": "5C",
+    "isolated_clone_deleted": true,
+    "owned_runtime_deleted": true,
+    "host_only_runtime_cleanup_pending": false,
+    "shared_directory_disabled": true,
+    "writable_disks_contained": true,
+    "source_sha256_and_mtime_unchanged": true,
+    "source_status": "stopped",
+    "pre_delete_runtime_isolation": {
+      "source_registration_state": "stopped",
+      "source_runtime_absent_verified": true,
+      "all_hypervisor_workers_bound_to_owned_clone": true,
+      "root_pids": [],
+      "worker_count": 0,
+      "captured_at_utc": "2026-11-24T04:00:41.851549+00:00",
+      "method": "live executable inventory, package and UUID arguments, descendant binding"
+    },
+    "evidence_refs": [
+      "vm-source-before.json",
+      "vm-source-after.json",
+      "vm-cleanup-proof.json"
+    ]
+  },
+  "backup_preserved_and_unchanged": true,
+  "unresolved_acceptance": [
+    "Official latest API was sampled, but complete installed client online integrity verification was not captured",
+    "Main game natural exit code was not captured before controlled stop",
+    "No exact vendor error popup or independent vendor VM permission/support confirmation",
+    "No protected lobby or online match was verified"
+  ],
+  "manifest_ref": "delivery-manifest.json",
+  "cross_window_messages_sent_this_continuation": 0,
+  "privacy_passed": true,
+  "git_diff_check_exit_code": 0
+}

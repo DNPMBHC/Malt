@@ -1,0 +1,41 @@
+{
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-24T00:34:34.201395+00:00",
+  "volumes": [
+    {
+      "volume_alias": "volume-1",
+      "symlink": false,
+      "directory": true,
+      "read_errno": 13
+    },
+    {
+      "volume_alias": "volume-2",
+      "symlink": false,
+      "directory": true,
+      "top_level_children": 3,
+      "subdirectory_read_failure_errnos": [
+        1
+      ]
+    },
+    {
+      "volume_alias": "volume-3",
+      "symlink": true,
+      "directory": true,
+      "top_level_children": 22,
+      "subdirectory_read_failure_errnos": []
+    },
+    {
+      "volume_alias": "volume-4",
+      "symlink": false,
+      "directory": true,
+      "top_level_children": 1,
+      "subdirectory_read_failure_errnos": []
+    }
+  ],
+  "readonly_search_diagnostics": {
+    "operation_not_permitted_count": 1,
+    "permission_denied_count": 1,
+    "missing_path_count": 0
+  },
+  "private_paths_exported": false
+}

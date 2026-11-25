@@ -1,0 +1,92 @@
+{
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-24T02:09:13.421298+00:00",
+  "vm_handoff": {
+    "status": "held",
+    "own_clone_created": false,
+    "own_source_fingerprint_verified": false,
+    "latest_a_turn_status": "inProgress",
+    "external_mounts_detected": 1,
+    "external_volume_evidence": "external-volume-readiness.json",
+    "awaiting_external_volume_state": false,
+    "source_reverification_requested_from_5a": true,
+    "awaiting_original_source_verification": false,
+    "external_access_observed_from_a": "available",
+    "a_current_source_fingerprint_verified": true,
+    "a_clone_cleanup_verified": false,
+    "latest_live_check_ref": "a-dependency-check.json",
+    "historical_inventory_evidence": {
+      "packages_found": 0,
+      "captured_at_utc": "2026-11-24T00:33:45.343332+00:00"
+    }
+  },
+  "producer_handoff": {
+    "push_adapter_ready": true,
+    "producer_source_exists": true,
+    "producer_source_sha256": "c3ca4dc02721e8824bc315fc0c15b832eb1d954dcddf9dd1f8d4308e69b38b7f",
+    "observed_entry": "host_timer_calls_renderer_with_draw_count_and_frame_index",
+    "real_guest_application_scanout_confirmed": false,
+    "legal_guest_relative_hid_connected": false,
+    "signed_windows_vz_boot_supported": false,
+    "producer_contract_revision": 1,
+    "capabilities_source_sha256": "8c5b6da3c228213c2bf3abfa3a1812db7ed1fa2b3b7b1b6d17fd7f099e6065ae",
+    "origin": "host_synthetic_not_guest_scanout",
+    "capabilities_ref": "../p5-b/interface-capabilities.json"
+  },
+  "dpi_system_scale": {
+    "implemented": false,
+    "requested_actual_mismatch_reports": "unsupported",
+    "experiment_prepared": true,
+    "experiment_syntax_verified": true,
+    "experiment_helper_compiled": true,
+    "experiment_guest_executed": false,
+    "experiment_evidence": "dpi-experiment-readiness.json"
+  },
+  "app_handoff": {
+    "contract_revision": 2,
+    "production_sources_frozen": true,
+    "coordinator_proposal_written": true,
+    "coordination_messages_authorized": true,
+    "production_snapshot_revision": 3
+  },
+  "acceptance_complete": false,
+  "cross_module_graphics_interop": {
+    "passed": true,
+    "runs": 2,
+    "frames_consumed": 24,
+    "gpu_byte_exact_comparison": true,
+    "source_pixel_readback_used": false,
+    "native_fullscreen_verified": false,
+    "full_runtime_binary_verified": false,
+    "production_revision_2_unchanged": false,
+    "evidence": "module-bridge-roundtrip.json",
+    "production_snapshot_revision": 3,
+    "production_revision_matches_manifest": true
+  },
+  "complete_runtime_binary_interop": {
+    "passed": true,
+    "production_snapshot_revision": 3,
+    "frames_consumed": 24,
+    "runs": 2,
+    "source_subset_recompiled": false,
+    "evidence": "runtime-binary-roundtrip.json"
+  },
+  "native_host_fullscreen": {
+    "passed": true,
+    "production_snapshot_revision": 3,
+    "frames_presented": 24,
+    "runs": 2,
+    "checks_per_run": 32,
+    "input_capture_used": false,
+    "origin": "host_synthetic_not_guest_scanout",
+    "real_guest_verified": false,
+    "virtual_hid_verified": false,
+    "evidence": "native-fullscreen-probe.json"
+  },
+  "guest_runtime_probe": {
+    "build_passed": true,
+    "execution_enabled": false,
+    "cold_headless_start_verified": false,
+    "evidence": "guest-runtime-probe-readiness.json"
+  }
+}

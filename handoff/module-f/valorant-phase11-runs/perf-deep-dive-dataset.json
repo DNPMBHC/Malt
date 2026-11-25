@@ -1,0 +1,6895 @@
+{
+  "schema_version": 1,
+  "owner": "@DNPMBHC",
+  "dataset_purpose": "Phase 11 baseline deep-dive performance, stability, and anti-cheat dataset preserved for Phase 12+ optimization A/B comparisons",
+  "generated_at_utc": "2026-11-25T04:09:08.281196+00:00",
+  "target_game": {
+    "id": "target-cn",
+    "branch": "release-china-13.10",
+    "ci_version": "release-china-13.10-shipping-12-5804262",
+    "changelist": 5804262,
+    "rhi": "D3D11",
+    "gpu_adapter": "Red Hat VirtIO GPU 3D controller (VendorId 0x1af4, DeviceId 0x1050, FL 11_1, 8192 MiB Dedicated VRAM, 7166 MiB Texture Pool)",
+    "guest_os": "Windows 11 ARM64 24H2 (10.0.26100.1)",
+    "total_log_lines": 9234,
+    "stamped_log_lines": 7969,
+    "session_duration_seconds": 1519.85
+  },
+  "environment_config": {
+    "utm_build": "UTM-Custom.app (UTM v5.0.9 + 7 compliance patches, ad-hoc signed)",
+    "render_backend": "dxmt-native (QEMUDirectXDriver=2, NPT_BACKEND=dxmt)",
+    "dxmt_shader_cache_enabled": true,
+    "dxmt_shader_cache_final_bytes": 9284672,
+    "dxmt_shader_cache_files": [
+      "shaders_320.db",
+      "shaders_320.db-wal",
+      "shaders_320.db-shm",
+      "shaders_320.db-lock"
+    ],
+    "vm_vcpu": 6,
+    "vm_ram_mib": 8192,
+    "vm_balloon_disabled": true,
+    "vm_audio_device": "intel-hda + hda-duplex (High Definition Audio Device Status=OK)",
+    "vm_input_topology": [
+      "usb-mouse,bus=usb-bus.0",
+      "usb-kbd,bus=usb-bus.0"
+    ],
+    "vm_has_usb_tablet": false,
+    "vm_network_mode": "Emulated VLAN (QEMU user/slirp NAT, required under ad-hoc signing without com.apple.vm.networking entitlement)"
+  },
+  "milestones_timeline": [
+    {
+      "t_s": 0.0,
+      "event": "D3D11 RHI Init (viogpu3d FL 11_1, 8192 MB VRAM, Physical RAM 3871/8183 MB used)"
+    },
+    {
+      "t_s": 10.14,
+      "event": "Resolution changed to 853x640"
+    },
+    {
+      "t_s": 10.74,
+      "event": "Map Init Ready"
+    },
+    {
+      "t_s": 18.04,
+      "event": "Resolution changed to 1024x768"
+    },
+    {
+      "t_s": 29.3,
+      "event": "ACEManager initialized in 0.211s"
+    },
+    {
+      "t_s": 29.9,
+      "event": "First ACEManager_IssueAntiTick HTTP 200"
+    },
+    {
+      "t_s": 62.12,
+      "event": "MainMenuV2 Initial Ready"
+    },
+    {
+      "t_s": 102.83,
+      "event": "NPEV2 Tutorial Map Ready (1024x768)"
+    },
+    {
+      "t_s": 604.46,
+      "event": "NPEV2 Tutorial Map Complete: TRUE (500.44s, 35837 frames, 1301 Runtime PSO Creations, 0 PSO Hitches)"
+    },
+    {
+      "t_s": 619.85,
+      "event": "MainMenuV2 Main Lobby Ready"
+    },
+    {
+      "t_s": 830.0,
+      "event": "User switched resolution to 1920x1440"
+    },
+    {
+      "t_s": 914.59,
+      "event": "User switched resolution to 1920x1200"
+    },
+    {
+      "t_s": 958.19,
+      "event": "RangeV2 Shooting Range Map Ready (1920x1200)"
+    },
+    {
+      "t_s": 1498.64,
+      "event": "User ManualQuit from RangeV2 (540.45s / 9.0 min continuous session)"
+    },
+    {
+      "t_s": 1519.85,
+      "event": "Clean engine shutdown complete (0 crashes)"
+    }
+  ],
+  "npe_official_engine_telemetry": {
+    "source_log_category": "LogClientPerRoundTelemetryComponent",
+    "map": "NPEV2",
+    "resolution": "1024x768",
+    "rhi": "D3D11",
+    "total_time_seconds": 500.44,
+    "total_frames_measured": 35837,
+    "effective_mean_fps_from_frame_count": 71.61,
+    "avg_engine_latency_ms": 22.62,
+    "avg_work_ms": 19.69,
+    "avg_slop_ms": 0.48,
+    "avg_slack_ms": 2.45,
+    "runtime_pso_creations": 1301,
+    "runtime_pso_hitches": 0,
+    "engine_latency_histogram": {
+      "under_1fps": 7,
+      "1_to_10fps": 130,
+      "10_to_15fps": 227,
+      "15_to_30fps": 2236,
+      "30_to_45fps": 8695,
+      "45_to_60fps": 15886,
+      "60_to_90fps": 8621,
+      "90_to_120fps": 35,
+      "over_120fps": 0
+    },
+    "work_only_histogram": {
+      "under_1fps": 7,
+      "1_to_10fps": 80,
+      "10_to_15fps": 93,
+      "15_to_30fps": 966,
+      "30_to_45fps": 4812,
+      "45_to_60fps": 16151,
+      "60_to_90fps": 13320,
+      "90_to_120fps": 408,
+      "over_120fps": 0
+    },
+    "pct_frames_ge_45fps_engine_latency": 68.48,
+    "pct_frames_ge_60fps_engine_latency": 24.15,
+    "pct_frames_ge_60fps_work_only": 38.31
+  },
+  "phase_fps_summaries": {
+    "Init": {
+      "count": 17,
+      "mean_fps": 33.01,
+      "p50_fps": 19.65,
+      "p10_fps": 9.19,
+      "p5_fps": 4.18,
+      "p1_low_fps": 1.91,
+      "p95_fps": 94.04,
+      "min_fps": 1.34,
+      "max_fps": 133.74,
+      "mean_frame_time_ms": 96.36,
+      "p95_frame_time_ms": 312.85,
+      "p99_frame_time_ms": 659.59
+    },
+    "MainMenuV2_Initial": {
+      "count": 8,
+      "mean_fps": 33.83,
+      "p50_fps": 25.5,
+      "p10_fps": 1.63,
+      "p5_fps": 1.32,
+      "p1_low_fps": 1.07,
+      "p95_fps": 106.42,
+      "min_fps": 1.01,
+      "max_fps": 140.53,
+      "mean_frame_time_ms": 240.14,
+      "p95_frame_time_ms": 827.77,
+      "p99_frame_time_ms": 957.63
+    },
+    "NPEV2_Tutorial_1024x768": {
+      "count": 143,
+      "mean_fps": 61.34,
+      "p50_fps": 64.17,
+      "p10_fps": 34.63,
+      "p5_fps": 22.79,
+      "p1_low_fps": 5.73,
+      "p95_fps": 91.88,
+      "min_fps": 3.77,
+      "max_fps": 106.53,
+      "mean_frame_time_ms": 22.95,
+      "p95_frame_time_ms": 43.94,
+      "p99_frame_time_ms": 180.67
+    },
+    "MainMenuV2_Lobby": {
+      "count": 48,
+      "mean_fps": 102.31,
+      "p50_fps": 117.81,
+      "p10_fps": 34.29,
+      "p5_fps": 26.53,
+      "p1_low_fps": 12.03,
+      "p95_fps": 143.11,
+      "min_fps": 1.66,
+      "max_fps": 144.03,
+      "mean_frame_time_ms": 24.93,
+      "p95_frame_time_ms": 37.71,
+      "p99_frame_time_ms": 339.08
+    },
+    "RangeV2_1920x1200": {
+      "count": 242,
+      "mean_fps": 43.87,
+      "p50_fps": 48.82,
+      "p10_fps": 21.25,
+      "p5_fps": 16.6,
+      "p1_low_fps": 3.64,
+      "p95_fps": 61.26,
+      "min_fps": 2.42,
+      "max_fps": 66.71,
+      "mean_frame_time_ms": 31.74,
+      "p95_frame_time_ms": 60.24,
+      "p99_frame_time_ms": 276.8
+    },
+    "NPEV2_Pure_Active_Combat_gt30s": {
+      "count": 114,
+      "mean_fps": 63.03,
+      "p50_fps": 64.93,
+      "p10_fps": 41.32,
+      "p5_fps": 31.47,
+      "p1_low_fps": 11.37,
+      "p95_fps": 95.15,
+      "min_fps": 3.77,
+      "max_fps": 106.53,
+      "mean_frame_time_ms": 20.5,
+      "p95_frame_time_ms": 32.1,
+      "p99_frame_time_ms": 88.21
+    },
+    "RangeV2_Steady_gt30s": {
+      "count": 225,
+      "mean_fps": 44.24,
+      "p50_fps": 49.13,
+      "p10_fps": 21.28,
+      "p5_fps": 15.23,
+      "p1_low_fps": 3.53,
+      "p95_fps": 61.2,
+      "min_fps": 2.42,
+      "max_fps": 66.71,
+      "mean_frame_time_ms": 31.85,
+      "p95_frame_time_ms": 65.78,
+      "p99_frame_time_ms": 284.34
+    },
+    "RangeV2_Pure_Active_Combat_gt30s": {
+      "count": 183,
+      "mean_fps": 45.21,
+      "p50_fps": 49.63,
+      "p10_fps": 23.28,
+      "p5_fps": 20.36,
+      "p1_low_fps": 3.88,
+      "p95_fps": 61.14,
+      "min_fps": 2.42,
+      "max_fps": 65.89,
+      "mean_frame_time_ms": 30.16,
+      "p95_frame_time_ms": 49.11,
+      "p99_frame_time_ms": 258.61
+    },
+    "RangeV2_PostWarmup_Peak_Min8": {
+      "count": 34,
+      "mean_fps": 55.51,
+      "p50_fps": 58.44,
+      "p10_fps": 50.21,
+      "p5_fps": 42.42,
+      "p1_low_fps": 25.74,
+      "p95_fps": 61.86,
+      "min_fps": 20.58,
+      "max_fps": 63.2,
+      "mean_frame_time_ms": 18.79,
+      "p95_frame_time_ms": 23.87,
+      "p99_frame_time_ms": 41.66
+    },
+    "Overall_All_Phases": {
+      "count": 459,
+      "mean_fps": 54.87,
+      "p50_fps": 53.43,
+      "p10_fps": 21.2,
+      "p5_fps": 13.03,
+      "p1_low_fps": 2.83,
+      "p95_fps": 121.12,
+      "min_fps": 1.01,
+      "max_fps": 144.03,
+      "mean_frame_time_ms": 34.29,
+      "p95_frame_time_ms": 76.75,
+      "p99_frame_time_ms": 358.86
+    }
+  },
+  "npe_minute_by_minute": [
+    {
+      "minute_index": 1,
+      "start_s": 90.8,
+      "end_s": 150.8,
+      "critical_fps_drops_lt5": 9,
+      "settings_or_menu_log_events": 26,
+      "count": 21,
+      "mean_fps": 40.08,
+      "p50_fps": 41.15,
+      "p10_fps": 9.52,
+      "p5_fps": 6.99,
+      "p1_low_fps": 5.25,
+      "p95_fps": 84.34,
+      "min_fps": 4.81,
+      "max_fps": 91.89,
+      "mean_frame_time_ms": 42.74,
+      "p95_frame_time_ms": 143.06,
+      "p99_frame_time_ms": 194.93
+    },
+    {
+      "minute_index": 2,
+      "start_s": 150.8,
+      "end_s": 210.8,
+      "critical_fps_drops_lt5": 1,
+      "settings_or_menu_log_events": 0,
+      "count": 19,
+      "mean_fps": 63.79,
+      "p50_fps": 61.94,
+      "p10_fps": 42.93,
+      "p5_fps": 35.84,
+      "p1_low_fps": 34.66,
+      "p95_fps": 91.98,
+      "min_fps": 34.36,
+      "max_fps": 94.91,
+      "mean_frame_time_ms": 16.99,
+      "p95_frame_time_ms": 27.91,
+      "p99_frame_time_ms": 28.86
+    },
+    {
+      "minute_index": 3,
+      "start_s": 210.8,
+      "end_s": 270.8,
+      "critical_fps_drops_lt5": 0,
+      "settings_or_menu_log_events": 0,
+      "count": 10,
+      "mean_fps": 92.42,
+      "p50_fps": 91.56,
+      "p10_fps": 81.72,
+      "p5_fps": 77.21,
+      "p1_low_fps": 73.61,
+      "p95_fps": 105.01,
+      "min_fps": 72.71,
+      "max_fps": 106.53,
+      "mean_frame_time_ms": 10.94,
+      "p95_frame_time_ms": 13.0,
+      "p99_frame_time_ms": 13.6
+    },
+    {
+      "minute_index": 4,
+      "start_s": 270.8,
+      "end_s": 330.8,
+      "critical_fps_drops_lt5": 5,
+      "settings_or_menu_log_events": 0,
+      "count": 19,
+      "mean_fps": 51.7,
+      "p50_fps": 49.0,
+      "p10_fps": 13.53,
+      "p5_fps": 12.76,
+      "p1_low_fps": 11.46,
+      "p95_fps": 82.65,
+      "min_fps": 11.13,
+      "max_fps": 97.31,
+      "mean_frame_time_ms": 29.1,
+      "p95_frame_time_ms": 78.54,
+      "p99_frame_time_ms": 87.59
+    },
+    {
+      "minute_index": 5,
+      "start_s": 330.8,
+      "end_s": 390.8,
+      "critical_fps_drops_lt5": 0,
+      "settings_or_menu_log_events": 0,
+      "count": 13,
+      "mean_fps": 70.86,
+      "p50_fps": 68.97,
+      "p10_fps": 57.37,
+      "p5_fps": 53.54,
+      "p1_low_fps": 51.44,
+      "p95_fps": 89.92,
+      "min_fps": 50.92,
+      "max_fps": 95.6,
+      "mean_frame_time_ms": 14.47,
+      "p95_frame_time_ms": 18.71,
+      "p99_frame_time_ms": 19.45
+    },
+    {
+      "minute_index": 6,
+      "start_s": 390.8,
+      "end_s": 450.8,
+      "critical_fps_drops_lt5": 2,
+      "settings_or_menu_log_events": 0,
+      "count": 17,
+      "mean_fps": 60.08,
+      "p50_fps": 63.77,
+      "p10_fps": 47.18,
+      "p5_fps": 31.87,
+      "p1_low_fps": 9.39,
+      "p95_fps": 76.01,
+      "min_fps": 3.77,
+      "max_fps": 81.11,
+      "mean_frame_time_ms": 30.81,
+      "p95_frame_time_ms": 73.62,
+      "p99_frame_time_ms": 226.93
+    },
+    {
+      "minute_index": 7,
+      "start_s": 450.8,
+      "end_s": 510.8,
+      "critical_fps_drops_lt5": 2,
+      "settings_or_menu_log_events": 25,
+      "count": 10,
+      "mean_fps": 66.34,
+      "p50_fps": 65.06,
+      "p10_fps": 56.02,
+      "p5_fps": 50.91,
+      "p1_low_fps": 46.82,
+      "p95_fps": 80.65,
+      "min_fps": 45.8,
+      "max_fps": 81.27,
+      "mean_frame_time_ms": 15.5,
+      "p95_frame_time_ms": 19.88,
+      "p99_frame_time_ms": 21.44
+    },
+    {
+      "minute_index": 8,
+      "start_s": 510.8,
+      "end_s": 570.8,
+      "critical_fps_drops_lt5": 0,
+      "settings_or_menu_log_events": 0,
+      "count": 24,
+      "mean_fps": 66.72,
+      "p50_fps": 68.15,
+      "p10_fps": 58.56,
+      "p5_fps": 56.53,
+      "p1_low_fps": 55.66,
+      "p95_fps": 75.39,
+      "min_fps": 55.47,
+      "max_fps": 77.41,
+      "mean_frame_time_ms": 15.1,
+      "p95_frame_time_ms": 17.69,
+      "p99_frame_time_ms": 17.97
+    },
+    {
+      "minute_index": 9,
+      "start_s": 570.8,
+      "end_s": 604.5,
+      "critical_fps_drops_lt5": 0,
+      "settings_or_menu_log_events": 0,
+      "count": 10,
+      "mean_fps": 60.36,
+      "p50_fps": 56.88,
+      "p10_fps": 52.71,
+      "p5_fps": 47.38,
+      "p1_low_fps": 43.12,
+      "p95_fps": 73.52,
+      "min_fps": 42.06,
+      "max_fps": 74.71,
+      "mean_frame_time_ms": 17.02,
+      "p95_frame_time_ms": 21.43,
+      "p99_frame_time_ms": 23.31
+    }
+  ],
+  "range_minute_by_minute": [
+    {
+      "minute_index": 1,
+      "start_s": 958.2,
+      "end_s": 1018.2,
+      "critical_fps_drops_lt5": 6,
+      "settings_or_menu_log_events": 8,
+      "count": 28,
+      "mean_fps": 40.56,
+      "p50_fps": 46.61,
+      "p10_fps": 24.23,
+      "p5_fps": 19.03,
+      "p1_low_fps": 7.01,
+      "p95_fps": 54.37,
+      "min_fps": 3.39,
+      "max_fps": 61.57,
+      "mean_frame_time_ms": 36.14,
+      "p95_frame_time_ms": 53.82,
+      "p99_frame_time_ms": 231.43
+    },
+    {
+      "minute_index": 2,
+      "start_s": 1018.2,
+      "end_s": 1078.2,
+      "critical_fps_drops_lt5": 6,
+      "settings_or_menu_log_events": 51,
+      "count": 21,
+      "mean_fps": 31.32,
+      "p50_fps": 31.22,
+      "p10_fps": 11.65,
+      "p5_fps": 7.94,
+      "p1_low_fps": 3.52,
+      "p95_fps": 46.59,
+      "min_fps": 2.42,
+      "max_fps": 53.25,
+      "mean_frame_time_ms": 57.03,
+      "p95_frame_time_ms": 125.94,
+      "p99_frame_time_ms": 355.77
+    },
+    {
+      "minute_index": 3,
+      "start_s": 1078.2,
+      "end_s": 1138.2,
+      "critical_fps_drops_lt5": 2,
+      "settings_or_menu_log_events": 0,
+      "count": 33,
+      "mean_fps": 46.36,
+      "p50_fps": 52.39,
+      "p10_fps": 25.84,
+      "p5_fps": 23.45,
+      "p1_low_fps": 20.65,
+      "p95_fps": 63.18,
+      "min_fps": 20.46,
+      "max_fps": 65.89,
+      "mean_frame_time_ms": 24.54,
+      "p95_frame_time_ms": 42.95,
+      "p99_frame_time_ms": 48.43
+    },
+    {
+      "minute_index": 4,
+      "start_s": 1138.2,
+      "end_s": 1198.2,
+      "critical_fps_drops_lt5": 2,
+      "settings_or_menu_log_events": 31,
+      "count": 44,
+      "mean_fps": 49.28,
+      "p50_fps": 51.66,
+      "p10_fps": 37.38,
+      "p5_fps": 28.99,
+      "p1_low_fps": 15.27,
+      "p95_fps": 58.1,
+      "min_fps": 13.79,
+      "max_fps": 63.41,
+      "mean_frame_time_ms": 22.2,
+      "p95_frame_time_ms": 34.73,
+      "p99_frame_time_ms": 66.28
+    },
+    {
+      "minute_index": 5,
+      "start_s": 1198.2,
+      "end_s": 1258.2,
+      "critical_fps_drops_lt5": 3,
+      "settings_or_menu_log_events": 0,
+      "count": 29,
+      "mean_fps": 38.85,
+      "p50_fps": 41.74,
+      "p10_fps": 20.99,
+      "p5_fps": 18.76,
+      "p1_low_fps": 12.6,
+      "p95_fps": 56.57,
+      "min_fps": 10.22,
+      "max_fps": 57.58,
+      "mean_frame_time_ms": 30.55,
+      "p95_frame_time_ms": 53.29,
+      "p99_frame_time_ms": 85.41
+    },
+    {
+      "minute_index": 6,
+      "start_s": 1258.2,
+      "end_s": 1318.2,
+      "critical_fps_drops_lt5": 14,
+      "settings_or_menu_log_events": 52,
+      "count": 25,
+      "mean_fps": 38.3,
+      "p50_fps": 41.1,
+      "p10_fps": 15.57,
+      "p5_fps": 14.63,
+      "p1_low_fps": 5.87,
+      "p95_fps": 56.49,
+      "min_fps": 3.13,
+      "max_fps": 57.55,
+      "mean_frame_time_ms": 41.38,
+      "p95_frame_time_ms": 68.38,
+      "p99_frame_time_ms": 259.3
+    },
+    {
+      "minute_index": 7,
+      "start_s": 1318.2,
+      "end_s": 1378.2,
+      "critical_fps_drops_lt5": 3,
+      "settings_or_menu_log_events": 0,
+      "count": 7,
+      "mean_fps": 46.6,
+      "p50_fps": 61.21,
+      "p10_fps": 21.52,
+      "p5_fps": 21.38,
+      "p1_low_fps": 21.27,
+      "p95_fps": 65.46,
+      "min_fps": 21.24,
+      "max_fps": 66.71,
+      "mean_frame_time_ms": 26.97,
+      "p95_frame_time_ms": 46.78,
+      "p99_frame_time_ms": 47.02
+    },
+    {
+      "minute_index": 8,
+      "start_s": 1378.2,
+      "end_s": 1438.2,
+      "critical_fps_drops_lt5": 0,
+      "settings_or_menu_log_events": 0,
+      "count": 34,
+      "mean_fps": 55.51,
+      "p50_fps": 58.44,
+      "p10_fps": 50.21,
+      "p5_fps": 42.42,
+      "p1_low_fps": 25.74,
+      "p95_fps": 61.86,
+      "min_fps": 20.58,
+      "max_fps": 63.2,
+      "mean_frame_time_ms": 18.79,
+      "p95_frame_time_ms": 23.87,
+      "p99_frame_time_ms": 41.66
+    },
+    {
+      "minute_index": 9,
+      "start_s": 1438.2,
+      "end_s": 1498.2,
+      "critical_fps_drops_lt5": 2,
+      "settings_or_menu_log_events": 31,
+      "count": 21,
+      "mean_fps": 39.36,
+      "p50_fps": 49.16,
+      "p10_fps": 17.99,
+      "p5_fps": 6.79,
+      "p1_low_fps": 4.55,
+      "p95_fps": 61.16,
+      "min_fps": 3.99,
+      "max_fps": 61.71,
+      "mean_frame_time_ms": 44.66,
+      "p95_frame_time_ms": 147.28,
+      "p99_frame_time_ms": 229.96
+    }
+  ],
+  "instability_summary_by_phase": {
+    "NPEV2_Tutorial_1024x768": {
+      "fps_critical_lt5": 19,
+      "fps_below_50": 42,
+      "ping_critical_gt200ms": 1,
+      "ping_elevated": 9
+    },
+    "MainMenuV2_Lobby": {
+      "fps_critical_lt5": 1,
+      "fps_below_50": 2,
+      "ping_elevated": 1
+    },
+    "RangeV2_1920x1200": {
+      "fps_critical_lt5": 39,
+      "fps_below_50": 98,
+      "ping_elevated": 4,
+      "ping_critical_gt200ms": 7
+    }
+  },
+  "range_critical_fps_attribution": {
+    "map_load_warmup_0_30s": 6,
+    "runtime_material_or_shader_pso_compile": 5,
+    "settings_or_pause_menu_interaction": 19,
+    "other_active_frame_spike": 3,
+    "net_slirp_packet_backlog_or_burst_loss": 6
+  },
+  "critical_fps_events": [
+    {
+      "t_s": 103.28,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "map_load_or_gameplay_warmup",
+      "nearby_categories": [
+        "LogAbilitySystem",
+        "LogAresInputStateComponent",
+        "LogAresNetDriver",
+        "LogUINavigationModel"
+      ]
+    },
+    {
+      "t_s": 103.95,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "kind": "fps_critical_lt5",
+      "current_value": 3.02,
+      "threshold": 5.0,
+      "attribution": "map_load_or_gameplay_warmup",
+      "nearby_categories": [
+        "LogAresNetDriver",
+        "LogAresInputStateComponent",
+        "LogUINavigationModel",
+        "LogShellScreenViewModel"
+      ]
+    },
+    {
+      "t_s": 104.43,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "kind": "fps_critical_lt5",
+      "current_value": 4.81,
+      "threshold": 5.0,
+      "attribution": "map_load_or_gameplay_warmup",
+      "nearby_categories": [
+        "LogUINavigationModel",
+        "LogShellScreenViewModel",
+        "LogAresNetDriver"
+      ]
+    },
+    {
+      "t_s": 108.26,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "map_load_or_gameplay_warmup",
+      "nearby_categories": [
+        "LogPlatformCommon"
+      ]
+    },
+    {
+      "t_s": 120.76,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "map_load_or_gameplay_warmup",
+      "nearby_categories": []
+    },
+    {
+      "t_s": 129.06,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "map_load_or_gameplay_warmup",
+      "nearby_categories": [
+        "LogLandingScreen",
+        "LogChatUtils",
+        "LogUINavigationModel"
+      ]
+    },
+    {
+      "t_s": 130.28,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "kind": "fps_critical_lt5",
+      "current_value": 5.0,
+      "threshold": 5.0,
+      "attribution": "map_load_or_gameplay_warmup",
+      "nearby_categories": [
+        "LogLandingScreen"
+      ]
+    },
+    {
+      "t_s": 131.47,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "kind": "fps_critical_lt5",
+      "current_value": 4.2,
+      "threshold": 5.0,
+      "attribution": "map_load_or_gameplay_warmup",
+      "nearby_categories": []
+    },
+    {
+      "t_s": 141.88,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "kind": "fps_critical_lt5",
+      "current_value": 4.95,
+      "threshold": 5.0,
+      "attribution": "map_load_or_gameplay_warmup",
+      "nearby_categories": [
+        "LogPlatformCommon",
+        "LogDataTable",
+        "LogUINavigationModel",
+        "LogBasePlayerController"
+      ]
+    },
+    {
+      "t_s": 189.12,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "kind": "fps_critical_lt5",
+      "current_value": 3.77,
+      "threshold": 5.0,
+      "attribution": "map_load_or_gameplay_warmup",
+      "nearby_categories": [
+        "LogAbilitySystem",
+        "LogRemoteClientMovementComponent"
+      ]
+    },
+    {
+      "t_s": 284.02,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "map_load_or_gameplay_warmup",
+      "nearby_categories": [
+        "LogPlatformCommon",
+        "LogShooterPlayerState"
+      ]
+    },
+    {
+      "t_s": 293.25,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "map_load_or_gameplay_warmup",
+      "nearby_categories": [
+        "LogMapLoadModel",
+        "LogPlatformCommon",
+        "LogGarbage",
+        "LogAkAudio"
+      ]
+    },
+    {
+      "t_s": 296.35,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "map_load_or_gameplay_warmup",
+      "nearby_categories": [
+        "LogAbilitySystem",
+        "AnimBlueprintLog",
+        "LogAresInputStateComponent",
+        "LogAresNetDriver"
+      ]
+    },
+    {
+      "t_s": 300.14,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "map_load_or_gameplay_warmup",
+      "nearby_categories": [
+        "LogAbilitySystem",
+        "LogRemoteClientMovementComponent",
+        "LogScriptStateComponent",
+        "LogShooterGameState"
+      ]
+    },
+    {
+      "t_s": 318.94,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "kind": "fps_critical_lt5",
+      "current_value": 3.35,
+      "threshold": 5.0,
+      "attribution": "map_load_or_gameplay_warmup",
+      "nearby_categories": [
+        "LogPlatformCommon",
+        "LogStreaming",
+        "LogMenuStackManager"
+      ]
+    },
+    {
+      "t_s": 448.71,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "map_load_or_gameplay_warmup",
+      "nearby_categories": [
+        "LogAbilitySystem",
+        "LogShooterGameState"
+      ]
+    },
+    {
+      "t_s": 449.29,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "map_load_or_gameplay_warmup",
+      "nearby_categories": [
+        "LogAbilitySystem",
+        "LogShooterGameState"
+      ]
+    },
+    {
+      "t_s": 461.31,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "map_load_or_gameplay_warmup",
+      "nearby_categories": [
+        "LogAresNetDriver",
+        "LogAresInputStateComponent"
+      ]
+    },
+    {
+      "t_s": 463.95,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.59,
+      "threshold": 5.0,
+      "attribution": "map_load_or_gameplay_warmup",
+      "nearby_categories": [
+        "LogMenuStackManager",
+        "LogAresInputStateComponent",
+        "LogAresNetDriver"
+      ]
+    },
+    {
+      "t_s": 604.63,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1024x768",
+      "kind": "fps_critical_lt5",
+      "current_value": 4.45,
+      "threshold": 5.0,
+      "attribution": "map_load_or_gameplay_warmup",
+      "nearby_categories": [
+        "LogShooterGameState",
+        "LogMapLoadModel",
+        "LogPlatformCommon",
+        "LogGameFlowStateManager"
+      ]
+    },
+    {
+      "t_s": 958.08,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "map_load_warmup_0_30s",
+      "nearby_categories": [
+        "LogMapLoadModel",
+        "LogPlayerController",
+        "LogNet",
+        "LogAresInputStateComponent"
+      ]
+    },
+    {
+      "t_s": 960.34,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "map_load_warmup_0_30s",
+      "nearby_categories": [
+        "LogMapLoadModel",
+        "LogAresNetDriver",
+        "LogShellScreenViewModel",
+        "LogBasePlayerController"
+      ]
+    },
+    {
+      "t_s": 963.84,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 4.25,
+      "threshold": 5.0,
+      "attribution": "map_load_warmup_0_30s",
+      "nearby_categories": []
+    },
+    {
+      "t_s": 973.03,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "map_load_warmup_0_30s",
+      "nearby_categories": [
+        "LogShooterPlayerState",
+        "LogAbilitySystem"
+      ]
+    },
+    {
+      "t_s": 975.68,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "map_load_warmup_0_30s",
+      "nearby_categories": [
+        "LogAresMinimapComponent",
+        "LogActorComponent",
+        "LogMapLoadModel",
+        "LogShooterPlayerController"
+      ]
+    },
+    {
+      "t_s": 979.37,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "map_load_warmup_0_30s",
+      "nearby_categories": [
+        "LogRiotGamesApiClient",
+        "LogMenuStackManager"
+      ]
+    },
+    {
+      "t_s": 1013.7,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 4.42,
+      "threshold": 5.0,
+      "attribution": "runtime_material_or_shader_pso_compile",
+      "nearby_categories": [
+        "LogAbilitySystem",
+        "LogMeshMaterialManager",
+        "LogRemoteClientMovementComponent"
+      ]
+    },
+    {
+      "t_s": 1033.48,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "settings_or_pause_menu_interaction",
+      "nearby_categories": [
+        "LogLandingScreen",
+        "LogChatUtils",
+        "LogUINavigationModel"
+      ]
+    },
+    {
+      "t_s": 1036.86,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.85,
+      "threshold": 5.0,
+      "attribution": "settings_or_pause_menu_interaction",
+      "nearby_categories": [
+        "LogLandingScreen",
+        "LogAresListWidget",
+        "Model View Viewmodel",
+        "LogAresCommonAnalogCursor"
+      ]
+    },
+    {
+      "t_s": 1038.98,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.57,
+      "threshold": 5.0,
+      "attribution": "settings_or_pause_menu_interaction",
+      "nearby_categories": [
+        "LogLandingScreen",
+        "LogRoamingSettingsManager",
+        "LogUINavigationModel",
+        "LogAresListWidget"
+      ]
+    },
+    {
+      "t_s": 1041.96,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "settings_or_pause_menu_interaction",
+      "nearby_categories": [
+        "LogShooterPlayerState"
+      ]
+    },
+    {
+      "t_s": 1049.28,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.67,
+      "threshold": 5.0,
+      "attribution": "other_active_frame_spike",
+      "nearby_categories": [
+        "LogPlatformCommon"
+      ]
+    },
+    {
+      "t_s": 1052.83,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "net_slirp_packet_backlog_or_burst_loss",
+      "nearby_categories": [
+        "LogNet",
+        "LogShooterPlayerState",
+        "LogAresNetDriver",
+        "LogNetPlayerMovement"
+      ]
+    },
+    {
+      "t_s": 1095.37,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.53,
+      "threshold": 5.0,
+      "attribution": "settings_or_pause_menu_interaction",
+      "nearby_categories": [
+        "LogAresNetDriver",
+        "LogMenuStackManager"
+      ]
+    },
+    {
+      "t_s": 1097.03,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 4.9,
+      "threshold": 5.0,
+      "attribution": "settings_or_pause_menu_interaction",
+      "nearby_categories": [
+        "LogAresNetDriver"
+      ]
+    },
+    {
+      "t_s": 1166.88,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "settings_or_pause_menu_interaction",
+      "nearby_categories": [
+        "LogRoamingSettingsManager",
+        "LogLandingScreen",
+        "LogAresNetDriver",
+        "LogAresListWidget"
+      ]
+    },
+    {
+      "t_s": 1175.55,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "settings_or_pause_menu_interaction",
+      "nearby_categories": [
+        "LogAresNetDriver",
+        "LogMenuStackManager",
+        "LogNet",
+        "LogAresInputStateComponent"
+      ]
+    },
+    {
+      "t_s": 1239.4,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 4.58,
+      "threshold": 5.0,
+      "attribution": "runtime_material_or_shader_pso_compile",
+      "nearby_categories": [
+        "LogMeshMaterialManager",
+        "LogAbilitySystem"
+      ]
+    },
+    {
+      "t_s": 1244.71,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "net_slirp_packet_backlog_or_burst_loss",
+      "nearby_categories": [
+        "LogMeshMaterialManager",
+        "LogAbilitySystem",
+        "LogShooterPlayerState",
+        "LogAresNetDriver"
+      ]
+    },
+    {
+      "t_s": 1249.54,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "net_slirp_packet_backlog_or_burst_loss",
+      "nearby_categories": [
+        "LogPlatformCommon",
+        "LogMeshMaterialManager",
+        "LogAbilitySystem",
+        "LogAresInputStateComponent"
+      ]
+    },
+    {
+      "t_s": 1265.45,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 4.5,
+      "threshold": 5.0,
+      "attribution": "runtime_material_or_shader_pso_compile",
+      "nearby_categories": [
+        "LogMeshMaterialManager"
+      ]
+    },
+    {
+      "t_s": 1268.87,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "net_slirp_packet_backlog_or_burst_loss",
+      "nearby_categories": [
+        "LogAresInputStateComponent",
+        "LogAresNetDriver"
+      ]
+    },
+    {
+      "t_s": 1272.27,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 3.8,
+      "threshold": 5.0,
+      "attribution": "runtime_material_or_shader_pso_compile",
+      "nearby_categories": [
+        "LogMeshMaterialManager",
+        "LogAbilitySystem"
+      ]
+    },
+    {
+      "t_s": 1276.81,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 3.13,
+      "threshold": 5.0,
+      "attribution": "settings_or_pause_menu_interaction",
+      "nearby_categories": [
+        "LogLandingScreen",
+        "LogUINavigationModel",
+        "LogAresNetDriver"
+      ]
+    },
+    {
+      "t_s": 1277.35,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 4.05,
+      "threshold": 5.0,
+      "attribution": "settings_or_pause_menu_interaction",
+      "nearby_categories": [
+        "LogLandingScreen",
+        "LogUINavigationModel",
+        "LogAresNetDriver",
+        "LogNetPlayerMovement"
+      ]
+    },
+    {
+      "t_s": 1283.93,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "net_slirp_packet_backlog_or_burst_loss",
+      "nearby_categories": [
+        "LogDataTable",
+        "LogNet",
+        "LogShooterPlayerState"
+      ]
+    },
+    {
+      "t_s": 1293.44,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "settings_or_pause_menu_interaction",
+      "nearby_categories": [
+        "LogLandingScreen",
+        "LogAresCommonAnalogCursor",
+        "LogAresListWidget"
+      ]
+    },
+    {
+      "t_s": 1293.92,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "settings_or_pause_menu_interaction",
+      "nearby_categories": [
+        "LogLandingScreen",
+        "LogAresCommonAnalogCursor",
+        "LogAresListWidget"
+      ]
+    },
+    {
+      "t_s": 1297.08,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 4.2,
+      "threshold": 5.0,
+      "attribution": "settings_or_pause_menu_interaction",
+      "nearby_categories": []
+    },
+    {
+      "t_s": 1298.78,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 3.52,
+      "threshold": 5.0,
+      "attribution": "other_active_frame_spike",
+      "nearby_categories": []
+    },
+    {
+      "t_s": 1309.01,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "settings_or_pause_menu_interaction",
+      "nearby_categories": [
+        "LogLandingScreen",
+        "LogRoamingSettingsManager",
+        "LogUINavigationModel",
+        "LogAresListWidget"
+      ]
+    },
+    {
+      "t_s": 1311.67,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "settings_or_pause_menu_interaction",
+      "nearby_categories": [
+        "LogShooterPlayerState",
+        "LogAresNetDriver",
+        "LogNetPlayerMovement"
+      ]
+    },
+    {
+      "t_s": 1311.85,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "settings_or_pause_menu_interaction",
+      "nearby_categories": [
+        "LogAresNetDriver",
+        "LogShooterPlayerState",
+        "LogNetPlayerMovement",
+        "LogAresInputStateComponent"
+      ]
+    },
+    {
+      "t_s": 1317.85,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "settings_or_pause_menu_interaction",
+      "nearby_categories": [
+        "LogLandingScreen",
+        "LogNet",
+        "LogShooterPlayerState"
+      ]
+    },
+    {
+      "t_s": 1329.34,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "net_slirp_packet_backlog_or_burst_loss",
+      "nearby_categories": [
+        "LogAresNetDriver",
+        "LogPlatformCommon"
+      ]
+    },
+    {
+      "t_s": 1334.03,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 4.04,
+      "threshold": 5.0,
+      "attribution": "other_active_frame_spike",
+      "nearby_categories": []
+    },
+    {
+      "t_s": 1336.75,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "runtime_material_or_shader_pso_compile",
+      "nearby_categories": [
+        "LogAbilitySystem"
+      ]
+    },
+    {
+      "t_s": 1490.63,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.95,
+      "threshold": 5.0,
+      "attribution": "settings_or_pause_menu_interaction",
+      "nearby_categories": [
+        "LogLandingScreen",
+        "LogRoamingSettingsManager",
+        "LogAresListWidget",
+        "LogUINavigationModel"
+      ]
+    },
+    {
+      "t_s": 1494.81,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "kind": "fps_critical_lt5",
+      "current_value": 2.5,
+      "threshold": 5.0,
+      "attribution": "settings_or_pause_menu_interaction",
+      "nearby_categories": [
+        "AresMaterialProgressBarLog",
+        "LogAresInputStateComponent"
+      ]
+    }
+  ],
+  "ace_heartbeat_summary": {
+    "http_status_counts": {
+      "200": 154,
+      "0": 3
+    },
+    "http_200_count": 154,
+    "initial_pre_network_status_0_count": 3,
+    "first_200_t_s": 29.95,
+    "last_200_t_s": 1489.39,
+    "median_interval_s": 1.58,
+    "mean_interval_s": 9.54
+  },
+  "ace_heartbeat_timeline": [
+    {
+      "t_s": 29.95,
+      "http_status": 200,
+      "phase": "Init"
+    },
+    {
+      "t_s": 30.42,
+      "http_status": 200,
+      "phase": "Init"
+    },
+    {
+      "t_s": 31.55,
+      "http_status": 0,
+      "phase": "Init"
+    },
+    {
+      "t_s": 31.56,
+      "http_status": 0,
+      "phase": "Init"
+    },
+    {
+      "t_s": 32.66,
+      "http_status": 0,
+      "phase": "Init"
+    },
+    {
+      "t_s": 42.98,
+      "http_status": 200,
+      "phase": "Init"
+    },
+    {
+      "t_s": 43.3,
+      "http_status": 200,
+      "phase": "Init"
+    },
+    {
+      "t_s": 46.55,
+      "http_status": 200,
+      "phase": "Init"
+    },
+    {
+      "t_s": 46.88,
+      "http_status": 200,
+      "phase": "Init"
+    },
+    {
+      "t_s": 47.33,
+      "http_status": 200,
+      "phase": "Init"
+    },
+    {
+      "t_s": 69.82,
+      "http_status": 200,
+      "phase": "MainMenuV2_Initial"
+    },
+    {
+      "t_s": 96.67,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 97.9,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 107.49,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 108.9,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 108.9,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 108.91,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 124.64,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 154.5,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 166.7,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 166.94,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 166.96,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 167.63,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 182.12,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 209.63,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 226.71,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 227.01,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 227.73,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 237.1,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 237.3,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 264.64,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 286.7,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 287.03,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 287.67,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 292.39,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 319.94,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 320.13,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 346.73,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 347.11,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 347.42,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 347.8,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 374.92,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 375.11,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 402.51,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 406.71,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 407.08,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 407.79,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 430.04,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 430.19,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 457.64,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 466.75,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 467.16,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 467.93,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 485.24,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 512.74,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 512.89,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 526.74,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 527.12,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 527.98,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 540.22,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 567.71,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 567.96,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 586.76,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 587.11,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 588.05,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 595.18,
+      "http_status": 200,
+      "phase": "NPEV2_Tutorial_1024x768"
+    },
+    {
+      "t_s": 623.7,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 624.16,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 646.87,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 647.2,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 648.15,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 650.64,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 678.2,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 705.81,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 706.0,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 706.81,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 707.17,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 708.17,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 733.39,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 760.9,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 761.11,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 766.8,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 767.19,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 768.31,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 788.57,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 816.12,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 816.51,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 826.85,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 827.29,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 828.31,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 843.59,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 871.63,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 887.06,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 887.29,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 887.39,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 888.39,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 898.73,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 926.39,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 946.83,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 947.29,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 947.41,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 948.57,
+      "http_status": 200,
+      "phase": "MainMenuV2_Lobby"
+    },
+    {
+      "t_s": 959.44,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 981.85,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1006.82,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1007.03,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1007.25,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1008.68,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1009.86,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1037.52,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1065.06,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1066.92,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1067.34,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1068.66,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1092.68,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1092.97,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1121.16,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1127.0,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1127.44,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1128.78,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1148.51,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1148.7,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1176.33,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1187.02,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1187.42,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1188.84,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1203.84,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1204.05,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1231.95,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1247.05,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1247.65,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1248.99,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1259.68,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1287.11,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1287.35,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1307.15,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1307.56,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1309.2,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1314.76,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1342.44,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1342.68,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1367.22,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1367.54,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1369.08,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1369.93,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1397.62,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1397.79,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1425.45,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1427.27,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1427.63,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1429.21,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1452.77,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1480.41,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1480.6,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1487.37,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1487.61,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    },
+    {
+      "t_s": 1489.39,
+      "http_status": 200,
+      "phase": "RangeV2_1920x1200"
+    }
+  ],
+  "ping_proxy_probe_ms": {
+    "count": 48,
+    "min": 57,
+    "median": 87.0,
+    "max": 113
+  },
+  "host_telemetry_samples": [
+    {
+      "timestamp_utc": "2026-11-25T02:53:29.717805+00:00",
+      "phase": "NPEV2_Tutorial_1024x768_Early",
+      "qemu_render_server_cpu_pct": 33.4,
+      "qemu_worker_cpu_pct": 587.8,
+      "utm_ui_cpu_pct": 5.4,
+      "total_hypervisor_rss_mib": 2402.6,
+      "guest_shipping_working_set_mib": 2305.74,
+      "guest_shipping_cpu_seconds": 260.73
+    },
+    {
+      "timestamp_utc": "2026-11-25T03:06:54.022251+00:00",
+      "phase": "MainMenuV2_1920x1200_PreRange",
+      "qemu_render_server_cpu_pct": 34.8,
+      "qemu_worker_cpu_pct": 275.3,
+      "utm_ui_cpu_pct": 11.6,
+      "total_hypervisor_rss_mib": 1610.98,
+      "dxmt_shader_cache_files": 4,
+      "dxmt_shader_cache_bytes": 8625944,
+      "guest_shipping_working_set_mib": 993.45,
+      "guest_shipping_cpu_seconds": 2756.77
+    },
+    {
+      "timestamp_utc": "2026-11-25T03:11:59.368502+00:00",
+      "phase": "RangeV2_1920x1200_ActiveCombat",
+      "qemu_render_server_cpu_pct": 45.2,
+      "qemu_worker_cpu_pct": 425.5,
+      "utm_ui_cpu_pct": 12.6,
+      "total_hypervisor_rss_mib": 1619.32,
+      "dxmt_shader_cache_files": 4,
+      "dxmt_shader_cache_bytes": 9189912
+    },
+    {
+      "timestamp_utc": "2026-11-25T03:17:13.964414+00:00",
+      "phase": "PostExit_DesktopIdle",
+      "qemu_render_server_cpu_pct": 0.0,
+      "qemu_worker_cpu_pct": 145.7,
+      "utm_ui_cpu_pct": 5.7,
+      "total_hypervisor_rss_mib": 2023.83,
+      "dxmt_shader_cache_files": 4,
+      "dxmt_shader_cache_bytes": 9284672
+    }
+  ],
+  "fps_time_series": [
+    {
+      "t_s": 12.68,
+      "dt_s": 1.497,
+      "frames": 2,
+      "fps": 1.34,
+      "frame_time_ms": 748.5,
+      "phase": "Init",
+      "resolution": "853x640",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 15.47,
+      "dt_s": 1.658,
+      "frames": 20,
+      "fps": 12.06,
+      "frame_time_ms": 82.9,
+      "phase": "Init",
+      "resolution": "853x640",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 16.59,
+      "dt_s": 1.128,
+      "frames": 27,
+      "fps": 23.94,
+      "frame_time_ms": 41.78,
+      "phase": "Init",
+      "resolution": "853x640",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 17.62,
+      "dt_s": 1.028,
+      "frames": 19,
+      "fps": 18.48,
+      "frame_time_ms": 54.11,
+      "phase": "Init",
+      "resolution": "853x640",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 18.64,
+      "dt_s": 1.012,
+      "frames": 19,
+      "fps": 18.77,
+      "frame_time_ms": 53.26,
+      "phase": "Init",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 19.64,
+      "dt_s": 1.004,
+      "frames": 20,
+      "fps": 19.92,
+      "frame_time_ms": 50.2,
+      "phase": "Init",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 28.57,
+      "dt_s": 1.075,
+      "frames": 13,
+      "fps": 12.09,
+      "frame_time_ms": 82.69,
+      "phase": "Init",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 29.57,
+      "dt_s": 1.002,
+      "frames": 16,
+      "fps": 15.97,
+      "frame_time_ms": 62.62,
+      "phase": "Init",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 31.5,
+      "dt_s": 1.926,
+      "frames": 162,
+      "fps": 84.11,
+      "frame_time_ms": 11.89,
+      "phase": "Init",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 32.66,
+      "dt_s": 1.159,
+      "frames": 155,
+      "fps": 133.74,
+      "frame_time_ms": 7.48,
+      "phase": "Init",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 41.51,
+      "dt_s": 1.059,
+      "frames": 37,
+      "fps": 34.94,
+      "frame_time_ms": 28.62,
+      "phase": "Init",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 42.53,
+      "dt_s": 1.018,
+      "frames": 20,
+      "fps": 19.65,
+      "frame_time_ms": 50.9,
+      "phase": "Init",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 43.77,
+      "dt_s": 1.249,
+      "frames": 16,
+      "fps": 12.81,
+      "frame_time_ms": 78.06,
+      "phase": "Init",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 45.41,
+      "dt_s": 1.637,
+      "frames": 8,
+      "fps": 4.89,
+      "frame_time_ms": 204.63,
+      "phase": "Init",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 46.55,
+      "dt_s": 1.142,
+      "frames": 58,
+      "fps": 50.79,
+      "frame_time_ms": 19.69,
+      "phase": "Init",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 49.24,
+      "dt_s": 2.687,
+      "frames": 209,
+      "fps": 77.78,
+      "frame_time_ms": 12.86,
+      "phase": "Init",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 58.14,
+      "dt_s": 1.66,
+      "frames": 33,
+      "fps": 19.88,
+      "frame_time_ms": 50.3,
+      "phase": "Init",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 63.77,
+      "dt_s": 1.055,
+      "frames": 2,
+      "fps": 1.9,
+      "frame_time_ms": 527.5,
+      "phase": "MainMenuV2_Initial",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 66.79,
+      "dt_s": 2.018,
+      "frames": 59,
+      "fps": 29.24,
+      "frame_time_ms": 34.2,
+      "phase": "MainMenuV2_Initial",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 67.83,
+      "dt_s": 1.041,
+      "frames": 4,
+      "fps": 3.84,
+      "frame_time_ms": 260.25,
+      "phase": "MainMenuV2_Initial",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 69.82,
+      "dt_s": 1.989,
+      "frames": 2,
+      "fps": 1.01,
+      "frame_time_ms": 994.5,
+      "phase": "MainMenuV2_Initial",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 77.76,
+      "dt_s": 3.601,
+      "frames": 80,
+      "fps": 22.22,
+      "frame_time_ms": 45.01,
+      "phase": "MainMenuV2_Initial",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 80.41,
+      "dt_s": 2.647,
+      "frames": 114,
+      "fps": 43.07,
+      "frame_time_ms": 23.22,
+      "phase": "MainMenuV2_Initial",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 83.02,
+      "dt_s": 2.605,
+      "frames": 75,
+      "fps": 28.79,
+      "frame_time_ms": 34.73,
+      "phase": "MainMenuV2_Initial",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 89.95,
+      "dt_s": 2.27,
+      "frames": 319,
+      "fps": 140.53,
+      "frame_time_ms": 7.12,
+      "phase": "MainMenuV2_Initial",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 98.91,
+      "dt_s": 1.168,
+      "frames": 37,
+      "fps": 31.68,
+      "frame_time_ms": 31.57,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 100.16,
+      "dt_s": 1.248,
+      "frames": 6,
+      "fps": 4.81,
+      "frame_time_ms": 208.0,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 101.16,
+      "dt_s": 1.002,
+      "frames": 7,
+      "fps": 6.99,
+      "frame_time_ms": 143.14,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 104.43,
+      "dt_s": 1.26,
+      "frames": 12,
+      "fps": 9.52,
+      "frame_time_ms": 105.0,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 107.49,
+      "dt_s": 3.064,
+      "frames": 103,
+      "fps": 33.62,
+      "frame_time_ms": 29.75,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 123.2,
+      "dt_s": 2.446,
+      "frames": 126,
+      "fps": 51.51,
+      "frame_time_ms": 19.41,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 124.64,
+      "dt_s": 1.438,
+      "frames": 66,
+      "fps": 45.9,
+      "frame_time_ms": 21.79,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 126.49,
+      "dt_s": 1.85,
+      "frames": 170,
+      "fps": 91.89,
+      "frame_time_ms": 10.88,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 128.65,
+      "dt_s": 2.158,
+      "frames": 182,
+      "fps": 84.34,
+      "frame_time_ms": 11.86,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 130.28,
+      "dt_s": 1.632,
+      "frames": 70,
+      "fps": 42.89,
+      "frame_time_ms": 23.31,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 131.47,
+      "dt_s": 1.182,
+      "frames": 30,
+      "fps": 25.38,
+      "frame_time_ms": 39.4,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 133.05,
+      "dt_s": 1.581,
+      "frames": 67,
+      "fps": 42.38,
+      "frame_time_ms": 23.6,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 134.51,
+      "dt_s": 1.463,
+      "frames": 63,
+      "fps": 43.06,
+      "frame_time_ms": 23.22,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 136.31,
+      "dt_s": 1.796,
+      "frames": 49,
+      "fps": 27.28,
+      "frame_time_ms": 36.65,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 138.15,
+      "dt_s": 1.847,
+      "frames": 66,
+      "fps": 35.73,
+      "frame_time_ms": 27.98,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 140.59,
+      "dt_s": 2.44,
+      "frames": 88,
+      "fps": 36.07,
+      "frame_time_ms": 27.73,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 141.82,
+      "dt_s": 1.229,
+      "frames": 40,
+      "fps": 32.55,
+      "frame_time_ms": 30.72,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 145.26,
+      "dt_s": 3.437,
+      "frames": 179,
+      "fps": 52.08,
+      "frame_time_ms": 19.2,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 146.27,
+      "dt_s": 1.011,
+      "frames": 43,
+      "fps": 42.53,
+      "frame_time_ms": 23.51,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 148.19,
+      "dt_s": 1.92,
+      "frames": 79,
+      "fps": 41.15,
+      "frame_time_ms": 24.3,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 149.43,
+      "dt_s": 1.245,
+      "frames": 75,
+      "fps": 60.24,
+      "frame_time_ms": 16.6,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 150.86,
+      "dt_s": 1.429,
+      "frames": 87,
+      "fps": 60.88,
+      "frame_time_ms": 16.43,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 152.0,
+      "dt_s": 1.142,
+      "frames": 51,
+      "fps": 44.66,
+      "frame_time_ms": 22.39,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 153.98,
+      "dt_s": 1.979,
+      "frames": 68,
+      "fps": 34.36,
+      "frame_time_ms": 29.1,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 155.48,
+      "dt_s": 1.492,
+      "frames": 80,
+      "fps": 53.62,
+      "frame_time_ms": 18.65,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 156.57,
+      "dt_s": 1.09,
+      "frames": 53,
+      "fps": 48.62,
+      "frame_time_ms": 20.57,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 159.14,
+      "dt_s": 2.575,
+      "frames": 132,
+      "fps": 51.26,
+      "frame_time_ms": 19.51,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 161.14,
+      "dt_s": 2.0,
+      "frames": 72,
+      "fps": 36.0,
+      "frame_time_ms": 27.78,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 162.19,
+      "dt_s": 1.05,
+      "frames": 56,
+      "fps": 53.33,
+      "frame_time_ms": 18.75,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 163.36,
+      "dt_s": 1.168,
+      "frames": 66,
+      "fps": 56.51,
+      "frame_time_ms": 17.7,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 166.7,
+      "dt_s": 3.339,
+      "frames": 219,
+      "fps": 65.59,
+      "frame_time_ms": 15.25,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 169.1,
+      "dt_s": 2.403,
+      "frames": 174,
+      "fps": 72.41,
+      "frame_time_ms": 13.81,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 172.51,
+      "dt_s": 3.41,
+      "frames": 262,
+      "fps": 76.83,
+      "frame_time_ms": 13.02,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 174.87,
+      "dt_s": 2.357,
+      "frames": 146,
+      "fps": 61.94,
+      "frame_time_ms": 16.14,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 182.12,
+      "dt_s": 2.951,
+      "frames": 239,
+      "fps": 80.99,
+      "frame_time_ms": 12.35,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 188.91,
+      "dt_s": 1.08,
+      "frames": 92,
+      "fps": 85.19,
+      "frame_time_ms": 11.74,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 191.25,
+      "dt_s": 2.333,
+      "frames": 150,
+      "fps": 64.29,
+      "frame_time_ms": 15.55,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 192.88,
+      "dt_s": 1.632,
+      "frames": 129,
+      "fps": 79.04,
+      "frame_time_ms": 12.65,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 194.23,
+      "dt_s": 1.353,
+      "frames": 124,
+      "fps": 91.65,
+      "frame_time_ms": 10.91,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 203.53,
+      "dt_s": 2.75,
+      "frames": 261,
+      "fps": 94.91,
+      "frame_time_ms": 10.54,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 226.71,
+      "dt_s": 3.015,
+      "frames": 311,
+      "fps": 103.15,
+      "frame_time_ms": 9.69,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 227.73,
+      "dt_s": 1.024,
+      "frames": 94,
+      "fps": 91.8,
+      "frame_time_ms": 10.89,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 230.52,
+      "dt_s": 2.792,
+      "frames": 203,
+      "fps": 72.71,
+      "frame_time_ms": 13.75,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 237.1,
+      "dt_s": 2.572,
+      "frames": 274,
+      "fps": 106.53,
+      "frame_time_ms": 9.39,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 243.7,
+      "dt_s": 2.347,
+      "frames": 228,
+      "fps": 97.15,
+      "frame_time_ms": 10.29,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 258.45,
+      "dt_s": 1.91,
+      "frames": 158,
+      "fps": 82.72,
+      "frame_time_ms": 12.09,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 260.97,
+      "dt_s": 2.519,
+      "frames": 227,
+      "fps": 90.12,
+      "frame_time_ms": 11.1,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 263.32,
+      "dt_s": 2.354,
+      "frames": 215,
+      "fps": 91.33,
+      "frame_time_ms": 10.95,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 264.64,
+      "dt_s": 1.318,
+      "frames": 118,
+      "fps": 89.53,
+      "frame_time_ms": 11.17,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 265.78,
+      "dt_s": 1.14,
+      "frames": 113,
+      "fps": 99.12,
+      "frame_time_ms": 10.09,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 272.36,
+      "dt_s": 2.006,
+      "frames": 151,
+      "fps": 75.27,
+      "frame_time_ms": 13.28,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 274.96,
+      "dt_s": 2.602,
+      "frames": 197,
+      "fps": 75.71,
+      "frame_time_ms": 13.21,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 276.88,
+      "dt_s": 1.919,
+      "frames": 144,
+      "fps": 75.04,
+      "frame_time_ms": 13.33,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 283.96,
+      "dt_s": 2.781,
+      "frames": 116,
+      "fps": 41.71,
+      "frame_time_ms": 23.97,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 286.7,
+      "dt_s": 2.74,
+      "frames": 222,
+      "fps": 81.02,
+      "frame_time_ms": 12.34,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 290.35,
+      "dt_s": 3.648,
+      "frames": 355,
+      "fps": 97.31,
+      "frame_time_ms": 10.28,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 291.65,
+      "dt_s": 1.308,
+      "frames": 56,
+      "fps": 42.81,
+      "frame_time_ms": 23.36,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 293.19,
+      "dt_s": 1.535,
+      "frames": 21,
+      "fps": 13.68,
+      "frame_time_ms": 73.1,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 294.48,
+      "dt_s": 1.289,
+      "frames": 29,
+      "fps": 22.5,
+      "frame_time_ms": 44.45,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 295.49,
+      "dt_s": 1.008,
+      "frames": 34,
+      "fps": 33.73,
+      "frame_time_ms": 29.65,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 296.57,
+      "dt_s": 1.082,
+      "frames": 14,
+      "fps": 12.94,
+      "frame_time_ms": 77.29,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 299.51,
+      "dt_s": 2.939,
+      "frames": 144,
+      "fps": 49.0,
+      "frame_time_ms": 20.41,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 300.58,
+      "dt_s": 1.078,
+      "frames": 12,
+      "fps": 11.13,
+      "frame_time_ms": 89.83,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 301.82,
+      "dt_s": 1.231,
+      "frames": 54,
+      "fps": 43.87,
+      "frame_time_ms": 22.8,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 319.94,
+      "dt_s": 1.304,
+      "frames": 52,
+      "fps": 39.88,
+      "frame_time_ms": 25.08,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 321.13,
+      "dt_s": 1.186,
+      "frames": 85,
+      "fps": 71.67,
+      "frame_time_ms": 13.95,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 324.15,
+      "dt_s": 3.021,
+      "frames": 223,
+      "fps": 73.82,
+      "frame_time_ms": 13.55,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 326.38,
+      "dt_s": 2.224,
+      "frames": 142,
+      "fps": 63.85,
+      "frame_time_ms": 15.66,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 329.27,
+      "dt_s": 2.891,
+      "frames": 166,
+      "fps": 57.42,
+      "frame_time_ms": 17.42,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 332.29,
+      "dt_s": 3.028,
+      "frames": 217,
+      "fps": 71.66,
+      "frame_time_ms": 13.95,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 334.38,
+      "dt_s": 2.088,
+      "frames": 144,
+      "fps": 68.97,
+      "frame_time_ms": 14.5,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 338.15,
+      "dt_s": 3.772,
+      "frames": 256,
+      "fps": 67.87,
+      "frame_time_ms": 14.73,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 339.46,
+      "dt_s": 1.311,
+      "frames": 87,
+      "fps": 66.36,
+      "frame_time_ms": 15.07,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 342.88,
+      "dt_s": 3.414,
+      "frames": 269,
+      "fps": 78.79,
+      "frame_time_ms": 12.69,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 346.73,
+      "dt_s": 3.854,
+      "frames": 332,
+      "fps": 86.14,
+      "frame_time_ms": 11.61,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 347.8,
+      "dt_s": 1.067,
+      "frames": 102,
+      "fps": 95.6,
+      "frame_time_ms": 10.46,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 359.32,
+      "dt_s": 2.361,
+      "frames": 171,
+      "fps": 72.43,
+      "frame_time_ms": 13.81,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 365.42,
+      "dt_s": 1.95,
+      "frames": 129,
+      "fps": 66.15,
+      "frame_time_ms": 15.12,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 366.55,
+      "dt_s": 1.126,
+      "frames": 74,
+      "fps": 65.72,
+      "frame_time_ms": 15.22,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 381.32,
+      "dt_s": 1.075,
+      "frames": 81,
+      "fps": 75.35,
+      "frame_time_ms": 13.27,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 386.86,
+      "dt_s": 1.013,
+      "frames": 56,
+      "fps": 55.28,
+      "frame_time_ms": 18.09,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 387.99,
+      "dt_s": 1.139,
+      "frames": 58,
+      "fps": 50.92,
+      "frame_time_ms": 19.64,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 404.45,
+      "dt_s": 2.544,
+      "frames": 155,
+      "fps": 60.93,
+      "frame_time_ms": 16.41,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 406.71,
+      "dt_s": 2.264,
+      "frames": 157,
+      "fps": 69.35,
+      "frame_time_ms": 14.42,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 407.79,
+      "dt_s": 1.076,
+      "frames": 77,
+      "fps": 71.56,
+      "frame_time_ms": 13.97,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 417.84,
+      "dt_s": 1.1,
+      "frames": 80,
+      "fps": 72.73,
+      "frame_time_ms": 13.75,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 420.24,
+      "dt_s": 2.404,
+      "frames": 195,
+      "fps": 81.11,
+      "frame_time_ms": 12.33,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 427.73,
+      "dt_s": 1.617,
+      "frames": 95,
+      "fps": 58.75,
+      "frame_time_ms": 17.02,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 430.04,
+      "dt_s": 2.311,
+      "frames": 148,
+      "fps": 64.04,
+      "frame_time_ms": 15.61,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 433.03,
+      "dt_s": 2.991,
+      "frames": 173,
+      "fps": 57.84,
+      "frame_time_ms": 17.29,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 434.65,
+      "dt_s": 1.619,
+      "frames": 91,
+      "fps": 56.21,
+      "frame_time_ms": 17.79,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 436.11,
+      "dt_s": 1.461,
+      "frames": 77,
+      "fps": 52.7,
+      "frame_time_ms": 18.97,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 437.24,
+      "dt_s": 1.129,
+      "frames": 72,
+      "fps": 63.77,
+      "frame_time_ms": 15.68,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 438.51,
+      "dt_s": 1.271,
+      "frames": 95,
+      "fps": 74.74,
+      "frame_time_ms": 13.38,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 441.65,
+      "dt_s": 3.134,
+      "frames": 199,
+      "fps": 63.5,
+      "frame_time_ms": 15.75,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 443.27,
+      "dt_s": 1.62,
+      "frames": 63,
+      "fps": 38.89,
+      "frame_time_ms": 25.71,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 444.64,
+      "dt_s": 1.37,
+      "frames": 90,
+      "fps": 65.69,
+      "frame_time_ms": 15.22,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 447.96,
+      "dt_s": 3.328,
+      "frames": 219,
+      "fps": 65.81,
+      "frame_time_ms": 15.2,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 449.29,
+      "dt_s": 1.328,
+      "frames": 5,
+      "fps": 3.77,
+      "frame_time_ms": 265.6,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 461.31,
+      "dt_s": 3.668,
+      "frames": 168,
+      "fps": 45.8,
+      "frame_time_ms": 21.83,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 463.74,
+      "dt_s": 2.432,
+      "frames": 139,
+      "fps": 57.15,
+      "frame_time_ms": 17.5,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 466.75,
+      "dt_s": 3.012,
+      "frames": 183,
+      "fps": 60.76,
+      "frame_time_ms": 16.46,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 467.93,
+      "dt_s": 1.183,
+      "frames": 80,
+      "fps": 67.62,
+      "frame_time_ms": 14.79,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 471.45,
+      "dt_s": 3.52,
+      "frames": 217,
+      "fps": 61.65,
+      "frame_time_ms": 16.22,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 479.75,
+      "dt_s": 1.12,
+      "frames": 70,
+      "fps": 62.5,
+      "frame_time_ms": 16.0,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 481.84,
+      "dt_s": 2.088,
+      "frames": 164,
+      "fps": 78.54,
+      "frame_time_ms": 12.73,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 484.81,
+      "dt_s": 2.974,
+      "frames": 203,
+      "fps": 68.26,
+      "frame_time_ms": 14.65,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 486.8,
+      "dt_s": 1.99,
+      "frames": 159,
+      "fps": 79.9,
+      "frame_time_ms": 12.52,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 488.62,
+      "dt_s": 1.821,
+      "frames": 148,
+      "fps": 81.27,
+      "frame_time_ms": 12.3,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 512.74,
+      "dt_s": 3.772,
+      "frames": 292,
+      "fps": 77.41,
+      "frame_time_ms": 12.92,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 521.72,
+      "dt_s": 3.503,
+      "frames": 252,
+      "fps": 71.94,
+      "frame_time_ms": 13.9,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 523.33,
+      "dt_s": 1.608,
+      "frames": 118,
+      "fps": 73.38,
+      "frame_time_ms": 13.63,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 524.59,
+      "dt_s": 1.262,
+      "frames": 70,
+      "fps": 55.47,
+      "frame_time_ms": 18.03,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 525.84,
+      "dt_s": 1.251,
+      "frames": 85,
+      "fps": 67.95,
+      "frame_time_ms": 14.72,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 527.12,
+      "dt_s": 1.279,
+      "frames": 74,
+      "fps": 57.86,
+      "frame_time_ms": 17.28,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 534.85,
+      "dt_s": 1.683,
+      "frames": 108,
+      "fps": 64.17,
+      "frame_time_ms": 15.58,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 537.33,
+      "dt_s": 2.485,
+      "frames": 152,
+      "fps": 61.17,
+      "frame_time_ms": 16.35,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 538.71,
+      "dt_s": 1.371,
+      "frames": 86,
+      "fps": 62.73,
+      "frame_time_ms": 15.94,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 540.22,
+      "dt_s": 1.514,
+      "frames": 106,
+      "fps": 70.01,
+      "frame_time_ms": 14.28,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 542.57,
+      "dt_s": 2.353,
+      "frames": 165,
+      "fps": 70.12,
+      "frame_time_ms": 14.26,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 544.22,
+      "dt_s": 1.644,
+      "frames": 115,
+      "fps": 69.95,
+      "frame_time_ms": 14.3,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 547.21,
+      "dt_s": 2.997,
+      "frames": 227,
+      "fps": 75.74,
+      "frame_time_ms": 13.2,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 548.52,
+      "dt_s": 1.312,
+      "frames": 79,
+      "fps": 60.21,
+      "frame_time_ms": 16.61,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 549.93,
+      "dt_s": 1.407,
+      "frames": 89,
+      "fps": 63.26,
+      "frame_time_ms": 15.81,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 550.93,
+      "dt_s": 1.001,
+      "frames": 68,
+      "fps": 67.93,
+      "frame_time_ms": 14.72,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 552.17,
+      "dt_s": 1.24,
+      "frames": 85,
+      "fps": 68.55,
+      "frame_time_ms": 14.59,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 554.26,
+      "dt_s": 2.088,
+      "frames": 148,
+      "fps": 70.88,
+      "frame_time_ms": 14.11,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 555.48,
+      "dt_s": 1.22,
+      "frames": 84,
+      "fps": 68.85,
+      "frame_time_ms": 14.52,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 558.45,
+      "dt_s": 2.966,
+      "frames": 205,
+      "fps": 69.12,
+      "frame_time_ms": 14.47,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 561.92,
+      "dt_s": 3.469,
+      "frames": 226,
+      "fps": 65.15,
+      "frame_time_ms": 15.35,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 565.11,
+      "dt_s": 3.194,
+      "frames": 207,
+      "fps": 64.81,
+      "frame_time_ms": 15.43,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 567.22,
+      "dt_s": 2.107,
+      "frames": 144,
+      "fps": 68.34,
+      "frame_time_ms": 14.63,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 568.85,
+      "dt_s": 1.634,
+      "frames": 92,
+      "fps": 56.3,
+      "frame_time_ms": 17.76,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 570.87,
+      "dt_s": 2.014,
+      "frames": 131,
+      "fps": 65.04,
+      "frame_time_ms": 15.37,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 572.39,
+      "dt_s": 1.521,
+      "frames": 108,
+      "fps": 71.01,
+      "frame_time_ms": 14.08,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 574.67,
+      "dt_s": 2.289,
+      "frames": 171,
+      "fps": 74.71,
+      "frame_time_ms": 13.39,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 584.01,
+      "dt_s": 3.403,
+      "frames": 193,
+      "fps": 56.71,
+      "frame_time_ms": 17.63,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 585.15,
+      "dt_s": 1.141,
+      "frames": 64,
+      "fps": 56.09,
+      "frame_time_ms": 17.83,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 586.22,
+      "dt_s": 1.07,
+      "frames": 45,
+      "fps": 42.06,
+      "frame_time_ms": 23.78,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 588.05,
+      "dt_s": 1.837,
+      "frames": 99,
+      "fps": 53.89,
+      "frame_time_ms": 18.56,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 590.71,
+      "dt_s": 2.655,
+      "frames": 146,
+      "fps": 54.99,
+      "frame_time_ms": 18.18,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 592.39,
+      "dt_s": 1.683,
+      "frames": 96,
+      "fps": 57.04,
+      "frame_time_ms": 17.53,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 595.18,
+      "dt_s": 2.789,
+      "frames": 201,
+      "fps": 72.07,
+      "frame_time_ms": 13.88,
+      "phase": "NPEV2_Tutorial_1024x768",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 606.83,
+      "dt_s": 2.422,
+      "frames": 176,
+      "fps": 72.67,
+      "frame_time_ms": 13.76,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 608.89,
+      "dt_s": 2.067,
+      "frames": 183,
+      "fps": 88.53,
+      "frame_time_ms": 11.3,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 609.91,
+      "dt_s": 1.02,
+      "frames": 52,
+      "fps": 50.98,
+      "frame_time_ms": 19.62,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 624.16,
+      "dt_s": 1.208,
+      "frames": 2,
+      "fps": 1.66,
+      "frame_time_ms": 604.0,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 627.81,
+      "dt_s": 3.655,
+      "frames": 319,
+      "fps": 87.28,
+      "frame_time_ms": 11.46,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 646.87,
+      "dt_s": 1.383,
+      "frames": 162,
+      "fps": 117.14,
+      "frame_time_ms": 8.54,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 648.15,
+      "dt_s": 1.283,
+      "frames": 152,
+      "fps": 118.47,
+      "frame_time_ms": 8.44,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 650.64,
+      "dt_s": 2.484,
+      "frames": 280,
+      "fps": 112.72,
+      "frame_time_ms": 8.87,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 685.84,
+      "dt_s": 1.933,
+      "frames": 253,
+      "fps": 130.88,
+      "frame_time_ms": 7.64,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 706.81,
+      "dt_s": 1.001,
+      "frames": 140,
+      "fps": 139.86,
+      "frame_time_ms": 7.15,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 708.17,
+      "dt_s": 1.36,
+      "frames": 193,
+      "fps": 141.91,
+      "frame_time_ms": 7.05,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 729.12,
+      "dt_s": 3.086,
+      "frames": 431,
+      "fps": 139.66,
+      "frame_time_ms": 7.16,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 767.19,
+      "dt_s": 1.016,
+      "frames": 144,
+      "fps": 141.73,
+      "frame_time_ms": 7.06,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 768.31,
+      "dt_s": 1.123,
+      "frames": 160,
+      "fps": 142.48,
+      "frame_time_ms": 7.02,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 784.07,
+      "dt_s": 2.479,
+      "frames": 320,
+      "fps": 129.08,
+      "frame_time_ms": 7.75,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 785.29,
+      "dt_s": 1.222,
+      "frames": 29,
+      "fps": 23.73,
+      "frame_time_ms": 42.14,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 786.76,
+      "dt_s": 1.467,
+      "frames": 96,
+      "fps": 65.44,
+      "frame_time_ms": 15.28,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 788.57,
+      "dt_s": 1.811,
+      "frames": 203,
+      "fps": 112.09,
+      "frame_time_ms": 8.92,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 790.21,
+      "dt_s": 1.646,
+      "frames": 228,
+      "fps": 138.52,
+      "frame_time_ms": 7.22,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 806.33,
+      "dt_s": 2.963,
+      "frames": 406,
+      "fps": 137.02,
+      "frame_time_ms": 7.3,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 809.92,
+      "dt_s": 3.598,
+      "frames": 495,
+      "fps": 137.58,
+      "frame_time_ms": 7.27,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 816.12,
+      "dt_s": 1.834,
+      "frames": 231,
+      "fps": 125.95,
+      "frame_time_ms": 7.94,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 818.92,
+      "dt_s": 2.795,
+      "frames": 385,
+      "fps": 137.75,
+      "frame_time_ms": 7.26,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 826.85,
+      "dt_s": 3.742,
+      "frames": 508,
+      "fps": 135.76,
+      "frame_time_ms": 7.37,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 828.31,
+      "dt_s": 1.458,
+      "frames": 210,
+      "fps": 144.03,
+      "frame_time_ms": 6.94,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1024x768",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 830.0,
+      "dt_s": 1.694,
+      "frames": 243,
+      "fps": 143.45,
+      "frame_time_ms": 6.97,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1920x1440",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 831.25,
+      "dt_s": 1.25,
+      "frames": 178,
+      "fps": 142.4,
+      "frame_time_ms": 7.02,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1920x1440",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 834.74,
+      "dt_s": 3.489,
+      "frames": 297,
+      "fps": 85.12,
+      "frame_time_ms": 11.75,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1920x1440",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 846.49,
+      "dt_s": 2.894,
+      "frames": 416,
+      "fps": 143.75,
+      "frame_time_ms": 6.96,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1920x1440",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 864.49,
+      "dt_s": 1.071,
+      "frames": 29,
+      "fps": 27.08,
+      "frame_time_ms": 36.93,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1920x1440",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 877.66,
+      "dt_s": 1.016,
+      "frames": 86,
+      "fps": 84.65,
+      "frame_time_ms": 11.81,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1920x1440",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 880.02,
+      "dt_s": 2.36,
+      "frames": 310,
+      "fps": 131.36,
+      "frame_time_ms": 7.61,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1920x1440",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 883.6,
+      "dt_s": 3.573,
+      "frames": 357,
+      "fps": 99.92,
+      "frame_time_ms": 10.01,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1920x1440",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 886.72,
+      "dt_s": 3.126,
+      "frames": 82,
+      "fps": 26.23,
+      "frame_time_ms": 38.12,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1920x1440",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 888.39,
+      "dt_s": 1.668,
+      "frames": 50,
+      "fps": 29.98,
+      "frame_time_ms": 33.36,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1920x1440",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 907.43,
+      "dt_s": 2.672,
+      "frames": 219,
+      "fps": 81.96,
+      "frame_time_ms": 12.2,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1920x1440",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 914.59,
+      "dt_s": 2.22,
+      "frames": 315,
+      "fps": 141.89,
+      "frame_time_ms": 7.05,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1920x1440",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 916.53,
+      "dt_s": 1.943,
+      "frames": 235,
+      "fps": 120.95,
+      "frame_time_ms": 8.27,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 924.64,
+      "dt_s": 1.994,
+      "frames": 240,
+      "fps": 120.36,
+      "frame_time_ms": 8.31,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 926.39,
+      "dt_s": 1.754,
+      "frames": 183,
+      "fps": 104.33,
+      "frame_time_ms": 9.58,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 929.11,
+      "dt_s": 2.714,
+      "frames": 339,
+      "fps": 124.91,
+      "frame_time_ms": 8.01,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 932.38,
+      "dt_s": 3.27,
+      "frames": 401,
+      "fps": 122.63,
+      "frame_time_ms": 8.15,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 934.48,
+      "dt_s": 2.096,
+      "frames": 140,
+      "fps": 66.79,
+      "frame_time_ms": 14.97,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 942.49,
+      "dt_s": 2.11,
+      "frames": 236,
+      "fps": 111.85,
+      "frame_time_ms": 8.94,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 943.57,
+      "dt_s": 1.08,
+      "frames": 41,
+      "fps": 37.96,
+      "frame_time_ms": 26.34,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 946.83,
+      "dt_s": 3.257,
+      "frames": 130,
+      "fps": 39.91,
+      "frame_time_ms": 25.05,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 948.57,
+      "dt_s": 1.743,
+      "frames": 63,
+      "fps": 36.14,
+      "frame_time_ms": 27.67,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 950.81,
+      "dt_s": 2.235,
+      "frames": 256,
+      "fps": 114.54,
+      "frame_time_ms": 8.73,
+      "phase": "MainMenuV2_Lobby",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 963.84,
+      "dt_s": 3.521,
+      "frames": 106,
+      "fps": 30.11,
+      "frame_time_ms": 33.22,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 967.07,
+      "dt_s": 3.238,
+      "frames": 173,
+      "fps": 53.43,
+      "frame_time_ms": 18.72,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 970.11,
+      "dt_s": 3.037,
+      "frames": 187,
+      "fps": 61.57,
+      "frame_time_ms": 16.24,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 973.03,
+      "dt_s": 2.92,
+      "frames": 49,
+      "fps": 16.78,
+      "frame_time_ms": 59.59,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 974.65,
+      "dt_s": 1.622,
+      "frames": 40,
+      "fps": 24.66,
+      "frame_time_ms": 40.55,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 977.26,
+      "dt_s": 1.572,
+      "frames": 47,
+      "fps": 29.9,
+      "frame_time_ms": 33.45,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 978.84,
+      "dt_s": 1.582,
+      "frames": 79,
+      "fps": 49.94,
+      "frame_time_ms": 20.03,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 981.3,
+      "dt_s": 2.458,
+      "frames": 65,
+      "fps": 26.44,
+      "frame_time_ms": 37.82,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 983.86,
+      "dt_s": 2.559,
+      "frames": 119,
+      "fps": 46.5,
+      "frame_time_ms": 21.5,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 985.18,
+      "dt_s": 1.327,
+      "frames": 54,
+      "fps": 40.69,
+      "frame_time_ms": 24.57,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 987.75,
+      "dt_s": 2.567,
+      "frames": 74,
+      "fps": 28.83,
+      "frame_time_ms": 34.69,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 994.89,
+      "dt_s": 1.488,
+      "frames": 45,
+      "fps": 30.24,
+      "frame_time_ms": 33.07,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 996.31,
+      "dt_s": 1.424,
+      "frames": 42,
+      "fps": 29.49,
+      "frame_time_ms": 33.9,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 997.73,
+      "dt_s": 1.413,
+      "frames": 63,
+      "fps": 44.59,
+      "frame_time_ms": 22.43,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1000.18,
+      "dt_s": 2.46,
+      "frames": 135,
+      "fps": 54.88,
+      "frame_time_ms": 18.22,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1001.19,
+      "dt_s": 1.003,
+      "frames": 53,
+      "fps": 52.84,
+      "frame_time_ms": 18.92,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1003.41,
+      "dt_s": 2.224,
+      "frames": 114,
+      "fps": 51.26,
+      "frame_time_ms": 19.51,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1004.75,
+      "dt_s": 1.343,
+      "frames": 69,
+      "fps": 51.38,
+      "frame_time_ms": 19.46,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1005.76,
+      "dt_s": 1.006,
+      "frames": 47,
+      "fps": 46.72,
+      "frame_time_ms": 21.4,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1006.82,
+      "dt_s": 1.058,
+      "frames": 50,
+      "fps": 47.26,
+      "frame_time_ms": 21.16,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1008.12,
+      "dt_s": 1.302,
+      "frames": 68,
+      "fps": 52.23,
+      "frame_time_ms": 19.15,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1009.59,
+      "dt_s": 1.468,
+      "frames": 75,
+      "fps": 51.09,
+      "frame_time_ms": 19.57,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1010.94,
+      "dt_s": 1.352,
+      "frames": 72,
+      "fps": 53.25,
+      "frame_time_ms": 18.78,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1011.94,
+      "dt_s": 1.002,
+      "frames": 51,
+      "fps": 50.9,
+      "frame_time_ms": 19.65,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1012.96,
+      "dt_s": 1.016,
+      "frames": 48,
+      "fps": 47.24,
+      "frame_time_ms": 21.17,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1014.98,
+      "dt_s": 2.025,
+      "frames": 47,
+      "fps": 23.21,
+      "frame_time_ms": 43.09,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1016.39,
+      "dt_s": 1.409,
+      "frames": 52,
+      "fps": 36.91,
+      "frame_time_ms": 27.1,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1017.87,
+      "dt_s": 1.476,
+      "frames": 5,
+      "fps": 3.39,
+      "frame_time_ms": 295.2,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1024.0,
+      "dt_s": 1.611,
+      "frames": 42,
+      "fps": 26.07,
+      "frame_time_ms": 38.36,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1030.86,
+      "dt_s": 2.001,
+      "frames": 54,
+      "fps": 26.99,
+      "frame_time_ms": 37.06,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1032.6,
+      "dt_s": 1.743,
+      "frames": 67,
+      "fps": 38.44,
+      "frame_time_ms": 26.01,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1033.86,
+      "dt_s": 1.26,
+      "frames": 10,
+      "fps": 7.94,
+      "frame_time_ms": 126.0,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1036.39,
+      "dt_s": 2.527,
+      "frames": 94,
+      "fps": 37.2,
+      "frame_time_ms": 26.88,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1037.52,
+      "dt_s": 1.125,
+      "frames": 24,
+      "fps": 21.33,
+      "frame_time_ms": 46.88,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1038.58,
+      "dt_s": 1.068,
+      "frames": 45,
+      "fps": 42.13,
+      "frame_time_ms": 23.73,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1041.96,
+      "dt_s": 3.373,
+      "frames": 44,
+      "fps": 13.04,
+      "frame_time_ms": 76.66,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1043.2,
+      "dt_s": 1.241,
+      "frames": 3,
+      "fps": 2.42,
+      "frame_time_ms": 413.67,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1045.38,
+      "dt_s": 2.178,
+      "frames": 68,
+      "fps": 31.22,
+      "frame_time_ms": 32.03,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1047.2,
+      "dt_s": 1.823,
+      "frames": 52,
+      "fps": 28.52,
+      "frame_time_ms": 35.06,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1049.28,
+      "dt_s": 2.078,
+      "frames": 63,
+      "fps": 30.32,
+      "frame_time_ms": 32.98,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1064.69,
+      "dt_s": 1.869,
+      "frames": 84,
+      "fps": 44.94,
+      "frame_time_ms": 22.25,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1066.92,
+      "dt_s": 2.231,
+      "frames": 90,
+      "fps": 40.34,
+      "frame_time_ms": 24.79,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1068.4,
+      "dt_s": 1.476,
+      "frames": 57,
+      "fps": 38.62,
+      "frame_time_ms": 25.89,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1069.51,
+      "dt_s": 1.108,
+      "frames": 59,
+      "fps": 53.25,
+      "frame_time_ms": 18.78,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1070.75,
+      "dt_s": 1.245,
+      "frames": 58,
+      "fps": 46.59,
+      "frame_time_ms": 21.47,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1072.06,
+      "dt_s": 1.305,
+      "frames": 60,
+      "fps": 45.98,
+      "frame_time_ms": 21.75,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1074.23,
+      "dt_s": 2.175,
+      "frames": 100,
+      "fps": 45.98,
+      "frame_time_ms": 21.75,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1076.45,
+      "dt_s": 2.218,
+      "frames": 55,
+      "fps": 24.8,
+      "frame_time_ms": 40.33,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1077.48,
+      "dt_s": 1.03,
+      "frames": 12,
+      "fps": 11.65,
+      "frame_time_ms": 85.83,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1079.27,
+      "dt_s": 1.791,
+      "frames": 49,
+      "fps": 27.36,
+      "frame_time_ms": 36.55,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1086.54,
+      "dt_s": 1.069,
+      "frames": 56,
+      "fps": 52.39,
+      "frame_time_ms": 19.09,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1087.59,
+      "dt_s": 1.044,
+      "frames": 48,
+      "fps": 45.98,
+      "frame_time_ms": 21.75,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1089.2,
+      "dt_s": 1.612,
+      "frames": 93,
+      "fps": 57.69,
+      "frame_time_ms": 17.33,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1090.68,
+      "dt_s": 1.478,
+      "frames": 86,
+      "fps": 58.19,
+      "frame_time_ms": 17.19,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1092.68,
+      "dt_s": 2.005,
+      "frames": 101,
+      "fps": 50.37,
+      "frame_time_ms": 19.85,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1093.7,
+      "dt_s": 1.021,
+      "frames": 47,
+      "fps": 46.03,
+      "frame_time_ms": 21.72,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1095.12,
+      "dt_s": 1.416,
+      "frames": 48,
+      "fps": 33.9,
+      "frame_time_ms": 29.5,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1097.03,
+      "dt_s": 1.906,
+      "frames": 39,
+      "fps": 20.46,
+      "frame_time_ms": 48.87,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1098.24,
+      "dt_s": 1.218,
+      "frames": 48,
+      "fps": 39.41,
+      "frame_time_ms": 25.37,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1099.73,
+      "dt_s": 1.489,
+      "frames": 82,
+      "fps": 55.07,
+      "frame_time_ms": 18.16,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1100.8,
+      "dt_s": 1.069,
+      "frames": 58,
+      "fps": 54.26,
+      "frame_time_ms": 18.43,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1102.18,
+      "dt_s": 1.381,
+      "frames": 82,
+      "fps": 59.38,
+      "frame_time_ms": 16.84,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1103.92,
+      "dt_s": 1.742,
+      "frames": 100,
+      "fps": 57.41,
+      "frame_time_ms": 17.42,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1105.12,
+      "dt_s": 1.194,
+      "frames": 69,
+      "fps": 57.79,
+      "frame_time_ms": 17.3,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1112.24,
+      "dt_s": 2.86,
+      "frames": 87,
+      "fps": 30.42,
+      "frame_time_ms": 32.87,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1115.52,
+      "dt_s": 3.274,
+      "frames": 82,
+      "fps": 25.05,
+      "frame_time_ms": 39.93,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1116.67,
+      "dt_s": 1.155,
+      "frames": 44,
+      "fps": 38.1,
+      "frame_time_ms": 26.25,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1117.8,
+      "dt_s": 1.128,
+      "frames": 34,
+      "fps": 30.14,
+      "frame_time_ms": 33.18,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1121.1,
+      "dt_s": 3.299,
+      "frames": 85,
+      "fps": 25.77,
+      "frame_time_ms": 38.81,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1122.71,
+      "dt_s": 1.609,
+      "frames": 42,
+      "fps": 26.1,
+      "frame_time_ms": 38.31,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1124.53,
+      "dt_s": 1.82,
+      "frames": 52,
+      "fps": 28.57,
+      "frame_time_ms": 35.0,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1125.62,
+      "dt_s": 1.092,
+      "frames": 23,
+      "fps": 21.06,
+      "frame_time_ms": 47.48,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1126.72,
+      "dt_s": 1.103,
+      "frames": 68,
+      "fps": 61.65,
+      "frame_time_ms": 16.22,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1127.74,
+      "dt_s": 1.017,
+      "frames": 57,
+      "fps": 56.05,
+      "frame_time_ms": 17.84,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1128.78,
+      "dt_s": 1.041,
+      "frames": 61,
+      "fps": 58.6,
+      "frame_time_ms": 17.07,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1129.78,
+      "dt_s": 1.004,
+      "frames": 61,
+      "fps": 60.76,
+      "frame_time_ms": 16.46,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1131.09,
+      "dt_s": 1.306,
+      "frames": 80,
+      "fps": 61.26,
+      "frame_time_ms": 16.32,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1132.18,
+      "dt_s": 1.086,
+      "frames": 66,
+      "fps": 60.77,
+      "frame_time_ms": 16.45,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1133.51,
+      "dt_s": 1.333,
+      "frames": 55,
+      "fps": 41.26,
+      "frame_time_ms": 24.24,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1135.13,
+      "dt_s": 1.624,
+      "frames": 107,
+      "fps": 65.89,
+      "frame_time_ms": 15.18,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1136.2,
+      "dt_s": 1.069,
+      "frames": 70,
+      "fps": 65.48,
+      "frame_time_ms": 15.27,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1137.55,
+      "dt_s": 1.347,
+      "frames": 77,
+      "fps": 57.16,
+      "frame_time_ms": 17.49,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1138.68,
+      "dt_s": 1.133,
+      "frames": 64,
+      "fps": 56.49,
+      "frame_time_ms": 17.7,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1139.86,
+      "dt_s": 1.181,
+      "frames": 66,
+      "fps": 55.88,
+      "frame_time_ms": 17.89,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1140.88,
+      "dt_s": 1.022,
+      "frames": 56,
+      "fps": 54.79,
+      "frame_time_ms": 18.25,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1142.8,
+      "dt_s": 1.917,
+      "frames": 109,
+      "fps": 56.86,
+      "frame_time_ms": 17.59,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1144.33,
+      "dt_s": 1.53,
+      "frames": 89,
+      "fps": 58.17,
+      "frame_time_ms": 17.19,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1145.49,
+      "dt_s": 1.16,
+      "frames": 68,
+      "fps": 58.62,
+      "frame_time_ms": 17.06,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1146.52,
+      "dt_s": 1.025,
+      "frames": 59,
+      "fps": 57.56,
+      "frame_time_ms": 17.37,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1147.76,
+      "dt_s": 1.238,
+      "frames": 68,
+      "fps": 54.93,
+      "frame_time_ms": 18.21,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1148.85,
+      "dt_s": 1.092,
+      "frames": 63,
+      "fps": 57.69,
+      "frame_time_ms": 17.33,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1150.54,
+      "dt_s": 1.69,
+      "frames": 84,
+      "fps": 49.7,
+      "frame_time_ms": 20.12,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1152.05,
+      "dt_s": 1.514,
+      "frames": 96,
+      "fps": 63.41,
+      "frame_time_ms": 15.77,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1153.79,
+      "dt_s": 1.735,
+      "frames": 100,
+      "fps": 57.64,
+      "frame_time_ms": 17.35,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1155.29,
+      "dt_s": 1.508,
+      "frames": 73,
+      "fps": 48.41,
+      "frame_time_ms": 20.66,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1156.85,
+      "dt_s": 1.557,
+      "frames": 68,
+      "fps": 43.67,
+      "frame_time_ms": 22.9,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1158.45,
+      "dt_s": 1.6,
+      "frames": 82,
+      "fps": 51.25,
+      "frame_time_ms": 19.51,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1159.49,
+      "dt_s": 1.038,
+      "frames": 48,
+      "fps": 46.24,
+      "frame_time_ms": 21.63,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1161.06,
+      "dt_s": 1.568,
+      "frames": 70,
+      "fps": 44.64,
+      "frame_time_ms": 22.4,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1162.07,
+      "dt_s": 1.015,
+      "frames": 50,
+      "fps": 49.26,
+      "frame_time_ms": 20.3,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1164.16,
+      "dt_s": 2.091,
+      "frames": 114,
+      "fps": 54.52,
+      "frame_time_ms": 18.34,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1165.48,
+      "dt_s": 1.322,
+      "frames": 74,
+      "fps": 55.98,
+      "frame_time_ms": 17.86,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1166.88,
+      "dt_s": 1.398,
+      "frames": 39,
+      "fps": 27.9,
+      "frame_time_ms": 35.85,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1167.95,
+      "dt_s": 1.066,
+      "frames": 49,
+      "fps": 45.97,
+      "frame_time_ms": 21.76,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1169.11,
+      "dt_s": 1.162,
+      "frames": 59,
+      "fps": 50.77,
+      "frame_time_ms": 19.69,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1170.75,
+      "dt_s": 1.637,
+      "frames": 79,
+      "fps": 48.26,
+      "frame_time_ms": 20.72,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1173.5,
+      "dt_s": 2.751,
+      "frames": 142,
+      "fps": 51.62,
+      "frame_time_ms": 19.37,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1174.89,
+      "dt_s": 1.392,
+      "frames": 24,
+      "fps": 17.24,
+      "frame_time_ms": 58.0,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1175.98,
+      "dt_s": 1.088,
+      "frames": 15,
+      "fps": 13.79,
+      "frame_time_ms": 72.53,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1177.1,
+      "dt_s": 1.125,
+      "frames": 42,
+      "fps": 37.33,
+      "frame_time_ms": 26.79,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1178.12,
+      "dt_s": 1.011,
+      "frames": 46,
+      "fps": 45.5,
+      "frame_time_ms": 21.98,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1179.79,
+      "dt_s": 1.673,
+      "frames": 93,
+      "fps": 55.59,
+      "frame_time_ms": 17.99,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1180.82,
+      "dt_s": 1.027,
+      "frames": 58,
+      "fps": 56.48,
+      "frame_time_ms": 17.71,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1182.37,
+      "dt_s": 1.551,
+      "frames": 87,
+      "fps": 56.09,
+      "frame_time_ms": 17.83,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1183.56,
+      "dt_s": 1.194,
+      "frames": 65,
+      "fps": 54.44,
+      "frame_time_ms": 18.37,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1185.75,
+      "dt_s": 2.186,
+      "frames": 113,
+      "fps": 51.69,
+      "frame_time_ms": 19.35,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1187.02,
+      "dt_s": 1.275,
+      "frames": 72,
+      "fps": 56.47,
+      "frame_time_ms": 17.71,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1188.27,
+      "dt_s": 1.247,
+      "frames": 69,
+      "fps": 55.33,
+      "frame_time_ms": 18.07,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1189.45,
+      "dt_s": 1.183,
+      "frames": 65,
+      "fps": 54.95,
+      "frame_time_ms": 18.2,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1190.52,
+      "dt_s": 1.068,
+      "frames": 53,
+      "fps": 49.63,
+      "frame_time_ms": 20.15,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1192.0,
+      "dt_s": 1.481,
+      "frames": 78,
+      "fps": 52.67,
+      "frame_time_ms": 18.99,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1193.04,
+      "dt_s": 1.04,
+      "frames": 51,
+      "fps": 49.04,
+      "frame_time_ms": 20.39,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1194.28,
+      "dt_s": 1.243,
+      "frames": 55,
+      "fps": 44.25,
+      "frame_time_ms": 22.6,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1195.48,
+      "dt_s": 1.2,
+      "frames": 45,
+      "fps": 37.5,
+      "frame_time_ms": 26.67,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1197.08,
+      "dt_s": 1.599,
+      "frames": 72,
+      "fps": 45.03,
+      "frame_time_ms": 22.21,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1198.13,
+      "dt_s": 1.051,
+      "frames": 37,
+      "fps": 35.2,
+      "frame_time_ms": 28.41,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1200.63,
+      "dt_s": 2.501,
+      "frames": 144,
+      "fps": 57.58,
+      "frame_time_ms": 17.37,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1201.96,
+      "dt_s": 1.33,
+      "frames": 74,
+      "fps": 55.64,
+      "frame_time_ms": 17.97,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1203.84,
+      "dt_s": 1.871,
+      "frames": 107,
+      "fps": 57.19,
+      "frame_time_ms": 17.49,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1205.31,
+      "dt_s": 1.479,
+      "frames": 80,
+      "fps": 54.09,
+      "frame_time_ms": 18.49,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1207.7,
+      "dt_s": 2.387,
+      "frames": 115,
+      "fps": 48.18,
+      "frame_time_ms": 20.76,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1209.88,
+      "dt_s": 2.181,
+      "frames": 105,
+      "fps": 48.14,
+      "frame_time_ms": 20.77,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1211.23,
+      "dt_s": 1.353,
+      "frames": 61,
+      "fps": 45.08,
+      "frame_time_ms": 22.18,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1212.27,
+      "dt_s": 1.038,
+      "frames": 51,
+      "fps": 49.13,
+      "frame_time_ms": 20.35,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1213.79,
+      "dt_s": 1.518,
+      "frames": 63,
+      "fps": 41.5,
+      "frame_time_ms": 24.1,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1215.93,
+      "dt_s": 2.135,
+      "frames": 97,
+      "fps": 45.43,
+      "frame_time_ms": 22.01,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1218.59,
+      "dt_s": 2.663,
+      "frames": 132,
+      "fps": 49.57,
+      "frame_time_ms": 20.17,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1220.38,
+      "dt_s": 1.793,
+      "frames": 89,
+      "fps": 49.64,
+      "frame_time_ms": 20.15,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1221.94,
+      "dt_s": 1.561,
+      "frames": 76,
+      "fps": 48.69,
+      "frame_time_ms": 20.54,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1223.86,
+      "dt_s": 1.918,
+      "frames": 88,
+      "fps": 45.88,
+      "frame_time_ms": 21.8,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1225.87,
+      "dt_s": 2.011,
+      "frames": 97,
+      "fps": 48.23,
+      "frame_time_ms": 20.73,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1228.16,
+      "dt_s": 2.29,
+      "frames": 84,
+      "fps": 36.68,
+      "frame_time_ms": 27.26,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1230.14,
+      "dt_s": 1.981,
+      "frames": 69,
+      "fps": 34.83,
+      "frame_time_ms": 28.71,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1231.86,
+      "dt_s": 1.719,
+      "frames": 59,
+      "fps": 34.32,
+      "frame_time_ms": 29.14,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1233.02,
+      "dt_s": 1.156,
+      "frames": 38,
+      "fps": 32.87,
+      "frame_time_ms": 30.42,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1234.12,
+      "dt_s": 1.102,
+      "frames": 46,
+      "fps": 41.74,
+      "frame_time_ms": 23.96,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1236.03,
+      "dt_s": 1.911,
+      "frames": 54,
+      "fps": 28.26,
+      "frame_time_ms": 35.39,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1239.16,
+      "dt_s": 3.134,
+      "frames": 59,
+      "fps": 18.83,
+      "frame_time_ms": 53.12,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1245.82,
+      "dt_s": 1.37,
+      "frames": 14,
+      "fps": 10.22,
+      "frame_time_ms": 97.86,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1247.05,
+      "dt_s": 1.234,
+      "frames": 35,
+      "fps": 28.36,
+      "frame_time_ms": 35.26,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1248.26,
+      "dt_s": 1.215,
+      "frames": 37,
+      "fps": 30.45,
+      "frame_time_ms": 32.84,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1249.39,
+      "dt_s": 1.122,
+      "frames": 21,
+      "fps": 18.72,
+      "frame_time_ms": 53.43,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1251.93,
+      "dt_s": 2.545,
+      "frames": 60,
+      "fps": 23.58,
+      "frame_time_ms": 42.42,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1255.11,
+      "dt_s": 3.18,
+      "frames": 71,
+      "fps": 22.33,
+      "frame_time_ms": 44.79,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1257.34,
+      "dt_s": 2.229,
+      "frames": 48,
+      "fps": 21.53,
+      "frame_time_ms": 46.44,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1258.83,
+      "dt_s": 1.49,
+      "frames": 39,
+      "fps": 26.17,
+      "frame_time_ms": 38.21,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1266.46,
+      "dt_s": 1.009,
+      "frames": 35,
+      "fps": 34.69,
+      "frame_time_ms": 28.83,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1268.87,
+      "dt_s": 2.409,
+      "frames": 99,
+      "fps": 41.1,
+      "frame_time_ms": 24.33,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1271.16,
+      "dt_s": 2.294,
+      "frames": 116,
+      "fps": 50.57,
+      "frame_time_ms": 19.78,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1272.27,
+      "dt_s": 1.106,
+      "frames": 39,
+      "fps": 35.26,
+      "frame_time_ms": 28.36,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1273.8,
+      "dt_s": 1.539,
+      "frames": 73,
+      "fps": 47.43,
+      "frame_time_ms": 21.08,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1275.41,
+      "dt_s": 1.604,
+      "frames": 89,
+      "fps": 55.49,
+      "frame_time_ms": 18.02,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1276.49,
+      "dt_s": 1.079,
+      "frames": 60,
+      "fps": 55.61,
+      "frame_time_ms": 17.98,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1277.79,
+      "dt_s": 1.305,
+      "frames": 19,
+      "fps": 14.56,
+      "frame_time_ms": 68.68,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1278.98,
+      "dt_s": 1.185,
+      "frames": 58,
+      "fps": 48.95,
+      "frame_time_ms": 20.43,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1280.41,
+      "dt_s": 1.432,
+      "frames": 52,
+      "fps": 36.31,
+      "frame_time_ms": 27.54,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1281.84,
+      "dt_s": 1.427,
+      "frames": 55,
+      "fps": 38.54,
+      "frame_time_ms": 25.95,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1286.06,
+      "dt_s": 2.429,
+      "frames": 102,
+      "fps": 41.99,
+      "frame_time_ms": 23.81,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1287.11,
+      "dt_s": 1.051,
+      "frames": 52,
+      "fps": 49.48,
+      "frame_time_ms": 20.21,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1288.52,
+      "dt_s": 1.404,
+      "frames": 75,
+      "fps": 53.42,
+      "frame_time_ms": 18.72,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1289.86,
+      "dt_s": 1.341,
+      "frames": 57,
+      "fps": 42.51,
+      "frame_time_ms": 23.53,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1292.64,
+      "dt_s": 2.778,
+      "frames": 137,
+      "fps": 49.32,
+      "frame_time_ms": 20.28,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1293.92,
+      "dt_s": 1.28,
+      "frames": 4,
+      "fps": 3.13,
+      "frame_time_ms": 320.0,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1297.08,
+      "dt_s": 3.161,
+      "frames": 72,
+      "fps": 22.78,
+      "frame_time_ms": 43.9,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1298.78,
+      "dt_s": 1.7,
+      "frames": 48,
+      "fps": 28.24,
+      "frame_time_ms": 35.42,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1301.73,
+      "dt_s": 2.956,
+      "frames": 107,
+      "fps": 36.2,
+      "frame_time_ms": 27.63,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1308.41,
+      "dt_s": 1.39,
+      "frames": 80,
+      "fps": 57.55,
+      "frame_time_ms": 17.37,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1311.67,
+      "dt_s": 3.254,
+      "frames": 54,
+      "fps": 16.59,
+      "frame_time_ms": 60.26,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1314.76,
+      "dt_s": 3.086,
+      "frames": 175,
+      "fps": 56.71,
+      "frame_time_ms": 17.63,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1317.85,
+      "dt_s": 3.09,
+      "frames": 46,
+      "fps": 14.89,
+      "frame_time_ms": 67.17,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1318.87,
+      "dt_s": 1.028,
+      "frames": 32,
+      "fps": 31.13,
+      "frame_time_ms": 32.13,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1320.57,
+      "dt_s": 1.699,
+      "frames": 104,
+      "fps": 61.21,
+      "frame_time_ms": 16.34,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1329.34,
+      "dt_s": 1.106,
+      "frames": 24,
+      "fps": 21.7,
+      "frame_time_ms": 46.08,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1336.43,
+      "dt_s": 2.401,
+      "frames": 51,
+      "fps": 21.24,
+      "frame_time_ms": 47.08,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1346.2,
+      "dt_s": 3.758,
+      "frames": 235,
+      "fps": 62.53,
+      "frame_time_ms": 15.99,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1368.94,
+      "dt_s": 1.718,
+      "frames": 106,
+      "fps": 61.7,
+      "frame_time_ms": 16.21,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1370.36,
+      "dt_s": 1.424,
+      "frames": 95,
+      "fps": 66.71,
+      "frame_time_ms": 14.99,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1388.98,
+      "dt_s": 2.235,
+      "frames": 46,
+      "fps": 20.58,
+      "frame_time_ms": 48.59,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1390.91,
+      "dt_s": 1.932,
+      "frames": 70,
+      "fps": 36.23,
+      "frame_time_ms": 27.6,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1397.62,
+      "dt_s": 1.347,
+      "frames": 67,
+      "fps": 49.74,
+      "frame_time_ms": 20.1,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1399.12,
+      "dt_s": 1.498,
+      "frames": 77,
+      "fps": 51.4,
+      "frame_time_ms": 19.45,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1400.74,
+      "dt_s": 1.62,
+      "frames": 100,
+      "fps": 61.73,
+      "frame_time_ms": 16.2,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1401.74,
+      "dt_s": 1.002,
+      "frames": 58,
+      "fps": 57.88,
+      "frame_time_ms": 17.28,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1402.81,
+      "dt_s": 1.063,
+      "frames": 55,
+      "fps": 51.74,
+      "frame_time_ms": 19.33,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1404.37,
+      "dt_s": 1.568,
+      "frames": 92,
+      "fps": 58.67,
+      "frame_time_ms": 17.04,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1405.56,
+      "dt_s": 1.19,
+      "frames": 67,
+      "fps": 56.3,
+      "frame_time_ms": 17.76,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1407.81,
+      "dt_s": 2.243,
+      "frames": 136,
+      "fps": 60.63,
+      "frame_time_ms": 16.49,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1409.17,
+      "dt_s": 1.363,
+      "frames": 80,
+      "fps": 58.69,
+      "frame_time_ms": 17.04,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1410.35,
+      "dt_s": 1.183,
+      "frames": 62,
+      "fps": 52.41,
+      "frame_time_ms": 19.08,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1411.66,
+      "dt_s": 1.309,
+      "frames": 78,
+      "fps": 59.59,
+      "frame_time_ms": 16.78,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1413.03,
+      "dt_s": 1.373,
+      "frames": 76,
+      "fps": 55.35,
+      "frame_time_ms": 18.07,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1414.38,
+      "dt_s": 1.343,
+      "frames": 76,
+      "fps": 56.59,
+      "frame_time_ms": 17.67,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1415.95,
+      "dt_s": 1.575,
+      "frames": 94,
+      "fps": 59.68,
+      "frame_time_ms": 16.76,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1417.18,
+      "dt_s": 1.231,
+      "frames": 64,
+      "fps": 51.99,
+      "frame_time_ms": 19.23,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1418.25,
+      "dt_s": 1.071,
+      "frames": 49,
+      "fps": 45.75,
+      "frame_time_ms": 21.86,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1419.52,
+      "dt_s": 1.267,
+      "frames": 75,
+      "fps": 59.19,
+      "frame_time_ms": 16.89,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1420.56,
+      "dt_s": 1.039,
+      "frames": 61,
+      "fps": 58.71,
+      "frame_time_ms": 17.03,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1421.65,
+      "dt_s": 1.095,
+      "frames": 66,
+      "fps": 60.27,
+      "frame_time_ms": 16.59,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1422.94,
+      "dt_s": 1.287,
+      "frames": 78,
+      "fps": 60.61,
+      "frame_time_ms": 16.5,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1424.16,
+      "dt_s": 1.214,
+      "frames": 74,
+      "fps": 60.96,
+      "frame_time_ms": 16.41,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1425.43,
+      "dt_s": 1.276,
+      "frames": 69,
+      "fps": 54.08,
+      "frame_time_ms": 18.49,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1426.93,
+      "dt_s": 1.501,
+      "frames": 77,
+      "fps": 51.3,
+      "frame_time_ms": 19.49,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1428.61,
+      "dt_s": 1.681,
+      "frames": 102,
+      "fps": 60.68,
+      "frame_time_ms": 16.48,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1429.62,
+      "dt_s": 1.004,
+      "frames": 61,
+      "fps": 60.76,
+      "frame_time_ms": 16.46,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1430.62,
+      "dt_s": 1.003,
+      "frames": 55,
+      "fps": 54.84,
+      "frame_time_ms": 18.24,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1432.08,
+      "dt_s": 1.462,
+      "frames": 87,
+      "fps": 59.51,
+      "frame_time_ms": 16.8,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1433.3,
+      "dt_s": 1.221,
+      "frames": 73,
+      "fps": 59.79,
+      "frame_time_ms": 16.73,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1434.54,
+      "dt_s": 1.24,
+      "frames": 77,
+      "fps": 62.1,
+      "frame_time_ms": 16.1,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1435.69,
+      "dt_s": 1.151,
+      "frames": 67,
+      "fps": 58.21,
+      "frame_time_ms": 17.18,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1436.77,
+      "dt_s": 1.076,
+      "frames": 68,
+      "fps": 63.2,
+      "frame_time_ms": 15.82,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1437.98,
+      "dt_s": 1.205,
+      "frames": 70,
+      "fps": 58.09,
+      "frame_time_ms": 17.21,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1439.01,
+      "dt_s": 1.033,
+      "frames": 54,
+      "fps": 52.27,
+      "frame_time_ms": 19.13,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1440.32,
+      "dt_s": 1.31,
+      "frames": 69,
+      "fps": 52.67,
+      "frame_time_ms": 18.99,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1441.34,
+      "dt_s": 1.017,
+      "frames": 50,
+      "fps": 49.16,
+      "frame_time_ms": 20.34,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1442.86,
+      "dt_s": 1.521,
+      "frames": 88,
+      "fps": 57.86,
+      "frame_time_ms": 17.28,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1444.6,
+      "dt_s": 1.746,
+      "frames": 105,
+      "fps": 60.14,
+      "frame_time_ms": 16.63,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1445.86,
+      "dt_s": 1.259,
+      "frames": 77,
+      "fps": 61.16,
+      "frame_time_ms": 16.35,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1447.62,
+      "dt_s": 1.755,
+      "frames": 7,
+      "fps": 3.99,
+      "frame_time_ms": 250.71,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1448.65,
+      "dt_s": 1.032,
+      "frames": 21,
+      "fps": 20.35,
+      "frame_time_ms": 49.14,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1475.98,
+      "dt_s": 2.161,
+      "frames": 124,
+      "fps": 57.38,
+      "frame_time_ms": 17.43,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1477.6,
+      "dt_s": 1.614,
+      "frames": 48,
+      "fps": 29.74,
+      "frame_time_ms": 33.63,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1480.11,
+      "dt_s": 2.516,
+      "frames": 46,
+      "fps": 18.28,
+      "frame_time_ms": 54.7,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1483.54,
+      "dt_s": 3.432,
+      "frames": 171,
+      "fps": 49.83,
+      "frame_time_ms": 20.07,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1485.88,
+      "dt_s": 2.341,
+      "frames": 80,
+      "fps": 34.17,
+      "frame_time_ms": 29.26,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1487.21,
+      "dt_s": 1.326,
+      "frames": 9,
+      "fps": 6.79,
+      "frame_time_ms": 147.33,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": false
+    },
+    {
+      "t_s": 1489.27,
+      "dt_s": 2.058,
+      "frames": 40,
+      "fps": 19.44,
+      "frame_time_ms": 51.45,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1490.29,
+      "dt_s": 1.025,
+      "frames": 33,
+      "fps": 32.2,
+      "frame_time_ms": 31.06,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1491.59,
+      "dt_s": 1.292,
+      "frames": 34,
+      "fps": 26.32,
+      "frame_time_ms": 38.0,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1492.66,
+      "dt_s": 1.077,
+      "frames": 61,
+      "fps": 56.64,
+      "frame_time_ms": 17.66,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1494.09,
+      "dt_s": 1.426,
+      "frames": 88,
+      "fps": 61.71,
+      "frame_time_ms": 16.2,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1495.31,
+      "dt_s": 1.223,
+      "frames": 22,
+      "fps": 17.99,
+      "frame_time_ms": 55.59,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1497.54,
+      "dt_s": 2.227,
+      "frames": 130,
+      "fps": 58.37,
+      "frame_time_ms": 17.13,
+      "phase": "RangeV2_1920x1200",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    },
+    {
+      "t_s": 1498.64,
+      "dt_s": 1.102,
+      "frames": 59,
+      "fps": 53.54,
+      "frame_time_ms": 18.68,
+      "phase": "Shutdown",
+      "resolution": "1920x1200",
+      "in_settings_or_menu_window": true
+    }
+  ]
+}

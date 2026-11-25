@@ -1,0 +1,218 @@
+{
+  "backend_evidence": {
+    "arm": "dxmt_metalfx_off",
+    "backend": "dxmt",
+    "cache_isolation": "isolated_dxmt_shader_cache_non_default_metal_cache_and_disposable_prefix",
+    "cache_state": "cold",
+    "dxmt_log_detected": true,
+    "dxmt_shader_cache_bytes_after": 16384,
+    "dxmt_shader_cache_bytes_before": 0,
+    "feature_level_line": "info:  Using feature level D3D_FEATURE_LEVEL_11_1",
+    "metalfx_config_line": null,
+    "metalfx_preset": "off",
+    "round": 2
+  },
+  "files": {
+    "csv": "dxmt_metalfx_off-r2-cold.csv",
+    "csv_sha256": "925865dddd301b0905fd14944d5b99fc73b01f39e30404d14ed54d39806b9481",
+    "startup_json": "dxmt_metalfx_off-r2-cold-startup.json",
+    "startup_json_sha256": "3b0dbd7f4b76979fc038cd18e263dc4947556a8d375358ccb2e65a3aa7a14f52"
+  },
+  "pass": "dxmt_metalfx_off-r2-cold",
+  "schema_version": 1,
+  "startup": {
+    "exit_code": 0,
+    "probe_internal_initialization_ms": 513.53,
+    "process_start_to_d3d_ready_ms": 3978.3780420000003,
+    "ready": true,
+    "schema_version": 1
+  },
+  "summary": {
+    "environment_telemetry": {
+      "note": "Missing readings remain null and are not inferred.",
+      "power_w": {
+        "coverage": 0.0,
+        "max": null,
+        "mean": null,
+        "missing": 900,
+        "p50": null,
+        "p95": null,
+        "p99": null,
+        "sample_count": 0
+      },
+      "temperature_c": {
+        "coverage": 0.0,
+        "max": null,
+        "mean": null,
+        "missing": 900,
+        "p50": null,
+        "p95": null,
+        "p99": null,
+        "sample_count": 0
+      }
+    },
+    "frame_count": 900,
+    "memory": {
+      "device_memory_bytes": {
+        "coverage": 1.0,
+        "max": 21053440.0,
+        "mean": 21053440.0,
+        "missing": 0,
+        "p50": 21053440.0,
+        "p95": 21053440.0,
+        "p99": 21053440.0,
+        "sample_count": 900
+      },
+      "host_resident_bytes": {
+        "coverage": 0.0,
+        "max": null,
+        "mean": null,
+        "missing": 900,
+        "p50": null,
+        "p95": null,
+        "p99": null,
+        "sample_count": 0
+      },
+      "host_texture_bytes": {
+        "coverage": 0.0,
+        "max": null,
+        "mean": null,
+        "missing": 900,
+        "p50": null,
+        "p95": null,
+        "p99": null,
+        "sample_count": 0
+      },
+      "process_resident_bytes": {
+        "max": 81215488.0,
+        "mean": 77903557.97333333,
+        "p50": 76419072.0,
+        "p95": 81149952.0,
+        "p99": 81199144.96,
+        "sample_count": 900
+      }
+    },
+    "run": {
+      "initialization_ms": 513.53,
+      "warmup_ms": 608.263
+    },
+    "schema_version": 1,
+    "timing": {
+      "cpu_frame_interval_ms": {
+        "max": 19.646,
+        "mean": 1.6688120133481645,
+        "p50": 1.212,
+        "p95": 3.4600999999999993,
+        "p99": 7.057459999999996,
+        "sample_count": 899
+      },
+      "cpu_submit_ms": {
+        "max": 19.572,
+        "mean": 1.59703,
+        "p50": 1.1185,
+        "p95": 3.3900499999999982,
+        "p99": 6.946289999999998,
+        "sample_count": 900
+      },
+      "derived_fps_from_mean_interval": 599.2286680593123,
+      "gpu_ms": {
+        "coverage": 1.0,
+        "max": 19.546083,
+        "mean": 1.518705118888889,
+        "missing": 0,
+        "p50": 1.073062,
+        "p95": 3.304827699999996,
+        "p99": 6.874837829999999,
+        "sample_count": 900
+      },
+      "host_gpu_ms": {
+        "coverage": 0.0,
+        "max": null,
+        "mean": null,
+        "missing": 900,
+        "p50": null,
+        "p95": null,
+        "p99": null,
+        "sample_count": 0
+      },
+      "host_receive_to_present_ms": {
+        "coverage": 0.0,
+        "max": null,
+        "mean": null,
+        "missing": 900,
+        "p50": null,
+        "p95": null,
+        "p99": null,
+        "sample_count": 0
+      },
+      "latency_note": "Synthetic frame-request-to-Present-return proxy; it is not physical input-to-photon latency.",
+      "process_cpu_ms": {
+        "max": 20.0,
+        "mean": 0.6333333333333333,
+        "p50": 0.0,
+        "p95": 10.0,
+        "p99": 10.0,
+        "sample_count": 900
+      },
+      "synthetic_input_to_present_return_ms": {
+        "max": 19.572,
+        "mean": 1.59703,
+        "p50": 1.1185,
+        "p95": 3.3900499999999982,
+        "p99": 6.946289999999998,
+        "sample_count": 900
+      }
+    },
+    "transfer": {
+      "command_bytes": {
+        "coverage": 1.0,
+        "per_frame_max": 0,
+        "per_frame_mean": 0.0,
+        "per_frame_min": 0,
+        "sample_count": 900,
+        "total": 0
+      },
+      "network_bytes_in": {
+        "coverage": 1.0,
+        "per_frame_max": 0,
+        "per_frame_mean": 0.0,
+        "per_frame_min": 0,
+        "sample_count": 900,
+        "total": 0
+      },
+      "network_bytes_out": {
+        "coverage": 1.0,
+        "per_frame_max": 0,
+        "per_frame_mean": 0.0,
+        "per_frame_min": 0,
+        "sample_count": 900,
+        "total": 0
+      },
+      "network_bytes_total": {
+        "coverage": 1.0,
+        "per_frame_max": 0,
+        "per_frame_mean": 0.0,
+        "per_frame_min": 0,
+        "sample_count": 900,
+        "total": 0
+      },
+      "resource_bytes": {
+        "coverage": 1.0,
+        "per_frame_max": 0,
+        "per_frame_mean": 0.0,
+        "per_frame_min": 0,
+        "sample_count": 900,
+        "total": 0
+      },
+      "transferred_bytes": {
+        "coverage": 1.0,
+        "per_frame_max": 0,
+        "per_frame_mean": 0.0,
+        "per_frame_min": 0,
+        "sample_count": 900,
+        "total": 0
+      }
+    },
+    "transport_mode": "direct_present"
+  }
+}

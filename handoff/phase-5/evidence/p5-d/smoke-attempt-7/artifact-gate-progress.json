@@ -1,0 +1,1301 @@
+{
+  "owner": "@DNPMBHC",
+  "complete": false,
+  "backends": {
+    "dxmt": {
+      "passed": true,
+      "envChecks": {
+        "dxmtShaderCacheEnabled": true,
+        "dxmtMetalFXExplicit": true,
+        "dxmtMetalFXFactor": null,
+        "dxvkICDIsBundled": null,
+        "dxvkMoltenVKExplicit": null
+      },
+      "runs": [
+        {
+          "round": 1,
+          "cacheState": "cold",
+          "artifact": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 2.853,
+            "frameIntervalP50Ms": 1.962,
+            "frameIntervalP95Ms": 8.8188,
+            "derivedFPS": 350.51,
+            "gpuMsMean": 2.6389,
+            "deviceMemoryMiBMean": 20.08,
+            "gpuMsCoverage": 0.9656,
+            "csvSHA256": "b6a31ff162291b19ce64f62683a2e45926f3916999b8fabe9ecf29e606f1b88e"
+          },
+          "reference": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 2.8947,
+            "frameIntervalP50Ms": 2.111,
+            "frameIntervalP95Ms": 9.0456,
+            "derivedFPS": 345.46,
+            "gpuMsMean": 2.7401,
+            "deviceMemoryMiBMean": 20.08,
+            "gpuMsCoverage": 0.9789,
+            "csvSHA256": "a8adc06ec7e0f49aea7f00cc680fbd56b725dadc4af1e593e000a1aceb94f2d1"
+          },
+          "pairedConsistency": {
+            "passed": true,
+            "errors": [],
+            "fpsRatio": 1.0146,
+            "tolerances": {
+              "minimumFPSRatio": 0.85,
+              "maximumP95Ratio": 1.35,
+              "maximumGPUTimeRatio": 1.3,
+              "maximumVRAMRatio": 1.2
+            }
+          },
+          "historicalConsistency": {
+            "passed": false,
+            "errors": [
+              "fps_regression:350.51<416.49"
+            ],
+            "labBaselineKey": "dxmt",
+            "labBaselineColdFPS": 520.61,
+            "labBaselineDeviceMemoryMiB": 20.08,
+            "fpsRatioToLabBaseline": 0.6733,
+            "minRequiredFPSRatio": 0.8
+          },
+          "optionalDriverLogEvidence": {
+            "passed": true,
+            "evidenceLines": []
+          },
+          "errors": [],
+          "integrityPassed": true,
+          "passed": true
+        },
+        {
+          "round": 1,
+          "cacheState": "hot",
+          "artifact": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 2.5421,
+            "frameIntervalP50Ms": 1.78,
+            "frameIntervalP95Ms": 8.3355,
+            "derivedFPS": 393.38,
+            "gpuMsMean": 2.4437,
+            "deviceMemoryMiBMean": 19.83,
+            "gpuMsCoverage": 0.8678,
+            "csvSHA256": "9950748b3b77604c0bb78b58b93467df4ff34ffc11f2bd276015df58ef727db6"
+          },
+          "reference": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 2.8193,
+            "frameIntervalP50Ms": 2.014,
+            "frameIntervalP95Ms": 9.0044,
+            "derivedFPS": 354.7,
+            "gpuMsMean": 2.6815,
+            "deviceMemoryMiBMean": 19.83,
+            "gpuMsCoverage": 0.94,
+            "csvSHA256": "976565337a22a44a8616323205f7819e116b0a58eeeb4b6679a0471bcff2fbc9"
+          },
+          "pairedConsistency": {
+            "passed": true,
+            "errors": [],
+            "fpsRatio": 1.109,
+            "tolerances": {
+              "minimumFPSRatio": 0.85,
+              "maximumP95Ratio": 1.35,
+              "maximumGPUTimeRatio": 1.3,
+              "maximumVRAMRatio": 1.2
+            }
+          },
+          "historicalConsistency": {
+            "passed": false,
+            "errors": [
+              "fps_regression:393.38<416.49"
+            ],
+            "labBaselineKey": "dxmt",
+            "labBaselineColdFPS": 520.61,
+            "labBaselineDeviceMemoryMiB": 20.08,
+            "fpsRatioToLabBaseline": 0.7556,
+            "minRequiredFPSRatio": 0.8
+          },
+          "optionalDriverLogEvidence": {
+            "passed": true,
+            "evidenceLines": []
+          },
+          "errors": [],
+          "integrityPassed": true,
+          "passed": true
+        },
+        {
+          "round": 2,
+          "cacheState": "cold",
+          "artifact": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 2.8365,
+            "frameIntervalP50Ms": 2.05,
+            "frameIntervalP95Ms": 8.5083,
+            "derivedFPS": 352.54,
+            "gpuMsMean": 2.6703,
+            "deviceMemoryMiBMean": 20.16,
+            "gpuMsCoverage": 0.9556,
+            "csvSHA256": "2c3ce870f52bfc980630c0c9cc1f45a631fe0a3179299b9b2bffa09e2073c97d"
+          },
+          "reference": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 2.6035,
+            "frameIntervalP50Ms": 1.914,
+            "frameIntervalP95Ms": 8.2582,
+            "derivedFPS": 384.1,
+            "gpuMsMean": 2.4051,
+            "deviceMemoryMiBMean": 20.08,
+            "gpuMsCoverage": 0.94,
+            "csvSHA256": "4123bdfedeede2432091a6c3efe5d3fe04ba83fe30eeb8c289bd1baf6d72e475"
+          },
+          "pairedConsistency": {
+            "passed": true,
+            "errors": [],
+            "fpsRatio": 0.9178,
+            "tolerances": {
+              "minimumFPSRatio": 0.85,
+              "maximumP95Ratio": 1.35,
+              "maximumGPUTimeRatio": 1.3,
+              "maximumVRAMRatio": 1.2
+            }
+          },
+          "historicalConsistency": {
+            "passed": false,
+            "errors": [
+              "fps_regression:352.54<416.49"
+            ],
+            "labBaselineKey": "dxmt",
+            "labBaselineColdFPS": 520.61,
+            "labBaselineDeviceMemoryMiB": 20.08,
+            "fpsRatioToLabBaseline": 0.6772,
+            "minRequiredFPSRatio": 0.8
+          },
+          "optionalDriverLogEvidence": {
+            "passed": true,
+            "evidenceLines": []
+          },
+          "errors": [],
+          "integrityPassed": true,
+          "passed": true
+        },
+        {
+          "round": 2,
+          "cacheState": "hot",
+          "artifact": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 2.6085,
+            "frameIntervalP50Ms": 1.815,
+            "frameIntervalP95Ms": 8.2329,
+            "derivedFPS": 383.36,
+            "gpuMsMean": 2.4758,
+            "deviceMemoryMiBMean": 19.83,
+            "gpuMsCoverage": 0.9089,
+            "csvSHA256": "daca59c5f33407d5cf7b4b6d50979b3441ca93e0e951cd47ef2cc3a71d2e5d02"
+          },
+          "reference": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 2.8313,
+            "frameIntervalP50Ms": 1.951,
+            "frameIntervalP95Ms": 9.2566,
+            "derivedFPS": 353.19,
+            "gpuMsMean": 2.625,
+            "deviceMemoryMiBMean": 19.83,
+            "gpuMsCoverage": 0.9467,
+            "csvSHA256": "e7c33a48763271d96ec97cb3aeabc9d46a480dc7a88e9d27d9f3101863594488"
+          },
+          "pairedConsistency": {
+            "passed": true,
+            "errors": [],
+            "fpsRatio": 1.0854,
+            "tolerances": {
+              "minimumFPSRatio": 0.85,
+              "maximumP95Ratio": 1.35,
+              "maximumGPUTimeRatio": 1.3,
+              "maximumVRAMRatio": 1.2
+            }
+          },
+          "historicalConsistency": {
+            "passed": false,
+            "errors": [
+              "fps_regression:383.36<416.49"
+            ],
+            "labBaselineKey": "dxmt",
+            "labBaselineColdFPS": 520.61,
+            "labBaselineDeviceMemoryMiB": 20.08,
+            "fpsRatioToLabBaseline": 0.7364,
+            "minRequiredFPSRatio": 0.8
+          },
+          "optionalDriverLogEvidence": {
+            "passed": true,
+            "evidenceLines": []
+          },
+          "errors": [],
+          "integrityPassed": true,
+          "passed": true
+        },
+        {
+          "round": 3,
+          "cacheState": "cold",
+          "artifact": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 2.689,
+            "frameIntervalP50Ms": 1.978,
+            "frameIntervalP95Ms": 8.2984,
+            "derivedFPS": 371.89,
+            "gpuMsMean": 2.4965,
+            "deviceMemoryMiBMean": 20.08,
+            "gpuMsCoverage": 0.9233,
+            "csvSHA256": "afc90f6511fc9a11614b35d13942e4bfa45050f8e8c32628f307e1b352ec6e15"
+          },
+          "reference": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 2.6438,
+            "frameIntervalP50Ms": 1.886,
+            "frameIntervalP95Ms": 8.5009,
+            "derivedFPS": 378.24,
+            "gpuMsMean": 2.4778,
+            "deviceMemoryMiBMean": 20.08,
+            "gpuMsCoverage": 0.9422,
+            "csvSHA256": "aed8474577220788124d6778c93c5cf8a1bc2e7e894c04efc16260c74662f2b7"
+          },
+          "pairedConsistency": {
+            "passed": true,
+            "errors": [],
+            "fpsRatio": 0.9832,
+            "tolerances": {
+              "minimumFPSRatio": 0.85,
+              "maximumP95Ratio": 1.35,
+              "maximumGPUTimeRatio": 1.3,
+              "maximumVRAMRatio": 1.2
+            }
+          },
+          "historicalConsistency": {
+            "passed": false,
+            "errors": [
+              "fps_regression:371.89<416.49"
+            ],
+            "labBaselineKey": "dxmt",
+            "labBaselineColdFPS": 520.61,
+            "labBaselineDeviceMemoryMiB": 20.08,
+            "fpsRatioToLabBaseline": 0.7143,
+            "minRequiredFPSRatio": 0.8
+          },
+          "optionalDriverLogEvidence": {
+            "passed": true,
+            "evidenceLines": []
+          },
+          "errors": [],
+          "integrityPassed": true,
+          "passed": true
+        },
+        {
+          "round": 3,
+          "cacheState": "hot",
+          "artifact": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 2.8659,
+            "frameIntervalP50Ms": 1.946,
+            "frameIntervalP95Ms": 8.824,
+            "derivedFPS": 348.93,
+            "gpuMsMean": 2.6864,
+            "deviceMemoryMiBMean": 19.83,
+            "gpuMsCoverage": 0.9622,
+            "csvSHA256": "9bded413789ecf5eaabd667e4ed4fabc667bdb2e28c7055766ae08bff8caa2da"
+          },
+          "reference": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 2.5958,
+            "frameIntervalP50Ms": 1.726,
+            "frameIntervalP95Ms": 8.3857,
+            "derivedFPS": 385.23,
+            "gpuMsMean": 2.4441,
+            "deviceMemoryMiBMean": 19.83,
+            "gpuMsCoverage": 0.8933,
+            "csvSHA256": "bf062b717b5e7a64a938190278c3c398863eeb17c58a0366054bec647967b227"
+          },
+          "pairedConsistency": {
+            "passed": true,
+            "errors": [],
+            "fpsRatio": 0.9058,
+            "tolerances": {
+              "minimumFPSRatio": 0.85,
+              "maximumP95Ratio": 1.35,
+              "maximumGPUTimeRatio": 1.3,
+              "maximumVRAMRatio": 1.2
+            }
+          },
+          "historicalConsistency": {
+            "passed": false,
+            "errors": [
+              "fps_regression:348.93<416.49"
+            ],
+            "labBaselineKey": "dxmt",
+            "labBaselineColdFPS": 520.61,
+            "labBaselineDeviceMemoryMiB": 20.08,
+            "fpsRatioToLabBaseline": 0.6702,
+            "minRequiredFPSRatio": 0.8
+          },
+          "optionalDriverLogEvidence": {
+            "passed": true,
+            "evidenceLines": []
+          },
+          "errors": [],
+          "integrityPassed": true,
+          "passed": true
+        }
+      ],
+      "aggregateConsistency": {
+        "cold": {
+          "passed": true,
+          "errors": [],
+          "fpsRatio": 0.9703,
+          "tolerances": {
+            "minimumFPSRatio": 0.85,
+            "maximumP95Ratio": 1.35,
+            "maximumGPUTimeRatio": 1.3,
+            "maximumVRAMRatio": 1.2
+          },
+          "method": "arithmetic mean of all rounds; no discarded samples",
+          "roundCount": 3,
+          "artifact": {
+            "derivedFPS": 358.31333333333333,
+            "frameIntervalP95Ms": 8.541833333333335,
+            "deviceMemoryMiBMean": 20.106666666666666
+          },
+          "reference": {
+            "derivedFPS": 369.26666666666665,
+            "frameIntervalP95Ms": 8.601566666666667,
+            "deviceMemoryMiBMean": 20.08
+          }
+        },
+        "hot": {
+          "passed": true,
+          "errors": [],
+          "fpsRatio": 1.0298,
+          "tolerances": {
+            "minimumFPSRatio": 0.85,
+            "maximumP95Ratio": 1.35,
+            "maximumGPUTimeRatio": 1.3,
+            "maximumVRAMRatio": 1.2
+          },
+          "method": "arithmetic mean of all rounds; no discarded samples",
+          "roundCount": 3,
+          "artifact": {
+            "derivedFPS": 375.22333333333336,
+            "frameIntervalP95Ms": 8.464133333333335,
+            "deviceMemoryMiBMean": 19.83
+          },
+          "reference": {
+            "derivedFPS": 364.3733333333333,
+            "frameIntervalP95Ms": 8.882233333333334,
+            "deviceMemoryMiBMean": 19.83
+          }
+        }
+      },
+      "rawPerformanceOutlierCount": 0,
+      "gpuValidation": {
+        "passed": true,
+        "completionMode": "gpu-complete",
+        "artifact": {
+          "frameCount": 120,
+          "intervalCount": 119,
+          "frameIntervalMeanMs": 2.73,
+          "frameIntervalP50Ms": 2.657,
+          "frameIntervalP95Ms": 6.7042,
+          "derivedFPS": 366.29,
+          "gpuMsMean": 2.2119,
+          "deviceMemoryMiBMean": 19.67,
+          "gpuMsCoverage": 1.0
+        },
+        "reference": {
+          "frameCount": 120,
+          "intervalCount": 119,
+          "frameIntervalMeanMs": 2.5292,
+          "frameIntervalP50Ms": 2.163,
+          "frameIntervalP95Ms": 7.6346,
+          "derivedFPS": 395.38,
+          "gpuMsMean": 2.0968,
+          "deviceMemoryMiBMean": 19.67,
+          "gpuMsCoverage": 1.0
+        },
+        "pairedConsistency": {
+          "passed": true,
+          "errors": [],
+          "fpsRatio": 0.9264,
+          "tolerances": {
+            "minimumFPSRatio": 0.85,
+            "maximumP95Ratio": 1.35,
+            "maximumGPUTimeRatio": 1.3,
+            "maximumVRAMRatio": 1.2
+          }
+        },
+        "actualMappedLibraries": {},
+        "driverMappingRequired": false,
+        "driverMappingVerified": null,
+        "timestampSupport": "required",
+        "warmupFrames": 9000,
+        "measuredFrames": 120
+      }
+    },
+    "dxmt_metalfx_quality": {
+      "passed": true,
+      "envChecks": {
+        "dxmtShaderCacheEnabled": true,
+        "dxmtMetalFXExplicit": true,
+        "dxmtMetalFXFactor": true,
+        "dxvkICDIsBundled": null,
+        "dxvkMoltenVKExplicit": null
+      },
+      "runs": [
+        {
+          "round": 1,
+          "cacheState": "cold",
+          "artifact": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 3.6916,
+            "frameIntervalP50Ms": 3.214,
+            "frameIntervalP95Ms": 8.9631,
+            "derivedFPS": 270.88,
+            "gpuMsMean": 3.1522,
+            "deviceMemoryMiBMean": 49.48,
+            "gpuMsCoverage": 0.9844,
+            "csvSHA256": "9f9247b3ff82a3e1b4ec8690d4068c5b3154c8c927645055201078fdf987c501"
+          },
+          "reference": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 2.9253,
+            "frameIntervalP50Ms": 2.597,
+            "frameIntervalP95Ms": 7.4495,
+            "derivedFPS": 341.84,
+            "gpuMsMean": 2.5317,
+            "deviceMemoryMiBMean": 49.48,
+            "gpuMsCoverage": 0.9767,
+            "csvSHA256": "743570a90ef99b0561e4d9698c712aff3dab99d8405b2e324033ff9c4f1850f0"
+          },
+          "pairedConsistency": {
+            "passed": false,
+            "errors": [
+              "paired_fps_regression"
+            ],
+            "fpsRatio": 0.7924,
+            "tolerances": {
+              "minimumFPSRatio": 0.85,
+              "maximumP95Ratio": 1.35,
+              "maximumGPUTimeRatio": 1.3,
+              "maximumVRAMRatio": 1.2
+            }
+          },
+          "historicalConsistency": {
+            "passed": false,
+            "errors": [
+              "fps_regression:270.88<487.57"
+            ],
+            "labBaselineKey": "dxmt_metalfx_quality",
+            "labBaselineColdFPS": 609.46,
+            "labBaselineDeviceMemoryMiB": 49.48,
+            "fpsRatioToLabBaseline": 0.4445,
+            "minRequiredFPSRatio": 0.8
+          },
+          "optionalDriverLogEvidence": {
+            "passed": true,
+            "evidenceLines": []
+          },
+          "errors": [],
+          "integrityPassed": true,
+          "passed": false
+        },
+        {
+          "round": 1,
+          "cacheState": "hot",
+          "artifact": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 3.6917,
+            "frameIntervalP50Ms": 3.191,
+            "frameIntervalP95Ms": 8.7743,
+            "derivedFPS": 270.88,
+            "gpuMsMean": 3.1194,
+            "deviceMemoryMiBMean": 49.48,
+            "gpuMsCoverage": 0.9878,
+            "csvSHA256": "3bd052991423fcaf4dbdce2b45ff8862b9f6fc2541ad85e26dcdb7d7e4805fb7"
+          },
+          "reference": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 3.6964,
+            "frameIntervalP50Ms": 3.23,
+            "frameIntervalP95Ms": 8.8208,
+            "derivedFPS": 270.53,
+            "gpuMsMean": 3.1576,
+            "deviceMemoryMiBMean": 49.48,
+            "gpuMsCoverage": 0.98,
+            "csvSHA256": "6962e09fb5b5463546f489a4ca3f2484dd6b47c50c5f3705d9b0269859330a1a"
+          },
+          "pairedConsistency": {
+            "passed": true,
+            "errors": [],
+            "fpsRatio": 1.0013,
+            "tolerances": {
+              "minimumFPSRatio": 0.85,
+              "maximumP95Ratio": 1.35,
+              "maximumGPUTimeRatio": 1.3,
+              "maximumVRAMRatio": 1.2
+            }
+          },
+          "historicalConsistency": {
+            "passed": false,
+            "errors": [
+              "fps_regression:270.88<487.57"
+            ],
+            "labBaselineKey": "dxmt_metalfx_quality",
+            "labBaselineColdFPS": 609.46,
+            "labBaselineDeviceMemoryMiB": 49.48,
+            "fpsRatioToLabBaseline": 0.4445,
+            "minRequiredFPSRatio": 0.8
+          },
+          "optionalDriverLogEvidence": {
+            "passed": true,
+            "evidenceLines": []
+          },
+          "errors": [],
+          "integrityPassed": true,
+          "passed": true
+        },
+        {
+          "round": 2,
+          "cacheState": "cold",
+          "artifact": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 0.7892,
+            "frameIntervalP50Ms": 0.805,
+            "frameIntervalP95Ms": 0.948,
+            "derivedFPS": 1267.14,
+            "gpuMsMean": 0.5809,
+            "deviceMemoryMiBMean": 57.41,
+            "gpuMsCoverage": 1.0,
+            "csvSHA256": "f7c95e961234edd6bdaab371ee3f739da1bb5e00702a6872d897a56d84e28e46"
+          },
+          "reference": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 0.802,
+            "frameIntervalP50Ms": 0.81,
+            "frameIntervalP95Ms": 0.9391,
+            "derivedFPS": 1246.88,
+            "gpuMsMean": 0.626,
+            "deviceMemoryMiBMean": 57.46,
+            "gpuMsCoverage": 1.0,
+            "csvSHA256": "3622f3ce3e9b7c16d0a6cfedf4dc593511d32f58f5523d6133e803363f1c9fcd"
+          },
+          "pairedConsistency": {
+            "passed": true,
+            "errors": [],
+            "fpsRatio": 1.0162,
+            "tolerances": {
+              "minimumFPSRatio": 0.85,
+              "maximumP95Ratio": 1.35,
+              "maximumGPUTimeRatio": 1.3,
+              "maximumVRAMRatio": 1.2
+            }
+          },
+          "historicalConsistency": {
+            "passed": true,
+            "errors": [],
+            "labBaselineKey": "dxmt_metalfx_quality",
+            "labBaselineColdFPS": 609.46,
+            "labBaselineDeviceMemoryMiB": 49.48,
+            "fpsRatioToLabBaseline": 2.0791,
+            "minRequiredFPSRatio": 0.8
+          },
+          "optionalDriverLogEvidence": {
+            "passed": true,
+            "evidenceLines": []
+          },
+          "errors": [],
+          "integrityPassed": true,
+          "passed": true
+        },
+        {
+          "round": 2,
+          "cacheState": "hot",
+          "artifact": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 0.7832,
+            "frameIntervalP50Ms": 0.799,
+            "frameIntervalP95Ms": 0.9392,
+            "derivedFPS": 1276.78,
+            "gpuMsMean": 0.5807,
+            "deviceMemoryMiBMean": 57.41,
+            "gpuMsCoverage": 1.0,
+            "csvSHA256": "f1309829336ec7cc762a76b8e271440bf3937c04e8bd36c9a67110c28a8bfdca"
+          },
+          "reference": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 0.7806,
+            "frameIntervalP50Ms": 0.799,
+            "frameIntervalP95Ms": 0.925,
+            "derivedFPS": 1281.09,
+            "gpuMsMean": 0.5668,
+            "deviceMemoryMiBMean": 57.41,
+            "gpuMsCoverage": 1.0,
+            "csvSHA256": "4d39045f829965a1f5e8cb41e09ce78ccd6ddf2cf42bc624f310739ae8d37318"
+          },
+          "pairedConsistency": {
+            "passed": true,
+            "errors": [],
+            "fpsRatio": 0.9966,
+            "tolerances": {
+              "minimumFPSRatio": 0.85,
+              "maximumP95Ratio": 1.35,
+              "maximumGPUTimeRatio": 1.3,
+              "maximumVRAMRatio": 1.2
+            }
+          },
+          "historicalConsistency": {
+            "passed": true,
+            "errors": [],
+            "labBaselineKey": "dxmt_metalfx_quality",
+            "labBaselineColdFPS": 609.46,
+            "labBaselineDeviceMemoryMiB": 49.48,
+            "fpsRatioToLabBaseline": 2.0949,
+            "minRequiredFPSRatio": 0.8
+          },
+          "optionalDriverLogEvidence": {
+            "passed": true,
+            "evidenceLines": []
+          },
+          "errors": [],
+          "integrityPassed": true,
+          "passed": true
+        },
+        {
+          "round": 3,
+          "cacheState": "cold",
+          "artifact": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 0.7912,
+            "frameIntervalP50Ms": 0.803,
+            "frameIntervalP95Ms": 0.911,
+            "derivedFPS": 1263.88,
+            "gpuMsMean": 0.6148,
+            "deviceMemoryMiBMean": 57.56,
+            "gpuMsCoverage": 1.0,
+            "csvSHA256": "8c9b5188c89be40f51557c3e052e61b796188b6c854b99a4019bc6055bf3dcb6"
+          },
+          "reference": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 0.7839,
+            "frameIntervalP50Ms": 0.803,
+            "frameIntervalP95Ms": 0.9323,
+            "derivedFPS": 1275.67,
+            "gpuMsMean": 0.5795,
+            "deviceMemoryMiBMean": 57.41,
+            "gpuMsCoverage": 1.0,
+            "csvSHA256": "059fcf7ed1ed4f795a21f58b8ad547acce6dcb09f3f9643cba4dc933aa1f0594"
+          },
+          "pairedConsistency": {
+            "passed": true,
+            "errors": [],
+            "fpsRatio": 0.9908,
+            "tolerances": {
+              "minimumFPSRatio": 0.85,
+              "maximumP95Ratio": 1.35,
+              "maximumGPUTimeRatio": 1.3,
+              "maximumVRAMRatio": 1.2
+            }
+          },
+          "historicalConsistency": {
+            "passed": true,
+            "errors": [],
+            "labBaselineKey": "dxmt_metalfx_quality",
+            "labBaselineColdFPS": 609.46,
+            "labBaselineDeviceMemoryMiB": 49.48,
+            "fpsRatioToLabBaseline": 2.0738,
+            "minRequiredFPSRatio": 0.8
+          },
+          "optionalDriverLogEvidence": {
+            "passed": true,
+            "evidenceLines": []
+          },
+          "errors": [],
+          "integrityPassed": true,
+          "passed": true
+        },
+        {
+          "round": 3,
+          "cacheState": "hot",
+          "artifact": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 0.7801,
+            "frameIntervalP50Ms": 0.801,
+            "frameIntervalP95Ms": 0.931,
+            "derivedFPS": 1281.97,
+            "gpuMsMean": 0.5702,
+            "deviceMemoryMiBMean": 57.48,
+            "gpuMsCoverage": 1.0,
+            "csvSHA256": "0ca5eae8d87cded05fd5792e3a247759cdd14c31c8fcff1b2cb2afcf221d153b"
+          },
+          "reference": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 0.7889,
+            "frameIntervalP50Ms": 0.808,
+            "frameIntervalP95Ms": 0.9392,
+            "derivedFPS": 1267.65,
+            "gpuMsMean": 0.5778,
+            "deviceMemoryMiBMean": 57.48,
+            "gpuMsCoverage": 1.0,
+            "csvSHA256": "4db436d1176159ee16a6c6eb7dadde2f33d6186872b0ead311321e29beab5306"
+          },
+          "pairedConsistency": {
+            "passed": true,
+            "errors": [],
+            "fpsRatio": 1.0113,
+            "tolerances": {
+              "minimumFPSRatio": 0.85,
+              "maximumP95Ratio": 1.35,
+              "maximumGPUTimeRatio": 1.3,
+              "maximumVRAMRatio": 1.2
+            }
+          },
+          "historicalConsistency": {
+            "passed": true,
+            "errors": [],
+            "labBaselineKey": "dxmt_metalfx_quality",
+            "labBaselineColdFPS": 609.46,
+            "labBaselineDeviceMemoryMiB": 49.48,
+            "fpsRatioToLabBaseline": 2.1034,
+            "minRequiredFPSRatio": 0.8
+          },
+          "optionalDriverLogEvidence": {
+            "passed": true,
+            "evidenceLines": []
+          },
+          "errors": [],
+          "integrityPassed": true,
+          "passed": true
+        }
+      ],
+      "aggregateConsistency": {
+        "cold": {
+          "passed": true,
+          "errors": [],
+          "fpsRatio": 0.9782,
+          "tolerances": {
+            "minimumFPSRatio": 0.85,
+            "maximumP95Ratio": 1.35,
+            "maximumGPUTimeRatio": 1.3,
+            "maximumVRAMRatio": 1.2
+          },
+          "method": "arithmetic mean of all rounds; no discarded samples",
+          "roundCount": 3,
+          "artifact": {
+            "derivedFPS": 933.9666666666667,
+            "frameIntervalP95Ms": 3.607366666666667,
+            "deviceMemoryMiBMean": 54.81666666666666
+          },
+          "reference": {
+            "derivedFPS": 954.7966666666667,
+            "frameIntervalP95Ms": 3.1069666666666667,
+            "deviceMemoryMiBMean": 54.78333333333333
+          }
+        },
+        "hot": {
+          "passed": true,
+          "errors": [],
+          "fpsRatio": 1.0037,
+          "tolerances": {
+            "minimumFPSRatio": 0.85,
+            "maximumP95Ratio": 1.35,
+            "maximumGPUTimeRatio": 1.3,
+            "maximumVRAMRatio": 1.2
+          },
+          "method": "arithmetic mean of all rounds; no discarded samples",
+          "roundCount": 3,
+          "artifact": {
+            "derivedFPS": 943.21,
+            "frameIntervalP95Ms": 3.548166666666667,
+            "deviceMemoryMiBMean": 54.79
+          },
+          "reference": {
+            "derivedFPS": 939.7566666666667,
+            "frameIntervalP95Ms": 3.561666666666667,
+            "deviceMemoryMiBMean": 54.79
+          }
+        }
+      },
+      "rawPerformanceOutlierCount": 1,
+      "gpuValidation": {
+        "passed": true,
+        "completionMode": "gpu-complete",
+        "artifact": {
+          "frameCount": 120,
+          "intervalCount": 119,
+          "frameIntervalMeanMs": 3.474,
+          "frameIntervalP50Ms": 2.947,
+          "frameIntervalP95Ms": 6.0673,
+          "derivedFPS": 287.86,
+          "gpuMsMean": 2.7438,
+          "deviceMemoryMiBMean": 49.33,
+          "gpuMsCoverage": 1.0
+        },
+        "reference": {
+          "frameCount": 120,
+          "intervalCount": 119,
+          "frameIntervalMeanMs": 3.5088,
+          "frameIntervalP50Ms": 3.849,
+          "frameIntervalP95Ms": 5.5936,
+          "derivedFPS": 285.0,
+          "gpuMsMean": 2.9087,
+          "deviceMemoryMiBMean": 49.33,
+          "gpuMsCoverage": 1.0
+        },
+        "pairedConsistency": {
+          "passed": true,
+          "errors": [],
+          "fpsRatio": 1.01,
+          "tolerances": {
+            "minimumFPSRatio": 0.85,
+            "maximumP95Ratio": 1.35,
+            "maximumGPUTimeRatio": 1.3,
+            "maximumVRAMRatio": 1.2
+          }
+        },
+        "actualMappedLibraries": {},
+        "driverMappingRequired": false,
+        "driverMappingVerified": null,
+        "timestampSupport": "required",
+        "warmupFrames": 9000,
+        "measuredFrames": 120
+      }
+    },
+    "d3dMetal": {
+      "passed": false,
+      "envChecks": {
+        "dxmtShaderCacheEnabled": null,
+        "dxmtMetalFXExplicit": null,
+        "dxmtMetalFXFactor": null,
+        "dxvkICDIsBundled": null,
+        "dxvkMoltenVKExplicit": null
+      },
+      "runs": [
+        {
+          "round": 1,
+          "cacheState": "cold",
+          "artifact": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 0.2383,
+            "frameIntervalP50Ms": 0.239,
+            "frameIntervalP95Ms": 0.3511,
+            "derivedFPS": 4196.35,
+            "gpuMsMean": null,
+            "deviceMemoryMiBMean": 71.21,
+            "gpuMsCoverage": 0.0,
+            "csvSHA256": "731e562ec2f5f18e44a17b9274a98a6c488fc9ad08b9391585fdd3556bdf8def"
+          },
+          "reference": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 0.2353,
+            "frameIntervalP50Ms": 0.244,
+            "frameIntervalP95Ms": 0.3452,
+            "derivedFPS": 4250.07,
+            "gpuMsMean": null,
+            "deviceMemoryMiBMean": 71.03,
+            "gpuMsCoverage": 0.0,
+            "csvSHA256": "4e5e1667a64a04715e1411c71c1e0dab977a9d10deeaa16ac14a3d9350edce8d"
+          },
+          "pairedConsistency": {
+            "passed": true,
+            "errors": [],
+            "fpsRatio": 0.9874,
+            "tolerances": {
+              "minimumFPSRatio": 0.85,
+              "maximumP95Ratio": 1.35,
+              "maximumGPUTimeRatio": 1.3,
+              "maximumVRAMRatio": 1.2
+            }
+          },
+          "historicalConsistency": {
+            "passed": true,
+            "errors": [],
+            "labBaselineKey": "d3dmetal",
+            "labBaselineColdFPS": 366.31,
+            "labBaselineDeviceMemoryMiB": 67.34,
+            "fpsRatioToLabBaseline": 11.4558,
+            "minRequiredFPSRatio": 0.8
+          },
+          "optionalDriverLogEvidence": {
+            "passed": true,
+            "evidenceLines": []
+          },
+          "errors": [],
+          "integrityPassed": true,
+          "passed": true
+        },
+        {
+          "round": 1,
+          "cacheState": "hot",
+          "artifact": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 0.2411,
+            "frameIntervalP50Ms": 0.225,
+            "frameIntervalP95Ms": 0.3571,
+            "derivedFPS": 4147.04,
+            "gpuMsMean": null,
+            "deviceMemoryMiBMean": 71.27,
+            "gpuMsCoverage": 0.0,
+            "csvSHA256": "95f98f0cd20be1d388a69718a5a1e49e8032c8ba8c3890520373cb2999701c1f"
+          },
+          "reference": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 0.2387,
+            "frameIntervalP50Ms": 0.225,
+            "frameIntervalP95Ms": 0.354,
+            "derivedFPS": 4189.09,
+            "gpuMsMean": null,
+            "deviceMemoryMiBMean": 71.23,
+            "gpuMsCoverage": 0.0,
+            "csvSHA256": "729d7df44d96cb3a334a44e9e2a5272109785cd90fe6ae777c8f4d9ae94c104f"
+          },
+          "pairedConsistency": {
+            "passed": true,
+            "errors": [],
+            "fpsRatio": 0.99,
+            "tolerances": {
+              "minimumFPSRatio": 0.85,
+              "maximumP95Ratio": 1.35,
+              "maximumGPUTimeRatio": 1.3,
+              "maximumVRAMRatio": 1.2
+            }
+          },
+          "historicalConsistency": {
+            "passed": true,
+            "errors": [],
+            "labBaselineKey": "d3dmetal",
+            "labBaselineColdFPS": 366.31,
+            "labBaselineDeviceMemoryMiB": 67.34,
+            "fpsRatioToLabBaseline": 11.3211,
+            "minRequiredFPSRatio": 0.8
+          },
+          "optionalDriverLogEvidence": {
+            "passed": true,
+            "evidenceLines": []
+          },
+          "errors": [],
+          "integrityPassed": true,
+          "passed": true
+        },
+        {
+          "round": 2,
+          "cacheState": "cold",
+          "artifact": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 3.0614,
+            "frameIntervalP50Ms": 1.644,
+            "frameIntervalP95Ms": 9.6745,
+            "derivedFPS": 326.65,
+            "gpuMsMean": null,
+            "deviceMemoryMiBMean": 67.35,
+            "gpuMsCoverage": 0.0,
+            "csvSHA256": "b76d06a00bdfe697a36002a0d5b86e1db0931119e7edb151562045053214e284"
+          },
+          "reference": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 2.3973,
+            "frameIntervalP50Ms": 1.657,
+            "frameIntervalP95Ms": 7.0585,
+            "derivedFPS": 417.14,
+            "gpuMsMean": null,
+            "deviceMemoryMiBMean": 67.35,
+            "gpuMsCoverage": 0.0,
+            "csvSHA256": "af6831d6e077cf6bec35312305bb479afa41f83c7c5e1f654ad25cdf64191d15"
+          },
+          "pairedConsistency": {
+            "passed": false,
+            "errors": [
+              "paired_fps_regression",
+              "paired_frameIntervalP95Ms_regression"
+            ],
+            "fpsRatio": 0.7831,
+            "tolerances": {
+              "minimumFPSRatio": 0.85,
+              "maximumP95Ratio": 1.35,
+              "maximumGPUTimeRatio": 1.3,
+              "maximumVRAMRatio": 1.2
+            }
+          },
+          "historicalConsistency": {
+            "passed": true,
+            "errors": [],
+            "labBaselineKey": "d3dmetal",
+            "labBaselineColdFPS": 366.31,
+            "labBaselineDeviceMemoryMiB": 67.34,
+            "fpsRatioToLabBaseline": 0.8917,
+            "minRequiredFPSRatio": 0.8
+          },
+          "optionalDriverLogEvidence": {
+            "passed": true,
+            "evidenceLines": []
+          },
+          "errors": [],
+          "integrityPassed": true,
+          "passed": false
+        },
+        {
+          "round": 2,
+          "cacheState": "hot",
+          "artifact": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 2.4724,
+            "frameIntervalP50Ms": 1.26,
+            "frameIntervalP95Ms": 7.5918,
+            "derivedFPS": 404.47,
+            "gpuMsMean": null,
+            "deviceMemoryMiBMean": 67.35,
+            "gpuMsCoverage": 0.0,
+            "csvSHA256": "66a420f5b34d5673c425f147450a151efdcde33064ba265e4e10bb84cac4385f"
+          },
+          "reference": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 1.9279,
+            "frameIntervalP50Ms": 1.406,
+            "frameIntervalP95Ms": 5.6296,
+            "derivedFPS": 518.69,
+            "gpuMsMean": null,
+            "deviceMemoryMiBMean": 67.35,
+            "gpuMsCoverage": 0.0,
+            "csvSHA256": "383ac4c19120233e84c0105deb9ac47e90e293204856a3b33e8d1a837c8a51be"
+          },
+          "pairedConsistency": {
+            "passed": false,
+            "errors": [
+              "paired_fps_regression"
+            ],
+            "fpsRatio": 0.7798,
+            "tolerances": {
+              "minimumFPSRatio": 0.85,
+              "maximumP95Ratio": 1.35,
+              "maximumGPUTimeRatio": 1.3,
+              "maximumVRAMRatio": 1.2
+            }
+          },
+          "historicalConsistency": {
+            "passed": true,
+            "errors": [],
+            "labBaselineKey": "d3dmetal",
+            "labBaselineColdFPS": 366.31,
+            "labBaselineDeviceMemoryMiB": 67.34,
+            "fpsRatioToLabBaseline": 1.1042,
+            "minRequiredFPSRatio": 0.8
+          },
+          "optionalDriverLogEvidence": {
+            "passed": true,
+            "evidenceLines": []
+          },
+          "errors": [],
+          "integrityPassed": true,
+          "passed": false
+        },
+        {
+          "round": 3,
+          "cacheState": "cold",
+          "artifact": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 1.9391,
+            "frameIntervalP50Ms": 1.256,
+            "frameIntervalP95Ms": 5.5623,
+            "derivedFPS": 515.72,
+            "gpuMsMean": null,
+            "deviceMemoryMiBMean": 67.35,
+            "gpuMsCoverage": 0.0,
+            "csvSHA256": "cb0d0477d1ca1000963ef94366229f3a54099e8c2322a0fb72e0632146c0dacf"
+          },
+          "reference": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 2.226,
+            "frameIntervalP50Ms": 1.198,
+            "frameIntervalP95Ms": 7.211,
+            "derivedFPS": 449.24,
+            "gpuMsMean": null,
+            "deviceMemoryMiBMean": 67.35,
+            "gpuMsCoverage": 0.0,
+            "csvSHA256": "676b2e2be6eb867d0858ff5f05cbb36f82c7f17fa1135db46a19e3e9cda698aa"
+          },
+          "pairedConsistency": {
+            "passed": true,
+            "errors": [],
+            "fpsRatio": 1.148,
+            "tolerances": {
+              "minimumFPSRatio": 0.85,
+              "maximumP95Ratio": 1.35,
+              "maximumGPUTimeRatio": 1.3,
+              "maximumVRAMRatio": 1.2
+            }
+          },
+          "historicalConsistency": {
+            "passed": true,
+            "errors": [],
+            "labBaselineKey": "d3dmetal",
+            "labBaselineColdFPS": 366.31,
+            "labBaselineDeviceMemoryMiB": 67.34,
+            "fpsRatioToLabBaseline": 1.4079,
+            "minRequiredFPSRatio": 0.8
+          },
+          "optionalDriverLogEvidence": {
+            "passed": true,
+            "evidenceLines": []
+          },
+          "errors": [],
+          "integrityPassed": true,
+          "passed": true
+        },
+        {
+          "round": 3,
+          "cacheState": "hot",
+          "artifact": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 2.4772,
+            "frameIntervalP50Ms": 1.54,
+            "frameIntervalP95Ms": 8.2736,
+            "derivedFPS": 403.68,
+            "gpuMsMean": null,
+            "deviceMemoryMiBMean": 67.35,
+            "gpuMsCoverage": 0.0,
+            "csvSHA256": "50f6c88c73b834ce78d35b2f312b0e24eac626a1f3eb51464607eb1fa207e3b9"
+          },
+          "reference": {
+            "frameCount": 900,
+            "intervalCount": 899,
+            "frameIntervalMeanMs": 1.9871,
+            "frameIntervalP50Ms": 1.295,
+            "frameIntervalP95Ms": 5.8261,
+            "derivedFPS": 503.23,
+            "gpuMsMean": null,
+            "deviceMemoryMiBMean": 67.35,
+            "gpuMsCoverage": 0.0,
+            "csvSHA256": "dfff657d96337db38c4d3cbc1aeb4eb62f8953d6b267e415f45b9f7cb5ef4db1"
+          },
+          "pairedConsistency": {
+            "passed": false,
+            "errors": [
+              "paired_fps_regression",
+              "paired_frameIntervalP95Ms_regression"
+            ],
+            "fpsRatio": 0.8022,
+            "tolerances": {
+              "minimumFPSRatio": 0.85,
+              "maximumP95Ratio": 1.35,
+              "maximumGPUTimeRatio": 1.3,
+              "maximumVRAMRatio": 1.2
+            }
+          },
+          "historicalConsistency": {
+            "passed": true,
+            "errors": [],
+            "labBaselineKey": "d3dmetal",
+            "labBaselineColdFPS": 366.31,
+            "labBaselineDeviceMemoryMiB": 67.34,
+            "fpsRatioToLabBaseline": 1.102,
+            "minRequiredFPSRatio": 0.8
+          },
+          "optionalDriverLogEvidence": {
+            "passed": true,
+            "evidenceLines": []
+          },
+          "errors": [],
+          "integrityPassed": true,
+          "passed": false
+        }
+      ],
+      "aggregateConsistency": {
+        "cold": {
+          "passed": true,
+          "errors": [],
+          "fpsRatio": 0.9848,
+          "tolerances": {
+            "minimumFPSRatio": 0.85,
+            "maximumP95Ratio": 1.35,
+            "maximumGPUTimeRatio": 1.3,
+            "maximumVRAMRatio": 1.2
+          },
+          "method": "arithmetic mean of all rounds; no discarded samples",
+          "roundCount": 3,
+          "artifact": {
+            "derivedFPS": 1679.5733333333335,
+            "frameIntervalP95Ms": 5.195966666666666,
+            "deviceMemoryMiBMean": 68.63666666666666
+          },
+          "reference": {
+            "derivedFPS": 1705.4833333333333,
+            "frameIntervalP95Ms": 4.871566666666667,
+            "deviceMemoryMiBMean": 68.57666666666667
+          }
+        },
+        "hot": {
+          "passed": false,
+          "errors": [
+            "paired_frameIntervalP95Ms_regression"
+          ],
+          "fpsRatio": 0.9509,
+          "tolerances": {
+            "minimumFPSRatio": 0.85,
+            "maximumP95Ratio": 1.35,
+            "maximumGPUTimeRatio": 1.3,
+            "maximumVRAMRatio": 1.2
+          },
+          "method": "arithmetic mean of all rounds; no discarded samples",
+          "roundCount": 3,
+          "artifact": {
+            "derivedFPS": 1651.7299999999998,
+            "frameIntervalP95Ms": 5.4075,
+            "deviceMemoryMiBMean": 68.65666666666665
+          },
+          "reference": {
+            "derivedFPS": 1737.0033333333333,
+            "frameIntervalP95Ms": 3.9365666666666663,
+            "deviceMemoryMiBMean": 68.64333333333333
+          }
+        }
+      },
+      "rawPerformanceOutlierCount": 3,
+      "gpuValidation": {
+        "passed": true,
+        "timestampSupport": "unavailable",
+        "completionMode": "not-applicable",
+        "reason": "D3DMetal timestamp frequency is unavailable and event-query completion is not reliably signaled; no GPU time is estimated.",
+        "driverMappingRequired": false,
+        "driverMappingVerified": null
+      }
+    }
+  }
+}

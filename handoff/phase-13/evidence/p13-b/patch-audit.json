@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "owner": "@DNPMBHC",
+  "patch_count": 10,
+  "patches": [
+    {
+      "name": "01-default-dxmt-backend.patch",
+      "sha256": "aa06ec25b969fc1022feabd1ae5e7fcfc44ed6c9ac444770d7f960307d37bb7b",
+      "targets": [
+        "Services/UTMQemuSystem.m",
+        "Services/UTMQemuVirtualMachine.swift"
+      ],
+      "line_count": 32,
+      "compliance_passed": true
+    },
+    {
+      "name": "02-cocoaspice-cursor-overlay.patch",
+      "sha256": "70f8da05169e6c91fcd734df4c8bf4e7a0806c7cd10616d03369d6f64082085f",
+      "targets": [
+        "Sources/CocoaSpice/CSCursor.m",
+        "Sources/CocoaSpice/CSDisplay.m",
+        "Sources/CocoaSpice/include/CSCursor.h"
+      ],
+      "line_count": 245,
+      "compliance_passed": true
+    },
+    {
+      "name": "02-cursor-and-fps-capture.patch",
+      "sha256": "70e968310d3bce16b8cd48c1f37bb7e97465d9f0064e89cea4222d1fcdc9fb3d",
+      "targets": [
+        "Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift",
+        "Platform/macOS/Display/VMMetalView.swift"
+      ],
+      "line_count": 176,
+      "compliance_passed": true
+    },
+    {
+      "name": "03-clean-fullscreen-game-shell.patch",
+      "sha256": "7296c7f9462e7d733d877b9803d3f9a52a0474e4a36d93690b4e02420cc231c1",
+      "targets": [
+        "Platform/macOS/AppDelegate.swift",
+        "Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift",
+        "Platform/macOS/Display/VMDisplayWindowController.swift"
+      ],
+      "line_count": 256,
+      "compliance_passed": true
+    },
+    {
+      "name": "04-pure-relative-mouse-option.patch",
+      "sha256": "717c1ce1b7c6ad409f2324b06708db1576507b287b9fa0b7a93fef35e6d5a9aa",
+      "targets": [
+        "Configuration/UTMQemuConfiguration+Arguments.swift",
+        "Configuration/UTMQemuConfigurationInput.swift"
+      ],
+      "line_count": 54,
+      "compliance_passed": true
+    },
+    {
+      "name": "05-cocoaspice-frame-backpressure.patch",
+      "sha256": "cc6af7cdacf09170e496e40f5ecfe0c78ca5a31ae029bdbb9e9c7ca358e09439",
+      "targets": [
+        "Sources/CocoaSpiceRenderer/CSMetalRenderer.m",
+        "Sources/CocoaSpiceRenderer/include/CSMetalRenderer.h"
+      ],
+      "line_count": 113,
+      "compliance_passed": true
+    },
+    {
+      "name": "05-render-thread-qos-and-dxmt-cache.patch",
+      "sha256": "f229459a1e5479e0b22cfa67c5a105e347208b2bb819e73c7660709c1cca9758",
+      "targets": [
+        "Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift",
+        "QEMUHelper/QEMUHelper.m",
+        "Services/UTMQemuSystem.m"
+      ],
+      "line_count": 99,
+      "compliance_passed": true
+    },
+    {
+      "name": "06-high-polling-mouse-coalescing.patch",
+      "sha256": "998d6ea77d425e7f8ebe3f7e442c3ba9683924cb62fd902a7c64020f3f1c63bb",
+      "targets": [
+        "Platform/macOS/Display/VMMetalView.swift"
+      ],
+      "line_count": 144,
+      "compliance_passed": true
+    },
+    {
+      "name": "07-game-shell-key-guard-and-mapping.patch",
+      "sha256": "978baad568532d15628bf2006e1084df2bf971c9bbb936fd16ae0be7a2b8363a",
+      "targets": [
+        "Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift",
+        "Platform/macOS/Display/VMMetalView.swift",
+        "Platform/macOS/Info.plist"
+      ],
+      "line_count": 129,
+      "compliance_passed": true
+    },
+    {
+      "name": "08-seamless-app-shell-window.patch",
+      "sha256": "9f5b8e00d7fab5c9268ef8fd39551ef9066ac3180d8e254cb4c545d202d77186",
+      "targets": [
+        "Platform/macOS/AppDelegate.swift",
+        "Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift",
+        "Platform/macOS/Display/VMDisplayWindowController.swift"
+      ],
+      "line_count": 436,
+      "compliance_passed": true
+    }
+  ],
+  "git_apply_checks": {
+    "utm_standalone_apply_checks": 8,
+    "utm_stacked_apply_check": true,
+    "cocoaspice_standalone_apply_checks": 2,
+    "cocoaspice_stacked_apply_check": true,
+    "cocoaspice_apply_check": true
+  },
+  "passed": true
+}

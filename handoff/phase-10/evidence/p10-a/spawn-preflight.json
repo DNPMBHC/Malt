@@ -1,0 +1,98 @@
+{
+  "owner": "@DNPMBHC",
+  "created_at_utc": "2026-11-25T00:37:40.501728+00:00",
+  "clone_name": "ephemeral-p10a-valorant",
+  "clone_uuid": "<uuid>",
+  "ephemeral_path": "/Volumes/<EXTERNAL_VOLUME>/whisky-phase2-guest/vms/ephemeral-p10a-valorant.utm",
+  "primary_path": "/Volumes/<EXTERNAL_VOLUME>/whisky-phase2-guest/vms/Windows11-ARM64.utm",
+  "golden_path": "/Volumes/<EXTERNAL_VOLUME>/whisky-phase2-guest/vms/golden-win11-arm64-v1.utm",
+  "utm_prefs": {
+    "QEMUDirectXDriver": 2,
+    "QEMURendererFPSLimit": 120,
+    "backup_saved": true
+  },
+  "clone_seconds": 0.0046,
+  "qga_ready_seconds": 24.075,
+  "optimizer_v2_applied": true,
+  "display_and_pointer": {
+    "mouse_trails_api_ok": true,
+    "observed_refresh_hz": 0,
+    "observed_height": 0,
+    "observed_width": 0,
+    "ini_updated_count": 1,
+    "mouse_trails_requested": 0,
+    "fullscreen_mode_set": 2,
+    "change_display_code": 0
+  },
+  "input_stack": {
+    "captured_at_utc": "2026-11-25T00:37:40.501434+00:00",
+    "host_qemu_inputs": {
+      "input_devices": [
+        "usb-tablet,bus=usb-bus.0",
+        "usb-mouse,bus=usb-bus.0",
+        "usb-kbd,bus=usb-bus.0"
+      ],
+      "has_usb_tablet": true,
+      "has_usb_mouse": true,
+      "has_ps2": false,
+      "pure_relative_mouse_only": false
+    },
+    "guest_input_state": {
+      "mouse_registry": {
+        "MouseTrails": null,
+        "MouseSpeed": "1",
+        "MouseThreshold1": "6",
+        "MouseThreshold2": "10",
+        "MouseSensitivity": "10"
+      },
+      "video_controller": {
+        "Name": "Red Hat VirtIO GPU 3D controller",
+        "DriverVersion": "100.6.101.58000",
+        "CurrentHorizontalResolution": 1280,
+        "CurrentVerticalResolution": 720,
+        "CurrentRefreshRate": 120
+      },
+      "spice_services": [
+        {
+          "Name": "spice-webdavd",
+          "Status": 1,
+          "StartType": 2
+        }
+      ],
+      "pointing_devices": [
+        {
+          "Name": "USB Input Device",
+          "DeviceID": "USB\\VID_0627&PID_0001\\28754-0000:00:03.0-1",
+          "Status": "OK",
+          "PNPDeviceID": "USB\\VID_0627&PID_0001\\28754-0000:00:03.0-1"
+        },
+        {
+          "Name": "USB Input Device",
+          "DeviceID": "USB\\VID_0627&PID_0001\\28754-0000:00:03.0-1",
+          "Status": "OK",
+          "PNPDeviceID": "USB\\VID_0627&PID_0001\\28754-0000:00:03.0-1"
+        }
+      ]
+    },
+    "render_server_backend": {
+      "active_backend": "dxmt-native",
+      "dxmt_native_loaded": true,
+      "d3dmetal_native_loaded": false,
+      "virglrenderer_loaded": false,
+      "kosmickrisp_loaded": false,
+      "dxmt_evidence_count": 6,
+      "d3dmetal_evidence_count": 0
+    }
+  },
+  "eventlog_baseline_record_ids": {
+    "CodeIntegrity": 150,
+    "System": 2075,
+    "Application": 17083
+  },
+  "installer_sha256": "686ee838411863d2eccdbe8a0596129e509819ae46626408760588ae8b0c800e",
+  "cache_disk_path": "/Volumes/<EXTERNAL_VOLUME>/whisky-phase2-guest/game-cache/valorant-cn-data.qcow2",
+  "cache_before_stat": {
+    "size_bytes": 35935027200,
+    "mtime_ns": 1795366805738950146
+  }
+}

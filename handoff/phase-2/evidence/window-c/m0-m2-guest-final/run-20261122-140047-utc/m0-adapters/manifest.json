@@ -1,0 +1,169 @@
+{
+  "guest_collected": true,
+  "input_artifacts": {
+    "benchmark_support.py": {
+      "file": "inputs/benchmark_support.py",
+      "sha256": "34f18b92091ec60bccbab43ba6af68a2b5dbc0c27cf601fb0838bdb9f23e3898"
+    },
+    "build_probe.sh": {
+      "file": "inputs/build_probe.sh",
+      "sha256": "374a70103d2123a11dec6766298660ff31f42a267e179489051b36ff0d92d1f6"
+    },
+    "d3d11_probe.cpp": {
+      "file": "inputs/d3d11_probe.cpp",
+      "sha256": "11fc000464f0dcf98aec3044c4d956a2b74ce491fc4d69567bf252bbec64af74"
+    },
+    "d3d11_probe.exe": {
+      "file": "inputs/d3d11_probe.exe",
+      "sha256": "09bb190bf5d763f9749345300b937728db886a4ec26c32c361a920c565cf1bee"
+    },
+    "guest_preflight.ps1": {
+      "file": "inputs/guest_preflight.ps1",
+      "sha256": "b64e5bd838aa2d35fb86cc921e82c302178c7da8db06b9e52b9771ee86c9f7b9"
+    },
+    "guest_preflight.py": {
+      "file": "inputs/guest_preflight.py",
+      "sha256": "e3fdbfa52fbc8e47ba93378d3a446415db1e7373e3697485c40787aa16b48ac5"
+    },
+    "run_m0_fingerprints.py": {
+      "file": "inputs/run_m0_fingerprints.py",
+      "sha256": "51d6a2c3e90191dd799ed9b63f8675f0e04c3771317297fa713662ada2b0c4a1"
+    },
+    "run_wine_benchmark.py": {
+      "file": "inputs/run_wine_benchmark.py",
+      "sha256": "cae15b3f21bec647957ecade111e27256f1428048594f26d5a8e161c4a95ae6b"
+    }
+  },
+  "kind": "actual-dxgi-adapter-fingerprints",
+  "owner": "@DNPMBHC",
+  "runs": [
+    {
+      "environment": "windows-guest",
+      "fingerprint": {
+        "adapter_description": "Microsoft Basic Render Driver",
+        "adapter_flags": 0,
+        "adapter_software_flag": false,
+        "device_id": 140,
+        "requested_driver_type": "hardware",
+        "selected_feature_level": "11_1",
+        "vendor_id": 5140,
+        "windows_session_id": 1
+      },
+      "guest": {
+        "architecture": "ARM64",
+        "build": "26100",
+        "cpu_architecture_code": 12,
+        "display_adapter": "Red Hat VirtIO GPU DOD controller",
+        "display_adapters": [
+          {
+            "description": "Red Hat VirtIO GPU DOD controller",
+            "driver_version": "22.7.38.43"
+          }
+        ],
+        "display_driver_version": "22.7.38.43",
+        "display_version": "24H2",
+        "os_architecture": "ARM 64-bit Processor",
+        "os_product": "Microsoft Windows 11 Enterprise Evaluation",
+        "version": "10.0.26100",
+        "vm": "vm-a"
+      },
+      "launch": "interactive-scheduled-task",
+      "metadata": "guest/m0-hardware-metadata.json",
+      "metadata_sha256": "3ecb40bfb70e906c5910587a7a838b28251bd59e1b8825f1cc8d95a1ff56365f",
+      "preflight": {
+        "architecture": "ARM64",
+        "baseline_comparison_required": true,
+        "baseline_sha256": "ceedbcaf3db809513428a617a91597a66fcdd2de3d00d399cdb0da2ebdf3545f",
+        "baseline_verified": true,
+        "bcd_flags": {
+          "nointegritychecks": "absent",
+          "testsigning": "absent"
+        },
+        "bcd_query_succeeded": true,
+        "bcd_security": [],
+        "boot_time_utc": "2026-11-22T13:58:58.7133020Z",
+        "build": "26100",
+        "captured_at_utc": "2026-11-22T14:02:19.6916262Z",
+        "code_integrity_options": 49157,
+        "code_integrity_query_succeeded": true,
+        "code_integrity_test_signing": false,
+        "console_session_id": 1,
+        "device_guard_query_succeeded": true,
+        "display_version": "24H2",
+        "driver_service_query_succeeded": true,
+        "expected_absent_driver_service_count": 2,
+        "forbidden_process_count": 0,
+        "forbidden_running_task_count": 0,
+        "hvci_configured": false,
+        "hvci_kernel_enforced": false,
+        "hvci_running": false,
+        "hypervisor_present": true,
+        "lifecycle_source_sha256": "fa4ea000db5d3c1c201e0631e3fde57fea59fdf5a81f1aa1e80b93585464d46c",
+        "logged_in": true,
+        "os_product": "Microsoft Windows 11 Enterprise Evaluation",
+        "os_query_succeeded": true,
+        "owned_services_absent": true,
+        "owner": "@DNPMBHC",
+        "passed": true,
+        "preflight_gates_passed": true,
+        "preflight_ps1_sha256": "b64e5bd838aa2d35fb86cc921e82c302178c7da8db06b9e52b9771ee86c9f7b9",
+        "preflight_py_sha256": "e3fdbfa52fbc8e47ba93378d3a446415db1e7373e3697485c40787aa16b48ac5",
+        "quiescence_query_succeeded": true,
+        "read_only": true,
+        "recovered_security_baseline": {
+          "bcd_security": [],
+          "boot_time_utc": "2026-11-22T06:08:17.6999380Z",
+          "captured_at_utc": "2026-11-22T06:08:44.5873348Z",
+          "hypervisor_present": true,
+          "secure_boot_enabled": true,
+          "security_services_running": [
+            0
+          ],
+          "tpm": {
+            "activated": true,
+            "enabled": true,
+            "owned": true,
+            "present": true,
+            "specification_version": "2.0, 0, 1.64"
+          },
+          "vbs_status": 0
+        },
+        "remaining_driver_service_count": 0,
+        "schema_version": 1,
+        "secure_boot_enabled": true,
+        "secure_boot_query_succeeded": true,
+        "security_services_configured": [
+          0
+        ],
+        "security_services_running": [
+          0
+        ],
+        "service_baseline_count": 2,
+        "session_flags": 1,
+        "session_flags_offset": 16,
+        "session_matches_console": true,
+        "session_query_succeeded": true,
+        "session_query_win32_error": 0,
+        "session_state": 0,
+        "temporary_directory_scoped": true,
+        "tpm": {
+          "activated": true,
+          "enabled": true,
+          "owned": true,
+          "present": true,
+          "specification_version": "2.0, 0, 1.64"
+        },
+        "tpm_query_succeeded": true,
+        "unlocked": true,
+        "vbs_status": 0,
+        "wts_info_ex_struct_bytes": 232,
+        "wts_returned_bytes": 232
+      },
+      "probe_binary_sha256": "09bb190bf5d763f9749345300b937728db886a4ec26c32c361a920c565cf1bee",
+      "probe_source_sha256": "11fc000464f0dcf98aec3044c4d956a2b74ce491fc4d69567bf252bbec64af74",
+      "vm": "vm-a",
+      "wall_ms": 14797.374083999997
+    }
+  ],
+  "schema_version": 1
+}

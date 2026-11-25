@@ -1,0 +1,172 @@
+{
+  "arm": "wine_dxvk_kosmickrisp",
+  "domain": "host_wine",
+  "backend": "dxvk_kosmickrisp",
+  "round": 1,
+  "metadata": {
+    "schema_version": 1,
+    "adapter_description": "NVIDIA GeForce 6800",
+    "vendor_id": 4318,
+    "device_id": 65,
+    "adapter_flags": 0,
+    "adapter_is_software": false,
+    "selected_feature_level": "11_0",
+    "width": 1280,
+    "height": 720,
+    "draws_per_frame": 16384,
+    "cb_updates_per_frame": 4096,
+    "passes_per_frame": 2,
+    "dynamic_vertex_bytes_per_frame": 9436608,
+    "geometry_objects": 16383,
+    "scene_variant": "dense_configurable_grid",
+    "async_swapchain": true,
+    "initialization_ms": 1039.43
+  },
+  "completion": {
+    "measured_frames": 120,
+    "warmup_ms": 747.137,
+    "measurement_wall_ms": 1026.562,
+    "gpu_drain_ms": 12.612,
+    "throughput_including_gpu_drain_fps": 116.895091,
+    "draws_per_frame": 16384,
+    "total_draw_calls": 1966080,
+    "async_swapchain": true
+  },
+  "csv_summary": {
+    "frame_count": 120,
+    "interval_sample_count": 119,
+    "derived_fps_from_intervals": 117.4512989176024,
+    "frame_interval_ms": {
+      "mean": 8.514167226890756,
+      "p50": 8.2592,
+      "p95": 13.49575,
+      "p99": 21.98125199999998
+    },
+    "cpu_submit_ms": {
+      "mean": 8.4099375,
+      "p95": 13.4614,
+      "p99": 21.914214000000005
+    },
+    "process_resident_mib_mean": 361.25400390625,
+    "device_memory_mib_mean": 387.73333333333335
+  },
+  "host_cpu": {
+    "method": "libproc RUSAGE_INFO_V0 user+system counter deltas; PID family and creation-time binding",
+    "scope": "measurement phase only; roots and descendants",
+    "sample_count": 14,
+    "sample_errors": 0,
+    "covered_wall_seconds": 1.0311827089972212,
+    "cpu_seconds": 1.2208657916666663,
+    "host_cpu_percent_mean": 118.3947113362581,
+    "host_cpu_percent_peak": 128.54903893178127,
+    "host_logical_cpu_count": 10,
+    "host_capacity_percent_mean": 11.83947113362581,
+    "units": "100 percent equals one logical CPU; zeros retained",
+    "samples": [
+      {
+        "wall_seconds": 0.07708333399932599,
+        "cpu_seconds": 0.09828070833333324,
+        "cpu_percent": 127.49929619571542,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07976349999808008,
+        "cpu_seconds": 0.09712150000000006,
+        "cpu_percent": 121.76183342297891,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07726012500279467,
+        "cpu_seconds": 0.08664166666666662,
+        "cpu_percent": 112.14279897105084,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07442529099716921,
+        "cpu_seconds": 0.09084566666666666,
+        "cpu_percent": 122.06289750364832,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07435612500194111,
+        "cpu_seconds": 0.0866528333333334,
+        "cpu_percent": 116.53758628636346,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07574379200013936,
+        "cpu_seconds": 0.09736791666666658,
+        "cpu_percent": 128.54903893178127,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.08463475000098697,
+        "cpu_seconds": 0.0878389583333335,
+        "cpu_percent": 103.7859252048469,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07782591699651675,
+        "cpu_seconds": 0.0965289999999997,
+        "cpu_percent": 124.03194684403147,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07803562500339467,
+        "cpu_seconds": 0.0931810833333333,
+        "cpu_percent": 119.40838985947737,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07605366599818808,
+        "cpu_seconds": 0.09400612500000027,
+        "cpu_percent": 123.60498835419702,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07339029200011282,
+        "cpu_seconds": 0.0923627083333333,
+        "cpu_percent": 125.85139780230239,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.0758568329983973,
+        "cpu_seconds": 0.09546208333333311,
+        "cpu_percent": 125.84506834783102,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07532537500082981,
+        "cpu_seconds": 0.0923635416666665,
+        "cpu_percent": 122.61942494896174,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.03142808399934438,
+        "cpu_seconds": 0.01221200000000014,
+        "cpu_percent": 38.85696627339704,
+        "live_process_count": 2
+      }
+    ],
+    "limitation": "Counter sampling can miss CPU between the final available counter and process exit"
+  },
+  "native_exit_code": 0,
+  "probe_sha256": "7a71fc3710fc13316c092f822a904e9558b7f7ad81bc52754717f8d1f797bec5",
+  "backend_binding": {
+    "dll_sha256": "7a0442591dfee7e3729d26a598d3b490f917fbe8ebf9da3bb75410e8d095d302",
+    "requested_backend": "dxvk_kosmickrisp",
+    "library_load_log": "wine_dxvk_kosmickrisp-r1.stderr.log",
+    "backend_logs": [
+      {
+        "file": "wine_dxvk_kosmickrisp-r1-bench_real3d_probe-heavy_d3d11.log",
+        "sha256": "ffb2d938a9aa8a09faf669197514d301519320e6fd5936acc7842636e5338c22"
+      }
+    ]
+  },
+  "files": {
+    "csv": "wine_dxvk_kosmickrisp-r1.csv",
+    "csv_sha256": "0c8600271b47112ba388885a49bae666456b3dbd90159b4b4d5c0b3858cc993a",
+    "stdout": "wine_dxvk_kosmickrisp-r1.stdout.log",
+    "stderr": "wine_dxvk_kosmickrisp-r1.stderr.log"
+  }
+}

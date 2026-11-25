@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-24T14:59:51.383088+00:00",
+  "baseline_v1": {
+    "clone_seconds": 0.0047,
+    "vm_started_seconds": 2.483,
+    "qga_ready_seconds": 24.691,
+    "host_idle": {
+      "samples": 5,
+      "interval_seconds": 2.0,
+      "total_host_rss_mib_mean": 2750.11,
+      "qemu_cpu_percent_mean": 16.68
+    },
+    "guest_counts": {
+      "process_count": 118,
+      "running_service_count": 84
+    },
+    "d3d11_smoke": {
+      "fps": 112.486,
+      "mean_frame_ms": 8.89,
+      "p95_frame_ms": 12.211,
+      "max_channel_error_lsb": 0,
+      "byte_exact_match": true
+    }
+  },
+  "trimmed_v2": {
+    "clone_seconds": 0.0071,
+    "trim_summary": {
+      "trim_hardware_applied": true,
+      "removed_empty_cdrom_slots": 2,
+      "dynamic_resolution_locked_false": true,
+      "usb_sharing_disabled": true,
+      "maximum_usb_shares": 0,
+      "directx_driver": null,
+      "renderer_fps_limit": 120
+    },
+    "vm_started_seconds": 2.448,
+    "qga_ready_seconds": 20.585,
+    "host_idle": {
+      "samples": 5,
+      "interval_seconds": 2.0,
+      "total_host_rss_mib_mean": 2557.19,
+      "qemu_cpu_percent_mean": 12.54
+    },
+    "guest_counts": {
+      "process_count": 102,
+      "running_service_count": 73
+    },
+    "d3d11_smoke": {
+      "fps": 117.841,
+      "mean_frame_ms": 8.486,
+      "p95_frame_ms": 12.314,
+      "max_channel_error_lsb": 0,
+      "byte_exact_match": true
+    },
+    "optimizer_v2_apply": {
+      "profile_revision": 2,
+      "whitelist_guard_passed": true,
+      "security_invariants_passed": true,
+      "snapshot_reused": true
+    },
+    "rollback_verification": {
+      "mismatch_count": 0,
+      "rollback_consistent": true,
+      "security_invariants_passed": true
+    }
+  },
+  "comparison": {
+    "total_host_rss_mib_delta": -192.92,
+    "qemu_cpu_percent_delta": -4.14,
+    "guest_process_count_delta": -16,
+    "guest_running_service_count_delta": -11,
+    "qga_ready_seconds_delta": -4.106,
+    "d3d11_probe_fps_delta": 5.355
+  }
+}

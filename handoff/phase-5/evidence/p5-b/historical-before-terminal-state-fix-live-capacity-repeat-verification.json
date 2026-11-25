@@ -1,0 +1,252 @@
+{
+  "all_processes_isolated": true,
+  "captured_at_utc": "2026-11-24T04:51:18.178130+00:00",
+  "cases": [
+    {
+      "elapsed_seconds": 0.13440129200171214,
+      "fully_passed": true,
+      "guest_naturally_stopped_at_final_sample": false,
+      "native": {
+        "configurationValidated": true,
+        "deviceCreated": true,
+        "guestStarted": true,
+        "guestStopped": true,
+        "guestStoppedNaturally": false,
+        "machineStateBeforeStop": "VZVirtualMachineState(rawValue: 1)",
+        "mappedAndUnmapped": true,
+        "mapping": {
+          "bytes": 4398046511104,
+          "name": "full_aperture_lazy_mapping",
+          "succeeded": true
+        },
+        "owner": "@DNPMBHC",
+        "physicalPagesFullyTouched": false,
+        "requestedBytes": 4398046511104,
+        "runningBeforeMap": true,
+        "scope": "isolated_EFI_live_aperture_and_lazy_mapping_not_physical_commit_limit"
+      },
+      "process_exit": 0,
+      "requested_bytes": 4398046511104,
+      "running_at_final_state_sample": true
+    },
+    {
+      "elapsed_seconds": 0.15756408300512703,
+      "fully_passed": true,
+      "guest_naturally_stopped_at_final_sample": false,
+      "native": {
+        "configurationValidated": true,
+        "deviceCreated": true,
+        "guestStarted": true,
+        "guestStopped": true,
+        "guestStoppedNaturally": false,
+        "machineStateBeforeStop": "VZVirtualMachineState(rawValue: 1)",
+        "mappedAndUnmapped": true,
+        "mapping": {
+          "bytes": 8796093022208,
+          "name": "full_aperture_lazy_mapping",
+          "succeeded": true
+        },
+        "owner": "@DNPMBHC",
+        "physicalPagesFullyTouched": false,
+        "requestedBytes": 8796093022208,
+        "runningBeforeMap": true,
+        "scope": "isolated_EFI_live_aperture_and_lazy_mapping_not_physical_commit_limit"
+      },
+      "process_exit": 0,
+      "requested_bytes": 8796093022208,
+      "running_at_final_state_sample": true
+    },
+    {
+      "elapsed_seconds": 0.3158151660027215,
+      "fully_passed": true,
+      "guest_naturally_stopped_at_final_sample": true,
+      "native": {
+        "configurationValidated": true,
+        "deviceCreated": true,
+        "guestStarted": true,
+        "guestStopped": true,
+        "guestStoppedNaturally": true,
+        "machineStateBeforeStop": "VZVirtualMachineState(rawValue: 0)",
+        "mappedAndUnmapped": true,
+        "mapping": {
+          "bytes": 35184372088832,
+          "name": "full_aperture_lazy_mapping",
+          "succeeded": true
+        },
+        "owner": "@DNPMBHC",
+        "physicalPagesFullyTouched": false,
+        "requestedBytes": 35184372088832,
+        "runningBeforeMap": true,
+        "scope": "isolated_EFI_live_aperture_and_lazy_mapping_not_physical_commit_limit"
+      },
+      "process_exit": 0,
+      "requested_bytes": 35184372088832,
+      "running_at_final_state_sample": false
+    },
+    {
+      "elapsed_seconds": 0.27918695799598936,
+      "fully_passed": false,
+      "guest_naturally_stopped_at_final_sample": false,
+      "native": {
+        "configurationValidated": true,
+        "deviceCreated": true,
+        "errorCode": 10,
+        "errorDomain": "VZErrorDomain",
+        "guestErrorCode": 1,
+        "guestErrorDomain": "VZErrorDomain",
+        "guestStarted": true,
+        "guestStopped": false,
+        "guestStoppedNaturally": false,
+        "machineStateBeforeStop": "VZVirtualMachineState(rawValue: 3)",
+        "mappedAndUnmapped": false,
+        "mapping": {
+          "bytes": 70368744177664,
+          "errorCode": 10,
+          "errorDomain": "VZErrorDomain",
+          "name": "full_aperture_lazy_mapping",
+          "succeeded": false
+        },
+        "owner": "@DNPMBHC",
+        "physicalPagesFullyTouched": false,
+        "requestedBytes": 70368744177664,
+        "runningBeforeMap": true,
+        "scope": "isolated_EFI_live_aperture_and_lazy_mapping_not_physical_commit_limit",
+        "stopErrorCode": 4,
+        "stopErrorDomain": "VZErrorDomain"
+      },
+      "process_exit": 0,
+      "requested_bytes": 70368744177664,
+      "running_at_final_state_sample": false
+    },
+    {
+      "elapsed_seconds": 0.1304103340007714,
+      "fully_passed": true,
+      "guest_naturally_stopped_at_final_sample": false,
+      "native": {
+        "configurationValidated": true,
+        "deviceCreated": true,
+        "guestStarted": true,
+        "guestStopped": true,
+        "guestStoppedNaturally": false,
+        "machineStateBeforeStop": "VZVirtualMachineState(rawValue: 1)",
+        "mappedAndUnmapped": true,
+        "mapping": {
+          "bytes": 4398046511104,
+          "name": "full_aperture_lazy_mapping",
+          "succeeded": true
+        },
+        "owner": "@DNPMBHC",
+        "physicalPagesFullyTouched": false,
+        "requestedBytes": 4398046511104,
+        "runningBeforeMap": true,
+        "scope": "isolated_EFI_live_aperture_and_lazy_mapping_not_physical_commit_limit"
+      },
+      "process_exit": 0,
+      "requested_bytes": 4398046511104,
+      "running_at_final_state_sample": true
+    },
+    {
+      "elapsed_seconds": 0.1541885420010658,
+      "fully_passed": true,
+      "guest_naturally_stopped_at_final_sample": false,
+      "native": {
+        "configurationValidated": true,
+        "deviceCreated": true,
+        "guestStarted": true,
+        "guestStopped": true,
+        "guestStoppedNaturally": false,
+        "machineStateBeforeStop": "VZVirtualMachineState(rawValue: 1)",
+        "mappedAndUnmapped": true,
+        "mapping": {
+          "bytes": 8796093022208,
+          "name": "full_aperture_lazy_mapping",
+          "succeeded": true
+        },
+        "owner": "@DNPMBHC",
+        "physicalPagesFullyTouched": false,
+        "requestedBytes": 8796093022208,
+        "runningBeforeMap": true,
+        "scope": "isolated_EFI_live_aperture_and_lazy_mapping_not_physical_commit_limit"
+      },
+      "process_exit": 0,
+      "requested_bytes": 8796093022208,
+      "running_at_final_state_sample": true
+    },
+    {
+      "elapsed_seconds": 0.3427399579959456,
+      "fully_passed": true,
+      "guest_naturally_stopped_at_final_sample": true,
+      "native": {
+        "configurationValidated": true,
+        "deviceCreated": true,
+        "guestStarted": true,
+        "guestStopped": true,
+        "guestStoppedNaturally": true,
+        "machineStateBeforeStop": "VZVirtualMachineState(rawValue: 0)",
+        "mappedAndUnmapped": true,
+        "mapping": {
+          "bytes": 35184372088832,
+          "name": "full_aperture_lazy_mapping",
+          "succeeded": true
+        },
+        "owner": "@DNPMBHC",
+        "physicalPagesFullyTouched": false,
+        "requestedBytes": 35184372088832,
+        "runningBeforeMap": true,
+        "scope": "isolated_EFI_live_aperture_and_lazy_mapping_not_physical_commit_limit"
+      },
+      "process_exit": 0,
+      "requested_bytes": 35184372088832,
+      "running_at_final_state_sample": false
+    },
+    {
+      "elapsed_seconds": 0.28688125000189757,
+      "fully_passed": false,
+      "guest_naturally_stopped_at_final_sample": false,
+      "native": {
+        "configurationValidated": true,
+        "deviceCreated": true,
+        "errorCode": 10,
+        "errorDomain": "VZErrorDomain",
+        "guestErrorCode": 1,
+        "guestErrorDomain": "VZErrorDomain",
+        "guestStarted": true,
+        "guestStopped": false,
+        "guestStoppedNaturally": false,
+        "machineStateBeforeStop": "VZVirtualMachineState(rawValue: 3)",
+        "mappedAndUnmapped": false,
+        "mapping": {
+          "bytes": 70368744177664,
+          "errorCode": 10,
+          "errorDomain": "VZErrorDomain",
+          "name": "full_aperture_lazy_mapping",
+          "succeeded": false
+        },
+        "owner": "@DNPMBHC",
+        "physicalPagesFullyTouched": false,
+        "requestedBytes": 70368744177664,
+        "runningBeforeMap": true,
+        "scope": "isolated_EFI_live_aperture_and_lazy_mapping_not_physical_commit_limit",
+        "stopErrorCode": 4,
+        "stopErrorDomain": "VZErrorDomain"
+      },
+      "process_exit": 0,
+      "requested_bytes": 70368744177664,
+      "running_at_final_state_sample": false
+    }
+  ],
+  "full_aperture_metric_includes_natural_guest_stops": true,
+  "largest_map_unmap_accepted_bytes": 35184372088832,
+  "largest_passed_aperture_running_at_final_sample_bytes": 8796093022208,
+  "largest_verified_full_aperture_bytes": 35184372088832,
+  "native_binary_sha256": "c856f479b5371aa5f970ff7f04ba75bcdd1ad67d58b2820fcf26705ec21c4fa3",
+  "observed_failures_are_not_assumed_to_be_physical_memory_limits": true,
+  "owner": "@DNPMBHC",
+  "physical_commit_maximum_established": false,
+  "physical_pages_fully_touched": false,
+  "probe_script_sha256": "89db0cf9efb08018065024c5ed0bad331683ca5ee99828d07fa3e3bbce177964",
+  "scope": "actual_native_EFI_start_map_unmap_stop_not_physical_RAM_maximum",
+  "shared_vm_actions": 0,
+  "smallest_observed_nonpassing_bytes": 70368744177664,
+  "sustained_guest_running_limit_established": false
+}

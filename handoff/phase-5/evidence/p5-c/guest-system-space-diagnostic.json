@@ -1,0 +1,80 @@
+{
+  "own_lab_largest": [
+    {
+      "size_bytes": 13623540,
+      "relative": "probe\\d3d11_probe.exe"
+    },
+    {
+      "size_bytes": 3741778,
+      "relative": "desktop-helper.exe"
+    },
+    {
+      "size_bytes": 18278,
+      "relative": "minimal\\last-apply-report.json"
+    },
+    {
+      "size_bytes": 18241,
+      "relative": "minimal\\apply-optimizer.ps1"
+    },
+    {
+      "size_bytes": 17139,
+      "relative": "settings-a1ddb260-f1b0-48cf-9cf3-ac245a059f90.ps1"
+    },
+    {
+      "size_bytes": 17139,
+      "relative": "settings-873febc3-0edb-40a4-8e1b-b2946f733e77.ps1"
+    },
+    {
+      "size_bytes": 17139,
+      "relative": "settings-e7a1dc26-79f9-4327-917f-224b2bb243fc.ps1"
+    },
+    {
+      "size_bytes": 17139,
+      "relative": "settings-b8d9c5a1-8bbd-4a3c-a2fc-282f6d51b180.ps1"
+    },
+    {
+      "size_bytes": 17139,
+      "relative": "settings-59726fb0-8d80-4b86-b646-8a95e06c407b.ps1"
+    },
+    {
+      "size_bytes": 17139,
+      "relative": "settings-0a9bf9e2-cb5e-46bd-92c7-d136d37168c8.ps1"
+    },
+    {
+      "size_bytes": 17139,
+      "relative": "settings-76215c60-b554-425c-94e1-8308a8d814c0.ps1"
+    },
+    {
+      "size_bytes": 17139,
+      "relative": "settings-837e7b71-68ca-428c-b141-fcbbb92094d3.ps1"
+    }
+  ],
+  "owner": "@DNPMBHC",
+  "partitions": [
+    {
+      "offset": 1048576,
+      "size": 104857600,
+      "type": "System",
+      "partition_number": 1
+    },
+    {
+      "offset": 105906176,
+      "size": 16777216,
+      "type": "Reserved",
+      "partition_number": 2
+    },
+    {
+      "offset": 122683392,
+      "size": 37925945344,
+      "type": "Basic",
+      "partition_number": 3
+    },
+    {
+      "offset": 38048628736,
+      "size": 603979776,
+      "type": "Recovery",
+      "partition_number": 4
+    }
+  ],
+  "windows_temp_bytes": 86979
+}

@@ -1,0 +1,72 @@
+{
+  "captured_at_utc": "2026-11-24T02:04:26.255850+00:00",
+  "consumer_contract_revision": 2,
+  "consumer_production_fingerprint": "92b9e84f39bee09227c033e6bd9d0ce2a11dafeb63b5183d442c073af2d7db0d",
+  "consumer_snapshot_revision": 3,
+  "consumer_source_files_verified": 12,
+  "consumer_version_evidence_sha256": "3fc9aa0aa7ff869e32c0bc0e40a75a3207d178f5558b5e8a1f94a2e8d0df7b30",
+  "cross_window_reports": {
+    "native-fullscreen-probe.json": {
+      "checks_per_run": [
+        32,
+        32
+      ],
+      "frames": 24,
+      "local_copy": "cross-window-native-fullscreen.json",
+      "native_fullscreen_verified": true,
+      "producer_sources_match_current": true,
+      "runs": 2,
+      "source_evidence_sha256": "eb6fce9e60be22b7d0aca27825b7fe8b6541ee53bfe81727e897154453887521"
+    },
+    "runtime-binary-roundtrip.json": {
+      "checks_per_run": [
+        18,
+        18
+      ],
+      "frames": 24,
+      "local_copy": "cross-window-runtime-roundtrip.json",
+      "native_fullscreen_verified": false,
+      "producer_sources_match_current": true,
+      "runs": 2,
+      "source_evidence_sha256": "633ef79caee7fab6087a4b5f933141f086d17afd503e506061b9d7db07bcb88b"
+    }
+  },
+  "guest_probe_build_only": {
+    "cold_headless_start_verified": false,
+    "guest_execution_enabled": false,
+    "guest_validation": "not_tested",
+    "passed": true,
+    "production_snapshot_revision": 3,
+    "source_evidence_sha256": "33edc5e12f7dc9102e6d06efa00719621129fc2a947eb92e379f7ef30190c2a0",
+    "vm_actions": 0
+  },
+  "inventory_refresh": {
+    "changed_prior_records": [
+      {
+        "current_sha256": "dc5d0ed5003c0b313272242089a228b9ac32b8589f955ebda10f47cfff1d05bc",
+        "file": "build-binding.json",
+        "previous_sha256": "7db730eb5e0beb0751dae7a577b377da7e25ad12a582211296a15a957d6fdb41"
+      },
+      {
+        "current_sha256": "d1cc9ac1df38494f0df366978e41b67107f215b7fc9b4bbbfac7637124a92ddc",
+        "file": "native-compile.log",
+        "previous_sha256": "68630e42d9d128321cb045e28054a60e72182ece807486a4f97fd2e139745a6e"
+      },
+      {
+        "current_sha256": "e67ea342b676fd9a8db38177f7eabab0ae3e6229f14b8a4e727956a787499dcd",
+        "file": "producer-library-binding.json",
+        "previous_sha256": "69fa8bb5541203b15a4eee0d5142a02f0abb04152e642ea5cad02ec8562b8a4d"
+      }
+    ],
+    "historical_benchmark_binary_revalidated": false,
+    "previous_manifest_sha256": "804ba992c625c521cb9ec26eb111199748c2772b994dc6a133d3b9f62e76e122",
+    "purpose": "record_current_evidence_bytes_with_preserved_drift_receipt"
+  },
+  "origin": "host_synthetic_not_guest_scanout",
+  "owner": "@DNPMBHC",
+  "producer_source_files_verified": 8,
+  "supports_real_guest_scanout": false,
+  "supports_signed_windows_vz_boot": false,
+  "supports_virtual_hid_sink": false,
+  "verification": "readonly_source_hash_and_report_checks_no_execution"
+}
