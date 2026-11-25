@@ -1,0 +1,11 @@
+
+msync: bootstrapped mach port on wine-deda2-msync.
+msync: up and running.
+Failed to open /etc/machine-id, error No such file or directory.
+info:  Maximum supported feature level: D3D_FEATURE_LEVEL_11_1
+info:  Using feature level D3D_FEATURE_LEVEL_11_1
+probe_metadata_json={"schema_version":1,"requested_driver_type":"hardware","device_create_hresult":"0x00000000","device_create_attempts":["0x00000000"],"adapter_get_desc1_hresult":"0x00000000","adapter_description":"Apple M4","vendor_id":4203,"device_id":0,"adapter_flags":0,"adapter_is_software":false,"selected_feature_level":"11_1","selected_feature_level_value":"0x0000b100","windows_session_id":1,"session_api_success":true,"session_api_error":0,"transport_mode":"direct_present","offload_mode":"pixel-readback","completion_mode":"gpu-complete","width":1280,"height":720,"commands":16,"resource_bytes":65536,"command_every":1,"resource_every":1,"resource_pattern":"legacy","seed":1,"capture_requested":false,"capture_frame":0,"enumerated_adapters":[{"adapter_description":"Apple M4","vendor_id":4203,"device_id":0,"adapter_flags":0,"adapter_is_software":false}],"adapter_enumeration_hresult":"0x00000000"}
+probe_ready_ms=138.208
+info:  DXMT: CommandChunk encode frame=5348 chunk=5350 totalMs=18.936 executeMs=0.046 flushMs=18.89 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=18.714 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=5348 chunk=5350 seq=5350 totalMs=20.813 commandBufferMs=0.022 encodeMs=20.762 metalCommitMs=0.025 waitsInitializer=0
+probe_completion_json={"measured_frames":120,"measurement_wall_ms":999.629000,"throughput_including_gpu_drain_fps":120.044537,"completion_mode":"gpu-complete","post_measurement_query_collection_ms":0.248000,"completion_scope":"gpu-command-complete-not-screen-display"}

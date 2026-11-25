@@ -1,0 +1,244 @@
+{
+  "artifacts": {
+    "d3d11_probe_cpp": {
+      "bytes": 41313,
+      "file": "pixel-validation/inputs/d3d11_probe.cpp",
+      "sha256": "11fc000464f0dcf98aec3044c4d956a2b74ce491fc4d69567bf252bbec64af74"
+    },
+    "d3d11_probe_exe": {
+      "bytes": 13623540,
+      "file": "pixel-validation/inputs/d3d11_probe.exe",
+      "sha256": "09bb190bf5d763f9749345300b937728db886a4ec26c32c361a920c565cf1bee"
+    },
+    "guest_d3d11_reference_rgba": {
+      "bytes": 3686400,
+      "file": "pixel-validation/validate-legacy-0/validate-legacy-0-reference.rgba",
+      "sha256": "88b4a75cde2b7b8f40dd0e18287e7224f6659170eb1abee79eee11e105d63ff6"
+    },
+    "hardware_m0_metadata": {
+      "bytes": 1070,
+      "file": "m0-adapters/guest/m0-hardware-metadata.json",
+      "sha256": "3ecb40bfb70e906c5910587a7a838b28251bd59e1b8825f1cc8d95a1ff56365f"
+    },
+    "host_jsonl": {
+      "bytes": 1147,
+      "file": "pixel-validation/validate-legacy-0/host.jsonl",
+      "sha256": "e721df04069a0ce6b57a1070798c0acd813c2bb1bf8dd342da445c9bfe21d70b"
+    },
+    "metal_capture_metadata": {
+      "bytes": 956,
+      "file": "pixel-validation/validate-legacy-0/host-captures/frame-000000.json",
+      "sha256": "127a8654907de170b81dc0e97aea0637fcca79767121137cb9d93ed75db227a6"
+    },
+    "metal_host_binary": {
+      "bytes": 252792,
+      "file": "pixel-validation/validate-legacy-0/metal_host",
+      "sha256": "9b0fefb3c181125c943f6d7b8c6f6fdf3ebade939f80cd41f58f3dc17c658a38"
+    },
+    "metal_host_swift": {
+      "bytes": 50038,
+      "file": "pixel-validation/inputs/metal_host.swift",
+      "sha256": "cf6d0f50b9b68dcde7324f12423d3de242950aa35fe25b2cf0d2b0afdd74c734"
+    },
+    "metal_render_rgba": {
+      "bytes": 3686400,
+      "file": "pixel-validation/validate-legacy-0/host-captures/frame-000000.rgba",
+      "sha256": "88b4a75cde2b7b8f40dd0e18287e7224f6659170eb1abee79eee11e105d63ff6"
+    },
+    "receiver_start": {
+      "bytes": 307,
+      "file": "pixel-validation/validate-legacy-0/receiver-start.json",
+      "sha256": "290fbd17ec5ca4742d7a0ebb34f8092eba48c826f5a608c85cbcae158353ce77"
+    },
+    "reference_csv": {
+      "bytes": 479,
+      "file": "pixel-validation/validate-legacy-0/validate-legacy-0-reference.csv",
+      "sha256": "23f016f1299c1e3ac4e1152724f25f7cad9e6538be22e66f0c6830b79cb487ab"
+    },
+    "reference_metadata": {
+      "bytes": 1067,
+      "file": "pixel-validation/validate-legacy-0/validate-legacy-0-reference.json",
+      "sha256": "9359bac0a2cddb6038205c7631ca29223d32e53465aaa11a708312e83ad84081"
+    },
+    "reference_stderr": {
+      "bytes": 1377,
+      "file": "pixel-validation/validate-legacy-0/validate-legacy-0-reference.stderr.log",
+      "sha256": "82aa527d334c40d983465df03fddd2397704da461939eff8671ca68dbcaf2dfb"
+    },
+    "replay_csv": {
+      "bytes": 506,
+      "file": "pixel-validation/validate-legacy-0/validate-legacy-0-replay.csv",
+      "sha256": "7d313e9ab7430e44ff49634d7e580ece6eb2d74c0676b5ac4585b29dde0dfa82"
+    },
+    "replay_metadata": {
+      "bytes": 1068,
+      "file": "pixel-validation/validate-legacy-0/validate-legacy-0-replay.json",
+      "sha256": "278b5cf2d4de17046953e33a68d2e0f22f855f8f7f4d7e0cab95f8e6f31ada78"
+    },
+    "replay_stderr": {
+      "bytes": 1378,
+      "file": "pixel-validation/validate-legacy-0/validate-legacy-0-replay.stderr.log",
+      "sha256": "c1c60fd71a080e92c7cea4eb08d4de46841fb2d7e452c77cad805fbaa5e2ffb9"
+    }
+  },
+  "captured_at_utc": "2026-11-22T07:13:53.334767+00:00",
+  "case": "validate-legacy-0",
+  "comparison": {
+    "channel_maximum_errors_lsb": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "differing_pixels": 0,
+    "maximum_channel_error_lsb": 0,
+    "metal_rgba_sha256": "88b4a75cde2b7b8f40dd0e18287e7224f6659170eb1abee79eee11e105d63ff6",
+    "pixel_count": 921600,
+    "pixels_exceeding_one_lsb": 0,
+    "reference_rgba_sha256": "88b4a75cde2b7b8f40dd0e18287e7224f6659170eb1abee79eee11e105d63ff6",
+    "rgba_bytes_per_frame": 3686400
+  },
+  "failed_run": true,
+  "formal_acceptance": false,
+  "four_case_validation_complete": false,
+  "guest_wine_and_receiver_operations_by_spotcheck": false,
+  "hardware_m0_adapter": {
+    "adapter_description": "Microsoft Basic Render Driver",
+    "adapter_flags": 0,
+    "adapter_get_desc1_hresult": "0x00000000",
+    "adapter_is_software": false,
+    "device_id": 140,
+    "requested_driver_type": "hardware",
+    "selected_feature_level": "11_1",
+    "vendor_id": 5140,
+    "windows_session_id": 1
+  },
+  "not_accepted_reason": "The run failed its cleanup confirmation after saved first-frame output; the four-case validation and formal paired performance did not complete.",
+  "original_failure_records": {
+    "failure.json": "898a820f93afcc647f74e3b7a6e86f4ea779128308c711d1a21b9ca18f7f6b70",
+    "pixel-validation/failure.json": "aa6360120dfdc4c48e992ef4b55714afa99b4dd56835c92bd2e5e50173dec387"
+  },
+  "original_failure_records_preserved": true,
+  "owner": "@DNPMBHC",
+  "passed": true,
+  "performance_measurement": false,
+  "platform": {
+    "guest_architecture": "ARM64",
+    "guest_build": "26100",
+    "guest_os": "Windows 11 24H2",
+    "windows_session_id": 1
+  },
+  "production_comparison_manifest_complete": false,
+  "provenance_checks": {
+    "archived_host_binary_matches_receiver_and_capture": true,
+    "archived_swift_matches_receiver_source": true,
+    "capture_image_sha_matches_metadata": true,
+    "explicit_warp_flags_two_observed": true,
+    "gpu_completion_is_not_screen_latency": true,
+    "hardware_flags_zero_preserved": true,
+    "host_completion_scope": "gpu-command-complete",
+    "host_gpu_is_apple_m4": true,
+    "host_positive_gpu_time_observed": true,
+    "legacy_resource_sha_matches_capture": true,
+    "real_scene_draw_count": 16,
+    "reference_metadata_matches_raw_stderr": true
+  },
+  "reference_adapter": {
+    "adapter_description": "Microsoft Basic Render Driver",
+    "adapter_flags": 2,
+    "adapter_get_desc1_hresult": "0x00000000",
+    "adapter_is_software": true,
+    "device_create_hresult": "0x00000000",
+    "device_id": 140,
+    "requested_driver_type": "warp",
+    "selected_feature_level": "11_1",
+    "vendor_id": 5140,
+    "windows_session_id": 1
+  },
+  "required_case_count": 4,
+  "run_directory": "run-20261122-070452-utc",
+  "schema_version": 1,
+  "scope": "independent read-only spot-check of already saved actual Guest explicit WARP and Metal frame 0",
+  "source_input_artifacts": {
+    "analyze.py": {
+      "bytes": 9494,
+      "file": "pixel-validation/inputs/analyze.py",
+      "sha256": "ee71db86dc7db499d4997343489b341062b51220e547fe6443ace2e2218e1f25"
+    },
+    "benchmark_support.py": {
+      "bytes": 22925,
+      "file": "pixel-validation/inputs/benchmark_support.py",
+      "sha256": "4428b9e99f58c93f604f305db0b21d923178f11423081df3575f95a58fc00e8d"
+    },
+    "build_metal_host.sh": {
+      "bytes": 4981,
+      "file": "pixel-validation/inputs/build_metal_host.sh",
+      "sha256": "f51ceb267222ce99053d155ba2ee692ad995277a9ea373ec3762f5d830baae82"
+    },
+    "build_probe.sh": {
+      "bytes": 1024,
+      "file": "pixel-validation/inputs/build_probe.sh",
+      "sha256": "374a70103d2123a11dec6766298660ff31f42a267e179489051b36ff0d92d1f6"
+    },
+    "command_protocol.py": {
+      "bytes": 10677,
+      "file": "pixel-validation/inputs/command_protocol.py",
+      "sha256": "5b519eacbce938c4e2c076b60fca346af2e5c50fa21c55a916069faa11332d36"
+    },
+    "d3d11_probe.cpp": {
+      "bytes": 41313,
+      "file": "pixel-validation/inputs/d3d11_probe.cpp",
+      "sha256": "11fc000464f0dcf98aec3044c4d956a2b74ce491fc4d69567bf252bbec64af74"
+    },
+    "d3d11_probe.exe": {
+      "bytes": 13623540,
+      "file": "pixel-validation/inputs/d3d11_probe.exe",
+      "sha256": "09bb190bf5d763f9749345300b937728db886a4ec26c32c361a920c565cf1bee"
+    },
+    "guest_preflight.ps1": {
+      "bytes": 15455,
+      "file": "pixel-validation/inputs/guest_preflight.ps1",
+      "sha256": "b64e5bd838aa2d35fb86cc921e82c302178c7da8db06b9e52b9771ee86c9f7b9"
+    },
+    "guest_preflight.py": {
+      "bytes": 13371,
+      "file": "pixel-validation/inputs/guest_preflight.py",
+      "sha256": "80c3102218770b03cf25bb8d58ad30e21c35be4e6ef598c5fe5cc3d86bf8ea91"
+    },
+    "metal_host.swift": {
+      "bytes": 50038,
+      "file": "pixel-validation/inputs/metal_host.swift",
+      "sha256": "cf6d0f50b9b68dcde7324f12423d3de242950aa35fe25b2cf0d2b0afdd74c734"
+    },
+    "pixel_compare.py": {
+      "bytes": 3455,
+      "file": "pixel-validation/inputs/pixel_compare.py",
+      "sha256": "2dbe1454c4eccbb12685c9b2a39f45d895b9fa65658d1b129e952aa74231b056"
+    },
+    "restart_metal_host.sh": {
+      "bytes": 3843,
+      "file": "pixel-validation/inputs/restart_metal_host.sh",
+      "sha256": "0dd16cac6d14275115057ccd316d7f83f74afc30567d523c551bcdb14b866611"
+    },
+    "run_guest_m2_benchmark.py": {
+      "bytes": 18565,
+      "file": "pixel-validation/inputs/run_guest_m2_benchmark.py",
+      "sha256": "b1b3a7e914eba19a9dc058aae24dba02591922679e21d52efbf8e3dbf5df3998"
+    },
+    "run_guest_pixel_validation.py": {
+      "bytes": 11116,
+      "file": "pixel-validation/inputs/run_guest_pixel_validation.py",
+      "sha256": "9572317f868a0e8d744f30879596a08d7a68dcbdc5c4b6d9e0a39fc88513daab"
+    }
+  },
+  "validated_case_count": 1,
+  "workload": {
+    "frame_sequence": 0,
+    "height": 720,
+    "pattern": "legacy",
+    "resource_bytes": 65536,
+    "scene_draws": 16,
+    "seed": 7,
+    "width": 1280
+  }
+}

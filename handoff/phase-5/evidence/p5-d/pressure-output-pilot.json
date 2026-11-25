@@ -1,0 +1,414 @@
+{
+  "owner": "@DNPMBHC",
+  "passed": false,
+  "deliveredProbeSHA256": "d128b4793de2ad64b956d0415b185b588366ba5c5c4e8b60fe8d0e4ec3751e26",
+  "deliveryManifestSHA256": "d636d50d436d1d1e40023a8b28d2f735c8f4bba723b99a76dae0ff6f58c3c506",
+  "workload": {
+    "width": 1280,
+    "height": 720,
+    "drawsPerFrame": 2048,
+    "cbUpdates": 256,
+    "measuredFrames": 180,
+    "warmupFrames": 60,
+    "rounds": 1
+  },
+  "backends": {
+    "dxmt": {
+      "passed": true,
+      "runs": [
+        {
+          "reference": {
+            "frameCount": 180,
+            "derivedFPS": 238.506283,
+            "frameIntervalP95Ms": 8.195500000000001,
+            "deviceMemoryMiBMean": 62.42387152777778,
+            "gpuDrainMs": 12.12,
+            "measurementWallMs": 754.697,
+            "csvSHA256": "8796e41b0222402b8c980df4048bb9146ffe28017eab32c984104154c7394583",
+            "metadata": {
+              "schema_version": 1,
+              "adapter_description": "Apple M4",
+              "vendor_id": 4203,
+              "device_id": 0,
+              "adapter_flags": 0,
+              "adapter_is_software": false,
+              "selected_feature_level": "11_1",
+              "width": 1280,
+              "height": 720,
+              "draws_per_frame": 2048,
+              "cb_updates_per_frame": 256,
+              "passes_per_frame": 2,
+              "async_swapchain": true,
+              "initialization_ms": 173.163
+            },
+            "errors": []
+          },
+          "artifact": {
+            "frameCount": 180,
+            "derivedFPS": 239.719624,
+            "frameIntervalP95Ms": 8.92135,
+            "deviceMemoryMiBMean": 62.42387152777778,
+            "gpuDrainMs": 8.232,
+            "measurementWallMs": 750.877,
+            "csvSHA256": "84b558d5203a70bf2c9a6138100a7c642c05537a299cebb7d390129de116110c",
+            "metadata": {
+              "schema_version": 1,
+              "adapter_description": "Apple M4",
+              "vendor_id": 4203,
+              "device_id": 0,
+              "adapter_flags": 0,
+              "adapter_is_software": false,
+              "selected_feature_level": "11_1",
+              "width": 1280,
+              "height": 720,
+              "draws_per_frame": 2048,
+              "cb_updates_per_frame": 256,
+              "passes_per_frame": 2,
+              "async_swapchain": true,
+              "initialization_ms": 144.105
+            },
+            "errors": []
+          },
+          "errors": [],
+          "integrityPassed": true,
+          "round": 1,
+          "pairedConsistency": {
+            "passed": true,
+            "errors": [],
+            "fpsRatio": 1.0051,
+            "tolerances": {
+              "minimumFPSRatio": 0.85,
+              "maximumP95Ratio": 1.35,
+              "maximumGPUTimeRatio": 1.3,
+              "maximumVRAMRatio": 1.2
+            }
+          }
+        }
+      ],
+      "aggregateConsistency": {
+        "passed": true,
+        "errors": [],
+        "fpsRatio": 1.0051,
+        "tolerances": {
+          "minimumFPSRatio": 0.85,
+          "maximumP95Ratio": 1.35,
+          "maximumGPUTimeRatio": 1.3,
+          "maximumVRAMRatio": 1.2
+        },
+        "method": "arithmetic mean of all rounds; no discarded samples",
+        "roundCount": 1,
+        "artifact": {
+          "derivedFPS": 239.719624,
+          "frameIntervalP95Ms": 8.92135,
+          "deviceMemoryMiBMean": 62.42387152777778
+        },
+        "reference": {
+          "derivedFPS": 238.506283,
+          "frameIntervalP95Ms": 8.195500000000001,
+          "deviceMemoryMiBMean": 62.42387152777778
+        }
+      },
+      "rawPerformanceOutlierCount": 0
+    },
+    "d3dMetal": {
+      "passed": false,
+      "runs": [
+        {
+          "reference": {
+            "frameCount": 180,
+            "derivedFPS": 497.915256,
+            "frameIntervalP95Ms": 8.25906,
+            "deviceMemoryMiBMean": 84.34375,
+            "gpuDrainMs": 1.162,
+            "measurementWallMs": 361.507,
+            "csvSHA256": "be30cd03f760024f6154a3940acce69fff704aa41456270af33196146a80c54d",
+            "metadata": {
+              "schema_version": 1,
+              "adapter_description": "AMD Compatibility Mode",
+              "vendor_id": 4098,
+              "device_id": 26287,
+              "adapter_flags": 0,
+              "adapter_is_software": false,
+              "selected_feature_level": "11_1",
+              "width": 1280,
+              "height": 720,
+              "draws_per_frame": 2048,
+              "cb_updates_per_frame": 256,
+              "passes_per_frame": 2,
+              "async_swapchain": true,
+              "initialization_ms": 604.011
+            },
+            "errors": []
+          },
+          "artifact": {
+            "frameCount": 180,
+            "derivedFPS": 334.588785,
+            "frameIntervalP95Ms": 8.84874,
+            "deviceMemoryMiBMean": 84.34375,
+            "gpuDrainMs": 10.464,
+            "measurementWallMs": 537.974,
+            "csvSHA256": "078f3f0680141df67744dae428ee3611af4146841a543fc4e95100b322d7cb67",
+            "metadata": {
+              "schema_version": 1,
+              "adapter_description": "AMD Compatibility Mode",
+              "vendor_id": 4098,
+              "device_id": 26287,
+              "adapter_flags": 0,
+              "adapter_is_software": false,
+              "selected_feature_level": "11_1",
+              "width": 1280,
+              "height": 720,
+              "draws_per_frame": 2048,
+              "cb_updates_per_frame": 256,
+              "passes_per_frame": 2,
+              "async_swapchain": true,
+              "initialization_ms": 234.672
+            },
+            "errors": []
+          },
+          "errors": [],
+          "integrityPassed": true,
+          "round": 1,
+          "pairedConsistency": {
+            "passed": false,
+            "errors": [
+              "paired_fps_regression"
+            ],
+            "fpsRatio": 0.672,
+            "tolerances": {
+              "minimumFPSRatio": 0.85,
+              "maximumP95Ratio": 1.35,
+              "maximumGPUTimeRatio": 1.3,
+              "maximumVRAMRatio": 1.2
+            }
+          }
+        }
+      ],
+      "aggregateConsistency": {
+        "passed": false,
+        "errors": [
+          "paired_fps_regression"
+        ],
+        "fpsRatio": 0.672,
+        "tolerances": {
+          "minimumFPSRatio": 0.85,
+          "maximumP95Ratio": 1.35,
+          "maximumGPUTimeRatio": 1.3,
+          "maximumVRAMRatio": 1.2
+        },
+        "method": "arithmetic mean of all rounds; no discarded samples",
+        "roundCount": 1,
+        "artifact": {
+          "derivedFPS": 334.588785,
+          "frameIntervalP95Ms": 8.84874,
+          "deviceMemoryMiBMean": 84.34375
+        },
+        "reference": {
+          "derivedFPS": 497.915256,
+          "frameIntervalP95Ms": 8.25906,
+          "deviceMemoryMiBMean": 84.34375
+        }
+      },
+      "rawPerformanceOutlierCount": 1
+    },
+    "dxvk_backend-k": {
+      "passed": false,
+      "runs": [
+        {
+          "reference": {
+            "frameCount": 180,
+            "derivedFPS": 339.818454,
+            "frameIntervalP95Ms": 8.96348,
+            "deviceMemoryMiBMean": 353.75694444444446,
+            "gpuDrainMs": 1.749,
+            "measurementWallMs": 529.695,
+            "csvSHA256": "b06c1683ecfb6f27a20fb110b54a8dbfeddf905a50bec57e618cf116ac3adee3",
+            "metadata": {
+              "schema_version": 1,
+              "adapter_description": "NVIDIA GeForce 6800",
+              "vendor_id": 4318,
+              "device_id": 65,
+              "adapter_flags": 0,
+              "adapter_is_software": false,
+              "selected_feature_level": "11_0",
+              "width": 1280,
+              "height": 720,
+              "draws_per_frame": 2048,
+              "cb_updates_per_frame": 256,
+              "passes_per_frame": 2,
+              "async_swapchain": true,
+              "initialization_ms": 941.186
+            },
+            "errors": []
+          },
+          "artifact": {
+            "frameCount": 180,
+            "derivedFPS": 283.142988,
+            "frameIntervalP95Ms": 9.68168,
+            "deviceMemoryMiBMean": 353.74375,
+            "gpuDrainMs": 0.617,
+            "measurementWallMs": 635.721,
+            "csvSHA256": "75bf74c44fc3dad138410df8047b9a72ed9564e9483a9fa08cf5599dcb5f3057",
+            "metadata": {
+              "schema_version": 1,
+              "adapter_description": "NVIDIA GeForce 6800",
+              "vendor_id": 4318,
+              "device_id": 65,
+              "adapter_flags": 0,
+              "adapter_is_software": false,
+              "selected_feature_level": "11_0",
+              "width": 1280,
+              "height": 720,
+              "draws_per_frame": 2048,
+              "cb_updates_per_frame": 256,
+              "passes_per_frame": 2,
+              "async_swapchain": true,
+              "initialization_ms": 948.858
+            },
+            "errors": []
+          },
+          "errors": [],
+          "integrityPassed": true,
+          "round": 1,
+          "pairedConsistency": {
+            "passed": false,
+            "errors": [
+              "paired_fps_regression"
+            ],
+            "fpsRatio": 0.8332,
+            "tolerances": {
+              "minimumFPSRatio": 0.85,
+              "maximumP95Ratio": 1.35,
+              "maximumGPUTimeRatio": 1.3,
+              "maximumVRAMRatio": 1.2
+            }
+          }
+        }
+      ],
+      "aggregateConsistency": {
+        "passed": false,
+        "errors": [
+          "paired_fps_regression"
+        ],
+        "fpsRatio": 0.8332,
+        "tolerances": {
+          "minimumFPSRatio": 0.85,
+          "maximumP95Ratio": 1.35,
+          "maximumGPUTimeRatio": 1.3,
+          "maximumVRAMRatio": 1.2
+        },
+        "method": "arithmetic mean of all rounds; no discarded samples",
+        "roundCount": 1,
+        "artifact": {
+          "derivedFPS": 283.142988,
+          "frameIntervalP95Ms": 9.68168,
+          "deviceMemoryMiBMean": 353.74375
+        },
+        "reference": {
+          "derivedFPS": 339.818454,
+          "frameIntervalP95Ms": 8.96348,
+          "deviceMemoryMiBMean": 353.75694444444446
+        }
+      },
+      "rawPerformanceOutlierCount": 1
+    },
+    "dxvk_moltenvk": {
+      "passed": true,
+      "runs": [
+        {
+          "reference": {
+            "frameCount": 180,
+            "derivedFPS": 284.044824,
+            "frameIntervalP95Ms": 8.416979999999999,
+            "deviceMemoryMiBMean": 232.84375,
+            "gpuDrainMs": 1.607,
+            "measurementWallMs": 633.703,
+            "csvSHA256": "d569b5fcfaef5e51c1d344308acc9aaadb7ebed979d61bcab0576519c52832d4",
+            "metadata": {
+              "schema_version": 1,
+              "adapter_description": "Apple M4",
+              "vendor_id": 4203,
+              "device_id": 1009,
+              "adapter_flags": 0,
+              "adapter_is_software": false,
+              "selected_feature_level": "11_0",
+              "width": 1280,
+              "height": 720,
+              "draws_per_frame": 2048,
+              "cb_updates_per_frame": 256,
+              "passes_per_frame": 2,
+              "async_swapchain": true,
+              "initialization_ms": 163.432
+            },
+            "errors": []
+          },
+          "artifact": {
+            "frameCount": 180,
+            "derivedFPS": 303.903694,
+            "frameIntervalP95Ms": 8.635209999999999,
+            "deviceMemoryMiBMean": 232.84375,
+            "gpuDrainMs": 1.062,
+            "measurementWallMs": 592.293,
+            "csvSHA256": "370ede46434f29a83afc2b34d38eb883e888e57106b69d1b8f14f105f6c51d98",
+            "metadata": {
+              "schema_version": 1,
+              "adapter_description": "Apple M4",
+              "vendor_id": 4203,
+              "device_id": 1009,
+              "adapter_flags": 0,
+              "adapter_is_software": false,
+              "selected_feature_level": "11_0",
+              "width": 1280,
+              "height": 720,
+              "draws_per_frame": 2048,
+              "cb_updates_per_frame": 256,
+              "passes_per_frame": 2,
+              "async_swapchain": true,
+              "initialization_ms": 163.303
+            },
+            "errors": []
+          },
+          "errors": [],
+          "integrityPassed": true,
+          "round": 1,
+          "pairedConsistency": {
+            "passed": true,
+            "errors": [],
+            "fpsRatio": 1.0699,
+            "tolerances": {
+              "minimumFPSRatio": 0.85,
+              "maximumP95Ratio": 1.35,
+              "maximumGPUTimeRatio": 1.3,
+              "maximumVRAMRatio": 1.2
+            }
+          }
+        }
+      ],
+      "aggregateConsistency": {
+        "passed": true,
+        "errors": [],
+        "fpsRatio": 1.0699,
+        "tolerances": {
+          "minimumFPSRatio": 0.85,
+          "maximumP95Ratio": 1.35,
+          "maximumGPUTimeRatio": 1.3,
+          "maximumVRAMRatio": 1.2
+        },
+        "method": "arithmetic mean of all rounds; no discarded samples",
+        "roundCount": 1,
+        "artifact": {
+          "derivedFPS": 303.903694,
+          "frameIntervalP95Ms": 8.635209999999999,
+          "deviceMemoryMiBMean": 232.84375
+        },
+        "reference": {
+          "derivedFPS": 284.044824,
+          "frameIntervalP95Ms": 8.416979999999999,
+          "deviceMemoryMiBMean": 232.84375
+        }
+      },
+      "rawPerformanceOutlierCount": 0
+    }
+  },
+  "scope": "Delivered preliminary draw-call probe, same-host artifact/reference pairs. Both paths launch cmd.exe with ordinary output redirection through Wine start /wait /unix. Throughput includes the final GPU drain. Drain duration is not a GPU frame timestamp. The newer heavy-scene pilot and commercial games are not claimed."
+}

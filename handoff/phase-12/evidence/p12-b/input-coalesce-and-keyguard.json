@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "owner": "@DNPMBHC",
+  "phase": "phase-12-window-12b",
+  "verified_at_utc": "2026-11-25T06:46:15.742911+00:00",
+  "mouse_coalescing": {
+    "coalesce_us": 1500,
+    "duration_ms": 250,
+    "rates": [
+      {
+        "polling_hz": 1000,
+        "coalesce_us": 1500,
+        "input_motion_events": 250,
+        "emitted_motion_packets": 126,
+        "packet_reduction_ratio": 1.984,
+        "expected_total_dx": 11.0,
+        "emitted_total_dx": 11.0,
+        "expected_total_dy": -1.0,
+        "emitted_total_dy": -1.0,
+        "pixel_error_dx": 0.0,
+        "pixel_error_dy": 0.0,
+        "zero_pixel_loss": true,
+        "click_immediate_flush_ok": true,
+        "passed": true
+      },
+      {
+        "polling_hz": 2000,
+        "coalesce_us": 1500,
+        "input_motion_events": 500,
+        "emitted_motion_packets": 167,
+        "packet_reduction_ratio": 2.994,
+        "expected_total_dx": 24.0,
+        "emitted_total_dx": 24.0,
+        "expected_total_dy": -1.0,
+        "emitted_total_dy": -1.0,
+        "pixel_error_dx": 0.0,
+        "pixel_error_dy": 0.0,
+        "zero_pixel_loss": true,
+        "click_immediate_flush_ok": true,
+        "passed": true
+      },
+      {
+        "polling_hz": 4000,
+        "coalesce_us": 1500,
+        "input_motion_events": 1000,
+        "emitted_motion_packets": 169,
+        "packet_reduction_ratio": 5.917,
+        "expected_total_dx": 51.0,
+        "emitted_total_dx": 51.0,
+        "expected_total_dy": -1.0,
+        "emitted_total_dy": -1.0,
+        "pixel_error_dx": 0.0,
+        "pixel_error_dy": 0.0,
+        "zero_pixel_loss": true,
+        "click_immediate_flush_ok": true,
+        "passed": true
+      },
+      {
+        "polling_hz": 8000,
+        "coalesce_us": 1500,
+        "input_motion_events": 2000,
+        "emitted_motion_packets": 169,
+        "packet_reduction_ratio": 11.834,
+        "expected_total_dx": 111.0,
+        "emitted_total_dx": 111.0,
+        "expected_total_dy": -1.0,
+        "emitted_total_dy": -1.0,
+        "pixel_error_dx": 0.0,
+        "pixel_error_dy": 0.0,
+        "zero_pixel_loss": true,
+        "click_immediate_flush_ok": true,
+        "passed": true
+      }
+    ],
+    "all_passed": true
+  },
+  "mouse_coalescing_disabled_control": {
+    "coalesce_us": 0,
+    "duration_ms": 100,
+    "rates": [
+      {
+        "polling_hz": 1000,
+        "coalesce_us": 0,
+        "input_motion_events": 100,
+        "emitted_motion_packets": 100,
+        "packet_reduction_ratio": 1.0,
+        "expected_total_dx": 2.0,
+        "emitted_total_dx": 2.0,
+        "expected_total_dy": -1.0,
+        "emitted_total_dy": -1.0,
+        "pixel_error_dx": 0.0,
+        "pixel_error_dy": 0.0,
+        "zero_pixel_loss": true,
+        "click_immediate_flush_ok": true,
+        "passed": true
+      }
+    ],
+    "all_passed": true
+  },
+  "key_guard_matrix": {
+    "cases": [
+      {
+        "case": "cmd_w_fullscreen_blocked",
+        "expected": "blocked_accidental_shortcut",
+        "actual": "blocked_accidental_shortcut",
+        "passed": true
+      },
+      {
+        "case": "cmd_q_fullscreen_blocked",
+        "expected": "blocked_accidental_shortcut",
+        "actual": "blocked_accidental_shortcut",
+        "passed": true
+      },
+      {
+        "case": "cmd_h_fullscreen_blocked",
+        "expected": "blocked_accidental_shortcut",
+        "actual": "blocked_accidental_shortcut",
+        "passed": true
+      },
+      {
+        "case": "cmd_m_fullscreen_blocked",
+        "expected": "blocked_accidental_shortcut",
+        "actual": "blocked_accidental_shortcut",
+        "passed": true
+      },
+      {
+        "case": "cmd_opt_g_escape_preserved",
+        "expected": "release_mouse",
+        "actual": "release_mouse",
+        "passed": true
+      },
+      {
+        "case": "cmd_tab_escape_preserved",
+        "expected": "release_and_switch_app",
+        "actual": "release_and_switch_app",
+        "passed": true
+      },
+      {
+        "case": "left_cmd_win_key_blocked",
+        "expected": "blocked_left_win_key",
+        "actual": "blocked_left_win_key",
+        "passed": true
+      },
+      {
+        "case": "left_cmd_win_key_allowed_when_disabled",
+        "expected": "forward_to_guest",
+        "actual": "forward_to_guest",
+        "passed": true
+      },
+      {
+        "case": "right_cmd_preserved",
+        "expected": "forward_to_guest",
+        "actual": "forward_to_guest",
+        "passed": true
+      },
+      {
+        "case": "option_alt_passthrough",
+        "expected": "forward_to_guest",
+        "actual": "forward_to_guest",
+        "passed": true
+      },
+      {
+        "case": "f1_passthrough",
+        "expected": "forward_to_guest",
+        "actual": "forward_to_guest",
+        "passed": true
+      },
+      {
+        "case": "f12_passthrough",
+        "expected": "forward_to_guest",
+        "actual": "forward_to_guest",
+        "passed": true
+      },
+      {
+        "case": "cmd_w_windowed_not_blocked",
+        "expected": "forward_to_guest",
+        "actual": "forward_to_guest",
+        "passed": true
+      }
+    ],
+    "all_passed": true
+  },
+  "passed": true
+}

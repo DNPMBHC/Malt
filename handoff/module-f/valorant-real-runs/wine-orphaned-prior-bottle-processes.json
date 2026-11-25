@@ -1,0 +1,30 @@
+{
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-24T06:50:52.764120+00:00",
+  "scope": "read-only host process inventory; no process signalled",
+  "finding": "Wine processes from an earlier p5-a Bottle remain alive after its prefix directory was deleted",
+  "prefix_directory_exists": false,
+  "process_cwd": "deleted (No such file or directory)",
+  "engine": "same wine-11.0-ge1cd80458f5 engine and dxmt-v0.80 as p5-a runs",
+  "started_local_window": [
+    "10:56 (Wine services)",
+    "11:14-11:15 (official launcher children and game proxy)"
+  ],
+  "process_roles": {
+    "wine_services": 8,
+    "launcher_crashpad_handler": 1,
+    "launcher_gpu_process": 1,
+    "launcher_network_utility": 1,
+    "launcher_renderer": 4,
+    "game_proxy": 1,
+    "game_proxy_crashpad_handler": 1
+  },
+  "launcher_main_browser_process_present": false,
+  "macos_windows_owned_by_these_processes": 0,
+  "cumulative_cpu_seconds_all": 235,
+  "max_current_cpu_percent": 0.7,
+  "baseline_impact_assessment": "below 1% of one core during the formal baseline window; not a material confound",
+  "corrects": "summary.md and checkpoint claims that all owned Wine had been closed",
+  "interpretation_limit": "The Electron main process is absent and children are orphaned; why it exited (crash, controlled stop of a single PID, or other) is not established.",
+  "cleanup_status": "pending user confirmation"
+}

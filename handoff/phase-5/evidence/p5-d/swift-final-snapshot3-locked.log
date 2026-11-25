@@ -1,0 +1,596 @@
+warning: '--skip-update' option is deprecated and will be removed in a future release
+Building for debugging...
+[1 / 5]
+[2 / 6] demo-appKit
+[3 / 7] demo-appKit
+[8 / 13] demo-appKit
+[10 / 15] demo-appKit
+[13 / 15] demo-appKitTests-product
+[15 / 17] demo-appKitTests-product
+[17 / 19] demo-appKitTests-product
+[21 / 22] demo-appKitTests-product
+Build complete! (3.34秒)
+Test Suite 'All tests' started at 2026-11-24 09:47:44.072.
+Test Suite 'demo-appKitTests.xctest' started at 2026-11-24 09:47:44.073.
+Test Suite 'AntiCheatProbeTests' started at 2026-11-24 09:47:44.073.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testAccessDeniedDoesNotMasqueradeAsDriverNotLoaded]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testAccessDeniedDoesNotMasqueradeAsDriverNotLoaded]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testCandidateArchitectureMismatchDoesNotClaimRuntimeProbeFailure]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testCandidateArchitectureMismatchDoesNotClaimRuntimeProbeFailure]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testCandidateImageSignatureIsReportedSeparately]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testCandidateImageSignatureIsReportedSeparately]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testDeviceControlFailureFailsSelfProbe]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testDeviceControlFailureFailsSelfProbe]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testDriverArchitectureMismatchFailsSelfProbe]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testDriverArchitectureMismatchFailsSelfProbe]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testDuplicateObjectKeysAreRejected]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testDuplicateObjectKeysAreRejected]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testExcessiveNestingIsRejected]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testExcessiveNestingIsRejected]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testGuestProbeServiceBindsChallengeToGuestReport]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testGuestProbeServiceBindsChallengeToGuestReport]' passed (0.006 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testIncompleteChildCleanupFailsSelfProbe]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testIncompleteChildCleanupFailsSelfProbe]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testInvalidResponseHasDistinctFailure]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testInvalidResponseHasDistinctFailure]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testMismatchedCurrentContextPIDFailsSelfProbe]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testMismatchedCurrentContextPIDFailsSelfProbe]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testMismatchedNonceIsRejected]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testMismatchedNonceIsRejected]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testMissingBoundChildPIDFailsSelfProbe]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testMissingBoundChildPIDFailsSelfProbe]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testMissingDeviceIsReportedAsNotLoaded]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testMissingDeviceIsReportedAsNotLoaded]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testMissingProcessCreateOrExitNotificationFailsSelfProbe]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testMissingProcessCreateOrExitNotificationFailsSelfProbe]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testNotificationFailureStageIsMappedSeparately]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testNotificationFailureStageIsMappedSeparately]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testOversizedPayloadIsRejectedBeforeParsing]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testOversizedPayloadIsRejectedBeforeParsing]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testPreviousReportSchemaVersionIsRejected]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testPreviousReportSchemaVersionIsRejected]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testProtocolRejectionPreservesNativeFailureStage]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testProtocolRejectionPreservesNativeFailureStage]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testRequestorAndObservedPIDMismatchFailsSelfProbe]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testRequestorAndObservedPIDMismatchFailsSelfProbe]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testRequestorContextMismatchFailsSelfProbe]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testRequestorContextMismatchFailsSelfProbe]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testStaleReportHasDistinctError]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testStaleReportHasDistinctError]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testSuccessfulProbeDoesNotAuthorizeProtectedGame]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testSuccessfulProbeDoesNotAuthorizeProtectedGame]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testSuccessfulProbeUsesNotificationResponseByteCount]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testSuccessfulProbeUsesNotificationResponseByteCount]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testTruncatedPayloadIsRejectedAsInvalidJSON]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testTruncatedPayloadIsRejectedAsInvalidJSON]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testUnknownEnumValueIsRejected]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testUnknownEnumValueIsRejected]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testUnmatchedChildPIDFailsSelfProbe]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testUnmatchedChildPIDFailsSelfProbe]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testUnsupportedDriverProtocolFailsSelfProbe]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testUnsupportedDriverProtocolFailsSelfProbe]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testWrongFieldTypeIsRejected]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testWrongFieldTypeIsRejected]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testZeroRequestorPIDFailsSelfProbe]' started.
+Test Case '-[demo-appKitTests.AntiCheatProbeTests testZeroRequestorPIDFailsSelfProbe]' passed (0.000 seconds).
+Test Suite 'AntiCheatProbeTests' passed at 2026-11-24 09:47:44.090.
+	 Executed 30 tests, with 0 failures (0 unexpected) in 0.015 (0.017) seconds
+Test Suite 'BottleGraphicsbackend-kRoutingTests' started at 2026-11-24 09:47:44.090.
+Test Case '-[demo-appKitTests.BottleGraphicsbackend-kRoutingTests testDXMTMetalFXPresetDefaultsOffAndRespectsQualityPreset]' started.
+Test Case '-[demo-appKitTests.BottleGraphicsbackend-kRoutingTests testDXMTMetalFXPresetDefaultsOffAndRespectsQualityPreset]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.BottleGraphicsbackend-kRoutingTests testDXVKRoutesbackend-kWhenPresentAndFallsBackToMoltenVK]' started.
+Test Case '-[demo-appKitTests.BottleGraphicsbackend-kRoutingTests testDXVKRoutesbackend-kWhenPresentAndFallsBackToMoltenVK]' passed (0.001 seconds).
+Test Suite 'BottleGraphicsbackend-kRoutingTests' passed at 2026-11-24 09:47:44.092.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.002 (0.002) seconds
+Test Suite 'GuestSurfaceFrameContractTests' started at 2026-11-24 09:47:44.092.
+Test Case '-[demo-appKitTests.GuestSurfaceFrameContractTests testCancelledProducerWaitReturnsWithoutWaitingForAnUnsignaledEvent]' started.
+Test Case '-[demo-appKitTests.GuestSurfaceFrameContractTests testCancelledProducerWaitReturnsWithoutWaitingForAnUnsignaledEvent]' passed (0.031 seconds).
+Test Case '-[demo-appKitTests.GuestSurfaceFrameContractTests testFrameReleaseIsExactlyOnceUnderConcurrentAcknowledgments]' started.
+Test Case '-[demo-appKitTests.GuestSurfaceFrameContractTests testFrameReleaseIsExactlyOnceUnderConcurrentAcknowledgments]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.GuestSurfaceFrameContractTests testImportedIOSurfaceRendersPixelExactlyAndReleasesAfterGPUCompletion]' started.
+Test Case '-[demo-appKitTests.GuestSurfaceFrameContractTests testImportedIOSurfaceRendersPixelExactlyAndReleasesAfterGPUCompletion]' passed (0.009 seconds).
+Test Case '-[demo-appKitTests.GuestSurfaceFrameContractTests testPushAdapterRejectsStaleBackendAndStoppedFramesWithReleaseAcknowledgments]' started.
+Test Case '-[demo-appKitTests.GuestSurfaceFrameContractTests testPushAdapterRejectsStaleBackendAndStoppedFramesWithReleaseAcknowledgments]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.GuestSurfaceFrameContractTests testRejectsSurfaceIdentityDimensionsAndMissingTimelineValue]' started.
+Test Case '-[demo-appKitTests.GuestSurfaceFrameContractTests testRejectsSurfaceIdentityDimensionsAndMissingTimelineValue]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.GuestSurfaceFrameContractTests testUnsignaledProducerFenceTimesOutAndCanThenBecomeReady]' started.
+Test Case '-[demo-appKitTests.GuestSurfaceFrameContractTests testUnsignaledProducerFenceTimesOutAndCanThenBecomeReady]' passed (0.012 seconds).
+Test Suite 'GuestSurfaceFrameContractTests' passed at 2026-11-24 09:47:44.144.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 0.052 (0.052) seconds
+Test Suite 'GuestSurfaceInputCaptureTests' started at 2026-11-24 09:47:44.144.
+Test Case '-[demo-appKitTests.GuestSurfaceInputCaptureTests testAllFourFailsafeReleaseTriggersUnlockCursorAndStopDeltaFlow]' started.
+Test Case '-[demo-appKitTests.GuestSurfaceInputCaptureTests testAllFourFailsafeReleaseTriggersUnlockCursorAndStopDeltaFlow]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.GuestSurfaceInputCaptureTests testCaptureFailureAndTransientReleaseFailureRemainRecoverable]' started.
+Test Case '-[demo-appKitTests.GuestSurfaceInputCaptureTests testCaptureFailureAndTransientReleaseFailureRemainRecoverable]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.GuestSurfaceInputCaptureTests testCaptureRequiresKeyActiveAndRunningSession]' started.
+Test Case '-[demo-appKitTests.GuestSurfaceInputCaptureTests testCaptureRequiresKeyActiveAndRunningSession]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.GuestSurfaceInputCaptureTests testInputTransportFailureAndDisappearanceReleaseTheNativeWindowCapture]' started.
+Test Case '-[demo-appKitTests.GuestSurfaceInputCaptureTests testInputTransportFailureAndDisappearanceReleaseTheNativeWindowCapture]' passed (0.060 seconds).
+Test Case '-[demo-appKitTests.GuestSurfaceInputCaptureTests testNativeWindowDelegateAndApplicationObserverReleaseWithoutGlobalEvents]' started.
+Test Case '-[demo-appKitTests.GuestSurfaceInputCaptureTests testNativeWindowDelegateAndApplicationObserverReleaseWithoutGlobalEvents]' passed (0.007 seconds).
+Test Case '-[demo-appKitTests.GuestSurfaceInputCaptureTests testNoInputConnectionCannotCaptureAndWrongHotkeysStayUnconsumed]' started.
+Test Case '-[demo-appKitTests.GuestSurfaceInputCaptureTests testNoInputConnectionCannotCaptureAndWrongHotkeysStayUnconsumed]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.GuestSurfaceInputCaptureTests testPersistentReleaseFailureIsReportedAndEmergencyKeyRetriesIt]' started.
+Test Case '-[demo-appKitTests.GuestSurfaceInputCaptureTests testPersistentReleaseFailureIsReportedAndEmergencyKeyRetriesIt]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.GuestSurfaceInputCaptureTests testRepeatedCaptureReleaseAndNonFiniteDeltasDoNotUnbalanceCursor]' started.
+Test Case '-[demo-appKitTests.GuestSurfaceInputCaptureTests testRepeatedCaptureReleaseAndNonFiniteDeltasDoNotUnbalanceCursor]' passed (0.000 seconds).
+Test Suite 'GuestSurfaceInputCaptureTests' passed at 2026-11-24 09:47:44.214.
+	 Executed 8 tests, with 0 failures (0 unexpected) in 0.069 (0.069) seconds
+Test Suite 'GuestSurfacePolicyTests' started at 2026-11-24 09:47:44.214.
+Test Case '-[demo-appKitTests.GuestSurfacePolicyTests testInvalidDisplayModesAreRejectedBeforeScriptGeneration]' started.
+Test Case '-[demo-appKitTests.GuestSurfacePolicyTests testInvalidDisplayModesAreRejectedBeforeScriptGeneration]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.GuestSurfacePolicyTests testRetinaPointToPointAndHighPerformancePresetsMatchAspectRatio]' started.
+Test Case '-[demo-appKitTests.GuestSurfacePolicyTests testRetinaPointToPointAndHighPerformancePresetsMatchAspectRatio]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.GuestSurfacePolicyTests testSyntheticIOSurfaceFrameSourceBindsZeroCopySurfaceToPresentationView]' started.
+Test Case '-[demo-appKitTests.GuestSurfacePolicyTests testSyntheticIOSurfaceFrameSourceBindsZeroCopySurfaceToPresentationView]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.GuestSurfacePolicyTests testWindowFollowUsesBackingPixelsAndRejectsUnsafeNumericInputs]' started.
+Test Case '-[demo-appKitTests.GuestSurfacePolicyTests testWindowFollowUsesBackingPixelsAndRejectsUnsafeNumericInputs]' passed (0.000 seconds).
+Test Suite 'GuestSurfacePolicyTests' passed at 2026-11-24 09:47:44.216.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.002 (0.002) seconds
+Test Suite 'GuestSurfaceSessionTests' started at 2026-11-24 09:47:44.216.
+Test Case '-[demo-appKitTests.GuestSurfaceSessionTests testCancellationDuringDisplayPreparationClosesPresentationAndPreventsLaunch]' started.
+Test Case '-[demo-appKitTests.GuestSurfaceSessionTests testCancellationDuringDisplayPreparationClosesPresentationAndPreventsLaunch]' passed (0.056 seconds).
+Test Case '-[demo-appKitTests.GuestSurfaceSessionTests testHeadlessSessionAppliesDisplayStreamsFramesRestoresAndSuspendsOnExit]' started.
+Test Case '-[demo-appKitTests.GuestSurfaceSessionTests testHeadlessSessionAppliesDisplayStreamsFramesRestoresAndSuspendsOnExit]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.GuestSurfaceSessionTests testHeadlessSessionRestoresDisplayWhenGuestLaunchFails]' started.
+Test Case '-[demo-appKitTests.GuestSurfaceSessionTests testHeadlessSessionRestoresDisplayWhenGuestLaunchFails]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.GuestSurfaceSessionTests testPartiallyAppliedDisplayFailureStillRestoresOriginalBaseline]' started.
+Test Case '-[demo-appKitTests.GuestSurfaceSessionTests testPartiallyAppliedDisplayFailureStillRestoresOriginalBaseline]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.GuestSurfaceSessionTests testRestoreFailureIsVisibleAndDoesNotSuspendGuest]' started.
+Test Case '-[demo-appKitTests.GuestSurfaceSessionTests testRestoreFailureIsVisibleAndDoesNotSuspendGuest]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.GuestSurfaceSessionTests testSuspendFailureReportsFailureAfterDisplayAndCursorCleanup]' started.
+Test Case '-[demo-appKitTests.GuestSurfaceSessionTests testSuspendFailureReportsFailureAfterDisplayAndCursorCleanup]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.GuestSurfaceSessionTests testUTMProviderDisplaySyncParsesValidResponseAndRejectsFailureStatus]' started.
+Test Case '-[demo-appKitTests.GuestSurfaceSessionTests testUTMProviderDisplaySyncParsesValidResponseAndRejectsFailureStatus]' passed (0.003 seconds).
+Test Suite 'GuestSurfaceSessionTests' passed at 2026-11-24 09:47:44.279.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.063 (0.063) seconds
+Test Suite 'HostCapabilitiesTests' started at 2026-11-24 09:47:44.279.
+Test Case '-[demo-appKitTests.HostCapabilitiesTests testCurrentProviderPreservesStaticCapabilities]' started.
+Test Case '-[demo-appKitTests.HostCapabilitiesTests testCurrentProviderPreservesStaticCapabilities]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.HostCapabilitiesTests testExplicitEmptyMetalDeviceListRemainsUnavailable]' started.
+Test Case '-[demo-appKitTests.HostCapabilitiesTests testExplicitEmptyMetalDeviceListRemainsUnavailable]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.HostCapabilitiesTests testGameModeEligibilityRequiresAppleSiliconAndSonomaOrLater]' started.
+Test Case '-[demo-appKitTests.HostCapabilitiesTests testGameModeEligibilityRequiresAppleSiliconAndSonomaOrLater]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.HostCapabilitiesTests testNotificationBurstCoalescesAndUnchangedStateDoesNotPublish]' started.
+Test Case '-[demo-appKitTests.HostCapabilitiesTests testNotificationBurstCoalescesAndUnchangedStateDoesNotPublish]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.HostCapabilitiesTests testOptionalQueueActuallyPausesAndResumesAcrossPowerAndThermalChanges]' started.
+Test Case '-[demo-appKitTests.HostCapabilitiesTests testOptionalQueueActuallyPausesAndResumesAcrossPowerAndThermalChanges]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.HostCapabilitiesTests testPolicyPreservesConsumerPauseAndConcurrencyLimit]' started.
+Test Case '-[demo-appKitTests.HostCapabilitiesTests testPolicyPreservesConsumerPauseAndConcurrencyLimit]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.HostCapabilitiesTests testStaticMetalCapabilityCacheLoadsOncePerDeviceKey]' started.
+Test Case '-[demo-appKitTests.HostCapabilitiesTests testStaticMetalCapabilityCacheLoadsOncePerDeviceKey]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.HostCapabilitiesTests testStopDiscardsScheduledRefreshAndRemovesAllObservers]' started.
+Test Case '-[demo-appKitTests.HostCapabilitiesTests testStopDiscardsScheduledRefreshAndRemovesAllObservers]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.HostCapabilitiesTests testThermalPowerAndWakeNotificationsRefreshDynamicState]' started.
+Test Case '-[demo-appKitTests.HostCapabilitiesTests testThermalPowerAndWakeNotificationsRefreshDynamicState]' passed (0.000 seconds).
+Test Suite 'HostCapabilitiesTests' passed at 2026-11-24 09:47:44.281.
+	 Executed 9 tests, with 0 failures (0 unexpected) in 0.002 (0.003) seconds
+Test Suite 'HostMetalFXBenchmarkTests' started at 2026-11-24 09:47:44.281.
+Test Case '-[demo-appKitTests.HostMetalFXBenchmarkTests testInvalidConfigurationFailsBeforeCreatingDevice]' started.
+Test Case '-[demo-appKitTests.HostMetalFXBenchmarkTests testInvalidConfigurationFailsBeforeCreatingDevice]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.HostMetalFXBenchmarkTests testNoDeviceProducesDeterministicCPUFallbackAndSerializableReport]' started.
+Test Case '-[demo-appKitTests.HostMetalFXBenchmarkTests testNoDeviceProducesDeterministicCPUFallbackAndSerializableReport]' passed (0.006 seconds).
+Test Case '-[demo-appKitTests.HostMetalFXBenchmarkTests testReproducibleMetalFXABWritesSanitizedJSON]' started.
+<workspace>/demo-app/demo-appKit/Tests/demo-appKitTests/HostMetalFXBenchmarkTests.swift:79: -[demo-appKitTests.HostMetalFXBenchmarkTests testReproducibleMetalFXABWritesSanitizedJSON] : Test skipped - Set HOST_RUN_METALFX_AB=1 to run and persist the GPU A/B experiment.
+Test Case '-[demo-appKitTests.HostMetalFXBenchmarkTests testReproducibleMetalFXABWritesSanitizedJSON]' skipped (0.001 seconds).
+Test Case '-[demo-appKitTests.HostMetalFXBenchmarkTests testUnsupportedAndCreationFailureExecuteActualNearestFallback]' started.
+Test Case '-[demo-appKitTests.HostMetalFXBenchmarkTests testUnsupportedAndCreationFailureExecuteActualNearestFallback]' passed (0.027 seconds).
+Test Suite 'HostMetalFXBenchmarkTests' passed at 2026-11-24 09:47:44.316.
+	 Executed 4 tests, with 1 test skipped and 0 failures (0 unexpected) in 0.034 (0.035) seconds
+Test Suite 'HostMetalFXTests' started at 2026-11-24 09:47:44.316.
+Test Case '-[demo-appKitTests.HostMetalFXTests testExtendedGraphicsQueriesSeparateSupportFromActualUse]' started.
+Test Case '-[demo-appKitTests.HostMetalFXTests testExtendedGraphicsQueriesSeparateSupportFromActualUse]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.HostMetalFXTests testMetalAPIValidationIsEnabledForHostChecks]' started.
+<workspace>/demo-app/demo-appKit/Tests/demo-appKitTests/HostMetalFXTests.swift:13: -[demo-appKitTests.HostMetalFXTests testMetalAPIValidationIsEnabledForHostChecks] : Test skipped - Rerun host checks with MTL_DEBUG_LAYER=1 to verify the Metal API contract.
+Test Case '-[demo-appKitTests.HostMetalFXTests testMetalAPIValidationIsEnabledForHostChecks]' skipped (0.000 seconds).
+Test Case '-[demo-appKitTests.HostMetalFXTests testMetalFXSpatialCapabilityAndCommandBufferExecution]' started.
+Test Case '-[demo-appKitTests.HostMetalFXTests testMetalFXSpatialCapabilityAndCommandBufferExecution]' passed (0.013 seconds).
+Test Case '-[demo-appKitTests.HostMetalFXTests testMetalFXTemporalCapabilityAndCommandBufferExecution]' started.
+Test Case '-[demo-appKitTests.HostMetalFXTests testMetalFXTemporalCapabilityAndCommandBufferExecution]' passed (0.444 seconds).
+Test Suite 'HostMetalFXTests' passed at 2026-11-24 09:47:44.774.
+	 Executed 4 tests, with 1 test skipped and 0 failures (0 unexpected) in 0.458 (0.458) seconds
+Test Suite 'HostResourceExperimentTests' started at 2026-11-24 09:47:44.774.
+Test Case '-[demo-appKitTests.HostResourceExperimentTests testMeasuredOptionalConsumerABAndFallback]' started.
+Test Case '-[demo-appKitTests.HostResourceExperimentTests testMeasuredOptionalConsumerABAndFallback]' passed (0.306 seconds).
+Test Suite 'HostResourceExperimentTests' passed at 2026-11-24 09:47:45.081.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.306 (0.307) seconds
+Test Suite 'HostResourcePolicyTests' started at 2026-11-24 09:47:45.081.
+Test Case '-[demo-appKitTests.HostResourcePolicyTests testGuestLaunchPolicyHonorsFallbackAndPressureLevels]' started.
+Test Case '-[demo-appKitTests.HostResourcePolicyTests testGuestLaunchPolicyHonorsFallbackAndPressureLevels]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.HostResourcePolicyTests testMetalHostPolicyRespectsCapabilitiesPressureAndFallback]' started.
+Test Case '-[demo-appKitTests.HostResourcePolicyTests testMetalHostPolicyRespectsCapabilitiesPressureAndFallback]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.HostResourcePolicyTests testThreeEngineBackendRouterRoutesByDirectXVersionAndAvailability]' started.
+Test Case '-[demo-appKitTests.HostResourcePolicyTests testThreeEngineBackendRouterRoutesByDirectXVersionAndAvailability]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.HostResourcePolicyTests testWinePolicyEmitsDocumentedDXMTOverridesAndHonorsFallback]' started.
+Test Case '-[demo-appKitTests.HostResourcePolicyTests testWinePolicyEmitsDocumentedDXMTOverridesAndHonorsFallback]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.HostResourcePolicyTests testWinePolicyEmitsDocumentedDXVKOverridesOnlyUnderThermalOrPowerPressure]' started.
+Test Case '-[demo-appKitTests.HostResourcePolicyTests testWinePolicyEmitsDocumentedDXVKOverridesOnlyUnderThermalOrPowerPressure]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.HostResourcePolicyTests testWinePolicyEmitsNoSyntheticEnvVarsForD3DMetal]' started.
+Test Case '-[demo-appKitTests.HostResourcePolicyTests testWinePolicyEmitsNoSyntheticEnvVarsForD3DMetal]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.HostResourcePolicyTests testWinePolicyFallbackSwitchDisablesAllOverrides]' started.
+Test Case '-[demo-appKitTests.HostResourcePolicyTests testWinePolicyFallbackSwitchDisablesAllOverrides]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.HostResourcePolicyTests testWinePolicyPreservesUserSuppliedEnvironmentValues]' started.
+Test Case '-[demo-appKitTests.HostResourcePolicyTests testWinePolicyPreservesUserSuppliedEnvironmentValues]' passed (0.000 seconds).
+Test Suite 'HostResourcePolicyTests' passed at 2026-11-24 09:47:45.083.
+	 Executed 8 tests, with 0 failures (0 unexpected) in 0.002 (0.003) seconds
+Test Suite 'HostWinebackend-kAndMetalFXTests' started at 2026-11-24 09:47:45.083.
+Test Case '-[demo-appKitTests.HostWinebackend-kAndMetalFXTests testConfiguredWineLaunchPolicyIntegratesMetalFXAndbackend-kNonDestructively]' started.
+Test Case '-[demo-appKitTests.HostWinebackend-kAndMetalFXTests testConfiguredWineLaunchPolicyIntegratesMetalFXAndbackend-kNonDestructively]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.HostWinebackend-kAndMetalFXTests testDXMTMetalFXPolicyDefaultsOffAndActivatesOnlyForEligibleHighResNominalRuns]' started.
+Test Case '-[demo-appKitTests.HostWinebackend-kAndMetalFXTests testDXMTMetalFXPolicyDefaultsOffAndActivatesOnlyForEligibleHighResNominalRuns]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.HostWinebackend-kAndMetalFXTests testDXMTMetalFXPolicyFallsBackUnderThermalPressureHardwareGapAndPolicySwitch]' started.
+Test Case '-[demo-appKitTests.HostWinebackend-kAndMetalFXTests testDXMTMetalFXPolicyFallsBackUnderThermalPressureHardwareGapAndPolicySwitch]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.HostWinebackend-kAndMetalFXTests testVulkanICDRouteFallsBackToMoltenVKOnMissingICDOrOlderOS]' started.
+Test Case '-[demo-appKitTests.HostWinebackend-kAndMetalFXTests testVulkanICDRouteFallsBackToMoltenVKOnMissingICDOrOlderOS]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.HostWinebackend-kAndMetalFXTests testVulkanICDRouteFallsBackToMoltenVKOnSliceOrDXVKFeatureGaps]' started.
+Test Case '-[demo-appKitTests.HostWinebackend-kAndMetalFXTests testVulkanICDRouteFallsBackToMoltenVKOnSliceOrDXVKFeatureGaps]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.HostWinebackend-kAndMetalFXTests testVulkanICDRouteSelectsbackend-kWhenReadyOnMacOS26PlusAppleSilicon]' started.
+Test Case '-[demo-appKitTests.HostWinebackend-kAndMetalFXTests testVulkanICDRouteSelectsbackend-kWhenReadyOnMacOS26PlusAppleSilicon]' passed (0.000 seconds).
+Test Suite 'HostWinebackend-kAndMetalFXTests' passed at 2026-11-24 09:47:45.085.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 0.001 (0.002) seconds
+Test Suite 'IntegrationBoundaryTests' started at 2026-11-24 09:47:45.085.
+Test Case '-[demo-appKitTests.IntegrationBoundaryTests testGuestCapabilityMatrix]' started.
+Test Case '-[demo-appKitTests.IntegrationBoundaryTests testGuestCapabilityMatrix]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.IntegrationBoundaryTests testPerformancePolicyForEveryThermalAndPowerCombination]' started.
+Test Case '-[demo-appKitTests.IntegrationBoundaryTests testPerformancePolicyForEveryThermalAndPowerCombination]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.IntegrationBoundaryTests testProfileMatchingIsCaseInsensitiveAndRejectsSimilarNames]' started.
+Test Case '-[demo-appKitTests.IntegrationBoundaryTests testProfileMatchingIsCaseInsensitiveAndRejectsSimilarNames]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.IntegrationBoundaryTests testReadyUnknownGuestForwardsRequestAndProviderError]' started.
+Test Case '-[demo-appKitTests.IntegrationBoundaryTests testReadyUnknownGuestForwardsRequestAndProviderError]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.IntegrationBoundaryTests testRejectedGuestLaunchNeverCallsProvider]' started.
+Test Case '-[demo-appKitTests.IntegrationBoundaryTests testRejectedGuestLaunchNeverCallsProvider]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.IntegrationBoundaryTests testWineLaunchWithoutBottleReportsBottleUnavailable]' started.
+Test Case '-[demo-appKitTests.IntegrationBoundaryTests testWineLaunchWithoutBottleReportsBottleUnavailable]' passed (0.000 seconds).
+Test Suite 'IntegrationBoundaryTests' passed at 2026-11-24 09:47:45.087.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 0.002 (0.002) seconds
+Test Suite 'RemotePhysicsBackendTests' started at 2026-11-24 09:47:45.087.
+Test Case '-[demo-appKitTests.RemotePhysicsBackendTests testAvailabilityCoversAllFourSpecifiedStates]' started.
+Test Case '-[demo-appKitTests.RemotePhysicsBackendTests testAvailabilityCoversAllFourSpecifiedStates]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RemotePhysicsBackendTests testMoonlightInvocationAppliesHostResourcePolicyWithoutShell]' started.
+Test Case '-[demo-appKitTests.RemotePhysicsBackendTests testMoonlightInvocationAppliesHostResourcePolicyWithoutShell]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RemotePhysicsBackendTests testRealProcessSessionReportsExitCodesAndIdempotentCancellation]' started.
+Test Case '-[demo-appKitTests.RemotePhysicsBackendTests testRealProcessSessionReportsExitCodesAndIdempotentCancellation]' passed (0.008 seconds).
+Test Case '-[demo-appKitTests.RemotePhysicsBackendTests testStartPropagatesTimeoutUnreachableAndCancellationErrors]' started.
+Test Case '-[demo-appKitTests.RemotePhysicsBackendTests testStartPropagatesTimeoutUnreachableAndCancellationErrors]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RemotePhysicsBackendTests testTCPProbeReturnsNonReadyForClosedLoopbackPortWithinTimeout]' started.
+Test Case '-[demo-appKitTests.RemotePhysicsBackendTests testTCPProbeReturnsNonReadyForClosedLoopbackPortWithinTimeout]' passed (0.010 seconds).
+Test Suite 'RemotePhysicsBackendTests' passed at 2026-11-24 09:47:45.106.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.019 (0.019) seconds
+Test Suite 'RemotePhysicsConfigurationTests' started at 2026-11-24 09:47:45.106.
+Test Case '-[demo-appKitTests.RemotePhysicsConfigurationTests testConfigurationRejectsEmbeddedCredentialsAndInvalidBounds]' started.
+Test Case '-[demo-appKitTests.RemotePhysicsConfigurationTests testConfigurationRejectsEmbeddedCredentialsAndInvalidBounds]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RemotePhysicsConfigurationTests testConfigurationRejectsPlaintextCredentialKeysInJSON]' started.
+Test Case '-[demo-appKitTests.RemotePhysicsConfigurationTests testConfigurationRejectsPlaintextCredentialKeysInJSON]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RemotePhysicsConfigurationTests testConfigurationRejectsShellInterpretersAsExternalClient]' started.
+Test Case '-[demo-appKitTests.RemotePhysicsConfigurationTests testConfigurationRejectsShellInterpretersAsExternalClient]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RemotePhysicsConfigurationTests testExecutionDomainIsStrictlyRemotePhysicalWindows]' started.
+Test Case '-[demo-appKitTests.RemotePhysicsConfigurationTests testExecutionDomainIsStrictlyRemotePhysicalWindows]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RemotePhysicsConfigurationTests testStreamPolicyConsumesHostThermalAndPowerStateWithReversibleFallback]' started.
+Test Case '-[demo-appKitTests.RemotePhysicsConfigurationTests testStreamPolicyConsumesHostThermalAndPowerStateWithReversibleFallback]' passed (0.000 seconds).
+Test Suite 'RemotePhysicsConfigurationTests' passed at 2026-11-24 09:47:45.108.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'RuntimeDefaultGraphicsSettingsTests' started at 2026-11-24 09:47:45.108.
+Test Case '-[demo-appKitTests.RuntimeDefaultGraphicsSettingsTests testInvalidDefaultsAndOldConfigurationKeepSafeValues]' started.
+Test Case '-[demo-appKitTests.RuntimeDefaultGraphicsSettingsTests testInvalidDefaultsAndOldConfigurationKeepSafeValues]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.RuntimeDefaultGraphicsSettingsTests testNewConfigurationUsesIsolatedAppDefaults]' started.
+Test Case '-[demo-appKitTests.RuntimeDefaultGraphicsSettingsTests testNewConfigurationUsesIsolatedAppDefaults]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.RuntimeDefaultGraphicsSettingsTests testProbeOverridesDecodeThroughProductionProgramSettings]' started.
+Test Case '-[demo-appKitTests.RuntimeDefaultGraphicsSettingsTests testProbeOverridesDecodeThroughProductionProgramSettings]' passed (0.000 seconds).
+Test Suite 'RuntimeDefaultGraphicsSettingsTests' passed at 2026-11-24 09:47:45.111.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.003 (0.004) seconds
+Test Suite 'RuntimeGraphicsRoutingTests' started at 2026-11-24 09:47:45.111.
+Test Case '-[demo-appKitTests.RuntimeGraphicsRoutingTests testAutoRoutingAndExplicitPinningRespectAPIAndAvailability]' started.
+Test Case '-[demo-appKitTests.RuntimeGraphicsRoutingTests testAutoRoutingAndExplicitPinningRespectAPIAndAvailability]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RuntimeGraphicsRoutingTests testAvailableGraphicsBackendsAndEnableDXMTSyncDLLsAndCacheDir]' started.
+Test Case '-[demo-appKitTests.RuntimeGraphicsRoutingTests testAvailableGraphicsBackendsAndEnableDXMTSyncDLLsAndCacheDir]' passed (0.007 seconds).
+Test Case '-[demo-appKitTests.RuntimeGraphicsRoutingTests testBundledRelativebackend-kICDDiscoveryAndMoltenVKFallback]' started.
+Test Case '-[demo-appKitTests.RuntimeGraphicsRoutingTests testBundledRelativebackend-kICDDiscoveryAndMoltenVKFallback]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.RuntimeGraphicsRoutingTests testD3DMetalAndDXVKEnvironmentInjectLibrariesAndPerBottleCache]' started.
+Test Case '-[demo-appKitTests.RuntimeGraphicsRoutingTests testD3DMetalAndDXVKEnvironmentInjectLibrariesAndPerBottleCache]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.RuntimeGraphicsRoutingTests testDXMTEnvironmentIsolatesPerBottleCacheAndAppliesAdaptivePolicyNonDestructively]' started.
+Test Case '-[demo-appKitTests.RuntimeGraphicsRoutingTests testDXMTEnvironmentIsolatesPerBottleCacheAndAppliesAdaptivePolicyNonDestructively]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.RuntimeGraphicsRoutingTests testLegacyDXVKBoooleanPlistDecodesToCompatibleGraphicsBackendMode]' started.
+Test Case '-[demo-appKitTests.RuntimeGraphicsRoutingTests testLegacyDXVKBoooleanPlistDecodesToCompatibleGraphicsBackendMode]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RuntimeGraphicsRoutingTests testRuntimePlanBackendResourcePolicyOverloadAndRouteDiagnostic]' started.
+Test Case '-[demo-appKitTests.RuntimeGraphicsRoutingTests testRuntimePlanBackendResourcePolicyOverloadAndRouteDiagnostic]' passed (0.000 seconds).
+Test Suite 'RuntimeGraphicsRoutingTests' passed at 2026-11-24 09:47:45.125.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.013 (0.013) seconds
+Test Suite 'RuntimeIntegrityReportTests' started at 2026-11-24 09:47:45.125.
+Test Case '-[demo-appKitTests.RuntimeIntegrityReportTests testMissingTrustedAnchorNeverReportsOfficialBuild]' started.
+Test Case '-[demo-appKitTests.RuntimeIntegrityReportTests testMissingTrustedAnchorNeverReportsOfficialBuild]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RuntimeIntegrityReportTests testTrustedTeamWithoutHardenedRuntimeIsNotOfficialBuild]' started.
+Test Case '-[demo-appKitTests.RuntimeIntegrityReportTests testTrustedTeamWithoutHardenedRuntimeIsNotOfficialBuild]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RuntimeIntegrityReportTests testTrustedTeamWithValidSignatureAndHardenedRuntimeReportsFactsSeparately]' started.
+Test Case '-[demo-appKitTests.RuntimeIntegrityReportTests testTrustedTeamWithValidSignatureAndHardenedRuntimeReportsFactsSeparately]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RuntimeIntegrityReportTests testUntrustedTeamWithDisabledSIPIsNotOfficialBuild]' started.
+Test Case '-[demo-appKitTests.RuntimeIntegrityReportTests testUntrustedTeamWithDisabledSIPIsNotOfficialBuild]' passed (0.000 seconds).
+Test Suite 'RuntimeIntegrityReportTests' passed at 2026-11-24 09:47:45.125.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'RuntimeManifestTests' started at 2026-11-24 09:47:45.125.
+Test Case '-[demo-appKitTests.RuntimeManifestTests testBundledManifestDecodesAllFiveLockedComponentsIncludingbackend-k]' started.
+Test Case '-[demo-appKitTests.RuntimeManifestTests testBundledManifestDecodesAllFiveLockedComponentsIncludingbackend-k]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.RuntimeManifestTests testCustomRuntimeLocationResolvesExternalPathAndEnvironmentOverride]' started.
+Test Case '-[demo-appKitTests.RuntimeManifestTests testCustomRuntimeLocationResolvesExternalPathAndEnvironmentOverride]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.RuntimeManifestTests testManifestVerifierDistinguishesVerifiedMismatchMissingAndReserved]' started.
+Test Case '-[demo-appKitTests.RuntimeManifestTests testManifestVerifierDistinguishesVerifiedMismatchMissingAndReserved]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.RuntimeManifestTests testManifestVerifierResolvesContentsBundleRelativeArtifactsAndAlternateSHA256]' started.
+Test Case '-[demo-appKitTests.RuntimeManifestTests testManifestVerifierResolvesContentsBundleRelativeArtifactsAndAlternateSHA256]' passed (0.001 seconds).
+Test Suite 'RuntimeManifestTests' passed at 2026-11-24 09:47:45.131.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.005 (0.005) seconds
+Test Suite 'RuntimeProcessTests' started at 2026-11-24 09:47:45.131.
+Test Case '-[demo-appKitTests.RuntimeProcessTests testAliasNamesDoNotHideKnownProfilesOrScripts]' started.
+Test Case '-[demo-appKitTests.RuntimeProcessTests testAliasNamesDoNotHideKnownProfilesOrScripts]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.RuntimeProcessTests testArgumentsPreserveSpacesQuotesEmptyValuesAndEscapes]' started.
+Test Case '-[demo-appKitTests.RuntimeProcessTests testArgumentsPreserveSpacesQuotesEmptyValuesAndEscapes]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RuntimeProcessTests testArgumentsRejectIncompleteQuoting]' started.
+Test Case '-[demo-appKitTests.RuntimeProcessTests testArgumentsRejectIncompleteQuoting]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RuntimeProcessTests testExplicitArgumentsReplaceSavedValuesWithoutParsingThem]' started.
+Test Case '-[demo-appKitTests.RuntimeProcessTests testExplicitArgumentsReplaceSavedValuesWithoutParsingThem]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.RuntimeProcessTests testProcessSessionCancellationTerminatesSpawnedChild]' started.
+Test Case '-[demo-appKitTests.RuntimeProcessTests testProcessSessionCancellationTerminatesSpawnedChild]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.RuntimeProcessTests testProcessSessionReturnsExitCodeAndAllowsAnotherAttempt]' started.
+Test Case '-[demo-appKitTests.RuntimeProcessTests testProcessSessionReturnsExitCodeAndAllowsAnotherAttempt]' passed (0.005 seconds).
+Test Case '-[demo-appKitTests.RuntimeProcessTests testProgramSettingsFollowSymlinksAndContainerMoves]' started.
+Test Case '-[demo-appKitTests.RuntimeProcessTests testProgramSettingsFollowSymlinksAndContainerMoves]' passed (0.004 seconds).
+Test Case '-[demo-appKitTests.RuntimeProcessTests testShellQuotingRoundTripsLiteralArguments]' started.
+Test Case '-[demo-appKitTests.RuntimeProcessTests testShellQuotingRoundTripsLiteralArguments]' passed (0.067 seconds).
+Test Suite 'RuntimeProcessTests' passed at 2026-11-24 09:47:45.210.
+	 Executed 8 tests, with 0 failures (0 unexpected) in 0.079 (0.079) seconds
+Test Suite 'RuntimeRemotePhysicsIntegrationTests' started at 2026-11-24 09:47:45.210.
+Test Case '-[demo-appKitTests.RuntimeRemotePhysicsIntegrationTests testBottleAndProgramSettingsPersistRemotePhysicsAndBackendSelection]' started.
+Test Case '-[demo-appKitTests.RuntimeRemotePhysicsIntegrationTests testBottleAndProgramSettingsPersistRemotePhysicsAndBackendSelection]' passed (0.003 seconds).
+Test Case '-[demo-appKitTests.RuntimeRemotePhysicsIntegrationTests testConfiguredRemotePhysicsStaysUnverifiedUntilAsyncProbeRuns]' started.
+Test Case '-[demo-appKitTests.RuntimeRemotePhysicsIntegrationTests testConfiguredRemotePhysicsStaysUnverifiedUntilAsyncProbeRuns]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RuntimeRemotePhysicsIntegrationTests testControlPortPropagatesToMoonlightInvocationForCustomAndIPv6Hosts]' started.
+Test Case '-[demo-appKitTests.RuntimeRemotePhysicsIntegrationTests testControlPortPropagatesToMoonlightInvocationForCustomAndIPv6Hosts]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RuntimeRemotePhysicsIntegrationTests testRemotePhysicsAvailabilityMatrixAndDomainIsolation]' started.
+Test Case '-[demo-appKitTests.RuntimeRemotePhysicsIntegrationTests testRemotePhysicsAvailabilityMatrixAndDomainIsolation]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RuntimeRemotePhysicsIntegrationTests testRemotePhysicsLaunchSkipsLocalExecutableAndPropagatesExitCode]' started.
+Test Case '-[demo-appKitTests.RuntimeRemotePhysicsIntegrationTests testRemotePhysicsLaunchSkipsLocalExecutableAndPropagatesExitCode]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RuntimeRemotePhysicsIntegrationTests testRemotePhysicsNeverSilentlyOverridesBlockedLocalBackends]' started.
+Test Case '-[demo-appKitTests.RuntimeRemotePhysicsIntegrationTests testRemotePhysicsNeverSilentlyOverridesBlockedLocalBackends]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RuntimeRemotePhysicsIntegrationTests testSharedInteractiveExecutionModeAndCancellationSemantics]' started.
+Test Case '-[demo-appKitTests.RuntimeRemotePhysicsIntegrationTests testSharedInteractiveExecutionModeAndCancellationSemantics]' passed (0.001 seconds).
+Test Suite 'RuntimeRemotePhysicsIntegrationTests' passed at 2026-11-24 09:47:45.216.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.005 (0.005) seconds
+Test Suite 'RuntimeStorageTests' started at 2026-11-24 09:47:45.216.
+Test Case '-[demo-appKitTests.RuntimeStorageTests testEqualZeroAndEqualPositiveCapacitiesSortDeterministicallyByPath]' started.
+Test Case '-[demo-appKitTests.RuntimeStorageTests testEqualZeroAndEqualPositiveCapacitiesSortDeterministicallyByPath]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RuntimeStorageTests testFallbackUsesFileSystemFreeSizeWhenVolumeCapacitiesAreMissingOrZero]' started.
+Test Case '-[demo-appKitTests.RuntimeStorageTests testFallbackUsesFileSystemFreeSizeWhenVolumeCapacitiesAreMissingOrZero]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RuntimeStorageTests testSelectorPrefersExternalWritableKnownCapacityAndIgnoresReadOnlyOrNonFileURLs]' started.
+Test Case '-[demo-appKitTests.RuntimeStorageTests testSelectorPrefersExternalWritableKnownCapacityAndIgnoresReadOnlyOrNonFileURLs]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RuntimeStorageTests testZeroImportantUsageFallsBackToRealAvailableCapacityRegardlessOfOrder]' started.
+Test Case '-[demo-appKitTests.RuntimeStorageTests testZeroImportantUsageFallsBackToRealAvailableCapacityRegardlessOfOrder]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RuntimeStorageTests testZeroImportantUsageOnLargerVolumeBeatsPositiveImportantUsageOnSmallerVolume]' started.
+Test Case '-[demo-appKitTests.RuntimeStorageTests testZeroImportantUsageOnLargerVolumeBeatsPositiveImportantUsageOnSmallerVolume]' passed (0.000 seconds).
+Test Suite 'RuntimeStorageTests' passed at 2026-11-24 09:47:45.217.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'RuntimeTests' started at 2026-11-24 09:47:45.217.
+Test Case '-[demo-appKitTests.RuntimeTests testAmbiguousTargetsAndConflictingProfilesAreBlocked]' started.
+Test Case '-[demo-appKitTests.RuntimeTests testAmbiguousTargetsAndConflictingProfilesAreBlocked]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RuntimeTests testEvidenceMetadataRoundTripsSnakeCaseJSON]' started.
+Test Case '-[demo-appKitTests.RuntimeTests testEvidenceMetadataRoundTripsSnakeCaseJSON]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RuntimeTests testExplicitProfileResolvesAnIndirectLauncher]' started.
+Test Case '-[demo-appKitTests.RuntimeTests testExplicitProfileResolvesAnIndirectLauncher]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RuntimeTests testGuestLaunchPreservesRequestAndReportsNonzeroExit]' started.
+Test Case '-[demo-appKitTests.RuntimeTests testGuestLaunchPreservesRequestAndReportsNonzeroExit]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.RuntimeTests testLegacyProfileAndEvidenceJSONUseDefaults]' started.
+Test Case '-[demo-appKitTests.RuntimeTests testLegacyProfileAndEvidenceJSONUseDefaults]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RuntimeTests testProtectedGameRoutesToUnconfiguredGuestAndCannotLaunch]' started.
+Test Case '-[demo-appKitTests.RuntimeTests testProtectedGameRoutesToUnconfiguredGuestAndCannotLaunch]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RuntimeTests testReadyGuestAndSelfProbeDoNotImplyVendorSupportOrGameVerification]' started.
+Test Case '-[demo-appKitTests.RuntimeTests testReadyGuestAndSelfProbeDoNotImplyVendorSupportOrGameVerification]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RuntimeTests testTheFinalsProfileUsesVendorRestrictedStatus]' started.
+Test Case '-[demo-appKitTests.RuntimeTests testTheFinalsProfileUsesVendorRestrictedStatus]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RuntimeTests testUnconfiguredGuestStopsBeforeStartingSession]' started.
+Test Case '-[demo-appKitTests.RuntimeTests testUnconfiguredGuestStopsBeforeStartingSession]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.RuntimeTests testUnknownExecutableDefaultsToWine]' started.
+Test Case '-[demo-appKitTests.RuntimeTests testUnknownExecutableDefaultsToWine]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.RuntimeTests testWineResourcePolicyWiringRespectsFallbackAndNonDestructiveOverride]' started.
+Test Case '-[demo-appKitTests.RuntimeTests testWineResourcePolicyWiringRespectsFallbackAndNonDestructiveOverride]' passed (0.002 seconds).
+Test Suite 'RuntimeTests' passed at 2026-11-24 09:47:45.222.
+	 Executed 11 tests, with 0 failures (0 unexpected) in 0.004 (0.005) seconds
+Test Suite 'RuntimeVulkanValidationTests' started at 2026-11-24 09:47:45.222.
+Test Case '-[demo-appKitTests.RuntimeVulkanValidationTests testArmOnlyDriverAndAbsoluteICDAreRejected]' started.
+Test Case '-[demo-appKitTests.RuntimeVulkanValidationTests testArmOnlyDriverAndAbsoluteICDAreRejected]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.RuntimeVulkanValidationTests testLockedDriverAndRelativeManifestSurviveBundleMove]' started.
+Test Case '-[demo-appKitTests.RuntimeVulkanValidationTests testLockedDriverAndRelativeManifestSurviveBundleMove]' passed (0.003 seconds).
+Test Case '-[demo-appKitTests.RuntimeVulkanValidationTests testTamperingAndMissingLockAreRejected]' started.
+Test Case '-[demo-appKitTests.RuntimeVulkanValidationTests testTamperingAndMissingLockAreRejected]' passed (0.002 seconds).
+Test Suite 'RuntimeVulkanValidationTests' passed at 2026-11-24 09:47:45.229.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.007 (0.007) seconds
+Test Suite 'UTMComputeTests' started at 2026-11-24 09:47:45.229.
+Test Case '-[demo-appKitTests.UTMComputeTests testCheckedAffineRejectsOverflow]' started.
+Test Case '-[demo-appKitTests.UTMComputeTests testCheckedAffineRejectsOverflow]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.UTMComputeTests testLoopbackCancelIsTerminalAndCancelsGuestExactlyOnce]' started.
+Test Case '-[demo-appKitTests.UTMComputeTests testLoopbackCancelIsTerminalAndCancelsGuestExactlyOnce]' passed (0.014 seconds).
+Test Case '-[demo-appKitTests.UTMComputeTests testLoopbackComputesAndHandlesFragmentedFrames]' started.
+Test Case '-[demo-appKitTests.UTMComputeTests testLoopbackComputesAndHandlesFragmentedFrames]' passed (0.009 seconds).
+Test Case '-[demo-appKitTests.UTMComputeTests testLoopbackPropagatesHostFailure]' started.
+Test Case '-[demo-appKitTests.UTMComputeTests testLoopbackPropagatesHostFailure]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.UTMComputeTests testLoopbackTimeoutCancelsHostComputationAndReturnsTypedError]' started.
+Test Case '-[demo-appKitTests.UTMComputeTests testLoopbackTimeoutCancelsHostComputationAndReturnsTypedError]' passed (0.047 seconds).
+Test Case '-[demo-appKitTests.UTMComputeTests testMalformedUnauthenticatedFrameDoesNotTerminateGuest]' started.
+Test Case '-[demo-appKitTests.UTMComputeTests testMalformedUnauthenticatedFrameDoesNotTerminateGuest]' passed (0.016 seconds).
+Test Case '-[demo-appKitTests.UTMComputeTests testNoncooperativeHandlerCannotHangTimeoutOrOverwriteTerminalResponse]' started.
+Test Case '-[demo-appKitTests.UTMComputeTests testNoncooperativeHandlerCannotHangTimeoutOrOverwriteTerminalResponse]' passed (0.241 seconds).
+Test Case '-[demo-appKitTests.UTMComputeTests testPeerDisconnectPropagatesFailureAndCleansHostWork]' started.
+Test Case '-[demo-appKitTests.UTMComputeTests testPeerDisconnectPropagatesFailureAndCleansHostWork]' passed (0.017 seconds).
+Test Case '-[demo-appKitTests.UTMComputeTests testTraceContainsNoAuthenticationNonceOrEndpoint]' started.
+Test Case '-[demo-appKitTests.UTMComputeTests testTraceContainsNoAuthenticationNonceOrEndpoint]' passed (0.005 seconds).
+Test Case '-[demo-appKitTests.UTMComputeTests testUnauthenticatedPeerCannotSubmitComputation]' started.
+Test Case '-[demo-appKitTests.UTMComputeTests testUnauthenticatedPeerCannotSubmitComputation]' passed (0.006 seconds).
+Test Case '-[demo-appKitTests.UTMComputeTests testUnconnectedSessionTimeoutTerminatesGuestAndClosesListener]' started.
+Test Case '-[demo-appKitTests.UTMComputeTests testUnconnectedSessionTimeoutTerminatesGuestAndClosesListener]' passed (0.034 seconds).
+Test Case '-[demo-appKitTests.UTMComputeTests testWirePreservesSignedBoundaryValuesAndCorrelation]' started.
+Test Case '-[demo-appKitTests.UTMComputeTests testWirePreservesSignedBoundaryValuesAndCorrelation]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.UTMComputeTests testWireRejectsOversizedMalformedAndCorruptFrames]' started.
+Test Case '-[demo-appKitTests.UTMComputeTests testWireRejectsOversizedMalformedAndCorruptFrames]' passed (0.001 seconds).
+Test Suite 'UTMComputeTests' passed at 2026-11-24 09:47:45.624.
+	 Executed 13 tests, with 0 failures (0 unexpected) in 0.393 (0.395) seconds
+Test Suite 'UTMGuestStoragePreflightTests' started at 2026-11-24 09:47:45.624.
+Test Case '-[demo-appKitTests.UTMGuestStoragePreflightTests testExistingFileCannotBeUsedAsWritableDirectoryTarget]' started.
+Test Case '-[demo-appKitTests.UTMGuestStoragePreflightTests testExistingFileCannotBeUsedAsWritableDirectoryTarget]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.UTMGuestStoragePreflightTests testFileVisibilityPromotesConfiguredMappingToVerified]' started.
+Test Case '-[demo-appKitTests.UTMGuestStoragePreflightTests testFileVisibilityPromotesConfiguredMappingToVerified]' passed (0.003 seconds).
+Test Case '-[demo-appKitTests.UTMGuestStoragePreflightTests testInsufficientSpaceIsReportedBeforeGuestStart]' started.
+Test Case '-[demo-appKitTests.UTMGuestStoragePreflightTests testInsufficientSpaceIsReportedBeforeGuestStart]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.UTMGuestStoragePreflightTests testMissingTargetIsCreatableAndMapsToGuestDirectory]' started.
+Test Case '-[demo-appKitTests.UTMGuestStoragePreflightTests testMissingTargetIsCreatableAndMapsToGuestDirectory]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.UTMGuestStoragePreflightTests testPushRetriesAfterCreatingMissingGuestParentDirectory]' started.
+Test Case '-[demo-appKitTests.UTMGuestStoragePreflightTests testPushRetriesAfterCreatingMissingGuestParentDirectory]' passed (0.004 seconds).
+Test Case '-[demo-appKitTests.UTMGuestStoragePreflightTests testRealUTMProviderHostAndVMLifecycleWhenConfigured]' started.
+<workspace>/demo-app/demo-appKit/Tests/demo-appKitTests/UTMGuestStoragePreflightTests.swift:139: -[demo-appKitTests.UTMGuestStoragePreflightTests testRealUTMProviderHostAndVMLifecycleWhenConfigured] : Test skipped - Real Guest VM and shared directory configuration is required.
+Test Case '-[demo-appKitTests.UTMGuestStoragePreflightTests testRealUTMProviderHostAndVMLifecycleWhenConfigured]' skipped (0.001 seconds).
+Test Case '-[demo-appKitTests.UTMGuestStoragePreflightTests testTargetOutsideConfiguredMappingIsUnavailable]' started.
+Test Case '-[demo-appKitTests.UTMGuestStoragePreflightTests testTargetOutsideConfiguredMappingIsUnavailable]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.UTMGuestStoragePreflightTests testUTMProviderConformsToProbeReportingForProbeService]' started.
+Test Case '-[demo-appKitTests.UTMGuestStoragePreflightTests testUTMProviderConformsToProbeReportingForProbeService]' passed (0.002 seconds).
+Test Suite 'UTMGuestStoragePreflightTests' passed at 2026-11-24 09:47:45.643.
+	 Executed 8 tests, with 1 test skipped and 0 failures (0 unexpected) in 0.018 (0.019) seconds
+Test Suite 'UTMHostProcessRunnerTests' started at 2026-11-24 09:47:45.643.
+Test Case '-[demo-appKitTests.UTMHostProcessRunnerTests testCapturesSeparateStreamsArgumentsAndFullExitCode]' started.
+Test Case '-[demo-appKitTests.UTMHostProcessRunnerTests testCapturesSeparateStreamsArgumentsAndFullExitCode]' passed (0.052 seconds).
+Test Case '-[demo-appKitTests.UTMHostProcessRunnerTests testDeadlineKillsAndReapsTheOwnedProcess]' started.
+Test Case '-[demo-appKitTests.UTMHostProcessRunnerTests testDeadlineKillsAndReapsTheOwnedProcess]' passed (1.008 seconds).
+Test Case '-[demo-appKitTests.UTMHostProcessRunnerTests testExpiredDeadlineDoesNotLaunchProcess]' started.
+Test Case '-[demo-appKitTests.UTMHostProcessRunnerTests testExpiredDeadlineDoesNotLaunchProcess]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.UTMHostProcessRunnerTests testLaunchFailureIsExplicit]' started.
+Test Case '-[demo-appKitTests.UTMHostProcessRunnerTests testLaunchFailureIsExplicit]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.UTMHostProcessRunnerTests testOutputLimitKillsAndReapsFloodingProcess]' started.
+Test Case '-[demo-appKitTests.UTMHostProcessRunnerTests testOutputLimitKillsAndReapsFloodingProcess]' passed (0.032 seconds).
+Test Case '-[demo-appKitTests.UTMHostProcessRunnerTests testTaskCancellationKillsAndReapsTheOwnedProcess]' started.
+Test Case '-[demo-appKitTests.UTMHostProcessRunnerTests testTaskCancellationKillsAndReapsTheOwnedProcess]' passed (0.025 seconds).
+Test Suite 'UTMHostProcessRunnerTests' passed at 2026-11-24 09:47:46.763.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 1.119 (1.120) seconds
+Test Suite 'UTMInteractiveRealTests' started at 2026-11-24 09:47:46.763.
+Test Case '-[demo-appKitTests.UTMInteractiveRealTests testRealDesktopGUIArgumentsExitAndCancellationWhenConfigured]' started.
+<workspace>/demo-app/demo-appKit/Tests/demo-appKitTests/UTMInteractiveRealComputeTests.swift:207: -[demo-appKitTests.UTMInteractiveRealTests testRealDesktopGUIArgumentsExitAndCancellationWhenConfigured] : Test skipped - Real Guest lease and desktop/compute probe configuration is required.
+Test Case '-[demo-appKitTests.UTMInteractiveRealTests testRealDesktopGUIArgumentsExitAndCancellationWhenConfigured]' skipped (0.000 seconds).
+Test Case '-[demo-appKitTests.UTMInteractiveRealTests testRealElevationRequirementIsExplicitWhenConfigured]' started.
+<workspace>/demo-app/demo-appKit/Tests/demo-appKitTests/UTMInteractiveRealComputeTests.swift:207: -[demo-appKitTests.UTMInteractiveRealTests testRealElevationRequirementIsExplicitWhenConfigured] : Test skipped - Real Guest lease and desktop/compute probe configuration is required.
+Test Case '-[demo-appKitTests.UTMInteractiveRealTests testRealElevationRequirementIsExplicitWhenConfigured]' skipped (0.000 seconds).
+Test Case '-[demo-appKitTests.UTMInteractiveRealTests testRealExplicitComputeRoundtripTimeoutCancellationAndErrorsWhenConfigured]' started.
+<workspace>/demo-app/demo-appKit/Tests/demo-appKitTests/UTMInteractiveRealComputeTests.swift:207: -[demo-appKitTests.UTMInteractiveRealTests testRealExplicitComputeRoundtripTimeoutCancellationAndErrorsWhenConfigured] : Test skipped - Real Guest lease and desktop/compute probe configuration is required.
+Test Case '-[demo-appKitTests.UTMInteractiveRealTests testRealExplicitComputeRoundtripTimeoutCancellationAndErrorsWhenConfigured]' skipped (0.000 seconds).
+Test Case '-[demo-appKitTests.UTMInteractiveRealTests testRealForceCancellationAuthenticatesRootAndChildTreeWhenConfigured]' started.
+<workspace>/demo-app/demo-appKit/Tests/demo-appKitTests/UTMInteractiveRealComputeTests.swift:207: -[demo-appKitTests.UTMInteractiveRealTests testRealForceCancellationAuthenticatesRootAndChildTreeWhenConfigured] : Test skipped - Real Guest lease and desktop/compute probe configuration is required.
+Test Case '-[demo-appKitTests.UTMInteractiveRealTests testRealForceCancellationAuthenticatesRootAndChildTreeWhenConfigured]' skipped (0.000 seconds).
+Test Case '-[demo-appKitTests.UTMInteractiveRealTests testRealInstallerStyleWindowWhenConfigured]' started.
+<workspace>/demo-app/demo-appKit/Tests/demo-appKitTests/UTMInteractiveRealComputeTests.swift:207: -[demo-appKitTests.UTMInteractiveRealTests testRealInstallerStyleWindowWhenConfigured] : Test skipped - Real Guest lease and desktop/compute probe configuration is required.
+Test Case '-[demo-appKitTests.UTMInteractiveRealTests testRealInstallerStyleWindowWhenConfigured]' skipped (0.000 seconds).
+Test Case '-[demo-appKitTests.UTMInteractiveRealTests testRealParentExitPreservesChildTreeAndCancellationWhenConfigured]' started.
+<workspace>/demo-app/demo-appKit/Tests/demo-appKitTests/UTMInteractiveRealComputeTests.swift:207: -[demo-appKitTests.UTMInteractiveRealTests testRealParentExitPreservesChildTreeAndCancellationWhenConfigured] : Test skipped - Real Guest lease and desktop/compute probe configuration is required.
+Test Case '-[demo-appKitTests.UTMInteractiveRealTests testRealParentExitPreservesChildTreeAndCancellationWhenConfigured]' skipped (0.000 seconds).
+Test Case '-[demo-appKitTests.UTMInteractiveRealTests testRealPrelaunchCancellationSuppressesLateTargetWhenConfigured]' started.
+<workspace>/demo-app/demo-appKit/Tests/demo-appKitTests/UTMInteractiveRealComputeTests.swift:207: -[demo-appKitTests.UTMInteractiveRealTests testRealPrelaunchCancellationSuppressesLateTargetWhenConfigured] : Test skipped - Real Guest lease and desktop/compute probe configuration is required.
+Test Case '-[demo-appKitTests.UTMInteractiveRealTests testRealPrelaunchCancellationSuppressesLateTargetWhenConfigured]' skipped (0.000 seconds).
+Test Suite 'UTMInteractiveRealTests' passed at 2026-11-24 09:47:46.765.
+	 Executed 7 tests, with 7 tests skipped and 0 failures (0 unexpected) in 0.002 (0.002) seconds
+Test Suite 'UTMInteractiveTests' started at 2026-11-24 09:47:46.765.
+Test Case '-[demo-appKitTests.UTMInteractiveTests testAmbiguousLaunchRetriesMissingRecordUntilCancellationIsConfirmed]' started.
+Test Case '-[demo-appKitTests.UTMInteractiveTests testAmbiguousLaunchRetriesMissingRecordUntilCancellationIsConfirmed]' passed (0.005 seconds).
+Test Case '-[demo-appKitTests.UTMInteractiveTests testCancelFallbackUsesAuthenticatedRequestAndPreservesRootExit]' started.
+Test Case '-[demo-appKitTests.UTMInteractiveTests testCancelFallbackUsesAuthenticatedRequestAndPreservesRootExit]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.UTMInteractiveTests testCancelledChildTreeDoesNotReportExitedRootAsSuccessfulSession]' started.
+Test Case '-[demo-appKitTests.UTMInteractiveTests testCancelledChildTreeDoesNotReportExitedRootAsSuccessfulSession]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.UTMInteractiveTests testCancelledLaunchBeforePIDReturnUsesRequestIdentityToRecover]' started.
+Test Case '-[demo-appKitTests.UTMInteractiveTests testCancelledLaunchBeforePIDReturnUsesRequestIdentityToRecover]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.UTMInteractiveTests testCapturedResponseRejectsStaleQGAPIDOutput]' started.
+Test Case '-[demo-appKitTests.UTMInteractiveTests testCapturedResponseRejectsStaleQGAPIDOutput]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.UTMInteractiveTests testConcurrentCancellationSharesConfirmedCleanup]' started.
+Test Case '-[demo-appKitTests.UTMInteractiveTests testConcurrentCancellationSharesConfirmedCleanup]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.UTMInteractiveTests testControllerExitCannotMasqueradeAsTargetExit]' started.
+Test Case '-[demo-appKitTests.UTMInteractiveTests testControllerExitCannotMasqueradeAsTargetExit]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.UTMInteractiveTests testDelayedRunningSnapshotCannotOverwriteConcurrentTerminalState]' started.
+Test Case '-[demo-appKitTests.UTMInteractiveTests testDelayedRunningSnapshotCannotOverwriteConcurrentTerminalState]' passed (0.081 seconds).
+Test Case '-[demo-appKitTests.UTMInteractiveTests testFailedCancellationCanRetryAfterTransportRecovery]' started.
+Test Case '-[demo-appKitTests.UTMInteractiveTests testFailedCancellationCanRetryAfterTransportRecovery]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.UTMInteractiveTests testManifestHasBoundedSize]' started.
+Test Case '-[demo-appKitTests.UTMInteractiveTests testManifestHasBoundedSize]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.UTMInteractiveTests testManifestPreservesSpecialArgumentsAndRejectsAmbiguousEnvironment]' started.
+Test Case '-[demo-appKitTests.UTMInteractiveTests testManifestPreservesSpecialArgumentsAndRejectsAmbiguousEnvironment]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.UTMInteractiveTests testNoDesktopIsExplicitFailureAndReclaimsRequest]' started.
+Test Case '-[demo-appKitTests.UTMInteractiveTests testNoDesktopIsExplicitFailureAndReclaimsRequest]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.UTMInteractiveTests testPersistentPrelaunchCancellationFenceIsRecognized]' started.
+Test Case '-[demo-appKitTests.UTMInteractiveTests testPersistentPrelaunchCancellationFenceIsRecognized]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.UTMInteractiveTests testRealTargetPIDDrivesStatusAndRepeatedCancellation]' started.
+Test Case '-[demo-appKitTests.UTMInteractiveTests testRealTargetPIDDrivesStatusAndRepeatedCancellation]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.UTMInteractiveTests testResponsePreservesUnsignedWindowsExceptionCodeAndOutput]' started.
+Test Case '-[demo-appKitTests.UTMInteractiveTests testResponsePreservesUnsignedWindowsExceptionCodeAndOutput]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.UTMInteractiveTests testResponseRejectsOtherRequestAndWindowsSessionZero]' started.
+Test Case '-[demo-appKitTests.UTMInteractiveTests testResponseRejectsOtherRequestAndWindowsSessionZero]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.UTMInteractiveTests testSnapshotHonorsEarlierParentDeadline]' started.
+Test Case '-[demo-appKitTests.UTMInteractiveTests testSnapshotHonorsEarlierParentDeadline]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.UTMInteractiveTests testTerminalCommitBetweenSnapshotAndControllerPollIsRecovered]' started.
+Test Case '-[demo-appKitTests.UTMInteractiveTests testTerminalCommitBetweenSnapshotAndControllerPollIsRecovered]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.UTMInteractiveTests testUnconfirmedForceCleanupCannotReportSuccess]' started.
+Test Case '-[demo-appKitTests.UTMInteractiveTests testUnconfirmedForceCleanupCannotReportSuccess]' passed (0.000 seconds).
+Test Suite 'UTMInteractiveTests' passed at 2026-11-24 09:47:46.858.
+	 Executed 19 tests, with 0 failures (0 unexpected) in 0.091 (0.092) seconds
+Test Suite 'UTMWindowsGuestOptimizerProfileTests' started at 2026-11-24 09:47:46.858.
+Test Case '-[demo-appKitTests.UTMWindowsGuestOptimizerProfileTests testOfficialProfilePassesStrictAllowlistValidation]' started.
+Test Case '-[demo-appKitTests.UTMWindowsGuestOptimizerProfileTests testOfficialProfilePassesStrictAllowlistValidation]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.UTMWindowsGuestOptimizerProfileTests testProtectedServiceInPruningTargetsIsRejectedBeforeGuestExecution]' started.
+Test Case '-[demo-appKitTests.UTMWindowsGuestOptimizerProfileTests testProtectedServiceInPruningTargetsIsRejectedBeforeGuestExecution]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.UTMWindowsGuestOptimizerProfileTests testProtectedUWPAndUnsafeRegistryScopeAreRejected]' started.
+Test Case '-[demo-appKitTests.UTMWindowsGuestOptimizerProfileTests testProtectedUWPAndUnsafeRegistryScopeAreRejected]' passed (0.000 seconds).
+Test Suite 'UTMWindowsGuestOptimizerProfileTests' passed at 2026-11-24 09:47:46.860.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.002 (0.002) seconds
+Test Suite 'UTMWindowsGuestOptimizerServiceTests' started at 2026-11-24 09:47:46.860.
+Test Case '-[demo-appKitTests.UTMWindowsGuestOptimizerServiceTests testServiceApplyDryRunPushesArtifactsAndVerifiesDigest]' started.
+Test Case '-[demo-appKitTests.UTMWindowsGuestOptimizerServiceTests testServiceApplyDryRunPushesArtifactsAndVerifiesDigest]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.UTMWindowsGuestOptimizerServiceTests testServiceRollbackRejectsInconsistentReport]' started.
+Test Case '-[demo-appKitTests.UTMWindowsGuestOptimizerServiceTests testServiceRollbackRejectsInconsistentReport]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.UTMWindowsGuestOptimizerServiceTests testServiceStopsNewlyLaunchedVMWhenExecutionFails]' started.
+Test Case '-[demo-appKitTests.UTMWindowsGuestOptimizerServiceTests testServiceStopsNewlyLaunchedVMWhenExecutionFails]' passed (0.001 seconds).
+Test Suite 'UTMWindowsGuestOptimizerServiceTests' passed at 2026-11-24 09:47:46.864.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.004 (0.004) seconds
+Test Suite 'UTMWindowsGuestProviderTests' started at 2026-11-24 09:47:46.864.
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testArchitectureMismatchIsReportedBeforeVMStart]' started.
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testArchitectureMismatchIsReportedBeforeVMStart]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testBothLaunchModesHonorEarlierParentDeadline]' started.
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testBothLaunchModesHonorEarlierParentDeadline]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testCancellationFailureIsReturnedByWait]' started.
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testCancellationFailureIsReturnedByWait]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testCancellationIsIdempotentAndWaitReportsGuestTermination]' started.
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testCancellationIsIdempotentAndWaitReportsGuestTermination]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testCancelledVMStartRollsBackInIndependentScope]' started.
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testCancelledVMStartRollsBackInIndependentScope]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testConfigurationRejectsInvalidTimeoutAndGuestPathTraversal]' started.
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testConfigurationRejectsInvalidTimeoutAndGuestPathTraversal]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testFileOutsideMappingAndUnsupportedLauncherAreRejected]' started.
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testFileOutsideMappingAndUnsupportedLauncherAreRejected]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testGuestAgentReadinessTimeoutIsReported]' started.
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testGuestAgentReadinessTimeoutIsReported]' passed (1.005 seconds).
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testMappedProgramPreservesArgumentAndEnvironmentBoundariesAndFullExitCode]' started.
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testMappedProgramPreservesArgumentAndEnvironmentBoundariesAndFullExitCode]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testPushedFileMustBeVisibleBeforeProgramExecution]' started.
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testPushedFileMustBeVisibleBeforeProgramExecution]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testRequestConfigurationCanStopGuestAfterReadinessFailure]' started.
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testRequestConfigurationCanStopGuestAfterReadinessFailure]' passed (1.004 seconds).
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testStopIsIdempotentWhenGuestAlreadyStopped]' started.
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testStopIsIdempotentWhenGuestAlreadyStopped]' passed (0.003 seconds).
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testStopRequestsVMShutdownAndWaitsForStoppedStatus]' started.
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testStopRequestsVMShutdownAndWaitsForStoppedStatus]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testStopUsesGuestConfigurationFromLaunchRequest]' started.
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testStopUsesGuestConfigurationFromLaunchRequest]' passed (0.004 seconds).
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testUnconfiguredAndUnavailableStatesAreExplicit]' started.
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testUnconfiguredAndUnavailableStatesAreExplicit]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testUnsupportedVMBackendIsReportedBeforeArchitectureValidation]' started.
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testUnsupportedVMBackendIsReportedBeforeArchitectureValidation]' passed (0.003 seconds).
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testVMCrashIsReportedWhileWaitingForProgram]' started.
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testVMCrashIsReportedWhileWaitingForProgram]' passed (0.003 seconds).
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testWindowsStatusCodeParserPreservesHighBitExceptionCode]' started.
+Test Case '-[demo-appKitTests.UTMWindowsGuestProviderTests testWindowsStatusCodeParserPreservesHighBitExceptionCode]' passed (0.000 seconds).
+Test Suite 'UTMWindowsGuestProviderTests' passed at 2026-11-24 09:47:48.902.
+	 Executed 18 tests, with 0 failures (0 unexpected) in 2.035 (2.038) seconds
+Test Suite 'demo-appKitTests.xctest' passed at 2026-11-24 09:47:48.902.
+	 Executed 234 tests, with 10 tests skipped and 0 failures (0 unexpected) in 4.809 (4.830) seconds
+Test Suite 'All tests' passed at 2026-11-24 09:47:48.902.
+	 Executed 234 tests, with 10 tests skipped and 0 failures (0 unexpected) in 4.809 (4.831) seconds
+◇ Test run started.
+↳ Testing Library Version: 2084
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

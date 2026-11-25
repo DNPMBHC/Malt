@@ -1,0 +1,347 @@
+{
+  "schema_version": 1,
+  "owner": "@DNPMBHC",
+  "phase": "phase-11-window-11b",
+  "generated_at_utc": "2026-11-25T04:09:08.281422+00:00",
+  "dataset_reference": "handoff/module-f/valorant-phase11-runs/perf-deep-dive-dataset.json",
+  "target": {
+    "game_id": "target-cn",
+    "branch": "release-china-13.10",
+    "build": "release-china-13.10-shipping-12-5804262",
+    "session_duration_seconds": 1519.85,
+    "session_duration_minutes": 25.33
+  },
+  "utm_custom_runtime_verification": {
+    "app_artifact": "<TMPDIR>/utm-custom-build/UTM-Custom.app",
+    "launch_flags": [
+      "--dxmt-native",
+      "--pure-relative-mouse",
+      "--game-shell-vm",
+      "<EPHEMERAL_UUID>"
+    ],
+    "render_backend_verified": "dxmt-native",
+    "dxmt_evidence_count": 6,
+    "dxmt_shader_cache_verified": true,
+    "dxmt_shader_cache_bytes": 9284672,
+    "pure_relative_mouse_only_verified": true,
+    "has_usb_tablet": false,
+    "audio_device_verified": true,
+    "game_shell_auto_exit_on_vm_stop": true
+  },
+  "lightweight_cursor_and_fullscreen_verification": {
+    "passed": true,
+    "raw_input_events": 312,
+    "raw_delta_x": 135,
+    "raw_delta_y": -45,
+    "mouse_moves": 68,
+    "fullscreen_borderless_pixels": "1512x949",
+    "guest_cursor_visible_on_desktop": true,
+    "audio_status_ok": true,
+    "ime_chs_ready": true,
+    "user_feedback_incorporated": [
+      "Observed external gaming mouse direct-capture friction during live run because 03 patch nulled window.toolbar and did not auto-capture on fullscreen entry / canvas click",
+      "Updated 03-clean-fullscreen-game-shell.patch to preserve toolbar object (isVisible=false only), auto-capture on fullscreen entry and canvas click in Game Shell / pure-relative mode, and tighten gameShellHasStarted to state == .started; rebuilt and re-verified UTM-Custom.app"
+    ]
+  },
+  "gameplay_milestones_achieved": {
+    "login_and_character_ready": true,
+    "npe_tutorial_completed": true,
+    "npe_duration_seconds": 500.44,
+    "main_lobby_entered": true,
+    "training_range_entered": true,
+    "training_range_duration_seconds": 540.45,
+    "clean_manual_quit": true,
+    "crash_count": 0
+  },
+  "performance_summary": {
+    "npe_1024x768_official_engine_telemetry": {
+      "source_log_category": "LogClientPerRoundTelemetryComponent",
+      "map": "NPEV2",
+      "resolution": "1024x768",
+      "rhi": "D3D11",
+      "total_time_seconds": 500.44,
+      "total_frames_measured": 35837,
+      "effective_mean_fps_from_frame_count": 71.61,
+      "avg_engine_latency_ms": 22.62,
+      "avg_work_ms": 19.69,
+      "avg_slop_ms": 0.48,
+      "avg_slack_ms": 2.45,
+      "runtime_pso_creations": 1301,
+      "runtime_pso_hitches": 0,
+      "engine_latency_histogram": {
+        "under_1fps": 7,
+        "1_to_10fps": 130,
+        "10_to_15fps": 227,
+        "15_to_30fps": 2236,
+        "30_to_45fps": 8695,
+        "45_to_60fps": 15886,
+        "60_to_90fps": 8621,
+        "90_to_120fps": 35,
+        "over_120fps": 0
+      },
+      "work_only_histogram": {
+        "under_1fps": 7,
+        "1_to_10fps": 80,
+        "10_to_15fps": 93,
+        "15_to_30fps": 966,
+        "30_to_45fps": 4812,
+        "45_to_60fps": 16151,
+        "60_to_90fps": 13320,
+        "90_to_120fps": 408,
+        "over_120fps": 0
+      },
+      "pct_frames_ge_45fps_engine_latency": 68.48,
+      "pct_frames_ge_60fps_engine_latency": 24.15,
+      "pct_frames_ge_60fps_work_only": 38.31
+    },
+    "npe_1024x768_log_derived": {
+      "count": 143,
+      "mean_fps": 61.34,
+      "p50_fps": 64.17,
+      "p10_fps": 34.63,
+      "p5_fps": 22.79,
+      "p1_low_fps": 5.73,
+      "p95_fps": 91.88,
+      "min_fps": 3.77,
+      "max_fps": 106.53,
+      "mean_frame_time_ms": 22.95,
+      "p95_frame_time_ms": 43.94,
+      "p99_frame_time_ms": 180.67
+    },
+    "npe_1024x768_pure_combat": {
+      "count": 114,
+      "mean_fps": 63.03,
+      "p50_fps": 64.93,
+      "p10_fps": 41.32,
+      "p5_fps": 31.47,
+      "p1_low_fps": 11.37,
+      "p95_fps": 95.15,
+      "min_fps": 3.77,
+      "max_fps": 106.53,
+      "mean_frame_time_ms": 20.5,
+      "p95_frame_time_ms": 32.1,
+      "p99_frame_time_ms": 88.21
+    },
+    "main_lobby": {
+      "count": 48,
+      "mean_fps": 102.31,
+      "p50_fps": 117.81,
+      "p10_fps": 34.29,
+      "p5_fps": 26.53,
+      "p1_low_fps": 12.03,
+      "p95_fps": 143.11,
+      "min_fps": 1.66,
+      "max_fps": 144.03,
+      "mean_frame_time_ms": 24.93,
+      "p95_frame_time_ms": 37.71,
+      "p99_frame_time_ms": 339.08
+    },
+    "range_1920x1200_full_9min": {
+      "count": 242,
+      "mean_fps": 43.87,
+      "p50_fps": 48.82,
+      "p10_fps": 21.25,
+      "p5_fps": 16.6,
+      "p1_low_fps": 3.64,
+      "p95_fps": 61.26,
+      "min_fps": 2.42,
+      "max_fps": 66.71,
+      "mean_frame_time_ms": 31.74,
+      "p95_frame_time_ms": 60.24,
+      "p99_frame_time_ms": 276.8
+    },
+    "range_1920x1200_steady_gt30s": {
+      "count": 225,
+      "mean_fps": 44.24,
+      "p50_fps": 49.13,
+      "p10_fps": 21.28,
+      "p5_fps": 15.23,
+      "p1_low_fps": 3.53,
+      "p95_fps": 61.2,
+      "min_fps": 2.42,
+      "max_fps": 66.71,
+      "mean_frame_time_ms": 31.85,
+      "p95_frame_time_ms": 65.78,
+      "p99_frame_time_ms": 284.34
+    },
+    "range_1920x1200_pure_combat": {
+      "count": 183,
+      "mean_fps": 45.21,
+      "p50_fps": 49.63,
+      "p10_fps": 23.28,
+      "p5_fps": 20.36,
+      "p1_low_fps": 3.88,
+      "p95_fps": 61.14,
+      "min_fps": 2.42,
+      "max_fps": 65.89,
+      "mean_frame_time_ms": 30.16,
+      "p95_frame_time_ms": 49.11,
+      "p99_frame_time_ms": 258.61
+    },
+    "range_1920x1200_post_warmup_min8_peak": {
+      "count": 34,
+      "mean_fps": 55.51,
+      "p50_fps": 58.44,
+      "p10_fps": 50.21,
+      "p5_fps": 42.42,
+      "p1_low_fps": 25.74,
+      "p95_fps": 61.86,
+      "min_fps": 20.58,
+      "max_fps": 63.2,
+      "mean_frame_time_ms": 18.79,
+      "p95_frame_time_ms": 23.87,
+      "p99_frame_time_ms": 41.66
+    },
+    "overall_session": {
+      "count": 459,
+      "mean_fps": 54.87,
+      "p50_fps": 53.43,
+      "p10_fps": 21.2,
+      "p5_fps": 13.03,
+      "p1_low_fps": 2.83,
+      "p95_fps": 121.12,
+      "min_fps": 1.01,
+      "max_fps": 144.03,
+      "mean_frame_time_ms": 34.29,
+      "p95_frame_time_ms": 76.75,
+      "p99_frame_time_ms": 358.86
+    },
+    "host_telemetry_samples": [
+      {
+        "timestamp_utc": "2026-11-25T02:53:29.717805+00:00",
+        "phase": "NPEV2_Tutorial_1024x768_Early",
+        "qemu_render_server_cpu_pct": 33.4,
+        "qemu_worker_cpu_pct": 587.8,
+        "utm_ui_cpu_pct": 5.4,
+        "total_hypervisor_rss_mib": 2402.6,
+        "guest_shipping_working_set_mib": 2305.74,
+        "guest_shipping_cpu_seconds": 260.73
+      },
+      {
+        "timestamp_utc": "2026-11-25T03:06:54.022251+00:00",
+        "phase": "MainMenuV2_1920x1200_PreRange",
+        "qemu_render_server_cpu_pct": 34.8,
+        "qemu_worker_cpu_pct": 275.3,
+        "utm_ui_cpu_pct": 11.6,
+        "total_hypervisor_rss_mib": 1610.98,
+        "dxmt_shader_cache_files": 4,
+        "dxmt_shader_cache_bytes": 8625944,
+        "guest_shipping_working_set_mib": 993.45,
+        "guest_shipping_cpu_seconds": 2756.77
+      },
+      {
+        "timestamp_utc": "2026-11-25T03:11:59.368502+00:00",
+        "phase": "RangeV2_1920x1200_ActiveCombat",
+        "qemu_render_server_cpu_pct": 45.2,
+        "qemu_worker_cpu_pct": 425.5,
+        "utm_ui_cpu_pct": 12.6,
+        "total_hypervisor_rss_mib": 1619.32,
+        "dxmt_shader_cache_files": 4,
+        "dxmt_shader_cache_bytes": 9189912
+      },
+      {
+        "timestamp_utc": "2026-11-25T03:17:13.964414+00:00",
+        "phase": "PostExit_DesktopIdle",
+        "qemu_render_server_cpu_pct": 0.0,
+        "qemu_worker_cpu_pct": 145.7,
+        "utm_ui_cpu_pct": 5.7,
+        "total_hypervisor_rss_mib": 2023.83,
+        "dxmt_shader_cache_files": 4,
+        "dxmt_shader_cache_bytes": 9284672
+      }
+    ],
+    "resolution_scaling_elasticity": {
+      "npe_pixels": 786432,
+      "range_pixels": 2304000,
+      "pixel_ratio": 2.93,
+      "npe_combat_p50_fps": 64.93,
+      "range_post_warmup_min8_p50_fps": 58.44,
+      "fps_drop_pct_for_2_93x_pixels": 10.0,
+      "bottleneck_diagnosis": "CPU/Prism x86_64 translation + 6-vCPU scheduling + QEMU slirp networking dominate steady-state frame ceiling (~55-64 FPS); Apple Silicon GPU + dxmt-native render server uses only 33-45% CPU and is NOT pixel-fill bound even at 1920x1200."
+    }
+  },
+  "stutter_and_hitch_root_causes": {
+    "range_critical_fps_lt5_total": 39,
+    "range_critical_fps_attribution": {
+      "map_load_warmup_0_30s": 6,
+      "runtime_material_or_shader_pso_compile": 5,
+      "settings_or_pause_menu_interaction": 19,
+      "other_active_frame_spike": 3,
+      "net_slirp_packet_backlog_or_burst_loss": 6
+    },
+    "key_findings": [
+      "19/39 critical FPS drops (<5 FPS) in RangeV2 occurred while opening/closing in-game Settings/Pause menus (LogLandingScreen / WBP_Screen_Settings), NOT during combat.",
+      "5/39 occurred during the first 30 seconds of RangeV2 map loading.",
+      "Runtime shader/material PSO compilation (1301 PSO creations in NPEV2, DXMT shader cache growing to 8.85 MiB) caused early-to-mid session micro-stutters, which dropped to 0 critical drops in Minute 8 once warmed up (55.51 mean FPS, P50 58.44 FPS, P5 42.42 FPS, P1 25.74 FPS).",
+      "QEMU user-mode slirp NAT (required by ad-hoc signing lacking com.apple.vm.networking entitlement) triggered 7 Ping >200ms alerts and 128-tick UDP Burst Loss / 256-packet ack backlogs.",
+      "Unrelated background guest service spice-webdavd.exe crashed once (0x80000003) because shared folder channel was trimmed; safe candidate to disable in guest-optimizer v3."
+    ]
+  },
+  "anticheat_and_ace_verdict": {
+    "verdict": "training_range_3to5m_clean_no_1275_kick",
+    "actual_range_clean_minutes": 9.01,
+    "actual_total_session_minutes": 25.33,
+    "ace_kernel_drivers": [
+      {
+        "name": "ACE-CORE10405",
+        "state": "Running",
+        "status": "OK"
+      },
+      {
+        "name": "ACE-CORE20405",
+        "state": "Running",
+        "status": "OK"
+      }
+    ],
+    "ace_service_installed_event_7045": "AntiCheatExpert Protection (ACE-Service64.exe -autorun)",
+    "ace_cloud_antitick_http_200_count": 154,
+    "ace_cloud_antitick_pre_net_status_0_count": 3,
+    "system_eventlog_ace_7000_count": 0,
+    "system_eventlog_ace_1275_count": 0,
+    "codeintegrity_new_errors": 0,
+    "game_crashes": 0,
+    "note_on_non_ace_events": [
+      "System Event 7030 (interactive service warning for AntiCheatExpert Protection) was benign and did not prevent ACE kernel drivers or 154 HTTP 200 ticks.",
+      "System Event 7000 for unrelated Windows luafv appeared only on subsequent reboot; 0 ACE 7000/1275 events occurred."
+    ]
+  },
+  "honest_five_dimension_status": {
+    "installer_and_launch": "verified_pass",
+    "login_and_main_lobby": "verified_pass",
+    "training_range_gameplay_and_ace_runtime": "verified_pass_9min_clean_no_1275_kick",
+    "protected_matchmaking": "not_verified",
+    "vendor_vm_support": "unknown"
+  },
+  "phase12_optimization_roadmap": [
+    {
+      "priority": "P0",
+      "target": "Replace QEMU slirp NAT with vmnet / socket_vmnet",
+      "evidence": "slirp user-mode NAT caused 8 Ping >200ms events, Burst Loss (4+ pkt/s), and 256-packet ack backlogs under 128-tick UDP load",
+      "expected_gain": "Eliminate network-induced micro-freezes and cut UDP jitter/packet loss"
+    },
+    {
+      "priority": "P0",
+      "target": "vCPU scaling A/B (6 -> 8 vCPU) + P-Core QoS affinity for QEMU vCPU threads",
+      "evidence": "QEMU worker hit 587.8% CPU (saturating 6 vCPU) while QEMURenderServer used only 33-45% CPU; 2.93x pixel increase (1024x768 -> 1920x1200) only reduced warmed-up P50 FPS by ~9.5%",
+      "expected_gain": "+15-30% steady-state FPS (target 70-85 FPS at 1920x1200 / 1512x945) and tighter P1 Low"
+    },
+    {
+      "priority": "P1",
+      "target": "Pre-warmed persistent DXMT_SHADER_CACHE reuse across sessions + shader pre-compile",
+      "evidence": "1301 Runtime PSO creations in NPEV2 and 8.85 MiB shaders_320.db cache growth; once warmed up in Min 8, RangeV2 jumped to 55.51 mean FPS / P5 42.42 / P1 25.74 / 0 critical drops",
+      "expected_gain": "Eliminate cold-start PSO compilation hitches from minute 1 on repeat runs"
+    },
+    {
+      "priority": "P1",
+      "target": "Reduce 2.93 ms Engine Slack+Slop & native 16:10 resolution preset (1512x945 or 1440x900)",
+      "evidence": "Official NPEV2 histogram shows Work-only >=60 FPS is 38.3% of frames vs 24.2% for Engine Latency (2.45 ms Slack + 0.48 ms Slop lost to sync/present pacing)",
+      "expected_gain": "+10-15% effective FPS and sharper 1:1 Retina scaling without redundant resize blit"
+    },
+    {
+      "priority": "P2",
+      "target": "Guest Optimizer v3: disable spice-webdavd service + verify low-CPU UE graphics preset",
+      "evidence": "spice-webdavd.exe crashed (APPCRASH 0x80000003) against trimmed shared folder; GameThread/RenderThread CPU headroom is the primary limiter",
+      "expected_gain": "Cleaner guest process table and lower background CPU spikes"
+    }
+  ]
+}

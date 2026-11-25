@@ -1,0 +1,319 @@
+{
+  "capturedAt" : "2026-11-22T06:49:53Z",
+  "cases" : [
+    {
+      "case" : "success",
+      "exitCode" : 0,
+      "guestActiveProcessCount" : 0,
+      "guestTerminalConfirmed" : true,
+      "hostCleanupConfirmed" : true,
+      "hostTrace" : {
+        "events" : [
+          "listener.ready",
+          "connection.accepted",
+          "request.authenticated",
+          "response.succeeded",
+          "session.cleaned"
+        ],
+        "hasActiveComputation" : false,
+        "hasActiveConnection" : false,
+        "request" : {
+          "bias" : -7,
+          "deadlineMilliseconds" : 10000,
+          "operation" : 1,
+          "requestID" : 101,
+          "scale" : 3,
+          "values" : [
+            0,
+            1,
+            -1,
+            2147483647,
+            -2147483647
+          ]
+        },
+        "response" : {
+          "checksum" : 7457899586618337359,
+          "requestID" : 101,
+          "status" : 1,
+          "values" : [
+            -7,
+            -4,
+            -10,
+            6442450934,
+            -6442450948
+          ]
+        }
+      },
+      "probe" : {
+        "checksum" : 7457899586618337359,
+        "dataConsistent" : true,
+        "errorCode" : 0,
+        "guestArchitecture" : "arm64",
+        "probeArchitecture" : "x86_64",
+        "requestID" : 101,
+        "schemaVersion" : 1,
+        "scope" : "explicitComputeInterfaceOnly",
+        "sessionID" : 1,
+        "status" : "succeeded",
+        "targetPID" : 3012,
+        "transparentPEMigration" : false,
+        "values" : [
+          -7,
+          -4,
+          -10,
+          6442450934,
+          -6442450948
+        ]
+      },
+      "status" : "succeeded",
+      "targetPID" : 3012,
+      "transparentPEMigration" : false
+    },
+    {
+      "case" : "hostError",
+      "exitCode" : 22,
+      "guestActiveProcessCount" : 0,
+      "guestTerminalConfirmed" : true,
+      "hostCleanupConfirmed" : true,
+      "hostTrace" : {
+        "events" : [
+          "listener.ready",
+          "connection.accepted",
+          "request.authenticated",
+          "response.failed",
+          "session.cleaned"
+        ],
+        "hasActiveComputation" : false,
+        "hasActiveConnection" : false,
+        "request" : {
+          "bias" : -7,
+          "deadlineMilliseconds" : 10000,
+          "operation" : 2,
+          "requestID" : 101,
+          "scale" : 3,
+          "values" : [
+            0,
+            1,
+            -1,
+            2147483647,
+            -2147483647
+          ]
+        },
+        "response" : {
+          "checksum" : 14695981039346656037,
+          "errorCode" : 1,
+          "requestID" : 101,
+          "status" : 4,
+          "values" : [
+
+          ]
+        }
+      },
+      "probe" : {
+        "checksum" : 14695981039346656037,
+        "dataConsistent" : true,
+        "errorCode" : 1,
+        "guestArchitecture" : "arm64",
+        "probeArchitecture" : "x86_64",
+        "requestID" : 101,
+        "schemaVersion" : 1,
+        "scope" : "explicitComputeInterfaceOnly",
+        "sessionID" : 1,
+        "status" : "failed",
+        "targetPID" : 6516,
+        "transparentPEMigration" : false,
+        "values" : [
+
+        ]
+      },
+      "status" : "failed",
+      "targetPID" : 6516,
+      "transparentPEMigration" : false
+    },
+    {
+      "case" : "overflow",
+      "exitCode" : 22,
+      "guestActiveProcessCount" : 0,
+      "guestTerminalConfirmed" : true,
+      "hostCleanupConfirmed" : true,
+      "hostTrace" : {
+        "events" : [
+          "listener.ready",
+          "connection.accepted",
+          "request.authenticated",
+          "response.failed",
+          "session.cleaned"
+        ],
+        "hasActiveComputation" : false,
+        "hasActiveConnection" : false,
+        "request" : {
+          "bias" : -7,
+          "deadlineMilliseconds" : 10000,
+          "operation" : 1,
+          "requestID" : 101,
+          "scale" : 9223372036854775807,
+          "values" : [
+            2147483647
+          ]
+        },
+        "response" : {
+          "checksum" : 14695981039346656037,
+          "errorCode" : 3,
+          "requestID" : 101,
+          "status" : 4,
+          "values" : [
+
+          ]
+        }
+      },
+      "probe" : {
+        "checksum" : 14695981039346656037,
+        "dataConsistent" : true,
+        "errorCode" : 3,
+        "guestArchitecture" : "arm64",
+        "probeArchitecture" : "x86_64",
+        "requestID" : 101,
+        "schemaVersion" : 1,
+        "scope" : "explicitComputeInterfaceOnly",
+        "sessionID" : 1,
+        "status" : "failed",
+        "targetPID" : 8084,
+        "transparentPEMigration" : false,
+        "values" : [
+
+        ]
+      },
+      "status" : "failed",
+      "targetPID" : 8084,
+      "transparentPEMigration" : false
+    },
+    {
+      "case" : "timeout",
+      "exitCode" : 20,
+      "guestActiveProcessCount" : 0,
+      "guestTerminalConfirmed" : true,
+      "hostCleanupConfirmed" : true,
+      "hostTrace" : {
+        "events" : [
+          "listener.ready",
+          "connection.accepted",
+          "request.authenticated",
+          "response.timedOut",
+          "computation.stopped",
+          "session.cleaned"
+        ],
+        "hasActiveComputation" : false,
+        "hasActiveConnection" : false,
+        "request" : {
+          "bias" : -7,
+          "deadlineMilliseconds" : 3000,
+          "operation" : 1,
+          "requestID" : 101,
+          "scale" : 3,
+          "values" : [
+            0,
+            1,
+            -1,
+            2147483647,
+            -2147483647
+          ]
+        },
+        "response" : {
+          "checksum" : 14695981039346656037,
+          "errorCode" : 4,
+          "requestID" : 101,
+          "status" : 2,
+          "values" : [
+
+          ]
+        }
+      },
+      "probe" : {
+        "checksum" : 14695981039346656037,
+        "dataConsistent" : true,
+        "errorCode" : 4,
+        "guestArchitecture" : "arm64",
+        "probeArchitecture" : "x86_64",
+        "requestID" : 101,
+        "schemaVersion" : 1,
+        "scope" : "explicitComputeInterfaceOnly",
+        "sessionID" : 1,
+        "status" : "timedOut",
+        "targetPID" : 5228,
+        "transparentPEMigration" : false,
+        "values" : [
+
+        ]
+      },
+      "status" : "timedOut",
+      "targetPID" : 5228,
+      "transparentPEMigration" : false
+    },
+    {
+      "case" : "cancel",
+      "exitCode" : 21,
+      "guestActiveProcessCount" : 0,
+      "guestTerminalConfirmed" : true,
+      "hostCleanupConfirmed" : true,
+      "hostTrace" : {
+        "events" : [
+          "listener.ready",
+          "connection.accepted",
+          "request.authenticated",
+          "response.cancelled",
+          "computation.stopped",
+          "session.cleaned"
+        ],
+        "hasActiveComputation" : false,
+        "hasActiveConnection" : false,
+        "request" : {
+          "bias" : -7,
+          "deadlineMilliseconds" : 30000,
+          "operation" : 1,
+          "requestID" : 101,
+          "scale" : 3,
+          "values" : [
+            0,
+            1,
+            -1,
+            2147483647,
+            -2147483647
+          ]
+        },
+        "response" : {
+          "checksum" : 14695981039346656037,
+          "errorCode" : 5,
+          "requestID" : 101,
+          "status" : 3,
+          "values" : [
+
+          ]
+        }
+      },
+      "probe" : {
+        "checksum" : 14695981039346656037,
+        "dataConsistent" : true,
+        "errorCode" : 5,
+        "guestArchitecture" : "arm64",
+        "probeArchitecture" : "x86_64",
+        "requestID" : 101,
+        "schemaVersion" : 1,
+        "scope" : "explicitComputeInterfaceOnly",
+        "sessionID" : 1,
+        "status" : "cancelled",
+        "targetPID" : 2556,
+        "transparentPEMigration" : false,
+        "values" : [
+
+        ]
+      },
+      "status" : "cancelled",
+      "targetPID" : 2556,
+      "transparentPEMigration" : false
+    }
+  ],
+  "realRunID" : "run-28badd7853794b1ba8074c3491a045b7",
+  "schemaVersion" : 1,
+  "scope" : "explicitComputeInterfaceOnly",
+  "transparentPEMigration" : false
+}

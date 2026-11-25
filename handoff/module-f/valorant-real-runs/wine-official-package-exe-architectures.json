@@ -1,0 +1,357 @@
+{
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-24T04:39:12.022153+00:00",
+  "scope": "read-only executable headers in official installer archive; no binaries run or modified",
+  "official_installer_sha256": "686ee838411863d2eccdbe8a0596129e509819ae46626408760588ae8b0c800e",
+  "archive_extraction_exit_code": 0,
+  "all_exe_count": 32,
+  "machine_counts": {
+    "0x8664": 25,
+    "0x014c": 7
+  },
+  "historical_launcher_hash_matches": [
+    {
+      "artifact_alias": "package-exe-027",
+      "size_bytes": 139611928,
+      "sha256": "250f619fd0f004d6cdb606dda3dede142d13da4730da8c9cf78a9df9d415233a",
+      "pe_machine": "0x8664",
+      "pe_valid": true,
+      "architecture": "AMD64",
+      "historical_launcher_binding": "wine-software-presentation-lifecycle.json",
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-030",
+      "size_bytes": 7370008,
+      "sha256": "b2b65ed5ee470a8c9a6a3ef96ed9f6def220226472dee58fb50d445805860538",
+      "pe_machine": "0x8664",
+      "pe_valid": true,
+      "architecture": "AMD64",
+      "historical_launcher_binding": "wine-d3dmetal-retry-lifecycle.json",
+      "file_executed": false
+    }
+  ],
+  "executables": [
+    {
+      "artifact_alias": "package-exe-000",
+      "size_bytes": 1540200,
+      "sha256": "5ccbbe8d58fac3c730ab90d6deb244c44fd76e0873e69256c3ead57102ee61c9",
+      "pe_machine": "0x8664",
+      "pe_valid": true,
+      "architecture": "AMD64",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-001",
+      "size_bytes": 4137064,
+      "sha256": "be0bfde7ddeaba58ca42a87177c513ecb789612ebc2cd3360be8c9c81da257a5",
+      "pe_machine": "0x014c",
+      "pe_valid": true,
+      "architecture": "I386",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-002",
+      "size_bytes": 4007016,
+      "sha256": "7cb82392707b92f51b4a2b0042b7195d28c29a9df4696d9f6d96f719da5d58aa",
+      "pe_machine": "0x014c",
+      "pe_valid": true,
+      "architecture": "I386",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-003",
+      "size_bytes": 624744,
+      "sha256": "0ff80bc9c680691964d5b15948fcbb12fb7acc21493ec766b9c9ef2ff1527d63",
+      "pe_machine": "0x8664",
+      "pe_valid": true,
+      "architecture": "AMD64",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-004",
+      "size_bytes": 395032,
+      "sha256": "15c86c9747d45d9e89ec1290948188be9c5bb56cec6615ef9ae6d517ae2fe74e",
+      "pe_machine": "0x8664",
+      "pe_valid": true,
+      "architecture": "AMD64",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-005",
+      "size_bytes": 442648,
+      "sha256": "d90350857b3fadcccb930f0407fea44b2b74e55a5625843aaf9c4ceb82392ac4",
+      "pe_machine": "0x014c",
+      "pe_valid": true,
+      "architecture": "I386",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-006",
+      "size_bytes": 1248536,
+      "sha256": "7bde85c53a2c347cdfe765fe92564f315572aca2042f3c37d045fc1a33e08e94",
+      "pe_machine": "0x014c",
+      "pe_valid": true,
+      "architecture": "I386",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-007",
+      "size_bytes": 1735960,
+      "sha256": "d1d185cea442601621f4b65d2090b08b09dcf246ecbe2612efda3a106346038c",
+      "pe_machine": "0x014c",
+      "pe_valid": true,
+      "architecture": "I386",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-008",
+      "size_bytes": 624920,
+      "sha256": "1b51f9234f9c21ddafefda216d5be9d2e9744d9dfcb4f0fc4729ec02ec9df9b5",
+      "pe_machine": "0x8664",
+      "pe_valid": true,
+      "architecture": "AMD64",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-009",
+      "size_bytes": 102504,
+      "sha256": "bcc1de202ffcdf91bea1d57e66dfa913f6a11d82aff3b9f6555d2f1df80f66c1",
+      "pe_machine": "0x8664",
+      "pe_valid": true,
+      "architecture": "AMD64",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-010",
+      "size_bytes": 152168,
+      "sha256": "a59a10d412645ffae21a81e46cf0fd6499371718afdb64ce93f103dd814b47b3",
+      "pe_machine": "0x8664",
+      "pe_valid": true,
+      "architecture": "AMD64",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-011",
+      "size_bytes": 126056,
+      "sha256": "0c18ad27a80330a48cd1995a560e0e6633d14c1cbe19f7c0aaf8022a6d0a365e",
+      "pe_machine": "0x8664",
+      "pe_valid": true,
+      "architecture": "AMD64",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-012",
+      "size_bytes": 33207576,
+      "sha256": "9da01c4cf5aa15bf6ef7f8d702a9adef149ceb42744b4786699f7e826ae88c07",
+      "pe_machine": "0x8664",
+      "pe_valid": true,
+      "architecture": "AMD64",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-013",
+      "size_bytes": 205080,
+      "sha256": "3df8a9b36e777acb4234e766d90ad904b5a6d20313392b46211c19a2782a3cfc",
+      "pe_machine": "0x8664",
+      "pe_valid": true,
+      "architecture": "AMD64",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-014",
+      "size_bytes": 29464,
+      "sha256": "53dee7b54908b2c082af47fd3651cae75acafbc638ed60be881629d62a5c7691",
+      "pe_machine": "0x8664",
+      "pe_valid": true,
+      "architecture": "AMD64",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-015",
+      "size_bytes": 36120,
+      "sha256": "6719e84f7b87908accc16879bcc9f6f8ee331670a1cce40e768503b2488e2b84",
+      "pe_machine": "0x8664",
+      "pe_valid": true,
+      "architecture": "AMD64",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-016",
+      "size_bytes": 26392,
+      "sha256": "226002906102488d659049aef651bea2417b2755e55abb510cef9234add72297",
+      "pe_machine": "0x8664",
+      "pe_valid": true,
+      "architecture": "AMD64",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-017",
+      "size_bytes": 67864,
+      "sha256": "e480b68aec80adbf6ae4811d12b6214af236c96cf37ffc7612bd9621cb167571",
+      "pe_machine": "0x8664",
+      "pe_valid": true,
+      "architecture": "AMD64",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-018",
+      "size_bytes": 171288,
+      "sha256": "a263764a4f8c254cf8d6fa7ff0eabee9d2b41c1c7916feab88465c72c29ad7c0",
+      "pe_machine": "0x8664",
+      "pe_valid": true,
+      "architecture": "AMD64",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-019",
+      "size_bytes": 3608904,
+      "sha256": "ec035faf0dde3c223b130047984ac64e57df49a40509f236f0c980d9d43fc8ee",
+      "pe_machine": "0x8664",
+      "pe_valid": true,
+      "architecture": "AMD64",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-020",
+      "size_bytes": 1004360,
+      "sha256": "9242dfb35d9a08333d731a085058ab3cac5ec3cf80e9042e31b44faab14f6c38",
+      "pe_machine": "0x8664",
+      "pe_valid": true,
+      "architecture": "AMD64",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-021",
+      "size_bytes": 67864,
+      "sha256": "9788fc6e6195cb5218498a8b0fa297fc13bfd5587fda3fc9769392b30c7cb54d",
+      "pe_machine": "0x014c",
+      "pe_valid": true,
+      "architecture": "I386",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-022",
+      "size_bytes": 6413328,
+      "sha256": "51535da382470c70669963085e6ee63df73afde5072b7eb13112aed0dafdc630",
+      "pe_machine": "0x8664",
+      "pe_valid": true,
+      "architecture": "AMD64",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-023",
+      "size_bytes": 8025760,
+      "sha256": "8d73f9813495db4103d093acedc72f3092861f371183ff21a9ec75bc4db8371a",
+      "pe_machine": "0x8664",
+      "pe_valid": true,
+      "architecture": "AMD64",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-024",
+      "size_bytes": 8034976,
+      "sha256": "25d9384f634f122aff71ce29633caa44a28ead039ad367736eab36e689cb02ca",
+      "pe_machine": "0x8664",
+      "pe_valid": true,
+      "architecture": "AMD64",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-025",
+      "size_bytes": 1386776,
+      "sha256": "e9723533eb1b3f4244e331fb16133ec76d7dc40047317e0a29638da9aea2a276",
+      "pe_machine": "0x8664",
+      "pe_valid": true,
+      "architecture": "AMD64",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-026",
+      "size_bytes": 2088728,
+      "sha256": "ec9c41fa2557ae3f9a45d1a69171329d510009ae263994d41f1b2d1635e8519a",
+      "pe_machine": "0x8664",
+      "pe_valid": true,
+      "architecture": "AMD64",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-027",
+      "size_bytes": 139611928,
+      "sha256": "250f619fd0f004d6cdb606dda3dede142d13da4730da8c9cf78a9df9d415233a",
+      "pe_machine": "0x8664",
+      "pe_valid": true,
+      "architecture": "AMD64",
+      "historical_launcher_binding": "wine-software-presentation-lifecycle.json",
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-028",
+      "size_bytes": 6252904,
+      "sha256": "500520ca9b03d2cf22b8d2ece73412a1c774279d4433f672b0ee04fdd6ae48ef",
+      "pe_machine": "0x8664",
+      "pe_valid": true,
+      "architecture": "AMD64",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-029",
+      "size_bytes": 1004824,
+      "sha256": "ddf7399f4ca988a898683b203ce11998c4f1e905a933e4a87f2ad8fadd90bb78",
+      "pe_machine": "0x8664",
+      "pe_valid": true,
+      "architecture": "AMD64",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-030",
+      "size_bytes": 7370008,
+      "sha256": "b2b65ed5ee470a8c9a6a3ef96ed9f6def220226472dee58fb50d445805860538",
+      "pe_machine": "0x8664",
+      "pe_valid": true,
+      "architecture": "AMD64",
+      "historical_launcher_binding": "wine-d3dmetal-retry-lifecycle.json",
+      "file_executed": false
+    },
+    {
+      "artifact_alias": "package-exe-031",
+      "size_bytes": 6017704,
+      "sha256": "828bae2a5f59d4f6dabe791d32912d37c67f7c59f18eeffb09616fa0e7b77070",
+      "pe_machine": "0x014c",
+      "pe_valid": true,
+      "architecture": "I386",
+      "historical_launcher_binding": null,
+      "file_executed": false
+    }
+  ],
+  "authenticode_trust": "not newly verified on macOS; certificate-table presence does not prove trust"
+}

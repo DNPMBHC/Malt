@@ -1,0 +1,12 @@
+Owner: @DNPMBHC
+Source: public declarations in the installed macOS SDK; SHA-256 in sdk-api-evidence.json.
+VZCustomVirtioDeviceConfiguration: deviceID, pciClassID, pciSubclassID, virtioQueueCount,
+  optionalFeatures, deviceSpecificConfiguration, provider, sharedMemoryRegions,
+  maximumAllowedSharedMemoryRegionCount.
+VZVirtioSharedMemoryRegionConfiguration: regionID, size.
+VZVirtioSharedMemoryRegion: mapMemory(atOffset:size:completionHandler:),
+  unmapMemory(atOffset:size:completionHandler:).
+VZEFISignatureDatabaseConfiguration: keyExchangeKeys, dbSignatures, dbxSignatures.
+VZEFIVariableStore: enableSecureBoot, disableSecureBoot, secureBootEnabled.
+Search scope: all public Virtualization headers from this SDK; no native vTPM-related match.
+This index is an API inventory; runtime results remain the authority for behavior.

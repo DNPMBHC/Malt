@@ -1,0 +1,286 @@
+{
+  "arm": "wine_dxmt",
+  "domain": "host_wine",
+  "backend": "dxmt",
+  "round": 1,
+  "metadata": {
+    "schema_version": 1,
+    "adapter_description": "Apple M4",
+    "vendor_id": 4203,
+    "device_id": 0,
+    "adapter_flags": 0,
+    "adapter_is_software": false,
+    "selected_feature_level": "11_1",
+    "width": 1280,
+    "height": 720,
+    "draws_per_frame": 16384,
+    "cb_updates_per_frame": 4096,
+    "passes_per_frame": 2,
+    "dynamic_vertex_bytes_per_frame": 9436608,
+    "geometry_objects": 16383,
+    "scene_variant": "dense_configurable_grid",
+    "async_swapchain": true,
+    "initialization_ms": 306.067
+  },
+  "completion": {
+    "measured_frames": 900,
+    "warmup_ms": 471.694,
+    "measurement_wall_ms": 2576.99,
+    "gpu_drain_ms": 11.181,
+    "throughput_including_gpu_drain_fps": 349.244634,
+    "draws_per_frame": 16384,
+    "total_draw_calls": 14745600,
+    "async_swapchain": true
+  },
+  "csv_summary": {
+    "frame_count": 900,
+    "interval_sample_count": 899,
+    "derived_fps_from_intervals": 350.5511939855553,
+    "frame_interval_ms": {
+      "mean": 2.8526503893214685,
+      "p50": 2.798,
+      "p95": 4.802529999999999,
+      "p99": 5.543811999999999
+    },
+    "cpu_submit_ms": {
+      "mean": 2.8416148888888886,
+      "p95": 4.797235000000001,
+      "p99": 5.540011999999999
+    },
+    "process_resident_mib_mean": 183.1547612847222,
+    "device_memory_mib_mean": 109.35041666666666
+  },
+  "host_cpu": {
+    "method": "libproc RUSAGE_INFO_V0 user+system counter deltas; PID family and creation-time binding",
+    "scope": "measurement phase only; roots and descendants",
+    "sample_count": 33,
+    "sample_errors": 0,
+    "covered_wall_seconds": 2.5895808749992284,
+    "cpu_seconds": 3.6334545416666657,
+    "host_cpu_percent_mean": 140.3105257976447,
+    "host_cpu_percent_peak": 177.40740914159983,
+    "host_logical_cpu_count": 10,
+    "host_capacity_percent_mean": 14.031052579764468,
+    "units": "100 percent equals one logical CPU; zeros retained",
+    "samples": [
+      {
+        "wall_seconds": 0.08083387499937089,
+        "cpu_seconds": 0.10708158333333323,
+        "cpu_percent": 132.47117416326586,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07934995800314937,
+        "cpu_seconds": 0.10810283333333343,
+        "cpu_percent": 136.23552684053453,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07618233299581334,
+        "cpu_seconds": 0.11022812499999995,
+        "cpu_percent": 144.6898784342265,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07882183400215581,
+        "cpu_seconds": 0.10552441666666676,
+        "cpu_percent": 133.87713950398646,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.0798398749975604,
+        "cpu_seconds": 0.1203910833333332,
+        "cpu_percent": 150.79067112393636,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07855895800457802,
+        "cpu_seconds": 0.10166116666666675,
+        "cpu_percent": 129.4074784708097,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07677274999878136,
+        "cpu_seconds": 0.12043174999999992,
+        "cpu_percent": 156.8678339670151,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.08194712499971502,
+        "cpu_seconds": 0.1066367916666667,
+        "cpu_percent": 130.12877714384433,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07593629199982388,
+        "cpu_seconds": 0.11399199999999976,
+        "cpu_percent": 150.11530981821466,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.08164825000130804,
+        "cpu_seconds": 0.109962166666667,
+        "cpu_percent": 134.6779222639865,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07789841599878855,
+        "cpu_seconds": 0.10624929166666655,
+        "cpu_percent": 136.3946754300099,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07934079199912958,
+        "cpu_seconds": 0.12191408333333317,
+        "cpu_percent": 153.65876778072828,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.08270774999982677,
+        "cpu_seconds": 0.11461866666666667,
+        "cpu_percent": 138.58274063422925,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07789854199654656,
+        "cpu_seconds": 0.1135599166666669,
+        "cpu_percent": 145.77925819420508,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.08106170800601831,
+        "cpu_seconds": 0.11043220833333314,
+        "cpu_percent": 136.2322742140275,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07942604199342895,
+        "cpu_seconds": 0.11269220833333343,
+        "cpu_percent": 141.88319788446293,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07521250000718283,
+        "cpu_seconds": 0.10044079166666642,
+        "cpu_percent": 133.54268460305704,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07595945799403125,
+        "cpu_seconds": 0.11816720833333341,
+        "cpu_percent": 155.56615522798856,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07910787500441074,
+        "cpu_seconds": 0.11367891666666649,
+        "cpu_percent": 143.70113804766999,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07889145799708785,
+        "cpu_seconds": 0.139959291666667,
+        "cpu_percent": 177.40740914159983,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.08920420899812598,
+        "cpu_seconds": 0.13449141666666642,
+        "cpu_percent": 150.76801664088725,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.08936275000451133,
+        "cpu_seconds": 0.11006820833333342,
+        "cpu_percent": 123.17012214572269,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.08020416599902092,
+        "cpu_seconds": 0.10624266666666679,
+        "cpu_percent": 132.46527202584932,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07462841700180434,
+        "cpu_seconds": 0.10962379166666655,
+        "cpu_percent": 146.89282725106727,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.08077599999523954,
+        "cpu_seconds": 0.10142958333333349,
+        "cpu_percent": 125.56896025962061,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07634579200384906,
+        "cpu_seconds": 0.11961333333333315,
+        "cpu_percent": 156.67311870614,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07780800000182353,
+        "cpu_seconds": 0.10886416666666698,
+        "cpu_percent": 139.91384775873382,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.08232612499705283,
+        "cpu_seconds": 0.10978729166666645,
+        "cpu_percent": 133.35656411691514,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07880462500179419,
+        "cpu_seconds": 0.1273966250000002,
+        "cpu_percent": 161.66135553224154,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.08601349999662489,
+        "cpu_seconds": 0.11803883333333279,
+        "cpu_percent": 137.23291499353536,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.08461245799844619,
+        "cpu_seconds": 0.1326838749999997,
+        "cpu_percent": 156.81363966809272,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.08479254200210562,
+        "cpu_seconds": 0.09072237500000022,
+        "cpu_percent": 106.99334264297364,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.02730650000012247,
+        "cpu_seconds": 0.008767874999999786,
+        "cpu_percent": 32.10911321465755,
+        "live_process_count": 2
+      }
+    ],
+    "limitation": "Counter sampling can miss CPU between the final available counter and process exit"
+  },
+  "native_exit_code": 0,
+  "probe_sha256": "7a71fc3710fc13316c092f822a904e9558b7f7ad81bc52754717f8d1f797bec5",
+  "backend_binding": {
+    "dll_sha256": "1cbe930e2370c4382ac4b435faf8cc563943324cfade33380cc6de0b8d94d801",
+    "requested_backend": "dxmt",
+    "library_load_log": "wine_dxmt-r1.stderr.log",
+    "backend_logs": [
+      {
+        "file": "wine_dxmt-r1-bench_real3d_probe-heavy_d3d11.log",
+        "sha256": "d8059deab3949c9bf4c006d142c194295290f31725181da533357b01d18f80a4"
+      }
+    ]
+  },
+  "files": {
+    "csv": "wine_dxmt-r1.csv",
+    "csv_sha256": "6fd997d813aa7061375db681bac1eb272cc9bd467825761a9d5bc8de64a9273e",
+    "stdout": "wine_dxmt-r1.stdout.log",
+    "stderr": "wine_dxmt-r1.stderr.log"
+  }
+}
