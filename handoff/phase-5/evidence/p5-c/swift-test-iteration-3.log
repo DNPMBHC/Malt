@@ -1,0 +1,103 @@
+Owner: @DNPMBHC
+Building for debugging...
+[Planning deferred tasks]
+[5 / 28]
+[6 / 27] ModuleX
+[11 / 32] ModuleX
+[20 / 31] ModuleXTests-product
+error: SwiftCompile normal arm64 <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/GuestSurfaceSessionTests.swift failed with a nonzero exit code. Command line:     cd <workspace>/DemoApp
+    builtin-SwiftPerFileCompile GuestSurfaceSessionTests.swift
+<workspace>/DemoApp/ModuleX/Tests/ModuleXTests/GuestSurfaceSessionTests.swift:147:46: error: extra argument 'failApply' in call
+145 |   func testPartiallyAppliedDisplayFailureStillRestoresOriginalBaseline() async throws {
+146 |     let (config, request) = makeConfigAndRequest()
+147 |     let display = MockDisplaySync(failApply: true)
+    |                                              `- error: extra argument 'failApply' in call
+148 |     let provider = MockGuestProviderForShell(configuration: config)
+149 |     let session = GuestSurfaceSession(
+
+<workspace>/DemoApp/ModuleX/Tests/ModuleXTests/GuestSurfaceSessionTests.swift:158:20: warning: no 'async' operations occur within 'await' expression [#UnnecessaryEffectMarker]
+156 |       XCTFail("Expected display failure")
+157 |     } catch {}
+158 |     let restores = await display.restoredSnapshots
+    |                    `- warning: no 'async' operations occur within 'await' expression [#UnnecessaryEffectMarker]
+159 |     let starts = await provider.startCount
+160 |     XCTAssertEqual(restores.count, 1)
+
+<workspace>/DemoApp/ModuleX/Tests/ModuleXTests/GuestSurfaceSessionTests.swift:167:48: error: extra argument 'failRestore' in call
+165 |   func testRestoreFailureIsVisibleAndDoesNotSuspendGuest() async throws {
+166 |     let (config, request) = makeConfigAndRequest()
+167 |     let display = MockDisplaySync(failRestore: true)
+    |                                                `- error: extra argument 'failRestore' in call
+168 |     let provider = MockGuestProviderForShell(configuration: config)
+169 |     let session = GuestSurfaceSession(
+
+<workspace>/DemoApp/ModuleX/Tests/ModuleXTests/GuestSurfaceSessionTests.swift:182:28: error: type 'Equatable' has no member 'failed'
+180 |     let failure = await session.lastCleanupFailure
+181 |     XCTAssertEqual(stops, 0)
+182 |     XCTAssertEqual(state, .failed)
+    |                            `- error: type 'Equatable' has no member 'failed'
+183 |     XCTAssertEqual(failure, "display_restore_failed")
+184 |   }
+
+<workspace>/DemoApp/ModuleX/Tests/ModuleXTests/GuestSurfaceSessionTests.swift:179:17: warning: no 'async' operations occur within 'await' expression [#UnnecessaryEffectMarker]
+177 |     XCTAssertFalse(result.guestSuspendedOnExit)
+178 |     let stops = await provider.stopCount
+179 |     let state = await session.state
+    |                 `- warning: no 'async' operations occur within 'await' expression [#UnnecessaryEffectMarker]
+180 |     let failure = await session.lastCleanupFailure
+181 |     XCTAssertEqual(stops, 0)
+
+<workspace>/DemoApp/ModuleX/Tests/ModuleXTests/GuestSurfaceSessionTests.swift:180:19: warning: no 'async' operations occur within 'await' expression [#UnnecessaryEffectMarker]
+178 |     let stops = await provider.stopCount
+179 |     let state = await session.state
+180 |     let failure = await session.lastCleanupFailure
+    |                   `- warning: no 'async' operations occur within 'await' expression [#UnnecessaryEffectMarker]
+181 |     XCTAssertEqual(stops, 0)
+182 |     XCTAssertEqual(state, .failed)
+
+<workspace>/DemoApp/ModuleX/Tests/ModuleXTests/GuestSurfaceSessionTests.swift:188:47: error: extra argument 'delayApply' in call
+186 |   func testCancellationDuringDisplayPreparationClosesPresentationAndPreventsLaunch() async throws {
+187 |     let (config, request) = makeConfigAndRequest()
+188 |     let display = MockDisplaySync(delayApply: true)
+    |                                               `- error: extra argument 'delayApply' in call
+189 |     let provider = MockGuestProviderForShell(configuration: config)
+190 |     let hooks = MockPresentationHooks()
+
+<workspace>/DemoApp/ModuleX/Tests/ModuleXTests/GuestSurfaceSessionTests.swift:204:15: warning: no 'async' operations occur within 'await' expression [#UnnecessaryEffectMarker]
+202 |     await session.cancel()
+203 |     do {
+204 |       _ = try await run.value
+    |               `- warning: no 'async' operations occur within 'await' expression [#UnnecessaryEffectMarker]
+205 |       XCTFail("Expected cancellation")
+206 |     } catch is CancellationError {}
+
+<workspace>/DemoApp/ModuleX/Tests/ModuleXTests/GuestSurfaceSessionTests.swift:204:11: warning: no calls to throwing functions occur within 'try' expression [#UnnecessaryEffectMarker]
+202 |     await session.cancel()
+203 |     do {
+204 |       _ = try await run.value
+    |           `- warning: no calls to throwing functions occur within 'try' expression [#UnnecessaryEffectMarker]
+205 |       XCTFail("Expected cancellation")
+206 |     } catch is CancellationError {}
+
+<workspace>/DemoApp/ModuleX/Tests/ModuleXTests/GuestSurfaceSessionTests.swift:206:7: warning: 'catch' block is unreachable because no errors are thrown in 'do' block
+204 |       _ = try await run.value
+205 |       XCTFail("Expected cancellation")
+206 |     } catch is CancellationError {}
+    |       `- warning: 'catch' block is unreachable because no errors are thrown in 'do' block
+207 |     let starts = await provider.startCount
+208 |     let restores = await display.restoredSnapshots
+
+<workspace>/DemoApp/ModuleX/Tests/ModuleXTests/GuestSurfaceSessionTests.swift:208:20: warning: no 'async' operations occur within 'await' expression [#UnnecessaryEffectMarker]
+206 |     } catch is CancellationError {}
+207 |     let starts = await provider.startCount
+208 |     let restores = await display.restoredSnapshots
+    |                    `- warning: no 'async' operations occur within 'await' expression [#UnnecessaryEffectMarker]
+209 |     let ends = await hooks.endedCount
+210 |     XCTAssertEqual(starts, 0)
+
+[#UnnecessaryEffectMarker]: <https://docs.swift.org/compiler/documentation/diagnostics/unnecessary-effect-marker>
+Failed frontend command:
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift-frontend -frontend -c /tmp/guest-shell-p5c-build/out/Intermediates.noindex/ModuleX.build/Debug/ModuleXTests-p.build/DerivedSources/test_entry_point.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/AntiCheatProbeTestSupport.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/AntiCheatProbeTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/GuestSurfaceFrameContractTests.swift -primary-file <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/GuestSurfacePolicyAndInputTests.swift -primary-file <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/GuestSurfaceSessionTests.swift -primary-file <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/GuestSurfaceTestSupport.swift -primary-file <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/HostCapabilitiesTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/HostMetalFXBenchmarkTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/HostMetalFXTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/HostResourceExperimentTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/HostResourcePolicyTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/HostWineKosmicKrispAndMetalFXTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/IntegrationBoundaryTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/RemotePhysicsBackendTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/RuntimeGraphicsRoutingTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/RuntimeIntegrityReportTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/RuntimeManifestTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/RuntimeProcessTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/RuntimeRemotePhysicsIntegrationTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/RuntimeStorageTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/RuntimeTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/RuntimeVulkanValidationTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/UTMComputeTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/UTMGuestStoragePreflightTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/UTMHostProcessRunnerTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/UTMInteractiveRealComputeTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/UTMInteractiveRealTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/UTMInteractiveTestSupport.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/UTMInteractiveTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/UTMWindowsGuestOptimizerTests.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/UTMWindowsGuestProviderTestSupport.swift <workspace>/DemoApp/ModuleX/Tests/ModuleXTests/UTMWindowsGuestProviderTests.swift -supplementary-output-file-map /tmp/guest-shell-p5c-build/out/Intermediates.noindex/ModuleX.build/Debug/ModuleXTests-p.build/Objects-normal/arm64/supplementaryOutputs-2 -target arm64-apple-macos14.0 -module-can-import-version Testing 2084 0 -module-can-import-version XCTest 25228 0 -disable-cross-import-overlay-search -swift-module-cross-import Darwin /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/Darwin.swiftcrossimport/xlocale.swiftoverlay -swift-module-cross-import Testing /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/Testing.framework/Modules/Testing.swiftcrossimport/AppKit.swiftoverlay -swift-module-cross-import Testing /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/Testing.framework/Modules/Testing.swiftcrossimport/CoreGraphics.swiftoverlay -swift-module-cross-import Testing /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/Testing.framework/Modules/Testing.swiftcrossimport/CoreImage.swiftoverlay -swift-module-cross-import Testing /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/Testing.framework/Modules/Testing.swiftcrossimport/CoreTransferable.swiftoverlay -swift-module-cross-import Testing /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/Testing.framework/Modules/Testing.swiftcrossimport/Foundation.swiftoverlay -load-resolved-plugin /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib/swift/host/plugins/libFoundationMacros.dylib\#/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server\#FoundationMacros -load-resolved-plugin /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib/swift/host/plugins/libObservationMacros.dylib\#/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server\#ObservationMacros -load-resolved-plugin /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib/swift/host/plugins/libPreviewsMacros.dylib\#/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server\#PreviewsMacros -load-resolved-plugin /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib/swift/host/plugins/libSwiftMacros.dylib\#/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server\#SwiftMacros -load-resolved-plugin /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib/swift/host/plugins/libSwiftUIMacros.dylib\#/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server\#SwiftUIMacros -load-resolved-plugin /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing/libTestingMacros.dylib\#\#TestingMacros -disable-implicit-swift-modules -Xcc -fno-implicit-modules -Xcc -fno-implicit-module-maps -explicit-swift-module-map-file /tmp/guest-shell-p5c-build/out/Intermediates.noindex/ModuleX.build/Debug/ModuleXTests-p.build/Objects-normal/arm64/ModuleXTests-dependencies-1.json -Xllvm -aarch64-use-tbi -enable-objc-interop -stack-check -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk -I /tmp/guest-shell-p5c-build/out/Products/Debug -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib -F /tmp/guest-shell-p5c-build/out/Products/Debug/PackageFrameworks -F /tmp/guest-shell-p5c-build/out/Products/Debug -F /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks -module-cache-path /tmp/guest-shell-p5c-build/out/Intermediates.noindex/SwiftExplicitPrecompiledModules -no-color-diagnostics -Xcc -fno-color-diagnostics -enable-testing -g -debug-info-format\=dwarf -dwarf-version\=4 -swift-version 6 -Onone -D SWIFT_PACKAGE -D DEBUG -D Xcode -serialize-debugging-options -enable-experimental-feature DebugDescriptionMacro -empty-abi-descriptor -validate-clang-modules-once -clang-build-session-file /tmp/guest-shell-p5c-build/out/ModuleCache.noindex/Session.modulevalidation -Xcc -working-directory -Xcc <workspace>/DemoApp -enable-anonymous-context-mangled-names -file-compilation-dir <workspace>/DemoApp -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -Xcc -ivfsstatcache -Xcc /tmp/guest-shell-p5c-build/out/SDKStatCaches.noindex/macosx27.0-26A425-a0facfad118c1a7a18f0aad9463f65497231f6df4def33e022ae2eb8f782df1a.sdkstatcache -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -Xcc -I/tmp/guest-shell-p5c-build/out/Products/Debug/include -Xcc -I/tmp/guest-shell-p5c-build/out/Intermediates.noindex/ModuleX.build/Debug/ModuleXTests-p.build/DerivedSources-normal/arm64 -Xcc -I/tmp/guest-shell-p5c-build/out/Intermediates.noindex/ModuleX.build/Debug/ModuleXTests-p.build/DerivedSources/arm64 -Xcc -I/tmp/guest-shell-p5c-build/out/Intermediates.noindex/ModuleX.build/Debug/ModuleXTests-p.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\=1 -no-auto-bridging-header-chaining -module-name ModuleXTests -package-name ModuleX -const-gather-protocols-file /tmp/guest-shell-p5c-build/out/Intermediates.noindex/ModuleX.build/Debug/ModuleXTests-p.build/Objects-normal/arm64/ModuleXTests_const_extract_protocols.json -disable-clang-spi -clang-target arm64-apple-macos27.0 -target-sdk-version 27.0 -target-sdk-name macosx27.0 -in-process-plugin-server-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/libSwiftInProcPluginServer.dylib -parse-as-library -o /tmp/guest-shell-p5c-build/out/Intermediates.noindex/ModuleX.build/Debug/ModuleXTests-p.build/Objects-normal/arm64/GuestSurfacePolicyAndInputTests.o -o /tmp/guest-shell-p5c-build/out/Intermediates.noindex/ModuleX.build/Debug/ModuleXTests-p.build/Objects-normal/arm64/GuestSurfaceSessionTests.o -o /tmp/guest-shell-p5c-build/out/Intermediates.noindex/ModuleX.build/Debug/ModuleXTests-p.build/Objects-normal/arm64/GuestSurfaceTestSupport.o -o /tmp/guest-shell-p5c-build/out/Intermediates.noindex/ModuleX.build/Debug/ModuleXTests-p.build/Objects-normal/arm64/HostCapabilitiesTests.o -debug-module-path /tmp/guest-shell-p5c-build/out/Intermediates.noindex/ModuleX.build/Debug/ModuleXTests-p.build/Objects-normal/arm64/ModuleXTests.swiftmodule -index-unit-output-path /ModuleX.build/Debug/ModuleXTests-p.build/Objects-normal/arm64/GuestSurfacePolicyAndInputTests.o -index-unit-output-path /ModuleX.build/Debug/ModuleXTests-p.build/Objects-normal/arm64/GuestSurfaceSessionTests.o -index-unit-output-path /ModuleX.build/Debug/ModuleXTests-p.build/Objects-normal/arm64/GuestSurfaceTestSupport.o -index-unit-output-path /ModuleX.build/Debug/ModuleXTests-p.build/Objects-normal/arm64/HostCapabilitiesTests.o -index-store-path /tmp/guest-shell-p5c-build/out -index-system-modules
+[31 / 42] ModuleXTests-product
+error: Build failed
+error: fatalError

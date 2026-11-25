@@ -1,0 +1,55 @@
+{
+  "allocationScope": "virtual_address_mapping_not_fully_committed_RAM",
+  "configurationValidated": true,
+  "deviceCreated": true,
+  "driverNegotiated": false,
+  "guestScope": "isolated_diskless_EFI_fixture_not_Windows",
+  "guestStarted": true,
+  "guestStopped": true,
+  "mappings": [
+    {
+      "bytes": 16384,
+      "name": "aligned_page",
+      "succeeded": true
+    },
+    {
+      "bytes": 268435456,
+      "name": "aligned_256MiB",
+      "succeeded": true
+    },
+    {
+      "bytes": 1073741824,
+      "name": "aligned_1GiB",
+      "succeeded": true
+    },
+    {
+      "bytes": 2147483648,
+      "name": "aligned_2GiB",
+      "succeeded": true
+    },
+    {
+      "bytes": 4294967296,
+      "name": "aligned_4GiB",
+      "succeeded": true
+    },
+    {
+      "bytes": 8589934592,
+      "name": "aligned_8GiB",
+      "succeeded": true
+    },
+    {
+      "bytes": 17179869184,
+      "name": "aligned_16GiB",
+      "succeeded": true
+    },
+    {
+      "bytes": 147456,
+      "name": "VZ_and_Metal4_same_command_ring",
+      "succeeded": true
+    }
+  ],
+  "owner": "@DNPMBHC",
+  "pageSize": 16384,
+  "regionApertureBytes": 17179869184,
+  "regionCount": 1
+}

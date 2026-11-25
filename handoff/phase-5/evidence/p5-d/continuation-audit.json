@@ -1,0 +1,82 @@
+{
+  "owner": "@DNPMBHC",
+  "date": "2026-11-24",
+  "schema": "delivery-continuation-audit-v1",
+  "taskScope": "D1-D3",
+  "releaseSnapshotRevision": 3,
+  "purpose": "Revalidate completed delivery without incorporating newer shared candidate source.",
+  "evidence": {
+    "owner": "@DNPMBHC",
+    "indexedFilesChecked": 1118,
+    "indexedFileMismatches": [],
+    "csvFilesPresent": 531,
+    "gateCSVReferencesMissing": 0,
+    "finalGateSourceDigestsMatched": true,
+    "sourceChecks": {
+      "artifact_perf_gate.py": true,
+      "wine_reference_launch.swift": true,
+      "artifact_real3d_gate.py": true
+    },
+    "releaseGatePassed": true,
+    "conditionsPassed": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "pressurePassed": true,
+    "relocationFallbackPassed": true
+  },
+  "artifacts": {
+    "owner": "@DNPMBHC",
+    "appExists": true,
+    "dmgExists": true,
+    "dmgSizeBytes": 13397746,
+    "dmgSHA256": "21f428b09f2058c81a8e255cbcafc7a6ed02107b99861e972bb73fa5e568a66d",
+    "binarySHA256": [
+      "247169340df468470d7439047bd785b85fa28eeeac6a3dd51f3c9999ecf32322"
+    ],
+    "resourceSHA256": {
+      "compatibility-matrix.json": "0545f3c83c69d3cb3b81ef2b18f742446bf3ce2b5a45e8a084b7cfee71c3c34a",
+      "runtime-manifest.json": "d304bf46376750a8a8e3881823e7be97e8840a8ceb817351f68e336587e7f446"
+    },
+    "signatures": [
+      {
+        "verified": true,
+        "runtimeFlag": true,
+        "adHoc": true
+      },
+      {
+        "verified": true,
+        "runtimeFlag": true,
+        "adHoc": true
+      }
+    ],
+    "developmentFileCount": 0
+  },
+  "embeddedCLI": {
+    "owner": "@DNPMBHC",
+    "cliSHA256Matched": true,
+    "cliSignatureVerified": true,
+    "cliHardenedRuntime": true,
+    "cliAdHoc": true
+  },
+  "expectedDigestsMatched": true,
+  "pythonGateTests": {
+    "executed": 35,
+    "failed": 0,
+    "passed": true
+  },
+  "gitDiffCheckPassed": true,
+  "historicalEvidencePreserved": true,
+  "indexScope": "The existing index covers 1118 historical evidence files. This independent continuation audit is outside that frozen index.",
+  "newApplicationOrCLIChanges": false,
+  "applicationRebuildRequired": false,
+  "qualityScope": "Swift, lint, format, restart and safety acceptance remain attributed to the verified release snapshot. They were not rerun or reassigned to a newer shared candidate in this continuation.",
+  "realGameOrGuestAcceptanceClaimed": false,
+  "crossWindowMessagesSent": 0,
+  "protectedVMOperations": 0,
+  "completion": "All D1-D3 acceptance items remain completed; no new task gap found.",
+  "passed": true
+}

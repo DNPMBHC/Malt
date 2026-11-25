@@ -1,0 +1,44 @@
+Building for debugging...
+[1 / 10]
+[2 / 11] module-bKit
+[4 / 13] module-bKit
+[10 / 13] module-bKitTests-product
+[12 / 15] module-bKitTests-product
+[13 / 15] module-bKitTests-product
+[18 / 20] module-bKitTests-product
+Build complete! (2.44秒)
+Test Suite 'Selected tests' started at 2026-11-22 14:19:03.284.
+Test Suite 'module-bKitTests.xctest' started at 2026-11-22 14:19:03.284.
+Test Suite 'UTMInteractiveTests' started at 2026-11-22 14:19:03.284.
+Test Case '-[module-bKitTests.UTMInteractiveTests testAmbiguousLaunchRetriesMissingRecordUntilCancellationIsConfirmed]' started.
+Test Case '-[module-bKitTests.UTMInteractiveTests testAmbiguousLaunchRetriesMissingRecordUntilCancellationIsConfirmed]' passed (0.005 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveTests testCancelledChildTreeDoesNotReportExitedRootAsSuccessfulSession]' started.
+Test Case '-[module-bKitTests.UTMInteractiveTests testCancelledChildTreeDoesNotReportExitedRootAsSuccessfulSession]' passed (0.000 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveTests testCancelledLaunchBeforePIDReturnUsesRequestIdentityToRecover]' started.
+Test Case '-[module-bKitTests.UTMInteractiveTests testCancelledLaunchBeforePIDReturnUsesRequestIdentityToRecover]' passed (0.000 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveTests testControllerExitCannotMasqueradeAsTargetExit]' started.
+Test Case '-[module-bKitTests.UTMInteractiveTests testControllerExitCannotMasqueradeAsTargetExit]' passed (0.000 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveTests testManifestHasBoundedSize]' started.
+Test Case '-[module-bKitTests.UTMInteractiveTests testManifestHasBoundedSize]' passed (0.000 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveTests testManifestPreservesSpecialArgumentsAndRejectsAmbiguousEnvironment]' started.
+Test Case '-[module-bKitTests.UTMInteractiveTests testManifestPreservesSpecialArgumentsAndRejectsAmbiguousEnvironment]' passed (0.000 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveTests testNoDesktopIsExplicitFailureAndReclaimsController]' started.
+Test Case '-[module-bKitTests.UTMInteractiveTests testNoDesktopIsExplicitFailureAndReclaimsController]' passed (0.000 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveTests testPersistentPrelaunchCancellationFenceIsRecognized]' started.
+Test Case '-[module-bKitTests.UTMInteractiveTests testPersistentPrelaunchCancellationFenceIsRecognized]' passed (0.000 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveTests testRealTargetPIDDrivesStatusAndRepeatedCancellation]' started.
+Test Case '-[module-bKitTests.UTMInteractiveTests testRealTargetPIDDrivesStatusAndRepeatedCancellation]' passed (0.000 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveTests testResponsePreservesUnsignedWindowsExceptionCodeAndOutput]' started.
+Test Case '-[module-bKitTests.UTMInteractiveTests testResponsePreservesUnsignedWindowsExceptionCodeAndOutput]' passed (0.000 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveTests testResponseRejectsOtherRequestAndWindowsSessionZero]' started.
+Test Case '-[module-bKitTests.UTMInteractiveTests testResponseRejectsOtherRequestAndWindowsSessionZero]' passed (0.000 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveTests testSnapshotHonorsEarlierParentDeadline]' started.
+Test Case '-[module-bKitTests.UTMInteractiveTests testSnapshotHonorsEarlierParentDeadline]' passed (0.000 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveTests testTerminalCommitBetweenSnapshotAndControllerPollIsRecovered]' started.
+Test Case '-[module-bKitTests.UTMInteractiveTests testTerminalCommitBetweenSnapshotAndControllerPollIsRecovered]' passed (0.000 seconds).
+Test Suite 'UTMInteractiveTests' passed at 2026-11-22 14:19:03.293.
+	 Executed 13 tests, with 0 failures (0 unexpected) in 0.008 (0.009) seconds
+Test Suite 'module-bKitTests.xctest' passed at 2026-11-22 14:19:03.293.
+	 Executed 13 tests, with 0 failures (0 unexpected) in 0.008 (0.009) seconds
+Test Suite 'Selected tests' passed at 2026-11-22 14:19:03.293.
+	 Executed 13 tests, with 0 failures (0 unexpected) in 0.008 (0.009) seconds

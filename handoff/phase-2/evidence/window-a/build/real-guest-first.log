@@ -1,0 +1,31 @@
+Building for debugging...
+[1 / 3]
+Build complete! (0.25秒)
+Test Suite 'Selected tests' started at 2026-11-22 14:11:54.923.
+Test Suite 'module-bKitTests.xctest' started at 2026-11-22 14:11:54.923.
+Test Suite 'UTMInteractiveRealTests' started at 2026-11-22 14:11:54.923.
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealDesktopGUIArgumentsExitAndCancellationWhenConfigured]' started.
+<WORKSPACE>/module-b/module-bKit/Tests/module-bKitTests/UTMInteractiveRealTests.swift:351: error: -[module-bKitTests.UTMInteractiveRealTests testRealDesktopGUIArgumentsExitAndCancellationWhenConfigured] : failed: caught error: "helperFailure(code: "targetTreeExitMismatch", win32Error: Optional(13))"
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealDesktopGUIArgumentsExitAndCancellationWhenConfigured]' failed (14.059 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealElevationRequirementIsExplicitWhenConfigured]' started.
+<WORKSPACE>/module-b/module-bKit/Tests/module-bKitTests/UTMInteractiveRealTests.swift:290: error: -[module-bKitTests.UTMInteractiveRealTests testRealElevationRequirementIsExplicitWhenConfigured] : failed - The medium-integrity desktop helper must report the elevation requirement.
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealElevationRequirementIsExplicitWhenConfigured]' failed (6.933 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealExplicitComputeRoundtripTimeoutCancellationAndErrorsWhenConfigured]' started.
+<WORKSPACE>/module-b/module-bKit/Tests/module-bKitTests/UTMInteractiveRealTests.swift:351: error: -[module-bKitTests.UTMInteractiveRealTests testRealExplicitComputeRoundtripTimeoutCancellationAndErrorsWhenConfigured] : failed: caught error: "helperFailure(code: "targetTreeExitMismatch", win32Error: Optional(13))"
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealExplicitComputeRoundtripTimeoutCancellationAndErrorsWhenConfigured]' failed (62.320 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealInstallerStyleWindowWhenConfigured]' started.
+<WORKSPACE>/module-b/module-bKit/Tests/module-bKitTests/UTMInteractiveRealTests.swift:351: error: -[module-bKitTests.UTMInteractiveRealTests testRealInstallerStyleWindowWhenConfigured] : failed: caught error: "helperFailure(code: "targetTreeExitMismatch", win32Error: Optional(13))"
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealInstallerStyleWindowWhenConfigured]' failed (9.032 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealParentExitPreservesChildTreeAndCancellationWhenConfigured]' started.
+<WORKSPACE>/module-b/module-bKit/Tests/module-bKitTests/UTMInteractiveRealTests.swift:351: error: -[module-bKitTests.UTMInteractiveRealTests testRealParentExitPreservesChildTreeAndCancellationWhenConfigured] : failed: caught error: "helperFailure(code: "targetTreeExitMismatch", win32Error: Optional(13))"
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealParentExitPreservesChildTreeAndCancellationWhenConfigured]' failed (9.184 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealPrelaunchCancellationSuppressesLateTargetWhenConfigured]' started.
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealPrelaunchCancellationSuppressesLateTargetWhenConfigured]' passed (2.416 seconds).
+Test Suite 'UTMInteractiveRealTests' failed at 2026-11-22 14:13:38.869.
+	 Executed 6 tests, with 5 failures (4 unexpected) in 103.945 (103.946) seconds
+Test Suite 'module-bKitTests.xctest' failed at 2026-11-22 14:13:38.869.
+	 Executed 6 tests, with 5 failures (4 unexpected) in 103.945 (103.946) seconds
+Test Suite 'Selected tests' failed at 2026-11-22 14:13:38.869.
+	 Executed 6 tests, with 5 failures (4 unexpected) in 103.945 (103.946) seconds
+Note: Some test targets reported failures:
+  - module-bKitTests (XCTest)

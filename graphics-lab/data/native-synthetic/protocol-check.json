@@ -1,0 +1,33 @@
+{
+  "command_cache_retained_between_updates": true,
+  "contiguous_frame_sequences": true,
+  "frames_per_session": [
+    110,
+    110,
+    110,
+    65,
+    65,
+    65
+  ],
+  "invalid_handshake_rejected": true,
+  "measured_frames": [
+    90,
+    90,
+    90,
+    60,
+    60,
+    60
+  ],
+  "resource_cache_retained_between_updates": true,
+  "source": "Receiver JSONL plus successful sender/analyzer runs; includes command/resource 30-frame cadence session; invalid handshake was a separate deliberately malformed request.",
+  "valid_session_after_invalid_handshake": true,
+  "valid_sessions": 6,
+  "warmup_frames": [
+    20,
+    20,
+    20,
+    5,
+    5,
+    5
+  ]
+}

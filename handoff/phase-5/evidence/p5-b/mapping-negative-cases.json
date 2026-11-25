@@ -1,0 +1,85 @@
+[
+  {
+    "name": "unaligned_pointer",
+    "process_exit": 0,
+    "runtime_report": {
+      "allocationScope": "virtual_address_mapping_not_fully_committed_RAM",
+      "configurationValidated": true,
+      "deviceCreated": true,
+      "driverNegotiated": false,
+      "guestScope": "isolated_diskless_EFI_fixture_not_Windows",
+      "guestStarted": true,
+      "guestStopped": true,
+      "mappings": [
+        {
+          "bytes": 16384,
+          "errorCode": 10,
+          "errorDomain": "VZErrorDomain",
+          "name": "unaligned_pointer",
+          "succeeded": false
+        }
+      ],
+      "owner": "@DNPMBHC",
+      "pageSize": 16384,
+      "regionApertureBytes": 17179869184,
+      "regionCount": 1
+    }
+  },
+  {
+    "name": "unaligned_offset",
+    "process_exit": 0,
+    "runtime_report": {
+      "allocationScope": "virtual_address_mapping_not_fully_committed_RAM",
+      "configurationValidated": true,
+      "deviceCreated": true,
+      "driverNegotiated": false,
+      "guestScope": "isolated_diskless_EFI_fixture_not_Windows",
+      "guestStarted": true,
+      "guestStopped": true,
+      "mappings": [
+        {
+          "bytes": 16384,
+          "errorCode": 10,
+          "errorDomain": "VZErrorDomain",
+          "name": "unaligned_offset",
+          "succeeded": false
+        }
+      ],
+      "owner": "@DNPMBHC",
+      "pageSize": 16384,
+      "regionApertureBytes": 17179869184,
+      "regionCount": 1
+    }
+  },
+  {
+    "name": "unaligned_length",
+    "process_exit": 0,
+    "runtime_report": {
+      "allocationScope": "virtual_address_mapping_not_fully_committed_RAM",
+      "configurationValidated": true,
+      "deviceCreated": true,
+      "driverNegotiated": false,
+      "guestScope": "isolated_diskless_EFI_fixture_not_Windows",
+      "guestStarted": true,
+      "guestStopped": true,
+      "mappings": [
+        {
+          "bytes": 16383,
+          "errorCode": 10,
+          "errorDomain": "VZErrorDomain",
+          "name": "unaligned_length",
+          "succeeded": false
+        }
+      ],
+      "owner": "@DNPMBHC",
+      "pageSize": 16384,
+      "regionApertureBytes": 17179869184,
+      "regionCount": 1
+    }
+  },
+  {
+    "exception": "*** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: '*** -[VZVirtioSharedMemoryRegion mapMemory:atOffset:size:completionHandler:]: Invalid offset and size'",
+    "name": "outside_region",
+    "process_exit": -6
+  }
+]

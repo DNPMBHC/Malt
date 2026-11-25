@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "scope": "local-static-and-synthetic-model-only",
+  "guest_operations_performed": false,
+  "powershell_parser_run": false,
+  "powershell_available_locally": false,
+  "task_scheduler_runtime_verified": false,
+  "uia_runtime_verified": false,
+  "chinese_uia_retrieval_verified": false,
+  "worker_cleanup_runtime_verified": false,
+  "check_count": 31,
+  "passed_count": 31,
+  "checks": [
+    {
+      "check": "worker-quote-comment-delimiter-balance",
+      "passed": true
+    },
+    {
+      "check": "worker-no-private-path-literal",
+      "passed": true
+    },
+    {
+      "check": "worker-no-email-literal",
+      "passed": true
+    },
+    {
+      "check": "dispatch-quote-comment-delimiter-balance",
+      "passed": true
+    },
+    {
+      "check": "dispatch-no-private-path-literal",
+      "passed": true
+    },
+    {
+      "check": "dispatch-no-email-literal",
+      "passed": true
+    },
+    {
+      "check": "no-memory-injection-or-keyboard-api",
+      "passed": true
+    },
+    {
+      "check": "input-fields-excluded-from-private-action-map",
+      "passed": true
+    },
+    {
+      "check": "explicit-action-generation-and-identity-guards",
+      "passed": true
+    },
+    {
+      "check": "empty-captures-incomplete",
+      "passed": true
+    },
+    {
+      "check": "dead-root-not-seeded",
+      "passed": true
+    },
+    {
+      "check": "descendant-parent-birthtime-guard",
+      "passed": true
+    },
+    {
+      "check": "returned-root-identity-guard",
+      "passed": true
+    },
+    {
+      "check": "hashset-return-preserved",
+      "passed": true
+    },
+    {
+      "check": "exclusive-dispatch-lock",
+      "passed": true
+    },
+    {
+      "check": "prior-worker-exit-required-even-without-task-registration",
+      "passed": true
+    },
+    {
+      "check": "launch-and-capture-task-uri-separated",
+      "passed": true
+    },
+    {
+      "check": "launch-task-time-limit-unlimited",
+      "passed": true
+    },
+    {
+      "check": "timeout-stops-specific-non-launch-task",
+      "passed": true
+    },
+    {
+      "check": "worker-exit-identity-includes-birthtime",
+      "passed": true
+    },
+    {
+      "check": "unstarted-fallback-only-after-cancellation",
+      "passed": true
+    },
+    {
+      "check": "public-failure-does-not-export-exception-message",
+      "passed": true
+    },
+    {
+      "check": "synthetic-model-dead-root-retains-bound-child-only",
+      "passed": true
+    },
+    {
+      "check": "synthetic-model-reused-root-birthtime-rejected",
+      "passed": true
+    },
+    {
+      "check": "synthetic-model-live-original-root-keeps-current-descendants",
+      "passed": true
+    },
+    {
+      "check": "synthetic-model-child-born-before-bound-parent-excluded",
+      "passed": true
+    },
+    {
+      "check": "synthetic-model-reused-known-child-birthtime-rejected",
+      "passed": true
+    },
+    {
+      "check": "ipv4-evaluator-validity-guard",
+      "passed": true
+    },
+    {
+      "check": "synthetic-model-version-preserved",
+      "passed": true
+    },
+    {
+      "check": "synthetic-model-documentation-ipv4-masked",
+      "passed": true
+    },
+    {
+      "check": "synthetic-model-invalid-ipv4-preserved",
+      "passed": true
+    }
+  ]
+}

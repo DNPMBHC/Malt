@@ -1,0 +1,17 @@
+Building for debugging...
+[1 / 5]
+Build complete! (0.24秒)
+Test Suite 'Selected tests' started at 2026-11-22 14:26:26.686.
+Test Suite 'module-bKitTests.xctest' started at 2026-11-22 14:26:26.687.
+Test Suite 'UTMInteractiveRealTests' started at 2026-11-22 14:26:26.687.
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealDesktopGUIArgumentsExitAndCancellationWhenConfigured]' started.
+<WORKSPACE>/module-b/module-bKit/Tests/module-bKitTests/UTMInteractiveRealTests.swift:30: error: -[module-bKitTests.UTMInteractiveRealTests testRealDesktopGUIArgumentsExitAndCancellationWhenConfigured] : XCTAssertTrue failed
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealDesktopGUIArgumentsExitAndCancellationWhenConfigured]' failed (12.077 seconds).
+Test Suite 'UTMInteractiveRealTests' failed at 2026-11-22 14:26:38.764.
+	 Executed 1 test, with 1 failure (0 unexpected) in 12.077 (12.077) seconds
+Test Suite 'module-bKitTests.xctest' failed at 2026-11-22 14:26:38.764.
+	 Executed 1 test, with 1 failure (0 unexpected) in 12.077 (12.077) seconds
+Test Suite 'Selected tests' failed at 2026-11-22 14:26:38.764.
+	 Executed 1 test, with 1 failure (0 unexpected) in 12.077 (12.078) seconds
+Note: Some test targets reported failures:
+  - module-bKitTests (XCTest)

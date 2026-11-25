@@ -1,0 +1,26 @@
+{
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-24T07:21:00.494771+00:00",
+  "status": "deferred",
+  "deferral_reason": "user_directed_next_phase_validation",
+  "requirements_evaluated": false,
+  "official_installer_trust_verified": true,
+  "official_installer_session_one_started": true,
+  "official_client_installation_completed": false,
+  "human_C_login_confirmed": false,
+  "game_launched": false,
+  "missing_graphics_or_dx11_error": "not_observed_game_not_launched",
+  "game_adapter_ram_check": "unknown",
+  "lobby_or_training_3d": "not_tested",
+  "exact_game_dialog_text": null,
+  "game_dialog_screenshot": null,
+  "natural_game_root_exit_code": null,
+  "installer_closeout_is_game_exit_evidence": false,
+  "evidence_refs": [
+    "official-installer-own-guest-trust.json",
+    "official-installer-session.json",
+    "official-installer-closeout.json",
+    "own-cleanup-proof.json"
+  ],
+  "next_phase_ref": "next-phase-validation.md"
+}

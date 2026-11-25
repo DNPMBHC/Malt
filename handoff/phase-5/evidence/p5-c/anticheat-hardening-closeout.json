@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0.0",
+  "gate_id": "phase-3-b-anticheat-abuse-hardening-audit",
+  "result": "passed",
+  "targets_verified": {
+    "Whisky": {
+      "Debug": {
+        "config_id": "6E40497829CCA19D006E3F1B",
+        "bundle_id": "com.isaacmarovitz.Whisky",
+        "hardened_runtime_enabled": true
+      },
+      "Release": {
+        "config_id": "6E40497929CCA19D006E3F1B",
+        "bundle_id": "com.isaacmarovitz.Whisky",
+        "hardened_runtime_enabled": true
+      }
+    },
+    "WhiskyCmd": {
+      "Debug": {
+        "config_id": "6E70A49C2A9A2197007799E9",
+        "bundle_id": "com.isaacmarovitz.WhiskyCmd",
+        "hardened_runtime_enabled": true
+      },
+      "Release": {
+        "config_id": "6E70A49D2A9A2197007799E9",
+        "bundle_id": "com.isaacmarovitz.WhiskyCmd",
+        "hardened_runtime_enabled": true
+      }
+    },
+    "WhiskyThumbnail": {
+      "Debug": {
+        "config_id": "6EFDF6582AAE2DA800EF622F",
+        "bundle_id": "com.isaacmarovitz.Whisky.WhiskyThumbnail",
+        "hardened_runtime_enabled": true
+      },
+      "Release": {
+        "config_id": "6EFDF6592AAE2DA800EF622F",
+        "bundle_id": "com.isaacmarovitz.Whisky.WhiskyThumbnail",
+        "hardened_runtime_enabled": true
+      }
+    }
+  },
+  "entitlements_verified": {
+    "<workspace>/Whisky/Modules/vz-gpu-bridge/vz_bridge.entitlements": {
+      "allowed_keys": [
+        "com.apple.security.virtualization"
+      ],
+      "forbidden_keys_present": []
+    },
+    "<workspace>/Whisky/Whisky/Whisky.entitlements": {
+      "allowed_keys": [
+        "com.apple.security.automation.apple-events",
+        "com.apple.security.device.audio-input",
+        "com.apple.security.device.camera"
+      ],
+      "forbidden_keys_present": []
+    },
+    "<workspace>/Whisky/WhiskyThumbnail/WhiskyThumbnail.entitlements": {
+      "allowed_keys": [
+        "com.apple.security.app-sandbox",
+        "com.apple.security.files.user-selected.read-only"
+      ],
+      "forbidden_keys_present": []
+    }
+  },
+  "production_source_count": 130,
+  "production_source_fingerprint_sha256": "4ad588ac73294208c48beea6e5486029f3f5633c1e7149022c26ef766344dc3f",
+  "forbidden_primitive_categories_checked": {
+    "memory_tampering_or_injection": 14,
+    "virtualization_or_hwid_spoofing": 5,
+    "debug_port_or_macro_injection": 8
+  },
+  "forbidden_entitlements_checked": [
+    "com.apple.security.get-task-allow",
+    "com.apple.security.cs.allow-dyld-environment-variables",
+    "com.apple.security.cs.disable-library-validation",
+    "com.apple.security.cs.disable-executable-page-protection",
+    "com.apple.security.cs.allow-unsigned-executable-memory",
+    "com.apple.security.cs.allow-jit"
+  ],
+  "violations": [],
+  "negative_self_tests_passed": 6,
+  "owner": "@DNPMBHC"
+}

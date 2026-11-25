@@ -1,0 +1,28 @@
+{
+  "owner": "@DNPMBHC",
+  "status": "released",
+  "released_at": "2026-11-24T04:01:12.236415+00:00",
+  "verified_at": "2026-11-24T05:01:54.809818+00:00",
+  "next_window": "5C",
+  "isolated_clone_deleted": true,
+  "owned_runtime_deleted": true,
+  "host_only_runtime_cleanup_pending": false,
+  "shared_directory_disabled": true,
+  "writable_disks_contained": true,
+  "source_sha256_and_mtime_unchanged": true,
+  "source_status": "stopped",
+  "pre_delete_runtime_isolation": {
+    "source_registration_state": "stopped",
+    "source_runtime_absent_verified": true,
+    "all_hypervisor_workers_bound_to_owned_clone": true,
+    "root_pids": [],
+    "worker_count": 0,
+    "captured_at_utc": "2026-11-24T04:00:41.851549+00:00",
+    "method": "live executable inventory, package and UUID arguments, descendant binding"
+  },
+  "evidence_refs": [
+    "vm-source-before.json",
+    "vm-source-after.json",
+    "vm-cleanup-proof.json"
+  ]
+}

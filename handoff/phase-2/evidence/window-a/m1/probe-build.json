@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "contributor": "@DNPMBHC",
+  "scope": "explicitComputeInterfaceOnly",
+  "transparentPEMigration": false,
+  "probeArchitecture": "x86_64",
+  "compiler": "x86_64-w64-mingw32-g++ (GCC) 16.2.0",
+  "compileFlags": [
+    "-std=c++17",
+    "-O2",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-static",
+    "-static-libgcc",
+    "-static-libstdc++",
+    "compute-probe.cpp",
+    "-lws2_32",
+    "-o",
+    "compute-probe.exe"
+  ],
+  "compileExitCode": 0,
+  "imports": [
+    "KERNEL32.dll",
+    "api-ms-win-crt-convert-l1-1-0.dll",
+    "api-ms-win-crt-environment-l1-1-0.dll",
+    "api-ms-win-crt-filesystem-l1-1-0.dll",
+    "api-ms-win-crt-heap-l1-1-0.dll",
+    "api-ms-win-crt-locale-l1-1-0.dll",
+    "api-ms-win-crt-math-l1-1-0.dll",
+    "api-ms-win-crt-private-l1-1-0.dll",
+    "api-ms-win-crt-runtime-l1-1-0.dll",
+    "api-ms-win-crt-stdio-l1-1-0.dll",
+    "api-ms-win-crt-string-l1-1-0.dll",
+    "api-ms-win-crt-time-l1-1-0.dll",
+    "api-ms-win-crt-utility-l1-1-0.dll",
+    "WS2_32.dll"
+  ],
+  "artifacts": {
+    "compute-probe.cpp": "fde4ea7e27207fceb07c1ffd8b68d1a26c51360bf39bab8113838cca289e0284",
+    "compute-probe.exe": "16777e86734d7305766d3107c0c5528aa1f05b73e7cbb61cf71dcab46ebc5370"
+  },
+  "syntheticTests": "implemented_pending_root_run",
+  "realGuestValidation": "not_run_pending_guest_access"
+}

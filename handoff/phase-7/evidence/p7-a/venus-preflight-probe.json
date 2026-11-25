@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-24T11:20:53.169367+00:00",
+  "dxvk_version": "2.5.3",
+  "neptune_umd": {
+    "label": "neptune",
+    "push_dxvk": false,
+    "exit_code": 0,
+    "meta": {
+      "schema_version": 1,
+      "requested_driver_type": "hardware",
+      "device_create_hresult": "0x00000000",
+      "device_create_attempts": [
+        "0x00000000"
+      ],
+      "adapter_get_desc1_hresult": "0x00000000",
+      "adapter_description": "Red Hat VirtIO GPU 3D controller",
+      "vendor_id": 6900,
+      "device_id": 4176,
+      "adapter_flags": 0,
+      "adapter_is_software": false,
+      "selected_feature_level": "11_1",
+      "selected_feature_level_value": "0x0000b100",
+      "windows_session_id": 1,
+      "session_api_success": true,
+      "session_api_error": 0,
+      "transport_mode": "direct_present",
+      "offload_mode": "pixel-readback",
+      "completion_mode": "gpu-complete",
+      "width": 1280,
+      "height": 720,
+      "commands": 16,
+      "resource_bytes": 65536,
+      "command_every": 30,
+      "resource_every": 30,
+      "resource_pattern": "legacy",
+      "seed": 1,
+      "capture_requested": true,
+      "capture_frame": 0,
+      "enumerated_adapters": [
+        {
+          "adapter_description": "Red Hat VirtIO GPU 3D controller",
+          "vendor_id": 6900,
+          "device_id": 4176,
+          "adapter_flags": 0,
+          "adapter_is_software": false
+        },
+        {
+          "adapter_description": "Microsoft Basic Render Driver",
+          "vendor_id": 5140,
+          "device_id": 140,
+          "adapter_flags": 2,
+          "adapter_is_software": true
+        }
+      ],
+      "adapter_enumeration_hresult": "0x00000000"
+    },
+    "pixel_compare": {
+      "max_channel_error_lsb": 0,
+      "over_threshold_pixels": 0,
+      "byte_exact_match": true
+    },
+    "fps": 143.823,
+    "mean_frame_ms": 6.953,
+    "p95_frame_ms": 9.561,
+    "stderr_head": "d3d11_probe.exe : neptune: virtgpu: KMD mode WDDM2 (GpuMmu)\nAt C:\\p7a-probe-neptune\\run.ps1:6 char:3\n+   & 'C:\\p7a-probe-neptune\\d3d11_probe.exe' --frames 1 --warmup 0 --wi ...\n+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : NotSpecified: (neptune: virtgp... WDDM2 (GpuMmu):String) [], Remote \n   Exception\n    + FullyQualifiedErrorId : NativeCommandError\n \nneptune: virtgpu: kernel context virtual (native WDDM2 submit)\nneptune: virtgpu: renderer ready (wire=0x00000002, caps=0x00000041, max_timeline=64)\nneptune: Neptune device created successfully\nprobe_metadata_json={\"schema_version\":1,\"requested_driver_type\":\"hardware\",\"device_create_hresult\"\n:\"0x00000000\",\"device_create_attempts\":[\"0x00000000\"],\"adapter_get_desc1_hresult\":\"0x00000000\",\"ad\napter_description\":\"Red Hat VirtIO GPU 3D controller\",\"vendor_id\":6900,\"device_id\":4176,\"adapter_f\nlags\":0,\"adapter_is_software\":false,\"selected_feature_level\":\"11_1\",\"selected_feature_level_value\"\n<redacted-sensitive-line>\node\":\"direct_present\",\"offload_mode\":\"pixel-readback\",\"completion_mode\":\"gpu-complete\",\"width\":128\n0,\"height\":720,\"commands\":16,\"resource_bytes\":65536,\"command_every\":30,\"resource_every\":30,\"resour\nce_pattern\":\"legacy\",\"seed\":1,\"capture_requested\":true,\"capture_frame\":0,\"enumerated_adapters\":[{\"\nadapter_description\":\"Red Hat VirtIO GPU 3D controller\",\"vendor_id\":6900,\"device_id\":4176,\"adapter\n_flags\":0,\"adapter_is_software\":false},{\"adapter_description\":\"Microsoft Basic Render Driver\",\"ven\ndor_id\":5140,\"device_id\":140,\"adapter_flags\":2,\"adapter_is_software\":true}],\"adapter_enumeration_h\nresult\":\"0x00000000\"}\nprobe_ready_ms=437.397\nprobe_completion_json={\"measured_frames\":1,\"measurement_wall_ms\":189.836000,\"throughput_including_\ngpu_drain_fps\":5.267705,\"completion_mode\":\"gpu-complete\",\"post_measurement_query_collection_ms\":0.\n213000,\"completion_scope\":\"gpu-command-complete-not-screen-display\"}\nd3d11_probe.exe : neptune: virtgpu: KMD mode WDDM2 (GpuMmu)\nAt C:\\p7a-probe-neptune\\run.ps1:9 char:5\n+     & 'C:\\p7a-probe-neptune\\d3d11_probe.exe' --frames 300 --warmup 60 ..."
+  },
+  "dxvk_venus": {
+    "label": "dxvk",
+    "push_dxvk": true,
+    "exit_code": 0,
+    "meta": {
+      "schema_version": 1,
+      "requested_driver_type": "hardware",
+      "device_create_hresult": "0x00000000",
+      "device_create_attempts": [
+        "0x00000000"
+      ],
+      "adapter_get_desc1_hresult": "0x00000000",
+      "adapter_description": "Virtio-GPU Venus (Apple M4)",
+      "vendor_id": 4203,
+      "device_id": 453116425,
+      "adapter_flags": 0,
+      "adapter_is_software": false,
+      "selected_feature_level": "11_0",
+      "selected_feature_level_value": "0x0000b000",
+      "windows_session_id": 1,
+      "session_api_success": true,
+      "session_api_error": 0,
+      "transport_mode": "direct_present",
+      "offload_mode": "pixel-readback",
+      "completion_mode": "gpu-complete",
+      "width": 1280,
+      "height": 720,
+      "commands": 16,
+      "resource_bytes": 65536,
+      "command_every": 30,
+      "resource_every": 30,
+      "resource_pattern": "legacy",
+      "seed": 1,
+      "capture_requested": true,
+      "capture_frame": 0,
+      "enumerated_adapters": [
+        {
+          "adapter_description": "Virtio-GPU Venus (Apple M4)",
+          "vendor_id": 4203,
+          "device_id": 453116425,
+          "adapter_flags": 0,
+          "adapter_is_software": false
+        }
+      ],
+      "adapter_enumeration_hresult": "0x00000000"
+    },
+    "pixel_compare": {
+      "max_channel_error_lsb": 0,
+      "over_threshold_pixels": 0,
+      "byte_exact_match": true
+    },
+    "fps": 62.438,
+    "mean_frame_ms": 16.016,
+    "p95_frame_ms": 17.529,
+    "dxvk_logs": {
+      "d3d11_probe_d3d11.log": "warn:  D3D11DeviceFeatures: Some formats not supported for resource sharing\ninfo:  D3D11InternalCreateDevice: Maximum supported feature level: D3D_FEATURE_LEVEL_11_0\ninfo:  D3D11InternalCreateDevice: Using feature level D3D_FEATURE_LEVEL_11_0\ninfo:  Device properties:\ninfo:    Device : Virtio-GPU Venus (Apple M4)\ninfo:    Driver : venus 26.0.99\ninfo:  Enabled device extensions:\ninfo:    VK_EXT_extended_dynamic_state3\ninfo:    VK_EXT_fragment_shader_interlock\ninfo:    VK_EXT_hdr_metadata\ninfo:    VK_EXT_line_rasterization\ninfo:    VK_EXT_robustness2\ninfo:    VK_EXT_shader_stencil_export\ninfo:    VK_EXT_swapchain_maintenance1\ninfo:    VK_EXT_transform_feedback\ninfo:    VK_EXT_vertex_attribute_divisor\ninfo:    VK_KHR_external_memory_win32\ninfo:    VK_KHR_external_semaphore_win32\ninfo:    VK_KHR_maintenance5\ninfo:    VK_KHR_swapchain\ninfo:    VK_KHR_win32_keyed_mutex\ninfo:  Device features:\ninfo:    robustBufferAccess                     : 1\ninfo:    fullDrawIndexUint32                    : 1\ninfo:    imageCubeArray                         : 1\ninfo:    independentBlend                       : 1\ninfo:    geometryShader                         : 1\ninfo:    tessellationShader                     : 1\ninfo:    sampleRateShading                      : 1\ninfo:    dualSrcBlend                           : 1\ninfo:    logicOp                                : 0\ninfo:    multiDrawIndirect                      : 1\ninfo:    drawIndirectFirstInstance              : 1\ninfo:    depthClamp                             : 1\ninfo:    depthBiasClamp                         : 1\ninfo:    fillModeNonSolid                       : 1\ninfo:    depthBounds                            : 0\ninfo:    wideLines                              : 0\ninfo:    multiViewport                          : 1\ninfo:    samplerAnisotropy                      : 1\ninfo:    textureCompressionBC                   : 1\ninfo:    occlusionQueryPrecise                  : 1\ninfo:    pipelineStatisticsQuery                : 0\ninfo:    vertexPipelineStoresAndAtomics         : 1\ninfo:    fragmentStoresAndAtomics               : 1\ninfo:    shaderImageGatherExtended              : 1\ninfo:    shaderClipDistance                     : 1\ninfo:    shaderCullDistance                     : 1\ninfo:    shaderFloat64                          : 0\ninfo:    shaderInt64                            : 1\ninfo:    variableMultisampleRate                : 0\ninfo:    shaderResourceResidency                : 0\ninfo:    shaderResourceMinLod                   : 1\ninfo:    sparseBinding                          : 0\ninfo:    sparseResidencyBuffer                  : 0\ninfo:    sparseResidencyImage2D                 : 0\ninfo:    sparseResidencyImage3D                 : 0\ninfo:    sparseResidency2Samples                : 0\ninfo:    sparseResidency4Samples                : 0\ninfo:    sparseResidency8Samples                : 0",
+      "d3d11_probe_dxgi.log": "info:  Game: d3d11_probe.exe\ninfo:  DXVK: v2.5.3\ninfo:  Build: x86_64 gcc 14.2.0\ninfo:  Vulkan: Found vkGetInstanceProcAddr in vulkan-1.dll @ 0x7ffa15ae9ba0\ninfo:  Built-in extension providers:\ninfo:    Platform WSI\ninfo:    OpenVR\ninfo:    OpenXR\ninfo:  OpenVR: could not open registry key, status 2\ninfo:  OpenVR: Failed to locate module\ninfo:  Enabled instance extensions:\ninfo:    VK_EXT_surface_maintenance1\ninfo:    VK_KHR_get_surface_capabilities2\ninfo:    VK_KHR_surface\ninfo:    VK_KHR_win32_surface\ninfo:  Virtio-GPU Venus (Apple M4):\ninfo:    Driver : venus 26.0.99\ninfo:    Memory Heap[0]: \ninfo:      Size: 16384 MiB\ninfo:      Flags: 0x1\ninfo:      Memory Type[0]: Property Flags = 0x1\ninfo:      Memory Type[1]: Property Flags = 0xf\ninfo:      Memory Type[2]: Property Flags = 0x11\ninfo:  Virtio-GPU Venus (Apple M4):\ninfo:    Driver : venus 26.0.99\ninfo:    Memory Heap[0]: \ninfo:      Size: 16384 MiB\ninfo:      Flags: 0x1\ninfo:      Memory Type[0]: Property Flags = 0x1\ninfo:      Memory Type[1]: Property Flags = 0xf\ninfo:      Memory Type[2]: Property Flags = 0x11\nerr:   getMonitorEdid: Failed to load functions from setupapi.\nerr:   DXGI: Failed to parse display metadata + colorimetry info, using blank."
+    },
+    "stderr_head": "d3d11_probe.exe : info:  Game: d3d11_probe.exe\nAt C:\\p7a-probe-dxvk\\run.ps1:6 char:3\n+   & 'C:\\p7a-probe-dxvk\\d3d11_probe.exe' --frames 1 --warmup 0 --width ...\n+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : NotSpecified: (info:  Game: d3d11_probe.exe:String) [], RemoteExcep \n   tion\n    + FullyQualifiedErrorId : NativeCommandError\n \ninfo:  DXVK: v2.5.3\ninfo:  Build: x86_64 gcc 14.2.0\ninfo:  Vulkan: Found vkGetInstanceProcAddr in vulkan-1.dll @ 0x7ffa15ae9ba0\ninfo:  Built-in extension providers:\ninfo:    Platform WSI\ninfo:    OpenVR\ninfo:    OpenXR\ninfo:  OpenVR: could not open registry key, status 2\ninfo:  OpenVR: Failed to locate module\ninfo:  Enabled instance extensions:\ninfo:    VK_EXT_surface_maintenance1\ninfo:    VK_KHR_get_surface_capabilities2\ninfo:    VK_KHR_surface\ninfo:    VK_KHR_win32_surface\ninfo:  Virtio-GPU Venus (Apple M4):\ninfo:    Driver : venus 26.0.99\ninfo:    Memory Heap[0]: \ninfo:      Size: 16384 MiB\ninfo:      Flags: 0x1\ninfo:      Memory Type[0]: Property Flags = 0x1\ninfo:      Memory Type[1]: Property Flags = 0xf\ninfo:      Memory Type[2]: Property Flags = 0x11"
+  }
+}

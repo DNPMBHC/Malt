@@ -1,0 +1,31 @@
+{
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-24T02:09:13.421298+00:00",
+  "previous_goal_turn_classification": "progress",
+  "current_goal_turn_classification": "progress",
+  "new_authoritative_evidence": [
+    "guest-runtime-probe-readiness.json",
+    "cross-window-readiness.json",
+    "a-dependency-check.json"
+  ],
+  "vm_handoff_check": {
+    "owner": "@DNPMBHC",
+    "vm_allowed": false,
+    "reason": "phase5a_lease_not_released"
+  },
+  "requirements_still_unproven": [
+    "system_dpi_scale_apply_and_restore",
+    "signed_real_guest_scanout_and_relative_hid",
+    "headless_guest_native_fullscreen_e2e",
+    "target_cn_exact_popup_exit_and_3d_checks",
+    "independent_clone_cleanup"
+  ],
+  "goal_complete": false,
+  "a_latest_turn_status": "inProgress",
+  "verified_live_wait_at_final": true,
+  "awaiting_user_input": null,
+  "awaiting_dependency": [
+    "phase5a_current_lease_release_and_clone_cleanup",
+    "real_guest_scanout_and_legal_relative_hid"
+  ]
+}
