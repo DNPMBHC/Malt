@@ -1,5 +1,5 @@
 diff --git a/Sources/CocoaSpiceRenderer/CSMetalRenderer.m b/Sources/CocoaSpiceRenderer/CSMetalRenderer.m
-index 9c7bad9..d592277 100644
+index 9c7bad9..202124d 100644
 --- a/Sources/CocoaSpiceRenderer/CSMetalRenderer.m
 +++ b/Sources/CocoaSpiceRenderer/CSMetalRenderer.m
 @@ -109,6 +109,9 @@ @implementation CSMetalRenderer
@@ -7,20 +7,35 @@ index 9c7bad9..d592277 100644
      // The command Queue from which we'll obtain command buffers
      id<MTLCommandQueue> _commandQueue;
 +
-+    // Triple-buffered in-flight frame backpressure semaphore to prevent unbounded GPU queue buildup
++    // Configurable in-flight frame backpressure semaphore (default 2) to minimize present slack while preventing GPU queue buildup
 +    dispatch_semaphore_t _inFlightFramesSemaphore;
  }
  
  @synthesize device = _device;
-@@ -167,6 +170,7 @@ - (nonnull instancetype)initWithMetalKitView:(nonnull MTKView *)mtkView
+@@ -167,6 +170,15 @@ - (nonnull instancetype)initWithMetalKitView:(nonnull MTKView *)mtkView
  
          // Create the command queue
          _commandQueue = [_device newCommandQueue];
-+        _inFlightFramesSemaphore = dispatch_semaphore_create(3);
++        NSInteger maxInFlight = 2;
++        NSString *envInFlight = NSProcessInfo.processInfo.environment[@"UTM_MAX_INFLIGHT_FRAMES"];
++        if (envInFlight.length > 0) {
++            NSInteger parsed = [envInFlight integerValue];
++            if (parsed >= 1 && parsed <= 3) {
++                maxInFlight = parsed;
++            }
++        }
++        _inFlightFramesSemaphore = dispatch_semaphore_create(maxInFlight);
  
          // Sampler
          [self _initializeUpscaler:MTLSamplerMinMagFilterLinear downscaler:MTLSamplerMinMagFilterLinear];
-@@ -274,18 +278,27 @@ static matrix_float4x4 matrix_scale_translate(CGFloat scale, CGPoint translate)
+@@ -271,21 +283,34 @@ static matrix_float4x4 matrix_scale_translate(CGFloat scale, CGPoint translate)
+     return m;
+ }
+ 
++- (BOOL)hasPendingRenderUpdate {
++    return self.renderNeedsUpdate;
++}
++
  /// Called whenever the view needs to render a frame
  - (void)drawInMTKView:(nonnull MTKView *)view
  {
@@ -38,7 +53,7 @@ index 9c7bad9..d592277 100644
 -    const _CSRendererSourceData *sourceData = self.renderSourceData;
 +    dispatch_semaphore_t inFlightSemaphore = _inFlightFramesSemaphore;
 +    if (inFlightSemaphore && dispatch_semaphore_wait(inFlightSemaphore, DISPATCH_TIME_NOW) != 0) {
-+        // Backpressure: GPU still has 3 frames in flight; keep renderNeedsUpdate=YES for next vsync
++        // Backpressure: GPU still has max in-flight frames; keep renderNeedsUpdate=YES for next vsync
 +        return;
 +    }
  
@@ -55,7 +70,7 @@ index 9c7bad9..d592277 100644
          return;
      }
  
-@@ -296,6 +309,13 @@ - (void)drawInMTKView:(nonnull MTKView *)view
+@@ -296,6 +321,13 @@ - (void)drawInMTKView:(nonnull MTKView *)view
  
      // synchronize with rendererQueue in order to access currentCommandBuffer
      id<MTLCommandBuffer> commandBuffer = [_commandQueue commandBuffer];
@@ -69,7 +84,7 @@ index 9c7bad9..d592277 100644
      commandBuffer.label = @"Draw Frame";
  
      [self _renderCommand:commandBuffer
-@@ -308,7 +328,11 @@ - (void)drawInMTKView:(nonnull MTKView *)view
+@@ -308,7 +340,11 @@ - (void)drawInMTKView:(nonnull MTKView *)view
  
      [commandBuffer presentDrawable:currentDrawable];
  
@@ -82,3 +97,17 @@ index 9c7bad9..d592277 100644
          dispatch_async(dispatch_get_main_queue(), ^{
              [self _completeDraw];
          });
+diff --git a/Sources/CocoaSpiceRenderer/include/CSMetalRenderer.h b/Sources/CocoaSpiceRenderer/include/CSMetalRenderer.h
+index 3c71dbf..67b4807 100644
+--- a/Sources/CocoaSpiceRenderer/include/CSMetalRenderer.h
++++ b/Sources/CocoaSpiceRenderer/include/CSMetalRenderer.h
+@@ -34,6 +34,9 @@ NS_ASSUME_NONNULL_BEGIN
+ /// @param downscaler Downscaler to use
+ - (void)changeUpscaler:(MTLSamplerMinMagFilter)upscaler downscaler:(MTLSamplerMinMagFilter)downscaler;
+ 
++/// Whether the renderer has a dirty frame waiting to be drawn
++@property (nonatomic, readonly) BOOL hasPendingRenderUpdate;
++
+ @end
+ 
+ NS_ASSUME_NONNULL_END

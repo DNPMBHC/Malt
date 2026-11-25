@@ -18,7 +18,7 @@
 
 ---
 
-## 2. 五组精准源码改造点（7 份独立且可堆叠补丁）
+## 2. 七组精准源码改造点（9 份独立且可堆叠补丁）
 
 ### 位置 1：默认图形后端锁定 `dxmt-native`（`01-default-dxmt-backend.patch`）
 - **目标文件**：
@@ -64,23 +64,42 @@
   - 新增三路统一触发开关：`config.plist` 的 `Input.PureRelativeMouse = true`（无缝对接窗口 11A 的 `golden_guest_manager.py --pure-relative-mouse`）、`--pure-relative-mouse` CLI 参数与 `UTM_PURE_RELATIVE_MOUSE=1` 环境变量；
   - 开启后跳过注入 `-device usb-tablet,bus=usb-bus.0`，仅保留标准 `-device usb-mouse,bus=usb-bus.0` 与 `-device usb-kbd,bus=usb-bus.0`，从 QEMU/SPICE 源头消除绝对/相对指针混装导致的 `CLIENT/SERVER` 模式冲突。
 
-### 位置 5：宿主机渲染线程 QoS、持久化 DXMT 缓存与帧队列背压（`05-render-thread-qos-and-dxmt-cache.patch` + `05-cocoaspice-frame-backpressure.patch`）
+### 位置 5：宿主机渲染线程 QoS、持久化 DXMT 缓存与低同步延迟呈现管线（`05-render-thread-qos-and-dxmt-cache.patch` + `05-cocoaspice-frame-backpressure.patch`）
 - **目标文件**：
   - `UTM/Services/UTMQemuSystem.m`
   - `UTM/QEMUHelper/QEMUHelper.m`
   - `UTM/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift`
+  - `CocoaSpice/Sources/CocoaSpiceRenderer/include/CSMetalRenderer.h`
   - `CocoaSpice/Sources/CocoaSpiceRenderer/CSMetalRenderer.m`
 - **改造内容**：
-  - 在 `UTMQemuSystem.m` 为 `kQEMUDirectXDriverDXMT` 自动创建并绑定持久化 `DXMT_SHADER_CACHE_PATH`（支持 `UTM_DXMT_SHADER_CACHE_PATH` 覆盖，默认 `~/Library/Caches/dxmt-shader-cache`）并将缓存目录加入 `self.resources` 以支持沙盒权限透传，避免每次重启重复编译着色器引发大场景卡顿；
-  - 在 `QEMUHelper.m` 将启动 `QEMULauncher` / `QEMURenderServer` 的 `task.qualityOfService` 从 `NSQualityOfServiceUserInitiated` 提升至 `NSQualityOfServiceUserInteractive`，优先调度于 Apple Silicon 性能核（P-cores）；
-  - 在 `VMDisplayQemuMetalWindowController.swift` 为 `CAMetalLayer` 配置 `maximumDrawableCount = 3` 与 `allowsNextDrawableTimeout = false`；
-  - 在 `CSMetalRenderer.m` 引入三重缓冲非阻塞背压信号量（`_inFlightFramesSemaphore = dispatch_semaphore_create(3)`）：GPU 排队满 3 帧时直接跳过本次 `drawInMTKView:` 并保留 `renderNeedsUpdate = YES` 等待下次 vsync，待 `addCompletedHandler` 释放信号量，杜绝高帧率大场景下无限制堆积 `MTLCommandBuffer` 引发的宿主机 CPU 空转与内存膨胀。
+  - 在 `UTMQemuSystem.m` 为 `kQEMUDirectXDriverDXMT` 自动创建并绑定持久化 `DXMT_SHADER_CACHE_PATH`（支持 `UTM_DXMT_SHADER_CACHE_PATH` 覆盖，默认 `~/Library/Caches/dxmt-shader-cache`）并将缓存目录加入 `self.resources` 以支持沙盒权限透传；
+  - 在 `QEMUHelper.m` 调用 `pthread_set_qos_class_self_np(QOS_CLASS_USER_INTERACTIVE, 0)` 并将启动 `QEMULauncher` / `QEMURenderServer` 的 `task.qualityOfService` 提升至 `NSQualityOfServiceUserInteractive`，保证 XPC 服务与子进程 QoS 继承，优先调度于 Apple Silicon 性能核（P-cores）；
+  - 在 `VMDisplayQemuMetalWindowController.swift` 为 `CAMetalLayer` 配置 `presentsWithTransaction = false`、可配置 `maximumDrawableCount`（`UTM_METAL_DRAWABLE_COUNT`，默认 `3`）、`allowsNextDrawableTimeout = false`、`UTM_DISPLAY_SYNC_ENABLED` 与 `UTM_RENDER_FPS_LIMIT`（便于无 UI 对照 `0` vs `120`）；在 `CAMetalDisplayLink` 回调先检查 `renderer.hasPendingRenderUpdate` 空帧直接短路跳过 `update.drawable` 获取，压降 Phase 11B 发现的 `2.93 ms` 帧同步 `Slack + Slop`；
+  - 在 `CSMetalRenderer.m` 暴露只读 `hasPendingRenderUpdate` 并引入可配置深度非阻塞背压信号量（`UTM_MAX_INFLIGHT_FRAMES`，默认 `2`，范围 `1..3`），在压低帧排队延迟的同时杜绝高帧率大场景下无限制堆积 `MTLCommandBuffer`。
+
+### 位置 6：高回报率电竞鼠标无损合批器（`06-high-polling-mouse-coalescing.patch`）
+- **目标文件**：`UTM/Platform/macOS/Display/VMMetalView.swift`
+- **改造内容**：
+  - 针对 1000Hz–8000Hz 高回报率电竞鼠标，在 `VMMetalView` 捕获相对位移入口引入可配置时间窗（`UTM_MOUSE_COALESCE_US`，默认 `1500` μs，`0` 关闭，上限 `16000` μs）的无损微位移合批器；
+  - 窗口内线性累加 `(dx, dy)`（0 像素丢失、无加速曲线畸变），到期或超窗统一发送，将 SPICE/QEMU USB HID 中断频率压降 4–8 倍；
+  - 在 `mouseDown` / `rightMouseDown` / `otherMouseDown` / `mouseUp` / `rightMouseUp` / `otherMouseUp` / `scrollWheel` / `releaseMouse` 到达前立即 `flushPendingRelativeMotion()`，保证开枪、开镜与释放瞬间准星零延迟；
+  - 保持 `CGAssociateMouseAndMouseCursorPosition(0)` 原始 Raw Delta。
+
+### 位置 7：macOS 原生游戏模式 + 游戏壳防误触快捷键屏蔽与键位映射（`07-game-shell-key-guard-and-mapping.patch`）
+- **目标文件**：
+  - `UTM/Platform/macOS/Info.plist`
+  - `UTM/Platform/macOS/Display/VMMetalView.swift`
+  - `UTM/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift`
+- **改造内容**：
+  - **macOS 原生 Game Mode**：在 `Info.plist` 声明 `LSApplicationCategoryType = public.app-category.games`、`LSSupportsGameMode = true` 与 `GCSupportsGameMode = true`，进入 `--game-shell-vm` 原生全屏自动触发系统游戏模式，退出自动解除；
+  - **防误触快捷键屏蔽**：游戏壳全屏期（或 `UTM_GAME_SHELL_KEY_GUARD=1`）在 `handleCaptureKeys(for:)` 与 `VMMetalView.performKeyEquivalent(with:)` 双层拦截并吞掉 `Cmd+W`、`Cmd+Q`、`Cmd+H`、`Cmd+M`，杜绝游戏中误关窗/退应用/隐藏/最小化；
+  - **键位映射与安全逃生**：支持 `UTM_BLOCK_WIN_KEY`（游戏壳全屏默认 `1`，可设 `0` 关闭）屏蔽左 `Command` 防误弹 Windows 开始菜单，保持 `Option → Alt` 精准对齐与 `F1–F12` 游戏直通，并严格保留 `Cmd+Option+G` 与 `Cmd+Tab` 最高优先级安全逃生热键。
 
 ---
 
 ## 3. 自动化合规与白名单门禁
 
-所有 7 份补丁必须通过 `graphics-lab/utm_custom_patch_verify.py` 的：
-1. **严格白名单文件范围检查**（仅允许上述 12 个宿主机/渲染层源码文件）；
+所有 9 份补丁必须通过 `graphics-lab/utm_custom_patch_verify.py` 的：
+1. **严格白名单文件范围检查**（仅允许上述 14 个宿主机/渲染层源码与 `Info.plist` 文件）；
 2. **5 类违规模式黑名单拦截**（CPUID/Hypervisor 伪装、SMBIOS/ACPI 伪装、TPM/Secure Boot 篡改、Windows 内核/驱动修改、反作弊/游戏篡改）；
 3. **独立与全量堆叠 `git apply --check` 校验**（0 冲突）。

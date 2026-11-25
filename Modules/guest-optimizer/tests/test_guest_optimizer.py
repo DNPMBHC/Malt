@@ -199,6 +199,22 @@ class GuestOptimizerProfileTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "win32_priority_separation"):
             runner.validate_profile(bad_prio)
 
+    def test_v31_disables_crashing_spice_webdavd_and_clamps_pagefile(self):
+        profile = self.load_profile()
+        self.assertGreaterEqual(profile.get("profile_revision", 1), 4)
+        self.assertEqual(profile.get("profile_version"), "3.1")
+        svc_map = {s["name"]: s for s in profile["optimization_blacklist"]["services"]}
+        self.assertIn("spice-webdavd", svc_map)
+        self.assertEqual(svc_map["spice-webdavd"]["target_start_type"], "Disabled")
+        self.assertTrue(svc_map["spice-webdavd"]["stop_running"])
+        self.assertEqual(
+            profile["gaming_session_controls"]["cpu_and_memory_tuning"]["memory_compression"],
+            "preserve",
+        )
+        apply_text = APPLY_SCRIPT_PATH.read_text(encoding="utf-8")
+        self.assertIn("effective_available_mb", apply_text)
+        self.assertIn("current_pagefile_mb", apply_text)
+
 
 if __name__ == "__main__":
     unittest.main()

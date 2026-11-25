@@ -115,6 +115,8 @@ UTM_PATCHES=(
     "$PATCHES_DIR/03-clean-fullscreen-game-shell.patch"
     "$PATCHES_DIR/04-pure-relative-mouse-option.patch"
     "$PATCHES_DIR/05-render-thread-qos-and-dxmt-cache.patch"
+    "$PATCHES_DIR/06-high-polling-mouse-coalescing.patch"
+    "$PATCHES_DIR/07-game-shell-key-guard-and-mapping.patch"
 )
 SPICE_PATCHES=(
     "$PATCHES_DIR/02-cocoaspice-cursor-overlay.patch"
@@ -126,7 +128,7 @@ python3 -B "$REPO_ROOT/graphics-lab/utm_custom_patch_verify.py" \
     --utm-repo "$UTM_DIR" \
     --cocoaspice-repo "$SPICE_DIR" >/dev/null
 
-echo "[utm-custom] Compliance + standalone/stacked git apply --check passed (5 UTM + 2 CocoaSpice patches)."
+echo "[utm-custom] Compliance + standalone/stacked git apply --check passed (7 UTM + 2 CocoaSpice patches)."
 
 if [ "$CHECK_ONLY" -eq 1 ]; then
     echo "[utm-custom] Check-only completed successfully."
@@ -331,6 +333,13 @@ codesign --force --sign - --entitlements "$ENT_DIR/cli.entitlements" --timestamp
 codesign --force --sign - --entitlements "$ENT_DIR/utm.entitlements" --timestamp=none --options runtime \
     "$OUTPUT_APP/Contents/MacOS/UTM"
 
-echo "[utm-custom] Verifying code signature and patch markers..."
+echo "[utm-custom] Verifying code signature, Game Mode Info.plist keys, and patch markers..."
 codesign --verify --deep --strict "$OUTPUT_APP"
-echo "[utm-custom] Build succeeded: $OUTPUT_APP"
+APP_CATEGORY=$(/usr/libexec/PlistBuddy -c "Print :LSApplicationCategoryType" "$OUTPUT_APP/Contents/Info.plist")
+LS_GAME_MODE=$(/usr/libexec/PlistBuddy -c "Print :LSSupportsGameMode" "$OUTPUT_APP/Contents/Info.plist")
+GC_GAME_MODE=$(/usr/libexec/PlistBuddy -c "Print :GCSupportsGameMode" "$OUTPUT_APP/Contents/Info.plist")
+if [ "$APP_CATEGORY" != "public.app-category.games" ] || [ "$LS_GAME_MODE" != "true" ] || [ "$GC_GAME_MODE" != "true" ]; then
+    echo "error: Game Mode Info.plist validation failed (category=$APP_CATEGORY, LS=$LS_GAME_MODE, GC=$GC_GAME_MODE)" >&2
+    exit 5
+fi
+echo "[utm-custom] Build succeeded: $OUTPUT_APP (Game Mode verified)"

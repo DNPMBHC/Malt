@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
-  "profile_revision": 3,
+  "profile_revision": 4,
+  "profile_version": "3.1",
   "profile_id": "anticheat-minimal-win11-arm64",
   "owner": "@DNPMBHC",
   "target_os": {
@@ -231,6 +232,12 @@
         "target_start_type": "Disabled",
         "stop_running": true,
         "reason": "Disable Diagnostic Execution Service"
+      },
+      {
+        "name": "spice-webdavd",
+        "target_start_type": "Disabled",
+        "stop_running": true,
+        "reason": "Disable SPICE WebDAV proxy service that triggers APPCRASH (0x80000003) when shared folder channel is trimmed"
       }
     ],
     "scheduled_tasks": [

@@ -233,7 +233,14 @@ function Capture-GamingSessionSnapshot($Profile) {
     } catch { }
     $memComp = $null
     try {
-        $memComp = [bool](Get-MMAgent -ErrorAction SilentlyContinue).MemoryCompression
+        # Get-MMAgent reports MemoryCompression=$false whenever SysMain is stopped even if enabled in OS.
+        $sysMainSvc = Get-Service -Name 'SysMain' -ErrorAction SilentlyContinue
+        if ($null -ne $sysMainSvc -and $sysMainSvc.Status -eq 'Running') {
+            $mmAgent = Get-MMAgent -ErrorAction SilentlyContinue
+            if ($null -ne $mmAgent -and $null -ne $mmAgent.MemoryCompression) {
+                $memComp = [bool]$mmAgent.MemoryCompression
+            }
+        }
     } catch { }
 
     # 4. Locale & IME snapshot (interactive user + system locale)
@@ -509,7 +516,12 @@ foreach ($svcEntry in @($profileData.optimization_blacklist.services)) {
     try {
         Set-Service -Name $name -StartupType $targetStart -ErrorAction Stop | Out-Null
         if ($svcEntry.stop_running -eq $true -and $svcObj.Status -eq 'Running') {
-            Stop-Service -Name $name -Force -ErrorAction SilentlyContinue | Out-Null
+            Stop-Service -Name $name -Force -NoWait -ErrorAction SilentlyContinue | Out-Null
+            for ($w = 0; $w -lt 8; $w++) {
+                $cur = Get-Service -Name $name -ErrorAction SilentlyContinue
+                if ($null -eq $cur -or $cur.Status -eq 'Stopped') { break }
+                Start-Sleep -Milliseconds 250
+            }
         }
         $after = Get-Service -Name $name -ErrorAction SilentlyContinue
         $serviceChanges += [ordered]@{
@@ -625,7 +637,12 @@ if ($null -ne $profileData.gaming_session_controls) {
         try {
             Set-Service -Name $name -StartupType Manual -ErrorAction Stop | Out-Null
             if ($uEntry.stop_running -eq $true -and $svcObj.Status -eq 'Running') {
-                Stop-Service -Name $name -Force -ErrorAction SilentlyContinue | Out-Null
+                Stop-Service -Name $name -Force -NoWait -ErrorAction SilentlyContinue | Out-Null
+                for ($w = 0; $w -lt 8; $w++) {
+                    $cur = Get-Service -Name $name -ErrorAction SilentlyContinue
+                    if ($null -eq $cur -or $cur.Status -eq 'Stopped') { break }
+                    Start-Sleep -Milliseconds 250
+                }
             }
             $after = Get-Service -Name $name -ErrorAction SilentlyContinue
             $gamingChanges.update_pause_services += [ordered]@{
@@ -657,17 +674,27 @@ if ($null -ne $profileData.gaming_session_controls) {
                 $driveLetter = Split-Path -Qualifier $pfPath
                 $disk = Get-CimInstance Win32_LogicalDisk -Filter "DeviceID='$driveLetter'" -ErrorAction SilentlyContinue
                 $freeMb = if ($null -ne $disk) { [int][math]::Floor($disk.FreeSpace / 1MB) } else { $maxMb + 2048 }
-                $safeMaxMb = [Math]::Min($maxMb, [Math]::Max(4096, $freeMb - 2048))
+                $currentPfMb = 0
+                try {
+                    $pfFile = Get-Item -LiteralPath $pfPath -Force -ErrorAction SilentlyContinue
+                    if ($null -ne $pfFile) {
+                        $currentPfMb = [int][math]::Floor($pfFile.Length / 1MB)
+                    }
+                } catch { }
+                # Dynamically clamp pagefile against current free volume space (preserving >=2048 MiB headroom).
+                $effectiveAvailableMb = $freeMb
+                $ceilingMb = [Math]::Max(2048, $freeMb - 2048)
+                $safeMaxMb = [Math]::Min($maxMb, $ceilingMb)
                 $safeInitMb = [Math]::Min($initMb, $safeMaxMb)
                 if ($cs.AutomaticManagedPagefile) {
                     Set-CimInstance -InputObject $cs -Property @{ AutomaticManagedPagefile = $false } | Out-Null
                 }
-                $existingPf = Get-CimInstance Win32_PageFileSetting -ErrorAction SilentlyContinue | Where-Object { $_.Name -ieq $pfPath } | Select-Object -First 1
-                if ($null -ne $existingPf) {
-                    Set-CimInstance -InputObject $existingPf -Property @{ InitialSize = $safeInitMb; MaximumSize = $safeMaxMb } | Out-Null
-                } else {
-                    New-CimInstance -ClassName Win32_PageFileSetting -Property @{ Name = $pfPath; InitialSize = $safeInitMb; MaximumSize = $safeMaxMb } | Out-Null
-                }
+                # Write standard Windows Memory Management PagingFiles (REG_MULTI_SZ) directly,
+                # avoiding the legacy WMI Win32_PageFileSetting "Value out of range" provider bug on >=4 GiB sizes.
+                $mmRegPath = 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management'
+                $pfSpec = [string[]]@("$pfPath $safeInitMb $safeMaxMb")
+                Set-ItemProperty -Path $mmRegPath -Name 'PagingFiles' -Type MultiString -Value $pfSpec -ErrorAction Stop
+                $verifiedPf = Get-CimInstance Win32_PageFileSetting -ErrorAction SilentlyContinue | Where-Object { $_.Name -ieq $pfPath } | Select-Object -First 1
                 $gamingChanges.pagefile = [ordered]@{
                     status = 'applied'
                     path = $pfPath
@@ -675,7 +702,11 @@ if ($null -ne $profileData.gaming_session_controls) {
                     requested_maximum_mb = $maxMb
                     applied_initial_mb = $safeInitMb
                     applied_maximum_mb = $safeMaxMb
+                    verified_initial_mb = if ($null -ne $verifiedPf) { [int]$verifiedPf.InitialSize } else { $safeInitMb }
+                    verified_maximum_mb = if ($null -ne $verifiedPf) { [int]$verifiedPf.MaximumSize } else { $safeMaxMb }
                     drive_free_mb = $freeMb
+                    current_pagefile_mb = $currentPfMb
+                    effective_available_mb = $effectiveAvailableMb
                 }
             } catch {
                 $gamingChanges.pagefile = [ordered]@{ status = 'error'; message = $_.Exception.Message }
@@ -724,7 +755,10 @@ if ($null -ne $profileData.gaming_session_controls) {
                     Disable-MMAgent -MemoryCompression -ErrorAction SilentlyContinue
                 }
                 # 'preserve' keeps OS memory compression enabled/untouched (avoids P1 Low regression measured in 11A)
-                $memCompActual = [bool](Get-MMAgent -ErrorAction SilentlyContinue).MemoryCompression
+                $mmAfter = Get-MMAgent -ErrorAction SilentlyContinue
+                if ($null -ne $mmAfter -and $null -ne $mmAfter.MemoryCompression) {
+                    $memCompActual = [bool]$mmAfter.MemoryCompression
+                }
             } catch { }
 
             $gamingChanges.cpu_and_memory_tuning = [ordered]@{
@@ -790,6 +824,7 @@ $invariantsPassed = (
 $report = [ordered]@{
     schema_version = 1
     profile_revision = if ($null -ne $profileData.profile_revision) { [int]$profileData.profile_revision } else { 1 }
+    profile_version = if ($null -ne $profileData.PSObject.Properties['profile_version'] -and $profileData.profile_version) { [string]$profileData.profile_version } else { '3.0' }
     owner = '@DNPMBHC'
     action = if ($DryRun) { 'dry_run' } else { 'apply' }
     captured_at_utc = [DateTime]::UtcNow.ToString('o')

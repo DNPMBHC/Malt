@@ -125,7 +125,7 @@ foreach ($svc in @($snapshot.services)) {
             Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\$name" -Name 'DelayedAutostart' -Value ([int]$svc.delayed_autostart) -ErrorAction SilentlyContinue | Out-Null
         }
         if ($svc.state -eq 'Running') {
-            Start-Service -Name $name -ErrorAction SilentlyContinue | Out-Null
+            & sc.exe start $name 2>$null | Out-Null
         }
         $afterCim = Get-CimInstance Win32_Service -Filter ("Name='" + $name.Replace("'", "''") + "'") -ErrorAction SilentlyContinue
         $modeMatches = ($null -ne $afterCim -and [string]$afterCim.StartMode -eq [string]$svc.start_mode)
@@ -271,7 +271,7 @@ if ($null -ne $snapshot.PSObject.Properties['gaming_session'] -and $null -ne $sn
                 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\$name" -Name 'DelayedAutostart' -Value ([int]$svc.delayed_autostart) -ErrorAction SilentlyContinue | Out-Null
             }
             if ($svc.state -eq 'Running') {
-                Start-Service -Name $name -ErrorAction SilentlyContinue | Out-Null
+                & sc.exe start $name 2>$null | Out-Null
             }
             $afterCim = Get-CimInstance Win32_Service -Filter ("Name='" + $name.Replace("'", "''") + "'") -ErrorAction SilentlyContinue
             $modeMatches = ($null -ne $afterCim -and [string]$afterCim.StartMode -eq [string]$svc.start_mode)
@@ -292,23 +292,17 @@ if ($null -ne $snapshot.PSObject.Properties['gaming_session'] -and $null -ne $sn
     if ($null -ne $gs.pagefile) {
         try {
             $cs = Get-CimInstance Win32_ComputerSystem -ErrorAction Stop
+            $mmRegPath = 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management'
             if ($gs.pagefile.automatic_managed -eq $true) {
-                foreach ($pf in @(Get-CimInstance Win32_PageFileSetting -ErrorAction SilentlyContinue)) {
-                    Remove-CimInstance -InputObject $pf -ErrorAction SilentlyContinue
-                }
+                Set-ItemProperty -Path $mmRegPath -Name 'PagingFiles' -Type MultiString -Value ([string[]]@('?:\pagefile.sys')) -ErrorAction SilentlyContinue
                 Set-CimInstance -InputObject $cs -Property @{ AutomaticManagedPagefile = $true } | Out-Null
             } else {
                 Set-CimInstance -InputObject $cs -Property @{ AutomaticManagedPagefile = $false } | Out-Null
-                foreach ($pf in @(Get-CimInstance Win32_PageFileSetting -ErrorAction SilentlyContinue)) {
-                    Remove-CimInstance -InputObject $pf -ErrorAction SilentlyContinue
-                }
+                $pfSpecs = @()
                 foreach ($entry in @($gs.pagefile.entries)) {
-                    New-CimInstance -ClassName Win32_PageFileSetting -Property @{
-                        Name = [string]$entry.name
-                        InitialSize = [int]$entry.initial_size_mb
-                        MaximumSize = [int]$entry.maximum_size_mb
-                    } | Out-Null
+                    $pfSpecs += ("$($entry.name) $([int]$entry.initial_size_mb) $([int]$entry.maximum_size_mb)")
                 }
+                Set-ItemProperty -Path $mmRegPath -Name 'PagingFiles' -Type MultiString -Value ([string[]]$pfSpecs) -ErrorAction Stop
             }
             $afterAuto = [bool](Get-CimInstance Win32_ComputerSystem).AutomaticManagedPagefile
             $pfMatched = ($afterAuto -eq [bool]$gs.pagefile.automatic_managed)
@@ -357,20 +351,33 @@ if ($null -ne $snapshot.PSObject.Properties['gaming_session'] -and $null -ne $sn
     # 5. Restore MemoryCompression
     if ($null -ne $gs.memory_compression) {
         try {
-            if ($gs.memory_compression -eq $true) {
-                Enable-MMAgent -MemoryCompression -ErrorAction SilentlyContinue
-            } else {
-                Disable-MMAgent -MemoryCompression -ErrorAction SilentlyContinue
+            $expectedMc = [bool]$gs.memory_compression
+            $mmBefore = Get-MMAgent -ErrorAction SilentlyContinue
+            $curMc = if ($null -ne $mmBefore -and $null -ne $mmBefore.MemoryCompression) { [bool]$mmBefore.MemoryCompression } else { $null }
+            if ($curMc -ne $expectedMc) {
+                if ($expectedMc) {
+                    Enable-MMAgent -MemoryCompression -ErrorAction SilentlyContinue
+                } else {
+                    Disable-MMAgent -MemoryCompression -ErrorAction SilentlyContinue
+                }
+                for ($mcTry = 0; $mcTry -lt 6; $mcTry++) {
+                    Start-Sleep -Milliseconds 500
+                    $mmPoll = Get-MMAgent -ErrorAction SilentlyContinue
+                    if ($null -ne $mmPoll -and $null -ne $mmPoll.MemoryCompression) {
+                        $curMc = [bool]$mmPoll.MemoryCompression
+                        if ($curMc -eq $expectedMc) { break }
+                    }
+                }
             }
-            Start-Sleep -Milliseconds 500
-            $actualMc = [bool](Get-MMAgent -ErrorAction SilentlyContinue).MemoryCompression
-            $mcMatched = ($actualMc -eq [bool]$gs.memory_compression)
+            $mcMatched = ($curMc -eq $expectedMc)
             if (-not $mcMatched) { $mismatches += 'gaming_memory_compression' }
-            $restoredGaming.memory_compression = [ordered]@{ expected = [bool]$gs.memory_compression; actual = $actualMc; matched = $mcMatched }
+            $restoredGaming.memory_compression = [ordered]@{ expected = $expectedMc; actual = $curMc; matched = $mcMatched }
         } catch {
             $restoredGaming.memory_compression = [ordered]@{ matched = $false }
             $mismatches += 'gaming_memory_compression:error'
         }
+    } else {
+        $restoredGaming.memory_compression = [ordered]@{ expected = $null; actual = $null; matched = $true; note = 'preserved_unmodified_sysmain_stopped_at_snapshot' }
     }
 
     # 6. Restore Locale & IME
@@ -435,6 +442,8 @@ $invariantsPassed = (
 
 $report = [ordered]@{
     schema_version = 1
+    profile_revision = if ($null -ne $profileData.profile_revision) { [int]$profileData.profile_revision } else { 1 }
+    profile_version = if ($null -ne $profileData.PSObject.Properties['profile_version'] -and $profileData.profile_version) { [string]$profileData.profile_version } else { '3.0' }
     owner = '@DNPMBHC'
     action = 'rollback'
     captured_at_utc = [DateTime]::UtcNow.ToString('o')

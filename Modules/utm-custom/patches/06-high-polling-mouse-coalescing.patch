@@ -1,0 +1,144 @@
+diff --git a/Platform/macOS/Display/VMMetalView.swift b/Platform/macOS/Display/VMMetalView.swift
+index 8b14a04..35ff596 100644
+--- a/Platform/macOS/Display/VMMetalView.swift
++++ b/Platform/macOS/Display/VMMetalView.swift
+@@ -29,6 +29,20 @@ class VMMetalView: MTKView {
+     @Setting("IsCmdOptSwapped") private var isCmdOptSwapped = false
+     @Setting("IsISOKeySwapped") private var isISOKeySwapped = false
+     @Setting("IsCapsLockKey") private var isCapsLockKey: Bool = false
++    private var pendingRelativeDeltaX: CGFloat = 0
++    private var pendingRelativeDeltaY: CGFloat = 0
++    private var pendingRelativeButtonMask: CSInputButton = []
++    private var lastRelativeMotionSendNs: UInt64 = 0
++    private var relativeMotionFlushTimer: DispatchSourceTimer?
++    private lazy var mouseCoalesceWindowNs: UInt64 = {
++        let raw = ProcessInfo.processInfo.environment["UTM_MOUSE_COALESCE_US"]
++        let defaultUs = 1500
++        let parsed = raw.flatMap(Int.init) ?? defaultUs
++        if parsed <= 0 {
++            return 0
++        }
++        return UInt64(min(parsed, 16_000)) * 1_000
++    }()
+ 
+     /// Drawable supplied by a display link for the frame being drawn, used instead of one
+     /// acquired from the layer.
+@@ -148,18 +162,21 @@ class VMMetalView: MTKView {
+     
+     override func mouseDown(with event: NSEvent) {
+         logger.trace("mouse down: \(event.buttonNumber)")
++        flushPendingRelativeMotion()
+         sendAbsolutePosition(for: event)
+         inputDelegate?.mouseDown(button: .left, mask: NSEvent.pressedMouseButtons.inputButtons())
+     }
+     
+     override func rightMouseDown(with event: NSEvent) {
+         logger.trace("right mouse down: \(event.buttonNumber)")
++        flushPendingRelativeMotion()
+         sendAbsolutePosition(for: event)
+         inputDelegate?.mouseDown(button: .right, mask: NSEvent.pressedMouseButtons.inputButtons())
+     }
+     
+     override func otherMouseDown(with event: NSEvent) {
+         logger.trace("other mouse down: \(event.buttonNumber)")
++        flushPendingRelativeMotion()
+         sendAbsolutePosition(for: event)
+         switch event.buttonNumber {
+         case 2: inputDelegate?.mouseDown(button: .middle, mask: NSEvent.pressedMouseButtons.inputButtons())
+@@ -171,16 +188,19 @@ class VMMetalView: MTKView {
+     
+     override func mouseUp(with event: NSEvent) {
+         logger.trace("mouse up: \(event.buttonNumber)")
++        flushPendingRelativeMotion()
+         inputDelegate?.mouseUp(button: .left, mask: NSEvent.pressedMouseButtons.inputButtons())
+     }
+     
+     override func rightMouseUp(with event: NSEvent) {
+         logger.trace("right mouse up: \(event.buttonNumber)")
++        flushPendingRelativeMotion()
+         inputDelegate?.mouseUp(button: .right, mask: NSEvent.pressedMouseButtons.inputButtons())
+     }
+     
+     override func otherMouseUp(with event: NSEvent) {
+         logger.trace("other mouse up: \(event.buttonNumber)")
++        flushPendingRelativeMotion()
+         switch event.buttonNumber {
+         case 2: inputDelegate?.mouseUp(button: .middle, mask: NSEvent.pressedMouseButtons.inputButtons())
+         case 3: inputDelegate?.mouseUp(button: .side, mask: NSEvent.pressedMouseButtons.inputButtons())
+@@ -317,11 +337,58 @@ class VMMetalView: MTKView {
+         mouseMoved(with: event)
+     }
+     
++    private func flushPendingRelativeMotion() {
++        if let timer = relativeMotionFlushTimer {
++            timer.cancel()
++            relativeMotionFlushTimer = nil
++        }
++        guard pendingRelativeDeltaX != 0 || pendingRelativeDeltaY != 0 else {
++            return
++        }
++        let dx = pendingRelativeDeltaX
++        let dy = pendingRelativeDeltaY
++        let mask = pendingRelativeButtonMask
++        pendingRelativeDeltaX = 0
++        pendingRelativeDeltaY = 0
++        lastRelativeMotionSendNs = DispatchTime.now().uptimeNanoseconds
++        inputDelegate?.mouseMove(relativePoint: CGPoint(x: dx, y: dy), buttonMask: mask)
++    }
++
++    private func enqueueRelativeMotion(dx: CGFloat, dy: CGFloat, buttonMask: CSInputButton) {
++        guard dx != 0 || dy != 0 else {
++            return
++        }
++        if mouseCoalesceWindowNs == 0 {
++            lastRelativeMotionSendNs = DispatchTime.now().uptimeNanoseconds
++            inputDelegate?.mouseMove(relativePoint: CGPoint(x: dx, y: dy), buttonMask: buttonMask)
++            return
++        }
++        pendingRelativeDeltaX += dx
++        pendingRelativeDeltaY += dy
++        pendingRelativeButtonMask = buttonMask
++        let now = DispatchTime.now().uptimeNanoseconds
++        if lastRelativeMotionSendNs == 0 || now &- lastRelativeMotionSendNs >= mouseCoalesceWindowNs {
++            flushPendingRelativeMotion()
++            return
++        }
++        if relativeMotionFlushTimer == nil {
++            let remainingNs = mouseCoalesceWindowNs - (now &- lastRelativeMotionSendNs)
++            let timer = DispatchSource.makeTimerSource(queue: .main)
++            timer.schedule(deadline: .now() + .nanoseconds(Int(remainingNs)), leeway: .microseconds(200))
++            timer.setEventHandler { [weak self] in
++                self?.flushPendingRelativeMotion()
++            }
++            relativeMotionFlushTimer = timer
++            timer.resume()
++        }
++    }
++
+     override func mouseMoved(with event: NSEvent) {
+         logger.trace("mouse moved: \(event.deltaX), \(event.deltaY)")
+         if isMouseCaptured {
+-            inputDelegate?.mouseMove(relativePoint: CGPoint(x: event.deltaX, y: -event.deltaY),
+-                                     buttonMask: NSEvent.pressedMouseButtons.inputButtons())
++            enqueueRelativeMotion(dx: event.deltaX,
++                                  dy: -event.deltaY,
++                                  buttonMask: NSEvent.pressedMouseButtons.inputButtons())
+         } else {
+             let location = event.locationInWindow
+             let converted = convert(location, from: nil)
+@@ -333,6 +400,7 @@ class VMMetalView: MTKView {
+     override func scrollWheel(with event: NSEvent) {
+         guard event.deltaY != 0 else { return }
+         logger.trace("scroll: \(event.deltaY)")
++        flushPendingRelativeMotion()
+         inputDelegate?.mouseScroll(dy: event.deltaY,
+                                    buttonMask: NSEvent.pressedMouseButtons.inputButtons())
+     }
+@@ -397,6 +465,7 @@ extension VMMetalView {
+     
+     func releaseMouse() {
+         logger.trace("release cursor")
++        flushPendingRelativeMotion()
+         CGAssociateMouseAndMouseCursorPosition(1)
+         isMouseCaptured = false
+         if !isMouseInWindow {

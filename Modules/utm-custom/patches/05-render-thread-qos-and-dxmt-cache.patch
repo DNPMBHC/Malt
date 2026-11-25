@@ -1,34 +1,71 @@
 diff --git a/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift b/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
-index 5b9fb40..590f5c3 100644
+index 1e4c926..1d4f079 100644
 --- a/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
 +++ b/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
-@@ -117,6 +117,8 @@ class VMDisplayQemuMetalWindowController: VMDisplayQemuWindowController {
+@@ -102,6 +102,13 @@ class VMDisplayQemuMetalWindowController: VMDisplayQemuWindowController {
          if #available(macOS 14, *), let layer = metalView.layer as? CAMetalLayer {
              // A CAMetalDisplayLink paces the layer at the rate it requests; MTKView's own
              // timer can stay at 60 Hz on a ProMotion display.
-+            layer.maximumDrawableCount = 3
++            let drawableCountEnv = Int(ProcessInfo.processInfo.environment["UTM_METAL_DRAWABLE_COUNT"] ?? "") ?? 3
++            layer.maximumDrawableCount = max(2, min(3, drawableCountEnv))
 +            layer.allowsNextDrawableTimeout = false
++            layer.presentsWithTransaction = false
++            if ProcessInfo.processInfo.environment["UTM_DISPLAY_SYNC_ENABLED"] == "0" {
++                layer.displaySyncEnabled = false
++            }
              let link = CAMetalDisplayLink(metalLayer: layer)
              link.delegate = self
              link.add(to: .main, forMode: .common)
+@@ -224,8 +231,10 @@ class VMDisplayQemuMetalWindowController: VMDisplayQemuWindowController {
+     private var preferredFramesPerSecond: Int? {
+         // a minimized window has no screen
+         let maxFps = (window?.screen ?? NSScreen.main)?.maximumFramesPerSecond ?? 0
+-        if rendererFpsLimit > 0 {
+-            return maxFps > 0 ? min(rendererFpsLimit, maxFps) : rendererFpsLimit
++        let envFpsOverride = ProcessInfo.processInfo.environment["UTM_RENDER_FPS_LIMIT"].flatMap(Int.init)
++        let effectiveLimit = envFpsOverride ?? rendererFpsLimit
++        if effectiveLimit > 0 {
++            return maxFps > 0 ? min(effectiveLimit, maxFps) : effectiveLimit
+         } else if maxFps > 0 {
+             return maxFps
+         } else {
+@@ -795,6 +804,9 @@ extension VMDisplayQemuMetalWindowController {
+ @available(macOS 14, *)
+ extension VMDisplayQemuMetalWindowController: CAMetalDisplayLinkDelegate {
+     func metalDisplayLink(_ link: CAMetalDisplayLink, needsUpdate update: CAMetalDisplayLink.Update) {
++        guard let renderer = renderer, renderer.hasPendingRenderUpdate else {
++            return
++        }
+         metalView.displayLinkDrawable = update.drawable
+         renderer.draw(in: metalView)
+         metalView.displayLinkDrawable = nil
 diff --git a/QEMUHelper/QEMUHelper.m b/QEMUHelper/QEMUHelper.m
-index 8732be8..43ea60f 100644
+index 8732be8..54a4fc2 100644
 --- a/QEMUHelper/QEMUHelper.m
 +++ b/QEMUHelper/QEMUHelper.m
-@@ -138,7 +138,7 @@ - (void)startQemuTask:(NSString *)binName standardOutput:(NSFileHandle *)standar
+@@ -15,6 +15,7 @@
+ //
+ 
+ #import "QEMUHelper.h"
++#include <pthread/qos.h>
+ #import "QEMUHelperDelegate.h"
+ #import <stdio.h>
+ #import <signal.h>
+@@ -138,7 +139,8 @@ - (void)startQemuTask:(NSString *)binName standardOutput:(NSFileHandle *)standar
      if (self.currentDirectoryPath) {
          task.currentDirectoryURL = [NSURL fileURLWithPath:self.currentDirectoryPath];
      }
 -    task.qualityOfService = NSQualityOfServiceUserInitiated;
++    pthread_set_qos_class_self_np(QOS_CLASS_USER_INTERACTIVE, 0);
 +    task.qualityOfService = NSQualityOfServiceUserInteractive;
      task.terminationHandler = ^(NSTask *task) {
          _self.childTask = nil;
          [_self.connection.remoteObjectProxy processHasExited:task.terminationStatus message:nil];
 diff --git a/Services/UTMQemuSystem.m b/Services/UTMQemuSystem.m
-index c8bbd58..6326ff7 100644
+index 5ae060c..922bc61 100644
 --- a/Services/UTMQemuSystem.m
 +++ b/Services/UTMQemuSystem.m
-@@ -140,6 +140,22 @@ - (void)setDirectXDriver:(UTMQEMUDirectXDriver)directXDriver {
+@@ -139,6 +139,22 @@ - (void)setDirectXDriver:(UTMQEMUDirectXDriver)directXDriver {
          self.mutableEnvironment[@"NPT_D3D12_LIBRARY_PATH"] = library.path;
          self.mutableEnvironment[@"NPT_DXGI_LIBRARY_PATH"] = library.path;
          self.mutableEnvironment[@"NPT_BACKEND"] = backend;
@@ -51,7 +88,7 @@ index c8bbd58..6326ff7 100644
          if (directXDriver == kQEMUDirectXDriverD3DMetal) {
              self.mutableEnvironment[@"NPT_CAPSET_D3D12"] = @"1";
          }
-@@ -152,6 +168,8 @@ - (void)setDirectXDriver:(UTMQEMUDirectXDriver)directXDriver {
+@@ -151,6 +167,8 @@ - (void)setDirectXDriver:(UTMQEMUDirectXDriver)directXDriver {
          [self.mutableEnvironment removeObjectForKey:@"NPT_BACKEND"];
          [self.mutableEnvironment removeObjectForKey:@"NPT_CAPSET_D3D12"];
          [self.mutableEnvironment removeObjectForKey:@"D3DMETAL_FRAMEWORK_PATH"];
