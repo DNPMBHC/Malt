@@ -1,0 +1,32 @@
+diff --git a/Services/UTMQemuSystem.m b/Services/UTMQemuSystem.m
+index 5ae060c..c8bbd58 100644
+--- a/Services/UTMQemuSystem.m
++++ b/Services/UTMQemuSystem.m
+@@ -114,6 +114,7 @@ - (void)setDirectXDriver:(UTMQEMUDirectXDriver)directXDriver {
+         case kQEMUDirectXDriverDXMT:
+             backend = @"dxmt";
+             frameworkName = @"dxmt-native";
++            self.mutableEnvironment[@"DXMT_SHADER_CACHE"] = @"1";
+             break;
+         case kQEMUDirectXDriverD3DMetal:
+             backend = @"d3dmetal";
+diff --git a/Services/UTMQemuVirtualMachine.swift b/Services/UTMQemuVirtualMachine.swift
+index 86b45b2..c3046a1 100644
+--- a/Services/UTMQemuVirtualMachine.swift
++++ b/Services/UTMQemuVirtualMachine.swift
+@@ -260,8 +260,14 @@ extension UTMQemuVirtualMachine {
+ 
+     private var directXDriver: UTMQEMUDirectXDriver {
+         get {
++            if CommandLine.arguments.contains("--dxmt-native") {
++                return .qemuDirectXDriverDXMT
++            }
++            if UserDefaults.standard.object(forKey: "QEMUDirectXDriver") == nil {
++                return .qemuDirectXDriverDXMT
++            }
+             let rawValue = UserDefaults.standard.integer(forKey: "QEMUDirectXDriver")
+-            let driver = UTMQEMUDirectXDriver(rawValue: rawValue) ?? .qemuDirectXDriverDefault
++            let driver = UTMQEMUDirectXDriver(rawValue: rawValue) ?? .qemuDirectXDriverDXMT
+             if (driver == .qemuDirectXDriverDefault || driver == .qemuDirectXDriverD3DMetal) && !Self.canRunD3DMetal {
+                 // the default would pick D3DMetal whenever it is bundled
+                 return .qemuDirectXDriverDXMT

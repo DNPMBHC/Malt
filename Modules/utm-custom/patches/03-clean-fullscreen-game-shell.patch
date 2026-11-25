@@ -1,0 +1,63 @@
+diff --git a/Platform/macOS/AppDelegate.swift b/Platform/macOS/AppDelegate.swift
+index 78f1d08..c2581a1 100644
+--- a/Platform/macOS/AppDelegate.swift
++++ b/Platform/macOS/AppDelegate.swift
+@@ -319,12 +319,37 @@ enum UTMQuitPolicy: Int {
+         NSApp.scriptingDelegate = self
+     }
+     
++    private var gameShellStopObserver: AnyCancellable?
++
++    private static var requestedGameShellVMUUID: UUID? {
++        guard let idx = CommandLine.arguments.firstIndex(of: "--game-shell-vm"),
++              idx + 1 < CommandLine.arguments.count else {
++            return nil
++        }
++        return UUID(uuidString: CommandLine.arguments[idx + 1])
++    }
++
+     func applicationDidFinishLaunching(_ notification: Notification) {
+         CapsLockRemapper.shared.recoverAtLaunch()
+         UTMAppleVirtualMachine.removeStaleDisposableOverlayDirectories()
+         if isDockIconHidden {
+             NSApp.setActivationPolicy(.accessory)
+         }
++        if let targetID = Self.requestedGameShellVMUUID, let data = data {
++            NSApp.windows.filter { $0.title == "UTM" || $0.identifier?.rawValue == "home" }.forEach { $0.close() }
++            if let vm = data.virtualMachines.first(where: { $0.id == targetID }) {
++                data.run(vm: vm)
++                gameShellStopObserver = vm.$state
++                    .dropFirst()
++                    .filter { $0 == .stopped }
++                    .prefix(1)
++                    .sink { _ in
++                        DispatchQueue.main.async {
++                            NSApp.terminate(nil)
++                        }
++                    }
++            }
++        }
+     }
+     
+     func application(_ sender: NSApplication, delegateHandlesKey key: String) -> Bool {
+diff --git a/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift b/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
+index 1e4c926..79874ae 100644
+--- a/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
++++ b/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
+@@ -127,6 +127,16 @@ class VMDisplayQemuMetalWindowController: VMDisplayQemuWindowController {
+         if isSecondary && isDisplaySizeDynamic, let window = window {
+             restoreDynamicResolution(for: window)
+         }
++        if CommandLine.arguments.contains("--game-shell-vm"), let window = window {
++            window.toolbar?.isVisible = false
++            window.titleVisibility = .hidden
++            window.titlebarAppearsTransparent = true
++            if !window.styleMask.contains(.fullScreen) {
++                DispatchQueue.main.async {
++                    window.toggleFullScreen(nil)
++                }
++            }
++        }
+ 
+         super.windowDidLoad()
+     }

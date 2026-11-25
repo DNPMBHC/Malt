@@ -1,0 +1,29 @@
+diff --git a/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift b/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
+index 1e4c926..da36cd5 100644
+--- a/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
++++ b/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
+@@ -128,6 +128,14 @@ class VMDisplayQemuMetalWindowController: VMDisplayQemuWindowController {
+             restoreDynamicResolution(for: window)
+         }
+ 
++        NotificationCenter.default.addObserver(
++            forName: NSApplication.didResignActiveNotification,
++            object: nil,
++            queue: .main
++        ) { [weak self] _ in
++            self?.releaseMouse()
++        }
++
+         super.windowDidLoad()
+     }
+     
+@@ -564,7 +572,8 @@ extension VMDisplayQemuMetalWindowController: VMMetalViewInputDelegate {
+             self.window?.makeFirstResponder(self.metalView)
+             self.syncCapsLock()
+         }
+-        if !isCursorCaptureAlertShown || (isFullScreen && !isFullscreenCursorCaptureAlertShown) {
++        let skipPrompt = CommandLine.arguments.contains("--game-shell-vm")
++        if !skipPrompt && (!isCursorCaptureAlertShown || (isFullScreen && !isFullscreenCursorCaptureAlertShown)) {
+             let alert = NSAlert()
+             alert.messageText = NSLocalizedString("Captured mouse", comment: "VMDisplayQemuMetalWindowController")
+             
