@@ -1,0 +1,15 @@
+
+msync: bootstrapped mach port on wine-e2bea-msync.
+msync: up and running.
+Failed to open /etc/machine-id, error No such file or directory.
+info:  Found config env: d3d11.metalSpatialUpscaleFactor=1.5
+info:  Maximum supported feature level: D3D_FEATURE_LEVEL_11_1
+info:  Using feature level D3D_FEATURE_LEVEL_11_1
+info:  Found config env: d3d11.metalSpatialUpscaleFactor=1.5
+probe_metadata_json={"schema_version":1,"requested_driver_type":"hardware","device_create_hresult":"0x00000000","device_create_attempts":["0x00000000"],"adapter_get_desc1_hresult":"0x00000000","adapter_description":"Apple M4","vendor_id":4203,"device_id":0,"adapter_flags":0,"adapter_is_software":false,"selected_feature_level":"11_1","selected_feature_level_value":"0x0000b100","windows_session_id":1,"session_api_success":true,"session_api_error":0,"transport_mode":"direct_present","offload_mode":"pixel-readback","completion_mode":"gpu-complete","width":1280,"height":720,"commands":16,"resource_bytes":65536,"command_every":1,"resource_every":1,"resource_pattern":"legacy","seed":1,"capture_requested":false,"capture_frame":0,"enumerated_adapters":[{"adapter_description":"Apple M4","vendor_id":4203,"device_id":0,"adapter_flags":0,"adapter_is_software":false}],"adapter_enumeration_hresult":"0x00000000"}
+probe_ready_ms=143.944
+info:  DXMT: CommandChunk encode frame=7875 chunk=7877 totalMs=12.362 executeMs=0.019 flushMs=12.343 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=12.155 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=7875 chunk=7877 seq=7877 totalMs=13.732 commandBufferMs=0.007 encodeMs=13.717 metalCommitMs=0.007 waitsInitializer=0
+info:  DXMT: CommandChunk encode frame=7877 chunk=7879 totalMs=10.422 executeMs=0.025 flushMs=10.397 renderPasses=1 computePasses=0 blitPasses=0 clearPasses=0 drawableMs=10.277 commandCount=29 slowCommands=0 maxCommandMs=0 maxCommandIndex=0 maxCommand=
+info:  DXMT: CommitChunkInternal frame=7877 chunk=7879 seq=7879 totalMs=10.517 commandBufferMs=0.006 encodeMs=10.478 metalCommitMs=0.03 waitsInitializer=0
+probe_completion_json={"measured_frames":120,"measurement_wall_ms":1000.665000,"throughput_including_gpu_drain_fps":119.920253,"completion_mode":"gpu-complete","post_measurement_query_collection_ms":6.547000,"completion_scope":"gpu-command-complete-not-screen-display"}

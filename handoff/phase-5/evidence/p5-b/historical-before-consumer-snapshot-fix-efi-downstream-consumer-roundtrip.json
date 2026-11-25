@@ -1,0 +1,178 @@
+{
+  "captured_at_utc": "2026-11-24T03:20:10.181788+00:00",
+  "consumer_contract_revision": 2,
+  "consumer_library_sha256": "2cfaf4557575767ebe964fb21c5a867a7fb36928927fb5cdfd6541fe0e77a1c2",
+  "consumer_snapshot_phase": "candidate",
+  "consumer_snapshot_revision": 4,
+  "consumer_source_sha256": {
+    "GuestSurfaceDisplayModels.swift": "4d1439fe3ce8b48ad506ef1466e952f626d3ed443e57081d6cfe100f5ba08837",
+    "GuestSurfaceMetalPresenter.swift": "1ad5bf9d36d0557c5c075223b9563fd3969177f3aa8fe2fd7dd6442b08190c04",
+    "GuestSurfaceModels.swift": "f2941c0eecc6be849ed7dc6c09828cb9bd90e25ecf60788561c7069bbd6c0af7",
+    "GuestSurfacePushFrameSource.swift": "9a58945e839c04cc5e6b946e193ca2adb63b2a6ea39890197d3fa7bb75b685aa",
+    "GuestSurfaceSession.swift": "9c594dc92aa443d61e89f4deae6931ea683b90f1e20bad32afb23d855496282a"
+  },
+  "efi_vm_actions": 4,
+  "executable_sha256": "18b0a3e1cfa6d0b7a71119554f45a17e49f418fab10183216b44c069828b02d2",
+  "fixture": {
+    "guest_executable_sha256": "a5db70d0f9a64ed53ad2bab45e67cd91e8d0697a71274005ee60d7a04ea022dc",
+    "guest_header_sha256": "6f392eadfd4bbb15420307833c833dfdbe17e6c464d5323186b781bb263e5800",
+    "guest_source_sha256": "1aa0abcb6b658f79288d6b95a2994d75da39dc80d96f78f633bc66432d8a04dd"
+  },
+  "frames_consumed": 4,
+  "gpu_all_pixels_equal": true,
+  "gpu_comparison_readback_bytes_per_frame": 4,
+  "harness_sha256": "260ea6494e5eeda91f05e09561cfd355e8151a884b6b503040876bc64bad3dc9",
+  "inputs_stable": true,
+  "native_fullscreen_verified": false,
+  "origin": "uefi_diagnostic_guest_commands_not_Windows_application_scanout",
+  "owner": "@DNPMBHC",
+  "passed": true,
+  "producer_library_binding": {
+    "checks": {
+      "actual_surface": true,
+      "public_entry_called": true,
+      "ready_timeline_completed": true,
+      "release_idempotent": true,
+      "synthetic_origin": true
+    },
+    "consumer_sha256": "76a8108bb79833d0257a112948e6030bcde92a8d1a15c59d6ae107d108272e23",
+    "efi_diagnostic_entry_exported": true,
+    "hardened_runtime": true,
+    "library_sha256": "3d67a1196813382df4c259fdf6efcabadd3b1a3ad46421ea499d9d62159b12af",
+    "linkage": "static_in_same_process",
+    "module_name": "ModuleX",
+    "owner": "@DNPMBHC",
+    "sources": {
+      "BenchmarkStatistics.swift": "ffba66c1e2a06643790d4fae3da3a5689ac28079f753357e76719f13764338d9",
+      "EFIGuestProbe.swift": "d4d55daa46cb680491774e6c0744f9a669cd028ff086eedec7397da5f98f209c",
+      "EFIGuestSurfaceLease.swift": "ba82da45954cf3b629729e9846c6e05f0538e8efcf4aa4f041b20a9868612972",
+      "GPUShader.swift": "64e7aaea490ac8dc8483beec5d2ab116c4dc27612a1f6c5a5443367f22bdbf30",
+      "IOSurfacePresentBridge.swift": "d94fe82aaf495dabfc1d23451a8652525ae29544df30cdadecfbc112bda7ff2b",
+      "InProcessZeroCopyRenderer.swift": "331df6197816ca936353afec83a0ce5717ea8f1c0d0aa04c45d42be9cf9cbd92",
+      "Metal4Engine.swift": "3b93ff0a4725a2bab61f8f3d5bcff76625587adc2e18ba6ccf6d93f7ef2692ae",
+      "SharedCommandRing.swift": "679b384efc61a0d3b19e61aa5736e71087d704cef42452a66d1a8575c0da137e",
+      "SurfaceFrameLease.swift": "b7f3b3104d8caad4cd7e5eee377d84ef66495e5900380b0900b8c7beccfdda71",
+      "SurfaceFrameProducer.swift": "ea332729175ea30f079f109bd84c2f8f161989fe49ffc2113cf5ce06b27f2a2c",
+      "VZVirtioGPUDevice.swift": "1b9d08baa75d8a02ced31f38424d153c9fc02a158441368770ecb1008bf09672",
+      "VirtioGPUCommandProcessor.swift": "14f9b8bfdcd3000b7eb2afaefa9743c2b1c4828b43dd1917500f3289dd201b6e",
+      "VirtioGPUProtocol.swift": "172fc9b9d6f300ac6a7ba8f5d69041c3fd68ddb7fd73e30f6e4087cc32959f2b"
+    },
+    "supports_real_guest_scanout": false,
+    "supports_virtual_hid_sink": false,
+    "virtualization_entitlement": true
+  },
+  "production_game_backend_enabled": false,
+  "real_efi_guest_commands_verified": true,
+  "real_windows_scanout_verified": false,
+  "runs": [
+    {
+      "checks": {
+        "all_leases_released": true,
+        "consumer_gpu_completed": true,
+        "efi_origin_explicit": true,
+        "gpu_all_pixels_equal": true,
+        "guest_2048_draws": true,
+        "guest_pixels_match_reference": true,
+        "guest_stopped": true,
+        "one_actual_guest_frame": true,
+        "producer_release_idempotent": true,
+        "producer_release_once": true,
+        "push_adapter_accepted": true,
+        "released_after_gpu_read": true,
+        "retained_until_gpu_submission": true,
+        "same_iosurface_imported": true,
+        "stride_matches": true,
+        "write_timeline_completed": true
+      },
+      "frames": 1,
+      "resolution": [
+        1280,
+        720
+      ],
+      "trial": 1
+    },
+    {
+      "checks": {
+        "all_leases_released": true,
+        "consumer_gpu_completed": true,
+        "efi_origin_explicit": true,
+        "gpu_all_pixels_equal": true,
+        "guest_2048_draws": true,
+        "guest_pixels_match_reference": true,
+        "guest_stopped": true,
+        "one_actual_guest_frame": true,
+        "producer_release_idempotent": true,
+        "producer_release_once": true,
+        "push_adapter_accepted": true,
+        "released_after_gpu_read": true,
+        "retained_until_gpu_submission": true,
+        "same_iosurface_imported": true,
+        "stride_matches": true,
+        "write_timeline_completed": true
+      },
+      "frames": 1,
+      "resolution": [
+        1280,
+        720
+      ],
+      "trial": 2
+    },
+    {
+      "checks": {
+        "all_leases_released": true,
+        "consumer_gpu_completed": true,
+        "efi_origin_explicit": true,
+        "gpu_all_pixels_equal": true,
+        "guest_2048_draws": true,
+        "guest_pixels_match_reference": true,
+        "guest_stopped": true,
+        "one_actual_guest_frame": true,
+        "producer_release_idempotent": true,
+        "producer_release_once": true,
+        "push_adapter_accepted": true,
+        "released_after_gpu_read": true,
+        "retained_until_gpu_submission": true,
+        "same_iosurface_imported": true,
+        "stride_matches": true,
+        "write_timeline_completed": true
+      },
+      "frames": 1,
+      "resolution": [
+        2560,
+        1440
+      ],
+      "trial": 1
+    },
+    {
+      "checks": {
+        "all_leases_released": true,
+        "consumer_gpu_completed": true,
+        "efi_origin_explicit": true,
+        "gpu_all_pixels_equal": true,
+        "guest_2048_draws": true,
+        "guest_pixels_match_reference": true,
+        "guest_stopped": true,
+        "one_actual_guest_frame": true,
+        "producer_release_idempotent": true,
+        "producer_release_once": true,
+        "push_adapter_accepted": true,
+        "released_after_gpu_read": true,
+        "retained_until_gpu_submission": true,
+        "same_iosurface_imported": true,
+        "stride_matches": true,
+        "write_timeline_completed": true
+      },
+      "frames": 1,
+      "resolution": [
+        2560,
+        1440
+      ],
+      "trial": 2
+    }
+  ],
+  "scope": "actual_downstream_graphics_subset_and_exact_error_declaration_not_complete_runtime",
+  "shared_vm_actions": 0,
+  "version_manifest_sha256": "abbf8fc5680a20288e4511f87331966c1564fce1b8ddb1aaecb5184e235a7fb0",
+  "virtual_hid_verified": false,
+  "visible_window_created": false
+}

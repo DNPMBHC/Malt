@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "report_kind": "b2-local-tool-validation",
+  "captured_at": "2026-11-22T06:29:29.109927+00:00",
+  "execution_scope": "local_mock_only",
+  "guest_operations_performed": false,
+  "transport_stage_test_cases": 35,
+  "transport_stage_test_result": "passed",
+  "controller_mock_test_cases": 9,
+  "controller_mock_test_result": "passed",
+  "evidence_regression_checks": 22,
+  "evidence_regression_result": "passed",
+  "attachment_files_verified_at_check": 13,
+  "python_compilation": "passed",
+  "trailing_whitespace_check": "passed",
+  "protected_inventory_source_unchanged": true,
+  "artifacts": [
+    {
+      "artifact_alias": "b2-pull-evidence.py",
+      "sha256": "c31010b3efeb99a32e3498212ae5dad772e6c6c15a42648e2a4eb313d23abb7a",
+      "size_bytes": 5570
+    },
+    {
+      "artifact_alias": "b2-run-stage.py",
+      "sha256": "cbb2719d7d7d1178e3cbf5bb42fc8b944d7ea546c907499a96f4cf2de5c555f6",
+      "size_bytes": 6592
+    },
+    {
+      "artifact_alias": "b2-export-safety.py",
+      "sha256": "f4af12c049942042cb0787a8b4eb346fb5b80a33ddeca2f7091ab88406de66ff",
+      "size_bytes": 4001
+    },
+    {
+      "artifact_alias": "b2-transfer-checks.py",
+      "sha256": "87cbb8129d86171013b220f8ae1fc2d8f20e24bc670dd371a005dd6bc4b646dc",
+      "size_bytes": 23243
+    }
+  ],
+  "limitations": [
+    "Local checks do not prove Guest transport or commercial driver acceptance.",
+    "A transport that omits truncation flags cannot certify unstructured stdout completeness; use OutputFile and hash-verified file transfer.",
+    "--require-json rejects incomplete expected JSON output; it does not replace source-file hash verification."
+  ],
+  "transport_stage_test_kind": "mock_transport_and_real_cli_dependency_failures",
+  "dependency_cli_failure_cases": 8,
+  "dependency_cli_stderr_tracebacks": 0,
+  "dependency_cli_guest_calls": 0
+}

@@ -1,0 +1,21 @@
+Building for debugging...
+[1 / 5]
+[2 / 6] module-bKit
+[3 / 7] module-bKit
+[7 / 9] module-bKit
+[10 / 11] module-bKitTests-product
+Build complete! (2.26秒)
+Test Suite 'Selected tests' started at 2026-11-22 14:21:07.424.
+Test Suite 'module-bKitTests.xctest' started at 2026-11-22 14:21:07.425.
+Test Suite 'UTMInteractiveRealTests' started at 2026-11-22 14:21:07.425.
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealDesktopGUIArgumentsExitAndCancellationWhenConfigured]' started.
+<WORKSPACE>/module-b/module-bKit/Sources/module-bKit/Runtime/UTMWindowsGuestProvider.swift:205: error: -[module-bKitTests.UTMInteractiveRealTests testRealDesktopGUIArgumentsExitAndCancellationWhenConfigured] : failed: caught error: "helperFailure(code: "controllerLost", win32Error: nil)"
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealDesktopGUIArgumentsExitAndCancellationWhenConfigured]' failed (8.604 seconds).
+Test Suite 'UTMInteractiveRealTests' failed at 2026-11-22 14:21:16.030.
+	 Executed 1 test, with 1 failure (1 unexpected) in 8.604 (8.605) seconds
+Test Suite 'module-bKitTests.xctest' failed at 2026-11-22 14:21:16.030.
+	 Executed 1 test, with 1 failure (1 unexpected) in 8.604 (8.605) seconds
+Test Suite 'Selected tests' failed at 2026-11-22 14:21:16.030.
+	 Executed 1 test, with 1 failure (1 unexpected) in 8.604 (8.605) seconds
+Note: Some test targets reported failures:
+  - module-bKitTests (XCTest)

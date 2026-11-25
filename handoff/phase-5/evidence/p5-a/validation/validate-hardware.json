@@ -1,0 +1,32 @@
+{
+  "native_exit_code": 0,
+  "metadata": {
+    "schema_version": 1,
+    "adapter_description": "Red Hat VirtIO GPU 3D controller",
+    "vendor_id": 6900,
+    "device_id": 4176,
+    "adapter_flags": 0,
+    "adapter_is_software": false,
+    "selected_feature_level": "11_1",
+    "width": 1280,
+    "height": 720,
+    "draws_per_frame": 2048,
+    "cb_updates_per_frame": 256,
+    "passes_per_frame": 2,
+    "dynamic_vertex_bytes_per_frame": 1179072,
+    "geometry_objects": 2047,
+    "async_swapchain": true,
+    "initialization_ms": 744.938
+  },
+  "completion": {
+    "measured_frames": 2,
+    "warmup_ms": 104.13,
+    "measurement_wall_ms": 186.735,
+    "gpu_drain_ms": 16.933,
+    "throughput_including_gpu_drain_fps": 10.710339,
+    "draws_per_frame": 2048,
+    "total_draw_calls": 4096,
+    "async_swapchain": true
+  },
+  "capture_sha256": "0c660f2bd3eff3150dd0040789abe2291613b9af319df870203d4f77a4913a5f"
+}

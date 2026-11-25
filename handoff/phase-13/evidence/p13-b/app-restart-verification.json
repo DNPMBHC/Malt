@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "owner": "@DNPMBHC",
+  "phase": "phase-13-window-13b",
+  "verified_at_utc": "2026-11-25T13:39:09.165334+00:00",
+  "command": "./handoff/task-07/dev_restart.sh",
+  "configuration": "Debug",
+  "architecture": "arm64",
+  "build_succeeded": true,
+  "relaunch_verified": true,
+  "app_bundle_path": "<DERIVED_DATA>/Build/Products/Debug/Whisky.app",
+  "cli_binary_path": "<DERIVED_DATA>/Build/Products/Debug/Whisky.app/Contents/Resources/WhiskyCmd",
+  "process_alive_after_startup": true,
+  "active_pid_count": 1,
+  "unified_views_compiled": [
+    "Whisky/Whisky/Views/Unified/UnifiedSidebarSection.swift",
+    "Whisky/Whisky/Views/Unified/UnifiedGameLibraryView.swift",
+    "Whisky/Whisky/Views/Unified/UnifiedInstallerView.swift",
+    "Whisky/Whisky/Views/Unified/UnifiedPerformanceView.swift",
+    "Whisky/Whisky/Views/Unified/UnifiedRuntimeStorageView.swift",
+    "Whisky/Whisky/Views/Unified/FirstRunOnboardingView.swift",
+    "Whisky/Whisky/Views/ContentView.swift"
+  ],
+  "strict_swiftlint_violations": 0
+}

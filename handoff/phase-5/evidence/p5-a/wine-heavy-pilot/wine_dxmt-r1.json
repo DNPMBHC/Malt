@@ -1,0 +1,112 @@
+{
+  "arm": "wine_dxmt",
+  "domain": "host_wine",
+  "backend": "dxmt",
+  "round": 1,
+  "metadata": {
+    "schema_version": 1,
+    "adapter_description": "Apple M4",
+    "vendor_id": 4203,
+    "device_id": 0,
+    "adapter_flags": 0,
+    "adapter_is_software": false,
+    "selected_feature_level": "11_1",
+    "width": 1280,
+    "height": 720,
+    "draws_per_frame": 16384,
+    "cb_updates_per_frame": 4096,
+    "passes_per_frame": 2,
+    "dynamic_vertex_bytes_per_frame": 9436608,
+    "geometry_objects": 16383,
+    "scene_variant": "dense_configurable_grid",
+    "async_swapchain": true,
+    "initialization_ms": 441.404
+  },
+  "completion": {
+    "measured_frames": 120,
+    "warmup_ms": 292.708,
+    "measurement_wall_ms": 279.296,
+    "gpu_drain_ms": 5.054,
+    "throughput_including_gpu_drain_fps": 429.651696,
+    "draws_per_frame": 16384,
+    "total_draw_calls": 1966080,
+    "async_swapchain": true
+  },
+  "csv_summary": {
+    "frame_count": 120,
+    "interval_sample_count": 119,
+    "derived_fps_from_intervals": 435.79367549850764,
+    "frame_interval_ms": {
+      "mean": 2.2946638655462186,
+      "p50": 1.9428,
+      "p95": 4.947919999999998,
+      "p99": 6.694745999999997
+    },
+    "cpu_submit_ms": {
+      "mean": 2.2739775,
+      "p95": 4.923334999999999,
+      "p99": 6.686393000000001
+    },
+    "process_resident_mib_mean": 187.59322916666667,
+    "device_memory_mib_mean": 134.84375
+  },
+  "host_cpu": {
+    "method": "libproc RUSAGE_INFO_V0 user+system counter deltas; PID family and creation-time binding",
+    "scope": "measurement phase only; roots and descendants",
+    "sample_count": 4,
+    "sample_errors": 0,
+    "covered_wall_seconds": 0.28099304200077313,
+    "cpu_seconds": 0.40322349999999996,
+    "host_cpu_percent_mean": 143.49946074425947,
+    "host_cpu_percent_peak": 187.95048490160477,
+    "host_logical_cpu_count": 10,
+    "host_capacity_percent_mean": 14.349946074425947,
+    "units": "100 percent equals one logical CPU; zeros retained",
+    "samples": [
+      {
+        "wall_seconds": 0.09336724999957369,
+        "cpu_seconds": 0.11470666666666662,
+        "cpu_percent": 122.85535524200442,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07690120900224429,
+        "cpu_seconds": 0.12277137500000013,
+        "cpu_percent": 159.64817275683814,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07583291599803488,
+        "cpu_seconds": 0.14252833333333317,
+        "cpu_percent": 187.95048490160477,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.03489166700092028,
+        "cpu_seconds": 0.02321712500000006,
+        "cpu_percent": 66.54060122546653,
+        "live_process_count": 2
+      }
+    ],
+    "limitation": "Counter sampling can miss CPU between the final available counter and process exit"
+  },
+  "native_exit_code": 0,
+  "probe_sha256": "7a71fc3710fc13316c092f822a904e9558b7f7ad81bc52754717f8d1f797bec5",
+  "backend_binding": {
+    "dll_sha256": "1cbe930e2370c4382ac4b435faf8cc563943324cfade33380cc6de0b8d94d801",
+    "requested_backend": "dxmt",
+    "library_load_log": "wine_dxmt-r1.stderr.log",
+    "backend_logs": [
+      {
+        "file": "wine_dxmt-r1-bench_real3d_probe-heavy_d3d11.log",
+        "sha256": "ef08a84a0a2992cf405e53ef4eb0cf3c1091c519f401489f6597ebfa3365a6fb"
+      }
+    ]
+  },
+  "files": {
+    "csv": "wine_dxmt-r1.csv",
+    "csv_sha256": "1f1814a1f68eca177c5b37cfab51adebf4c4895b58bafc36b0316c88f85cf485",
+    "stdout": "wine_dxmt-r1.stdout.log",
+    "stderr": "wine_dxmt-r1.stderr.log"
+  }
+}

@@ -1,0 +1,329 @@
+{
+  "byte_accounting": {
+    "ack_bytes_per_frame": 0,
+    "cache_frame_count": 0,
+    "cache_total_bytes": null,
+    "hello_bytes": 0,
+    "max_total_bytes": 0,
+    "mean_total_bytes": 0.0,
+    "refresh_frame_count": 0,
+    "refresh_total_bytes": null
+  },
+  "completion": {
+    "completion_mode": "gpu-complete",
+    "completion_scope": "gpu-command-complete-not-screen-display",
+    "measured_frames": 300,
+    "measurement_wall_ms": 16617.228,
+    "post_measurement_query_collection_ms": 0.241,
+    "throughput_including_gpu_drain_fps": 18.053553
+  },
+  "csv": "m2-direct-present-r1/m2-direct-present-r1.csv",
+  "csv_sha256": "ff302d200e23b50e3e5f79bb1ad125fd6511eaaa4b9af88a1c1ed3c49a6f92e2",
+  "execution": {
+    "launch": "interactive-scheduled-task",
+    "vm": "vm-a",
+    "wall_ms": 30114.23129204195
+  },
+  "fingerprint": {
+    "adapter_description": "Microsoft Basic Render Driver",
+    "adapter_flags": 0,
+    "adapter_software_flag": false,
+    "device_id": 140,
+    "requested_driver_type": "hardware",
+    "selected_feature_level": "11_1",
+    "vendor_id": 5140,
+    "windows_session_id": 1
+  },
+  "metadata_sha256": "f62a37f9de187fcb2d3c7b427e1466c0d03fae2b01137325724dac97719425b8",
+  "mode": "direct-present",
+  "performance_measurement": true,
+  "preflight": {
+    "architecture": "ARM64",
+    "baseline_comparison_required": true,
+    "baseline_sha256": "ceedbcaf3db809513428a617a91597a66fcdd2de3d00d399cdb0da2ebdf3545f",
+    "baseline_verified": true,
+    "bcd_flags": {
+      "nointegritychecks": "absent",
+      "testsigning": "absent"
+    },
+    "bcd_query_succeeded": true,
+    "bcd_security": [],
+    "boot_time_utc": "2026-11-22T06:08:17.7949800Z",
+    "build": "26100",
+    "captured_at_utc": "2026-11-22T07:39:24.6717737Z",
+    "code_integrity_options": 49157,
+    "code_integrity_query_succeeded": true,
+    "code_integrity_test_signing": false,
+    "console_session_id": 1,
+    "device_guard_query_succeeded": true,
+    "display_version": "24H2",
+    "driver_service_query_succeeded": true,
+    "expected_absent_driver_service_count": 2,
+    "forbidden_process_count": 0,
+    "forbidden_running_task_count": 0,
+    "hvci_configured": false,
+    "hvci_kernel_enforced": false,
+    "hvci_running": false,
+    "hypervisor_present": true,
+    "lifecycle_source_sha256": "fa4ea000db5d3c1c201e0631e3fde57fea59fdf5a81f1aa1e80b93585464d46c",
+    "logged_in": true,
+    "os_product": "Microsoft Windows 11 Enterprise Evaluation",
+    "os_query_succeeded": true,
+    "owned_services_absent": true,
+    "owner": "@DNPMBHC",
+    "passed": true,
+    "preflight_gates_passed": true,
+    "preflight_ps1_sha256": "b64e5bd838aa2d35fb86cc921e82c302178c7da8db06b9e52b9771ee86c9f7b9",
+    "preflight_py_sha256": "a9f214b307a9c7870b4f74d87e607af2a76e88dca562f597bb9188b7779794ba",
+    "quiescence_query_succeeded": true,
+    "read_only": true,
+    "recovered_security_baseline": {
+      "bcd_security": [],
+      "boot_time_utc": "2026-11-22T06:08:17.6999380Z",
+      "captured_at_utc": "2026-11-22T06:08:44.5873348Z",
+      "hypervisor_present": true,
+      "secure_boot_enabled": true,
+      "security_services_running": [
+        0
+      ],
+      "tpm": {
+        "activated": true,
+        "enabled": true,
+        "owned": true,
+        "present": true,
+        "specification_version": "2.0, 0, 1.64"
+      },
+      "vbs_status": 0
+    },
+    "remaining_driver_service_count": 0,
+    "schema_version": 1,
+    "secure_boot_enabled": true,
+    "secure_boot_query_succeeded": true,
+    "security_services_configured": [
+      0
+    ],
+    "security_services_running": [
+      0
+    ],
+    "service_baseline_count": 2,
+    "session_flags": 1,
+    "session_flags_offset": 16,
+    "session_matches_console": true,
+    "session_query_succeeded": true,
+    "session_query_win32_error": 0,
+    "session_state": 0,
+    "temporary_directory_scoped": true,
+    "tpm": {
+      "activated": true,
+      "enabled": true,
+      "owned": true,
+      "present": true,
+      "specification_version": "2.0, 0, 1.64"
+    },
+    "tpm_query_succeeded": true,
+    "unlocked": true,
+    "vbs_status": 0,
+    "wts_info_ex_struct_bytes": 232,
+    "wts_returned_bytes": 232
+  },
+  "receiver": null,
+  "round": 1,
+  "source_digests": {
+    "analyze_py": "ee71db86dc7db499d4997343489b341062b51220e547fe6443ace2e2218e1f25",
+    "benchmark_support_py": "dccfffc1f6e6994496b4f40fe0ef3db84dc4837c6e1e5bf6f5372922a92a946f",
+    "d3d11_probe_cpp": "11fc000464f0dcf98aec3044c4d956a2b74ce491fc4d69567bf252bbec64af74",
+    "d3d11_probe_exe": "09bb190bf5d763f9749345300b937728db886a4ec26c32c361a920c565cf1bee",
+    "metal_host_binary": "9b0fefb3c181125c943f6d7b8c6f6fdf3ebade939f80cd41f58f3dc17c658a38",
+    "metal_host_swift": "cf6d0f50b9b68dcde7324f12423d3de242950aa35fe25b2cf0d2b0afdd74c734"
+  },
+  "stderr_sha256": "c508158a14b3f2871a52137c8b62ab46d04d6ec77e2817d24243d9a7c7fb91d9",
+  "summary": {
+    "environment_telemetry": {
+      "note": "Missing readings remain null and are not inferred.",
+      "power_w": {
+        "coverage": 0.0,
+        "max": null,
+        "mean": null,
+        "missing": 300,
+        "p50": null,
+        "p95": null,
+        "p99": null,
+        "sample_count": 0
+      },
+      "temperature_c": {
+        "coverage": 0.0,
+        "max": null,
+        "mean": null,
+        "missing": 300,
+        "p50": null,
+        "p95": null,
+        "p99": null,
+        "sample_count": 0
+      }
+    },
+    "frame_count": 300,
+    "memory": {
+      "device_memory_bytes": {
+        "coverage": 1.0,
+        "max": 8192.0,
+        "mean": 8192.0,
+        "missing": 0,
+        "p50": 8192.0,
+        "p95": 8192.0,
+        "p99": 8192.0,
+        "sample_count": 300
+      },
+      "host_resident_bytes": {
+        "coverage": 0.0,
+        "max": null,
+        "mean": null,
+        "missing": 300,
+        "p50": null,
+        "p95": null,
+        "p99": null,
+        "sample_count": 0
+      },
+      "host_texture_bytes": {
+        "coverage": 0.0,
+        "max": null,
+        "mean": null,
+        "missing": 300,
+        "p50": null,
+        "p95": null,
+        "p99": null,
+        "sample_count": 0
+      },
+      "process_resident_bytes": {
+        "max": 39174144.0,
+        "mean": 38725468.16,
+        "p50": 38744064.0,
+        "p95": 38879232.0,
+        "p99": 39092224.0,
+        "sample_count": 300
+      }
+    },
+    "run": {
+      "initialization_ms": 76.961,
+      "warmup_ms": 3571.865
+    },
+    "schema_version": 1,
+    "timing": {
+      "cpu_frame_interval_ms": {
+        "max": 110.1,
+        "mean": 55.416709030100336,
+        "p50": 51.361,
+        "p95": 78.8271,
+        "p99": 94.42316,
+        "sample_count": 299
+      },
+      "cpu_submit_ms": {
+        "max": 110.066,
+        "mean": 55.3378,
+        "p50": 51.0725,
+        "p95": 78.79415,
+        "p99": 94.39407,
+        "sample_count": 300
+      },
+      "derived_fps_from_mean_interval": 18.045098987325943,
+      "gpu_ms": {
+        "coverage": 1.0,
+        "max": 96.411833,
+        "mean": 45.716581233333336,
+        "missing": 0,
+        "p50": 43.3709375,
+        "p95": 69.04033125000002,
+        "p99": 90.65012049999999,
+        "sample_count": 300
+      },
+      "host_gpu_ms": {
+        "coverage": 0.0,
+        "max": null,
+        "mean": null,
+        "missing": 300,
+        "p50": null,
+        "p95": null,
+        "p99": null,
+        "sample_count": 0
+      },
+      "host_receive_to_present_ms": {
+        "coverage": 0.0,
+        "max": null,
+        "mean": null,
+        "missing": 300,
+        "p50": null,
+        "p95": null,
+        "p99": null,
+        "sample_count": 0
+      },
+      "latency_note": "Synthetic frame-request-to-Present-return proxy; it is not physical input-to-photon latency.",
+      "process_cpu_ms": {
+        "max": 375.0,
+        "mean": 207.29166666666666,
+        "p50": 203.125,
+        "p95": 265.625,
+        "p99": 281.25,
+        "sample_count": 300
+      },
+      "synthetic_input_to_present_return_ms": {
+        "max": 110.066,
+        "mean": 55.3378,
+        "p50": 51.0725,
+        "p95": 78.79415,
+        "p99": 94.39407,
+        "sample_count": 300
+      }
+    },
+    "transfer": {
+      "command_bytes": {
+        "coverage": 1.0,
+        "per_frame_max": 0,
+        "per_frame_mean": 0.0,
+        "per_frame_min": 0,
+        "sample_count": 300,
+        "total": 0
+      },
+      "network_bytes_in": {
+        "coverage": 1.0,
+        "per_frame_max": 0,
+        "per_frame_mean": 0.0,
+        "per_frame_min": 0,
+        "sample_count": 300,
+        "total": 0
+      },
+      "network_bytes_out": {
+        "coverage": 1.0,
+        "per_frame_max": 0,
+        "per_frame_mean": 0.0,
+        "per_frame_min": 0,
+        "sample_count": 300,
+        "total": 0
+      },
+      "network_bytes_total": {
+        "coverage": 1.0,
+        "per_frame_max": 0,
+        "per_frame_mean": 0.0,
+        "per_frame_min": 0,
+        "sample_count": 300,
+        "total": 0
+      },
+      "resource_bytes": {
+        "coverage": 1.0,
+        "per_frame_max": 0,
+        "per_frame_mean": 0.0,
+        "per_frame_min": 0,
+        "sample_count": 300,
+        "total": 0
+      },
+      "transferred_bytes": {
+        "coverage": 1.0,
+        "per_frame_max": 0,
+        "per_frame_mean": 0.0,
+        "per_frame_min": 0,
+        "sample_count": 300,
+        "total": 0
+      }
+    },
+    "transport_mode": "direct_present"
+  },
+  "thermal_snapshot": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded\n"
+}

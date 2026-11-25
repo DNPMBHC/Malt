@@ -1,0 +1,576 @@
+{
+  "schema_version": 1,
+  "owner": "@DNPMBHC",
+  "phase": "phase-14-window-14a",
+  "generated_at_utc": "2026-11-25T16:30:10.809777+00:00",
+  "exp_dual_cache": {
+    "measured_at_utc": "2026-11-25T15:02:38.552436+00:00",
+    "duration_sec_per_arm": 60,
+    "cold_arm": {
+      "label": "cold",
+      "elapsed_sec": 70.322,
+      "probe_iterations": 15,
+      "guest_cpu_avg_pct": 17.5,
+      "guest_cpu_max_pct": 45.93,
+      "frame_metrics": {
+        "count": 2250,
+        "fps_mean": 84.107,
+        "fps_p50": 84.918,
+        "fps_p1_low": 63.798,
+        "fps_p0_1_low": 47.663,
+        "frame_ms_mean": 11.974,
+        "frame_ms_p50": 11.776,
+        "frame_ms_p99": 15.675,
+        "frame_ms_max": 34.025,
+        "frame_ms_jitter_p99_p50": 3.899,
+        "severe_drop_count": 1,
+        "severe_drop_pct": 0.04
+      },
+      "host_cpu": {
+        "sample_count": 18,
+        "qemu_main_thread_cpu": {
+          "mean": 7.572,
+          "p50": 5.8,
+          "p95": 17.54,
+          "p99": 18.628,
+          "p99_9": 18.873,
+          "min": 0.4,
+          "max": 18.9
+        },
+        "qemu_render_server_cpu": {
+          "mean": 7.944,
+          "p50": 7.5,
+          "p95": 19.51,
+          "p99": 20.462,
+          "p99_9": 20.676,
+          "min": 0.0,
+          "max": 20.7
+        },
+        "qemu_worker_cpu": {
+          "mean": 59.389,
+          "p50": 48.35,
+          "p95": 196.865,
+          "p99": 247.933,
+          "p99_9": 259.423,
+          "min": 5.0,
+          "max": 260.7
+        },
+        "total_hypervisor_rss_mib": {
+          "mean": 4860.612,
+          "p50": 4858.79,
+          "p95": 4948.637,
+          "p99": 4951.664,
+          "p99_9": 4952.344,
+          "min": 4750.68,
+          "max": 4952.42
+        }
+      },
+      "boot_ready_sec": 13.71,
+      "xtacache_clear_result": {
+        "removed": 0,
+        "locked_or_skipped": 739
+      },
+      "xtacache_before_bytes": 345789052,
+      "xtacache_after_bytes": 346258502,
+      "dxmt_cache_before_bytes": 0,
+      "dxmt_cache_after_bytes": 955656,
+      "dxmt_cache_after_files": 4
+    },
+    "warm_arm": {
+      "label": "warm",
+      "elapsed_sec": 62.679,
+      "probe_iterations": 20,
+      "guest_cpu_avg_pct": 17.71,
+      "guest_cpu_max_pct": 48.47,
+      "frame_metrics": {
+        "count": 3000,
+        "fps_mean": 80.909,
+        "fps_p50": 81.202,
+        "fps_p1_low": 58.189,
+        "fps_p0_1_low": 37.66,
+        "frame_ms_mean": 12.468,
+        "frame_ms_p50": 12.315,
+        "frame_ms_p99": 17.185,
+        "frame_ms_max": 40.353,
+        "frame_ms_jitter_p99_p50": 4.87,
+        "severe_drop_count": 2,
+        "severe_drop_pct": 0.07
+      },
+      "host_cpu": {
+        "sample_count": 16,
+        "qemu_main_thread_cpu": {
+          "mean": 11.969,
+          "p50": 15.6,
+          "p95": 16.2,
+          "p99": 16.92,
+          "p99_9": 17.082,
+          "min": 1.5,
+          "max": 17.1
+        },
+        "qemu_render_server_cpu": {
+          "mean": 12.05,
+          "p50": 12.8,
+          "p95": 16.85,
+          "p99": 17.45,
+          "p99_9": 17.585,
+          "min": 2.0,
+          "max": 17.6
+        },
+        "qemu_worker_cpu": {
+          "mean": 61.75,
+          "p50": 49.4,
+          "p95": 116.775,
+          "p99": 174.795,
+          "p99_9": 187.85,
+          "min": 30.3,
+          "max": 189.3
+        },
+        "total_hypervisor_rss_mib": {
+          "mean": 4900.637,
+          "p50": 4906.15,
+          "p95": 4941.995,
+          "p99": 4961.087,
+          "p99_9": 4965.383,
+          "min": 4825.17,
+          "max": 4965.86
+        }
+      },
+      "boot_ready_sec": 12.81,
+      "xtacache_before_bytes": 346258502,
+      "xtacache_after_bytes": 346567000,
+      "dxmt_cache_before_bytes": 955656,
+      "dxmt_cache_after_bytes": 988616,
+      "dxmt_cache_after_files": 4
+    },
+    "comparison": {
+      "fps_mean_delta_pct": -3.8,
+      "fps_p1_low_delta_pct": -8.79,
+      "frame_ms_p99_delta_pct": 9.63,
+      "qemu_worker_cpu_delta_pct": 3.98,
+      "render_server_cpu_delta_pct": 51.69,
+      "guest_cpu_delta_pct": 1.2,
+      "cold_severe_drop_count": 1,
+      "warm_severe_drop_count": 2,
+      "severe_drop_reduction_pct": -100.0,
+      "dxmt_cache_persisted": true,
+      "xtacache_persisted": true
+    }
+  },
+  "exp_frame_sync": {
+    "measured_at_utc": "2026-11-25T15:16:31.169080+00:00",
+    "arms": [
+      {
+        "label": "fps_limit_0_triple",
+        "fps_limit": 0,
+        "metal_drawable_count": 3,
+        "max_inflight_frames": 3,
+        "frame_metrics": {
+          "count": 450,
+          "fps_mean": 80.898,
+          "fps_p50": 81.887,
+          "fps_p1_low": 66.402,
+          "fps_p0_1_low": 50.194,
+          "frame_ms_mean": 12.43,
+          "frame_ms_p50": 12.212,
+          "frame_ms_p99": 15.06,
+          "frame_ms_max": 21.203,
+          "frame_ms_jitter_p99_p50": 2.848,
+          "severe_drop_count": 0,
+          "severe_drop_pct": 0.0
+        },
+        "host_cpu": {
+          "sample_count": 10,
+          "qemu_main_thread_cpu": {
+            "mean": 3.37,
+            "p50": 1.65,
+            "p95": 11.085,
+            "p99": 14.937,
+            "p99_9": 15.804,
+            "min": 0.3,
+            "max": 15.9
+          },
+          "qemu_render_server_cpu": {
+            "mean": 2.45,
+            "p50": 0.0,
+            "p95": 10.365,
+            "p99": 13.353,
+            "p99_9": 14.025,
+            "min": 0.0,
+            "max": 14.1
+          },
+          "qemu_worker_cpu": {
+            "mean": 47.98,
+            "p50": 21.55,
+            "p95": 177.305,
+            "p99": 256.901,
+            "p99_9": 274.81,
+            "min": 3.0,
+            "max": 276.8
+          },
+          "total_hypervisor_rss_mib": {
+            "mean": 5110.861,
+            "p50": 5149.585,
+            "p95": 5237.751,
+            "p99": 5242.366,
+            "p99_9": 5243.405,
+            "min": 4856.37,
+            "max": 5243.52
+          }
+        },
+        "guest_cpu_avg_pct": 14.66,
+        "composite_score": 100.0
+      },
+      {
+        "label": "fps_limit_120_triple",
+        "fps_limit": 120,
+        "metal_drawable_count": 3,
+        "max_inflight_frames": 3,
+        "frame_metrics": {
+          "count": 1500,
+          "fps_mean": 80.303,
+          "fps_p50": 80.635,
+          "fps_p1_low": 62.566,
+          "fps_p0_1_low": 43.429,
+          "frame_ms_mean": 12.569,
+          "frame_ms_p50": 12.401,
+          "frame_ms_p99": 15.983,
+          "frame_ms_max": 51.212,
+          "frame_ms_jitter_p99_p50": 3.582,
+          "severe_drop_count": 1,
+          "severe_drop_pct": 0.07
+        },
+        "host_cpu": {
+          "sample_count": 10,
+          "qemu_main_thread_cpu": {
+            "mean": 8.01,
+            "p50": 5.85,
+            "p95": 16.205,
+            "p99": 16.601,
+            "p99_9": 16.69,
+            "min": 0.3,
+            "max": 16.7
+          },
+          "qemu_render_server_cpu": {
+            "mean": 9.89,
+            "p50": 11.75,
+            "p95": 18.575,
+            "p99": 18.755,
+            "p99_9": 18.796,
+            "min": 0.0,
+            "max": 18.8
+          },
+          "qemu_worker_cpu": {
+            "mean": 55.63,
+            "p50": 45.4,
+            "p95": 135.745,
+            "p99": 175.309,
+            "p99_9": 184.211,
+            "min": 2.4,
+            "max": 185.2
+          },
+          "total_hypervisor_rss_mib": {
+            "mean": 4121.553,
+            "p50": 4102.465,
+            "p95": 4253.466,
+            "p99": 4287.885,
+            "p99_9": 4295.63,
+            "min": 4006.7,
+            "max": 4296.49
+          }
+        },
+        "guest_cpu_avg_pct": 19.55,
+        "composite_score": 92.31
+      },
+      {
+        "label": "fps_limit_120_lowlat_d2_i1",
+        "fps_limit": 120,
+        "metal_drawable_count": 2,
+        "max_inflight_frames": 1,
+        "frame_metrics": {
+          "count": 900,
+          "fps_mean": 79.495,
+          "fps_p50": 80.467,
+          "fps_p1_low": 60.995,
+          "fps_p0_1_low": 29.251,
+          "frame_ms_mean": 12.702,
+          "frame_ms_p50": 12.427,
+          "frame_ms_p99": 16.395,
+          "frame_ms_max": 35.819,
+          "frame_ms_jitter_p99_p50": 3.968,
+          "severe_drop_count": 2,
+          "severe_drop_pct": 0.22
+        },
+        "host_cpu": {
+          "sample_count": 10,
+          "qemu_main_thread_cpu": {
+            "mean": 4.83,
+            "p50": 2.85,
+            "p95": 13.12,
+            "p99": 14.704,
+            "p99_9": 15.06,
+            "min": 0.3,
+            "max": 15.1
+          },
+          "qemu_render_server_cpu": {
+            "mean": 6.97,
+            "p50": 3.9,
+            "p95": 19.555,
+            "p99": 22.471,
+            "p99_9": 23.127,
+            "min": 0.0,
+            "max": 23.2
+          },
+          "qemu_worker_cpu": {
+            "mean": 55.11,
+            "p50": 25.2,
+            "p95": 189.49,
+            "p99": 267.898,
+            "p99_9": 285.54,
+            "min": 3.7,
+            "max": 287.5
+          },
+          "total_hypervisor_rss_mib": {
+            "mean": 3407.303,
+            "p50": 3436.725,
+            "p95": 3524.066,
+            "p99": 3544.773,
+            "p99_9": 3549.432,
+            "min": 3267.51,
+            "max": 3549.95
+          }
+        },
+        "guest_cpu_avg_pct": 17.23,
+        "composite_score": 89.08
+      }
+    ],
+    "selection": {
+      "recommended_arm": "fps_limit_0_triple",
+      "fps_limit": 0,
+      "metal_drawable_count": 3,
+      "max_inflight_frames": 3,
+      "composite_score": 100.0,
+      "fps_mean": 80.898,
+      "fps_p1_low": 66.402,
+      "frame_ms_jitter_p99_p50": 2.848
+    }
+  },
+  "exp_irq_audit": {
+    "measured_at_utc": "2026-11-25T15:37:40.868165+00:00",
+    "device_audit": {
+      "device_count": 16,
+      "devices": [
+        "virtio-ramfb-gl,hostmem=8G,blob=true,venus=true,neptune=true,refresh_rate=120000",
+        "intel-hda",
+        "hda-duplex,audiodev=audio0",
+        "nec-usb-xhci,id=usb-bus",
+        "usb-mouse,bus=usb-bus.0",
+        "usb-kbd,bus=usb-bus.0",
+        "qemu-xhci,id=usb-controller-0",
+        "usb-redir,chardev=usbredirchardev0,id=usbredirdev0,bus=usb-controller-0.0",
+        "usb-redir,chardev=usbredirchardev1,id=usbredirdev1,bus=usb-controller-0.0",
+        "usb-redir,chardev=usbredirchardev2,id=usbredirdev2,bus=usb-controller-0.0",
+        "virtio-blk-pci,drive=driveDE9BDC80-A8A8-4364-9319-D28A528FB316,serial=DE9BDC80A8A843649319,bootindex=0",
+        "virtio-serial",
+        "virtserialport,chardev=org.qemu.guest_agent,name=org.qemu.guest_agent.0",
+        "virtio-rng-pci",
+        "tpm-crb-device,tpmdev=tpm0",
+        "virtio-net-pci,netdev=net0,mac=9E:92:91:7B:D7:F1,ioeventfd=on,rx_queue_size=1024"
+      ],
+      "has_usb_tablet": false,
+      "has_virtio_balloon": false,
+      "has_usb_mouse": true,
+      "has_virtio_mouse": false,
+      "has_slirp_user_net": false,
+      "removable_polling_devices": [
+        "usb-redir"
+      ],
+      "clean_of_known_polling_bloat": true,
+      "findings": [
+        {
+          "device_key": "usb-tablet",
+          "present": false,
+          "category": "unnecessary_polling",
+          "note": "Absolute USB tablet polls continuously; must stay disabled in pure relative mouse mode."
+        },
+        {
+          "device_key": "virtio-balloon",
+          "present": false,
+          "category": "unnecessary_polling",
+          "note": "Memory ballooning causes periodic host-guest reclaim jitter; must stay disabled."
+        },
+        {
+          "device_key": "usb-redir",
+          "present": true,
+          "category": "optional_removable",
+          "note": "USB redirection host channels add USB bus polling when unused."
+        },
+        {
+          "device_key": "spice-vdagent",
+          "present": false,
+          "category": "optional_removable",
+          "note": "SPICE vdagent/webdavd channel; webdavd disabled by guest-optimizer v3.1."
+        },
+        {
+          "device_key": "virtio-rng",
+          "present": true,
+          "category": "low_overhead_keep",
+          "note": "Hardware RNG is event-driven and required for low-latency entropy; keep."
+        },
+        {
+          "device_key": "intel-hda",
+          "present": true,
+          "category": "required_audio",
+          "note": "Audio controller required for game sound; keep."
+        },
+        {
+          "device_key": "usb-mouse",
+          "present": true,
+          "category": "input_device",
+          "note": "Relative USB mouse; evaluate against virtio-mouse-pci if WHQL vioinput is available."
+        },
+        {
+          "device_key": "virtio-mouse-pci",
+          "present": false,
+          "category": "input_device",
+          "note": "VirtIO PCI mouse (interrupt-driven, no USB polling)."
+        },
+        {
+          "device_key": "usb-kbd",
+          "present": true,
+          "category": "input_device",
+          "note": "USB keyboard; low event rate."
+        },
+        {
+          "device_key": "virtio-gpu",
+          "present": false,
+          "category": "required_gpu",
+          "note": "VirtIO-GPU 3D (DXMT native backend)."
+        },
+        {
+          "device_key": "virtio-net",
+          "present": true,
+          "category": "required_net",
+          "note": "VirtIO-Net with ioeventfd=on and enlarged rx_queue_size."
+        },
+        {
+          "device_key": "virtio-blk",
+          "present": true,
+          "category": "required_blk",
+          "note": "VirtIO-Blk with dedicated iothread and num-queues=4."
+        },
+        {
+          "device_key": "tpm-tis",
+          "present": false,
+          "category": "required_security",
+          "note": "vTPM required for Windows 11 & anti-cheat integrity; never touch."
+        }
+      ]
+    },
+    "virtio_input_evaluation": {
+      "secure_boot_preserved": true,
+      "whql_vioinput_available": true,
+      "vioinput_probe": {
+        "secure_boot_enabled": true,
+        "has_vioinput_inf": true,
+        "vioinput_drivers": [
+          {
+            "Driver": "oem5.inf",
+            "OriginalFileName": "C:\\Windows\\System32\\DriverStore\\FileRepository\\vioinput.inf_arm64_981ab17e1328acc5\\vioinput.inf",
+            "ProviderName": "Red Hat, Inc.",
+            "ClassName": "HIDClass",
+            "Version": "100.100.104.27100",
+            "Date": "/Date(1736755200000)/"
+          }
+        ],
+        "vioinput_service": {}
+      },
+      "usb_mouse_irq_profile": {
+        "duration_sec": 21.29,
+        "sample_count": 11,
+        "interrupts_per_sec_mean": 1041.304,
+        "interrupts_per_sec_max": 3080.049,
+        "interrupt_time_pct_mean": 0.141,
+        "dpc_time_pct_mean": 0.071
+      },
+      "usb_mouse_host_sample": {
+        "captured_at_utc": "2026-11-25T15:36:20.865734+00:00",
+        "elapsed_seconds": 20.0,
+        "qemu_main_thread_cpu": 0.4,
+        "qemu_thread_count": 68,
+        "qemu_render_server_cpu": 0.0,
+        "qemu_worker_cpu": 24.9,
+        "total_hypervisor_rss_mib": 5577.43
+      },
+      "virtio_mouse_irq_profile": {
+        "duration_sec": 21.28,
+        "sample_count": 11,
+        "interrupts_per_sec_mean": 885.61,
+        "interrupts_per_sec_max": 1629.989,
+        "interrupt_time_pct_mean": 0.158,
+        "dpc_time_pct_mean": 0.07
+      },
+      "conclusion": "WHQL vioinput available under Secure Boot; measured virtio-mouse-pci vs usb-mouse directly.",
+      "virtio_mouse_host_sample": {
+        "captured_at_utc": "2026-11-25T15:37:25.540890+00:00",
+        "elapsed_seconds": 20.0,
+        "qemu_main_thread_cpu": 0.6,
+        "qemu_thread_count": 61,
+        "qemu_render_server_cpu": 0.0,
+        "qemu_worker_cpu": 23.1,
+        "total_hypervisor_rss_mib": 4347.99
+      },
+      "interrupts_per_sec_delta_pct": -14.95
+    }
+  },
+  "app_shell_and_warm": {
+    "measured_at_utc": "2026-11-25T15:41:32.762913+00:00",
+    "app_shell_vm": {
+      "cold_boot_ready_sec": 17.176,
+      "launched_compact_and_transitioned_fullscreen": true,
+      "game_mode_plist_enabled": true,
+      "qemu_no_slirp": true,
+      "qemu_clean_polling": true
+    },
+    "warm_standby_resume": {
+      "standby_result": {
+        "action": "warm-standby",
+        "vm_name": "ephemeral-p14a-warm",
+        "vm_uuid": "<uuid>",
+        "cold_boot_to_qga_seconds": 15.626,
+        "qga_ping_seconds": 13.022,
+        "pause_seconds": 0.404,
+        "status": "paused",
+        "standby_ready": true,
+        "standby_metrics": {
+          "qemu_worker_count": 6,
+          "qemu_cpu_pct": 9.9,
+          "qemu_rss_mib": 4234.85,
+          "macos_compressor_mib": 3385.67
+        }
+      },
+      "resume_result": {
+        "action": "resume-launch",
+        "vm_name": "ephemeral-p14a-warm",
+        "vm_uuid": "<uuid>",
+        "state_before": "paused",
+        "launch_mode": "warm_resume",
+        "vm_started_seconds": 0.154,
+        "qga_ready_seconds": 0.225,
+        "total_ready_seconds": 0.379,
+        "status": "started",
+        "resumed": true
+      },
+      "comparison": {
+        "cold_boot_ready_seconds": 17.176,
+        "warm_resume_ready_seconds": 0.5,
+        "saved_seconds": 16.676,
+        "reduction_pct": 97.09,
+        "speedup_factor": 34.35
+      }
+    }
+  },
+  "field_regression_findings": {
+    "fps_limit_0_live_game_regression": "Although synthetic offscreen d3d11_probe scored highest with QEMURendererFPSLimit=0, live target-cn E2E revealed that QEMURendererFPSLimit=0 + --app-shell-vm causes on-demand redraw (text refreshes only on pointer movement) and stalls initial SwapChain Present after voice-chat init. Restoring QEMURendererFPSLimit=120 + --game-shell-vm + UTM_KEEP_CURSOR_VISIBLE_ON_INHIBIT=1 resolved redraw, cursor visibility, and game launch.",
+    "socket_stream_tcp_boundary": "Phase 12A zero-privilege async_net_proxy implements ARP/DHCP/ICMP/UDP NAT only (no TCP NAT). Because ad-hoc signed UTM-Custom.app lacks com.apple.vm.networking entitlement, live target-cn HTTPS/TCP login required falling back to Emulated NIC; Developer ID signing (vmnet-shared) or full TCP/UDP gvproxy/socket_vmnet is required to eliminate the remaining 5 slirp warnings."
+  }
+}

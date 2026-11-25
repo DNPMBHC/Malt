@@ -1,0 +1,162 @@
+Building for debugging...
+[Pre-planning 1 / 154]
+[Planning deferred tasks]
+[5 / 34]
+[6 / 31] module-bKit
+[16 / 42] module-bKit
+[17 / 42] module-bKit
+[25 / 42] module-bKit
+<WORKSPACE>/module-b/module-bKit/Sources/module-bKit/Runtime/WindowsGuestComputeService.swift:152:9: warning: no 'async' operations occur within 'await' expression [#UnnecessaryEffectMarker]
+150 |         await self.received(value, from: incoming)
+151 |       } catch {
+152 |         await self.rejectUnauthenticated(incoming)
+    |         `- warning: no 'async' operations occur within 'await' expression [#UnnecessaryEffectMarker]
+153 |       }
+154 |     }
+
+[#UnnecessaryEffectMarker]: <https://docs.swift.org/compiler/documentation/diagnostics/unnecessary-effect-marker>
+[32 / 43] module-bKitTests-product
+[34 / 59]
+[36 / 59]
+[37 / 59]
+[47 / 59] module-bKitTests-product
+[48 / 59] module-bKitTests-product
+[53 / 59] module-bKitTests-product
+[55 / 59] module-bKitTests-product
+[58 / 59] module-bKitTests-product
+Build complete! (8.66秒)
+Test Suite 'Selected tests' started at 2026-11-22 13:30:14.449.
+Test Suite 'module-bKitTests.xctest' started at 2026-11-22 13:30:14.451.
+Test Suite 'UTMComputeTests' started at 2026-11-22 13:30:14.451.
+Test Case '-[module-bKitTests.UTMComputeTests testCheckedAffineRejectsOverflow]' started.
+Test Case '-[module-bKitTests.UTMComputeTests testCheckedAffineRejectsOverflow]' passed (0.002 seconds).
+Test Case '-[module-bKitTests.UTMComputeTests testLoopbackCancelIsTerminalAndCancelsGuestExactlyOnce]' started.
+Test Case '-[module-bKitTests.UTMComputeTests testLoopbackCancelIsTerminalAndCancelsGuestExactlyOnce]' passed (0.060 seconds).
+Test Case '-[module-bKitTests.UTMComputeTests testLoopbackComputesAndHandlesFragmentedFrames]' started.
+Test Case '-[module-bKitTests.UTMComputeTests testLoopbackComputesAndHandlesFragmentedFrames]' passed (0.007 seconds).
+Test Case '-[module-bKitTests.UTMComputeTests testLoopbackPropagatesHostFailure]' started.
+Test Case '-[module-bKitTests.UTMComputeTests testLoopbackPropagatesHostFailure]' passed (0.002 seconds).
+Test Case '-[module-bKitTests.UTMComputeTests testLoopbackTimeoutCancelsHostComputationAndReturnsTypedError]' started.
+Test Case '-[module-bKitTests.UTMComputeTests testLoopbackTimeoutCancelsHostComputationAndReturnsTypedError]' passed (0.046 seconds).
+Test Case '-[module-bKitTests.UTMComputeTests testMalformedUnauthenticatedFrameDoesNotTerminateGuest]' started.
+Test Case '-[module-bKitTests.UTMComputeTests testMalformedUnauthenticatedFrameDoesNotTerminateGuest]' passed (0.013 seconds).
+Test Case '-[module-bKitTests.UTMComputeTests testNoncooperativeHandlerCannotHangTimeoutOrOverwriteTerminalResponse]' started.
+Test Case '-[module-bKitTests.UTMComputeTests testNoncooperativeHandlerCannotHangTimeoutOrOverwriteTerminalResponse]' passed (0.239 seconds).
+Test Case '-[module-bKitTests.UTMComputeTests testPeerDisconnectPropagatesFailureAndCleansHostWork]' started.
+Test Case '-[module-bKitTests.UTMComputeTests testPeerDisconnectPropagatesFailureAndCleansHostWork]' passed (0.014 seconds).
+Test Case '-[module-bKitTests.UTMComputeTests testTraceContainsNoAuthenticationNonceOrEndpoint]' started.
+Test Case '-[module-bKitTests.UTMComputeTests testTraceContainsNoAuthenticationNonceOrEndpoint]' passed (0.002 seconds).
+Test Case '-[module-bKitTests.UTMComputeTests testUnauthenticatedPeerCannotSubmitComputation]' started.
+Test Case '-[module-bKitTests.UTMComputeTests testUnauthenticatedPeerCannotSubmitComputation]' passed (0.002 seconds).
+Test Case '-[module-bKitTests.UTMComputeTests testUnconnectedSessionTimeoutTerminatesGuestAndClosesListener]' started.
+Test Case '-[module-bKitTests.UTMComputeTests testUnconnectedSessionTimeoutTerminatesGuestAndClosesListener]' passed (0.035 seconds).
+Test Case '-[module-bKitTests.UTMComputeTests testWirePreservesSignedBoundaryValuesAndCorrelation]' started.
+Test Case '-[module-bKitTests.UTMComputeTests testWirePreservesSignedBoundaryValuesAndCorrelation]' passed (0.000 seconds).
+Test Case '-[module-bKitTests.UTMComputeTests testWireRejectsOversizedMalformedAndCorruptFrames]' started.
+Test Case '-[module-bKitTests.UTMComputeTests testWireRejectsOversizedMalformedAndCorruptFrames]' passed (0.000 seconds).
+Test Suite 'UTMComputeTests' passed at 2026-11-22 13:30:14.877.
+	 Executed 13 tests, with 0 failures (0 unexpected) in 0.424 (0.425) seconds
+Test Suite 'UTMGuestStoragePreflightTests' started at 2026-11-22 13:30:14.877.
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testExistingFileCannotBeUsedAsWritableDirectoryTarget]' started.
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testExistingFileCannotBeUsedAsWritableDirectoryTarget]' passed (0.002 seconds).
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testFileVisibilityPromotesConfiguredMappingToVerified]' started.
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testFileVisibilityPromotesConfiguredMappingToVerified]' passed (0.001 seconds).
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testInsufficientSpaceIsReportedBeforeGuestStart]' started.
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testInsufficientSpaceIsReportedBeforeGuestStart]' passed (0.001 seconds).
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testMissingTargetIsCreatableAndMapsToGuestDirectory]' started.
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testMissingTargetIsCreatableAndMapsToGuestDirectory]' passed (0.001 seconds).
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testPushRetriesAfterCreatingMissingGuestParentDirectory]' started.
+<WORKSPACE>/module-b/module-bKit/Sources/module-bKit/Runtime/UTMGuestStoragePreflight.swift:38: error: -[module-bKitTests.UTMGuestStoragePreflightTests testPushRetriesAfterCreatingMissingGuestParentDirectory] : failed: caught error: "insufficientHostSpace"
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testPushRetriesAfterCreatingMissingGuestParentDirectory]' failed (0.215 seconds).
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testRealUTMProviderHostAndVMLifecycleWhenConfigured]' started.
+<WORKSPACE>/module-b/module-bKit/Tests/module-bKitTests/UTMGuestStoragePreflightTests.swift:139: -[module-bKitTests.UTMGuestStoragePreflightTests testRealUTMProviderHostAndVMLifecycleWhenConfigured] : Test skipped - Real Guest VM and shared directory configuration is required.
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testRealUTMProviderHostAndVMLifecycleWhenConfigured]' skipped (0.001 seconds).
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testTargetOutsideConfiguredMappingIsUnavailable]' started.
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testTargetOutsideConfiguredMappingIsUnavailable]' passed (0.003 seconds).
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testUTMProviderConformsToProbeReportingForProbeService]' started.
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testUTMProviderConformsToProbeReportingForProbeService]' passed (0.002 seconds).
+Test Suite 'UTMGuestStoragePreflightTests' failed at 2026-11-22 13:30:15.103.
+	 Executed 8 tests, with 1 test skipped and 1 failure (1 unexpected) in 0.226 (0.226) seconds
+Test Suite 'UTMInteractiveRealTests' started at 2026-11-22 13:30:15.103.
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealDesktopGUIArgumentsExitAndCancellationWhenConfigured]' started.
+<WORKSPACE>/module-b/module-bKit/Tests/module-bKitTests/UTMInteractiveRealTests.swift:157: -[module-bKitTests.UTMInteractiveRealTests testRealDesktopGUIArgumentsExitAndCancellationWhenConfigured] : Test skipped - Real Guest lease and desktop/compute probe configuration is required.
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealDesktopGUIArgumentsExitAndCancellationWhenConfigured]' skipped (0.000 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealExplicitComputeRoundtripTimeoutCancellationAndErrorsWhenConfigured]' started.
+<WORKSPACE>/module-b/module-bKit/Tests/module-bKitTests/UTMInteractiveRealTests.swift:157: -[module-bKitTests.UTMInteractiveRealTests testRealExplicitComputeRoundtripTimeoutCancellationAndErrorsWhenConfigured] : Test skipped - Real Guest lease and desktop/compute probe configuration is required.
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealExplicitComputeRoundtripTimeoutCancellationAndErrorsWhenConfigured]' skipped (0.000 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealInstallerStyleWindowWhenConfigured]' started.
+<WORKSPACE>/module-b/module-bKit/Tests/module-bKitTests/UTMInteractiveRealTests.swift:157: -[module-bKitTests.UTMInteractiveRealTests testRealInstallerStyleWindowWhenConfigured] : Test skipped - Real Guest lease and desktop/compute probe configuration is required.
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealInstallerStyleWindowWhenConfigured]' skipped (0.000 seconds).
+Test Suite 'UTMInteractiveRealTests' passed at 2026-11-22 13:30:15.104.
+	 Executed 3 tests, with 3 tests skipped and 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'UTMInteractiveTests' started at 2026-11-22 13:30:15.104.
+Test Case '-[module-bKitTests.UTMInteractiveTests testControllerExitCannotMasqueradeAsTargetExit]' started.
+Test Case '-[module-bKitTests.UTMInteractiveTests testControllerExitCannotMasqueradeAsTargetExit]' passed (0.000 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveTests testManifestHasBoundedSize]' started.
+Test Case '-[module-bKitTests.UTMInteractiveTests testManifestHasBoundedSize]' passed (0.000 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveTests testManifestPreservesSpecialArgumentsAndRejectsAmbiguousEnvironment]' started.
+Test Case '-[module-bKitTests.UTMInteractiveTests testManifestPreservesSpecialArgumentsAndRejectsAmbiguousEnvironment]' passed (0.000 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveTests testNoDesktopIsExplicitFailureAndReclaimsController]' started.
+Test Case '-[module-bKitTests.UTMInteractiveTests testNoDesktopIsExplicitFailureAndReclaimsController]' passed (0.001 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveTests testRealTargetPIDDrivesStatusAndRepeatedCancellation]' started.
+Test Case '-[module-bKitTests.UTMInteractiveTests testRealTargetPIDDrivesStatusAndRepeatedCancellation]' passed (0.000 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveTests testResponsePreservesUnsignedWindowsExceptionCodeAndOutput]' started.
+Test Case '-[module-bKitTests.UTMInteractiveTests testResponsePreservesUnsignedWindowsExceptionCodeAndOutput]' passed (0.000 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveTests testResponseRejectsOtherRequestAndWindowsSessionZero]' started.
+Test Case '-[module-bKitTests.UTMInteractiveTests testResponseRejectsOtherRequestAndWindowsSessionZero]' passed (0.000 seconds).
+Test Suite 'UTMInteractiveTests' passed at 2026-11-22 13:30:15.107.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.002 (0.002) seconds
+Test Suite 'UTMWindowsGuestProviderTests' started at 2026-11-22 13:30:15.107.
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testArchitectureMismatchIsReportedBeforeVMStart]' started.
+<WORKSPACE>/module-b/module-bKit/Tests/module-bKitTests/UTMWindowsGuestProviderTests.swift:51: error: -[module-bKitTests.UTMWindowsGuestProviderTests testArchitectureMismatchIsReportedBeforeVMStart] : XCTAssertEqual failed: ("insufficientHostSpace") is not equal to ("architectureMismatch")
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testArchitectureMismatchIsReportedBeforeVMStart]' failed (0.003 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testCancellationFailureIsReturnedByWait]' started.
+<WORKSPACE>/module-b/module-bKit/Sources/module-bKit/Runtime/UTMGuestStoragePreflight.swift:38: error: -[module-bKitTests.UTMWindowsGuestProviderTests testCancellationFailureIsReturnedByWait] : failed: caught error: "insufficientHostSpace"
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testCancellationFailureIsReturnedByWait]' failed (0.001 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testCancellationIsIdempotentAndWaitReportsGuestTermination]' started.
+<WORKSPACE>/module-b/module-bKit/Sources/module-bKit/Runtime/UTMGuestStoragePreflight.swift:38: error: -[module-bKitTests.UTMWindowsGuestProviderTests testCancellationIsIdempotentAndWaitReportsGuestTermination] : failed: caught error: "insufficientHostSpace"
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testCancellationIsIdempotentAndWaitReportsGuestTermination]' failed (0.001 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testConfigurationRejectsInvalidTimeoutAndGuestPathTraversal]' started.
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testConfigurationRejectsInvalidTimeoutAndGuestPathTraversal]' passed (0.001 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testFileOutsideMappingAndUnsupportedLauncherAreRejected]' started.
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testFileOutsideMappingAndUnsupportedLauncherAreRejected]' passed (0.001 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testGuestAgentReadinessTimeoutIsReported]' started.
+<WORKSPACE>/module-b/module-bKit/Sources/module-bKit/Runtime/UTMGuestStoragePreflight.swift:38: error: -[module-bKitTests.UTMWindowsGuestProviderTests testGuestAgentReadinessTimeoutIsReported] : failed: caught error: "insufficientHostSpace"
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testGuestAgentReadinessTimeoutIsReported]' failed (0.001 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testMappedProgramPreservesArgumentAndEnvironmentBoundariesAndFullExitCode]' started.
+<WORKSPACE>/module-b/module-bKit/Sources/module-bKit/Runtime/UTMGuestStoragePreflight.swift:38: error: -[module-bKitTests.UTMWindowsGuestProviderTests testMappedProgramPreservesArgumentAndEnvironmentBoundariesAndFullExitCode] : failed: caught error: "insufficientHostSpace"
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testMappedProgramPreservesArgumentAndEnvironmentBoundariesAndFullExitCode]' failed (0.002 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testPushedFileMustBeVisibleBeforeProgramExecution]' started.
+<WORKSPACE>/module-b/module-bKit/Tests/module-bKitTests/UTMWindowsGuestProviderTests.swift:185: error: -[module-bKitTests.UTMWindowsGuestProviderTests testPushedFileMustBeVisibleBeforeProgramExecution] : XCTAssertEqual failed: ("insufficientHostSpace") is not equal to ("guestFileNotVisible")
+<WORKSPACE>/module-b/module-bKit/Tests/module-bKitTests/UTMWindowsGuestProviderTests.swift:191: error: -[module-bKitTests.UTMWindowsGuestProviderTests testPushedFileMustBeVisibleBeforeProgramExecution] : XCTAssertEqual failed: ("0") is not equal to ("1")
+<WORKSPACE>/module-b/module-bKit/Tests/module-bKitTests/UTMWindowsGuestProviderTests.swift:192: error: -[module-bKitTests.UTMWindowsGuestProviderTests testPushedFileMustBeVisibleBeforeProgramExecution] : XCTAssertEqual failed: ("Optional(module-bKit.UTMGuestFileVisibility.notChecked)") is not equal to ("Optional(module-bKit.UTMGuestFileVisibility.notVisible)")
+<WORKSPACE>/module-b/module-bKit/Tests/module-bKitTests/UTMWindowsGuestProviderTests.swift:193: error: -[module-bKitTests.UTMWindowsGuestProviderTests testPushedFileMustBeVisibleBeforeProgramExecution] : XCTAssertEqual failed: ("Optional(module-bKit.RuntimeGuestMappingState.configured)") is not equal to ("Optional(module-bKit.RuntimeGuestMappingState.unavailable)")
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testPushedFileMustBeVisibleBeforeProgramExecution]' failed (0.002 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testRequestConfigurationCanStopGuestAfterReadinessFailure]' started.
+<WORKSPACE>/module-b/module-bKit/Sources/module-bKit/Runtime/UTMGuestStoragePreflight.swift:38: error: -[module-bKitTests.UTMWindowsGuestProviderTests testRequestConfigurationCanStopGuestAfterReadinessFailure] : failed: caught error: "insufficientHostSpace"
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testRequestConfigurationCanStopGuestAfterReadinessFailure]' failed (0.001 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testStopIsIdempotentWhenGuestAlreadyStopped]' started.
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testStopIsIdempotentWhenGuestAlreadyStopped]' passed (0.001 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testStopRequestsVMShutdownAndWaitsForStoppedStatus]' started.
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testStopRequestsVMShutdownAndWaitsForStoppedStatus]' passed (0.001 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testStopUsesGuestConfigurationFromLaunchRequest]' started.
+<WORKSPACE>/module-b/module-bKit/Sources/module-bKit/Runtime/UTMGuestStoragePreflight.swift:38: error: -[module-bKitTests.UTMWindowsGuestProviderTests testStopUsesGuestConfigurationFromLaunchRequest] : failed: caught error: "insufficientHostSpace"
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testStopUsesGuestConfigurationFromLaunchRequest]' failed (0.001 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testUnconfiguredAndUnavailableStatesAreExplicit]' started.
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testUnconfiguredAndUnavailableStatesAreExplicit]' passed (0.000 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testUnsupportedVMBackendIsReportedBeforeArchitectureValidation]' started.
+<WORKSPACE>/module-b/module-bKit/Tests/module-bKitTests/UTMWindowsGuestProviderTests.swift:68: error: -[module-bKitTests.UTMWindowsGuestProviderTests testUnsupportedVMBackendIsReportedBeforeArchitectureValidation] : XCTAssertEqual failed: ("insufficientHostSpace") is not equal to ("unsupportedBackend")
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testUnsupportedVMBackendIsReportedBeforeArchitectureValidation]' failed (0.003 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testVMCrashIsReportedWhileWaitingForProgram]' started.
+<WORKSPACE>/module-b/module-bKit/Sources/module-bKit/Runtime/UTMGuestStoragePreflight.swift:38: error: -[module-bKitTests.UTMWindowsGuestProviderTests testVMCrashIsReportedWhileWaitingForProgram] : failed: caught error: "insufficientHostSpace"
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testVMCrashIsReportedWhileWaitingForProgram]' failed (0.002 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testWindowsStatusCodeParserPreservesHighBitExceptionCode]' started.
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testWindowsStatusCodeParserPreservesHighBitExceptionCode]' passed (0.000 seconds).
+Test Suite 'UTMWindowsGuestProviderTests' failed at 2026-11-22 13:30:15.130.
+	 Executed 16 tests, with 13 failures (7 unexpected) in 0.022 (0.023) seconds
+Test Suite 'module-bKitTests.xctest' failed at 2026-11-22 13:30:15.130.
+	 Executed 47 tests, with 4 tests skipped and 14 failures (8 unexpected) in 0.675 (0.678) seconds
+Test Suite 'Selected tests' failed at 2026-11-22 13:30:15.130.
+	 Executed 47 tests, with 4 tests skipped and 14 failures (8 unexpected) in 0.675 (0.681) seconds
+Note: Some test targets reported failures:
+  - module-bKitTests (XCTest)

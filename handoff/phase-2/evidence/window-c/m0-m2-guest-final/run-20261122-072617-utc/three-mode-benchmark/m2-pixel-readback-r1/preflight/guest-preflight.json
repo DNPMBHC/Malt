@@ -1,0 +1,33 @@
+{
+  "actual": {
+    "FailureServiceName": "module-x-probe-start-failure",
+    "ServiceName": "module-x-probe-lifecycle",
+    "source_sha256": "fa4ea000db5d3c1c201e0631e3fde57fea59fdf5a81f1aa1e80b93585464d46c"
+  },
+  "binding": {
+    "baseline_sha256": "ceedbcaf3db809513428a617a91597a66fcdd2de3d00d399cdb0da2ebdf3545f",
+    "lifecycle_source_sha256": "fa4ea000db5d3c1c201e0631e3fde57fea59fdf5a81f1aa1e80b93585464d46c",
+    "preflight_ps1_sha256": "b64e5bd838aa2d35fb86cc921e82c302178c7da8db06b9e52b9771ee86c9f7b9",
+    "preflight_py_sha256": "a9f214b307a9c7870b4f74d87e607af2a76e88dca562f597bb9188b7779794ba",
+    "recovered_security_baseline": {
+      "bcd_security": [],
+      "boot_time_utc": "2026-11-22T06:08:17.6999380Z",
+      "captured_at_utc": "2026-11-22T06:08:44.5873348Z",
+      "hypervisor_present": true,
+      "secure_boot_enabled": true,
+      "security_services_running": [
+        0
+      ],
+      "tpm": {
+        "activated": true,
+        "enabled": true,
+        "owned": true,
+        "present": true,
+        "specification_version": "2.0, 0, 1.64"
+      },
+      "vbs_status": 0
+    },
+    "service_baseline_count": 2
+  },
+  "passed": false
+}

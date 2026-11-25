@@ -1,0 +1,351 @@
+[
+  {
+    "binary_sha256": "76baf469921bf9c9c72d3942fc8c341e7ce21bbe03dab064b8656e3d80c96cbb",
+    "case": "hardened_virtualization",
+    "ffi": {
+      "dylibLoaded": false,
+      "dylibLogicalSource": "reference-app-renderer-framework",
+      "embeddingAssessment": "Loader boundary blocks embedding; inspect signing and dependency evidence",
+      "iosurfaceExportTested": false,
+      "kosmicKrispIcdPresent": true,
+      "librarySHA256": "681afed647368b927b13e967d556191e1443aac60473a703fb752f25363a0250",
+      "loadError": "dlopen(<reference-app>/Contents/Frameworks/virglrenderer.1.framework/virglrenderer.1, 0x0006): tried: '<reference-app>/Contents/Frameworks/virglrenderer.1.framework/virglrenderer.1' (code signature in <1881DFDC-1D17-344D-8B03-07F19B14ABA6> '<reference-app>/Contents/Frameworks/virglrenderer.1.framework/Versions/A/virglrenderer.1' not valid for use in process: mapping process and mapped file (non-platform) have different Team IDs), '/System<local-path>' (no such file), '<reference-app>/Contents/Frameworks/virglrenderer.1.framework/virglrenderer.1' (code signature in <1881DFDC-1D17-344D-8B03-07F19B14ABA6> '<reference-app>/Contents/Frameworks/virglrenderer.1.framework/Versions/A/virglrenderer.1' not valid for use in process: mapping process and mapped file (non-platform) have different Team IDs), '<reference-app>/Contents/Frameworks/virglrenderer.1.framework/Versions/A/virglrenderer.1' (code signature in <1881DFDC-1D17-344D-8B03-07F19B14ABA6> '<reference-app>/Contents/Frameworks/virglrenderer.1.framework/Versions/A/virglrenderer.1' not valid for use in process: mapping process and mapped file (non-platform) have different Team IDs), '/System<local-path>' (no such file), '<reference-app>/Contents/Frameworks/virglrenderer.1.framework/Versions/A/virglrenderer.1' (code signature in <1881DFDC-1D17-344D-8B03-07F19B14ABA6> '<reference-app>/Contents/Frameworks/virglrenderer.1.framework/Versions/A/virglrenderer.1' not valid for use in process: mapping process and mapped file (non-platform) have different Team IDs)",
+      "owner": "@DNPMBHC",
+      "rendererInitializationTested": false,
+      "requiredSymbolsResolved": 0,
+      "requiredSymbolsTotal": 16,
+      "symbols": [
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_init"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_cleanup"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_get_cap_set"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_context_create_with_flags"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_resource_create_blob"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_resource_map"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_resource_map_fixed"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_resource_unmap"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_resource_export_blob"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_submit_cmd"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_submit_cmd2"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_context_create_fence"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_export_fence"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_poll"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_create_handle_for_scanout"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_release_handle_for_scanout"
+        }
+      ],
+      "venusNeptuneSubmissionTested": false
+    },
+    "ffi_diagnostics": "",
+    "ffi_exit": 0,
+    "runtime": {
+      "allocationScope": "virtual_address_mapping_not_fully_committed_RAM",
+      "configurationValidated": true,
+      "deviceCreated": true,
+      "driverNegotiated": false,
+      "guestScope": "isolated_diskless_EFI_fixture_not_Windows",
+      "guestStarted": true,
+      "guestStopped": true,
+      "mappings": [
+        {
+          "bytes": 16384,
+          "name": "aligned_page",
+          "succeeded": true
+        }
+      ],
+      "owner": "@DNPMBHC",
+      "pageSize": 16384,
+      "regionApertureBytes": 17179869184,
+      "regionCount": 1
+    },
+    "runtime_exit": 0,
+    "signature": {
+      "codesignExit": 0,
+      "hardenedRuntimeFlag": true,
+      "hasVirtualizationEntitlement": true
+    },
+    "validation_exit": 0
+  },
+  {
+    "binary_sha256": "fda24fcde4d3baf9bfa96d465bc971e070e7bc859dd9a1537c6096500fd6ab49",
+    "case": "hardened_no_virtualization",
+    "ffi": {
+      "dylibLoaded": false,
+      "dylibLogicalSource": "reference-app-renderer-framework",
+      "embeddingAssessment": "Loader boundary blocks embedding; inspect signing and dependency evidence",
+      "iosurfaceExportTested": false,
+      "kosmicKrispIcdPresent": true,
+      "librarySHA256": "681afed647368b927b13e967d556191e1443aac60473a703fb752f25363a0250",
+      "loadError": "dlopen(<reference-app>/Contents/Frameworks/virglrenderer.1.framework/virglrenderer.1, 0x0006): tried: '<reference-app>/Contents/Frameworks/virglrenderer.1.framework/virglrenderer.1' (code signature in <1881DFDC-1D17-344D-8B03-07F19B14ABA6> '<reference-app>/Contents/Frameworks/virglrenderer.1.framework/Versions/A/virglrenderer.1' not valid for use in process: mapping process and mapped file (non-platform) have different Team IDs), '/System<local-path>' (no such file), '<reference-app>/Contents/Frameworks/virglrenderer.1.framework/virglrenderer.1' (code signature in <1881DFDC-1D17-344D-8B03-07F19B14ABA6> '<reference-app>/Contents/Frameworks/virglrenderer.1.framework/Versions/A/virglrenderer.1' not valid for use in process: mapping process and mapped file (non-platform) have different Team IDs), '<reference-app>/Contents/Frameworks/virglrenderer.1.framework/Versions/A/virglrenderer.1' (code signature in <1881DFDC-1D17-344D-8B03-07F19B14ABA6> '<reference-app>/Contents/Frameworks/virglrenderer.1.framework/Versions/A/virglrenderer.1' not valid for use in process: mapping process and mapped file (non-platform) have different Team IDs), '/System<local-path>' (no such file), '<reference-app>/Contents/Frameworks/virglrenderer.1.framework/Versions/A/virglrenderer.1' (code signature in <1881DFDC-1D17-344D-8B03-07F19B14ABA6> '<reference-app>/Contents/Frameworks/virglrenderer.1.framework/Versions/A/virglrenderer.1' not valid for use in process: mapping process and mapped file (non-platform) have different Team IDs)",
+      "owner": "@DNPMBHC",
+      "rendererInitializationTested": false,
+      "requiredSymbolsResolved": 0,
+      "requiredSymbolsTotal": 16,
+      "symbols": [
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_init"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_cleanup"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_get_cap_set"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_context_create_with_flags"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_resource_create_blob"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_resource_map"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_resource_map_fixed"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_resource_unmap"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_resource_export_blob"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_submit_cmd"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_submit_cmd2"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_context_create_fence"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_export_fence"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_poll"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_create_handle_for_scanout"
+        },
+        {
+          "resolved": false,
+          "symbol": "virgl_renderer_release_handle_for_scanout"
+        }
+      ],
+      "venusNeptuneSubmissionTested": false
+    },
+    "ffi_diagnostics": "",
+    "ffi_exit": 0,
+    "runtime": {
+      "allocationScope": "virtual_address_mapping_not_fully_committed_RAM",
+      "configurationValidated": false,
+      "deviceCreated": false,
+      "driverNegotiated": false,
+      "error": "VZErrorDomain:2",
+      "guestScope": "isolated_diskless_EFI_fixture_not_Windows",
+      "guestStarted": false,
+      "guestStopped": false,
+      "mappings": [],
+      "owner": "@DNPMBHC",
+      "pageSize": 16384,
+      "regionApertureBytes": 17179869184,
+      "regionCount": 0
+    },
+    "runtime_exit": 0,
+    "signature": {
+      "codesignExit": 0,
+      "hardenedRuntimeFlag": true,
+      "hasVirtualizationEntitlement": false
+    },
+    "validation_exit": 0
+  },
+  {
+    "binary_sha256": "9ea677c3a9059b4d632a602f389952b2ea1e7c30d2581bc92f058a4a1a97af1d",
+    "case": "nonhardened_virtualization",
+    "ffi": {
+      "dylibLoaded": true,
+      "dylibLogicalSource": "reference-app-renderer-framework",
+      "embeddingAssessment": "Initialization/blob probes recorded; typed scanout interoperability remains unproven",
+      "iosurfaceExportTested": false,
+      "kosmicKrispIcdPresent": true,
+      "librarySHA256": "681afed647368b927b13e967d556191e1443aac60473a703fb752f25363a0250",
+      "owner": "@DNPMBHC",
+      "rendererInitializationTested": true,
+      "requiredSymbolsResolved": 16,
+      "requiredSymbolsTotal": 16,
+      "runtime": {
+        "blobExportResult": -22,
+        "callbacksVersion": 4,
+        "contextCreationResult": 22,
+        "guestBlobCreationResult": 0,
+        "guestBlobMapResult": -22,
+        "guestBlobMappedBytes": 0,
+        "initializationAttempted": true,
+        "initializationMs": 0.024000003933906555,
+        "initializationResult": 0,
+        "mappedPointerAliasesInput": false,
+        "renderServerFlagEnabled": false,
+        "rendererFlags": 192,
+        "typedScanoutAndIOSurfaceTested": false,
+        "venusCapsetBytes": 160
+      },
+      "symbols": [
+        {
+          "resolved": true,
+          "symbol": "virgl_renderer_init"
+        },
+        {
+          "resolved": true,
+          "symbol": "virgl_renderer_cleanup"
+        },
+        {
+          "resolved": true,
+          "symbol": "virgl_renderer_get_cap_set"
+        },
+        {
+          "resolved": true,
+          "symbol": "virgl_renderer_context_create_with_flags"
+        },
+        {
+          "resolved": true,
+          "symbol": "virgl_renderer_resource_create_blob"
+        },
+        {
+          "resolved": true,
+          "symbol": "virgl_renderer_resource_map"
+        },
+        {
+          "resolved": true,
+          "symbol": "virgl_renderer_resource_map_fixed"
+        },
+        {
+          "resolved": true,
+          "symbol": "virgl_renderer_resource_unmap"
+        },
+        {
+          "resolved": true,
+          "symbol": "virgl_renderer_resource_export_blob"
+        },
+        {
+          "resolved": true,
+          "symbol": "virgl_renderer_submit_cmd"
+        },
+        {
+          "resolved": true,
+          "symbol": "virgl_renderer_submit_cmd2"
+        },
+        {
+          "resolved": true,
+          "symbol": "virgl_renderer_context_create_fence"
+        },
+        {
+          "resolved": true,
+          "symbol": "virgl_renderer_export_fence"
+        },
+        {
+          "resolved": true,
+          "symbol": "virgl_renderer_poll"
+        },
+        {
+          "resolved": true,
+          "symbol": "virgl_renderer_create_handle_for_scanout"
+        },
+        {
+          "resolved": true,
+          "symbol": "virgl_renderer_release_handle_for_scanout"
+        }
+      ],
+      "venusNeptuneSubmissionTested": false
+    },
+    "ffi_diagnostics": "",
+    "ffi_exit": 0,
+    "runtime": {
+      "allocationScope": "virtual_address_mapping_not_fully_committed_RAM",
+      "configurationValidated": true,
+      "deviceCreated": true,
+      "driverNegotiated": false,
+      "guestScope": "isolated_diskless_EFI_fixture_not_Windows",
+      "guestStarted": true,
+      "guestStopped": true,
+      "mappings": [
+        {
+          "bytes": 16384,
+          "name": "aligned_page",
+          "succeeded": true
+        }
+      ],
+      "owner": "@DNPMBHC",
+      "pageSize": 16384,
+      "regionApertureBytes": 17179869184,
+      "regionCount": 1
+    },
+    "runtime_exit": 0,
+    "signature": {
+      "codesignExit": 0,
+      "hardenedRuntimeFlag": false,
+      "hasVirtualizationEntitlement": true
+    },
+    "validation_exit": 0
+  }
+]

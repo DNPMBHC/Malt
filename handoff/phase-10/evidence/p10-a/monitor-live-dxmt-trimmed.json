@@ -1,0 +1,400 @@
+{
+  "owner": "@DNPMBHC",
+  "label": "live-dxmt-trimmed",
+  "captured_at_utc": "2026-11-25T01:07:43.985450+00:00",
+  "summary": {
+    "observed_duration_seconds": 32.77,
+    "host_sample_count": 6,
+    "guest_sample_count": 3,
+    "shipping_alive_all_samples": true,
+    "fps_source": "ue4_log_frame_delta",
+    "fps": {
+      "mean": 23.99,
+      "p50": 23.99,
+      "p95": 26.42,
+      "p99": 26.636,
+      "min": 21.29,
+      "max": 26.69
+    },
+    "frame_time_ms": {
+      "mean": 42.218,
+      "p50": 42.218,
+      "p95": 46.495,
+      "p99": 46.875,
+      "min": 37.467,
+      "max": 46.97
+    },
+    "qemu_render_server_cpu": {
+      "mean": 12.6,
+      "p50": 12.9,
+      "p95": 13.075,
+      "p99": 13.095,
+      "min": 11.5,
+      "max": 13.1
+    },
+    "qemu_worker_cpu": {
+      "mean": 196.95,
+      "p50": 196.45,
+      "p95": 204.95,
+      "p99": 205.07,
+      "min": 187.2,
+      "max": 205.1
+    },
+    "total_hypervisor_rss_mib": {
+      "mean": 1809.558,
+      "p50": 1789.545,
+      "p95": 2020.523,
+      "p99": 2045.657,
+      "min": 1574.41,
+      "max": 2051.94
+    }
+  },
+  "eventlog_delta": {
+    "System": [
+      {
+        "RecordId": 2150,
+        "Id": 26,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Application Popup",
+        "Msg": "Application popup: Windows - Virtual Memory Minimum Too Low : Your system is low on virtual memory. Windows is increasing the size of your virtual memory paging file. During this p"
+      },
+      {
+        "RecordId": 2149,
+        "Id": 19,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Microsoft-Windows-WindowsUpdateClient",
+        "Msg": "Installation Successful: Windows successfully installed the following update: Cumulative Update for Windows 11 Insider Preview (10.0.26100.1) (KB5036908)"
+      },
+      {
+        "RecordId": 2148,
+        "Id": 7040,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Service Control Manager",
+        "Msg": "The start type of the Windows Modules Installer service was changed from auto start to demand start."
+      },
+      {
+        "RecordId": 2147,
+        "Id": 7040,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Service Control Manager",
+        "Msg": "The start type of the Windows Modules Installer service was changed from demand start to auto start."
+      },
+      {
+        "RecordId": 2146,
+        "Id": 7040,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Service Control Manager",
+        "Msg": "The start type of the Windows Modules Installer service was changed from auto start to demand start."
+      },
+      {
+        "RecordId": 2145,
+        "Id": 44,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Microsoft-Windows-WindowsUpdateClient",
+        "Msg": "Windows Update started downloading an update."
+      },
+      {
+        "RecordId": 2142,
+        "Id": 7040,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Service Control Manager",
+        "Msg": "The start type of the Windows Modules Installer service was changed from demand start to auto start."
+      },
+      {
+        "RecordId": 2141,
+        "Id": 7040,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Service Control Manager",
+        "Msg": "The start type of the Windows Modules Installer service was changed from auto start to demand start."
+      },
+      {
+        "RecordId": 2140,
+        "Id": 43,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Microsoft-Windows-WindowsUpdateClient",
+        "Msg": "Installation Started: Windows has started installing the following update: Cumulative Update for Windows 11 Insider Preview (10.0.26100.1) (KB5036908)"
+      },
+      {
+        "RecordId": 2139,
+        "Id": 44,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Microsoft-Windows-WindowsUpdateClient",
+        "Msg": "Windows Update started downloading an update."
+      },
+      {
+        "RecordId": 2138,
+        "Id": 44,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Microsoft-Windows-WindowsUpdateClient",
+        "Msg": "Windows Update started downloading an update."
+      },
+      {
+        "RecordId": 2135,
+        "Id": 7040,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Service Control Manager",
+        "Msg": "The start type of the Windows Modules Installer service was changed from demand start to auto start."
+      },
+      {
+        "RecordId": 2134,
+        "Id": 19,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Microsoft-Windows-WindowsUpdateClient",
+        "Msg": "Installation Successful: Windows successfully installed the following update: 9NTXGKQ8P7N0-MicrosoftWindows.CrossDevice"
+      },
+      {
+        "RecordId": 2133,
+        "Id": 16,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Microsoft-Windows-Kernel-General",
+        "Msg": "The access history in hive \\??\\<local-user-dir>\\AppData\\Local\\Packages\\MicrosoftWindows.CrossDevice_cw5n1h2txyewy\\Settings\\settings.dat was cleared updating 3 keys and creating 1 mo"
+      },
+      {
+        "RecordId": 2132,
+        "Id": 43,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Microsoft-Windows-WindowsUpdateClient",
+        "Msg": "Installation Started: Windows has started installing the following update: 9NTXGKQ8P7N0-MicrosoftWindows.CrossDevice"
+      },
+      {
+        "RecordId": 2131,
+        "Id": 19,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Microsoft-Windows-WindowsUpdateClient",
+        "Msg": "Installation Successful: Windows successfully installed the following update: 9NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2"
+      },
+      {
+        "RecordId": 2130,
+        "Id": 43,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Microsoft-Windows-WindowsUpdateClient",
+        "Msg": "Installation Started: Windows has started installing the following update: 9NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2"
+      },
+      {
+        "RecordId": 2129,
+        "Id": 19,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Microsoft-Windows-WindowsUpdateClient",
+        "Msg": "Installation Successful: Windows successfully installed the following update: 9NBLGGH4RV3K-Microsoft.VCLibs.140.00.UWPDesktop"
+      },
+      {
+        "RecordId": 2128,
+        "Id": 43,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Microsoft-Windows-WindowsUpdateClient",
+        "Msg": "Installation Started: Windows has started installing the following update: 9NBLGGH4RV3K-Microsoft.VCLibs.140.00.UWPDesktop"
+      },
+      {
+        "RecordId": 2127,
+        "Id": 44,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Microsoft-Windows-WindowsUpdateClient",
+        "Msg": "Windows Update started downloading an update."
+      },
+      {
+        "RecordId": 2126,
+        "Id": 44,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Microsoft-Windows-WindowsUpdateClient",
+        "Msg": "Windows Update started downloading an update."
+      },
+      {
+        "RecordId": 2125,
+        "Id": 44,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Microsoft-Windows-WindowsUpdateClient",
+        "Msg": "Windows Update started downloading an update."
+      },
+      {
+        "RecordId": 2124,
+        "Id": 19,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Microsoft-Windows-WindowsUpdateClient",
+        "Msg": "Installation Successful: Windows successfully installed the following update: 9NTHZKRRFGHD-MicrosoftWindows.Voice.zh-CN.Yunxi.1"
+      },
+      {
+        "RecordId": 2123,
+        "Id": 43,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Microsoft-Windows-WindowsUpdateClient",
+        "Msg": "Installation Started: Windows has started installing the following update: 9NTHZKRRFGHD-MicrosoftWindows.Voice.zh-CN.Yunxi.1"
+      },
+      {
+        "RecordId": 2122,
+        "Id": 44,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Microsoft-Windows-WindowsUpdateClient",
+        "Msg": "Windows Update started downloading an update."
+      },
+      {
+        "RecordId": 2121,
+        "Id": 19,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Microsoft-Windows-WindowsUpdateClient",
+        "Msg": "Installation Successful: Windows successfully installed the following update: 9PCKN02D9W85-MicrosoftWindows.Speech.zh-CN.1"
+      },
+      {
+        "RecordId": 2120,
+        "Id": 43,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Microsoft-Windows-WindowsUpdateClient",
+        "Msg": "Installation Started: Windows has started installing the following update: 9PCKN02D9W85-MicrosoftWindows.Speech.zh-CN.1"
+      },
+      {
+        "RecordId": 2119,
+        "Id": 19,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Microsoft-Windows-WindowsUpdateClient",
+        "Msg": "Installation Successful: Windows successfully installed the following update: 9NRMNT6GMZ70-Microsoft.LanguageExperiencePackzh-CN"
+      },
+      {
+        "RecordId": 2118,
+        "Id": 43,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Microsoft-Windows-WindowsUpdateClient",
+        "Msg": "Installation Started: Windows has started installing the following update: 9NRMNT6GMZ70-Microsoft.LanguageExperiencePackzh-CN"
+      },
+      {
+        "RecordId": 2117,
+        "Id": 44,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Microsoft-Windows-WindowsUpdateClient",
+        "Msg": "Windows Update started downloading an update."
+      },
+      {
+        "RecordId": 2114,
+        "Id": 44,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Microsoft-Windows-WindowsUpdateClient",
+        "Msg": "Windows Update started downloading an update."
+      },
+      {
+        "RecordId": 2113,
+        "Id": 44,
+        "LevelDisplayName": "Information",
+        "ProviderName": "Microsoft-Windows-WindowsUpdateClient",
+        "Msg": "Windows Update started downloading an update."
+      }
+    ],
+    "Application": []
+  },
+  "guest_samples": [
+    {
+      "captured_at_utc": "2026-11-25T01:07:08.209164+00:00",
+      "elapsed_seconds": 0.0,
+      "shipping_alive": true,
+      "shipping_pid": 1088,
+      "shipping_ws_mb": 719.63,
+      "shipping_threads": 188,
+      "shipping_cpu_s": 1473.34,
+      "ace_drivers": [
+        {
+          "Name": "ACE-CORE10405",
+          "State": "Running",
+          "ExitCode": 0
+        },
+        {
+          "Name": "ACE-CORE20405",
+          "State": "Running",
+          "ExitCode": 0
+        },
+        {
+          "Name": "Filetrace",
+          "State": "Stopped",
+          "ExitCode": 1077
+        },
+        {
+          "Name": "spaceparser",
+          "State": "Stopped",
+          "ExitCode": 1077
+        },
+        {
+          "Name": "spaceport",
+          "State": "Running",
+          "ExitCode": 0
+        }
+      ],
+      "last_frame_timestamp": "2026.11.25-01.07.03:372",
+      "last_frame_number": 119,
+      "estimated_fps": null
+    },
+    {
+      "captured_at_utc": "2026-11-25T01:07:21.986818+00:00",
+      "elapsed_seconds": 16.96,
+      "shipping_alive": true,
+      "shipping_pid": 1088,
+      "shipping_ws_mb": 706.5,
+      "shipping_threads": 188,
+      "shipping_cpu_s": 1489.19,
+      "ace_drivers": [
+        {
+          "Name": "ACE-CORE10405",
+          "State": "Running",
+          "ExitCode": 0
+        },
+        {
+          "Name": "ACE-CORE20405",
+          "State": "Running",
+          "ExitCode": 0
+        },
+        {
+          "Name": "Filetrace",
+          "State": "Stopped",
+          "ExitCode": 1077
+        },
+        {
+          "Name": "spaceparser",
+          "State": "Stopped",
+          "ExitCode": 1077
+        },
+        {
+          "Name": "spaceport",
+          "State": "Running",
+          "ExitCode": 0
+        }
+      ],
+      "last_frame_timestamp": "2026.11.25-01.07.17:427",
+      "last_frame_number": 480,
+      "estimated_fps": 21.29
+    },
+    {
+      "captured_at_utc": "2026-11-25T01:07:35.425102+00:00",
+      "elapsed_seconds": 32.77,
+      "shipping_alive": true,
+      "shipping_pid": 1088,
+      "shipping_ws_mb": 692.72,
+      "shipping_threads": 187,
+      "shipping_cpu_s": 1505.27,
+      "ace_drivers": [
+        {
+          "Name": "ACE-CORE10405",
+          "State": "Running",
+          "ExitCode": 0
+        },
+        {
+          "Name": "ACE-CORE20405",
+          "State": "Running",
+          "ExitCode": 0
+        },
+        {
+          "Name": "Filetrace",
+          "State": "Stopped",
+          "ExitCode": 1077
+        },
+        {
+          "Name": "spaceparser",
+          "State": "Stopped",
+          "ExitCode": 1077
+        },
+        {
+          "Name": "spaceport",
+          "State": "Running",
+          "ExitCode": 0
+        }
+      ],
+      "last_frame_timestamp": "2026.11.25-01.07.34:007",
+      "last_frame_number": 902,
+      "estimated_fps": 26.69
+    }
+  ]
+}

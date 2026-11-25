@@ -1,0 +1,150 @@
+Building for debugging...
+[1 / 5]
+[2 / 6] module-bKit
+[3 / 7] module-bKit
+[12 / 14] module-bKit
+[12 / 15] module-bKit
+[14 / 16] module-bKit
+[17 / 20] module-bKitTests-product
+[21 / 24] module-bKitTests-product
+[23 / 24] module-bKitTests-product
+Build complete! (4.51秒)
+Test Suite 'Selected tests' started at 2026-11-22 13:45:58.576.
+Test Suite 'module-bKitTests.xctest' started at 2026-11-22 13:45:58.579.
+Test Suite 'UTMComputeTests' started at 2026-11-22 13:45:58.579.
+Test Case '-[module-bKitTests.UTMComputeTests testCheckedAffineRejectsOverflow]' started.
+Test Case '-[module-bKitTests.UTMComputeTests testCheckedAffineRejectsOverflow]' passed (0.002 seconds).
+Test Case '-[module-bKitTests.UTMComputeTests testLoopbackCancelIsTerminalAndCancelsGuestExactlyOnce]' started.
+Test Case '-[module-bKitTests.UTMComputeTests testLoopbackCancelIsTerminalAndCancelsGuestExactlyOnce]' passed (0.031 seconds).
+Test Case '-[module-bKitTests.UTMComputeTests testLoopbackComputesAndHandlesFragmentedFrames]' started.
+Test Case '-[module-bKitTests.UTMComputeTests testLoopbackComputesAndHandlesFragmentedFrames]' passed (0.007 seconds).
+Test Case '-[module-bKitTests.UTMComputeTests testLoopbackPropagatesHostFailure]' started.
+Test Case '-[module-bKitTests.UTMComputeTests testLoopbackPropagatesHostFailure]' passed (0.001 seconds).
+Test Case '-[module-bKitTests.UTMComputeTests testLoopbackTimeoutCancelsHostComputationAndReturnsTypedError]' started.
+Test Case '-[module-bKitTests.UTMComputeTests testLoopbackTimeoutCancelsHostComputationAndReturnsTypedError]' passed (0.046 seconds).
+Test Case '-[module-bKitTests.UTMComputeTests testMalformedUnauthenticatedFrameDoesNotTerminateGuest]' started.
+Test Case '-[module-bKitTests.UTMComputeTests testMalformedUnauthenticatedFrameDoesNotTerminateGuest]' passed (0.015 seconds).
+Test Case '-[module-bKitTests.UTMComputeTests testNoncooperativeHandlerCannotHangTimeoutOrOverwriteTerminalResponse]' started.
+Test Case '-[module-bKitTests.UTMComputeTests testNoncooperativeHandlerCannotHangTimeoutOrOverwriteTerminalResponse]' passed (0.241 seconds).
+Test Case '-[module-bKitTests.UTMComputeTests testPeerDisconnectPropagatesFailureAndCleansHostWork]' started.
+Test Case '-[module-bKitTests.UTMComputeTests testPeerDisconnectPropagatesFailureAndCleansHostWork]' passed (0.013 seconds).
+Test Case '-[module-bKitTests.UTMComputeTests testTraceContainsNoAuthenticationNonceOrEndpoint]' started.
+Test Case '-[module-bKitTests.UTMComputeTests testTraceContainsNoAuthenticationNonceOrEndpoint]' passed (0.002 seconds).
+Test Case '-[module-bKitTests.UTMComputeTests testUnauthenticatedPeerCannotSubmitComputation]' started.
+Test Case '-[module-bKitTests.UTMComputeTests testUnauthenticatedPeerCannotSubmitComputation]' passed (0.002 seconds).
+Test Case '-[module-bKitTests.UTMComputeTests testUnconnectedSessionTimeoutTerminatesGuestAndClosesListener]' started.
+Test Case '-[module-bKitTests.UTMComputeTests testUnconnectedSessionTimeoutTerminatesGuestAndClosesListener]' passed (0.033 seconds).
+Test Case '-[module-bKitTests.UTMComputeTests testWirePreservesSignedBoundaryValuesAndCorrelation]' started.
+Test Case '-[module-bKitTests.UTMComputeTests testWirePreservesSignedBoundaryValuesAndCorrelation]' passed (0.000 seconds).
+Test Case '-[module-bKitTests.UTMComputeTests testWireRejectsOversizedMalformedAndCorruptFrames]' started.
+Test Case '-[module-bKitTests.UTMComputeTests testWireRejectsOversizedMalformedAndCorruptFrames]' passed (0.000 seconds).
+Test Suite 'UTMComputeTests' passed at 2026-11-22 13:45:58.973.
+	 Executed 13 tests, with 0 failures (0 unexpected) in 0.394 (0.395) seconds
+Test Suite 'UTMGuestStoragePreflightTests' started at 2026-11-22 13:45:58.974.
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testExistingFileCannotBeUsedAsWritableDirectoryTarget]' started.
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testExistingFileCannotBeUsedAsWritableDirectoryTarget]' passed (0.002 seconds).
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testFileVisibilityPromotesConfiguredMappingToVerified]' started.
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testFileVisibilityPromotesConfiguredMappingToVerified]' passed (0.001 seconds).
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testInsufficientSpaceIsReportedBeforeGuestStart]' started.
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testInsufficientSpaceIsReportedBeforeGuestStart]' passed (0.001 seconds).
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testMissingTargetIsCreatableAndMapsToGuestDirectory]' started.
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testMissingTargetIsCreatableAndMapsToGuestDirectory]' passed (0.001 seconds).
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testPushRetriesAfterCreatingMissingGuestParentDirectory]' started.
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testPushRetriesAfterCreatingMissingGuestParentDirectory]' passed (0.007 seconds).
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testRealUTMProviderHostAndVMLifecycleWhenConfigured]' started.
+<WORKSPACE>/module-b/module-bKit/Tests/module-bKitTests/UTMGuestStoragePreflightTests.swift:139: -[module-bKitTests.UTMGuestStoragePreflightTests testRealUTMProviderHostAndVMLifecycleWhenConfigured] : Test skipped - Real Guest VM and shared directory configuration is required.
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testRealUTMProviderHostAndVMLifecycleWhenConfigured]' skipped (0.001 seconds).
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testTargetOutsideConfiguredMappingIsUnavailable]' started.
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testTargetOutsideConfiguredMappingIsUnavailable]' passed (0.001 seconds).
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testUTMProviderConformsToProbeReportingForProbeService]' started.
+Test Case '-[module-bKitTests.UTMGuestStoragePreflightTests testUTMProviderConformsToProbeReportingForProbeService]' passed (0.001 seconds).
+Test Suite 'UTMGuestStoragePreflightTests' passed at 2026-11-22 13:45:58.988.
+	 Executed 8 tests, with 1 test skipped and 0 failures (0 unexpected) in 0.014 (0.014) seconds
+Test Suite 'UTMHostProcessRunnerTests' started at 2026-11-22 13:45:58.988.
+Test Case '-[module-bKitTests.UTMHostProcessRunnerTests testCapturesSeparateStreamsArgumentsAndFullExitCode]' started.
+Test Case '-[module-bKitTests.UTMHostProcessRunnerTests testCapturesSeparateStreamsArgumentsAndFullExitCode]' passed (0.033 seconds).
+Test Case '-[module-bKitTests.UTMHostProcessRunnerTests testDeadlineKillsAndReapsTheOwnedProcess]' started.
+Test Case '-[module-bKitTests.UTMHostProcessRunnerTests testDeadlineKillsAndReapsTheOwnedProcess]' passed (1.010 seconds).
+Test Case '-[module-bKitTests.UTMHostProcessRunnerTests testExpiredDeadlineDoesNotLaunchProcess]' started.
+Test Case '-[module-bKitTests.UTMHostProcessRunnerTests testExpiredDeadlineDoesNotLaunchProcess]' passed (0.001 seconds).
+Test Case '-[module-bKitTests.UTMHostProcessRunnerTests testLaunchFailureIsExplicit]' started.
+Test Case '-[module-bKitTests.UTMHostProcessRunnerTests testLaunchFailureIsExplicit]' passed (0.001 seconds).
+Test Case '-[module-bKitTests.UTMHostProcessRunnerTests testOutputLimitKillsAndReapsFloodingProcess]' started.
+Test Case '-[module-bKitTests.UTMHostProcessRunnerTests testOutputLimitKillsAndReapsFloodingProcess]' passed (0.035 seconds).
+Test Case '-[module-bKitTests.UTMHostProcessRunnerTests testTaskCancellationKillsAndReapsTheOwnedProcess]' started.
+Test Case '-[module-bKitTests.UTMHostProcessRunnerTests testTaskCancellationKillsAndReapsTheOwnedProcess]' passed (0.039 seconds).
+Test Suite 'UTMHostProcessRunnerTests' passed at 2026-11-22 13:46:00.108.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 1.119 (1.120) seconds
+Test Suite 'UTMInteractiveRealTests' started at 2026-11-22 13:46:00.108.
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealDesktopGUIArgumentsExitAndCancellationWhenConfigured]' started.
+<WORKSPACE>/module-b/module-bKit/Tests/module-bKitTests/UTMInteractiveRealTests.swift:228: -[module-bKitTests.UTMInteractiveRealTests testRealDesktopGUIArgumentsExitAndCancellationWhenConfigured] : Test skipped - Real Guest lease and desktop/compute probe configuration is required.
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealDesktopGUIArgumentsExitAndCancellationWhenConfigured]' skipped (0.001 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealExplicitComputeRoundtripTimeoutCancellationAndErrorsWhenConfigured]' started.
+<WORKSPACE>/module-b/module-bKit/Tests/module-bKitTests/UTMInteractiveRealTests.swift:228: -[module-bKitTests.UTMInteractiveRealTests testRealExplicitComputeRoundtripTimeoutCancellationAndErrorsWhenConfigured] : Test skipped - Real Guest lease and desktop/compute probe configuration is required.
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealExplicitComputeRoundtripTimeoutCancellationAndErrorsWhenConfigured]' skipped (0.000 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealInstallerStyleWindowWhenConfigured]' started.
+<WORKSPACE>/module-b/module-bKit/Tests/module-bKitTests/UTMInteractiveRealTests.swift:228: -[module-bKitTests.UTMInteractiveRealTests testRealInstallerStyleWindowWhenConfigured] : Test skipped - Real Guest lease and desktop/compute probe configuration is required.
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealInstallerStyleWindowWhenConfigured]' skipped (0.000 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealParentExitPreservesChildTreeAndCancellationWhenConfigured]' started.
+<WORKSPACE>/module-b/module-bKit/Tests/module-bKitTests/UTMInteractiveRealTests.swift:228: -[module-bKitTests.UTMInteractiveRealTests testRealParentExitPreservesChildTreeAndCancellationWhenConfigured] : Test skipped - Real Guest lease and desktop/compute probe configuration is required.
+Test Case '-[module-bKitTests.UTMInteractiveRealTests testRealParentExitPreservesChildTreeAndCancellationWhenConfigured]' skipped (0.000 seconds).
+Test Suite 'UTMInteractiveRealTests' passed at 2026-11-22 13:46:00.110.
+	 Executed 4 tests, with 4 tests skipped and 0 failures (0 unexpected) in 0.001 (0.002) seconds
+Test Suite 'UTMInteractiveTests' started at 2026-11-22 13:46:00.110.
+Test Case '-[module-bKitTests.UTMInteractiveTests testCancelledChildTreeDoesNotReportExitedRootAsSuccessfulSession]' started.
+Test Case '-[module-bKitTests.UTMInteractiveTests testCancelledChildTreeDoesNotReportExitedRootAsSuccessfulSession]' passed (0.001 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveTests testControllerExitCannotMasqueradeAsTargetExit]' started.
+Test Case '-[module-bKitTests.UTMInteractiveTests testControllerExitCannotMasqueradeAsTargetExit]' passed (0.000 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveTests testManifestHasBoundedSize]' started.
+Test Case '-[module-bKitTests.UTMInteractiveTests testManifestHasBoundedSize]' passed (0.001 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveTests testManifestPreservesSpecialArgumentsAndRejectsAmbiguousEnvironment]' started.
+Test Case '-[module-bKitTests.UTMInteractiveTests testManifestPreservesSpecialArgumentsAndRejectsAmbiguousEnvironment]' passed (0.000 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveTests testNoDesktopIsExplicitFailureAndReclaimsController]' started.
+Test Case '-[module-bKitTests.UTMInteractiveTests testNoDesktopIsExplicitFailureAndReclaimsController]' passed (0.001 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveTests testRealTargetPIDDrivesStatusAndRepeatedCancellation]' started.
+Test Case '-[module-bKitTests.UTMInteractiveTests testRealTargetPIDDrivesStatusAndRepeatedCancellation]' passed (0.000 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveTests testResponsePreservesUnsignedWindowsExceptionCodeAndOutput]' started.
+Test Case '-[module-bKitTests.UTMInteractiveTests testResponsePreservesUnsignedWindowsExceptionCodeAndOutput]' passed (0.000 seconds).
+Test Case '-[module-bKitTests.UTMInteractiveTests testResponseRejectsOtherRequestAndWindowsSessionZero]' started.
+Test Case '-[module-bKitTests.UTMInteractiveTests testResponseRejectsOtherRequestAndWindowsSessionZero]' passed (0.000 seconds).
+Test Suite 'UTMInteractiveTests' passed at 2026-11-22 13:46:00.114.
+	 Executed 8 tests, with 0 failures (0 unexpected) in 0.003 (0.003) seconds
+Test Suite 'UTMWindowsGuestProviderTests' started at 2026-11-22 13:46:00.114.
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testArchitectureMismatchIsReportedBeforeVMStart]' started.
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testArchitectureMismatchIsReportedBeforeVMStart]' passed (0.002 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testCancellationFailureIsReturnedByWait]' started.
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testCancellationFailureIsReturnedByWait]' passed (0.002 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testCancellationIsIdempotentAndWaitReportsGuestTermination]' started.
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testCancellationIsIdempotentAndWaitReportsGuestTermination]' passed (0.002 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testConfigurationRejectsInvalidTimeoutAndGuestPathTraversal]' started.
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testConfigurationRejectsInvalidTimeoutAndGuestPathTraversal]' passed (0.001 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testFileOutsideMappingAndUnsupportedLauncherAreRejected]' started.
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testFileOutsideMappingAndUnsupportedLauncherAreRejected]' passed (0.001 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testGuestAgentReadinessTimeoutIsReported]' started.
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testGuestAgentReadinessTimeoutIsReported]' passed (1.005 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testMappedProgramPreservesArgumentAndEnvironmentBoundariesAndFullExitCode]' started.
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testMappedProgramPreservesArgumentAndEnvironmentBoundariesAndFullExitCode]' passed (0.005 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testPushedFileMustBeVisibleBeforeProgramExecution]' started.
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testPushedFileMustBeVisibleBeforeProgramExecution]' passed (0.006 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testRequestConfigurationCanStopGuestAfterReadinessFailure]' started.
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testRequestConfigurationCanStopGuestAfterReadinessFailure]' passed (1.006 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testStopIsIdempotentWhenGuestAlreadyStopped]' started.
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testStopIsIdempotentWhenGuestAlreadyStopped]' passed (0.001 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testStopRequestsVMShutdownAndWaitsForStoppedStatus]' started.
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testStopRequestsVMShutdownAndWaitsForStoppedStatus]' passed (0.001 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testStopUsesGuestConfigurationFromLaunchRequest]' started.
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testStopUsesGuestConfigurationFromLaunchRequest]' passed (0.004 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testUnconfiguredAndUnavailableStatesAreExplicit]' started.
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testUnconfiguredAndUnavailableStatesAreExplicit]' passed (0.000 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testUnsupportedVMBackendIsReportedBeforeArchitectureValidation]' started.
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testUnsupportedVMBackendIsReportedBeforeArchitectureValidation]' passed (0.003 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testVMCrashIsReportedWhileWaitingForProgram]' started.
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testVMCrashIsReportedWhileWaitingForProgram]' passed (0.002 seconds).
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testWindowsStatusCodeParserPreservesHighBitExceptionCode]' started.
+Test Case '-[module-bKitTests.UTMWindowsGuestProviderTests testWindowsStatusCodeParserPreservesHighBitExceptionCode]' passed (0.000 seconds).
+Test Suite 'UTMWindowsGuestProviderTests' passed at 2026-11-22 13:46:02.158.
+	 Executed 16 tests, with 0 failures (0 unexpected) in 2.041 (2.044) seconds
+Test Suite 'module-bKitTests.xctest' passed at 2026-11-22 13:46:02.158.
+	 Executed 55 tests, with 5 tests skipped and 0 failures (0 unexpected) in 3.573 (3.579) seconds
+Test Suite 'Selected tests' passed at 2026-11-22 13:46:02.158.
+	 Executed 55 tests, with 5 tests skipped and 0 failures (0 unexpected) in 3.573 (3.582) seconds

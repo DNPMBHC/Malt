@@ -1,0 +1,45 @@
+{
+  "ace_drivers": [
+    {
+      "Name": "ACE-CORE10405",
+      "State": "Running",
+      "Status": "OK",
+      "ExitCode": 0,
+      "StartMode": "Manual",
+      "PathName": "\\??\\C:\\Program Files\\AntiCheatExpert\\ACE-CORE10405.sys"
+    },
+    {
+      "Name": "ACE-CORE20405",
+      "State": "Running",
+      "Status": "OK",
+      "ExitCode": 0,
+      "StartMode": "Manual",
+      "PathName": "\\??\\C:\\Program Files\\AntiCheatExpert\\ACE-CORE20405.sys"
+    },
+    {
+      "Name": "Filetrace",
+      "State": "Stopped",
+      "Status": "OK",
+      "ExitCode": 1077,
+      "StartMode": "Manual",
+      "PathName": "C:\\WINDOWS\\system32\\drivers\\filetrace.sys"
+    },
+    {
+      "Name": "spaceparser",
+      "State": "Stopped",
+      "Status": "OK",
+      "ExitCode": 1077,
+      "StartMode": "Manual",
+      "PathName": "C:\\WINDOWS\\system32\\drivers\\spaceparser.sys"
+    },
+    {
+      "Name": "spaceport",
+      "State": "Running",
+      "Status": "OK",
+      "ExitCode": 0,
+      "StartMode": "Boot",
+      "PathName": "C:\\WINDOWS\\system32\\drivers\\spaceport.sys"
+    }
+  ],
+  "system_service_errors": []
+}
