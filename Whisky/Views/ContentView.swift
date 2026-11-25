@@ -71,6 +71,7 @@ struct ContentView: View {
         } detail: {
             detail
         }
+        .navigationTitle("Malt")
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button {
@@ -199,7 +200,7 @@ struct ContentView: View {
 
     var sidebar: some View {
         List(selection: $selectedSection) {
-            Section("Whisky") {
+            Section("Malt") {
                 ForEach(UnifiedSidebarSection.allCases) { section in
                     Label(section.title, systemImage: section.systemImage)
                         .tag(section)

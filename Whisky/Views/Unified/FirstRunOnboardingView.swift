@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Zero-friction 3-step first-run onboarding wizard for Whisky unified frontend.
+// Zero-friction 3-step first-run onboarding wizard for Malt unified frontend.
 
 import SwiftUI
 import WhiskyKit
@@ -51,9 +51,9 @@ struct FirstRunOnboardingView: View {
     private var stepHeader: some View {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
-                Text("欢迎使用 Whisky 统一游戏中心")
+                Text("欢迎使用 Malt")
                     .font(.title3.bold())
-                Text("3 步零门槛自动适配，无需手工配置虚拟机或容器参数")
+                Text("3 步零门槛自动适配，即刻开启双模式游戏体验")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
@@ -98,12 +98,12 @@ struct FirstRunOnboardingView: View {
                 .font(.headline)
             VStack(alignment: .leading, spacing: 10) {
                 runtimeStatusRow(
-                    title: "普通游戏转译引擎（WhiskyWine）",
+                    title: "原生转译模式引擎（Malt Runtime）",
                     ready: healthMap["wine_ready"] ?? false
                 )
                 Divider()
                 runtimeStatusRow(
-                    title: "反作弊安全沙盒（UTM-Custom 无桌面应用壳）",
+                    title: "硬件加速容器模式（无桌面应用壳）",
                     ready: healthMap["anti_cheat_vm_ready"] ?? false
                 )
                 Divider()
@@ -116,7 +116,7 @@ struct FirstRunOnboardingView: View {
             .background(Color(nsColor: .controlBackgroundColor), in: RoundedRectangle(cornerRadius: 10))
 
             if !(healthMap["wine_ready"] ?? false) {
-                Button("安装 WhiskyWine 运行时…") {
+                Button("安装 Malt 运行时…") {
                     onOpenWineSetup()
                 }
                 .buttonStyle(.bordered)

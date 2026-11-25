@@ -44,7 +44,7 @@ struct UnifiedRuntimeStorageView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text("环境与存储")
                     .font(.title2.bold())
-                Text("统一监控 Wine 转译引擎、反作弊安全底座、外置高速存储与着色器缓存")
+                Text("统一监控原生转译模式、硬件加速容器模式、外置高速存储与着色器缓存")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
@@ -63,14 +63,14 @@ struct UnifiedRuntimeStorageView: View {
             Text("运行底座健康状态")
                 .font(.headline)
             healthRow(
-                title: "Wine 转译引擎（WhiskyWine）",
+                title: "原生转译模式引擎（Malt Runtime）",
                 isReady: healthMap["wine_ready"] ?? false,
                 readyText: "已就绪",
                 missingText: "未安装"
             )
             Divider()
             healthRow(
-                title: "反作弊安全沙盒底座（UTM-Custom / UTM）",
+                title: "硬件加速容器模式底座",
                 isReady: healthMap["anti_cheat_vm_ready"] ?? false,
                 readyText: "可用",
                 missingText: "待部署"
@@ -136,7 +136,7 @@ struct UnifiedRuntimeStorageView: View {
                 Button("清理着色器缓存", role: .destructive) {
                     WhiskyApp.killBottles()
                     WhiskyApp.wipeShaderCaches()
-                    statusBanner = "已清理着色器缓存并重置活跃 Wine 进程。"
+                    statusBanner = "已清理着色器缓存并重置活跃转译进程。"
                     refreshDiagnostics()
                 }
                 .buttonStyle(.bordered)
@@ -159,7 +159,7 @@ struct UnifiedRuntimeStorageView: View {
             .buttonStyle(.bordered)
 
             Button(action: onOpenSetup) {
-                Label("打开 Wine 运行时安装向导", systemImage: "wrench.and.screwdriver")
+                Label("打开 Malt 运行时安装向导", systemImage: "wrench.and.screwdriver")
             }
             .buttonStyle(.bordered)
 
@@ -168,7 +168,7 @@ struct UnifiedRuntimeStorageView: View {
     }
 
     private var legacyBottlesDisclosure: some View {
-        DisclosureGroup("高级：传统 Wine 容器（Bottle）管理（向后兼容）", isExpanded: $showLegacyBottles) {
+        DisclosureGroup("高级：传统兼容容器（Bottle）管理（向后兼容）", isExpanded: $showLegacyBottles) {
             VStack(alignment: .leading, spacing: 12) {
                 HStack {
                     Text("已发现 \(bottleVM.bottles.count) 个传统容器")

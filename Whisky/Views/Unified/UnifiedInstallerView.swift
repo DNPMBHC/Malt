@@ -26,7 +26,7 @@ struct UnifiedInstallerView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("一键安装")
                         .font(.title2.bold())
-                    Text("拖入 .exe 或 .msi 安装包，自动识别普通转译或反作弊安全模式，装完自动入库")
+                    Text("拖入 .exe 或 .msi 安装包，自动匹配原生转译模式或硬件加速容器模式，装完自动入库")
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                 }
@@ -76,7 +76,7 @@ struct UnifiedInstallerView: View {
                 .foregroundStyle(isDropTargeted ? Color.accentColor : Color.secondary)
             Text(selectedInstallerURL == nil ? "拖放 Windows 安装程序（.exe / .msi）到此处" : "已选择安装包，可拖放新文件替换")
                 .font(.headline)
-            Text("反作弊游戏将通过无桌面应用壳窗口弹窗安装，全程不见 Windows 桌面")
+            Text("硬件加速容器模式将通过无桌面应用壳窗口弹窗安装，全程不见 Windows 桌面")
                 .font(.caption)
                 .foregroundStyle(.secondary)
             Button("选择安装包…", action: pickInstallerFile)
@@ -107,7 +107,7 @@ struct UnifiedInstallerView: View {
                     .font(.headline)
                 Spacer()
                 if let recommended = recommendedEngine {
-                    Text("自动推荐：\(recommended == .antiCheatVM ? "反作弊安全模式" : "原生转译")")
+                    Text("自动推荐：\(recommended == .antiCheatVM ? "硬件加速容器模式" : "原生转译模式")")
                         .font(.caption.weight(.semibold))
                         .padding(.horizontal, 10)
                         .padding(.vertical, 4)
@@ -127,8 +127,8 @@ struct UnifiedInstallerView: View {
                 Text("运行引擎模式（可手动切换）")
                     .font(.subheadline.weight(.medium))
                 Picker("运行引擎", selection: $selectedEngine) {
-                    Text("原生转译（Wine）").tag(UnifiedEngineKind.nativeWine)
-                    Text("反作弊安全模式（无桌面应用壳）").tag(UnifiedEngineKind.antiCheatVM)
+                    Text("原生转译模式").tag(UnifiedEngineKind.nativeWine)
+                    Text("硬件加速容器模式（无桌面应用壳）").tag(UnifiedEngineKind.antiCheatVM)
                 }
                 .pickerStyle(.segmented)
                 .labelsHidden()

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Unified game library grid blending native Wine and Anti-Cheat VM titles.
+// Unified game library grid blending native translation and hardware-accelerated container titles.
 
 import AppKit
 import SwiftUI
@@ -78,19 +78,19 @@ struct UnifiedGameLibraryView: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text("游戏库")
                     .font(.title2.bold())
-                Text("普通转译与反作弊安全沙盒游戏统一入口，点击即玩")
+                Text("原生转译模式与硬件加速容器模式统一入口，点击即玩")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
             Spacer()
             Picker("引擎筛选", selection: $engineFilter) {
                 Text("全部").tag(UnifiedEngineKind?.none)
-                Text("原生转译").tag(UnifiedEngineKind?.some(.nativeWine))
-                Text("反作弊安全模式").tag(UnifiedEngineKind?.some(.antiCheatVM))
+                Text("原生转译模式").tag(UnifiedEngineKind?.some(.nativeWine))
+                Text("硬件加速容器模式").tag(UnifiedEngineKind?.some(.antiCheatVM))
             }
             .pickerStyle(.segmented)
             .labelsHidden()
-            .frame(width: 240)
+            .frame(width: 280)
 
             TextField("搜索游戏…", text: $searchText)
                 .textFieldStyle(.roundedBorder)
@@ -106,7 +106,7 @@ struct UnifiedGameLibraryView: View {
             Image(systemName: "gamecontroller")
                 .font(.system(size: 46))
                 .foregroundStyle(.secondary)
-            Text(libraryStore.entries.isEmpty ? "游戏库暂无已安装游戏" : "未找到匹配的游戏")
+            Text(libraryStore.entries.isEmpty ? "Malt 游戏库暂无已安装游戏" : "未找到匹配的游戏")
                 .font(.title3.weight(.semibold))
             Text("拖入 .exe 或 .msi 安装包，系统将自动识别并配置最合适的运行引擎。")
                 .font(.subheadline)
@@ -166,7 +166,7 @@ private struct UnifiedGameCard: View {
     let onRemove: () -> Void
 
     private var engineBadgeTitle: String {
-        entry.engineKind == .antiCheatVM ? "反作弊安全模式" : "原生转译"
+        entry.engineKind == .antiCheatVM ? "硬件加速容器模式" : "原生转译模式"
     }
 
     private var engineBadgeColor: Color {

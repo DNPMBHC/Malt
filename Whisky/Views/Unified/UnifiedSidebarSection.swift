@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Unified navigation sections and shared performance preferences for Whisky.
+// Unified navigation sections and shared performance preferences for Malt.
 
 import SwiftUI
 import WhiskyKit
