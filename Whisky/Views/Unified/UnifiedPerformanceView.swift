@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Minimalist performance presets, safe GiB memory selector, and collapsible advanced options.
 
+import AppKit
 import SwiftUI
 import WhiskyKit
 
@@ -245,10 +246,37 @@ extension UnifiedPerformanceView {
                         .font(.caption).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
                     Divider()
                     vmnetDirectRow
+                    Divider()
+                    performanceTelemetrySection
                 }
                 .padding(.top, 16)
             }
             .font(.subheadline.weight(.medium))
+        }
+    }
+
+    private var performanceTelemetrySection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            AppToggleRow(
+                title: "开启游戏 FPS 与性能遥测日志采集（用于迭代分析）",
+                detail: "启动游戏后自动只读记录 FPS、Work/Slack/Slop 卡顿归因、宿主机分进程 CPU/内存、网络与缓存增量，已自动脱敏路径，不注入或修改游戏进程。",
+                isOn: $preferences.enablePerformanceTelemetryLogging
+            )
+            AppAdaptiveRow {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("遥测日志目录").font(.subheadline)
+                    let latest = orchestrator.latestTelemetryLogURL ?? GameTelemetryCollector.latestTelemetryLogURL()
+                    Text(latest.map { "最近记录：\($0.lastPathComponent)" } ?? "开启后启动游戏将自动生成 JSON 报告（每 30 秒落盘）。")
+                        .font(.caption).foregroundStyle(.secondary)
+                }
+            } trailing: {
+                Button("打开日志目录") {
+                    let directory = GameTelemetryCollector.telemetryLogsDirectoryURL()
+                    try? FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+                    NSWorkspace.shared.open(directory)
+                }
+                .buttonStyle(.bordered)
+            }
         }
     }
 
@@ -312,15 +340,12 @@ private struct MemoryTierOptionButton: View {
             }
             .frame(maxWidth: .infinity, minHeight: 34).padding(.vertical, 10)
             .background(
-                isSelected ? Color.accentColor.opacity(0.08) : Color.clear,
-                in: RoundedRectangle(cornerRadius: 8)
+                isSelected ? Color.accentColor.opacity(0.08) : Color.clear, in: RoundedRectangle(cornerRadius: 8)
             )
             .overlay {
-                RoundedRectangle(cornerRadius: 8)
-                    .strokeBorder(
-                        isSelected ? Color.accentColor : Color(nsColor: .separatorColor).opacity(0.5),
-                        lineWidth: 1
-                    )
+                RoundedRectangle(cornerRadius: 8).strokeBorder(
+                    isSelected ? Color.accentColor : Color(nsColor: .separatorColor).opacity(0.5), lineWidth: 1
+                )
             }
             .contentShape(RoundedRectangle(cornerRadius: 8))
         }
@@ -340,8 +365,8 @@ private struct PerformanceTierOptionCard: View {
             HStack(alignment: .top, spacing: 8) {
                 VStack(alignment: .leading, spacing: 6) {
                     Text(tier.displayName).font(.subheadline.weight(.medium))
-                    Text(subtitle).font(.caption).foregroundStyle(.secondary)
-                        .fixedSize(horizontal: false, vertical: true)
+                    Text(subtitle)
+                        .font(.caption).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
@@ -351,15 +376,12 @@ private struct PerformanceTierOptionCard: View {
             .padding(12)
             .frame(minWidth: 172, maxWidth: .infinity, minHeight: 82, alignment: .topLeading)
             .background(
-                isSelected ? Color.accentColor.opacity(0.08) : Color.clear,
-                in: RoundedRectangle(cornerRadius: 8)
+                isSelected ? Color.accentColor.opacity(0.08) : Color.clear, in: RoundedRectangle(cornerRadius: 8)
             )
             .overlay {
-                RoundedRectangle(cornerRadius: 8)
-                    .strokeBorder(
-                        isSelected ? Color.accentColor : Color(nsColor: .separatorColor).opacity(0.5),
-                        lineWidth: 1
-                    )
+                RoundedRectangle(cornerRadius: 8).strokeBorder(
+                    isSelected ? Color.accentColor : Color(nsColor: .separatorColor).opacity(0.5), lineWidth: 1
+                )
             }
             .contentShape(RoundedRectangle(cornerRadius: 8))
         }

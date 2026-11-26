@@ -213,6 +213,11 @@ final class UnifiedPreferencesModel: ObservableObject {
     @Published var enablePersistentCache: Bool {
         didSet { defaults.set(enablePersistentCache, forKey: "unifiedEnablePersistentCache") }
     }
+    @Published var enablePerformanceTelemetryLogging: Bool {
+        didSet {
+            defaults.set(enablePerformanceTelemetryLogging, forKey: "unifiedEnablePerformanceTelemetryLogging")
+        }
+    }
     @Published var recommendedVCPU: Int { didSet { defaults.set(recommendedVCPU, forKey: "unifiedRecommendedVCPU") } }
     @Published var recommendedRAMMiB: Int {
         didSet { defaults.set(recommendedRAMMiB, forKey: "unifiedRecommendedRAMMiB") }
@@ -249,6 +254,9 @@ final class UnifiedPreferencesModel: ObservableObject {
         blockAccidentalShortcuts = defaults.object(forKey: "unifiedBlockAccidentalShortcuts") as? Bool ?? true
         enableKeyMapping = defaults.object(forKey: "unifiedEnableKeyMapping") as? Bool ?? true
         enablePersistentCache = defaults.object(forKey: "unifiedEnablePersistentCache") as? Bool ?? true
+        enablePerformanceTelemetryLogging = defaults.object(
+            forKey: "unifiedEnablePerformanceTelemetryLogging"
+        ) as? Bool ?? false
         recommendedVCPU = defaults.object(forKey: "unifiedRecommendedVCPU") as? Int ?? 8
         recommendedRAMMiB = defaults.object(forKey: "unifiedRecommendedRAMMiB") as? Int ?? 10240
         recommendedResolution = defaults.string(forKey: "unifiedRecommendedResolution") ?? "1920x1080"

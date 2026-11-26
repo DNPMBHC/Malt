@@ -104,7 +104,7 @@ struct ContainerGuestDispatcher: Sendable {
         }
       }
       let remaining = deadline.timeIntervalSinceNow
-      if remaining > 0 { try await Task.sleep(for: .seconds(min(0.5, remaining))) }
+      if remaining > 0 { try await Task.sleep(for: .seconds(min(1.5, remaining))) }
     }
     throw UnifiedOrchestrationError.backendUnavailable(
       "容器尚未就绪或未安装来宾工具。请启动容器、安装来宾工具并登录 Windows 桌面后重试。"

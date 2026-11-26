@@ -215,7 +215,8 @@ final class UnifiedOrchestrationTests: XCTestCase {
     let config = UnifiedOrchestratorConfiguration(
       utmCustomAppPath: dir.appending(path: "NoExt.app").path(percentEncoded: false),
       utmAppPath: dir.appending(path: "NoUTM.app").path(percentEncoded: false),
-      appBundleURL: staged.app, volumesRootURL: fakeVolumes
+      appBundleURL: staged.app, volumesRootURL: fakeVolumes,
+      playableSelectionStorageURL: dir.appending(path: "selected-container.json")
     )
     let resolved = UnifiedRuntimeDiscovery.resolve(configuration: config)
     XCTAssertEqual(resolved.containerHelperBinaryPath, staged.helper.path(percentEncoded: false))
@@ -252,7 +253,8 @@ final class UnifiedOrchestrationTests: XCTestCase {
       utmCustomAppPath: dir.appending(path: "Missing.app").path(percentEncoded: false),
       utmAppPath: dir.appending(path: "MissingUTM.app").path(percentEncoded: false),
       appBundleURL: staged.app, volumesRootURL: dir.appending(path: "Volumes"),
-      appShellWindowSize: "1024x680", appShellStateDirectory: dir.appending(path: "state")
+      appShellWindowSize: "1024x680", appShellStateDirectory: dir.appending(path: "state"),
+      playableSelectionStorageURL: dir.appending(path: "selected-container.json")
     )
     let orchestrator = UnifiedRuntimeOrchestrator(
       libraryStore: UnifiedGameLibraryStore(storageURL: dir.appending(path: "store.json")),
@@ -345,7 +347,8 @@ final class UnifiedOrchestrationTests: XCTestCase {
     try stagePlayableVM(at: playable)
     let config = UnifiedOrchestratorConfiguration(
       utmCustomAppPath: "", utmAppPath: "", appBundleURL: dir.appending(path: "none.app"),
-      volumesRootURL: dir.appending(path: "missing-volumes"), localVMSearchRoots: [local]
+      volumesRootURL: dir.appending(path: "missing-volumes"), localVMSearchRoots: [local],
+      playableSelectionStorageURL: dir.appending(path: "selected-container.json")
     )
     XCTAssertEqual(
       UnifiedRuntimeDiscovery.resolve(configuration: config).playableVMBundlePath, playable.path)
@@ -859,6 +862,8 @@ extension UnifiedOrchestrationTests {
     XCTAssertEqual(fixed.containerEnvironment["UTM_GAME_SHELL_KEY_GUARD"], "0")
     XCTAssertEqual(fixed.containerEnvironment["UTM_BLOCK_WIN_KEY"], "0")
     XCTAssertEqual(fixed.containerEnvironment["UTM_DXMT_SHADER_CACHE_ENABLED"], "0")
+    XCTAssertEqual(fixed.containerEnvironment["UTM_KEEP_CURSOR_VISIBLE_ON_INHIBIT"], "1")
+    XCTAssertEqual(fixed.containerEnvironment["UTM_PURE_RELATIVE_MOUSE"], "1")
     defaults.set(Int.min, forKey: "unifiedRecommendedVCPU")
     defaults.set(Int.max, forKey: "unifiedRecommendedRAMMiB")
     let bounded = UnifiedLaunchSettings.load(defaults: defaults)

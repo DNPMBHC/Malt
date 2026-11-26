@@ -82,6 +82,7 @@ public final class UnifiedRuntimeOrchestrator: ObservableObject, @unchecked Send
   @Published public private(set) var activeEntryID: UUID?
   @Published public private(set) var lastStatusMessage: String = ""
   @Published public private(set) var nativeNetworkPermissionState: NativeNetworkPermissionSnapshot?
+  @Published public private(set) var latestTelemetryLogURL: URL?
 
   public let libraryStore: UnifiedGameLibraryStore
   public let configuration: UnifiedOrchestratorConfiguration
@@ -94,6 +95,7 @@ public final class UnifiedRuntimeOrchestrator: ObservableObject, @unchecked Send
   private let helperIdentityProbe: @Sendable (String) async -> String?
   private let managedUserNetProxy: ManagedUserNetProxyService
   private let vmnetStatusProbe: @Sendable () -> NativeVMNetStatus
+  private let telemetryCollector: GameTelemetryCollector
 
   public init(
     libraryStore: UnifiedGameLibraryStore = UnifiedGameLibraryStore(),
@@ -105,23 +107,35 @@ public final class UnifiedRuntimeOrchestrator: ObservableObject, @unchecked Send
     appShellSessionBridge: AppShellSessionBridge = AppShellSessionBridge(),
     helperIdentityProbe: (@Sendable (String) async -> String?)? = nil,
     managedUserNetProxy: ManagedUserNetProxyService = ManagedUserNetProxyService(),
-    vmnetStatusProbe: (@Sendable () -> NativeVMNetStatus)? = nil
+    vmnetStatusProbe: (@Sendable () -> NativeVMNetStatus)? = nil,
+    telemetryCollector: GameTelemetryCollector? = nil
   ) {
     self.libraryStore = libraryStore
     self.configuration = configuration
     self.fileManager = fileManager
-    self.commandRunner = commandRunner ?? Self.defaultCommandRunner
-    self.helperRunningProbe = helperRunningProbe ?? Self.isContainerHelperRunning
+    let resolvedRunner = commandRunner ?? Self.defaultCommandRunner
+    let resolvedHelperProbe = helperRunningProbe ?? Self.isContainerHelperRunning
+    self.commandRunner = resolvedRunner
+    self.helperRunningProbe = resolvedHelperProbe
     self.runtimeSettingsCapabilityProbe = runtimeSettingsCapabilityProbe ?? Self.supportsRuntimeSettings
     self.appShellSessionBridge = appShellSessionBridge
     self.helperIdentityProbe = helperIdentityProbe ?? Self.containerHelperIdentity
     self.managedUserNetProxy = managedUserNetProxy
     self.vmnetStatusProbe = vmnetStatusProbe ?? { UnifiedRuntimeDiscovery.detectNativeVMNetStatus() }
+    self.telemetryCollector = telemetryCollector ?? GameTelemetryCollector(
+      commandRunner: resolvedRunner,
+      helperRunningProbe: resolvedHelperProbe
+    )
+    self.latestTelemetryLogURL = GameTelemetryCollector.latestTelemetryLogURL(fileManager: fileManager)
   }
 
   deinit {
     let proxy = managedUserNetProxy
-    Task { await proxy.stop() }
+    let collector = telemetryCollector
+    Task {
+      await collector.stopSession(reason: "orchestrator_deinit")
+      await proxy.stop()
+    }
   }
 
   public func resolvedRuntimePaths() -> ResolvedRuntimePaths {
@@ -130,46 +144,6 @@ public final class UnifiedRuntimeOrchestrator: ObservableObject, @unchecked Send
 
   public func nativeVMNetStatus() -> NativeVMNetStatus {
     vmnetStatusProbe()
-  }
-
-  @MainActor
-  @discardableResult
-  public func refreshNativeNetworkStatus() -> NativeNetworkPermissionSnapshot {
-    let snapshot = NativeNetworkPermissionService(
-      appBundleURL: configuration.appBundleURL ?? Bundle.main.bundleURL
-    )
-    .status()
-    nativeNetworkPermissionState = snapshot
-    return snapshot
-  }
-
-  @MainActor
-  @discardableResult
-  public func requestNativeNetworkAuthorization() -> NativeNetworkPermissionSnapshot {
-    let snapshot = NativeNetworkPermissionService(
-      appBundleURL: configuration.appBundleURL ?? Bundle.main.bundleURL
-    )
-    .requestAuthorization()
-    nativeNetworkPermissionState = snapshot
-    return snapshot
-  }
-
-  @MainActor
-  public func openNativeNetworkApprovalSettings() {
-    NativeNetworkPermissionService(
-      appBundleURL: configuration.appBundleURL ?? Bundle.main.bundleURL
-    )
-    .openApprovalSettings()
-  }
-
-  @MainActor
-  @discardableResult
-  public func revokeNativeNetworkAuthorization() async -> NativeNetworkPermissionSnapshot {
-    let snapshot = await NativeNetworkPermissionService(
-      appBundleURL: configuration.appBundleURL ?? Bundle.main.bundleURL
-    ).revokeAuthorization()
-    nativeNetworkPermissionState = snapshot
-    return snapshot
   }
 
   /// Applies or restores the bridge only after the management helper verifies the VM is stopped.
@@ -236,8 +210,9 @@ public final class UnifiedRuntimeOrchestrator: ObservableObject, @unchecked Send
         "安装器请求已提交。请完成安装并选择真正的游戏主程序，再使用快速启动。"
       )
     }
+    let hardware = HardwareAutoTuner().detectHardwareProfile()
     let settings = (settings ?? UnifiedLaunchSettings.load()).resolved(
-      for: entry, hardware: HardwareAutoTuner().detectHardwareProfile())
+      for: entry, hardware: hardware)
     activeEntryID = entry.id
     defer { activeEntryID = nil }
 
@@ -246,6 +221,11 @@ public final class UnifiedRuntimeOrchestrator: ObservableObject, @unchecked Send
       try await launchWineEntry(entry, settings: settings)
     case .antiCheatVM:
       try await launchAntiCheatVMEntry(entry, settings: settings)
+    }
+
+    if settings.enablePerformanceTelemetryLogging {
+      let logURL = await startTelemetrySession(for: entry, settings: settings, hardware: hardware)
+      await MainActor.run { self.latestTelemetryLogURL = logURL }
     }
 
     var updated = entry
@@ -343,6 +323,43 @@ public final class UnifiedRuntimeOrchestrator: ObservableObject, @unchecked Send
 }
 
 public extension UnifiedRuntimeOrchestrator {
+  @MainActor
+  @discardableResult
+  func refreshNativeNetworkStatus() -> NativeNetworkPermissionSnapshot {
+    let snapshot = NativeNetworkPermissionService(
+      appBundleURL: configuration.appBundleURL ?? Bundle.main.bundleURL
+    ).status()
+    nativeNetworkPermissionState = snapshot
+    return snapshot
+  }
+
+  @MainActor
+  @discardableResult
+  func requestNativeNetworkAuthorization() -> NativeNetworkPermissionSnapshot {
+    let snapshot = NativeNetworkPermissionService(
+      appBundleURL: configuration.appBundleURL ?? Bundle.main.bundleURL
+    ).requestAuthorization()
+    nativeNetworkPermissionState = snapshot
+    return snapshot
+  }
+
+  @MainActor
+  func openNativeNetworkApprovalSettings() {
+    NativeNetworkPermissionService(
+      appBundleURL: configuration.appBundleURL ?? Bundle.main.bundleURL
+    ).openApprovalSettings()
+  }
+
+  @MainActor
+  @discardableResult
+  func revokeNativeNetworkAuthorization() async -> NativeNetworkPermissionSnapshot {
+    let snapshot = await NativeNetworkPermissionService(
+      appBundleURL: configuration.appBundleURL ?? Bundle.main.bundleURL
+    ).revokeAuthorization()
+    nativeNetworkPermissionState = snapshot
+    return snapshot
+  }
+
   /// Constructs the native WhiskyKit Wine launch environment with DXMT/D3DMetal/DXVK/WINEDLLPATH routing.
   func buildWineEnvironment(
     for bottleURL: URL, settings: UnifiedLaunchSettings? = nil
@@ -370,6 +387,47 @@ public extension UnifiedRuntimeOrchestrator {
 
   func stopManagedUserNetProxy() async {
     await managedUserNetProxy.stop()
+  }
+
+  @discardableResult
+  func stopPerformanceTelemetry(reason: String = "manual_stop") async -> URL? {
+    let url = await telemetryCollector.stopSession(reason: reason)
+    await MainActor.run { self.latestTelemetryLogURL = url }
+    return url
+  }
+
+  fileprivate func startTelemetrySession(
+    for entry: UnifiedGameEntry,
+    settings: UnifiedLaunchSettings,
+    hardware: HardwareProfileSnapshot
+  ) async -> URL {
+    let resolved = resolvedRuntimePaths()
+    let vmPath = entry.vmBundlePath ?? resolved.playableVMBundlePath
+    let vmID = vmPath.flatMap { try? ContainerGuestDispatcher.vmIdentifier(bundlePath: $0) }
+    let networkMode: String
+    if entry.engineKind == .nativeWine {
+      networkMode = "host_native"
+    } else if nativeVMNetStatus().socketActive {
+      networkMode = "vmnet_kernel_direct"
+    } else if await managedUserNetProxy.activeEndpoint() != nil {
+      networkMode = "malt_net_proxy"
+    } else {
+      networkMode = "emulated_fallback"
+    }
+    let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "dev"
+    let context = GameTelemetrySessionContext(
+      gameName: entry.name,
+      engineKind: entry.engineKind,
+      executablePath: entry.executablePath,
+      settings: settings,
+      hardware: hardware,
+      networkMode: networkMode,
+      appVersion: version,
+      controlBinaryPath: resolvedContainerControlBinary(resolved: resolved),
+      vmIdentifier: vmID,
+      helperBinaryPath: resolved.containerHelperBinaryPath
+    )
+    return await telemetryCollector.startSession(context: context)
   }
 }
 
@@ -737,6 +795,11 @@ extension UnifiedRuntimeOrchestrator {
       throw UnifiedOrchestrationError.commandFailed("容器引擎未能启动，请检查容器配置和系统虚拟化支持。")
     }
     await appShellSessionBridge.recordHelperIdentity(await helperIdentityProbe(helper), bindingID: stateFile.id)
+    if fileManager.isExecutableFile(atPath: helper) {
+      // Allow freshly launched MaltContainerHelper to finish initializing its ScriptingBridge sdef
+      // before utmctl sends the first AppleEvent (prevents cold-start SIGABRT in utmctl).
+      try? await Task.sleep(for: .seconds(2.5))
+    }
     return stateFile
   }
 
@@ -832,7 +895,11 @@ extension UnifiedRuntimeOrchestrator {
       let arguments = ["--app-shell-vm", vmPath, "--app-shell-prepare-only",
         "--window-title", "运行环境网络配置", "--window-size", configuration.appShellWindowSize,
         "--app-shell-state-file", state.stateURL.path(percentEncoded: false)]
-      let result = try await commandRunner(helper, arguments, ["__DEMOAPP_DETACHED": "1"])
+      let result = try await commandRunner(helper, arguments, [
+        "__DEMOAPP_DETACHED": "1",
+        "UTM_KEEP_CURSOR_VISIBLE_ON_INHIBIT": "1",
+        "UTM_PURE_RELATIVE_MOUSE": "1"
+      ])
       guard result.exitCode == 0 else {
         throw UnifiedOrchestrationError.commandFailed("容器引擎未能登记所选容器，网络配置尚未修改，Windows 未启动。")
       }

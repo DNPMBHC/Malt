@@ -23,6 +23,7 @@ public struct UnifiedLaunchSettings: Equatable, Sendable {
     public let blockAccidentalShortcuts: Bool
     public let enableKeyMapping: Bool
     public let enablePersistentCache: Bool
+    public let enablePerformanceTelemetryLogging: Bool
     public let displayPolicy: UnifiedDisplayPolicy
     public let virtualCPUCount: Int?
     public let memoryMiB: Int?
@@ -33,6 +34,7 @@ public struct UnifiedLaunchSettings: Equatable, Sendable {
         blockAccidentalShortcuts: Bool = true,
         enableKeyMapping: Bool = true,
         enablePersistentCache: Bool = true,
+        enablePerformanceTelemetryLogging: Bool = false,
         displayPolicy: UnifiedDisplayPolicy = .automatic,
         virtualCPUCount: Int? = nil,
         memoryMiB: Int? = nil
@@ -42,6 +44,7 @@ public struct UnifiedLaunchSettings: Equatable, Sendable {
         self.blockAccidentalShortcuts = blockAccidentalShortcuts
         self.enableKeyMapping = enableKeyMapping
         self.enablePersistentCache = enablePersistentCache
+        self.enablePerformanceTelemetryLogging = enablePerformanceTelemetryLogging
         self.displayPolicy = displayPolicy
         self.virtualCPUCount = virtualCPUCount
         self.memoryMiB = memoryMiB
@@ -65,6 +68,9 @@ public struct UnifiedLaunchSettings: Equatable, Sendable {
             blockAccidentalShortcuts: defaults.object(forKey: "unifiedBlockAccidentalShortcuts") as? Bool ?? true,
             enableKeyMapping: defaults.object(forKey: "unifiedEnableKeyMapping") as? Bool ?? true,
             enablePersistentCache: defaults.object(forKey: "unifiedEnablePersistentCache") as? Bool ?? true,
+            enablePerformanceTelemetryLogging: defaults.object(
+                forKey: "unifiedEnablePerformanceTelemetryLogging"
+            ) as? Bool ?? false,
             displayPolicy: display,
             virtualCPUCount: boundedPersistedInteger("unifiedRecommendedVCPU", maximum: 1024, defaults: defaults),
             memoryMiB: boundedPersistedInteger("unifiedRecommendedRAMMiB", maximum: 1_048_576, defaults: defaults)
@@ -109,7 +115,9 @@ public struct UnifiedLaunchSettings: Equatable, Sendable {
         return UnifiedLaunchSettings(
             presetTier: entry.presetTier, enableMouseCoalescing: enableMouseCoalescing,
             blockAccidentalShortcuts: blockAccidentalShortcuts, enableKeyMapping: enableKeyMapping,
-            enablePersistentCache: enablePersistentCache, displayPolicy: displayPolicy,
+            enablePersistentCache: enablePersistentCache,
+            enablePerformanceTelemetryLogging: enablePerformanceTelemetryLogging,
+            displayPolicy: displayPolicy,
             virtualCPUCount: resources.virtualCPUCount, memoryMiB: resources.memoryMiB
         )
     }
@@ -120,7 +128,9 @@ public struct UnifiedLaunchSettings: Equatable, Sendable {
             "UTM_MOUSE_COALESCE_US": enableMouseCoalescing ? "1500" : "0",
             "UTM_GAME_SHELL_KEY_GUARD": blockAccidentalShortcuts ? "1" : "0",
             "UTM_BLOCK_WIN_KEY": enableKeyMapping ? "1" : "0",
-            "UTM_DXMT_SHADER_CACHE_ENABLED": enablePersistentCache ? "1" : "0"
+            "UTM_DXMT_SHADER_CACHE_ENABLED": enablePersistentCache ? "1" : "0",
+            "UTM_KEEP_CURSOR_VISIBLE_ON_INHIBIT": "1",
+            "UTM_PURE_RELATIVE_MOUSE": "1"
         ]
     }
 
