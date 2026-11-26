@@ -1,0 +1,44 @@
+Test Suite 'Selected tests' started at 2026-11-26 10:29:53.708.
+Test Suite 'demo-appKitTests.xctest' started at 2026-11-26 10:29:53.709.
+Test Suite 'InstalledGameRegistrationTests' started at 2026-11-26 10:29:53.709.
+Test Case '-[demo-appKitTests.InstalledGameRegistrationTests testAutomationDenialPreservesInstallerState]' started.
+Test Case '-[demo-appKitTests.InstalledGameRegistrationTests testAutomationDenialPreservesInstallerState]' passed (0.003 seconds).
+Test Case '-[demo-appKitTests.InstalledGameRegistrationTests testCancellationNeverSavesReadyEntry]' started.
+Test Case '-[demo-appKitTests.InstalledGameRegistrationTests testCancellationNeverSavesReadyEntry]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.InstalledGameRegistrationTests testConcurrentEntryChangeIsNotOverwritten]' started.
+Test Case '-[demo-appKitTests.InstalledGameRegistrationTests testConcurrentEntryChangeIsNotOverwritten]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.InstalledGameRegistrationTests testDiscoveryAcceptsEmptyResultsAndUsesLiteralReadOnlyShortcutQuery]' started.
+Test Case '-[demo-appKitTests.InstalledGameRegistrationTests testDiscoveryAcceptsEmptyResultsAndUsesLiteralReadOnlyShortcutQuery]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.InstalledGameRegistrationTests testDiscoveryDeduplicatesCandidatesWithoutMarkingInstallerReady]' started.
+Test Case '-[demo-appKitTests.InstalledGameRegistrationTests testDiscoveryDeduplicatesCandidatesWithoutMarkingInstallerReady]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.InstalledGameRegistrationTests testDiscoveryRejectsWrongGuestAndMalformedResponse]' started.
+Test Case '-[demo-appKitTests.InstalledGameRegistrationTests testDiscoveryRejectsWrongGuestAndMalformedResponse]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.InstalledGameRegistrationTests testGameAliasesAndInvalidSearchQuery]' started.
+Test Case '-[demo-appKitTests.InstalledGameRegistrationTests testGameAliasesAndInvalidSearchQuery]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.InstalledGameRegistrationTests testLegacyGameEntriesDecodeWithoutLaunchArguments]' started.
+Test Case '-[demo-appKitTests.InstalledGameRegistrationTests testLegacyGameEntriesDecodeWithoutLaunchArguments]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.InstalledGameRegistrationTests testMissingExecutableDoesNotMarkInstallationComplete]' started.
+Test Case '-[demo-appKitTests.InstalledGameRegistrationTests testMissingExecutableDoesNotMarkInstallationComplete]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.InstalledGameRegistrationTests testPersistenceFailureRestoresInMemoryInstallerState]' started.
+Test Case '-[demo-appKitTests.InstalledGameRegistrationTests testPersistenceFailureRestoresInMemoryInstallerState]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.InstalledGameRegistrationTests testRegisterChecksExistencePersistsArgumentsAndPreservesIdentity]' started.
+Test Case '-[demo-appKitTests.InstalledGameRegistrationTests testRegisterChecksExistencePersistsArgumentsAndPreservesIdentity]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.InstalledGameRegistrationTests testStaleInputCannotReplaceANewerStoredEntry]' started.
+Test Case '-[demo-appKitTests.InstalledGameRegistrationTests testStaleInputCannotReplaceANewerStoredEntry]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.InstalledGameRegistrationTests testUnsafeOrCrossGuestCandidateNeverDispatches]' started.
+Test Case '-[demo-appKitTests.InstalledGameRegistrationTests testUnsafeOrCrossGuestCandidateNeverDispatches]' passed (0.001 seconds).
+Test Suite 'InstalledGameRegistrationTests' passed at 2026-11-26 10:29:53.725.
+	 Executed 13 tests, with 0 failures (0 unexpected) in 0.015 (0.016) seconds
+Test Suite 'demo-appKitTests.xctest' passed at 2026-11-26 10:29:53.725.
+	 Executed 13 tests, with 0 failures (0 unexpected) in 0.015 (0.016) seconds
+Test Suite 'Selected tests' passed at 2026-11-26 10:29:53.725.
+	 Executed 13 tests, with 0 failures (0 unexpected) in 0.015 (0.017) seconds
+Building for debugging...
+[1 / 10]
+[2 / 11] demo-appKit
+[4 / 13] demo-appKit
+[10 / 13] demo-appKitTests-product
+[13 / 16] demo-appKitTests-product
+[14 / 16] demo-appKitTests-product
+[19 / 21] demo-appKitTests-product
+Build complete! (3.46秒)

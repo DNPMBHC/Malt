@@ -1,0 +1,31 @@
+{
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-24T07:20:11.881303+00:00",
+  "passed": true,
+  "clone_deleted": true,
+  "clone_unregistered": true,
+  "owned_workers_absent": true,
+  "owned_open_handles_absent": true,
+  "original_client_unchanged": true,
+  "original_client_writable_and_qemu_handles_absent": true,
+  "source_fingerprint_unchanged": true,
+  "source_file_count": 8,
+  "source_stopped": true,
+  "source_writable_and_qemu_handles_absent": true,
+  "owned_client_copy_and_installer_media_deleted": true,
+  "vm_lease_status": "released",
+  "primary_vm_control_actions": 0,
+  "installer_terminal_receipt": false,
+  "minimal_rollback_verified": true,
+  "resolution_restore_from_latest_failed_run_verified": false,
+  "cleanup_scope": "only_owned_external_apfs_clone",
+  "real_validation": "user_deferred_to_next_phase",
+  "evidence_refs": [
+    "own-source-before.json",
+    "own-source-after-cleanup.json",
+    "own-client-source-before.json",
+    "own-client-source-after-cleanup.json",
+    "official-installer-closeout.json",
+    "own-closeout-shutdown.json"
+  ]
+}

@@ -1,0 +1,1228 @@
+{
+  "cases": [
+    {
+      "actual": "actual Apple M4 Metal render target",
+      "artifacts": {
+        "host-captures/frame-000000.json": "318ef5355840481b211fa56ad25701d91a6cc5dad76860d84baef9ba33de1a77",
+        "host-captures/frame-000000.rgba": "88b4a75cde2b7b8f40dd0e18287e7224f6659170eb1abee79eee11e105d63ff6",
+        "metal_host": "9b0fefb3c181125c943f6d7b8c6f6fdf3ebade939f80cd41f58f3dc17c658a38",
+        "receiver-start.json": "290fbd17ec5ca4742d7a0ebb34f8092eba48c826f5a608c85cbcae158353ce77",
+        "validate-legacy-0-reference.csv": "1944b45bdb595f99a1a899b088972868d0b1b487222848f7f3e7199771c90efb",
+        "validate-legacy-0-reference.json": "9359bac0a2cddb6038205c7631ca29223d32e53465aaa11a708312e83ad84081",
+        "validate-legacy-0-reference.rgba": "88b4a75cde2b7b8f40dd0e18287e7224f6659170eb1abee79eee11e105d63ff6",
+        "validate-legacy-0-reference.stderr.log": "0fd095d6c9dbba682fe5451495a418829f33c8f06d9e15d813b9cbf2a2f5f3b1",
+        "validate-legacy-0-replay.csv": "ddcff84615f163cd0a28e1d3dc122daf5285279e4319479c5fe716f9b1f5f090",
+        "validate-legacy-0-replay.json": "278b5cf2d4de17046953e33a68d2e0f22f855f8f7f4d7e0cab95f8e6f31ada78",
+        "validate-legacy-0-replay.stderr.log": "a5d59a02e5e8c04199eb7a59cfbb7ba223c3a94b2f468e66e93494c8c28449d1"
+      },
+      "capture_metadata": {
+        "byte_count": 3686400,
+        "capture_in_performance_sample": false,
+        "command_sha256": "1dbf309f16ee36af4936ba06e88276227544e929771b1d3fcd904ea825f5ac0e",
+        "completion_scope": "gpu-command-complete",
+        "device": "Apple M4",
+        "display_sync_enabled": false,
+        "frame_sequence": 0,
+        "height": 720,
+        "host_binary_sha256": "9b0fefb3c181125c943f6d7b8c6f6fdf3ebade939f80cd41f58f3dc17c658a38",
+        "host_gpu_ms": 15.957833325956017,
+        "metalfx": "off",
+        "msl_source_sha256": "a3029007907875c423430a68c1ba8ed9f34ab3927ff55f44ac1ed7ce1e2c1713",
+        "offload_mode": "command-only",
+        "pixel_format": "rgba8Unorm",
+        "presentation_draw_count": 1,
+        "protocol_version": 2,
+        "resource_sha256": "ef4636928161808e87035fa51983821677527ccd9661991c5d0126a778b2268a",
+        "rgba_sha256": "88b4a75cde2b7b8f40dd0e18287e7224f6659170eb1abee79eee11e105d63ff6",
+        "row_bytes": 5120,
+        "row_order": "top-to-bottom",
+        "scene_draw_count": 16,
+        "width": 1280
+      },
+      "comparison": {
+        "actual_sha256": "88b4a75cde2b7b8f40dd0e18287e7224f6659170eb1abee79eee11e105d63ff6",
+        "compared_pixels": 921600,
+        "first_failure": null,
+        "format": "RGBA8",
+        "height": 720,
+        "max_channel_error": 0,
+        "origin": "top-left",
+        "over_threshold_channels": 0,
+        "over_threshold_pixels": 0,
+        "passed": true,
+        "reference_sha256": "88b4a75cde2b7b8f40dd0e18287e7224f6659170eb1abee79eee11e105d63ff6",
+        "schema_version": 1,
+        "tolerance_lsb": 1,
+        "width": 1280
+      },
+      "frame_sequence": 0,
+      "host_jsonl_sha256": "ea9061f135b6112448de08d369d2b9edd7a9136d2e250aa0efc757f2490955a1",
+      "pattern": "legacy",
+      "performance_measurement": false,
+      "performance_sample": false,
+      "receiver": {
+        "metal_host_binary": "9b0fefb3c181125c943f6d7b8c6f6fdf3ebade939f80cd41f58f3dc17c658a38",
+        "metal_host_swift": "cf6d0f50b9b68dcde7324f12423d3de242950aa35fe25b2cf0d2b0afdd74c734"
+      },
+      "reference": "actual Guest D3D11 software rendering",
+      "reference_adapter": {
+        "adapter_description": "Microsoft Basic Render Driver",
+        "adapter_flags": 2,
+        "adapter_software_flag": true,
+        "device_id": 140,
+        "requested_driver_type": "warp",
+        "selected_feature_level": "11_1",
+        "vendor_id": 5140,
+        "windows_session_id": 1
+      },
+      "reference_execution": {
+        "launch": "interactive-scheduled-task",
+        "vm": "vm-a",
+        "wall_ms": 26134.32745899999
+      },
+      "reference_preflight": {
+        "architecture": "ARM64",
+        "baseline_comparison_required": true,
+        "baseline_sha256": "ceedbcaf3db809513428a617a91597a66fcdd2de3d00d399cdb0da2ebdf3545f",
+        "baseline_verified": true,
+        "bcd_flags": {
+          "nointegritychecks": "absent",
+          "testsigning": "absent"
+        },
+        "bcd_query_succeeded": true,
+        "bcd_security": [],
+        "boot_time_utc": "2026-11-22T13:58:58.7133020Z",
+        "build": "26100",
+        "captured_at_utc": "2026-11-22T14:05:43.5075170Z",
+        "code_integrity_options": 49157,
+        "code_integrity_query_succeeded": true,
+        "code_integrity_test_signing": false,
+        "console_session_id": 1,
+        "device_guard_query_succeeded": true,
+        "display_version": "24H2",
+        "driver_service_query_succeeded": true,
+        "expected_absent_driver_service_count": 2,
+        "forbidden_process_count": 0,
+        "forbidden_running_task_count": 0,
+        "hvci_configured": false,
+        "hvci_kernel_enforced": false,
+        "hvci_running": false,
+        "hypervisor_present": true,
+        "lifecycle_source_sha256": "fa4ea000db5d3c1c201e0631e3fde57fea59fdf5a81f1aa1e80b93585464d46c",
+        "logged_in": true,
+        "os_product": "Microsoft Windows 11 Enterprise Evaluation",
+        "os_query_succeeded": true,
+        "owned_services_absent": true,
+        "owner": "@DNPMBHC",
+        "passed": true,
+        "preflight_gates_passed": true,
+        "preflight_ps1_sha256": "b64e5bd838aa2d35fb86cc921e82c302178c7da8db06b9e52b9771ee86c9f7b9",
+        "preflight_py_sha256": "e3fdbfa52fbc8e47ba93378d3a446415db1e7373e3697485c40787aa16b48ac5",
+        "quiescence_query_succeeded": true,
+        "read_only": true,
+        "recovered_security_baseline": {
+          "bcd_security": [],
+          "boot_time_utc": "2026-11-22T06:08:17.6999380Z",
+          "captured_at_utc": "2026-11-22T06:08:44.5873348Z",
+          "hypervisor_present": true,
+          "secure_boot_enabled": true,
+          "security_services_running": [
+            0
+          ],
+          "tpm": {
+            "activated": true,
+            "enabled": true,
+            "owned": true,
+            "present": true,
+            "specification_version": "2.0, 0, 1.64"
+          },
+          "vbs_status": 0
+        },
+        "remaining_driver_service_count": 0,
+        "schema_version": 1,
+        "secure_boot_enabled": true,
+        "secure_boot_query_succeeded": true,
+        "security_services_configured": [
+          0
+        ],
+        "security_services_running": [
+          0
+        ],
+        "service_baseline_count": 2,
+        "session_flags": 1,
+        "session_flags_offset": 16,
+        "session_matches_console": true,
+        "session_query_succeeded": true,
+        "session_query_win32_error": 0,
+        "session_state": 0,
+        "temporary_directory_scoped": true,
+        "tpm": {
+          "activated": true,
+          "enabled": true,
+          "owned": true,
+          "present": true,
+          "specification_version": "2.0, 0, 1.64"
+        },
+        "tpm_query_succeeded": true,
+        "unlocked": true,
+        "vbs_status": 0,
+        "wts_info_ex_struct_bytes": 232,
+        "wts_returned_bytes": 232
+      },
+      "replay_adapter": {
+        "adapter_description": "Microsoft Basic Render Driver",
+        "adapter_flags": 0,
+        "adapter_software_flag": false,
+        "device_id": 140,
+        "requested_driver_type": "hardware",
+        "selected_feature_level": "11_1",
+        "vendor_id": 5140,
+        "windows_session_id": 1
+      },
+      "replay_execution": {
+        "launch": "interactive-scheduled-task",
+        "vm": "vm-a",
+        "wall_ms": 15061.321875000005
+      },
+      "replay_preflight": {
+        "architecture": "ARM64",
+        "baseline_comparison_required": true,
+        "baseline_sha256": "ceedbcaf3db809513428a617a91597a66fcdd2de3d00d399cdb0da2ebdf3545f",
+        "baseline_verified": true,
+        "bcd_flags": {
+          "nointegritychecks": "absent",
+          "testsigning": "absent"
+        },
+        "bcd_query_succeeded": true,
+        "bcd_security": [],
+        "boot_time_utc": "2026-11-22T13:58:58.7133020Z",
+        "build": "26100",
+        "captured_at_utc": "2026-11-22T14:06:55.2722145Z",
+        "code_integrity_options": 49157,
+        "code_integrity_query_succeeded": true,
+        "code_integrity_test_signing": false,
+        "console_session_id": 1,
+        "device_guard_query_succeeded": true,
+        "display_version": "24H2",
+        "driver_service_query_succeeded": true,
+        "expected_absent_driver_service_count": 2,
+        "forbidden_process_count": 0,
+        "forbidden_running_task_count": 0,
+        "hvci_configured": false,
+        "hvci_kernel_enforced": false,
+        "hvci_running": false,
+        "hypervisor_present": true,
+        "lifecycle_source_sha256": "fa4ea000db5d3c1c201e0631e3fde57fea59fdf5a81f1aa1e80b93585464d46c",
+        "logged_in": true,
+        "os_product": "Microsoft Windows 11 Enterprise Evaluation",
+        "os_query_succeeded": true,
+        "owned_services_absent": true,
+        "owner": "@DNPMBHC",
+        "passed": true,
+        "preflight_gates_passed": true,
+        "preflight_ps1_sha256": "b64e5bd838aa2d35fb86cc921e82c302178c7da8db06b9e52b9771ee86c9f7b9",
+        "preflight_py_sha256": "e3fdbfa52fbc8e47ba93378d3a446415db1e7373e3697485c40787aa16b48ac5",
+        "quiescence_query_succeeded": true,
+        "read_only": true,
+        "recovered_security_baseline": {
+          "bcd_security": [],
+          "boot_time_utc": "2026-11-22T06:08:17.6999380Z",
+          "captured_at_utc": "2026-11-22T06:08:44.5873348Z",
+          "hypervisor_present": true,
+          "secure_boot_enabled": true,
+          "security_services_running": [
+            0
+          ],
+          "tpm": {
+            "activated": true,
+            "enabled": true,
+            "owned": true,
+            "present": true,
+            "specification_version": "2.0, 0, 1.64"
+          },
+          "vbs_status": 0
+        },
+        "remaining_driver_service_count": 0,
+        "schema_version": 1,
+        "secure_boot_enabled": true,
+        "secure_boot_query_succeeded": true,
+        "security_services_configured": [
+          0
+        ],
+        "security_services_running": [
+          0
+        ],
+        "service_baseline_count": 2,
+        "session_flags": 1,
+        "session_flags_offset": 16,
+        "session_matches_console": true,
+        "session_query_succeeded": true,
+        "session_query_win32_error": 0,
+        "session_state": 0,
+        "temporary_directory_scoped": true,
+        "tpm": {
+          "activated": true,
+          "enabled": true,
+          "owned": true,
+          "present": true,
+          "specification_version": "2.0, 0, 1.64"
+        },
+        "tpm_query_succeeded": true,
+        "unlocked": true,
+        "vbs_status": 0,
+        "wts_info_ex_struct_bytes": 232,
+        "wts_returned_bytes": 232
+      },
+      "seed": 7,
+      "source_digests": {
+        "analyze_py": "ee71db86dc7db499d4997343489b341062b51220e547fe6443ace2e2218e1f25",
+        "benchmark_support_py": "34f18b92091ec60bccbab43ba6af68a2b5dbc0c27cf601fb0838bdb9f23e3898",
+        "d3d11_probe_cpp": "11fc000464f0dcf98aec3044c4d956a2b74ce491fc4d69567bf252bbec64af74",
+        "d3d11_probe_exe": "09bb190bf5d763f9749345300b937728db886a4ec26c32c361a920c565cf1bee",
+        "metal_host_binary": "9b0fefb3c181125c943f6d7b8c6f6fdf3ebade939f80cd41f58f3dc17c658a38",
+        "metal_host_swift": "cf6d0f50b9b68dcde7324f12423d3de242950aa35fe25b2cf0d2b0afdd74c734"
+      }
+    },
+    {
+      "actual": "actual Apple M4 Metal render target",
+      "artifacts": {
+        "host-captures/frame-000000.json": "65d52e2af9c5ee34f246e7ea9a4e7ce843affec50e244212180b10157cae12ef",
+        "host-captures/frame-000000.rgba": "db3a7df7f0018da65d4d1267997201bb1e1291f1fdb8b95fdc64d613bb643d39",
+        "metal_host": "9b0fefb3c181125c943f6d7b8c6f6fdf3ebade939f80cd41f58f3dc17c658a38",
+        "receiver-start.json": "290fbd17ec5ca4742d7a0ebb34f8092eba48c826f5a608c85cbcae158353ce77",
+        "validate-seeded-0-reference.csv": "c37ca6209e8f48e8b3e6abffefe0401df37cd6f4262e43f12128e01a10b8d50b",
+        "validate-seeded-0-reference.json": "f0fea740510310d4427554122a9d215356bd915a00d939497bd3ddcd9b758d7b",
+        "validate-seeded-0-reference.rgba": "3ae42a56026c5619d89ae2a67334ab637669dc07ac235173566e0f6562f529fe",
+        "validate-seeded-0-reference.stderr.log": "b5bba2c2e4180c8fbc6e7c59a5122354abf5d6d83a46f90018c44338f730151a",
+        "validate-seeded-0-replay.csv": "f76c500a59b90802bac1019463f136384cf2c5b3db527f8fcaa254d2a577273d",
+        "validate-seeded-0-replay.json": "2f18f213e5e440e6f5b85cec18439f30ac106ccf83e1809c771400cf25bd485e",
+        "validate-seeded-0-replay.stderr.log": "d6df750f4d1746d0ede3c41eeaa409cfe2c1547c9fd75be9c438c91f7495fd3d"
+      },
+      "capture_metadata": {
+        "byte_count": 3686400,
+        "capture_in_performance_sample": false,
+        "command_sha256": "1dbf309f16ee36af4936ba06e88276227544e929771b1d3fcd904ea825f5ac0e",
+        "completion_scope": "gpu-command-complete",
+        "device": "Apple M4",
+        "display_sync_enabled": false,
+        "frame_sequence": 0,
+        "height": 720,
+        "host_binary_sha256": "9b0fefb3c181125c943f6d7b8c6f6fdf3ebade939f80cd41f58f3dc17c658a38",
+        "host_gpu_ms": 10.362708300817758,
+        "metalfx": "off",
+        "msl_source_sha256": "a3029007907875c423430a68c1ba8ed9f34ab3927ff55f44ac1ed7ce1e2c1713",
+        "offload_mode": "command-only",
+        "pixel_format": "rgba8Unorm",
+        "presentation_draw_count": 1,
+        "protocol_version": 2,
+        "resource_sha256": "91b89c64622612ba4a9bed1bcdc76a1b5be08ae7cefc57631e506842145a0185",
+        "rgba_sha256": "db3a7df7f0018da65d4d1267997201bb1e1291f1fdb8b95fdc64d613bb643d39",
+        "row_bytes": 5120,
+        "row_order": "top-to-bottom",
+        "scene_draw_count": 16,
+        "width": 1280
+      },
+      "comparison": {
+        "actual_sha256": "db3a7df7f0018da65d4d1267997201bb1e1291f1fdb8b95fdc64d613bb643d39",
+        "compared_pixels": 921600,
+        "first_failure": null,
+        "format": "RGBA8",
+        "height": 720,
+        "max_channel_error": 1,
+        "origin": "top-left",
+        "over_threshold_channels": 0,
+        "over_threshold_pixels": 0,
+        "passed": true,
+        "reference_sha256": "3ae42a56026c5619d89ae2a67334ab637669dc07ac235173566e0f6562f529fe",
+        "schema_version": 1,
+        "tolerance_lsb": 1,
+        "width": 1280
+      },
+      "frame_sequence": 0,
+      "host_jsonl_sha256": "a63e3d07ab3b6f47136ab33647253d4280264c5eded019f7a73686ffe3c9a4db",
+      "pattern": "seeded",
+      "performance_measurement": false,
+      "performance_sample": false,
+      "receiver": {
+        "metal_host_binary": "9b0fefb3c181125c943f6d7b8c6f6fdf3ebade939f80cd41f58f3dc17c658a38",
+        "metal_host_swift": "cf6d0f50b9b68dcde7324f12423d3de242950aa35fe25b2cf0d2b0afdd74c734"
+      },
+      "reference": "actual Guest D3D11 software rendering",
+      "reference_adapter": {
+        "adapter_description": "Microsoft Basic Render Driver",
+        "adapter_flags": 2,
+        "adapter_software_flag": true,
+        "device_id": 140,
+        "requested_driver_type": "warp",
+        "selected_feature_level": "11_1",
+        "vendor_id": 5140,
+        "windows_session_id": 1
+      },
+      "reference_execution": {
+        "launch": "interactive-scheduled-task",
+        "vm": "vm-a",
+        "wall_ms": 38169.56637500002
+      },
+      "reference_preflight": {
+        "architecture": "ARM64",
+        "baseline_comparison_required": true,
+        "baseline_sha256": "ceedbcaf3db809513428a617a91597a66fcdd2de3d00d399cdb0da2ebdf3545f",
+        "baseline_verified": true,
+        "bcd_flags": {
+          "nointegritychecks": "absent",
+          "testsigning": "absent"
+        },
+        "bcd_query_succeeded": true,
+        "bcd_security": [],
+        "boot_time_utc": "2026-11-22T13:58:58.7133020Z",
+        "build": "26100",
+        "captured_at_utc": "2026-11-22T14:08:09.6204550Z",
+        "code_integrity_options": 49157,
+        "code_integrity_query_succeeded": true,
+        "code_integrity_test_signing": false,
+        "console_session_id": 1,
+        "device_guard_query_succeeded": true,
+        "display_version": "24H2",
+        "driver_service_query_succeeded": true,
+        "expected_absent_driver_service_count": 2,
+        "forbidden_process_count": 0,
+        "forbidden_running_task_count": 0,
+        "hvci_configured": false,
+        "hvci_kernel_enforced": false,
+        "hvci_running": false,
+        "hypervisor_present": true,
+        "lifecycle_source_sha256": "fa4ea000db5d3c1c201e0631e3fde57fea59fdf5a81f1aa1e80b93585464d46c",
+        "logged_in": true,
+        "os_product": "Microsoft Windows 11 Enterprise Evaluation",
+        "os_query_succeeded": true,
+        "owned_services_absent": true,
+        "owner": "@DNPMBHC",
+        "passed": true,
+        "preflight_gates_passed": true,
+        "preflight_ps1_sha256": "b64e5bd838aa2d35fb86cc921e82c302178c7da8db06b9e52b9771ee86c9f7b9",
+        "preflight_py_sha256": "e3fdbfa52fbc8e47ba93378d3a446415db1e7373e3697485c40787aa16b48ac5",
+        "quiescence_query_succeeded": true,
+        "read_only": true,
+        "recovered_security_baseline": {
+          "bcd_security": [],
+          "boot_time_utc": "2026-11-22T06:08:17.6999380Z",
+          "captured_at_utc": "2026-11-22T06:08:44.5873348Z",
+          "hypervisor_present": true,
+          "secure_boot_enabled": true,
+          "security_services_running": [
+            0
+          ],
+          "tpm": {
+            "activated": true,
+            "enabled": true,
+            "owned": true,
+            "present": true,
+            "specification_version": "2.0, 0, 1.64"
+          },
+          "vbs_status": 0
+        },
+        "remaining_driver_service_count": 0,
+        "schema_version": 1,
+        "secure_boot_enabled": true,
+        "secure_boot_query_succeeded": true,
+        "security_services_configured": [
+          0
+        ],
+        "security_services_running": [
+          0
+        ],
+        "service_baseline_count": 2,
+        "session_flags": 1,
+        "session_flags_offset": 16,
+        "session_matches_console": true,
+        "session_query_succeeded": true,
+        "session_query_win32_error": 0,
+        "session_state": 0,
+        "temporary_directory_scoped": true,
+        "tpm": {
+          "activated": true,
+          "enabled": true,
+          "owned": true,
+          "present": true,
+          "specification_version": "2.0, 0, 1.64"
+        },
+        "tpm_query_succeeded": true,
+        "unlocked": true,
+        "vbs_status": 0,
+        "wts_info_ex_struct_bytes": 232,
+        "wts_returned_bytes": 232
+      },
+      "replay_adapter": {
+        "adapter_description": "Microsoft Basic Render Driver",
+        "adapter_flags": 0,
+        "adapter_software_flag": false,
+        "device_id": 140,
+        "requested_driver_type": "hardware",
+        "selected_feature_level": "11_1",
+        "vendor_id": 5140,
+        "windows_session_id": 1
+      },
+      "replay_execution": {
+        "launch": "interactive-scheduled-task",
+        "vm": "vm-a",
+        "wall_ms": 13808.047790999979
+      },
+      "replay_preflight": {
+        "architecture": "ARM64",
+        "baseline_comparison_required": true,
+        "baseline_sha256": "ceedbcaf3db809513428a617a91597a66fcdd2de3d00d399cdb0da2ebdf3545f",
+        "baseline_verified": true,
+        "bcd_flags": {
+          "nointegritychecks": "absent",
+          "testsigning": "absent"
+        },
+        "bcd_query_succeeded": true,
+        "bcd_security": [],
+        "boot_time_utc": "2026-11-22T13:58:58.7133020Z",
+        "build": "26100",
+        "captured_at_utc": "2026-11-22T14:09:32.7513217Z",
+        "code_integrity_options": 49157,
+        "code_integrity_query_succeeded": true,
+        "code_integrity_test_signing": false,
+        "console_session_id": 1,
+        "device_guard_query_succeeded": true,
+        "display_version": "24H2",
+        "driver_service_query_succeeded": true,
+        "expected_absent_driver_service_count": 2,
+        "forbidden_process_count": 0,
+        "forbidden_running_task_count": 0,
+        "hvci_configured": false,
+        "hvci_kernel_enforced": false,
+        "hvci_running": false,
+        "hypervisor_present": true,
+        "lifecycle_source_sha256": "fa4ea000db5d3c1c201e0631e3fde57fea59fdf5a81f1aa1e80b93585464d46c",
+        "logged_in": true,
+        "os_product": "Microsoft Windows 11 Enterprise Evaluation",
+        "os_query_succeeded": true,
+        "owned_services_absent": true,
+        "owner": "@DNPMBHC",
+        "passed": true,
+        "preflight_gates_passed": true,
+        "preflight_ps1_sha256": "b64e5bd838aa2d35fb86cc921e82c302178c7da8db06b9e52b9771ee86c9f7b9",
+        "preflight_py_sha256": "e3fdbfa52fbc8e47ba93378d3a446415db1e7373e3697485c40787aa16b48ac5",
+        "quiescence_query_succeeded": true,
+        "read_only": true,
+        "recovered_security_baseline": {
+          "bcd_security": [],
+          "boot_time_utc": "2026-11-22T06:08:17.6999380Z",
+          "captured_at_utc": "2026-11-22T06:08:44.5873348Z",
+          "hypervisor_present": true,
+          "secure_boot_enabled": true,
+          "security_services_running": [
+            0
+          ],
+          "tpm": {
+            "activated": true,
+            "enabled": true,
+            "owned": true,
+            "present": true,
+            "specification_version": "2.0, 0, 1.64"
+          },
+          "vbs_status": 0
+        },
+        "remaining_driver_service_count": 0,
+        "schema_version": 1,
+        "secure_boot_enabled": true,
+        "secure_boot_query_succeeded": true,
+        "security_services_configured": [
+          0
+        ],
+        "security_services_running": [
+          0
+        ],
+        "service_baseline_count": 2,
+        "session_flags": 1,
+        "session_flags_offset": 16,
+        "session_matches_console": true,
+        "session_query_succeeded": true,
+        "session_query_win32_error": 0,
+        "session_state": 0,
+        "temporary_directory_scoped": true,
+        "tpm": {
+          "activated": true,
+          "enabled": true,
+          "owned": true,
+          "present": true,
+          "specification_version": "2.0, 0, 1.64"
+        },
+        "tpm_query_succeeded": true,
+        "unlocked": true,
+        "vbs_status": 0,
+        "wts_info_ex_struct_bytes": 232,
+        "wts_returned_bytes": 232
+      },
+      "seed": 7,
+      "source_digests": {
+        "analyze_py": "ee71db86dc7db499d4997343489b341062b51220e547fe6443ace2e2218e1f25",
+        "benchmark_support_py": "34f18b92091ec60bccbab43ba6af68a2b5dbc0c27cf601fb0838bdb9f23e3898",
+        "d3d11_probe_cpp": "11fc000464f0dcf98aec3044c4d956a2b74ce491fc4d69567bf252bbec64af74",
+        "d3d11_probe_exe": "09bb190bf5d763f9749345300b937728db886a4ec26c32c361a920c565cf1bee",
+        "metal_host_binary": "9b0fefb3c181125c943f6d7b8c6f6fdf3ebade939f80cd41f58f3dc17c658a38",
+        "metal_host_swift": "cf6d0f50b9b68dcde7324f12423d3de242950aa35fe25b2cf0d2b0afdd74c734"
+      }
+    },
+    {
+      "actual": "actual Apple M4 Metal render target",
+      "artifacts": {
+        "host-captures/frame-000030.json": "8bbe325a1bdda4889f0b8e35c66b477308e287395f926ac16f842acbc13ab174",
+        "host-captures/frame-000030.rgba": "554462387255c85ec6bdf8e3b4fa1645d3c47d7a352d48919e9c854576c4a38f",
+        "metal_host": "9b0fefb3c181125c943f6d7b8c6f6fdf3ebade939f80cd41f58f3dc17c658a38",
+        "receiver-start.json": "290fbd17ec5ca4742d7a0ebb34f8092eba48c826f5a608c85cbcae158353ce77",
+        "validate-seeded-30-reference.csv": "de65d8689995173bf35554fdd8329b14e6a1975f3223c1e422117906b15b6d9f",
+        "validate-seeded-30-reference.json": "9a90172abb7fbc214826514366b8126bdb803e620cb6ebeb7cdfd473707a417e",
+        "validate-seeded-30-reference.rgba": "b60607081ba263918dba3b9d782c4ea21a0394f319e9e3e5b2aa4bdf4d5b9f86",
+        "validate-seeded-30-reference.stderr.log": "70a9e6e3ed921026f2c65b2d80335d04988ef2009a001e7a479e31baa28dbdf0",
+        "validate-seeded-30-replay.csv": "5ad5cd90f7bf3edd7a070ea0793ebd3e0dacd362cae26008bdcb190c29e6ec1f",
+        "validate-seeded-30-replay.json": "2f18f213e5e440e6f5b85cec18439f30ac106ccf83e1809c771400cf25bd485e",
+        "validate-seeded-30-replay.stderr.log": "4717a3e1f561b0d7b09cf9c4b28ca3d2e9c373e48223c4ac31353b8fbe7094bf"
+      },
+      "capture_metadata": {
+        "byte_count": 3686400,
+        "capture_in_performance_sample": false,
+        "command_sha256": "1dbf309f16ee36af4936ba06e88276227544e929771b1d3fcd904ea825f5ac0e",
+        "completion_scope": "gpu-command-complete",
+        "device": "Apple M4",
+        "display_sync_enabled": false,
+        "frame_sequence": 30,
+        "height": 720,
+        "host_binary_sha256": "9b0fefb3c181125c943f6d7b8c6f6fdf3ebade939f80cd41f58f3dc17c658a38",
+        "host_gpu_ms": 2.3234167019836605,
+        "metalfx": "off",
+        "msl_source_sha256": "a3029007907875c423430a68c1ba8ed9f34ab3927ff55f44ac1ed7ce1e2c1713",
+        "offload_mode": "command-only",
+        "pixel_format": "rgba8Unorm",
+        "presentation_draw_count": 1,
+        "protocol_version": 2,
+        "resource_sha256": "d4d2eba39fc3a74aa7b828dcc5141b5c85b1405f225694709b4438fd85fc3127",
+        "rgba_sha256": "554462387255c85ec6bdf8e3b4fa1645d3c47d7a352d48919e9c854576c4a38f",
+        "row_bytes": 5120,
+        "row_order": "top-to-bottom",
+        "scene_draw_count": 16,
+        "width": 1280
+      },
+      "comparison": {
+        "actual_sha256": "554462387255c85ec6bdf8e3b4fa1645d3c47d7a352d48919e9c854576c4a38f",
+        "compared_pixels": 921600,
+        "first_failure": null,
+        "format": "RGBA8",
+        "height": 720,
+        "max_channel_error": 1,
+        "origin": "top-left",
+        "over_threshold_channels": 0,
+        "over_threshold_pixels": 0,
+        "passed": true,
+        "reference_sha256": "b60607081ba263918dba3b9d782c4ea21a0394f319e9e3e5b2aa4bdf4d5b9f86",
+        "schema_version": 1,
+        "tolerance_lsb": 1,
+        "width": 1280
+      },
+      "frame_sequence": 30,
+      "host_jsonl_sha256": "a1aaae153d1cf140c43b4898cfd2aa0ae77dc4902cc0ec736e076d8e7f6d580b",
+      "pattern": "seeded",
+      "performance_measurement": false,
+      "performance_sample": false,
+      "receiver": {
+        "metal_host_binary": "9b0fefb3c181125c943f6d7b8c6f6fdf3ebade939f80cd41f58f3dc17c658a38",
+        "metal_host_swift": "cf6d0f50b9b68dcde7324f12423d3de242950aa35fe25b2cf0d2b0afdd74c734"
+      },
+      "reference": "actual Guest D3D11 software rendering",
+      "reference_adapter": {
+        "adapter_description": "Microsoft Basic Render Driver",
+        "adapter_flags": 2,
+        "adapter_software_flag": true,
+        "device_id": 140,
+        "requested_driver_type": "warp",
+        "selected_feature_level": "11_1",
+        "vendor_id": 5140,
+        "windows_session_id": 1
+      },
+      "reference_execution": {
+        "launch": "interactive-scheduled-task",
+        "vm": "vm-a",
+        "wall_ms": 23577.534291000007
+      },
+      "reference_preflight": {
+        "architecture": "ARM64",
+        "baseline_comparison_required": true,
+        "baseline_sha256": "ceedbcaf3db809513428a617a91597a66fcdd2de3d00d399cdb0da2ebdf3545f",
+        "baseline_verified": true,
+        "bcd_flags": {
+          "nointegritychecks": "absent",
+          "testsigning": "absent"
+        },
+        "bcd_query_succeeded": true,
+        "bcd_security": [],
+        "boot_time_utc": "2026-11-22T13:58:58.7133020Z",
+        "build": "26100",
+        "captured_at_utc": "2026-11-22T14:10:37.9854924Z",
+        "code_integrity_options": 49157,
+        "code_integrity_query_succeeded": true,
+        "code_integrity_test_signing": false,
+        "console_session_id": 1,
+        "device_guard_query_succeeded": true,
+        "display_version": "24H2",
+        "driver_service_query_succeeded": true,
+        "expected_absent_driver_service_count": 2,
+        "forbidden_process_count": 0,
+        "forbidden_running_task_count": 0,
+        "hvci_configured": false,
+        "hvci_kernel_enforced": false,
+        "hvci_running": false,
+        "hypervisor_present": true,
+        "lifecycle_source_sha256": "fa4ea000db5d3c1c201e0631e3fde57fea59fdf5a81f1aa1e80b93585464d46c",
+        "logged_in": true,
+        "os_product": "Microsoft Windows 11 Enterprise Evaluation",
+        "os_query_succeeded": true,
+        "owned_services_absent": true,
+        "owner": "@DNPMBHC",
+        "passed": true,
+        "preflight_gates_passed": true,
+        "preflight_ps1_sha256": "b64e5bd838aa2d35fb86cc921e82c302178c7da8db06b9e52b9771ee86c9f7b9",
+        "preflight_py_sha256": "e3fdbfa52fbc8e47ba93378d3a446415db1e7373e3697485c40787aa16b48ac5",
+        "quiescence_query_succeeded": true,
+        "read_only": true,
+        "recovered_security_baseline": {
+          "bcd_security": [],
+          "boot_time_utc": "2026-11-22T06:08:17.6999380Z",
+          "captured_at_utc": "2026-11-22T06:08:44.5873348Z",
+          "hypervisor_present": true,
+          "secure_boot_enabled": true,
+          "security_services_running": [
+            0
+          ],
+          "tpm": {
+            "activated": true,
+            "enabled": true,
+            "owned": true,
+            "present": true,
+            "specification_version": "2.0, 0, 1.64"
+          },
+          "vbs_status": 0
+        },
+        "remaining_driver_service_count": 0,
+        "schema_version": 1,
+        "secure_boot_enabled": true,
+        "secure_boot_query_succeeded": true,
+        "security_services_configured": [
+          0
+        ],
+        "security_services_running": [
+          0
+        ],
+        "service_baseline_count": 2,
+        "session_flags": 1,
+        "session_flags_offset": 16,
+        "session_matches_console": true,
+        "session_query_succeeded": true,
+        "session_query_win32_error": 0,
+        "session_state": 0,
+        "temporary_directory_scoped": true,
+        "tpm": {
+          "activated": true,
+          "enabled": true,
+          "owned": true,
+          "present": true,
+          "specification_version": "2.0, 0, 1.64"
+        },
+        "tpm_query_succeeded": true,
+        "unlocked": true,
+        "vbs_status": 0,
+        "wts_info_ex_struct_bytes": 232,
+        "wts_returned_bytes": 232
+      },
+      "replay_adapter": {
+        "adapter_description": "Microsoft Basic Render Driver",
+        "adapter_flags": 0,
+        "adapter_software_flag": false,
+        "device_id": 140,
+        "requested_driver_type": "hardware",
+        "selected_feature_level": "11_1",
+        "vendor_id": 5140,
+        "windows_session_id": 1
+      },
+      "replay_execution": {
+        "launch": "interactive-scheduled-task",
+        "vm": "vm-a",
+        "wall_ms": 11706.688333999977
+      },
+      "replay_preflight": {
+        "architecture": "ARM64",
+        "baseline_comparison_required": true,
+        "baseline_sha256": "ceedbcaf3db809513428a617a91597a66fcdd2de3d00d399cdb0da2ebdf3545f",
+        "baseline_verified": true,
+        "bcd_flags": {
+          "nointegritychecks": "absent",
+          "testsigning": "absent"
+        },
+        "bcd_query_succeeded": true,
+        "bcd_security": [],
+        "boot_time_utc": "2026-11-22T13:58:58.7133020Z",
+        "build": "26100",
+        "captured_at_utc": "2026-11-22T14:11:42.1375635Z",
+        "code_integrity_options": 49157,
+        "code_integrity_query_succeeded": true,
+        "code_integrity_test_signing": false,
+        "console_session_id": 1,
+        "device_guard_query_succeeded": true,
+        "display_version": "24H2",
+        "driver_service_query_succeeded": true,
+        "expected_absent_driver_service_count": 2,
+        "forbidden_process_count": 0,
+        "forbidden_running_task_count": 0,
+        "hvci_configured": false,
+        "hvci_kernel_enforced": false,
+        "hvci_running": false,
+        "hypervisor_present": true,
+        "lifecycle_source_sha256": "fa4ea000db5d3c1c201e0631e3fde57fea59fdf5a81f1aa1e80b93585464d46c",
+        "logged_in": true,
+        "os_product": "Microsoft Windows 11 Enterprise Evaluation",
+        "os_query_succeeded": true,
+        "owned_services_absent": true,
+        "owner": "@DNPMBHC",
+        "passed": true,
+        "preflight_gates_passed": true,
+        "preflight_ps1_sha256": "b64e5bd838aa2d35fb86cc921e82c302178c7da8db06b9e52b9771ee86c9f7b9",
+        "preflight_py_sha256": "e3fdbfa52fbc8e47ba93378d3a446415db1e7373e3697485c40787aa16b48ac5",
+        "quiescence_query_succeeded": true,
+        "read_only": true,
+        "recovered_security_baseline": {
+          "bcd_security": [],
+          "boot_time_utc": "2026-11-22T06:08:17.6999380Z",
+          "captured_at_utc": "2026-11-22T06:08:44.5873348Z",
+          "hypervisor_present": true,
+          "secure_boot_enabled": true,
+          "security_services_running": [
+            0
+          ],
+          "tpm": {
+            "activated": true,
+            "enabled": true,
+            "owned": true,
+            "present": true,
+            "specification_version": "2.0, 0, 1.64"
+          },
+          "vbs_status": 0
+        },
+        "remaining_driver_service_count": 0,
+        "schema_version": 1,
+        "secure_boot_enabled": true,
+        "secure_boot_query_succeeded": true,
+        "security_services_configured": [
+          0
+        ],
+        "security_services_running": [
+          0
+        ],
+        "service_baseline_count": 2,
+        "session_flags": 1,
+        "session_flags_offset": 16,
+        "session_matches_console": true,
+        "session_query_succeeded": true,
+        "session_query_win32_error": 0,
+        "session_state": 0,
+        "temporary_directory_scoped": true,
+        "tpm": {
+          "activated": true,
+          "enabled": true,
+          "owned": true,
+          "present": true,
+          "specification_version": "2.0, 0, 1.64"
+        },
+        "tpm_query_succeeded": true,
+        "unlocked": true,
+        "vbs_status": 0,
+        "wts_info_ex_struct_bytes": 232,
+        "wts_returned_bytes": 232
+      },
+      "seed": 7,
+      "source_digests": {
+        "analyze_py": "ee71db86dc7db499d4997343489b341062b51220e547fe6443ace2e2218e1f25",
+        "benchmark_support_py": "34f18b92091ec60bccbab43ba6af68a2b5dbc0c27cf601fb0838bdb9f23e3898",
+        "d3d11_probe_cpp": "11fc000464f0dcf98aec3044c4d956a2b74ce491fc4d69567bf252bbec64af74",
+        "d3d11_probe_exe": "09bb190bf5d763f9749345300b937728db886a4ec26c32c361a920c565cf1bee",
+        "metal_host_binary": "9b0fefb3c181125c943f6d7b8c6f6fdf3ebade939f80cd41f58f3dc17c658a38",
+        "metal_host_swift": "cf6d0f50b9b68dcde7324f12423d3de242950aa35fe25b2cf0d2b0afdd74c734"
+      }
+    },
+    {
+      "actual": "actual Apple M4 Metal render target",
+      "artifacts": {
+        "host-captures/frame-000031.json": "142cbf19cb23fa17ddffeecc06364a424d0806e3e72bb5c010dd3d6d0bb80218",
+        "host-captures/frame-000031.rgba": "554462387255c85ec6bdf8e3b4fa1645d3c47d7a352d48919e9c854576c4a38f",
+        "metal_host": "9b0fefb3c181125c943f6d7b8c6f6fdf3ebade939f80cd41f58f3dc17c658a38",
+        "receiver-start.json": "290fbd17ec5ca4742d7a0ebb34f8092eba48c826f5a608c85cbcae158353ce77",
+        "validate-seeded-31-reference.csv": "14e1ab4420b5d33933c8c0ddb15262905313a967a6fec0b38f671c866f3b7afb",
+        "validate-seeded-31-reference.json": "a844f63f447a42151e311694f826cd44d6074fa67b58cc863d2a5efc622a509d",
+        "validate-seeded-31-reference.rgba": "b60607081ba263918dba3b9d782c4ea21a0394f319e9e3e5b2aa4bdf4d5b9f86",
+        "validate-seeded-31-reference.stderr.log": "57b93900a3eb53fe552c350d6f4d105ee856f45f34994fb2554a1e4a4d192d1a",
+        "validate-seeded-31-replay.csv": "76c6838857b247f178508f72d0eb9cff51a23133834d8cb3577472338d748fc1",
+        "validate-seeded-31-replay.json": "2f18f213e5e440e6f5b85cec18439f30ac106ccf83e1809c771400cf25bd485e",
+        "validate-seeded-31-replay.stderr.log": "0d53e4e697eaa9a3fd91fb01af92a3ef9c87f41b0066b11fc8d8e6244f59d601"
+      },
+      "capture_metadata": {
+        "byte_count": 3686400,
+        "capture_in_performance_sample": false,
+        "command_sha256": "1dbf309f16ee36af4936ba06e88276227544e929771b1d3fcd904ea825f5ac0e",
+        "completion_scope": "gpu-command-complete",
+        "device": "Apple M4",
+        "display_sync_enabled": false,
+        "frame_sequence": 31,
+        "height": 720,
+        "host_binary_sha256": "9b0fefb3c181125c943f6d7b8c6f6fdf3ebade939f80cd41f58f3dc17c658a38",
+        "host_gpu_ms": 2.2698333486914635,
+        "metalfx": "off",
+        "msl_source_sha256": "a3029007907875c423430a68c1ba8ed9f34ab3927ff55f44ac1ed7ce1e2c1713",
+        "offload_mode": "command-only",
+        "pixel_format": "rgba8Unorm",
+        "presentation_draw_count": 1,
+        "protocol_version": 2,
+        "resource_sha256": "d4d2eba39fc3a74aa7b828dcc5141b5c85b1405f225694709b4438fd85fc3127",
+        "rgba_sha256": "554462387255c85ec6bdf8e3b4fa1645d3c47d7a352d48919e9c854576c4a38f",
+        "row_bytes": 5120,
+        "row_order": "top-to-bottom",
+        "scene_draw_count": 16,
+        "width": 1280
+      },
+      "comparison": {
+        "actual_sha256": "554462387255c85ec6bdf8e3b4fa1645d3c47d7a352d48919e9c854576c4a38f",
+        "compared_pixels": 921600,
+        "first_failure": null,
+        "format": "RGBA8",
+        "height": 720,
+        "max_channel_error": 1,
+        "origin": "top-left",
+        "over_threshold_channels": 0,
+        "over_threshold_pixels": 0,
+        "passed": true,
+        "reference_sha256": "b60607081ba263918dba3b9d782c4ea21a0394f319e9e3e5b2aa4bdf4d5b9f86",
+        "schema_version": 1,
+        "tolerance_lsb": 1,
+        "width": 1280
+      },
+      "frame_sequence": 31,
+      "host_jsonl_sha256": "21c7955bb7696e5c3b0802b8d5e30ca673d54c47fa90ab7651f2d923581fcb6e",
+      "pattern": "seeded",
+      "performance_measurement": false,
+      "performance_sample": false,
+      "receiver": {
+        "metal_host_binary": "9b0fefb3c181125c943f6d7b8c6f6fdf3ebade939f80cd41f58f3dc17c658a38",
+        "metal_host_swift": "cf6d0f50b9b68dcde7324f12423d3de242950aa35fe25b2cf0d2b0afdd74c734"
+      },
+      "reference": "actual Guest D3D11 software rendering",
+      "reference_adapter": {
+        "adapter_description": "Microsoft Basic Render Driver",
+        "adapter_flags": 2,
+        "adapter_software_flag": true,
+        "device_id": 140,
+        "requested_driver_type": "warp",
+        "selected_feature_level": "11_1",
+        "vendor_id": 5140,
+        "windows_session_id": 1
+      },
+      "reference_execution": {
+        "launch": "interactive-scheduled-task",
+        "vm": "vm-a",
+        "wall_ms": 19607.80533299999
+      },
+      "reference_preflight": {
+        "architecture": "ARM64",
+        "baseline_comparison_required": true,
+        "baseline_sha256": "ceedbcaf3db809513428a617a91597a66fcdd2de3d00d399cdb0da2ebdf3545f",
+        "baseline_verified": true,
+        "bcd_flags": {
+          "nointegritychecks": "absent",
+          "testsigning": "absent"
+        },
+        "bcd_query_succeeded": true,
+        "bcd_security": [],
+        "boot_time_utc": "2026-11-22T13:58:58.7133020Z",
+        "build": "26100",
+        "captured_at_utc": "2026-11-22T14:12:36.8827714Z",
+        "code_integrity_options": 49157,
+        "code_integrity_query_succeeded": true,
+        "code_integrity_test_signing": false,
+        "console_session_id": 1,
+        "device_guard_query_succeeded": true,
+        "display_version": "24H2",
+        "driver_service_query_succeeded": true,
+        "expected_absent_driver_service_count": 2,
+        "forbidden_process_count": 0,
+        "forbidden_running_task_count": 0,
+        "hvci_configured": false,
+        "hvci_kernel_enforced": false,
+        "hvci_running": false,
+        "hypervisor_present": true,
+        "lifecycle_source_sha256": "fa4ea000db5d3c1c201e0631e3fde57fea59fdf5a81f1aa1e80b93585464d46c",
+        "logged_in": true,
+        "os_product": "Microsoft Windows 11 Enterprise Evaluation",
+        "os_query_succeeded": true,
+        "owned_services_absent": true,
+        "owner": "@DNPMBHC",
+        "passed": true,
+        "preflight_gates_passed": true,
+        "preflight_ps1_sha256": "b64e5bd838aa2d35fb86cc921e82c302178c7da8db06b9e52b9771ee86c9f7b9",
+        "preflight_py_sha256": "e3fdbfa52fbc8e47ba93378d3a446415db1e7373e3697485c40787aa16b48ac5",
+        "quiescence_query_succeeded": true,
+        "read_only": true,
+        "recovered_security_baseline": {
+          "bcd_security": [],
+          "boot_time_utc": "2026-11-22T06:08:17.6999380Z",
+          "captured_at_utc": "2026-11-22T06:08:44.5873348Z",
+          "hypervisor_present": true,
+          "secure_boot_enabled": true,
+          "security_services_running": [
+            0
+          ],
+          "tpm": {
+            "activated": true,
+            "enabled": true,
+            "owned": true,
+            "present": true,
+            "specification_version": "2.0, 0, 1.64"
+          },
+          "vbs_status": 0
+        },
+        "remaining_driver_service_count": 0,
+        "schema_version": 1,
+        "secure_boot_enabled": true,
+        "secure_boot_query_succeeded": true,
+        "security_services_configured": [
+          0
+        ],
+        "security_services_running": [
+          0
+        ],
+        "service_baseline_count": 2,
+        "session_flags": 1,
+        "session_flags_offset": 16,
+        "session_matches_console": true,
+        "session_query_succeeded": true,
+        "session_query_win32_error": 0,
+        "session_state": 0,
+        "temporary_directory_scoped": true,
+        "tpm": {
+          "activated": true,
+          "enabled": true,
+          "owned": true,
+          "present": true,
+          "specification_version": "2.0, 0, 1.64"
+        },
+        "tpm_query_succeeded": true,
+        "unlocked": true,
+        "vbs_status": 0,
+        "wts_info_ex_struct_bytes": 232,
+        "wts_returned_bytes": 232
+      },
+      "replay_adapter": {
+        "adapter_description": "Microsoft Basic Render Driver",
+        "adapter_flags": 0,
+        "adapter_software_flag": false,
+        "device_id": 140,
+        "requested_driver_type": "hardware",
+        "selected_feature_level": "11_1",
+        "vendor_id": 5140,
+        "windows_session_id": 1
+      },
+      "replay_execution": {
+        "launch": "interactive-scheduled-task",
+        "vm": "vm-a",
+        "wall_ms": 11698.050792000004
+      },
+      "replay_preflight": {
+        "architecture": "ARM64",
+        "baseline_comparison_required": true,
+        "baseline_sha256": "ceedbcaf3db809513428a617a91597a66fcdd2de3d00d399cdb0da2ebdf3545f",
+        "baseline_verified": true,
+        "bcd_flags": {
+          "nointegritychecks": "absent",
+          "testsigning": "absent"
+        },
+        "bcd_query_succeeded": true,
+        "bcd_security": [],
+        "boot_time_utc": "2026-11-22T13:58:58.7133020Z",
+        "build": "26100",
+        "captured_at_utc": "2026-11-22T14:13:34.8320407Z",
+        "code_integrity_options": 49157,
+        "code_integrity_query_succeeded": true,
+        "code_integrity_test_signing": false,
+        "console_session_id": 1,
+        "device_guard_query_succeeded": true,
+        "display_version": "24H2",
+        "driver_service_query_succeeded": true,
+        "expected_absent_driver_service_count": 2,
+        "forbidden_process_count": 0,
+        "forbidden_running_task_count": 0,
+        "hvci_configured": false,
+        "hvci_kernel_enforced": false,
+        "hvci_running": false,
+        "hypervisor_present": true,
+        "lifecycle_source_sha256": "fa4ea000db5d3c1c201e0631e3fde57fea59fdf5a81f1aa1e80b93585464d46c",
+        "logged_in": true,
+        "os_product": "Microsoft Windows 11 Enterprise Evaluation",
+        "os_query_succeeded": true,
+        "owned_services_absent": true,
+        "owner": "@DNPMBHC",
+        "passed": true,
+        "preflight_gates_passed": true,
+        "preflight_ps1_sha256": "b64e5bd838aa2d35fb86cc921e82c302178c7da8db06b9e52b9771ee86c9f7b9",
+        "preflight_py_sha256": "e3fdbfa52fbc8e47ba93378d3a446415db1e7373e3697485c40787aa16b48ac5",
+        "quiescence_query_succeeded": true,
+        "read_only": true,
+        "recovered_security_baseline": {
+          "bcd_security": [],
+          "boot_time_utc": "2026-11-22T06:08:17.6999380Z",
+          "captured_at_utc": "2026-11-22T06:08:44.5873348Z",
+          "hypervisor_present": true,
+          "secure_boot_enabled": true,
+          "security_services_running": [
+            0
+          ],
+          "tpm": {
+            "activated": true,
+            "enabled": true,
+            "owned": true,
+            "present": true,
+            "specification_version": "2.0, 0, 1.64"
+          },
+          "vbs_status": 0
+        },
+        "remaining_driver_service_count": 0,
+        "schema_version": 1,
+        "secure_boot_enabled": true,
+        "secure_boot_query_succeeded": true,
+        "security_services_configured": [
+          0
+        ],
+        "security_services_running": [
+          0
+        ],
+        "service_baseline_count": 2,
+        "session_flags": 1,
+        "session_flags_offset": 16,
+        "session_matches_console": true,
+        "session_query_succeeded": true,
+        "session_query_win32_error": 0,
+        "session_state": 0,
+        "temporary_directory_scoped": true,
+        "tpm": {
+          "activated": true,
+          "enabled": true,
+          "owned": true,
+          "present": true,
+          "specification_version": "2.0, 0, 1.64"
+        },
+        "tpm_query_succeeded": true,
+        "unlocked": true,
+        "vbs_status": 0,
+        "wts_info_ex_struct_bytes": 232,
+        "wts_returned_bytes": 232
+      },
+      "seed": 7,
+      "source_digests": {
+        "analyze_py": "ee71db86dc7db499d4997343489b341062b51220e547fe6443ace2e2218e1f25",
+        "benchmark_support_py": "34f18b92091ec60bccbab43ba6af68a2b5dbc0c27cf601fb0838bdb9f23e3898",
+        "d3d11_probe_cpp": "11fc000464f0dcf98aec3044c4d956a2b74ce491fc4d69567bf252bbec64af74",
+        "d3d11_probe_exe": "09bb190bf5d763f9749345300b937728db886a4ec26c32c361a920c565cf1bee",
+        "metal_host_binary": "9b0fefb3c181125c943f6d7b8c6f6fdf3ebade939f80cd41f58f3dc17c658a38",
+        "metal_host_swift": "cf6d0f50b9b68dcde7324f12423d3de242950aa35fe25b2cf0d2b0afdd74c734"
+      }
+    }
+  ],
+  "complete": true,
+  "guest": {
+    "architecture": "ARM64",
+    "build": "26100",
+    "cpu_architecture_code": 12,
+    "display_adapter": "Red Hat VirtIO GPU DOD controller",
+    "display_adapters": [
+      {
+        "description": "Red Hat VirtIO GPU DOD controller",
+        "driver_version": "22.7.38.43"
+      }
+    ],
+    "display_driver_version": "22.7.38.43",
+    "display_version": "24H2",
+    "os_architecture": "ARM 64-bit Processor",
+    "os_product": "Microsoft Windows 11 Enterprise Evaluation",
+    "version": "10.0.26100",
+    "vm": "vm-a"
+  },
+  "inputs": {
+    "analyze.py": {
+      "file": "inputs/analyze.py",
+      "sha256": "ee71db86dc7db499d4997343489b341062b51220e547fe6443ace2e2218e1f25"
+    },
+    "benchmark_support.py": {
+      "file": "inputs/benchmark_support.py",
+      "sha256": "34f18b92091ec60bccbab43ba6af68a2b5dbc0c27cf601fb0838bdb9f23e3898"
+    },
+    "build_metal_host.sh": {
+      "file": "inputs/build_metal_host.sh",
+      "sha256": "f51ceb267222ce99053d155ba2ee692ad995277a9ea373ec3762f5d830baae82"
+    },
+    "build_probe.sh": {
+      "file": "inputs/build_probe.sh",
+      "sha256": "374a70103d2123a11dec6766298660ff31f42a267e179489051b36ff0d92d1f6"
+    },
+    "command_protocol.py": {
+      "file": "inputs/command_protocol.py",
+      "sha256": "5b519eacbce938c4e2c076b60fca346af2e5c50fa21c55a916069faa11332d36"
+    },
+    "d3d11_probe.cpp": {
+      "file": "inputs/d3d11_probe.cpp",
+      "sha256": "11fc000464f0dcf98aec3044c4d956a2b74ce491fc4d69567bf252bbec64af74"
+    },
+    "d3d11_probe.exe": {
+      "file": "inputs/d3d11_probe.exe",
+      "sha256": "09bb190bf5d763f9749345300b937728db886a4ec26c32c361a920c565cf1bee"
+    },
+    "guest_preflight.ps1": {
+      "file": "inputs/guest_preflight.ps1",
+      "sha256": "b64e5bd838aa2d35fb86cc921e82c302178c7da8db06b9e52b9771ee86c9f7b9"
+    },
+    "guest_preflight.py": {
+      "file": "inputs/guest_preflight.py",
+      "sha256": "e3fdbfa52fbc8e47ba93378d3a446415db1e7373e3697485c40787aa16b48ac5"
+    },
+    "metal_host.swift": {
+      "file": "inputs/metal_host.swift",
+      "sha256": "cf6d0f50b9b68dcde7324f12423d3de242950aa35fe25b2cf0d2b0afdd74c734"
+    },
+    "pixel_compare.py": {
+      "file": "inputs/pixel_compare.py",
+      "sha256": "2dbe1454c4eccbb12685c9b2a39f45d895b9fa65658d1b129e952aa74231b056"
+    },
+    "restart_metal_host.sh": {
+      "file": "inputs/restart_metal_host.sh",
+      "sha256": "0dd16cac6d14275115057ccd316d7f83f74afc30567d523c551bcdb14b866611"
+    },
+    "run_guest_m2_benchmark.py": {
+      "file": "inputs/run_guest_m2_benchmark.py",
+      "sha256": "b1b3a7e914eba19a9dc058aae24dba02591922679e21d52efbf8e3dbf5df3998"
+    },
+    "run_guest_pixel_validation.py": {
+      "file": "inputs/run_guest_pixel_validation.py",
+      "sha256": "9572317f868a0e8d744f30879596a08d7a68dcbdc5c4b6d9e0a39fc88513daab"
+    }
+  },
+  "owner": "@DNPMBHC",
+  "passed": true,
+  "performance_measurement": false,
+  "performance_samples": false,
+  "probe_binary_sha256": "09bb190bf5d763f9749345300b937728db886a4ec26c32c361a920c565cf1bee",
+  "schema_version": 1,
+  "source_digests": {
+    "analyze_py": "ee71db86dc7db499d4997343489b341062b51220e547fe6443ace2e2218e1f25",
+    "benchmark_support_py": "34f18b92091ec60bccbab43ba6af68a2b5dbc0c27cf601fb0838bdb9f23e3898",
+    "d3d11_probe_cpp": "11fc000464f0dcf98aec3044c4d956a2b74ce491fc4d69567bf252bbec64af74",
+    "d3d11_probe_exe": "09bb190bf5d763f9749345300b937728db886a4ec26c32c361a920c565cf1bee",
+    "metal_host_binary": "9b0fefb3c181125c943f6d7b8c6f6fdf3ebade939f80cd41f58f3dc17c658a38",
+    "metal_host_swift": "cf6d0f50b9b68dcde7324f12423d3de242950aa35fe25b2cf0d2b0afdd74c734"
+  },
+  "windows_session_id": 1
+}

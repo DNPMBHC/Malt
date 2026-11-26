@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-26T10:41:25.000060+00:00",
+  "relocated_package_verification": {
+    "dmg_sha256": "a74276d902c7193e5a42a2e2e369e05027d269e70dbc559adf0258180a0d5686",
+    "dmg_size_mib": 360.846,
+    "applications_symlink_present": true,
+    "codesign_deep_strict_passed": true,
+    "runtime_payload_passed": true,
+    "runtime_payload_resource_count": 1483,
+    "external_absolute_dependency_count": 0,
+    "helper_lsui_element": true,
+    "helper_settings_contract_version": 1,
+    "user_net_proxy_self_check": {
+      "passed": true,
+      "protocols": [
+        "tcp",
+        "udp",
+        "icmp",
+        "arp",
+        "dhcp",
+        "dns"
+      ],
+      "qosUserInteractive": true,
+      "transports": [
+        "unix",
+        "tcp4"
+      ],
+      "zeroPrivilege": true
+    },
+    "user_net_proxy_sha256": "b12bbc572c0723f752cea8d0d391687786f8499f3539f3f0eb388e0a33a409f9",
+    "bundled_scripts": [
+      "PROVISIONING.md",
+      "PROVISIONING.zh-Hans.md",
+      "anticheat-minimal-win11-arm64.json",
+      "apply-optimizer.ps1",
+      "golden_guest_manager.py",
+      "kiosk-app-shell.ps1",
+      "rollback-optimizer.ps1"
+    ],
+    "isolated_launch_smoke_passed": true,
+    "passed": true
+  },
+  "live_vm_e2e": {
+    "schema_version": 1,
+    "owner": "@DNPMBHC",
+    "captured_at_utc": "2026-11-26T10:39:09.862000+00:00",
+    "ephemeral_clone_name": "ephemeral-p18b-e2e-7a2b3aff.utm",
+    "ephemeral_cleaned_up": true,
+    "managed_proxy_start": {
+      "started": true,
+      "qos_user_interactive": true,
+      "unix_socket_mode_octal": "0o600",
+      "unix_socket_sigterm_cleaned": true,
+      "sandbox_loopback_bound": true
+    },
+    "hardware_pipeline": {
+      "cpu_count": 6,
+      "memory_mib": 8192,
+      "virtio_blk_queues": 4,
+      "virtio_mouse": true,
+      "usb_redir_disabled": true,
+      "sound_hardware": "intel-hda",
+      "fps_limit": 120,
+      "triple_buffering": true,
+      "network_mode": "socket-stream-inet",
+      "slirp_eliminated": true
+    },
+    "qga_ready": true,
+    "guest_optimization_and_rollback": {
+      "apply_exit_code": 0,
+      "apply_secure_boot": null,
+      "apply_bcd_safe": null,
+      "apply_prism_valid": null,
+      "rollback_exit_code": 0,
+      "rollback_consistent": true
+    },
+    "graphics_and_network": {
+      "secureBoot": true,
+      "adapter": "Red Hat VirtIO GPU 3D controller",
+      "icmpGatewayOk": true,
+      "udpDnsOk": false,
+      "viogpu3dPresent": true,
+      "tcpProxyRoundtripOk": true,
+      "udpProxyRoundtripOk": true,
+      "guestProxyIP": "10.12.0.15",
+      "shader_cache_writable": true
+    },
+    "installed_game_discovery": {
+      "shortcut_count": 41,
+      "sample_names": [
+        "Microsoft Edge",
+        "Visual Studio Installer",
+        "Remote Desktop Connection",
+        "Steps Recorder",
+        "Windows Media Player Legacy",
+        "Character Map",
+        "dfrgui",
+        "Disk Cleanup"
+      ],
+      "valorant_present": false
+    },
+    "launcher_process_tree_fullscreen": {
+      "verified": true,
+      "event": "game_foreground_detected",
+      "action": "enter_fullscreen_gamemode",
+      "root_pid": 2916,
+      "descendant_pid": 7104,
+      "descendant_process_name": "SyntheticGame",
+      "is_fullscreen": true,
+      "lineage_depth": 2,
+      "zero_hook_and_zero_injection": true,
+      "interactive_valorant_requested": false,
+      "host_bridge_roundtrip_ok": true
+    },
+    "managed_proxy_stopped_and_socket_cleaned": true
+  },
+  "zero_drift": true
+}

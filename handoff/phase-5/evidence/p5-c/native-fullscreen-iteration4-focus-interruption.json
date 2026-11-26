@@ -1,0 +1,49 @@
+{
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-24T05:40:03.321329+00:00",
+  "scope": "complete_runtime_native_nswindow_cametal_layer",
+  "consumer_module_alias": "ModuleC",
+  "source_subset_recompiled": false,
+  "vm_actions": 0,
+  "visible_window_created": true,
+  "pointer_capture_used": false,
+  "native_fullscreen_verified": false,
+  "real_guest_verified": false,
+  "virtual_hid_verified": false,
+  "passed": false,
+  "source_fingerprint_before": "ccd61d5c3d71971d5fe239cae66866d8cd5919047768dbf4c230a8e5aea5dfbd",
+  "production_archive_sha256": "9c26adfc2db1f4543e130a5d5ff8e2ce69716afe26cdeed083133313328c8f31",
+  "consumer_module_sha256": {
+    "arm64-apple-macos.swiftdoc": "372cc8921d029d7442e2c7b27ac13c64e0da0290e67251f8abc43aa45c4d1131",
+    "arm64-apple-macos.swiftmodule": "14eaf7c0ab96658d2ad578c7c20df339bda3e696c7caa6980f797f7016949d76",
+    "arm64-apple-macos.abi.json": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "production_contract_revision": 2,
+  "production_snapshot_revision": 4,
+  "archive_member_count": 3,
+  "complete_runtime_object_in_archive": true,
+  "runs": [
+    {
+      "owner": "@DNPMBHC",
+      "error": "native_window_failed",
+      "phase": "opening",
+      "checks": {
+        "window_fullscreen_style_observed": false,
+        "native_fullscreen_primary_behavior": true,
+        "window_on_active_space": true,
+        "native_fullscreen_transition_notified": false
+      },
+      "passed": false,
+      "entryState": {
+        "window_key_after_request": false,
+        "window_key_after_wait": false,
+        "application_active_before_request": false,
+        "application_active_after_wait": false,
+        "application_active_after_request": false,
+        "window_key_before_request": false,
+        "window_visible_after_wait": true
+      }
+    }
+  ],
+  "error": "native_roundtrip_reported_failure"
+}

@@ -1,0 +1,28 @@
+{
+  "owner": "@DNPMBHC",
+  "pnp": [
+    {
+      "whql": true,
+      "version": "100.6.101.58000",
+      "signed": true
+    }
+  ],
+  "drivers": [
+    {
+      "whql": true,
+      "name": "VioGpuDod",
+      "signature_valid": true,
+      "file_present": true,
+      "state": "Running",
+      "path_rooted_under_windows": true
+    },
+    {
+      "whql": true,
+      "name": "VioGpu3D",
+      "signature_valid": true,
+      "file_present": true,
+      "state": "Stopped",
+      "path_rooted_under_windows": true
+    }
+  ]
+}

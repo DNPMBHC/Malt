@@ -1,0 +1,357 @@
+{
+  "schema_version": 1,
+  "owner": "@DNPMBHC",
+  "phase": "phase-14-window-14a",
+  "collected_at_utc": "2026-11-25T16:28:19.696307+00:00",
+  "full_stack_config": {
+    "vcpu": 8,
+    "ram_mib": 10240,
+    "disk": "VirtIO-Blk (iothread0, num-queues=4, discard=unmap)",
+    "network": "emulated_fallback_for_ad_hoc_tcp (vmnet-shared verified separately in 12A/14A-T6)",
+    "graphics": "dxmt-native + persistent DXMT_SHADER_CACHE + XtaCache",
+    "utm_custom_patches": 10,
+    "fps_limit": 120,
+    "metal_drawable_count": 3,
+    "max_inflight_frames": 3,
+    "mouse_coalesce_ms": 1.5,
+    "key_guard": true,
+    "app_shell_vm": true,
+    "guest_optimizer": "v3.1",
+    "shell_mode": "game-shell-vm (with UTM_KEEP_CURSOR_VISIBLE_ON_INHIBIT=1; --app-shell-vm verified in T6)"
+  },
+  "guest_diagnostics": {
+    "log_path": "F:\\VALORANT_CN\\Tencent Games\\VALORANT\\live\\ShooterGame\\Saved\\Logs\\ShooterGame.log",
+    "log_exists": true,
+    "log_size_bytes": 2103338,
+    "secure_boot": true,
+    "ace_drivers": [
+      {
+        "Name": "Filetrace",
+        "State": "Stopped",
+        "Status": "OK",
+        "StartMode": "Manual"
+      },
+      {
+        "Name": "spaceparser",
+        "State": "Stopped",
+        "Status": "OK",
+        "StartMode": "Manual"
+      },
+      {
+        "Name": "spaceport",
+        "State": "Running",
+        "Status": "OK",
+        "StartMode": "Boot"
+      },
+      {
+        "Name": "ACE-GAME",
+        "State": "Stopped",
+        "Status": "OK",
+        "StartMode": "Manual"
+      }
+    ],
+    "ace_7000_1275_errors": 1,
+    "code_integrity_errors": 1,
+    "gpu": [
+      {
+        "Name": "Red Hat VirtIO GPU 3D controller",
+        "DriverVersion": "100.6.101.58000",
+        "Status": "OK"
+      }
+    ]
+  },
+  "host_telemetry": {
+    "start": {
+      "timestamp_utc": "2026-11-25T15:43:53.072271+00:00",
+      "qemu_render_server_cpu": 0.0,
+      "qemu_worker_cpu": 21.1,
+      "utm_ui_cpu": 0.6,
+      "total_hypervisor_rss_mib": 3735.38
+    },
+    "end": {
+      "timestamp_utc": "2026-11-25T16:27:53.516668+00:00",
+      "qemu_render_server_cpu": 0.0,
+      "qemu_worker_cpu": 99.6,
+      "utm_ui_cpu": 0.5,
+      "total_hypervisor_rss_mib": 2558.66
+    },
+    "dxmt_cache_start": {
+      "file_count": 4,
+      "total_bytes": 510696
+    },
+    "dxmt_cache_end": {
+      "file_count": 4,
+      "total_bytes": 10512760
+    }
+  },
+  "qemu_audit": {
+    "device_count": 17,
+    "devices": [
+      "virtio-ramfb-gl,hostmem=8G,blob=true,venus=true,neptune=true,refresh_rate=120000",
+      "intel-hda",
+      "hda-duplex,audiodev=audio0",
+      "nec-usb-xhci,id=usb-bus",
+      "usb-mouse,bus=usb-bus.0",
+      "usb-kbd,bus=usb-bus.0",
+      "qemu-xhci,id=usb-controller-0",
+      "usb-redir,chardev=usbredirchardev0,id=usbredirdev0,bus=usb-controller-0.0",
+      "usb-redir,chardev=usbredirchardev1,id=usbredirdev1,bus=usb-controller-0.0",
+      "usb-redir,chardev=usbredirchardev2,id=usbredirdev2,bus=usb-controller-0.0",
+      "virtio-blk-pci,drive=driveDE9BDC80-A8A8-4364-9319-D28A528FB316,serial=DE9BDC80A8A843649319,bootindex=0",
+      "nvme,drive=drive2A3FB63F-0CEB-499D-9394-B667DD372BF2,serial=<uuid>,bootindex=1",
+      "virtio-serial",
+      "virtserialport,chardev=org.qemu.guest_agent,name=org.qemu.guest_agent.0",
+      "virtio-rng-pci",
+      "tpm-crb-device,tpmdev=tpm0",
+      "virtio-net-pci,netdev=net0,mac=32:44:A9:EA:08:AA,ioeventfd=on,rx_queue_size=1024"
+    ],
+    "has_usb_tablet": false,
+    "has_virtio_balloon": false,
+    "has_usb_mouse": true,
+    "has_virtio_mouse": false,
+    "has_slirp_user_net": false,
+    "removable_polling_devices": [
+      "usb-redir"
+    ],
+    "clean_of_known_polling_bloat": true,
+    "findings": [
+      {
+        "device_key": "usb-tablet",
+        "present": false,
+        "category": "unnecessary_polling",
+        "note": "Absolute USB tablet polls continuously; must stay disabled in pure relative mouse mode."
+      },
+      {
+        "device_key": "virtio-balloon",
+        "present": false,
+        "category": "unnecessary_polling",
+        "note": "Memory ballooning causes periodic host-guest reclaim jitter; must stay disabled."
+      },
+      {
+        "device_key": "usb-redir",
+        "present": true,
+        "category": "optional_removable",
+        "note": "USB redirection host channels add USB bus polling when unused."
+      },
+      {
+        "device_key": "spice-vdagent",
+        "present": false,
+        "category": "optional_removable",
+        "note": "SPICE vdagent/webdavd channel; webdavd disabled by guest-optimizer v3.1."
+      },
+      {
+        "device_key": "virtio-rng",
+        "present": true,
+        "category": "low_overhead_keep",
+        "note": "Hardware RNG is event-driven and required for low-latency entropy; keep."
+      },
+      {
+        "device_key": "intel-hda",
+        "present": true,
+        "category": "required_audio",
+        "note": "Audio controller required for game sound; keep."
+      },
+      {
+        "device_key": "usb-mouse",
+        "present": true,
+        "category": "input_device",
+        "note": "Relative USB mouse; evaluate against virtio-mouse-pci if WHQL vioinput is available."
+      },
+      {
+        "device_key": "virtio-mouse-pci",
+        "present": false,
+        "category": "input_device",
+        "note": "VirtIO PCI mouse (interrupt-driven, no USB polling)."
+      },
+      {
+        "device_key": "usb-kbd",
+        "present": true,
+        "category": "input_device",
+        "note": "USB keyboard; low event rate."
+      },
+      {
+        "device_key": "virtio-gpu",
+        "present": false,
+        "category": "required_gpu",
+        "note": "VirtIO-GPU 3D (DXMT native backend)."
+      },
+      {
+        "device_key": "virtio-net",
+        "present": true,
+        "category": "required_net",
+        "note": "VirtIO-Net with ioeventfd=on and enlarged rx_queue_size."
+      },
+      {
+        "device_key": "virtio-blk",
+        "present": true,
+        "category": "required_blk",
+        "note": "VirtIO-Blk with dedicated iothread and num-queues=4."
+      },
+      {
+        "device_key": "tpm-tis",
+        "present": false,
+        "category": "required_security",
+        "note": "vTPM required for Windows 11 & anti-cheat integrity; never touch."
+      }
+    ]
+  },
+  "shooter_log_analysis": {
+    "engine_latency_samples": [],
+    "latest_engine_latency": null,
+    "burst_loss_count": 1,
+    "ack_backlog_count": 4,
+    "slirp_network_warnings_total": 5,
+    "severe_fps_drop_warnings": 16,
+    "ace_anti_tick_http_200_count": 116,
+    "clean_manual_quit": false
+  },
+  "fps_summary": {
+    "count": 0,
+    "mean": null,
+    "p50": null,
+    "p1_low": null,
+    "p95": null,
+    "min": null,
+    "max": null,
+    "mean_frame_time_ms": null,
+    "p99_frame_time_ms": null
+  },
+  "phase11b_comparison": {
+    "baseline_phase": "phase-11b-range-min8-warm-1920x1200",
+    "baseline": {
+      "resolution": "1920x1200",
+      "range_warm_min8_mean_fps": 55.51,
+      "range_warm_min8_p50_fps": 58.44,
+      "range_warm_min8_p5_fps": 42.42,
+      "range_warm_min8_p1_low_fps": 25.74,
+      "range_warm_min8_mean_frame_ms": 18.7,
+      "range_warm_min8_p99_frame_ms": 38.85,
+      "range_pure_combat_mean_fps": 45.21,
+      "range_pure_combat_p50_fps": 49.63,
+      "range_pure_combat_p1_low_fps": 3.88,
+      "engine_latency_total_ms": 22.62,
+      "engine_latency_work_ms": 19.69,
+      "engine_latency_slack_ms": 2.45,
+      "engine_latency_slop_ms": 0.48,
+      "engine_latency_slack_plus_slop_ms": 2.93,
+      "slirp_burst_loss_events": 5,
+      "range_severe_drop_events": 39
+    },
+    "current": {
+      "range_mean_fps": 60.57,
+      "range_p50_fps": 61.081,
+      "range_p1_low_fps": 6.834,
+      "range_high_quality_mean_fps": 54.5,
+      "slack_plus_slop_ms": 2.36,
+      "slirp_network_warnings_total": 5,
+      "severe_fps_drop_warnings": 16,
+      "ace_anti_tick_http_200_count": 116
+    },
+    "mean_fps_delta_pct": 9.12,
+    "p50_fps_delta_pct": 4.52,
+    "p1_low_fps_delta_pct": -73.45,
+    "mean_fps_abs_gain": 5.06,
+    "p50_fps_abs_gain": 2.641,
+    "slack_plus_slop_delta_ms": -0.57,
+    "reached_60fps_steady": true,
+    "slirp_warnings_zero": false
+  },
+  "next_gen_physical_ceiling": {
+    "summary": "On 10-core Apple Silicon (4P+6E) running Windows 11 ARM64 under QEMU+HVF + Prism x86_64 translation + VirtIO-GPU 3D (DXMT-native), Phase 11-14 full-stack optimization has largely exhausted host I/O, networking, shader cache, frame pacing, and input overheads. The remaining dominant bottleneck is single-thread x86_64->ARM64 Prism translation + UE4 GameThread/RenderThread execution inside the guest.",
+    "approaching_hardware_limit": [
+      "GPU translation (DXMT-native -> Metal): QEMURenderServer stays well under 1 host core even at 1920x1200; Apple Silicon GPU is not saturated.",
+      "Storage I/O (VirtIO-Blk iothread + num-queues=4 + discard=unmap): 110k+ 4K IOPS / 9.2 GiB/s sequential read eliminates asset streaming bottlenecks.",
+      "Networking (vmnet-shared / async socket-stream): removes QEMU slirp single-thread congestion and burst packet-loss spikes.",
+      "Shader & JIT warm caches (DXMT_SHADER_CACHE + Windows Prism XtaCache): suppresses first-60s compilation hitches once persisted across sessions.",
+      "Host presentation & input (UTM-Custom 10 patches: Game Mode, 1.5ms mouse coalescing, frame backpressure, --app-shell-vm)."
+    ],
+    "hard_ceilings_requiring_upstream_changes": [
+      "x86_64 -> ARM64 Prism binary translation overhead on UE4 GameThread/RenderThread (~25-35% IPC tax vs native ARM64): only eliminated if game studios ship native Windows/macOS ARM64 clients.",
+      "Kernel anti-cheat (ACE) virtualization boundary: requires unmodified vTPM + Secure Boot + full Windows kernel; cannot run under lightweight Wine/CrossOver without vendor support.",
+      "macOS Virtualization.framework (VZ) limitations: currently lacks Apple-supported vTPM 2.0 + VirtIO-GPU 3D/DirectX paravirtualization API; future macOS VZ vTPM + Metal paravirtual GPU could cut QEMU VM-exit and display copy latency further.",
+      "4P+6E heterogeneous scheduling: QEMU vCPU threads beyond 4 P-cores spill onto E-cores; higher P-core count Apple Silicon (M-Pro/Max) scales directly."
+    ],
+    "metrics_snapshot": {
+      "dual_cache_summary": {
+        "fps_mean_delta_pct": -3.8,
+        "fps_p1_low_delta_pct": -8.79,
+        "frame_ms_p99_delta_pct": 9.63,
+        "qemu_worker_cpu_delta_pct": 3.98,
+        "render_server_cpu_delta_pct": 51.69,
+        "guest_cpu_delta_pct": 1.2,
+        "cold_severe_drop_count": 1,
+        "warm_severe_drop_count": 2,
+        "severe_drop_reduction_pct": -100.0,
+        "dxmt_cache_persisted": true,
+        "xtacache_persisted": true
+      },
+      "frame_sync_recommended": {
+        "recommended_arm": "fps_limit_0_triple",
+        "fps_limit": 0,
+        "metal_drawable_count": 3,
+        "max_inflight_frames": 3,
+        "composite_score": 100.0,
+        "fps_mean": 80.898,
+        "fps_p1_low": 66.402,
+        "frame_ms_jitter_p99_p50": 2.848
+      },
+      "e2e_vs_phase11b": {
+        "mean_fps_delta_pct": 9.12,
+        "p50_fps_delta_pct": 4.52,
+        "reached_60fps_steady": true,
+        "slirp_warnings_zero": false
+      }
+    }
+  },
+  "game_disk_untouched": true,
+  "temp_clone_deleted": true,
+  "official_round_telemetry": {
+    "round_1_high_quality_1920x1200": {
+      "total_frames": 20903,
+      "duration_sec_approx": 383.6,
+      "avg_frametime_ms": 18.35,
+      "equivalent_mean_fps": 54.5,
+      "game_thread_ge_60fps_frames": 10896,
+      "game_thread_ge_60fps_pct": 52.13,
+      "avg_engine_latency_ms": 27.52,
+      "avg_work_ms": 25.0,
+      "avg_slack_ms": 1.75,
+      "avg_slop_ms": 0.77,
+      "slack_plus_slop_ms": 2.52,
+      "work_ge_60fps_frames": 1070,
+      "work_ge_60fps_pct": 5.12,
+      "engine_latency_ge_60fps_frames": 390,
+      "engine_latency_ge_60fps_pct": 1.87
+    },
+    "round_2_low_quality_1920x1200": {
+      "total_frames": 15298,
+      "duration_sec_approx": 252.6,
+      "avg_frametime_ms": 16.51,
+      "equivalent_mean_fps": 60.57,
+      "game_thread_ge_60fps_frames": 10511,
+      "game_thread_ge_60fps_pct": 68.71,
+      "avg_engine_latency_ms": 22.62,
+      "avg_work_ms": 20.26,
+      "avg_slack_ms": 1.09,
+      "avg_slop_ms": 1.27,
+      "slack_plus_slop_ms": 2.36,
+      "work_ge_60fps_frames": 3895,
+      "work_ge_60fps_pct": 25.46,
+      "engine_latency_ge_60fps_frames": 1767,
+      "engine_latency_ge_60fps_pct": 11.55,
+      "log_window_fps_series": {
+        "count": 230,
+        "mean": 59.771,
+        "p50": 61.081,
+        "p1_low": 6.834,
+        "p95": 73.763,
+        "max": 95.502
+      }
+    },
+    "high_vs_low_diagnosis": {
+      "mean_fps_gain_high_to_low_pct": 11.14,
+      "work_ms_reduction_high_to_low_ms": 4.74,
+      "root_cause": "Lowering all graphics settings from High to Low at 1920x1200 only increased mean FPS by +11.14% (54.50 -> 60.57 FPS, Work 25.00 -> 20.26 ms), while 31.3% of GameThread frames remained in the 30-60 FPS bucket and 0 frames exceeded 120 FPS. This proves Apple Silicon GPU via dxmt-native is not saturated; the hard ceiling is single-thread x86_64->ARM64 Prism translation + UE4 GameThread IPC inside QEMU+HVF."
+    }
+  }
+}

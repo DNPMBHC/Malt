@@ -1,0 +1,13 @@
+test_even_clean_early_exit_fails (test_package_launch_gate.PackageLaunchGateTests.test_even_clean_early_exit_fails) ... ok
+test_exit_after_original_short_window_fails (test_package_launch_gate.PackageLaunchGateTests.test_exit_after_original_short_window_fails) ... ok
+test_late_dyld_message_fails_even_while_process_survives (test_package_launch_gate.PackageLaunchGateTests.test_late_dyld_message_fails_even_while_process_survives) ... ok
+test_normal_process_survives_default_four_seconds_and_is_reaped (test_package_launch_gate.PackageLaunchGateTests.test_normal_process_survives_default_four_seconds_and_is_reaped) ... ok
+test_signature_error_without_dyld_prefix_fails (test_package_launch_gate.PackageLaunchGateTests.test_signature_error_without_dyld_prefix_fails) ... ok
+test_stale_dynamic_updater_dependency_is_rejected (test_package_launch_gate.PackageLaunchGateTests.test_stale_dynamic_updater_dependency_is_rejected) ... ok
+test_stale_embedded_updater_framework_is_rejected (test_package_launch_gate.PackageLaunchGateTests.test_stale_embedded_updater_framework_is_rejected) ... ok
+test_system_only_dependencies_pass (test_package_launch_gate.PackageLaunchGateTests.test_system_only_dependencies_pass) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 10.007s
+
+OK

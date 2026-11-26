@@ -1,0 +1,39 @@
+{
+  "schema": "installed-release-launch-verification-v1",
+  "owner": "@DNPMBHC",
+  "capturedAt": "2026-11-26T00:46:42.827364+00:00",
+  "launchMethod": "LaunchServices open -n",
+  "requestedSigningIdentity": "adhoc",
+  "requiredSurvivalSeconds": 10,
+  "passed": true,
+  "dmgSHA256Verified": true,
+  "copiedFromVerifiedDMG": true,
+  "installedBinarySHA256Verified": true,
+  "installedCLIHashVerified": true,
+  "codesignDeepStrictVerified": true,
+  "hardenedRuntimeFlagVerified": true,
+  "adhocSignatureVerified": true,
+  "disableLibraryValidationEntitlement": false,
+  "getTaskAllowEntitlement": false,
+  "updaterRemoval": {
+    "loadCommandsChecked": true,
+    "sparkleLinked": false,
+    "sparkleBundled": false,
+    "passed": true
+  },
+  "survived": true,
+  "observedSeconds": 10.005,
+  "dyldErrorCount": 0,
+  "newCrashReportCount": 0,
+  "gui": {
+    "finishedLaunching": true,
+    "onscreenWindowCount": 1,
+    "terminated": false,
+    "windowCount": 1
+  },
+  "processAliveAfterGUIVerification": true,
+  "previousInstalledAppBackupRetained": true,
+  "codeSignatureFlags": "0x10002",
+  "runtimeVerificationMethod": "CodeDirectory flags & CS_RUNTIME (0x10000)",
+  "processAliveAtFinalVerification": true
+}

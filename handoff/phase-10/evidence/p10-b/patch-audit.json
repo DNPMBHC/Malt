@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "owner": "@DNPMBHC",
+  "patch_count": 4,
+  "patches": [
+    {
+      "name": "01-default-dxmt-backend.patch",
+      "sha256": "aa06ec25b969fc1022feabd1ae5e7fcfc44ed6c9ac444770d7f960307d37bb7b",
+      "targets": [
+        "Services/UTMQemuSystem.m",
+        "Services/UTMQemuVirtualMachine.swift"
+      ],
+      "line_count": 32,
+      "compliance_passed": true
+    },
+    {
+      "name": "02-cocoaspice-cursor-overlay.patch",
+      "sha256": "0aeafaac3216d58eba62162c1c2e58865f559146401b8d629ee800f78db5d56e",
+      "targets": [
+        "Sources/CocoaSpice/CSCursor.m"
+      ],
+      "line_count": 14,
+      "compliance_passed": true
+    },
+    {
+      "name": "02-cursor-and-fps-capture.patch",
+      "sha256": "afa82c4882475574358c0265aab3c48922b41b0e12ecab4ba89766d3a981189c",
+      "targets": [
+        "Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift"
+      ],
+      "line_count": 29,
+      "compliance_passed": true
+    },
+    {
+      "name": "03-clean-fullscreen-game-shell.patch",
+      "sha256": "2d66a21c4f313a3d4556d759215b7b01b989ea40e8bf0870d1ab6ec66c2dd630",
+      "targets": [
+        "Platform/macOS/AppDelegate.swift",
+        "Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift"
+      ],
+      "line_count": 63,
+      "compliance_passed": true
+    }
+  ],
+  "git_apply_checks": {
+    "utm_stacked_apply_check": true,
+    "cocoaspice_apply_check": true
+  },
+  "passed": true
+}

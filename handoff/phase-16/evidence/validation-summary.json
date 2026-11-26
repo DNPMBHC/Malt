@@ -1,0 +1,61 @@
+{
+  "owner": "@DNPMBHC",
+  "date": "2026-11-26",
+  "swift": {
+    "exitCode": 0,
+    "seconds": 13.705,
+    "testCount": 346,
+    "skippedCount": 10,
+    "failureCount": 0,
+    "passed": true
+  },
+  "python": [
+    {
+      "suite": "network-manager",
+      "exitCode": 0,
+      "testCount": 63,
+      "seconds": 0.404,
+      "passed": true
+    },
+    {
+      "suite": "native-helper-contract",
+      "exitCode": 0,
+      "testCount": 6,
+      "seconds": 1.337,
+      "passed": true
+    },
+    {
+      "suite": "package-scripts",
+      "exitCode": 0,
+      "testCount": 73,
+      "seconds": 12.699,
+      "passed": true
+    }
+  ],
+  "pythonTotal": 142,
+  "strictLintPassed": true,
+  "buildPassed": true,
+  "sourceStableAfterValidation": true,
+  "dmg": {
+    "sizeBytes": 377884870,
+    "sizeMiB": 360.379,
+    "sha256": "af10e99e2abeac6f92aa8d6a9eb6e78f65fdf689c2ce047187d4223ce2453aa9"
+  },
+  "platform": {
+    "minimumSystemVersion": "14.0",
+    "builtArchitecture": "arm64"
+  },
+  "packagedScriptsAndGuidesMatchCurrentSources": true,
+  "artifactManifestPathVerified": true,
+  "artifactManifestHashVerified": true,
+  "payloadResourceCount": 1479,
+  "payloadMachOCount": 164,
+  "relocatedAppVerificationPassed": true,
+  "distributionReady": false,
+  "validDeveloperIDApplicationIdentityCount": 0,
+  "realGuestOrGameVerified": false,
+  "nativeNetworkApprovalAndConnectivityVerified": false,
+  "secondPhysicalMacVerified": false,
+  "committedOrPushed": false,
+  "passedLocalAcceptance": true
+}

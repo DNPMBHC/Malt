@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-24T14:59:51.383431+00:00",
+  "ephemeral_runs_destroyed": 2,
+  "all_ephemeral_deleted": true,
+  "golden_zero_drift": true,
+  "primary_zero_drift": true,
+  "destroy_proofs": [
+    {
+      "action": "destroy-ephemeral",
+      "clone_name": "ephemeral-p9b-baseline",
+      "ephemeral_deleted": true,
+      "golden_zero_drift": true,
+      "primary_zero_drift": true
+    },
+    {
+      "action": "destroy-ephemeral",
+      "clone_name": "ephemeral-p9b-v2",
+      "ephemeral_deleted": true,
+      "golden_zero_drift": true,
+      "primary_zero_drift": true
+    }
+  ]
+}

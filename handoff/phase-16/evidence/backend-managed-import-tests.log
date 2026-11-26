@@ -1,0 +1,176 @@
+Test Suite 'Selected tests' started at 2026-11-26 10:06:30.248.
+Test Suite 'demo-appKitTests.xctest' started at 2026-11-26 10:06:30.249.
+Test Suite 'NativeNetworkPermissionTests' started at 2026-11-26 10:06:30.249.
+Test Case '-[demo-appKitTests.NativeNetworkPermissionTests testDeniedApprovalDoesNotBecomeEnabled]' started.
+Test Case '-[demo-appKitTests.NativeNetworkPermissionTests testDeniedApprovalDoesNotBecomeEnabled]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.NativeNetworkPermissionTests testEnabledIsIdempotentAndWaitsForSocket]' started.
+Test Case '-[demo-appKitTests.NativeNetworkPermissionTests testEnabledIsIdempotentAndWaitsForSocket]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.NativeNetworkPermissionTests testMissingPayloadDoesNotRegisterOrOpenSettings]' started.
+Test Case '-[demo-appKitTests.NativeNetworkPermissionTests testMissingPayloadDoesNotRegisterOrOpenSettings]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.NativeNetworkPermissionTests testPayloadValidationRequiresFixedHelperAndSafePermissions]' started.
+Test Case '-[demo-appKitTests.NativeNetworkPermissionTests testPayloadValidationRequiresFixedHelperAndSafePermissions]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.NativeNetworkPermissionTests testPermissionSummaryDoesNotClaimConfiguredNetworkMode]' started.
+Test Case '-[demo-appKitTests.NativeNetworkPermissionTests testPermissionSummaryDoesNotClaimConfiguredNetworkMode]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.NativeNetworkPermissionTests testRegisterRequiresExplicitApprovalAndOpensCorrectSettings]' started.
+Test Case '-[demo-appKitTests.NativeNetworkPermissionTests testRegisterRequiresExplicitApprovalAndOpensCorrectSettings]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.NativeNetworkPermissionTests testRegistrationErrorDoesNotLeakLocalizedPaths]' started.
+Test Case '-[demo-appKitTests.NativeNetworkPermissionTests testRegistrationErrorDoesNotLeakLocalizedPaths]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.NativeNetworkPermissionTests testRevokeFailureRemainsVisibleAndCanBeRetried]' started.
+Test Case '-[demo-appKitTests.NativeNetworkPermissionTests testRevokeFailureRemainsVisibleAndCanBeRetried]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.NativeNetworkPermissionTests testRevokeIsIdempotent]' started.
+Test Case '-[demo-appKitTests.NativeNetworkPermissionTests testRevokeIsIdempotent]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.NativeNetworkPermissionTests testSigningFailureIsActionableAndKeepsFallback]' started.
+Test Case '-[demo-appKitTests.NativeNetworkPermissionTests testSigningFailureIsActionableAndKeepsFallback]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.NativeNetworkPermissionTests testSocketProbeChecksTypeModeAndOwner]' started.
+Test Case '-[demo-appKitTests.NativeNetworkPermissionTests testSocketProbeChecksTypeModeAndOwner]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.NativeNetworkPermissionTests testSocketProbeRejectsRegularFileAndSymlink]' started.
+Test Case '-[demo-appKitTests.NativeNetworkPermissionTests testSocketProbeRejectsRegularFileAndSymlink]' passed (0.000 seconds).
+Test Suite 'NativeNetworkPermissionTests' passed at 2026-11-26 10:06:30.254.
+	 Executed 12 tests, with 0 failures (0 unexpected) in 0.005 (0.005) seconds
+Test Suite 'PlayableContainerImportTests' started at 2026-11-26 10:06:30.254.
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testAlreadyManagedImportReturnsVerifiedSelection]' started.
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testAlreadyManagedImportReturnsVerifiedSelection]' passed (0.005 seconds).
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testExplicitOverridePrecedesSavedSelection]' started.
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testExplicitOverridePrecedesSavedSelection]' passed (0.004 seconds).
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testHardLinkedMarkerOrConfigurationCannotRestoreSavedSelection]' started.
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testHardLinkedMarkerOrConfigurationCannotRestoreSavedSelection]' passed (0.008 seconds).
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testIncompleteSuccessReportsCannotPersistSelection]' started.
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testIncompleteSuccessReportsCannotPersistSelection]' passed (0.008 seconds).
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testInvalidSavedIdentifierAndMissingMarkerCannotRestoreSelection]' started.
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testInvalidSavedIdentifierAndMissingMarkerCannotRestoreSelection]' passed (0.003 seconds).
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testMismatchedUUIDCannotPersistSelection]' started.
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testMismatchedUUIDCannotPersistSelection]' passed (0.003 seconds).
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testMissingEmbeddedPythonDoesNotExecuteImport]' started.
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testMissingEmbeddedPythonDoesNotExecuteImport]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testMissingOrPublicMarkerCannotPersistSelection]' started.
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testMissingOrPublicMarkerCannotPersistSelection]' passed (0.007 seconds).
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testPersistedSelectionFailsClosedWhenMarkerOrUUIDChanges]' started.
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testPersistedSelectionFailsClosedWhenMarkerOrUUIDChanges]' passed (0.008 seconds).
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testPublicSelectionFileOrDirectoryCannotRestoreSelection]' started.
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testPublicSelectionFileOrDirectoryCannotRestoreSelection]' passed (0.006 seconds).
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testRunnerFailureDoesNotPersistOrExposeRuntimeDetails]' started.
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testRunnerFailureDoesNotPersistOrExposeRuntimeDetails]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testStructuredRefusalsDoNotPersistOrExposeManagerDetails]' started.
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testStructuredRefusalsDoNotPersistOrExposeManagerDetails]' passed (0.020 seconds).
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testSymbolicLinkCannotBecomeSavedSelection]' started.
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testSymbolicLinkCannotBecomeSavedSelection]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testSymlinkedAncestorCannotRestoreSavedSelection]' started.
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testSymlinkedAncestorCannotRestoreSavedSelection]' passed (0.003 seconds).
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testUnconfirmedImportDoesNotExecuteOrPersist]' started.
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testUnconfirmedImportDoesNotExecuteOrPersist]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testVerifiedImportUsesOnlyManagedPythonAndPersistsPrivateSelection]' started.
+Test Case '-[demo-appKitTests.PlayableContainerImportTests testVerifiedImportUsesOnlyManagedPythonAndPersistsPrivateSelection]' passed (0.005 seconds).
+Test Suite 'PlayableContainerImportTests' passed at 2026-11-26 10:06:30.344.
+	 Executed 16 tests, with 0 failures (0 unexpected) in 0.089 (0.090) seconds
+Test Suite 'UnifiedOrchestrationTests' started at 2026-11-26 10:06:30.344.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testClassifyInstallerRecommendsAntiCheatVMOrNativeWine]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testClassifyInstallerRecommendsAntiCheatVMOrNativeWine]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testColdContainerLaunchDoesNotSendScriptingStatusBeforeHelperStarts]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testColdContainerLaunchDoesNotSendScriptingStatusBeforeHelperStarts]' passed (0.004 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testColdNetworkConfigurationRegistersWithoutBootAndReloadsAfterVerifiedWrite]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testColdNetworkConfigurationRegistersWithoutBootAndReloadsAfterVerifiedWrite]' passed (0.012 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testColdResourceChangePreparesHelperWithSnapshotBeforeReloadAndStart]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testColdResourceChangePreparesHelperWithSnapshotBeforeReloadAndStart]' passed (0.005 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testContainerResourcesUseInjectedStoppedVerifierBeforeAnyWrite]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testContainerResourcesUseInjectedStoppedVerifierBeforeAnyWrite]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testContainerResourceUpdateRejectsUnsafeValuesAndConcurrentConfigChange]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testContainerResourceUpdateRejectsUnsafeValuesAndConcurrentConfigChange]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testContainerResourceUpdateRequiresStoppedStateAndPreservesOtherMetadata]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testContainerResourceUpdateRequiresStoppedStateAndPreservesOtherMetadata]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testDetachedRuntimeSubmissionDoesNotWaitForApplicationExit]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testDetachedRuntimeSubmissionDoesNotWaitForApplicationExit]' passed (0.355 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testEntryResourceOverrideOnlyChangesCPUAndMemoryUsingSupportedIntersection]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testEntryResourceOverrideOnlyChangesCPUAndMemoryUsingSupportedIntersection]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testExplicitMissingOrProtectedVMNeverSilentlyLaunchesAnotherGame]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testExplicitMissingOrProtectedVMNeverSilentlyLaunchesAnotherGame]' passed (0.004 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testFixedDisplayFailureIsReportedAndNeverMarkedAsSuccessfulLaunch]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testFixedDisplayFailureIsReportedAndNeverMarkedAsSuccessfulLaunch]' passed (0.008 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testFixedGuestDisplayRequiresReadbackAndAutomaticModeDoesNotChangeDisplay]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testFixedGuestDisplayRequiresReadbackAndAutomaticModeDoesNotChangeDisplay]' passed (0.009 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testFutureBundledWineUsesItsSiblingGraphicsLibraries]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testFutureBundledWineUsesItsSiblingGraphicsLibraries]' passed (0.020 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testGuestAgentAutomationDenialFailsImmediatelyWithSettingsGuidance]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testGuestAgentAutomationDenialFailsImmediatelyWithSettingsGuidance]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testGuestAgentReadinessPropagatesCancellationImmediately]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testGuestAgentReadinessPropagatesCancellationImmediately]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testGuestAgentReadinessRetriesTransientProbeErrors]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testGuestAgentReadinessRetriesTransientProbeErrors]' passed (0.519 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testGuestAgentReadinessTimeoutIsBounded]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testGuestAgentReadinessTimeoutIsBounded]' passed (0.013 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testGuestLaunchPassesSelectedTargetThroughEncodedInteractiveTask]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testGuestLaunchPassesSelectedTargetThroughEncodedInteractiveTask]' passed (0.006 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testGuestReadinessRejectsZeroExitWithoutExpectedToken]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testGuestReadinessRejectsZeroExitWithoutExpectedToken]' passed (0.012 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testGuestRejectsHostPathAndInvalidTargetsBeforeInvokingCommands]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testGuestRejectsHostPathAndInvalidTargetsBeforeInvokingCommands]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testHardwareAutoTunerDetectAndQuickBenchmark]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testHardwareAutoTunerDetectAndQuickBenchmark]' passed (0.153 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testHardwareAutoTunerSafeMemoryAndVCPUOptionsAcrossMacTiers]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testHardwareAutoTunerSafeMemoryAndVCPUOptionsAcrossMacTiers]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testInstallerTransferFailureDoesNotPersistEntryOrRunTask]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testInstallerTransferFailureDoesNotPersistEntryOrRunTask]' passed (0.014 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testLaunchSettingsLoadKeepsMissingResourcesAndSeparatesFixedDisplay]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testLaunchSettingsLoadKeepsMissingResourcesAndSeparatesFixedDisplay]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testLegacyEntryDecodesWithoutInstallationState]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testLegacyEntryDecodesWithoutInstallationState]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testLegacyHelperFailsCapabilityReadinessAndLaunchBeforeAnyCommands]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testLegacyHelperFailsCapabilityReadinessAndLaunchBeforeAnyCommands]' passed (0.003 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testLocalVMDiscoveryWorksWithoutExternalVolumes]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testLocalVMDiscoveryWorksWithoutExternalVolumes]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testManagementPythonNeverFallsBackToDeveloperTools]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testManagementPythonNeverFallsBackToDeveloperTools]' passed (0.003 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testMissingContainerDoesNotPersistSuccessfulInstall]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testMissingContainerDoesNotPersistSuccessfulInstall]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testNetworkPreparationRejectsEveryStateExceptExactStopped]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testNetworkPreparationRejectsEveryStateExceptExactStopped]' passed (0.004 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testNetworkRestoreRequiresVerifiedReadBack]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testNetworkRestoreRequiresVerifiedReadBack]' passed (0.003 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testNetworkSavedStatePreflightRefusesWriteDespiteReportedStopped]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testNetworkSavedStatePreflightRefusesWriteDespiteReportedStopped]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testNonExecutableEmbeddedHelperIsNotReady]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testNonExecutableEmbeddedHelperIsNotReady]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testOrchestratorInstallViaAntiCheatVMForwardsAppShellFlagsAndInstallerExe]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testOrchestratorInstallViaAntiCheatVMForwardsAppShellFlagsAndInstallerExe]' passed (0.009 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testOrchestratorMultiTierDiscoveryEmbeddedHelperScriptsAndSSD]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testOrchestratorMultiTierDiscoveryEmbeddedHelperScriptsAndSSD]' passed (0.003 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testOrchestratorRejectsMissingInstallerOrVMBundle]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testOrchestratorRejectsMissingInstallerOrVMBundle]' passed (0.001 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testOrchestratorWineUsesNativedemo-appWineAndGraphicsRouting]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testOrchestratorWineUsesNativedemo-appWineAndGraphicsRouting]' passed (0.002 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testPendingInstallerCannotMasqueradeAsConfiguredGame]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testPendingInstallerCannotMasqueradeAsConfiguredGame]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testPerformancePresetTierBackwardCompatibleWithLegacyJSON]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testPerformancePresetTierBackwardCompatibleWithLegacyJSON]' passed (0.000 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testProcessRunnerDrainsLargeOutputWithoutPipeDeadlock]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testProcessRunnerDrainsLargeOutputWithoutPipeDeadlock]' passed (0.092 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testProcessRunnerTimeoutTerminatesStalledCommand]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testProcessRunnerTimeoutTerminatesStalledCommand]' passed (1.104 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testSavedStateReloadPreflightRejectsResourceChangeWithoutWritingOrStarting]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testSavedStateReloadPreflightRejectsResourceChangeWithoutWritingOrStarting]' passed (0.012 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testStoppedWarmContainerStartsThroughExistingControlApplication]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testStoppedWarmContainerStartsThroughExistingControlApplication]' passed (0.010 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testUnifiedGameLibraryStorePersistsUpsertAndRemove]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testUnifiedGameLibraryStorePersistsUpsertAndRemove]' passed (0.003 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testWarmContainerPreflightPreservesCancellation]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testWarmContainerPreflightPreservesCancellation]' passed (0.004 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testWarmContainerStatusTimeoutContinuesGuestReadinessWithoutDuplicateHelper]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testWarmContainerStatusTimeoutContinuesGuestReadinessWithoutDuplicateHelper]' passed (0.006 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testWarmUnregisteredNetworkSelectionDoesNotLaunchAnotherHelperOrWriteConfiguration]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testWarmUnregisteredNetworkSelectionDoesNotLaunchAnotherHelperOrWriteConfiguration]' passed (0.004 seconds).
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testWineCachePolicyAppliesWithoutContainerResourceValidation]' started.
+Test Case '-[demo-appKitTests.UnifiedOrchestrationTests testWineCachePolicyAppliesWithoutContainerResourceValidation]' passed (0.000 seconds).
+Test Suite 'UnifiedOrchestrationTests' passed at 2026-11-26 10:06:32.764.
+	 Executed 48 tests, with 0 failures (0 unexpected) in 2.414 (2.420) seconds
+Test Suite 'demo-appKitTests.xctest' passed at 2026-11-26 10:06:32.764.
+	 Executed 76 tests, with 0 failures (0 unexpected) in 2.508 (2.515) seconds
+Test Suite 'Selected tests' passed at 2026-11-26 10:06:32.764.
+	 Executed 76 tests, with 0 failures (0 unexpected) in 2.508 (2.516) seconds
+Building for debugging...
+[1 / 10]
+[2 / 11] demo-appKit
+[4 / 13] demo-appKit
+[10 / 15] demo-appKit
+[11 / 14] demo-appKitTests-product
+[14 / 17] demo-appKitTests-product
+[20 / 22] demo-appKitTests-product
+Build complete! (4.73秒)

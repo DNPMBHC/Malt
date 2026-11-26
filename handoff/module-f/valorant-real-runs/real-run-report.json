@@ -1,0 +1,593 @@
+{
+  "schema_version": 2,
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-24T05:03:00.788613+00:00",
+  "status": "completed_experiments_with_evidence_gaps",
+  "target_alias": "target-cn",
+  "dimensions": {
+    "implementation": "read-only collectors, 30-second watcher, dense probe, isolated execution and full test output isolation implemented",
+    "local_validation": {
+      "unittest": {
+        "owner": "@DNPMBHC",
+        "captured_at_utc": "2026-11-24T04:49:31.249443+00:00",
+        "exit_code": 0,
+        "tests_run": 220,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "log_ref": "unittest-current.log",
+        "log_sha256": "7e710c9ce91f84bb38057e72ca6cacbbe2789952ccc4837b9ffbaf5911cd9f01",
+        "all_tests_discovered": true,
+        "native_execution_mocked": false,
+        "native_sources_modified": false,
+        "native_outputs_redirected_to_owned_paths": true,
+        "real_fixture_mounts_in_owned_standard_temporary_directory": true,
+        "fixture_directory_deleted": true,
+        "gate_runner_sha256": "49c4da711a2c8ae0aec2cecb68b3a5909558e3c0d8808bcc1f33385140713c47"
+      },
+      "safety": {
+        "production_sources": 127,
+        "negative_self_tests": 6,
+        "result": "passed",
+        "proof": {
+          "owner": "@DNPMBHC",
+          "captured_at_utc": "2026-11-24T04:51:59.415789+00:00",
+          "exit_code": 0,
+          "log_ref": "safety-current.log",
+          "log_sha256": "5ecb4625085c36f86cc5a2db891ce34b09492f2a7dc941a45bcb4924481b63da",
+          "audit_source_sha256": "ab176e88ca6f1cee04fdef4ce438186be3bef12065ef3ae737d4e759a5619132"
+        }
+      }
+    },
+    "real_guest": "official launcher, user authentication and client startup executed; native ARM64 ACE images loaded; persistent black screen; no protected session",
+    "vendor_support": "unknown",
+    "protected_game_session": "not_verified",
+    "real_host_wine": "Prior installed DXMT/D3DMetal launchers blank/black by user; --disable-gpu parameter adoption unverified. Fresh ordinary official install confirmed by user, icon only with no openable launcher window; standard Chromium logging executed for 60 seconds, game/session not verified."
+  },
+  "guest_installer": {
+    "version": "2.17.4.510",
+    "sha256": "686ee838411863d2eccdbe8a0596129e509819ae46626408760588ae8b0c800e",
+    "native_exit_code": 0,
+    "signature_status": "Valid",
+    "installation_completed_visible": true
+  },
+  "guest_launcher": {
+    "login": "completed_by_user",
+    "backup_path": "official specified-path flow completed",
+    "button_before_launch": "进入游戏",
+    "button_after_launch": "游戏进行中",
+    "online_validation": "official backup recognition and ready button observed; full online file integrity verification completion remains unproven",
+    "rendering": "carousel and controls visible before game launch"
+  },
+  "guest_protection": {
+    "client_and_launcher_inventory_count": 474,
+    "inventory_complete": true,
+    "extra_runtime_count": 3,
+    "runtime_inventory_complete": true,
+    "raw_machine_counts": {
+      "0x8664": 358,
+      "0x014c": 116
+    },
+    "native_ace_loaded": [
+      {
+        "binary_alias": "driver-332",
+        "discovered_via": [
+          "loaded-image-api",
+          "scm-service"
+        ],
+        "new_since_baseline": true,
+        "changed_since_baseline": null,
+        "file_available": true,
+        "sha256": "abf69136be347884d8de4aae6860a10b698b0bfdd92cf0555bf6c581b8ed50ee",
+        "size_bytes": 1704168,
+        "file_version": "0.6.6.6",
+        "pe_valid": true,
+        "pe_machine": "0xaa64",
+        "architecture": "ARM64",
+        "embedded_signature": {
+          "status": "valid",
+          "trust_hresult": "0x00000000",
+          "embedded_certificate_present": true,
+          "public_signer_organization": "Microsoft Corporation",
+          "public_issuer_organization": "Microsoft Corporation"
+        },
+        "catalog_signature": {
+          "status": "not_found",
+          "native_error_code": 0,
+          "matches": [],
+          "enumeration_truncated": false
+        },
+        "powershell_authenticode": {
+          "status": "Valid",
+          "selected_signature_type": "Authenticode",
+          "public_signer_organization": "Microsoft Corporation",
+          "public_issuer_organization": "Microsoft Corporation"
+        },
+        "kernel_load": {
+          "status": "loaded",
+          "psapi_image_correlated": true,
+          "scm_running_correlated": true,
+          "image_identity_verified": true
+        }
+      },
+      {
+        "binary_alias": "driver-333",
+        "discovered_via": [
+          "loaded-image-api",
+          "scm-service"
+        ],
+        "new_since_baseline": true,
+        "changed_since_baseline": null,
+        "file_available": true,
+        "sha256": "47e61a173c6505c8c68767ad99ce8bc8cd3f446ade1144ad978396285fd1c4bf",
+        "size_bytes": 1596640,
+        "file_version": "21.0.2506.56",
+        "pe_valid": true,
+        "pe_machine": "0xaa64",
+        "architecture": "ARM64",
+        "embedded_signature": {
+          "status": "valid",
+          "trust_hresult": "0x00000000",
+          "embedded_certificate_present": true,
+          "public_signer_organization": "Microsoft Corporation",
+          "public_issuer_organization": "Microsoft Corporation"
+        },
+        "catalog_signature": {
+          "status": "not_found",
+          "native_error_code": 0,
+          "matches": [],
+          "enumeration_truncated": false
+        },
+        "powershell_authenticode": {
+          "status": "Valid",
+          "selected_signature_type": "Authenticode",
+          "public_signer_organization": "Microsoft Corporation",
+          "public_issuer_organization": "Microsoft Corporation"
+        },
+        "kernel_load": {
+          "status": "loaded",
+          "psapi_image_correlated": true,
+          "scm_running_correlated": true,
+          "image_identity_verified": true
+        }
+      }
+    ],
+    "client_backup_sys_machines": [
+      "0x8664",
+      "0x8664",
+      "0x8664"
+    ],
+    "native_origin": "new Program Files artifacts created at 02:36:04 UTC during official launch",
+    "evidence_refs": [
+      "after-kernel-inventory.json",
+      "post-online-client-sys-dll-inventory.json",
+      "native-ace-runtime-sys-dll-inventory.json",
+      "new-native-driver-attribution.json",
+      "native-ace-origin.json",
+      "native-ace-full-tree-sys-dll-inventory.json"
+    ],
+    "runtime_evidence_ref": "native-ace-full-tree-sys-dll-inventory.json",
+    "extra_runtime_scope": "full highest-level protection installation directory under Program Files, including all subdirectories",
+    "correlated_scm_records": [
+      {
+        "service_alias": "service-564",
+        "new_since_baseline": true,
+        "scm_state": "Running",
+        "scm_started": true,
+        "start_mode": "Manual",
+        "win32_exit_code": 0,
+        "service_specific_exit_code": 0,
+        "service_inventory_class": "Win32_SystemDriver",
+        "driver_alias": "driver-332",
+        "binary_path_resolved": true
+      },
+      {
+        "service_alias": "service-565",
+        "new_since_baseline": true,
+        "scm_state": "Running",
+        "scm_started": true,
+        "start_mode": "Manual",
+        "win32_exit_code": 0,
+        "service_specific_exit_code": 0,
+        "service_inventory_class": "Win32_SystemDriver",
+        "driver_alias": "driver-333",
+        "binary_path_resolved": true
+      }
+    ],
+    "runtime_raw_machine_counts": {
+      "0xaa64": 2,
+      "0x8664": 1
+    }
+  },
+  "guest_game": {
+    "launch_clicked": true,
+    "process_trace": {
+      "errors": [],
+      "owner": "@DNPMBHC",
+      "method": "Win32_ProcessStartTrace and Win32_ProcessStopTrace",
+      "records": [
+        {
+          "parent_pid": 7992,
+          "process_alias": "client-exe-001",
+          "pid": 6716,
+          "kind": "start",
+          "role": "client",
+          "native_exit_code": null,
+          "event_time_utc": "2026-11-24T02:35:48.2530828Z"
+        },
+        {
+          "parent_pid": 6716,
+          "process_alias": "client-exe-004",
+          "pid": 3816,
+          "kind": "start",
+          "role": "client",
+          "native_exit_code": null,
+          "event_time_utc": "2026-11-24T02:35:52.2965184Z"
+        },
+        {
+          "parent_pid": 3816,
+          "process_alias": "client-exe-005",
+          "pid": 2044,
+          "kind": "start",
+          "role": "client",
+          "native_exit_code": null,
+          "event_time_utc": "2026-11-24T02:35:55.3170140Z"
+        },
+        {
+          "parent_pid": 0,
+          "process_alias": "client-exe-005",
+          "pid": 2044,
+          "kind": "stop",
+          "role": "client",
+          "native_exit_code": 6,
+          "event_time_utc": "2026-11-24T02:36:01.3801237Z"
+        },
+        {
+          "parent_pid": 3816,
+          "process_alias": "client-exe-007",
+          "pid": 660,
+          "kind": "start",
+          "role": "client",
+          "native_exit_code": null,
+          "event_time_utc": "2026-11-24T02:36:05.4154390Z"
+        },
+        {
+          "parent_pid": 732,
+          "process_alias": "client-exe-006",
+          "pid": 6840,
+          "kind": "start",
+          "role": "client",
+          "native_exit_code": null,
+          "event_time_utc": "2026-11-24T02:36:05.4154391Z"
+        },
+        {
+          "parent_pid": 0,
+          "process_alias": "client-exe-006",
+          "pid": 6840,
+          "kind": "stop",
+          "role": "client",
+          "native_exit_code": 0,
+          "event_time_utc": "2026-11-24T02:36:06.4295492Z"
+        },
+        {
+          "parent_pid": 3816,
+          "process_alias": "client-exe-003",
+          "pid": 5228,
+          "kind": "start",
+          "role": "client",
+          "native_exit_code": null,
+          "event_time_utc": "2026-11-24T02:36:28.5753273Z"
+        }
+      ],
+      "ended_at_utc": "2026-11-24T02:37:59.8050858+00:00",
+      "status": "completed",
+      "limitation": "Only known client and launcher image names are retained; unknown or short-lived image names can be missed.",
+      "started_at_utc": "2026-11-24T02:34:58.5040061+00:00"
+    },
+    "live_graphics_process_ref": "guest-client-live-processes.json",
+    "visual_result": "black screen then blank wide surface; no protected lobby confirmed",
+    "exact_vendor_popup": null,
+    "vendor_error_code": null,
+    "root_game_exit_code": null,
+    "limitations": [
+      "Helper exit 6 is not assigned to main game or interpreted as vendor policy code.",
+      "System 7000/1275 records in the broader bookmark window predate launch and are not ACE attribution.",
+      "Driver loading does not prove vendor permission or protected online play."
+    ],
+    "main_process_role": {
+      "alias": "client-exe-004",
+      "win64_shipping_suffix_match": true,
+      "size_bytes": 239250040,
+      "natural_exit_code": null
+    },
+    "cutoff_ref": "guest-black-screen-cutoff.json",
+    "retry_lifecycle_ref": "guest-retry-lifecycle.json",
+    "retry_limitation": "capture incomplete, native HRESULT 0x80070057, no retained retry lifecycle events; VM later observed stopped for unknown cause",
+    "post_recovery_ref": "post-recovery-kernel-inventory.json"
+  },
+  "host_wine_commercial": {
+    "status": "executed_to_installer_and_launcher",
+    "backend_initial": "dxmt",
+    "installer_native_exit_code": 0,
+    "installation_completed_by_user": true,
+    "visual_observation": "DXMT and D3DMetal official launcher both blank or black, directly confirmed by human user",
+    "view_source": "human user; CUA unable to bind non-app Wine process",
+    "installation_drive": "R:\\",
+    "authentication": "not_confirmed; no automated authentication",
+    "exact_vendor_popup": null,
+    "launcher_child_natural_exit_code": null,
+    "game_start": "not_reached_or_not_verified",
+    "protected_kernel_load": "not_verified",
+    "installed_sys_dll_inventory_count": 317,
+    "installed_inventory_complete": true,
+    "raw_machine_counts": {
+      "0x8664": 201,
+      "0x014c": 116
+    },
+    "all_files_authenticode_valid": true,
+    "signature_verification_method": "SHA-256 correlation of identical bytes with Windows Get-AuthenticodeSignature inventory",
+    "d3dmetal_retry": {
+      "bootstrap_native_exit_code": 0,
+      "visual_confirmation": "still blank or black, directly confirmed by human user",
+      "evidence_ref": "wine-d3dmetal-retry-lifecycle.json",
+      "visible_observation_ref": "wine-d3dmetal-visible-observation.json"
+    },
+    "evidence_refs": [
+      "wine-commercial-dxmt-lifecycle.json",
+      "wine-dxmt-visible-observation.json",
+      "wine-installed-sys-dll-inventory.json",
+      "wine-d3dmetal-log-codes.json",
+      "wine-d3dmetal-visible-observation.json",
+      "wine-software-visible-observation.json",
+      "wine-final-log-manifest.json",
+      "wine-official-package-exe-architectures.json",
+      "wine-render-route-readonly-audit.json",
+      "wine-render-retry-no-window.json",
+      "wine-visible-installer-lifecycle.json",
+      "wine-fresh-installed-sys-dll-inventory.json",
+      "wine-fresh-visible-observation.json",
+      "wine-visible-installation-current.json",
+      "wine-visible-installer-log-summary.json",
+      "wine-fresh-chromium-lifecycle.json",
+      "wine-fresh-chromium-log-summary.json",
+      "wine-fresh-chromium-error-category-snapshot.json",
+      "wine-fresh-d3d-diagnostic-functions.json",
+      "wine-fresh-final-error-categories.json",
+      "wine-fresh-final-log-manifest.json"
+    ],
+    "software_presentation_diagnostic": {
+      "backend": "d3dmetal",
+      "arguments": [
+        "--disable-gpu"
+      ],
+      "visual_confirmation": "still blank or black, directly confirmed by human user",
+      "software_diagnostic_only": false,
+      "native_natural_exit_code": null,
+      "installed_launcher_bytes_changed": false,
+      "sandbox_disabled": false,
+      "evidence_refs": [
+        "wine-software-presentation-lifecycle.json",
+        "wine-software-visible-observation.json"
+      ],
+      "argument_honored": "not_verified",
+      "actual_software_rendering": "not_verified",
+      "parameter_diagnostic_only": true
+    },
+    "installed_sys_count": 0,
+    "installed_dll_count": 317,
+    "controlled_stop_ref": "../../phase-5/evidence/p5-a/host-wine-final-stop.json",
+    "launcher_architecture_binding": {
+      "official_installer_machine": "0x014c",
+      "launcher_machine": "0x8664",
+      "bootstrap_machine": "0x8664",
+      "method": "exact historical SHA match with read-only official package PE headers",
+      "runtime_process_machine_verified": false,
+      "evidence_ref": "wine-official-package-exe-architectures.json"
+    },
+    "rendering_log_limits": {
+      "loader_builtin_native_tag_proves_backend_bytes": false,
+      "wine_debug_context_is_pid": false,
+      "first_chance_seh_is_vendor_rejection": false,
+      "root_cause": "not_determined",
+      "evidence_ref": "wine-render-route-readonly-audit.json"
+    },
+    "fresh_prefix_retry": {
+      "silent_bootstrap_exit_code": 0,
+      "silent_attempt_installed_launcher": false,
+      "silent_attempt_view": "no new window observed by user",
+      "ordinary_attempt_view": "user confirmed installation, icon only without an openable launcher window",
+      "installation_complete": true,
+      "evidence_refs": [
+        "wine-render-route-readonly-audit.json",
+        "wine-render-retry-no-window.json",
+        "wine-visible-installer-lifecycle.json",
+        "wine-fresh-installed-sys-dll-inventory.json",
+        "wine-fresh-visible-observation.json",
+        "wine-visible-installation-current.json",
+        "wine-visible-installer-log-summary.json",
+        "wine-fresh-chromium-lifecycle.json",
+        "wine-fresh-chromium-log-summary.json",
+        "wine-fresh-chromium-error-category-snapshot.json",
+        "wine-fresh-d3d-diagnostic-functions.json",
+        "wine-fresh-final-error-categories.json",
+        "wine-fresh-final-log-manifest.json"
+      ],
+      "installed_file_count": 317,
+      "installed_sys_count": 0,
+      "all_sha_match_prior_trusted_guest_bytes": true,
+      "standard_chromium_logging_args": [
+        "--enable-logging=stderr",
+        "--v=1"
+      ],
+      "standard_chromium_natural_invocation_exit": null,
+      "main_child_natural_exit_code": null,
+      "root_cause": "not_determined",
+      "rendering_error_facts": {
+        "owner": "@DNPMBHC",
+        "captured_at_utc": "2026-11-24T05:01:16.871551+00:00",
+        "source_log_sha256": "ab06af0ac5a5d68f9bd48ed3bedb886186f58a7b2d2a2baec9d08ee232f1c68b",
+        "error_channel_counts": {
+          "ole": 36,
+          "d3d": 2
+        },
+        "opengl_error_enum_counts": {
+          "GL_INVALID_ENUM": 2
+        },
+        "wine_debug_prefix_is_pid": false,
+        "root_cause": "not_determined",
+        "raw_content_exported": false
+      },
+      "final_view": "still icon only without a window, directly confirmed by user",
+      "controlled_stop": true,
+      "owned_host_runtime_deleted": true,
+      "final_raw_private_logs_retained": false,
+      "retained_evidence": "allowlisted structured summaries and original byte hashes"
+    }
+  },
+  "current_blocker": {
+    "guest_visual_failure": "persistent black/blank game surface; cause unproven",
+    "host_visual_failure": "Fresh ordinary official install and standard logging both confirmed by user: icon only, no window. Prior accelerated routes blank/black. Root cause unknown.",
+    "full_online_integrity_log": "not obtained",
+    "main_game_natural_exit": "not observed before controlled VM stop",
+    "vendor_vm_policy": "unknown",
+    "protected_online_session": "not verified"
+  },
+  "cleanup": {
+    "owner": "@DNPMBHC",
+    "status": "released",
+    "released_at": "2026-11-24T04:01:12.236415+00:00",
+    "verified_at": "2026-11-24T05:01:54.809818+00:00",
+    "next_window": "5C",
+    "isolated_clone_deleted": true,
+    "owned_runtime_deleted": true,
+    "host_only_runtime_cleanup_pending": false,
+    "shared_directory_disabled": true,
+    "writable_disks_contained": true,
+    "source_sha256_and_mtime_unchanged": true,
+    "source_status": "stopped",
+    "pre_delete_runtime_isolation": {
+      "source_registration_state": "stopped",
+      "source_runtime_absent_verified": true,
+      "all_hypervisor_workers_bound_to_owned_clone": true,
+      "root_pids": [],
+      "worker_count": 0,
+      "captured_at_utc": "2026-11-24T04:00:41.851549+00:00",
+      "method": "live executable inventory, package and UUID arguments, descendant binding"
+    },
+    "evidence_refs": [
+      "vm-source-before.json",
+      "vm-source-after.json",
+      "vm-cleanup-proof.json"
+    ]
+  },
+  "remaining_acceptance": [
+    "Official latest API was sampled, but complete installed client online integrity verification was not captured",
+    "Main game natural exit code was not captured before controlled stop",
+    "No exact vendor error popup or independent vendor VM permission/support confirmation",
+    "No protected lobby or online match was verified"
+  ],
+  "formal_baseline": {
+    "status": "completed_verified",
+    "rounds": 15,
+    "measured_frames": 13500,
+    "fps": {
+      "wine_dxmt": 339.52444233333335,
+      "wine_d3dmetal": 372.816844,
+      "wine_dxvk_kosmickrisp": 115.88577333333335,
+      "wine_dxvk_moltenvk": 370.26384966666666,
+      "guest_qemu_viogpu3d": 72.676422
+    },
+    "evidence_ref": "../../phase-5/evidence/p5-a/real3d-baseline.json"
+  },
+  "guest_security": {
+    "os": "Windows 11 24H2 ARM64",
+    "build": "26100",
+    "secure_boot": true,
+    "test_signing": false,
+    "graphics_driver_version": "100.6.101.58000",
+    "whql_graphics_driver_loaded": true,
+    "adapter_ram_bytes": 0,
+    "tpm_version": "2.0",
+    "tpm_initialized": true,
+    "tpm_ready_for_attestation": false,
+    "tpm_ek_certificate_available": false,
+    "vbs_status": 0,
+    "hvci_running": false,
+    "scope": "sampled owned clone; configured CI enforcement is not proof of runtime HVCI",
+    "evidence_refs": [
+      "../../phase-5/evidence/p5-a/guest-restored-preflight.json",
+      "../../phase-5/evidence/p5-a/guest-tpm-tool.json",
+      "../../phase-5/evidence/p5-a/guest-clock-and-ci-current.json",
+      "../../phase-5/evidence/p5-a/guest-hvci-config-current.json",
+      "guest-display-after-launch.json",
+      "post-recovery-kernel-inventory.json"
+    ]
+  },
+  "guest_eventlog": {
+    "selection": "record IDs after baseline; System SCM, all Application and CodeIntegrity events",
+    "first_launch_coverage": [
+      {
+        "possibly_truncated": false,
+        "enabled": true,
+        "record_id_reset": false,
+        "log_alias": "system",
+        "baseline_record_id": 2544,
+        "sampled": 19,
+        "latest_record_id": 2912,
+        "status": "available",
+        "no_matching_events": false
+      },
+      {
+        "possibly_truncated": false,
+        "enabled": true,
+        "record_id_reset": false,
+        "log_alias": "application",
+        "baseline_record_id": 17666,
+        "sampled": 705,
+        "latest_record_id": 18371,
+        "status": "available",
+        "no_matching_events": false
+      },
+      {
+        "possibly_truncated": false,
+        "enabled": true,
+        "record_id_reset": false,
+        "log_alias": "code-integrity",
+        "baseline_record_id": 186,
+        "sampled": 35,
+        "latest_record_id": 221,
+        "status": "available",
+        "no_matching_events": false
+      }
+    ],
+    "system_launch_7045_record_id": 2911,
+    "system_launch_7030_record_id": 2912,
+    "earlier_7000_1275_attributed_to_ace": false,
+    "clock_jumps_observed": true,
+    "vendor_failure_code": null,
+    "raw_private_messages_exported": false,
+    "evidence_refs": [
+      "first-game-launch-events.json",
+      "post-recovery-final-events.json",
+      "guest-game-log-metadata-and-codes.json"
+    ],
+    "limitation": "RecordID ordering and artifact identity are required for correlation; a broad bookmark includes prelaunch and recovery events. Historical codes do not establish current ACE rejection."
+  },
+  "unresolved_acceptance": [
+    "Official latest API was sampled, but complete installed client online integrity verification was not captured",
+    "Main game natural exit code was not captured before controlled stop",
+    "No exact vendor error popup or independent vendor VM permission/support confirmation",
+    "No protected lobby or online match was verified"
+  ],
+  "official_freshness": {
+    "installer_version": "2.17.4.510",
+    "official_api_game_version": "13.09",
+    "installed_client_latest_fully_validated": false,
+    "evidence_refs": [
+      "../../phase-5/evidence/p5-a/official-download-center-current.json",
+      "../../phase-5/evidence/p5-a/official-installer-guest-trust.json"
+    ]
+  },
+  "backup_final_proof_ref": "../../phase-5/evidence/p5-a/client-backup-final-proof.json",
+  "remaining_authorized_local_work": []
+}

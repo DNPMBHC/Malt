@@ -1,0 +1,854 @@
+{
+  "aggregate": {
+    "wine_d3dmetal": {
+      "adapter_description": "AMD Compatibility Mode",
+      "device_memory_mib_mean": 84.3498263888889,
+      "frame_interval_mean_ms_mean": 3.738145251396648,
+      "frame_interval_p50_ms_mean": 2.4337666666666666,
+      "frame_interval_p95_ms_mean": 8.572126666666668,
+      "frame_interval_p99_ms_mean": 9.497648,
+      "gpu_drain_ms_mean": 9.245333333333333,
+      "host_cpu_percent_mean": 10.363333333333333,
+      "host_cpu_percent_peak_mean": 53.86666666666667,
+      "process_resident_mib_mean": 109.01922743055555,
+      "rounds": 3,
+      "selected_feature_level": "11_1",
+      "throughput_fps_mean": 271.98704200000003,
+      "warmup_ms_mean": 454.839
+    },
+    "wine_dxmt": {
+      "adapter_description": "Apple M4",
+      "device_memory_mib_mean": 62.0,
+      "frame_interval_mean_ms_mean": 4.13542625698324,
+      "frame_interval_p50_ms_mean": 3.187466666666667,
+      "frame_interval_p95_ms_mean": 10.186873333333333,
+      "frame_interval_p99_ms_mean": 11.759011333333333,
+      "gpu_drain_ms_mean": 17.873666666666665,
+      "host_cpu_percent_mean": 9.58,
+      "host_cpu_percent_peak_mean": 47.6,
+      "process_resident_mib_mean": 108.38002748842592,
+      "rounds": 3,
+      "selected_feature_level": "11_1",
+      "throughput_fps_mean": 237.29683999999997,
+      "warmup_ms_mean": 408.9723333333333
+    },
+    "wine_dxvk_kosmickrisp": {
+      "adapter_description": "NVIDIA GeForce 6800",
+      "device_memory_mib_mean": 354.3034722222222,
+      "frame_interval_mean_ms_mean": 2.8940834264432027,
+      "frame_interval_p50_ms_mean": 2.1975000000000002,
+      "frame_interval_p95_ms_mean": 9.072236666666665,
+      "frame_interval_p99_ms_mean": 10.886884,
+      "gpu_drain_ms_mean": 3.985,
+      "host_cpu_percent_mean": 9.976666666666667,
+      "host_cpu_percent_peak_mean": 48.300000000000004,
+      "process_resident_mib_mean": 149.02333622685185,
+      "rounds": 3,
+      "selected_feature_level": "11_0",
+      "throughput_fps_mean": 343.559194,
+      "warmup_ms_mean": 274.91
+    },
+    "wine_dxvk_moltenvk": {
+      "adapter_description": "Apple M4",
+      "device_memory_mib_mean": 232.84375,
+      "frame_interval_mean_ms_mean": 3.0256469273743014,
+      "frame_interval_p50_ms_mean": 1.8707,
+      "frame_interval_p95_ms_mean": 8.56515,
+      "frame_interval_p99_ms_mean": 11.459854,
+      "gpu_drain_ms_mean": 4.266666666666667,
+      "host_cpu_percent_mean": 12.456666666666665,
+      "host_cpu_percent_peak_mean": 45.56666666666666,
+      "process_resident_mib_mean": 98.97449363425926,
+      "rounds": 3,
+      "selected_feature_level": "11_0",
+      "throughput_fps_mean": 366.690699,
+      "warmup_ms_mean": 407.74033333333335
+    }
+  },
+  "captured_at_utc": "2026-11-23T15:07:06.592923+00:00",
+  "experiment": "phase5_real3d_2048_draws_async_swapchain_baseline",
+  "host": {
+    "architecture": "arm64",
+    "cpu_brand": "Apple M4",
+    "display_summary": [
+      "Chipset Model: Apple M4",
+      "Display Type: Built-in Liquid Retina XDR Display",
+      "Resolution: 3024 x 1964 Retina"
+    ],
+    "memory_bytes": 17179869184,
+    "os_build": "26B131",
+    "os_product": "macOS",
+    "os_version": "27.2.1",
+    "python_version": "3.9.6",
+    "recorded_at_utc": "2026-11-23T15:07:07.420455+00:00",
+    "sdk_version": "27.0"
+  },
+  "immutable_digests": {
+    "bench_real3d_probe_cpp": "5cbbb23e80eb90ca3bfbf2431d84876765a97db1f69290e961f6cbd06c13e1f5",
+    "bench_real3d_probe_exe": "d128b4793de2ad64b956d0415b185b588366ba5c5c4e8b60fe8d0e4ec3751e26",
+    "bench_real3d_runner_py": "54e43ac47a7ab8c5c4aa5175740704128def79d0988b8df20050709eee69d2d5",
+    "d3dmetal_d3d11_dll": "05fa6f700fb5ee5561dc3a46d98f0aed845d4fa8ab274bff1dc604b0b3f6edd1",
+    "d3dmetal_dxgi_dll": "249711d3d786a9b0bb7c3558f36e472ab07ee21b8dbf118e34c975046832f9a2",
+    "d3dmetal_libd3dshared_dylib": "66005073540dc91001ea11685160a71e302bfd79c2ee7b9fe5be560ae17621e2",
+    "dxmt_d3d11_dll": "1cbe930e2370c4382ac4b435faf8cc563943324cfade33380cc6de0b8d94d801",
+    "dxmt_dxgi_dll": "3831a078756a054027413e0c9c901a28a0a57a8dd3f327d3e2fb41a8616d251c",
+    "dxmt_winemetal_dll": "39e5cfb3ac9b93976c9fc48e215c14b90f626e1b0bcf677b6eef1fb6e3fabf26",
+    "dxmt_winemetal_so": "76843f2ab3226a9c7dc107c9d4d9ace9593ec7210edf9e74d5a6cf146384c52a",
+    "dxvk_d3d11_dll": "7a0442591dfee7e3729d26a598d3b490f917fbe8ebf9da3bb75410e8d095d302",
+    "kosmickrisp_fillmode_eval_patch_source": "f6b5a8347384646da4fe1a9ee515866dd7172165da1768e4b1488ef2809efc64",
+    "kosmickrisp_icd_json": "071ed10b672d291ee4dc6e9e81b444cb8608153bb4a84f9eff377e2818130336",
+    "kosmickrisp_x86_64_dylib": "ed4615a26f74c7bece748cfb6bb3930fee379a2dcf3a634ca4e57c59a4bfdf63",
+    "moltenvk_dylib": "952ef0be316e7a8694781ac8d68d4dccca403ef0710854c608414449e317de6e",
+    "official_sdk_kosmickrisp_arm64_dylib": "45fd5cb16d4f5e77bbb6eb232ec141e6e6a77876e7bad3fb90615f6c92e34504",
+    "vulkan_loader_dylib": "0bcd62c6b3bcba4ef7c82344da3eb058892bb00b56b75ac6a6e7c8765a208c85",
+    "wine": "78010eb35647a71f2e6995f295215b99e919dee2450f28990e8a13b32b21b607"
+  },
+  "owner": "@DNPMBHC",
+  "realBenchmarkExecuted": true,
+  "realGuestExecuted": false,
+  "realWineExecuted": true,
+  "rounds_per_arm": 3,
+  "runs": [
+    {
+      "arm": "wine_dxmt",
+      "backend": "dxmt",
+      "completion": {
+        "async_swapchain": true,
+        "draws_per_frame": 2048,
+        "gpu_drain_ms": 15.546,
+        "measured_frames": 180,
+        "measurement_wall_ms": 759.245,
+        "throughput_including_gpu_drain_fps": 237.077623,
+        "total_draw_calls": 368640,
+        "warmup_ms": 392.89
+      },
+      "csv_summary": {
+        "cpu_submit_ms": {
+          "mean": 4.125243333333334,
+          "p95": 10.05868,
+          "p99": 11.235301000000003
+        },
+        "derived_fps_from_intervals": 240.8414002868838,
+        "device_memory_mib_mean": 62.0,
+        "frame_count": 180,
+        "frame_interval_ms": {
+          "mean": 4.152110055865922,
+          "p50": 3.369,
+          "p95": 10.06297,
+          "p99": 11.241286
+        },
+        "interval_sample_count": 179,
+        "process_resident_mib_mean": 99.91770833333334
+      },
+      "domain": "host_wine",
+      "files": {
+        "csv": "wine_dxmt-r1.csv",
+        "csv_sha256": "dc6410d885743c6c111709cd60ea7827f2dec0d8a0b3d7a58e3c29bea5ea2ffc"
+      },
+      "host_cpu": {
+        "host_cpu_percent_mean": 4.53,
+        "host_cpu_percent_p95": 27.09,
+        "host_cpu_percent_peak": 48.5,
+        "sample_count": 49
+      },
+      "metadata": {
+        "adapter_description": "Apple M4",
+        "adapter_flags": 0,
+        "adapter_is_software": false,
+        "async_swapchain": true,
+        "cb_updates_per_frame": 256,
+        "device_id": 0,
+        "draws_per_frame": 2048,
+        "height": 720,
+        "initialization_ms": 734.262,
+        "passes_per_frame": 2,
+        "schema_version": 1,
+        "selected_feature_level": "11_1",
+        "vendor_id": 4203,
+        "width": 1280
+      },
+      "round": 1
+    },
+    {
+      "arm": "wine_d3dmetal",
+      "backend": "d3dmetal",
+      "completion": {
+        "async_swapchain": true,
+        "draws_per_frame": 2048,
+        "gpu_drain_ms": 16.229,
+        "measured_frames": 180,
+        "measurement_wall_ms": 750.015,
+        "throughput_including_gpu_drain_fps": 239.995296,
+        "total_draw_calls": 368640,
+        "warmup_ms": 561.293
+      },
+      "csv_summary": {
+        "cpu_submit_ms": {
+          "mean": 4.0673144444444445,
+          "p95": 8.27544,
+          "p99": 8.681479000000007
+        },
+        "derived_fps_from_intervals": 244.0238690788767,
+        "device_memory_mib_mean": 84.33784722222222,
+        "frame_count": 180,
+        "frame_interval_ms": {
+          "mean": 4.097959776536313,
+          "p50": 2.1029,
+          "p95": 8.28796,
+          "p99": 8.693906
+        },
+        "interval_sample_count": 179,
+        "process_resident_mib_mean": 107.57743055555555
+      },
+      "domain": "host_wine",
+      "files": {
+        "csv": "wine_d3dmetal-r1.csv",
+        "csv_sha256": "1761e7509cd68b7e06524d40e2a9e7f13e259e950261581f73c6dd32d8ab785c"
+      },
+      "host_cpu": {
+        "host_cpu_percent_mean": 6.41,
+        "host_cpu_percent_p95": 34.4,
+        "host_cpu_percent_peak": 43.0,
+        "sample_count": 35
+      },
+      "metadata": {
+        "adapter_description": "AMD Compatibility Mode",
+        "adapter_flags": 0,
+        "adapter_is_software": false,
+        "async_swapchain": true,
+        "cb_updates_per_frame": 256,
+        "device_id": 26287,
+        "draws_per_frame": 2048,
+        "height": 720,
+        "initialization_ms": 865.275,
+        "passes_per_frame": 2,
+        "schema_version": 1,
+        "selected_feature_level": "11_1",
+        "vendor_id": 4098,
+        "width": 1280
+      },
+      "round": 1
+    },
+    {
+      "arm": "wine_dxvk_kosmickrisp",
+      "backend": "dxvk_kosmickrisp",
+      "completion": {
+        "async_swapchain": true,
+        "draws_per_frame": 2048,
+        "gpu_drain_ms": 3.437,
+        "measured_frames": 180,
+        "measurement_wall_ms": 553.836,
+        "throughput_including_gpu_drain_fps": 325.005782,
+        "total_draw_calls": 368640,
+        "warmup_ms": 569.686
+      },
+      "csv_summary": {
+        "cpu_submit_ms": {
+          "mean": 3.0155277777777774,
+          "p95": 9.254715,
+          "p99": 12.298368000000007
+        },
+        "derived_fps_from_intervals": 328.9324378285534,
+        "device_memory_mib_mean": 355.24305555555554,
+        "frame_count": 180,
+        "frame_interval_ms": {
+          "mean": 3.0401379888268156,
+          "p50": 2.1905,
+          "p95": 9.307009999999998,
+          "p99": 12.38505
+        },
+        "interval_sample_count": 179,
+        "process_resident_mib_mean": 153.21317274305557
+      },
+      "domain": "host_wine",
+      "files": {
+        "csv": "wine_dxvk_kosmickrisp-r1.csv",
+        "csv_sha256": "443284e77fa6c21d096574a185c5bcac488af248d5879179b2031ac55d7cf682"
+      },
+      "host_cpu": {
+        "host_cpu_percent_mean": 8.86,
+        "host_cpu_percent_p95": 37.95,
+        "host_cpu_percent_peak": 47.0,
+        "sample_count": 24
+      },
+      "metadata": {
+        "adapter_description": "NVIDIA GeForce 6800",
+        "adapter_flags": 0,
+        "adapter_is_software": false,
+        "async_swapchain": true,
+        "cb_updates_per_frame": 256,
+        "device_id": 65,
+        "draws_per_frame": 2048,
+        "height": 720,
+        "initialization_ms": 1255.801,
+        "passes_per_frame": 2,
+        "schema_version": 1,
+        "selected_feature_level": "11_0",
+        "vendor_id": 4318,
+        "width": 1280
+      },
+      "round": 1
+    },
+    {
+      "arm": "wine_dxvk_moltenvk",
+      "backend": "dxvk_moltenvk",
+      "completion": {
+        "async_swapchain": true,
+        "draws_per_frame": 2048,
+        "gpu_drain_ms": 3.36,
+        "measured_frames": 180,
+        "measurement_wall_ms": 550.426,
+        "throughput_including_gpu_drain_fps": 327.019614,
+        "total_draw_calls": 368640,
+        "warmup_ms": 660.303
+      },
+      "csv_summary": {
+        "cpu_submit_ms": {
+          "mean": 3.017786111111111,
+          "p95": 10.1322,
+          "p99": 16.198723000000008
+        },
+        "derived_fps_from_intervals": 327.2922019067422,
+        "device_memory_mib_mean": 232.84375,
+        "frame_count": 180,
+        "frame_interval_ms": {
+          "mean": 3.0553737430167596,
+          "p50": 1.8168,
+          "p95": 10.15092,
+          "p99": 16.227762
+        },
+        "interval_sample_count": 179,
+        "process_resident_mib_mean": 102.99275173611112
+      },
+      "domain": "host_wine",
+      "files": {
+        "csv": "wine_dxvk_moltenvk-r1.csv",
+        "csv_sha256": "63a1c2033c76d0fac5ee57ebaf74e90ac26f7e56c4a35b887f566e89248e7da5"
+      },
+      "host_cpu": {
+        "host_cpu_percent_mean": 10.59,
+        "host_cpu_percent_p95": 33.52,
+        "host_cpu_percent_peak": 47.2,
+        "sample_count": 18
+      },
+      "metadata": {
+        "adapter_description": "Apple M4",
+        "adapter_flags": 0,
+        "adapter_is_software": false,
+        "async_swapchain": true,
+        "cb_updates_per_frame": 256,
+        "device_id": 1009,
+        "draws_per_frame": 2048,
+        "height": 720,
+        "initialization_ms": 253.206,
+        "passes_per_frame": 2,
+        "schema_version": 1,
+        "selected_feature_level": "11_0",
+        "vendor_id": 4203,
+        "width": 1280
+      },
+      "round": 1
+    },
+    {
+      "arm": "wine_dxvk_kosmickrisp",
+      "backend": "dxvk_kosmickrisp",
+      "completion": {
+        "async_swapchain": true,
+        "draws_per_frame": 2048,
+        "gpu_drain_ms": 4.463,
+        "measured_frames": 180,
+        "measurement_wall_ms": 531.077,
+        "throughput_including_gpu_drain_fps": 338.933647,
+        "total_draw_calls": 368640,
+        "warmup_ms": 121.894
+      },
+      "csv_summary": {
+        "cpu_submit_ms": {
+          "mean": 2.8816294444444446,
+          "p95": 9.159085,
+          "p99": 10.322745
+        },
+        "derived_fps_from_intervals": 341.4372218073474,
+        "device_memory_mib_mean": 353.79375,
+        "frame_count": 180,
+        "frame_interval_ms": {
+          "mean": 2.9287960893854748,
+          "p50": 2.2475,
+          "p95": 9.26178,
+          "p99": 10.362014
+        },
+        "interval_sample_count": 179,
+        "process_resident_mib_mean": 146.86456163194444
+      },
+      "domain": "host_wine",
+      "files": {
+        "csv": "wine_dxvk_kosmickrisp-r2.csv",
+        "csv_sha256": "1a6bb53f558102c081e09315afbd1411442c63353a16bc9c2f1c06bbaa4a32f4"
+      },
+      "host_cpu": {
+        "host_cpu_percent_mean": 11.15,
+        "host_cpu_percent_p95": 36.77,
+        "host_cpu_percent_peak": 53.6,
+        "sample_count": 20
+      },
+      "metadata": {
+        "adapter_description": "NVIDIA GeForce 6800",
+        "adapter_flags": 0,
+        "adapter_is_software": false,
+        "async_swapchain": true,
+        "cb_updates_per_frame": 256,
+        "device_id": 65,
+        "draws_per_frame": 2048,
+        "height": 720,
+        "initialization_ms": 1216.364,
+        "passes_per_frame": 2,
+        "schema_version": 1,
+        "selected_feature_level": "11_0",
+        "vendor_id": 4318,
+        "width": 1280
+      },
+      "round": 2
+    },
+    {
+      "arm": "wine_dxvk_moltenvk",
+      "backend": "dxvk_moltenvk",
+      "completion": {
+        "async_swapchain": true,
+        "draws_per_frame": 2048,
+        "gpu_drain_ms": 7.232,
+        "measured_frames": 180,
+        "measurement_wall_ms": 749.863,
+        "throughput_including_gpu_drain_fps": 240.044008,
+        "total_draw_calls": 368640,
+        "warmup_ms": 152.608
+      },
+      "csv_summary": {
+        "cpu_submit_ms": {
+          "mean": 4.085882777777778,
+          "p95": 8.139925,
+          "p99": 8.841634000000003
+        },
+        "derived_fps_from_intervals": 241.08328552072643,
+        "device_memory_mib_mean": 232.84375,
+        "frame_count": 180,
+        "frame_interval_ms": {
+          "mean": 4.147944134078212,
+          "p50": 2.9743,
+          "p95": 8.16071,
+          "p99": 8.882356
+        },
+        "interval_sample_count": 179,
+        "process_resident_mib_mean": 91.37591145833333
+      },
+      "domain": "host_wine",
+      "files": {
+        "csv": "wine_dxvk_moltenvk-r2.csv",
+        "csv_sha256": "e181c1e07abef7c3edba2d22f0f0fcf8bf9a3f1992130646ea65ca0282c33446"
+      },
+      "host_cpu": {
+        "host_cpu_percent_mean": 13.45,
+        "host_cpu_percent_p95": 43.12,
+        "host_cpu_percent_peak": 45.5,
+        "sample_count": 16
+      },
+      "metadata": {
+        "adapter_description": "Apple M4",
+        "adapter_flags": 0,
+        "adapter_is_software": false,
+        "async_swapchain": true,
+        "cb_updates_per_frame": 256,
+        "device_id": 1009,
+        "draws_per_frame": 2048,
+        "height": 720,
+        "initialization_ms": 221.136,
+        "passes_per_frame": 2,
+        "schema_version": 1,
+        "selected_feature_level": "11_0",
+        "vendor_id": 4203,
+        "width": 1280
+      },
+      "round": 2
+    },
+    {
+      "arm": "wine_d3dmetal",
+      "backend": "d3dmetal",
+      "completion": {
+        "async_swapchain": true,
+        "draws_per_frame": 2048,
+        "gpu_drain_ms": 1.88,
+        "measured_frames": 180,
+        "measurement_wall_ms": 535.557,
+        "throughput_including_gpu_drain_fps": 336.098365,
+        "total_draw_calls": 368640,
+        "warmup_ms": 441.371
+      },
+      "csv_summary": {
+        "cpu_submit_ms": {
+          "mean": 2.957187777777778,
+          "p95": 8.201609999999997,
+          "p99": 9.865863000000008
+        },
+        "derived_fps_from_intervals": 335.6323209800014,
+        "device_memory_mib_mean": 84.34079861111111,
+        "frame_count": 180,
+        "frame_interval_ms": {
+          "mean": 2.9794508379888267,
+          "p50": 1.6992,
+          "p95": 8.21847,
+          "p99": 9.880268
+        },
+        "interval_sample_count": 179,
+        "process_resident_mib_mean": 107.2896701388889
+      },
+      "domain": "host_wine",
+      "files": {
+        "csv": "wine_d3dmetal-r2.csv",
+        "csv_sha256": "1cf92d3e0a03d95e4698bb8bc381680eb079e4acf38e878769d4722ae8f78a76"
+      },
+      "host_cpu": {
+        "host_cpu_percent_mean": 12.4,
+        "host_cpu_percent_p95": 42.8,
+        "host_cpu_percent_peak": 65.8,
+        "sample_count": 22
+      },
+      "metadata": {
+        "adapter_description": "AMD Compatibility Mode",
+        "adapter_flags": 0,
+        "adapter_is_software": false,
+        "async_swapchain": true,
+        "cb_updates_per_frame": 256,
+        "device_id": 26287,
+        "draws_per_frame": 2048,
+        "height": 720,
+        "initialization_ms": 630.7,
+        "passes_per_frame": 2,
+        "schema_version": 1,
+        "selected_feature_level": "11_1",
+        "vendor_id": 4098,
+        "width": 1280
+      },
+      "round": 2
+    },
+    {
+      "arm": "wine_dxmt",
+      "backend": "dxmt",
+      "completion": {
+        "async_swapchain": true,
+        "draws_per_frame": 2048,
+        "gpu_drain_ms": 21.288,
+        "measured_frames": 180,
+        "measurement_wall_ms": 757.161,
+        "throughput_including_gpu_drain_fps": 237.730278,
+        "total_draw_calls": 368640,
+        "warmup_ms": 428.493
+      },
+      "csv_summary": {
+        "cpu_submit_ms": {
+          "mean": 4.081933333333334,
+          "p95": 9.51159,
+          "p99": 10.283435
+        },
+        "derived_fps_from_intervals": 243.41150332848233,
+        "device_memory_mib_mean": 62.0,
+        "frame_count": 180,
+        "frame_interval_ms": {
+          "mean": 4.108269273743017,
+          "p50": 3.5195,
+          "p95": 9.514949999999999,
+          "p99": 10.287438000000002
+        },
+        "interval_sample_count": 179,
+        "process_resident_mib_mean": 115.35679253472222
+      },
+      "domain": "host_wine",
+      "files": {
+        "csv": "wine_dxmt-r2.csv",
+        "csv_sha256": "424b05fd71788e8880f88d668f3dbfe476e00b10416c34407c56bcc5f86d97ca"
+      },
+      "host_cpu": {
+        "host_cpu_percent_mean": 11.67,
+        "host_cpu_percent_p95": 40.03,
+        "host_cpu_percent_peak": 44.9,
+        "sample_count": 17
+      },
+      "metadata": {
+        "adapter_description": "Apple M4",
+        "adapter_flags": 0,
+        "adapter_is_software": false,
+        "async_swapchain": true,
+        "cb_updates_per_frame": 256,
+        "device_id": 0,
+        "draws_per_frame": 2048,
+        "height": 720,
+        "initialization_ms": 257.72,
+        "passes_per_frame": 2,
+        "schema_version": 1,
+        "selected_feature_level": "11_1",
+        "vendor_id": 4203,
+        "width": 1280
+      },
+      "round": 2
+    },
+    {
+      "arm": "wine_d3dmetal",
+      "backend": "d3dmetal",
+      "completion": {
+        "async_swapchain": true,
+        "draws_per_frame": 2048,
+        "gpu_drain_ms": 9.627,
+        "measured_frames": 180,
+        "measurement_wall_ms": 750.414,
+        "throughput_including_gpu_drain_fps": 239.867465,
+        "total_draw_calls": 368640,
+        "warmup_ms": 361.853
+      },
+      "csv_summary": {
+        "cpu_submit_ms": {
+          "mean": 4.107932777777778,
+          "p95": 9.20279,
+          "p99": 9.908701
+        },
+        "derived_fps_from_intervals": 241.71958502553923,
+        "device_memory_mib_mean": 84.37083333333334,
+        "frame_count": 180,
+        "frame_interval_ms": {
+          "mean": 4.137025139664805,
+          "p50": 3.4992,
+          "p95": 9.20995,
+          "p99": 9.918769999999999
+        },
+        "interval_sample_count": 179,
+        "process_resident_mib_mean": 112.19058159722222
+      },
+      "domain": "host_wine",
+      "files": {
+        "csv": "wine_d3dmetal-r3.csv",
+        "csv_sha256": "eb40dcba2442b3bf1e30ec70a933aab2b55e96b70fda95f23c015f2d45d09409"
+      },
+      "host_cpu": {
+        "host_cpu_percent_mean": 12.28,
+        "host_cpu_percent_p95": 39.75,
+        "host_cpu_percent_peak": 52.8,
+        "sample_count": 17
+      },
+      "metadata": {
+        "adapter_description": "AMD Compatibility Mode",
+        "adapter_flags": 0,
+        "adapter_is_software": false,
+        "async_swapchain": true,
+        "cb_updates_per_frame": 256,
+        "device_id": 26287,
+        "draws_per_frame": 2048,
+        "height": 720,
+        "initialization_ms": 357.637,
+        "passes_per_frame": 2,
+        "schema_version": 1,
+        "selected_feature_level": "11_1",
+        "vendor_id": 4098,
+        "width": 1280
+      },
+      "round": 3
+    },
+    {
+      "arm": "wine_dxvk_kosmickrisp",
+      "backend": "dxvk_kosmickrisp",
+      "completion": {
+        "async_swapchain": true,
+        "draws_per_frame": 2048,
+        "gpu_drain_ms": 4.055,
+        "measured_frames": 180,
+        "measurement_wall_ms": 490.813,
+        "throughput_including_gpu_drain_fps": 366.738153,
+        "total_draw_calls": 368640,
+        "warmup_ms": 133.15
+      },
+      "csv_summary": {
+        "cpu_submit_ms": {
+          "mean": 2.660375,
+          "p95": 8.611549999999994,
+          "p99": 9.874613
+        },
+        "derived_fps_from_intervals": 368.5526956232411,
+        "device_memory_mib_mean": 353.87361111111113,
+        "frame_count": 180,
+        "frame_interval_ms": {
+          "mean": 2.7133162011173186,
+          "p50": 2.1545,
+          "p95": 8.647919999999997,
+          "p99": 9.913588
+        },
+        "interval_sample_count": 179,
+        "process_resident_mib_mean": 146.99227430555555
+      },
+      "domain": "host_wine",
+      "files": {
+        "csv": "wine_dxvk_kosmickrisp-r3.csv",
+        "csv_sha256": "54557e4d8846505e6644b5064f7e3388e66065d600a6608a8c886580776dea60"
+      },
+      "host_cpu": {
+        "host_cpu_percent_mean": 9.92,
+        "host_cpu_percent_p95": 41.0,
+        "host_cpu_percent_peak": 44.3,
+        "sample_count": 22
+      },
+      "metadata": {
+        "adapter_description": "NVIDIA GeForce 6800",
+        "adapter_flags": 0,
+        "adapter_is_software": false,
+        "async_swapchain": true,
+        "cb_updates_per_frame": 256,
+        "device_id": 65,
+        "draws_per_frame": 2048,
+        "height": 720,
+        "initialization_ms": 1477.172,
+        "passes_per_frame": 2,
+        "schema_version": 1,
+        "selected_feature_level": "11_0",
+        "vendor_id": 4318,
+        "width": 1280
+      },
+      "round": 3
+    },
+    {
+      "arm": "wine_dxmt",
+      "backend": "dxmt",
+      "completion": {
+        "async_swapchain": true,
+        "draws_per_frame": 2048,
+        "gpu_drain_ms": 16.787,
+        "measured_frames": 180,
+        "measurement_wall_ms": 759.229,
+        "throughput_including_gpu_drain_fps": 237.082619,
+        "total_draw_calls": 368640,
+        "warmup_ms": 405.534
+      },
+      "csv_summary": {
+        "cpu_submit_ms": {
+          "mean": 4.115523333333334,
+          "p95": 10.974734999999997,
+          "p99": 13.73370700000001
+        },
+        "derived_fps_from_intervals": 241.20218402513896,
+        "device_memory_mib_mean": 62.0,
+        "frame_count": 180,
+        "frame_interval_ms": {
+          "mean": 4.145899441340782,
+          "p50": 2.6739,
+          "p95": 10.9827,
+          "p99": 13.748309999999998
+        },
+        "interval_sample_count": 179,
+        "process_resident_mib_mean": 109.86558159722222
+      },
+      "domain": "host_wine",
+      "files": {
+        "csv": "wine_dxmt-r3.csv",
+        "csv_sha256": "33a8cb15a7f391f52510086ea813019d1b5de30653a2f40e4e6bea329f13a669"
+      },
+      "host_cpu": {
+        "host_cpu_percent_mean": 12.54,
+        "host_cpu_percent_p95": 40.92,
+        "host_cpu_percent_peak": 49.4,
+        "sample_count": 18
+      },
+      "metadata": {
+        "adapter_description": "Apple M4",
+        "adapter_flags": 0,
+        "adapter_is_software": false,
+        "async_swapchain": true,
+        "cb_updates_per_frame": 256,
+        "device_id": 0,
+        "draws_per_frame": 2048,
+        "height": 720,
+        "initialization_ms": 267.513,
+        "passes_per_frame": 2,
+        "schema_version": 1,
+        "selected_feature_level": "11_1",
+        "vendor_id": 4203,
+        "width": 1280
+      },
+      "round": 3
+    },
+    {
+      "arm": "wine_dxvk_moltenvk",
+      "backend": "dxvk_moltenvk",
+      "completion": {
+        "async_swapchain": true,
+        "draws_per_frame": 2048,
+        "gpu_drain_ms": 2.208,
+        "measured_frames": 180,
+        "measurement_wall_ms": 337.706,
+        "throughput_including_gpu_drain_fps": 533.008475,
+        "total_draw_calls": 368640,
+        "warmup_ms": 410.31
+      },
+      "csv_summary": {
+        "cpu_submit_ms": {
+          "mean": 1.7669561111111112,
+          "p95": 6.941124999999993,
+          "p99": 8.912571000000003
+        },
+        "derived_fps_from_intervals": 533.7253282485312,
+        "device_memory_mib_mean": 232.84375,
+        "frame_count": 180,
+        "frame_interval_ms": {
+          "mean": 1.8736229050279327,
+          "p50": 0.821,
+          "p95": 7.383819999999998,
+          "p99": 9.269444
+        },
+        "interval_sample_count": 179,
+        "process_resident_mib_mean": 102.55481770833333
+      },
+      "domain": "host_wine",
+      "files": {
+        "csv": "wine_dxvk_moltenvk-r3.csv",
+        "csv_sha256": "c00c212a1a637c4456cf05c3abc707fe1a44258d1c8711721eb12c27b2249c37"
+      },
+      "host_cpu": {
+        "host_cpu_percent_mean": 13.33,
+        "host_cpu_percent_p95": 43.86,
+        "host_cpu_percent_peak": 44.0,
+        "sample_count": 16
+      },
+      "metadata": {
+        "adapter_description": "Apple M4",
+        "adapter_flags": 0,
+        "adapter_is_software": false,
+        "async_swapchain": true,
+        "cb_updates_per_frame": 256,
+        "device_id": 1009,
+        "draws_per_frame": 2048,
+        "height": 720,
+        "initialization_ms": 283.244,
+        "passes_per_frame": 2,
+        "schema_version": 1,
+        "selected_feature_level": "11_0",
+        "vendor_id": 4203,
+        "width": 1280
+      },
+      "round": 3
+    }
+  ],
+  "schema_version": 1,
+  "versions": {
+    "d3dmetal": "Apple GPTK 4.0-1",
+    "dxmt": "dxmt-v0.80 (dxmt-wine-builtin-7641370)",
+    "dxvk": "dxvk-1.10.3 (cxaddon-1.10.3-1-25-g737aacd)",
+    "kosmickrisp_x86_64": "Mesa 27.0.0-devel (upstream git-bb986060e0, x86_64 cross-compile + archived fillModeNonSolid(solid/lines) eval patch; Vulkan 1.4.368, CTS 1.4.6.2)",
+    "moltenvk": "MoltenVK-v1.2.1 (x86_64)",
+    "official_sdk_kosmickrisp_arm64": "LunarG Vulkan SDK 1.4.363.1 (git-269a955c89, arm64-only, geometryShader=false)",
+    "vulkan_loader": "LunarG Vulkan SDK 1.4.363.1 (universal x86_64+arm64)",
+    "wine": "wine-11.0-ge1cd80458f5"
+  },
+  "workload": {
+    "async_swapchain": true,
+    "cb_updates": 256,
+    "draws": 2048,
+    "frames": 180,
+    "height": 720,
+    "passes_per_frame": 2,
+    "warmup": 30,
+    "width": 1280
+  }
+}

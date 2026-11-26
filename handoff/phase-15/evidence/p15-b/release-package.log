@@ -1,0 +1,102 @@
+[demo-app-package] Building demo-app (Release / arm64, Hardened Runtime=YES)...
+[demo-app-package] Optional Vulkan bundle: verified
+[demo-app-package] Signing identity mode: adhoc
+[demo-app-package] Embedding container helper into demo-app.app/Contents/Helpers/demo-appContainerHelper.app (LSUIElement=true)...
+{"updaterRemoval": {"loadCommandsChecked": true, "sparkleLinked": false, "sparkleBundled": false, "passed": true}, "launch": {"requiredSurvivalSeconds": 4, "observedSeconds": 4.0, "survived": true, "exitCodeDuringObservation": null, "dyldErrorCount": 0, "passed": true}, "passed": true}
+[package] Launch dyld smoke test (4s survival): passed
+[demo-app-package] Creating compressed read-only demo-app.dmg at <workspace>/demo-app/build/release/demo-app.dmg ...
+{
+  "schema": "phase-15b-demo-app-embedded-dmg-v1",
+  "owner": "@DNPMBHC",
+  "capturedAt": "2026-11-26T00:45:34.503563+00:00",
+  "brand": "demo-app",
+  "cfBundleDisplayName": "demo-app",
+  "configuration": "Release",
+  "architecture": "arm64",
+  "marketingVersion": "2.3.5",
+  "hardenedRuntimeEnabled": true,
+  "codesignIdentityKind": "adhoc",
+  "codesignVerifyDeepStrictPassed": true,
+  "launchSmokeTestPassed": true,
+  "launchSmokeVerification": {
+    "updaterRemoval": {
+      "loadCommandsChecked": true,
+      "sparkleLinked": false,
+      "sparkleBundled": false,
+      "passed": true
+    },
+    "launch": {
+      "requiredSurvivalSeconds": 4,
+      "observedSeconds": 4.0,
+      "survived": true,
+      "exitCodeDuringObservation": null,
+      "dyldErrorCount": 0,
+      "passed": true
+    },
+    "passed": true
+  },
+  "entitlements": {
+    "com.apple.security.automation.apple-events": true,
+    "com.apple.security.device.audio-input": true,
+    "com.apple.security.device.camera": true
+  },
+  "forbiddenEntitlementsFound": [],
+  "hardenedRuntimeVerification": {
+    "app": {
+      "signatureVerified": true,
+      "runtimeFlagVerified": true
+    },
+    "cli": {
+      "signatureVerified": true,
+      "runtimeFlagVerified": true
+    },
+    "passed": true
+  },
+  "bundlePurityPassed": true,
+  "requiredResourcesVerified": true,
+  "embeddedRuntime": {
+    "requested": true,
+    "helperBundled": true,
+    "scriptsBundled": true,
+    "note": "embedded_helper_and_scripts",
+    "lsuiElementEnabled": true,
+    "helperBinarySHA256": "e28bbbfa19fa4f47486ba8764063a97bfb50779c88a690f45b75c931d43c80ed",
+    "bundledScripts": [
+      "golden_guest_manager.py",
+      "kiosk-app-shell.ps1"
+    ]
+  },
+  "vulkanBackend": {
+    "bundled": true,
+    "x86_64SliceVerified": true,
+    "universalLoaderVerified": true,
+    "relativeICDPathVerified": true,
+    "features": {
+      "geometryShader": true,
+      "fillModeNonSolid": true,
+      "apiVersion": 4211056,
+      "driverVersion": 109457507
+    },
+    "vulkanLoaderSHA256": "0bcd62c6b3bcba4ef7c82344da3eb058892bb00b56b75ac6a6e7c8765a208c85",
+    "driverSHA256": "ed4615a26f74c7bece748cfb6bb3930fee379a2dcf3a634ca4e57c59a4bfdf63",
+    "icdManifestSHA256": "1aa4f7ed99d7ce2d69e3e4e6402d11d3f0fbe1dce1fb200054177904a9dadf9d"
+  },
+  "artifacts": {
+    "appBinarySHA256": "0f038c28eeb6b4cf2424b4e0a8cc18bea26ec79607839b82c9ca058fee3debf5",
+    "cliBinarySHA256": "f02eca16e0ffa8a3894f7ef1df8cdfb41a5676e4eadfc80e3954dfd37e2e5ea5",
+    "compatibilityMatrixSHA256": "0545f3c83c69d3cb3b81ef2b18f742446bf3ce2b5a45e8a084b7cfee71c3c34a",
+    "runtimeManifestSHA256": "d304bf46376750a8a8e3881823e7be97e8840a8ceb817351f68e336587e7f446",
+    "dmg": {
+      "filename": "demo-app.dmg",
+      "relativePath": "demo-app/build/release/demo-app.dmg",
+      "sizeBytes": 351251462,
+      "sizeMiB": 334.979,
+      "sha256": "4452d5ee6aa482eb1c37d3b8d5a2a0a80999c998c1e1d9b6b7160a325ab09c62",
+      "applicationsSymlinkPresent": true,
+      "readOnlyCompressedUDZO": true
+    }
+  },
+  "passed": true
+}
+[demo-app-package] Packaged demo-app.app ready at: <temp>
+[demo-app-package] Packaged demo-app.dmg ready at: <workspace>/demo-app/build/release/demo-app.dmg

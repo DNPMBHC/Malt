@@ -1,0 +1,83 @@
+{
+  "errors": [],
+  "owner": "@DNPMBHC",
+  "method": "Win32_ProcessStartTrace and Win32_ProcessStopTrace",
+  "records": [
+    {
+      "parent_pid": 7992,
+      "process_alias": "client-exe-001",
+      "pid": 6716,
+      "kind": "start",
+      "role": "client",
+      "native_exit_code": null,
+      "event_time_utc": "2026-11-24T02:35:48.2530828Z"
+    },
+    {
+      "parent_pid": 6716,
+      "process_alias": "client-exe-004",
+      "pid": 3816,
+      "kind": "start",
+      "role": "client",
+      "native_exit_code": null,
+      "event_time_utc": "2026-11-24T02:35:52.2965184Z"
+    },
+    {
+      "parent_pid": 3816,
+      "process_alias": "client-exe-005",
+      "pid": 2044,
+      "kind": "start",
+      "role": "client",
+      "native_exit_code": null,
+      "event_time_utc": "2026-11-24T02:35:55.3170140Z"
+    },
+    {
+      "parent_pid": 0,
+      "process_alias": "client-exe-005",
+      "pid": 2044,
+      "kind": "stop",
+      "role": "client",
+      "native_exit_code": 6,
+      "event_time_utc": "2026-11-24T02:36:01.3801237Z"
+    },
+    {
+      "parent_pid": 3816,
+      "process_alias": "client-exe-007",
+      "pid": 660,
+      "kind": "start",
+      "role": "client",
+      "native_exit_code": null,
+      "event_time_utc": "2026-11-24T02:36:05.4154390Z"
+    },
+    {
+      "parent_pid": 732,
+      "process_alias": "client-exe-006",
+      "pid": 6840,
+      "kind": "start",
+      "role": "client",
+      "native_exit_code": null,
+      "event_time_utc": "2026-11-24T02:36:05.4154391Z"
+    },
+    {
+      "parent_pid": 0,
+      "process_alias": "client-exe-006",
+      "pid": 6840,
+      "kind": "stop",
+      "role": "client",
+      "native_exit_code": 0,
+      "event_time_utc": "2026-11-24T02:36:06.4295492Z"
+    },
+    {
+      "parent_pid": 3816,
+      "process_alias": "client-exe-003",
+      "pid": 5228,
+      "kind": "start",
+      "role": "client",
+      "native_exit_code": null,
+      "event_time_utc": "2026-11-24T02:36:28.5753273Z"
+    }
+  ],
+  "ended_at_utc": "2026-11-24T02:37:59.8050858+00:00",
+  "status": "completed",
+  "limitation": "Only known client and launcher image names are retained; unknown or short-lived image names can be missed.",
+  "started_at_utc": "2026-11-24T02:34:58.5040061+00:00"
+}

@@ -1,0 +1,49 @@
+{
+  "requestedByUser": true,
+  "scope": "Verified current local test disk image; application install and main-process launch only",
+  "installed": true,
+  "launched": true,
+  "rollbackBackupPreserved": true,
+  "userDataModifiedByInstaller": false,
+  "guestOrGameStartedByInstaller": false,
+  "checks": {
+    "disk-image-mount": {
+      "passed": true,
+      "exitCode": 0
+    },
+    "stage-copy": {
+      "passed": true,
+      "exitCode": 0
+    },
+    "staged-signature": {
+      "passed": true,
+      "exitCode": 0
+    },
+    "staged-payload": {
+      "passed": true,
+      "exitCode": 0
+    },
+    "installed-signature": {
+      "passed": true,
+      "exitCode": 0
+    },
+    "installed-binary-matches-package": {
+      "passed": true
+    },
+    "open-installed-application": {
+      "passed": true,
+      "exitCode": 0
+    }
+  },
+  "diskImageSHA256": "7597052e922905fe7cf8f8408c3579df0644a64efd1ae56c6ce8677687d2a103",
+  "rollbackBackupRelativeToApplications": ".my-project-install-7pej8iiw/previous.app",
+  "installedBinarySHA256": "6104ca19b1040400e1f61c4b2058c360d13da5f0d5089186c025fef087eb0bd1",
+  "installationScope": "system-applications",
+  "version": "2.3.5",
+  "launchObservationSeconds": 6.283,
+  "mainProcessIDs": [
+    80104
+  ],
+  "passed": true,
+  "diskImageDetached": true
+}

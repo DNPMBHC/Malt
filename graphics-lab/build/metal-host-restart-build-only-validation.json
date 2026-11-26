@@ -1,0 +1,28 @@
+{
+  "build_only_exit": 0,
+  "receiver_unchanged": true,
+  "receiver_before": {
+    "pid_file_present": false,
+    "pid_file_sha256": null,
+    "receiver_alive": false,
+    "receiver_executable_matches": false
+  },
+  "receiver_after": {
+    "pid_file_present": false,
+    "pid_file_sha256": null,
+    "receiver_alive": false,
+    "receiver_executable_matches": false
+  },
+  "metal_pipeline_preflight_exit": 0,
+  "metal_pipeline_preflight_output": "{\"device\":\"Apple M4\",\"msl_source_sha256\":\"a3029007907875c423430a68c1ba8ed9f34ab3927ff55f44ac1ed7ce1e2c1713\",\"pipeline_validated\":true,\"validation_scope\":\"Metal pipeline compilation\"}\n",
+  "source_sha256": "a0c63a096b92ffda7a5317150c621428b3c6f8e94eab61afa3b49efb7254769c",
+  "binary_sha256": "2c461360a615a50ebd961cd56c0cc04df4f775eb96d728fd0c5a2db665203979",
+  "build_script_sha256": "f51ceb267222ce99053d155ba2ee692ad995277a9ea373ec3762f5d830baae82",
+  "restart_script_sha256": "0dd16cac6d14275115057ccd316d7f83f74afc30567d523c551bcdb14b866611",
+  "mismatched_pid_was_not_stopped": true,
+  "build_only_did_not_stop_or_change_pid": true,
+  "failed_build_preserved_previous_binary": true,
+  "receiver_was_not_started": true,
+  "restart_script_syntax_exit": 0,
+  "build_script_syntax_exit": 0
+}

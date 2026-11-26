@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "phase": "phase-7a",
+  "owner": "@DNPMBHC",
+  "target_alias": "target-cn",
+  "golden_id": "golden-win11-arm64-v1",
+  "golden_manifest_sha256": "1988c3217b4c97d53818ac72831360715bf0438543288cc1cb4001a9f00fa846",
+  "ephemeral_clone_alias": "ephemeral-p7a-valorant",
+  "captured_at_utc": "2026-11-24T11:49:51.341150+00:00",
+  "five_dimension_status": {
+    "implementation": "completed",
+    "local_gates": "passed",
+    "real_guest_run": "executed_ui_lit_then_froze_on_swapchain_resize",
+    "vendor_vm_support": "unknown",
+    "protected_lobby_and_match": "not_verified"
+  },
+  "dxgi_and_vulkan_preflight": {
+    "wmi_adapter_ram_bytes": 0,
+    "ue4_dxgi_dedicated_vram_mb": 8192,
+    "ue4_dxgi_shared_system_mb": 3067,
+    "ue4_texture_pool_mb": 6807,
+    "adapter_ram_zero_hypothesis_refuted": true,
+    "vulkan_icd_api_version": "1.4.340",
+    "vulkan_icd_library": "vulkan_virtio.dll",
+    "venus_preflight_probe": {
+      "neptune_umd_fps": 143.823,
+      "neptune_umd_max_lsb": 0,
+      "dxvk_venus_adapter": "Virtio-GPU Venus (Apple M4)",
+      "dxvk_venus_vram_mib": 16384,
+      "dxvk_venus_feature_level": "11_0",
+      "dxvk_venus_fps": 62.438,
+      "dxvk_venus_max_lsb": 0,
+      "dxvk_venus_byte_exact": true
+    }
+  },
+  "neptune_baseline_run": {
+    "mode": "default_fullscreen_5120x2160_oscillating_with_1024x768",
+    "visual_outcome": "entered_fullscreen_game_ui_then_froze",
+    "ace_arm64_drivers_running": [
+      "ACE-CORE10405",
+      "ACE-CORE20405"
+    ],
+    "ace_kernel_protection_verified": "SYSTEM Stop-Process returned Access is denied",
+    "shipping_process_peak_ws_mb": 953.83,
+    "shipping_process_threads": 134,
+    "rendered_frame_rate_before_freeze_approx_fps": "108-112",
+    "frozen_at_frame": 861,
+    "cef_gpu_error_at_freeze": "Passthrough is not supported, GL is disabled",
+    "host_qemu_render_server_cpu_after_freeze_percent": 0.0,
+    "shootergame_log_sha256": "77c387c59c6c72de228a4a0113bc478da0924d16d4f4aded12c4c15f71ebc43d",
+    "shootergame_log_lines": 1113
+  },
+  "venus_dxvk_run": {
+    "mode": "1280x720_windowed_with_dropin_dxvk_2.5.3",
+    "dxvk_version": "2.5.3",
+    "dxvk_dlls_present_before_launch": [
+      "d3d11.dll",
+      "dxgi.dll"
+    ],
+    "dxvk_dlls_present_after_launch": [],
+    "dxvk_logs_created": [],
+    "ace_dxvk_reaction": {
+      "status": "purged_by_official_launcher_integrity_check_before_game_launch",
+      "explicit_error_popup": false,
+      "fallback_backend": "system_d3d11_whql_neptune_umd"
+    },
+    "ace_game_sys_observed": {
+      "pe_machine": "0x8664",
+      "authenticode_status": "Valid",
+      "size_bytes": 1840456,
+      "scm_event_id": 7000,
+      "scm_exit_code": 1275
+    },
+    "visual_outcome": "entered_windowed_character_name_screen_cursor_hidden_froze_on_window_resize",
+    "shipping_process_ws_mb": 1434.16,
+    "shipping_process_threads": 130,
+    "frozen_at_frame": 132,
+    "host_qemu_metrics": {
+      "samples": 3,
+      "qemu_render_server_cpu_mean": 2.47,
+      "qemu_render_server_cpu_max": 6.5,
+      "qemu_worker_cpu_mean": 117.9,
+      "total_hypervisor_rss_mib_mean": 1197.68
+    },
+    "root_cause_code": "neptune_umd_swapchain_resize_deadlock"
+  },
+  "zero_drift_verification": {
+    "ephemeral_deleted": true,
+    "golden_readonly": true,
+    "golden_config_sha256": "5e3b775ca4fd05a81ae9e1f2c5d61abe576334340bd51b851b6d65ab89cff390",
+    "golden_bundle_sha256": "784ba01e8c45bc0e32fb81849a359b909a3d87b15cb8486db49df6467bcf4947",
+    "golden_zero_drift": true,
+    "primary_vm_a_config_sha256": "10793d07678f8621e1d75ada73443b3f14e272036dde4f90b277267c2e1033b7",
+    "primary_vm_a_bundle_sha256": "ccd2d2de4981b8b0ca7705824ee6cc4166828651a03f198fd518ba81771caae5",
+    "primary_zero_drift": true,
+    "cache_disk_untouched": true
+  },
+  "compliance": {
+    "modified_game_or_ace_binaries": false,
+    "hidden_virtualization_or_spoofed_hardware": false,
+    "automated_auth_or_captcha": false,
+    "primary_vm_a_untouched": true,
+    "golden_image_untouched": true
+  }
+}

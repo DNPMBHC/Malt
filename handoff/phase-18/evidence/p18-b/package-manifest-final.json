@@ -1,0 +1,173 @@
+{
+  "schema": "phase-15b-malt-embedded-dmg-v1",
+  "owner": "@DNPMBHC",
+  "capturedAt": "2026-11-26T11:09:11.678184+00:00",
+  "brand": "Malt",
+  "cfBundleDisplayName": "Malt",
+  "configuration": "Release",
+  "architecture": "arm64",
+  "marketingVersion": "2.3.5",
+  "hardenedRuntimeEnabled": true,
+  "codesignIdentityKind": "adhoc",
+  "codesignVerifyDeepStrictPassed": true,
+  "launchSmokeTestPassed": true,
+  "launchSmokeVerification": {
+    "updaterRemoval": {
+      "loadCommandsChecked": true,
+      "sparkleLinked": false,
+      "sparkleBundled": false,
+      "passed": true
+    },
+    "entryPoint": {
+      "foundationEntryPointEmbedded": true,
+      "passed": true
+    },
+    "launch": {
+      "requiredSurvivalSeconds": 4,
+      "observedSeconds": 4.001,
+      "survived": true,
+      "exitCodeDuringObservation": null,
+      "dyldErrorCount": 0,
+      "requiredMarkerObserved": true,
+      "passed": true
+    },
+    "passed": true,
+    "temporaryFoundationHome": true,
+    "foundationOnlySmoke": true,
+    "scope": "Foundation entry point and dyld survival only; no SwiftUI, guest or game execution"
+  },
+  "entitlements": {
+    "com.apple.security.automation.apple-events": true,
+    "com.apple.security.device.audio-input": true,
+    "com.apple.security.device.camera": true
+  },
+  "forbiddenEntitlementsFound": [],
+  "hardenedRuntimeVerification": {
+    "app": {
+      "signatureVerified": true,
+      "runtimeFlagVerified": true
+    },
+    "cli": {
+      "signatureVerified": true,
+      "runtimeFlagVerified": true
+    },
+    "passed": true
+  },
+  "bundlePurityPassed": true,
+  "requiredResourcesVerified": true,
+  "embeddedRuntime": {
+    "requested": true,
+    "helperBundled": true,
+    "scriptsBundled": true,
+    "note": "embedded_helper_and_scripts",
+    "lsuiElementEnabled": true,
+    "helperBinarySHA256": "3fba151cbb3965e0b7991fd0ba7ebbc8e856e7e2459e824378e76dc8f0d0c9ab",
+    "userNetProxyBundled": true,
+    "userNetProxySHA256": "e6a79698533d5bb3c4690606e7d3223a6b0d833bfa5f7f7f6555f0afa5752eed",
+    "userNetProxySelfCheck": {
+      "passed": true,
+      "protocols": [
+        "tcp",
+        "udp",
+        "icmp",
+        "arp",
+        "dhcp",
+        "dns"
+      ],
+      "qosUserInteractive": true,
+      "transports": [
+        "unix",
+        "tcp4"
+      ],
+      "zeroPrivilege": true
+    },
+    "bundledScripts": [
+      "PROVISIONING.md",
+      "PROVISIONING.zh-Hans.md",
+      "anticheat-minimal-win11-arm64.json",
+      "apply-optimizer.ps1",
+      "golden_guest_manager.py",
+      "kiosk-app-shell.ps1",
+      "rollback-optimizer.ps1"
+    ]
+  },
+  "runtimePayload": {
+    "schema": "runtime-payload-v1-verification",
+    "owner": "@DNPMBHC",
+    "resourceCount": 1483,
+    "problems": [],
+    "requiredResourcesVerified": true,
+    "signatureChecksPassed": true,
+    "pythonChecks": {
+      "isolatedEnvironment": true,
+      "standardLibraryImportsPassed": true,
+      "managerHelpPassed": true
+    },
+    "dependencyChecks": {
+      "machOCount": 165,
+      "externalAbsoluteDependencyCount": 0,
+      "systemOrRelativeDependenciesOnly": true
+    },
+    "prerequisites": {
+      "externalSetupRequired": true,
+      "guestImageBundled": false,
+      "nativeNetworkDistributionRequiresNotarization": true,
+      "wineRuntimeBundled": false
+    },
+    "daemonInstalledOrRegistered": false,
+    "gameLaunchVerified": false,
+    "cleanMachineVerified": false,
+    "passed": true
+  },
+  "externalSetupRequired": true,
+  "gameLaunchVerified": false,
+  "distributionAssessment": {
+    "gatekeeperAccepted": false,
+    "assessmentExitCode": 3,
+    "developerIDAuthorityVerified": false,
+    "deepStrictSignatureVerified": true,
+    "teamIdentifierPresent": false,
+    "secureTimestampPresent": false,
+    "stapledNotarizationValidated": false,
+    "gatekeeperNotarizedSource": false,
+    "notarizationVerified": false,
+    "distributable": false,
+    "scope": "Build-host policy and signing evidence; no other physical Mac verification",
+    "passed": true
+  },
+  "cleanMachineGameLaunchVerified": false,
+  "distributionReady": false,
+  "notarizationVerified": false,
+  "vulkanBackend": {
+    "bundled": true,
+    "x86_64SliceVerified": true,
+    "universalLoaderVerified": true,
+    "relativeICDPathVerified": true,
+    "features": {
+      "geometryShader": true,
+      "fillModeNonSolid": true,
+      "apiVersion": 4211056,
+      "driverVersion": 109457507
+    },
+    "vulkanLoaderSHA256": "0bcd62c6b3bcba4ef7c82344da3eb058892bb00b56b75ac6a6e7c8765a208c85",
+    "driverSHA256": "ed4615a26f74c7bece748cfb6bb3930fee379a2dcf3a634ca4e57c59a4bfdf63",
+    "icdManifestSHA256": "1aa4f7ed99d7ce2d69e3e4e6402d11d3f0fbe1dce1fb200054177904a9dadf9d"
+  },
+  "artifacts": {
+    "appBinarySHA256": "74c78b073d88945e945848f455bfce5f8e6385830aa45543030434cf2469fd81",
+    "cliBinarySHA256": "0567607cee695ee8cb33ca4b0a5c81466e7a0417052ab006909291ef5a13386b",
+    "compatibilityMatrixSHA256": "0545f3c83c69d3cb3b81ef2b18f742446bf3ce2b5a45e8a084b7cfee71c3c34a",
+    "runtimeManifestSHA256": "d304bf46376750a8a8e3881823e7be97e8840a8ceb817351f68e336587e7f446",
+    "dmg": {
+      "filename": "Malt.dmg",
+      "relativePath": "Whisky/build/release/Malt.dmg",
+      "pathScope": "workspace-relative",
+      "sizeBytes": 378083249,
+      "sizeMiB": 360.568,
+      "sha256": "20807cf318d4f27c3c439c6d14999ed45f8ad51f0bd8ed787d0f5ee3af2ee3ec",
+      "applicationsSymlinkPresent": true,
+      "readOnlyCompressedUDZO": true
+    }
+  },
+  "passed": true
+}

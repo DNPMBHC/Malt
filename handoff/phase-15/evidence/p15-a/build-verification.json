@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "owner": "@DNPMBHC",
+  "verified_at_utc": "2026-11-25T17:41:06.834213+00:00",
+  "custom_app_alias": "UTM-Custom.app",
+  "custom_app_exists": true,
+  "codesign_strict_passed": true,
+  "utm_binary_sha256": "e2abf4d6af9da53887303ecda0fca6e53f00efdac7b65d4ea38af1aad1cbb7e3",
+  "patch09_binary_markers": {
+    "IOSurface Direct Blit Present": true,
+    "UTM_IOSURFACE_DIRECT_PRESENT": true,
+    "UTM_VIRTIO_MOUSE": true,
+    "UTM_DISABLE_USB_REDIR": true,
+    "virtio-mouse-pci": true
+  },
+  "all_patch09_markers_present": true,
+  "original_utm_app_untouched_codesign_ok": true,
+  "vmnet_bridge_daemon_audit": {
+    "build_ok": true,
+    "self_check": {
+      "ok": true,
+      "version": "1.0.0-p15a",
+      "uid": 501,
+      "vmnet_symbols_linked": true,
+      "default_socket": "/var/run/malt-vmnet-bridge.sock"
+    },
+    "plist_template_lint_ok": true,
+    "daemon_status": {
+      "daemon_label": "com.malt.vmnet-bridge",
+      "plist_installed": false,
+      "socket_path": "/var/run/malt-vmnet-bridge.sock",
+      "socket_active": false
+    },
+    "host_network_capabilities": {
+      "official_utm_vmnet_entitled": true,
+      "malt_vmnet_bridge_source_ready": true,
+      "malt_vmnet_bridge_plist_installed": false,
+      "malt_vmnet_bridge_socket_active": false,
+      "malt_vmnet_bridge_socket_path": null,
+      "socket_vmnet_installed": false,
+      "socket_vmnet_socket_active": false,
+      "socket_vmnet_socket_path": null,
+      "active_vmnet_daemon_socket": null,
+      "recommended_native_mode": "vmnet-shared",
+      "adhoc_recommended_mode": "socket-stream",
+      "adhoc_sandbox_compatible_mode": "socket-stream"
+    },
+    "note": "malt-vmnet-bridge compiled and LaunchDaemon template verified; not yet sudo-installed on this headless run, so ad-hoc UTM-Custom seamlessly falls back to the zero-privilege full TCP+UDP+ICMP high-QoS proxy."
+  },
+  "passed": true
+}

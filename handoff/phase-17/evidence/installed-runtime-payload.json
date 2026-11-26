@@ -1,0 +1,28 @@
+{
+  "schema": "runtime-payload-v1-verification",
+  "owner": "@DNPMBHC",
+  "resourceCount": 1479,
+  "problems": [],
+  "requiredResourcesVerified": true,
+  "signatureChecksPassed": true,
+  "pythonChecks": {
+    "isolatedEnvironment": true,
+    "standardLibraryImportsPassed": true,
+    "managerHelpPassed": true
+  },
+  "dependencyChecks": {
+    "machOCount": 164,
+    "externalAbsoluteDependencyCount": 0,
+    "systemOrRelativeDependenciesOnly": true
+  },
+  "prerequisites": {
+    "externalSetupRequired": true,
+    "guestImageBundled": false,
+    "nativeNetworkDistributionRequiresNotarization": true,
+    "wineRuntimeBundled": false
+  },
+  "daemonInstalledOrRegistered": false,
+  "gameLaunchVerified": false,
+  "cleanMachineVerified": false,
+  "passed": true
+}

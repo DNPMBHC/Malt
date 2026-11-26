@@ -1,0 +1,118 @@
+{
+  "arm": "wine_dxvk_moltenvk",
+  "domain": "host_wine",
+  "backend": "dxvk_moltenvk",
+  "round": 1,
+  "metadata": {
+    "schema_version": 1,
+    "adapter_description": "Apple M4",
+    "vendor_id": 4203,
+    "device_id": 1009,
+    "adapter_flags": 0,
+    "adapter_is_software": false,
+    "selected_feature_level": "11_0",
+    "width": 1280,
+    "height": 720,
+    "draws_per_frame": 16384,
+    "cb_updates_per_frame": 4096,
+    "passes_per_frame": 2,
+    "dynamic_vertex_bytes_per_frame": 9436608,
+    "geometry_objects": 16383,
+    "scene_variant": "dense_configurable_grid",
+    "async_swapchain": true,
+    "initialization_ms": 198.063
+  },
+  "completion": {
+    "measured_frames": 120,
+    "warmup_ms": 445.676,
+    "measurement_wall_ms": 323.176,
+    "gpu_drain_ms": 6.326,
+    "throughput_including_gpu_drain_fps": 371.314587,
+    "draws_per_frame": 16384,
+    "total_draw_calls": 1966080,
+    "async_swapchain": true
+  },
+  "csv_summary": {
+    "frame_count": 120,
+    "interval_sample_count": 119,
+    "derived_fps_from_intervals": 376.4246804265176,
+    "frame_interval_ms": {
+      "mean": 2.656573949579832,
+      "p50": 2.4914,
+      "p95": 4.0894699999999995,
+      "p99": 5.013445999999998
+    },
+    "cpu_submit_ms": {
+      "mean": 2.6165533333333335,
+      "p95": 4.0674,
+      "p99": 4.993040000000001
+    },
+    "process_resident_mib_mean": 146.60852864583333,
+    "device_memory_mib_mean": 232.84375
+  },
+  "host_cpu": {
+    "method": "libproc RUSAGE_INFO_V0 user+system counter deltas; PID family and creation-time binding",
+    "scope": "measurement phase only; roots and descendants",
+    "sample_count": 5,
+    "sample_errors": 0,
+    "covered_wall_seconds": 0.3366669159986486,
+    "cpu_seconds": 0.47733225,
+    "host_cpu_percent_mean": 141.78175143348986,
+    "host_cpu_percent_peak": 155.17234892521574,
+    "host_logical_cpu_count": 10,
+    "host_capacity_percent_mean": 14.178175143348986,
+    "units": "100 percent equals one logical CPU; zeros retained",
+    "samples": [
+      {
+        "wall_seconds": 0.08367508299852489,
+        "cpu_seconds": 0.1266768750000001,
+        "cpu_percent": 151.39139449940348,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07823566699880757,
+        "cpu_seconds": 0.11477312499999978,
+        "cpu_percent": 146.70179139873517,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07451120800033095,
+        "cpu_seconds": 0.1156207916666668,
+        "cpu_percent": 155.17234892521574,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07853479199911817,
+        "cpu_seconds": 0.11197033333333331,
+        "cpu_percent": 142.5741769769895,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.021710166001867037,
+        "cpu_seconds": 0.00829112500000001,
+        "cpu_percent": 38.19005805523084,
+        "live_process_count": 2
+      }
+    ],
+    "limitation": "Counter sampling can miss CPU between the final available counter and process exit"
+  },
+  "native_exit_code": 0,
+  "probe_sha256": "7a71fc3710fc13316c092f822a904e9558b7f7ad81bc52754717f8d1f797bec5",
+  "backend_binding": {
+    "dll_sha256": "7a0442591dfee7e3729d26a598d3b490f917fbe8ebf9da3bb75410e8d095d302",
+    "requested_backend": "dxvk_moltenvk",
+    "library_load_log": "wine_dxvk_moltenvk-r1.stderr.log",
+    "backend_logs": [
+      {
+        "file": "wine_dxvk_moltenvk-r1-bench_real3d_probe-heavy_d3d11.log",
+        "sha256": "3bdc5f04dd15d5e54bca00d26fb2b3c08b9e6ec465bfd3a9473d27ce645df4a5"
+      }
+    ]
+  },
+  "files": {
+    "csv": "wine_dxvk_moltenvk-r1.csv",
+    "csv_sha256": "d985d7eb2f0dc4eb4e552a2c75050564e767dcf05b95f11f71426bc43bf756c6",
+    "stdout": "wine_dxvk_moltenvk-r1.stdout.log",
+    "stderr": "wine_dxvk_moltenvk-r1.stderr.log"
+  }
+}
