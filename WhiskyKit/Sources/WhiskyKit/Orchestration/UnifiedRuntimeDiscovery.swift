@@ -60,15 +60,18 @@ public struct ResolvedRuntimePaths: Equatable, Sendable {
   public let usesEmbeddedScripts: Bool
   public let playableVMBundlePath: String?
   public let pythonExecutablePath: String?
+  public let optimizerApplyScriptPath: String?
+  public let optimizerRollbackScriptPath: String?
+  public let optimizerProfilePath: String?
+  public let userNetProxyBinaryPath: String?
 
   public init(
-    containerHelperBinaryPath: String?,
-    isEmbeddedHelper: Bool,
-    goldenManagerScriptPath: String?,
-    kioskShellScriptPath: String?,
-    usesEmbeddedScripts: Bool,
-    playableVMBundlePath: String?,
-    pythonExecutablePath: String? = nil
+    containerHelperBinaryPath: String?, isEmbeddedHelper: Bool,
+    goldenManagerScriptPath: String?, kioskShellScriptPath: String?,
+    usesEmbeddedScripts: Bool, playableVMBundlePath: String?,
+    pythonExecutablePath: String? = nil, optimizerApplyScriptPath: String? = nil,
+    optimizerRollbackScriptPath: String? = nil, optimizerProfilePath: String? = nil,
+    userNetProxyBinaryPath: String? = nil
   ) {
     self.containerHelperBinaryPath = containerHelperBinaryPath
     self.isEmbeddedHelper = isEmbeddedHelper
@@ -77,6 +80,10 @@ public struct ResolvedRuntimePaths: Equatable, Sendable {
     self.usesEmbeddedScripts = usesEmbeddedScripts
     self.playableVMBundlePath = playableVMBundlePath
     self.pythonExecutablePath = pythonExecutablePath
+    self.optimizerApplyScriptPath = optimizerApplyScriptPath
+    self.optimizerRollbackScriptPath = optimizerRollbackScriptPath
+    self.optimizerProfilePath = optimizerProfilePath
+    self.userNetProxyBinaryPath = userNetProxyBinaryPath
   }
 }
 
@@ -92,42 +99,29 @@ public enum UnifiedRuntimeDiscovery {
   ) -> ResolvedRuntimePaths {
     let appBundleURL = configuration.appBundleURL ?? Bundle.main.bundleURL
     let (helperBinary, isEmbedded) = resolveContainerHelperBinary(
-      appBundleURL: appBundleURL,
-      configuration: configuration,
-      fileManager: fileManager
-    )
+      appBundleURL: appBundleURL, configuration: configuration, fileManager: fileManager)
     let (goldenScript, goldenEmbedded) = resolveScript(
-      fileName: "golden_guest_manager.py",
-      explicitPath: configuration.goldenManagerScriptPath,
-      devRelativePath: "graphics-lab/golden_guest_manager.py",
-      configuration: configuration,
-      fileManager: fileManager
-    )
+      fileName: "golden_guest_manager.py", explicitPath: configuration.goldenManagerScriptPath,
+      devRelativePath: "graphics-lab/golden_guest_manager.py", configuration: configuration, fileManager: fileManager)
     let (kioskScript, kioskEmbedded) = resolveScript(
-      fileName: "kiosk-app-shell.ps1",
-      explicitPath: configuration.kioskShellScriptPath,
+      fileName: "kiosk-app-shell.ps1", explicitPath: configuration.kioskShellScriptPath,
       devRelativePath: "Whisky/Modules/guest-optimizer/scripts/kiosk-app-shell.ps1",
-      configuration: configuration,
-      fileManager: fileManager
-    )
+      configuration: configuration, fileManager: fileManager)
     let playableVM = resolvePlayableVMBundle(
       explicitPath: configuration.defaultPlayableVMBundlePath,
       selectionStorageURL: configuration.playableSelectionStorageURL,
       volumesRootURL: configuration.volumesRootURL,
-      localSearchRoots: configuration.localVMSearchRoots
-        ?? defaultLocalVMSearchRoots(fileManager: fileManager),
-      fileManager: fileManager
-    )
-
+      localSearchRoots: configuration.localVMSearchRoots ?? defaultLocalVMSearchRoots(fileManager: fileManager),
+      fileManager: fileManager)
+    let extras = resolveProvisioningExtras(
+      appBundleURL: appBundleURL, configuration: configuration, fileManager: fileManager)
     return ResolvedRuntimePaths(
-      containerHelperBinaryPath: helperBinary,
-      isEmbeddedHelper: isEmbedded,
-      goldenManagerScriptPath: goldenScript,
-      kioskShellScriptPath: kioskScript,
-      usesEmbeddedScripts: goldenEmbedded && kioskEmbedded,
-      playableVMBundlePath: playableVM,
-      pythonExecutablePath: resolvePython(configuration: configuration, fileManager: fileManager)
-    )
+      containerHelperBinaryPath: helperBinary, isEmbeddedHelper: isEmbedded,
+      goldenManagerScriptPath: goldenScript, kioskShellScriptPath: kioskScript,
+      usesEmbeddedScripts: goldenEmbedded && kioskEmbedded, playableVMBundlePath: playableVM,
+      pythonExecutablePath: resolvePython(configuration: configuration, fileManager: fileManager),
+      optimizerApplyScriptPath: extras.applyScript, optimizerRollbackScriptPath: extras.rollbackScript,
+      optimizerProfilePath: extras.profile, userNetProxyBinaryPath: extras.userNetProxy)
   }
 
   public static func detectNativeVMNetStatus(
@@ -135,21 +129,12 @@ public enum UnifiedRuntimeDiscovery {
     daemonPlistCandidates: [String] = ["/Library/LaunchDaemons/com.malt.vmnet-bridge.plist"],
     fileManager: FileManager = .default
   ) -> NativeVMNetStatus {
-    let activeSocket = socketCandidates.first {
-      NativeNetworkPermissionService.isSocketReady(path: $0)
-    }
-    let daemonInstalled =
-      activeSocket != nil
-      || daemonPlistCandidates.contains {
-        fileManager.fileExists(atPath: $0)
-      }
-    let socketActive = activeSocket != nil
+    let activeSocket = socketCandidates.first { NativeNetworkPermissionService.isSocketReady(path: $0) }
+    let daemonInstalled = activeSocket != nil
+      || daemonPlistCandidates.contains { fileManager.fileExists(atPath: $0) }
     return NativeVMNetStatus(
-      daemonInstalled: daemonInstalled,
-      socketActive: socketActive,
-      socketPath: activeSocket,
-      activeMode: .notVerified
-    )
+      daemonInstalled: daemonInstalled, socketActive: activeSocket != nil,
+      socketPath: activeSocket, activeMode: .notVerified)
   }
 
   /// Scans external SSD volumes for persistent playable `.utm` bundles, strictly excluding
@@ -211,6 +196,30 @@ extension UnifiedRuntimeDiscovery {
       ?? app.appending(path: "Contents/Frameworks/Python.framework/Versions/Current/bin/python3")
     return fileManager.isExecutableFile(atPath: python.path(percentEncoded: false))
       ? python.path(percentEncoded: false) : nil
+  }
+
+  private struct ProvisioningExtras {
+    let applyScript, rollbackScript, profile, userNetProxy: String?
+  }
+
+  private static func resolveProvisioningExtras(
+    appBundleURL: URL, configuration: UnifiedOrchestratorConfiguration, fileManager: FileManager
+  ) -> ProvisioningExtras {
+    func find(_ name: String, _ rel: String) -> String? {
+      resolveScript(fileName: name, explicitPath: nil, devRelativePath: rel,
+                    configuration: configuration, fileManager: fileManager).path
+    }
+    let embeddedProxy = appBundleURL.appending(path: "Contents/Helpers/malt-net-proxy").path(percentEncoded: false)
+    let explicitProxy = configuration.userNetProxyBinaryURL?.path(percentEncoded: false)
+    let proxy = fileManager.isExecutableFile(atPath: embeddedProxy) ? embeddedProxy
+      : (explicitProxy.flatMap { fileManager.isExecutableFile(atPath: $0) ? $0 : nil })
+    let profileRel = "Whisky/Modules/guest-optimizer/profiles/anticheat-minimal-win11-arm64.json"
+    return ProvisioningExtras(
+      applyScript: find("apply-optimizer.ps1", "Whisky/Modules/guest-optimizer/scripts/apply-optimizer.ps1"),
+      rollbackScript: find("rollback-optimizer.ps1", "Whisky/Modules/guest-optimizer/scripts/rollback-optimizer.ps1"),
+      profile: find("anticheat-minimal-win11-arm64.json", profileRel),
+      userNetProxy: proxy
+    )
   }
 
   private static func resolveContainerHelperBinary(

@@ -14,6 +14,7 @@ struct UnifiedGameLibraryView: View {
     @State private var searchText: String = ""
     @State private var engineFilter: UnifiedEngineKind?
     @State private var launchErrorMessage: String?
+    @State private var discoveryEntry: UnifiedGameEntry?
 
     private let gridColumns = [
         GridItem(.adaptive(minimum: 240), spacing: 16, alignment: .top)
@@ -60,10 +61,13 @@ struct UnifiedGameLibraryView: View {
 
                 LazyVGrid(columns: gridColumns, alignment: .leading, spacing: 16) {
                     ForEach(filteredEntries) { entry in
+                        let isEntryLaunching = orchestrator.activeEntryID == entry.id
                         UnifiedGameCard(
                             entry: entry,
-                            isLaunching: orchestrator.activeEntryID == entry.id,
+                            isLaunching: isEntryLaunching,
+                            launchStageText: isEntryLaunching ? launchStageLabel(for: entry) : nil,
                             onLaunch: { launchGame(entry) },
+                            onScanExecutable: { discoveryEntry = entry },
                             onConfigureExecutable: { configureExecutable(for: entry) },
                             onSelectTier: { tier in updateTier(for: entry, tier: tier) },
                             onInheritGlobalSettings: { inheritGlobalSettings(for: entry) },
@@ -73,6 +77,14 @@ struct UnifiedGameLibraryView: View {
                     }
                 }
             }
+        }
+        .sheet(item: $discoveryEntry) { entry in
+            InstalledGameDiscoverySheet(
+                entry: entry,
+                orchestrator: orchestrator,
+                onRegistered: { _ in },
+                onManualFallback: { configureExecutable(for: entry) }
+            )
         }
         .alert("启动失败", isPresented: Binding(
             get: { launchErrorMessage != nil },
@@ -149,6 +161,17 @@ struct UnifiedGameLibraryView: View {
         engineFilter = nil
     }
 
+    private func launchStageLabel(for entry: UnifiedGameEntry) -> String {
+        let status = orchestrator.lastStatusMessage.trimmingCharacters(in: .whitespacesAndNewlines)
+        if !status.isEmpty {
+            return InstalledGameDiscoverySection.redactedMessage(status)
+        }
+        if entry.engineKind == .antiCheatVM {
+            return "正在准备受管网络并启动无桌面应用壳…"
+        }
+        return "正在准备原生转译环境…"
+    }
+
     private func launchGame(_ entry: UnifiedGameEntry) {
         let settings = preferences.runtimeSettings
         Task {
@@ -156,48 +179,17 @@ struct UnifiedGameLibraryView: View {
                 try await orchestrator.launch(entry: entry, settings: settings)
             } catch {
                 await MainActor.run {
-                    launchErrorMessage = error.localizedDescription
+                    launchErrorMessage = InstalledGameDiscoverySection.redactedMessage(error.localizedDescription)
                 }
             }
         }
     }
 
     private func configureExecutable(for entry: UnifiedGameEntry) {
-        let path: String
-        if entry.engineKind == .antiCheatVM {
-            let alert = NSAlert()
-            alert.messageText = "设置游戏主程序"
-            alert.informativeText = "请在安装完成后填写容器内游戏 .exe 的 Windows 完整路径。"
-            let field = NSTextField(frame: NSRect(x: 0, y: 0, width: 420, height: 24))
-            field.placeholderString = #"C:\Games\Game\game.exe"#
-            if entry.installationState != .installerRequested { field.stringValue = entry.executablePath }
-            alert.accessoryView = field
-            alert.addButton(withTitle: "保存")
-            alert.addButton(withTitle: "取消")
-            alert.window.initialFirstResponder = field
-            guard alert.runModal() == .alertFirstButtonReturn else { return }
-            path = field.stringValue.trimmingCharacters(in: .whitespacesAndNewlines)
-            let isAbsolute = path.range(of: #"^[A-Za-z]:[\\/]"#, options: .regularExpression) != nil
-                || path.hasPrefix(#"\\"#)
-            guard isAbsolute, path.lowercased().hasSuffix(".exe"),
-                  !path.contains(where: { $0.isNewline || $0.asciiValue == 0 }) else {
-                launchErrorMessage = "请输入容器内以盘符或网络共享开头的 .exe 完整路径。"
-                return
-            }
-        } else {
-            let panel = NSOpenPanel()
-            panel.canChooseFiles = true
-            panel.canChooseDirectories = false
-            panel.allowsMultipleSelection = false
-            panel.title = "选择已安装游戏的主程序"
-            panel.directoryURL = entry.bottleURL?.appending(path: "drive_c")
-            guard panel.runModal() == .OK, let url = panel.url else { return }
-            guard url.pathExtension.lowercased() == "exe" else {
-                launchErrorMessage = "请选择已安装游戏的 .exe 主程序。"
-                return
-            }
-            path = url.path
-        }
+        guard let path = InstalledGameDiscoverySection.promptManualExecutablePath(
+            for: entry,
+            onError: { launchErrorMessage = $0 }
+        ) else { return }
         var updated = entry
         updated.executablePath = path
         updated.installationState = .ready
@@ -232,12 +224,18 @@ struct UnifiedGameLibraryView: View {
 private struct UnifiedGameCard: View {
     let entry: UnifiedGameEntry
     let isLaunching: Bool
+    let launchStageText: String?
     let onLaunch: () -> Void
+    let onScanExecutable: () -> Void
     let onConfigureExecutable: () -> Void
     let onSelectTier: (PerformancePresetTier) -> Void
     let onInheritGlobalSettings: () -> Void
     let onRevealInFinder: () -> Void
     let onRemove: () -> Void
+
+    private var isPendingRegistration: Bool {
+        entry.installationState == .installerRequested
+    }
 
     private var engineTitle: String {
         entry.engineKind == .antiCheatVM ? "硬件加速容器" : "原生转译"
@@ -277,8 +275,15 @@ private struct UnifiedGameCard: View {
                     Text(performanceTitle)
                         .font(.caption)
                         .foregroundStyle(.secondary)
-                    if entry.installationState == .installerRequested {
-                        AppStatusLabel(text: "待选择游戏主程序", systemImage: "exclamationmark.circle", tint: .orange)
+                    if isPendingRegistration {
+                        AppStatusLabel(
+                            text: "安装器已启动 · 待扫描登记入口",
+                            systemImage: "exclamationmark.circle",
+                            tint: .orange
+                        )
+                    } else if isLaunching, let stage = launchStageText {
+                        AppStatusLabel(text: stage, systemImage: "play.circle", tint: .accentColor)
+                            .fixedSize(horizontal: false, vertical: true)
                     }
                 }
 
@@ -289,20 +294,14 @@ private struct UnifiedGameCard: View {
                     .foregroundStyle(.secondary)
                     .lineLimit(1)
 
-                Button(action: entry.installationState == .installerRequested ? onConfigureExecutable : onLaunch) {
+                Button(action: isPendingRegistration ? onScanExecutable : onLaunch) {
                     HStack(spacing: 8) {
                         if isLaunching {
                             ProgressView().controlSize(.small)
                         } else {
-                            Image(
-                                systemName: entry.installationState == .installerRequested
-                                    ? "slider.horizontal.3" : "play.fill"
-                            )
+                            Image(systemName: isPendingRegistration ? "magnifyingglass" : "play.fill")
                         }
-                        Text(
-                            isLaunching ? "正在启动…"
-                                : (entry.installationState == .installerRequested ? "设置游戏主程序" : "开始游戏")
-                        )
+                        Text(isLaunching ? "启动中…" : (isPendingRegistration ? "扫描游戏入口" : "开始游戏"))
                             .fontWeight(.semibold)
                     }
                     .frame(maxWidth: .infinity)
@@ -341,7 +340,10 @@ private struct UnifiedGameCard: View {
                 }
             }
         }
-        Button("更改游戏主程序…", action: onConfigureExecutable)
+        if entry.engineKind == .antiCheatVM {
+            Button("扫描游戏入口…", action: onScanExecutable)
+        }
+        Button("手动设置主程序…", action: onConfigureExecutable)
         Button("在访达中显示", action: onRevealInFinder)
         Divider()
         Button("从游戏库移除", role: .destructive, action: onRemove)

@@ -6,12 +6,20 @@ struct GuestAppShellSession: Equatable, Sendable {
   let id: UUID
   let vmIdentifier: String
   let targetExecutable: String
+  let expectedGameProcessNames: Set<String>
   let createdAt: Date
 
-  init(vmIdentifier: String, targetExecutable: String, id: UUID = UUID(), createdAt: Date = .now) {
+  init(
+    vmIdentifier: String,
+    targetExecutable: String,
+    expectedGameProcessNames: Set<String> = [],
+    id: UUID = UUID(),
+    createdAt: Date = .now
+  ) {
     self.id = id
     self.vmIdentifier = vmIdentifier
     self.targetExecutable = targetExecutable
+    self.expectedGameProcessNames = Set(expectedGameProcessNames.map { $0.lowercased() })
     self.createdAt = createdAt
   }
 
@@ -37,6 +45,16 @@ struct GuestAppShellProcessIdentity: Equatable, Sendable {
   let path: String
 }
 
+/// One verified read-only node in the Win32_Process ParentProcessId lineage chain.
+struct GuestAppShellLineageNode: Decodable, Equatable, Sendable {
+  let pid: Int
+  let parentPID: Int
+  let creationTicks: String
+  let createdAt: Double
+  let processName: String
+  let processPath: String
+}
+
 struct GuestAppShellSignal: Decodable, Equatable, Sendable {
   let schemaVersion: Int
   let sessionID: String
@@ -56,6 +74,12 @@ struct GuestAppShellSignal: Decodable, Equatable, Sendable {
   let sourceAction: String
   let sourcePID: Int
   let sourceObservedAt: Double
+  let foregroundProcessName: String?
+  let foregroundProcessPath: String?
+  let foregroundCreationTicks: String?
+  let foregroundCreatedAt: Double?
+  let foregroundWindowFullscreen: Bool?
+  let lineageChain: [GuestAppShellLineageNode]?
 
   var identity: GuestAppShellProcessIdentity? {
     guard rootPID > 0 else { return nil }
@@ -82,6 +106,12 @@ enum GuestAppShellSignalValidator {
     "valorant-win64-shipping", "deltaforceclient-win64-shipping", "d3d11_probe"
   ]
 
+  static let excludedUtilityProcessNames: Set<String> = [
+    "explorer", "cmd", "powershell", "pwsh", "conhost", "msiexec", "taskmgr",
+    "rundll32", "svchost", "searchhost", "shellexperiencehost", "startmenuexperiencehost",
+    "applicationframehost", "werfault", "notepad"
+  ]
+
   static func validate(
     _ data: Data, session: GuestAppShellSession, challenge: String,
     previous: GuestAppShellSignal? = nil, verifiedSourceTime: Double? = nil
@@ -104,8 +134,8 @@ enum GuestAppShellSignalValidator {
     }
     if signal.rootPID > 0 { try validateIdentity(signal, session: session) }
     if signal.event == "game_foreground" {
-      try validateForeground(signal, session: session, guestNow: envelope.guestNow,
-        verifiedSourceTime: verifiedSourceTime)
+      try validateForeground(
+        signal, session: session, guestNow: envelope.guestNow, verifiedSourceTime: verifiedSourceTime)
     } else if !["waiting", "compact", "exited", "failed"].contains(signal.event) {
       throw GuestAppShellValidationError.invalidResponse
     }
@@ -142,17 +172,103 @@ enum GuestAppShellSignalValidator {
     _ signal: GuestAppShellSignal, session: GuestAppShellSession, guestNow: Double,
     verifiedSourceTime: Double?
   ) throws {
-    guard signal.rootPID > 0, signal.foregroundPID == signal.rootPID, signal.sourcePID == signal.rootPID,
-      signal.sourceEvent == "game_foreground_detected", signal.sourceAction == "enter_fullscreen_gamemode",
-      knownGameProcessNames.contains(GuestAppShellSession.processName(for: session.targetExecutable)),
-      signal.sourceObservedAt.isFinite, signal.sourceObservedAt >= signal.sessionStartedAt,
-      signal.sourceObservedAt >= signal.processCreatedAt - 1, signal.sourceObservedAt <= signal.observedAt + 1
+    let allowedNames = knownGameProcessNames.union(session.expectedGameProcessNames)
+    guard signal.rootPID > 0,
+      signal.sourceEvent == "game_foreground_detected",
+      signal.sourceAction == "enter_fullscreen_gamemode",
+      signal.sourceObservedAt.isFinite,
+      signal.sourceObservedAt >= signal.sessionStartedAt,
+      signal.sourceObservedAt <= signal.observedAt + 1
     else { throw GuestAppShellValidationError.invalidResponse }
+
+    let minProcessCreatedAt: Double
+    if signal.foregroundPID == signal.rootPID {
+      guard signal.sourcePID == signal.rootPID,
+        allowedNames.contains(GuestAppShellSession.processName(for: session.targetExecutable))
+      else { throw GuestAppShellValidationError.invalidResponse }
+      minProcessCreatedAt = signal.processCreatedAt
+    } else {
+      let leaf = try validateDescendantLineage(signal, session: session, allowedNames: allowedNames)
+      minProcessCreatedAt = leaf.createdAt
+    }
+
+    guard signal.sourceObservedAt >= minProcessCreatedAt - 1 else {
+      throw GuestAppShellValidationError.invalidResponse
+    }
     if let verifiedSourceTime {
       guard signal.sourceObservedAt == verifiedSourceTime else {
         throw GuestAppShellValidationError.invalidResponse
       }
     } else if guestNow - signal.sourceObservedAt > 10 {
+      throw GuestAppShellValidationError.invalidResponse
+    }
+  }
+
+  private static func validateDescendantLineage(
+    _ signal: GuestAppShellSignal, session: GuestAppShellSession, allowedNames: Set<String>
+  ) throws -> GuestAppShellLineageNode {
+    guard signal.foregroundPID > 0,
+      signal.sourcePID == signal.foregroundPID,
+      let chain = signal.lineageChain,
+      (2...12).contains(chain.count),
+      let rootNode = chain.first,
+      let leafNode = chain.last
+    else { throw GuestAppShellValidationError.invalidResponse }
+
+    guard rootNode.pid == signal.rootPID,
+      rootNode.creationTicks == signal.processCreationTicks,
+      GuestAppShellSession.normalizedPath(rootNode.processPath)
+        == GuestAppShellSession.normalizedPath(session.targetExecutable)
+    else { throw GuestAppShellValidationError.invalidResponse }
+
+    var seenPIDs: Set<Int> = [rootNode.pid]
+    for index in 1..<chain.count {
+      let parent = chain[index - 1]
+      let child = chain[index]
+      guard child.pid > 0, seenPIDs.insert(child.pid).inserted,
+        child.parentPID == parent.pid,
+        let childTicks = UInt64(child.creationTicks), childTicks > 0,
+        child.createdAt.isFinite,
+        child.createdAt >= parent.createdAt - 1,
+        child.createdAt <= signal.observedAt + 1
+      else { throw GuestAppShellValidationError.invalidResponse }
+    }
+
+    guard leafNode.pid == signal.foregroundPID else {
+      throw GuestAppShellValidationError.invalidResponse
+    }
+    try validateDescendantLeafMetadata(signal, leaf: leafNode, allowedNames: allowedNames)
+    return leafNode
+  }
+
+  private static func validateDescendantLeafMetadata(
+    _ signal: GuestAppShellSignal, leaf: GuestAppShellLineageNode, allowedNames: Set<String>
+  ) throws {
+    let leafName = leaf.processName.lowercased()
+    let pathName = GuestAppShellSession.processName(for: leaf.processPath)
+    guard !leafName.isEmpty, leafName == pathName,
+      !excludedUtilityProcessNames.contains(leafName),
+      ContainerGuestDispatcher.isWindowsExecutablePath(leaf.processPath),
+      leaf.processPath.lowercased().hasSuffix(".exe")
+    else { throw GuestAppShellValidationError.invalidResponse }
+
+    if let fgTicks = signal.foregroundCreationTicks, fgTicks != leaf.creationTicks {
+      throw GuestAppShellValidationError.invalidResponse
+    }
+    if let fgName = signal.foregroundProcessName, fgName.lowercased() != leafName {
+      throw GuestAppShellValidationError.invalidResponse
+    }
+    if let fgPath = signal.foregroundProcessPath,
+       GuestAppShellSession.normalizedPath(fgPath) != GuestAppShellSession.normalizedPath(leaf.processPath) {
+      throw GuestAppShellValidationError.invalidResponse
+    }
+    if let fgCreated = signal.foregroundCreatedAt, abs(fgCreated - leaf.createdAt) > 1 {
+      throw GuestAppShellValidationError.invalidResponse
+    }
+
+    let isAllowedGame = allowedNames.contains(leafName)
+    let isFullscreenProof = signal.foregroundWindowFullscreen == true
+    guard isAllowedGame || isFullscreenProof else {
       throw GuestAppShellValidationError.invalidResponse
     }
   }

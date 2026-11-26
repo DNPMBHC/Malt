@@ -29,16 +29,21 @@ class PayloadIntegrityTests(unittest.TestCase):
             'pythonLicense': 'Contents/Frameworks/Python.framework/Versions/3.12/Resources/LICENSE.txt',
             'managerScript': 'Contents/Resources/RuntimeScripts/golden_guest_manager.py',
             'kioskScript': 'Contents/Resources/RuntimeScripts/kiosk-app-shell.ps1',
+            'optimizerApplyScript': 'Contents/Resources/RuntimeScripts/apply-optimizer.ps1',
+            'optimizerRollbackScript': 'Contents/Resources/RuntimeScripts/rollback-optimizer.ps1',
+            'optimizerProfile': 'Contents/Resources/RuntimeScripts/anticheat-minimal-win11-arm64.json',
             'provisioningGuide': 'Contents/Resources/RuntimeScripts/PROVISIONING.md',
             'provisioningGuideChinese': 'Contents/Resources/RuntimeScripts/PROVISIONING.zh-Hans.md',
             'networkHelper': 'Contents/Library/HelperTools/network-bridge',
             'networkService': 'Contents/Library/LaunchDaemons/com.example.network-bridge.plist',
+            'userNetProxy': 'Contents/Helpers/malt-net-proxy',
         }
         for key, relative in self.required.items():
             path = self.app / relative
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text(key)
-            if key in ('helperBinary', 'containerControlBinary', 'pythonExecutable', 'networkHelper'):
+            if key in ('helperBinary', 'containerControlBinary', 'pythonExecutable',
+                       'networkHelper', 'userNetProxy'):
                 path.chmod(0o755)
         (self.app / self.required['helperInfo']).write_bytes(plistlib.dumps({
             'CFBundleExecutable': 'container', payload.HELPER_SETTINGS_CONTRACT_KEY: 1}))
@@ -113,6 +118,14 @@ class PayloadIntegrityTests(unittest.TestCase):
     def test_program_executable_bit_is_enforced(self):
         (self.app / self.required['networkHelper']).chmod(0o644)
         self.assertIn('not_executable_networkHelper', payload.verify_manifest(self.app, self.manifest))
+
+    def test_user_net_proxy_executable_bit_and_tampering_are_enforced(self):
+        proxy = self.app / self.required['userNetProxy']
+        proxy.chmod(0o644)
+        self.assertIn('not_executable_userNetProxy', payload.verify_manifest(self.app, self.manifest))
+        proxy.chmod(0o755)
+        proxy.write_text('tampered-proxy')
+        self.assertIn('file_hash_mismatch', payload.verify_manifest(self.app, self.manifest))
 
     def test_service_cannot_point_to_another_binary(self):
         service = self.app / self.required['networkService']

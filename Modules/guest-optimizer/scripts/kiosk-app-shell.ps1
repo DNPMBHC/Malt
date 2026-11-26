@@ -81,6 +81,60 @@ public static class KioskShellNative {
     [DllImport("user32.dll", SetLastError = true)]
     public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
 
+    [StructLayout(LayoutKind.Sequential)]
+    public struct RECT {
+        public int Left;
+        public int Top;
+        public int Right;
+        public int Bottom;
+    }
+
+    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
+    public struct MONITORINFO {
+        public int cbSize;
+        public RECT rcMonitor;
+        public RECT rcWork;
+        public uint dwFlags;
+    }
+
+    public const uint MONITOR_DEFAULTTONEAREST = 2;
+
+    [DllImport("user32.dll", SetLastError = true)]
+    public static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
+
+    [DllImport("user32.dll")]
+    public static extern IntPtr MonitorFromWindow(IntPtr hwnd, uint dwFlags);
+
+    [DllImport("user32.dll", CharSet = CharSet.Auto)]
+    public static extern bool GetMonitorInfo(IntPtr hMonitor, ref MONITORINFO lpmi);
+
+    public static bool IsWindowFullscreen(IntPtr hWnd) {
+        if (hWnd == IntPtr.Zero || !IsWindowVisible(hWnd)) {
+            return false;
+        }
+        RECT rect;
+        if (!GetWindowRect(hWnd, out rect)) {
+            return false;
+        }
+        int width = rect.Right - rect.Left;
+        int height = rect.Bottom - rect.Top;
+        if (width < 640 || height < 480) {
+            return false;
+        }
+        int monW = Math.Max(800, GetSystemMetrics(0));
+        int monH = Math.Max(600, GetSystemMetrics(1));
+        IntPtr mon = MonitorFromWindow(hWnd, MONITOR_DEFAULTTONEAREST);
+        if (mon != IntPtr.Zero) {
+            MONITORINFO info = new MONITORINFO();
+            info.cbSize = Marshal.SizeOf(typeof(MONITORINFO));
+            if (GetMonitorInfo(mon, ref info)) {
+                monW = Math.Max(800, info.rcMonitor.Right - info.rcMonitor.Left);
+                monH = Math.Max(600, info.rcMonitor.Bottom - info.rcMonitor.Top);
+            }
+        }
+        return width >= (int)(monW * 0.95) && height >= (int)(monH * 0.95);
+    }
+
     public static IntPtr FindDesktopDefView() {
         IntPtr progman = FindWindow("Progman", null);
         IntPtr defView = FindWindowEx(progman, IntPtr.Zero, "SHELLDLL_DefView", null);
@@ -295,6 +349,85 @@ function Start-TargetApp([string]$ExePath, [string]$ArgsText, [string]$WorkingDi
     return Start-Process -FilePath $ExePath -ArgumentList $ArgsText -WorkingDirectory $WorkingDirectory -PassThru
 }
 
+function Get-UnixTimeSeconds([DateTime]$Value) {
+    return ([DateTimeOffset]$Value.ToUniversalTime()).ToUnixTimeMilliseconds() / 1000.0
+}
+
+function Get-ProcessSnapshotMap {
+    $map = @{}
+    try {
+        foreach ($item in @(Get-CimInstance Win32_Process -ErrorAction Stop)) {
+            $procId = [int]$item.ProcessId
+            if ($procId -le 0 -or $null -eq $item.CreationDate) { continue }
+            $created = [DateTime]$item.CreationDate
+            $map[$procId] = [ordered]@{
+                pid = $procId
+                parent_pid = [int]$item.ParentProcessId
+                creation_ticks = $created.ToUniversalTime().Ticks.ToString([System.Globalization.CultureInfo]::InvariantCulture)
+                created_at = Get-UnixTimeSeconds $created
+                process_name = [System.IO.Path]::GetFileNameWithoutExtension([string]$item.Name).ToLowerInvariant()
+                process_path = [string]$item.ExecutablePath
+            }
+        }
+    } catch { }
+    return $map
+}
+
+function Resolve-ProcessLineageChain {
+    param(
+        [hashtable]$Snapshot,
+        [int]$TargetPid,
+        [int]$RootPid,
+        [string]$RootCreationTicks,
+        [hashtable]$KnownAncestors
+    )
+    if ($TargetPid -le 0 -or $RootPid -le 0 -or -not $Snapshot.ContainsKey($TargetPid)) {
+        return $null
+    }
+    $reverseChain = New-Object 'System.Collections.Generic.List[object]'
+    $visited = New-Object 'System.Collections.Generic.HashSet[int]'
+    $cursor = $TargetPid
+    for ($depth = 0; $depth -lt 12; $depth++) {
+        if (-not $visited.Add($cursor)) { return $null }
+        $node = $null
+        if ($Snapshot.ContainsKey($cursor)) {
+            $node = $Snapshot[$cursor]
+        } elseif ($null -ne $KnownAncestors -and $KnownAncestors.ContainsKey($cursor)) {
+            $node = $KnownAncestors[$cursor]
+        } else {
+            return $null
+        }
+        $reverseChain.Add($node)
+        if ($cursor -eq $RootPid) {
+            if (-not [string]::IsNullOrWhiteSpace($RootCreationTicks) -and $node.creation_ticks -ne $RootCreationTicks) {
+                return $null
+            }
+            $chain = @()
+            for ($idx = $reverseChain.Count - 1; $idx -ge 0; $idx--) {
+                $chain += $reverseChain[$idx]
+            }
+            for ($j = 1; $j -lt $chain.Count; $j++) {
+                if ([int]$chain[$j].parent_pid -ne [int]$chain[$j - 1].pid) { return $null }
+                if ([double]$chain[$j].created_at -lt ([double]$chain[$j - 1].created_at - 1.0)) { return $null }
+            }
+            return ,$chain
+        }
+        $parentId = [int]$node.parent_pid
+        if ($parentId -le 0 -or $parentId -eq $cursor) { return $null }
+        $cursor = $parentId
+    }
+    return $null
+}
+
+function Test-ExcludedUtilityProcess([string]$ProcessName) {
+    $lower = if ($null -eq $ProcessName) { '' } else { $ProcessName.ToLowerInvariant() }
+    return $lower -in @(
+        'explorer', 'cmd', 'powershell', 'pwsh', 'conhost', 'msiexec', 'taskmgr',
+        'rundll32', 'svchost', 'searchhost', 'shellexperiencehost', 'startmenuexperiencehost',
+        'applicationframehost', 'werfault', 'notepad'
+    )
+}
+
 function Get-ForegroundProcessInfo {
     $hwnd = [KioskShellNative]::GetForegroundWindow()
     if ($hwnd -eq [IntPtr]::Zero) {
@@ -311,6 +444,7 @@ function Get-ForegroundProcessInfo {
             pid = [int]$fgPid
             process_name = $proc.ProcessName
             window_title = $proc.MainWindowTitle
+            is_fullscreen = [KioskShellNative]::IsWindowFullscreen($hwnd)
             process = $proc
         }
     } catch {
@@ -389,18 +523,64 @@ try {
         $null
     }
 
+    $rootPid = if ($null -ne $launchedProc) { [int]$launchedProc.Id } else { 0 }
+    $rootCreationTicks = ''
+    $knownTreeNodes = @{}
+    if ($rootPid -gt 0) {
+        $initialSnapshot = Get-ProcessSnapshotMap
+        if ($initialSnapshot.ContainsKey($rootPid)) {
+            $rootNode = $initialSnapshot[$rootPid]
+            $rootCreationTicks = [string]$rootNode.creation_ticks
+            $knownTreeNodes[$rootPid] = $rootNode
+        }
+    }
+
     $elevatedPids = @{}
+    $activeDescendants = @{}
     while ($true) {
+        $snapshot = Get-ProcessSnapshotMap
+        if ($rootPid -gt 0) {
+            foreach ($entry in $snapshot.Values) {
+                $candPid = [int]$entry.pid
+                if ($candPid -eq $rootPid) { continue }
+                $candChain = Resolve-ProcessLineageChain -Snapshot $snapshot -TargetPid $candPid `
+                    -RootPid $rootPid -RootCreationTicks $rootCreationTicks -KnownAncestors $knownTreeNodes
+                if ($null -ne $candChain) {
+                    foreach ($node in $candChain) {
+                        $knownTreeNodes[[int]$node.pid] = $node
+                    }
+                    $activeDescendants[$candPid] = [string]$entry.creation_ticks
+                }
+            }
+            foreach ($trackedPid in @($activeDescendants.Keys)) {
+                if (-not $snapshot.ContainsKey($trackedPid) -or $snapshot[$trackedPid].creation_ticks -ne $activeDescendants[$trackedPid]) {
+                    $activeDescendants.Remove($trackedPid)
+                }
+            }
+        }
+
         $fg = Get-ForegroundProcessInfo
         if ($null -ne $fg) {
-            $matched = $false
+            $matchedByName = $false
             foreach ($name in $GameProcessNames) {
                 if ($fg.process_name -ieq $name) {
-                    $matched = $true
+                    $matchedByName = $true
                     break
                 }
             }
-            if ($matched -and -not $elevatedPids.ContainsKey($fg.pid)) {
+            $fgLineage = $null
+            if ($rootPid -gt 0) {
+                $fgLineage = Resolve-ProcessLineageChain -Snapshot $snapshot -TargetPid $fg.pid `
+                    -RootPid $rootPid -RootCreationTicks $rootCreationTicks -KnownAncestors $knownTreeNodes
+            }
+            $isDescendant = ($null -ne $fgLineage -and $fg.pid -ne $rootPid)
+            $isFullscreenDescendant = ($isDescendant -and [bool]$fg.is_fullscreen `
+                -and -not (Test-ExcludedUtilityProcess $fg.process_name) `
+                -and -not (Test-ProtectedProcess $fg.process_name))
+            $inScope = ($rootPid -eq 0) -or ($null -ne $fgLineage)
+            $shouldSignal = $inScope -and ($matchedByName -or $isFullscreenDescendant)
+
+            if ($shouldSignal -and -not $elevatedPids.ContainsKey($fg.pid)) {
                 $priorityElevated = $false
                 if (-not (Test-ProtectedProcess $fg.process_name)) {
                     try {
@@ -409,13 +589,20 @@ try {
                     } catch {}
                 }
                 $elevatedPids[$fg.pid] = $true
+                $fgMeta = if ($snapshot.ContainsKey($fg.pid)) { $snapshot[$fg.pid] } else { $null }
                 $detectedGameSignal = [ordered]@{
                     schema_version = 1
                     owner = '@DNPMBHC'
                     event = 'game_foreground_detected'
                     action = 'enter_fullscreen_gamemode'
                     process_name = $fg.process_name
+                    process_path = if ($null -ne $fgMeta) { [string]$fgMeta.process_path } else { '' }
                     pid = $fg.pid
+                    root_pid = $rootPid
+                    creation_ticks = if ($null -ne $fgMeta) { [string]$fgMeta.creation_ticks } else { '' }
+                    created_at = if ($null -ne $fgMeta) { [double]$fgMeta.created_at } else { 0.0 }
+                    is_fullscreen = [bool]$fg.is_fullscreen
+                    lineage_chain = if ($null -ne $fgLineage) { @($fgLineage) } else { @() }
                     priority_elevated = $priorityElevated
                     timestamp_utc = (Get-Date).ToUniversalTime().ToString('o')
                 }
@@ -425,7 +612,7 @@ try {
 
         if ($null -ne $launchedProc) {
             $launchedProc.Refresh()
-            if ($launchedProc.HasExited) {
+            if ($launchedProc.HasExited -and $activeDescendants.Count -eq 0) {
                 break
             }
         }

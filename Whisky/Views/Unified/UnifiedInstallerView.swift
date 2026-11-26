@@ -20,6 +20,8 @@ struct UnifiedInstallerView: View {
     @State private var isInstalling: Bool = false
     @State private var statusMessage: String?
     @State private var errorMessage: String?
+    @State private var requestedEntry: UnifiedGameEntry?
+    @State private var registeredEntry: UnifiedGameEntry?
 
     var body: some View {
         AppPage(title: "安装游戏", subtitle: "选择 Windows 安装包，确认运行方式后开始安装。") {
@@ -29,22 +31,10 @@ struct UnifiedInstallerView: View {
                 configurationCard(for: installerURL)
             }
 
-            if let status = statusMessage {
-                AppSection {
-                    AppAdaptiveRow {
-                        Label {
-                            Text(status)
-                                .font(.subheadline)
-                                .fixedSize(horizontal: false, vertical: true)
-                        } icon: {
-                            Image(systemName: "checkmark.circle")
-                                .foregroundStyle(.green)
-                        }
-                    } trailing: {
-                        Button("前往游戏库", action: onInstallCompleted)
-                            .buttonStyle(.borderedProminent)
-                    }
-                }
+            if let registered = registeredEntry {
+                registeredConfirmationCard(for: registered)
+            } else if let requested = requestedEntry {
+                installerPendingCard(for: requested)
             }
 
             if let error = errorMessage {
@@ -148,8 +138,10 @@ struct UnifiedInstallerView: View {
             }
         }
     }
+}
 
-    private var installActionButton: some View {
+private extension UnifiedInstallerView {
+    var installActionButton: some View {
         Button(action: startInstallation) {
             HStack(spacing: 8) {
                 if isInstalling {
@@ -166,7 +158,7 @@ struct UnifiedInstallerView: View {
         .disabled(isInstalling)
     }
 
-    private func pickInstallerFile() {
+    func pickInstallerFile() {
         let panel = NSOpenPanel()
         panel.canChooseFiles = true
         panel.canChooseDirectories = false
@@ -180,7 +172,7 @@ struct UnifiedInstallerView: View {
         }
     }
 
-    private func handleDrop(providers: [NSItemProvider]) -> Bool {
+    func handleDrop(providers: [NSItemProvider]) -> Bool {
         guard let provider = providers.first(where: { $0.hasItemConformingToTypeIdentifier(UTType.fileURL.identifier) })
         else {
             return false
@@ -201,7 +193,7 @@ struct UnifiedInstallerView: View {
         return true
     }
 
-    private func applySelectedInstaller(_ url: URL) {
+    func applySelectedInstaller(_ url: URL) {
         selectedInstallerURL = url
         gameTitle = url.deletingPathExtension().lastPathComponent
         let classified = libraryStore.classifyInstaller(url: url)
@@ -209,13 +201,17 @@ struct UnifiedInstallerView: View {
         selectedEngine = classified
         statusMessage = nil
         errorMessage = nil
+        requestedEntry = nil
+        registeredEntry = nil
     }
 
-    private func startInstallation() {
+    func startInstallation() {
         guard let installerURL = selectedInstallerURL else { return }
         isInstalling = true
         statusMessage = nil
         errorMessage = nil
+        requestedEntry = nil
+        registeredEntry = nil
         let settings = preferences.runtimeSettings
         let engine = selectedEngine
         let title = gameTitle
@@ -229,14 +225,85 @@ struct UnifiedInstallerView: View {
                 )
                 await MainActor.run {
                     isInstalling = false
-                    statusMessage = "已提交「\(entry.name)」的安装请求。请在安装窗口完成安装，再选择游戏主程序。"
+                    requestedEntry = entry
+                    statusMessage = "安装器已启动（等待你在弹窗中完成安装）。"
                 }
             } catch {
                 await MainActor.run {
                     isInstalling = false
-                    errorMessage = error.localizedDescription
+                    errorMessage = InstalledGameDiscoverySection.redactedMessage(error.localizedDescription)
                 }
             }
         }
+    }
+
+    func installerPendingCard(for entry: UnifiedGameEntry) -> some View {
+        AppSection(title: "安装器已启动 · 待登记游戏入口") {
+            VStack(alignment: .leading, spacing: 14) {
+                AppAdaptiveRow {
+                    AppStatusLabel(
+                        text: statusMessage ?? "安装器已启动（等待你在弹窗中完成安装）。",
+                        systemImage: "hourglass",
+                        tint: .orange
+                    )
+                    .fixedSize(horizontal: false, vertical: true)
+                } trailing: {
+                    Button("稍后在游戏库处理", action: onInstallCompleted)
+                        .buttonStyle(.bordered)
+                }
+
+                Divider()
+
+                InstalledGameDiscoverySection(
+                    entry: entry,
+                    orchestrator: orchestrator,
+                    onRegistered: { registered in
+                        registeredEntry = registered
+                        requestedEntry = registered
+                        errorMessage = nil
+                    },
+                    onManualFallback: {
+                        configureManualExecutable(for: entry)
+                    }
+                )
+            }
+        }
+    }
+
+    func registeredConfirmationCard(for entry: UnifiedGameEntry) -> some View {
+        AppSection(title: "已核验并登记入库") {
+            AppAdaptiveRow {
+                VStack(alignment: .leading, spacing: 6) {
+                    AppStatusLabel(
+                        text: "「\(entry.name)」已完成游戏入口核验并登记入库。",
+                        systemImage: "checkmark.circle",
+                        tint: .green
+                    )
+                    .fixedSize(horizontal: false, vertical: true)
+                    Text("主程序：\(InstalledGameDiscoverySection.redactedPath(entry.executablePath))")
+                        .font(.caption.monospaced())
+                        .foregroundStyle(.secondary)
+                        .lineLimit(2)
+                        .truncationMode(.middle)
+                }
+            } trailing: {
+                Button("前往游戏库", action: onInstallCompleted)
+                    .buttonStyle(.borderedProminent)
+            }
+        }
+    }
+
+    func configureManualExecutable(for entry: UnifiedGameEntry) {
+        guard let path = InstalledGameDiscoverySection.promptManualExecutablePath(
+            for: entry,
+            onError: { errorMessage = $0 }
+        ) else { return }
+        var updated = entry
+        updated.executablePath = path
+        updated.installationState = .ready
+        libraryStore.upsert(updated)
+        registeredEntry = updated
+        requestedEntry = updated
+        errorMessage = nil
     }
 }

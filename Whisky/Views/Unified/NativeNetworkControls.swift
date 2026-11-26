@@ -2,6 +2,7 @@
 // Optional service approval and explicit stopped-container configuration. Owner: @DNPMBHC
 
 import AppKit
+import Darwin
 import SwiftUI
 import WhiskyKit
 
@@ -39,6 +40,9 @@ struct NativeNetworkControls: View {
         .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)) { _ in
             refresh()
         }
+        .task(id: isStartingState) {
+            await pollWhileStarting()
+        }
         .confirmationDialog("导入所选容器？", isPresented: $showImportConfirmation) {
             Button("确认实例已完全关闭，且不是模板或冷备", action: importContainer)
             Button("取消", role: .cancel) { selectedImportURL = nil }
@@ -66,13 +70,23 @@ struct NativeNetworkControls: View {
         VStack(alignment: .leading, spacing: 6) {
             Text("原生网络服务")
                 .font(.subheadline.weight(.medium))
-            AppStatusLabel(
-                text: orchestrator.nativeNetworkPermissionState?.statusSummary ?? "请刷新授权状态。",
-                systemImage: orchestrator.nativeNetworkPermissionState?.state == .ready
-                    ? "checkmark.circle" : "network",
-                tint: orchestrator.nativeNetworkPermissionState?.state == .ready ? .green : .secondary
-            )
-            .fixedSize(horizontal: false, vertical: true)
+            HStack(spacing: 8) {
+                AppStatusLabel(
+                    text: orchestrator.nativeNetworkPermissionState?.statusSummary ?? "请刷新授权状态。",
+                    systemImage: statusIconName,
+                    tint: statusTint
+                )
+                .fixedSize(horizontal: false, vertical: true)
+                if isStartingState {
+                    ProgressView().controlSize(.small)
+                }
+            }
+            if isTimedOutState {
+                Text("15 秒启动诊断已超时：请点击「申请原生网络授权」重试，或在「系统批准设置」检查后台项；若暂不启用，可继续使用共享网络。")
+                    .font(.caption)
+                    .foregroundStyle(.orange)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
         }
     }
 
@@ -140,6 +154,41 @@ struct NativeNetworkControls: View {
         guard !hasKnownActiveLaunch,
               let registration = orchestrator.nativeNetworkPermissionState?.registrationStatus else { return false }
         return registration == .enabled || registration == .requiresApproval
+    }
+
+    private var isStartingState: Bool {
+        orchestrator.nativeNetworkPermissionState?.state == .starting
+    }
+
+    private var isTimedOutState: Bool {
+        orchestrator.nativeNetworkPermissionState?.state == .operationFailed(Int(ETIMEDOUT))
+    }
+
+    private var statusIconName: String {
+        switch orchestrator.nativeNetworkPermissionState?.state {
+        case .ready: return "checkmark.circle"
+        case .operationFailed, .helperMissing, .signingRequired: return "exclamationmark.triangle"
+        case .starting: return "clock"
+        default: return "network"
+        }
+    }
+
+    private var statusTint: Color {
+        switch orchestrator.nativeNetworkPermissionState?.state {
+        case .ready: return .green
+        case .operationFailed, .helperMissing, .signingRequired: return .orange
+        default: return .secondary
+        }
+    }
+
+    private func pollWhileStarting() async {
+        guard isStartingState else { return }
+        for _ in 0..<20 {
+            try? await Task.sleep(for: .seconds(1))
+            if Task.isCancelled || !isStartingState { return }
+            _ = orchestrator.refreshNativeNetworkStatus()
+            if !isStartingState { return }
+        }
     }
 
     private func refresh() {

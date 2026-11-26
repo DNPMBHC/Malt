@@ -63,20 +63,16 @@ struct UnifiedRuntimeStorageView: View {
                 readyText: "可用", missingText: "未安装"
             )
             healthRow(
-                title: "容器引擎", isReady: healthMap["anti_cheat_vm_ready"] ?? false,
-                readyText: (healthMap["embedded_helper_ready"] ?? false) ? "已内嵌" : "外部组件可用",
-                missingText: (healthMap["utm_custom_ready"] ?? false)
-                    && !(healthMap["container_settings_contract_ready"] ?? false) ? "需更新运行组件" : "待配置"
-            )
-            healthRow(
-                title: "游玩容器", isReady: healthMap["playable_vm_discovered"] ?? false,
-                readyText: resolvedPaths?.playableVMBundlePath.map {
-                    URL(filePath: $0).lastPathComponent
-                } ?? "已发现", missingText: "未发现容器"
-            )
-            healthRow(
                 title: "游戏库存储", isReady: healthMap["library_store_writable"] ?? false,
                 readyText: "可写", missingText: "不可写"
+            )
+            Divider()
+            ContainerProvisioningPanel(
+                orchestrator: orchestrator,
+                preferences: preferences,
+                healthMap: healthMap,
+                resolvedPaths: resolvedPaths,
+                onContainerChanged: refreshDiagnostics
             )
         }
     }

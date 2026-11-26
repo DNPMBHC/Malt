@@ -331,11 +331,14 @@ if [ "$BUNDLE_EMBEDDED_RUNTIME" -eq 1 ]; then
     if [ -z "$RESOLVED_RUNTIME_SOURCE" ]; then
         for candidate in \
             "${TMPDIR:-/tmp}/utm-custom-build/UTM-Custom.app" \
-            "/Applications/UTM-Custom.app"
+            "/Applications/UTM-Custom.app" \
+            "/Applications/Malt.app/Contents/Helpers/MaltContainerHelper.app"
         do
             if [ -d "$candidate" ] && [ -x "$candidate/Contents/MacOS/UTM" ]; then
-                RESOLVED_RUNTIME_SOURCE="$candidate"
-                break
+                if python3 "$SCRIPT_DIR/runtime_payload.py" check-helper-settings --helper-app "$candidate" >/dev/null 2>&1; then
+                    RESOLVED_RUNTIME_SOURCE="$candidate"
+                    break
+                fi
             fi
         done
     fi
@@ -548,6 +551,7 @@ for entry in app.rglob('*'):
     rel_lower = str(entry.relative_to(app)).lower()
     if embedded_requested and (
         rel_lower.startswith('contents/helpers/maltcontainerhelper.app')
+        or rel_lower == 'contents/helpers/malt-net-proxy'
         or rel_lower in allowed_embedded_scripts
         or rel_lower.startswith('contents/frameworks/python.framework/')
         or rel_lower.startswith('contents/resources/runtimescripts/')
@@ -565,6 +569,9 @@ embedded_info = {
     'note': embedded_runtime_note,
     'lsuiElementEnabled': False,
     'helperBinarySHA256': None,
+    'userNetProxyBundled': False,
+    'userNetProxySHA256': None,
+    'userNetProxySelfCheck': None,
     'bundledScripts': [],
 }
 if embedded_helper_bundled:
@@ -576,6 +583,14 @@ if embedded_helper_bundled:
     if not helper_bin.is_file():
         raise SystemExit('error: embedded MaltContainerHelper binary missing')
     embedded_info['helperBinarySHA256'] = sha256_file(helper_bin)
+proxy_bin = app / 'Contents/Helpers/malt-net-proxy'
+if embedded_requested and proxy_bin.is_file():
+    embedded_info['userNetProxyBundled'] = True
+    embedded_info['userNetProxySHA256'] = sha256_file(proxy_bin)
+    proxy_check = subprocess.run([str(proxy_bin), '--self-check'], capture_output=True, text=True, timeout=15)
+    if proxy_check.returncode != 0:
+        raise SystemExit('error: embedded malt-net-proxy --self-check failed')
+    embedded_info['userNetProxySelfCheck'] = json.loads(proxy_check.stdout.strip())
 if embedded_scripts_bundled:
     scripts_dir = app / 'Contents/Resources/RuntimeScripts'
     embedded_info['bundledScripts'] = sorted(p.name for p in scripts_dir.iterdir() if p.is_file())

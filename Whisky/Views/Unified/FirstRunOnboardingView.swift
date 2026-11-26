@@ -12,6 +12,7 @@ struct FirstRunOnboardingView: View {
     @State private var currentStep: Int = 1
     @State private var hardware: HardwareProfileSnapshot = HardwareAutoTuner().detectHardwareProfile()
     @State private var healthMap: [String: Bool] = [:]
+    @State private var resolvedPaths: ResolvedRuntimePaths?
     @State private var isCalibrating: Bool = false
     @State private var calibrationProgress: Double = 0
     @State private var recommendation: AutoTuneRecommendation?
@@ -46,7 +47,7 @@ struct FirstRunOnboardingView: View {
         .background(Color(nsColor: .windowBackgroundColor))
         .onAppear {
             hardware = tuner.detectHardwareProfile()
-            healthMap = orchestrator.healthStatus()
+            refreshRuntimeState()
         }
     }
 
@@ -99,18 +100,24 @@ struct FirstRunOnboardingView: View {
 
     private var stepTwoRuntimeView: some View {
         VStack(alignment: .leading, spacing: 16) {
-            AppSection(title: "运行组件") {
+            AppSection(title: "运行组件与受管容器") {
                 runtimeStatusRow(title: "原生转译组件", ready: healthMap["wine_ready"] ?? false)
-                Divider()
-                runtimeStatusRow(title: "Windows 容器", ready: healthMap["anti_cheat_vm_ready"] ?? false)
                 Divider()
                 runtimeStatusRow(title: "游戏库存储", ready: healthMap["library_store_writable"] ?? false)
                 if !(healthMap["wine_ready"] ?? false) {
                     Button("安装原生运行组件…", action: onOpenWineSetup)
                         .buttonStyle(.bordered)
                 }
+                Divider()
+                ContainerProvisioningPanel(
+                    orchestrator: orchestrator,
+                    preferences: preferences,
+                    healthMap: healthMap,
+                    resolvedPaths: resolvedPaths,
+                    onContainerChanged: refreshRuntimeState
+                )
             }
-            Text("未就绪的组件可稍后在“环境与存储”中配置。下一步可检测 CPU 与存储表现。")
+            Text("组件已打包不代表 Windows 系统已就绪；未就绪的组件可稍后在“环境与存储”中配置。")
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
@@ -175,7 +182,7 @@ struct FirstRunOnboardingView: View {
             if currentStep < 3 {
                 Button("下一步") {
                     currentStep += 1
-                    if currentStep == 2 { healthMap = orchestrator.healthStatus() }
+                    if currentStep == 2 { refreshRuntimeState() }
                 }
                 .buttonStyle(.borderedProminent)
                 .keyboardShortcut(.defaultAction)
@@ -221,6 +228,11 @@ struct FirstRunOnboardingView: View {
             )
             .fixedSize()
         }
+    }
+
+    private func refreshRuntimeState() {
+        healthMap = orchestrator.healthStatus()
+        resolvedPaths = orchestrator.resolvedRuntimePaths()
     }
 
     private func startCalibration() {

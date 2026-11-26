@@ -28,6 +28,7 @@ public struct UnifiedOrchestratorConfiguration: Sendable {
   public let guestAgentReadinessTimeout: TimeInterval
   public let runtimePythonURL: URL?
   public let playableSelectionStorageURL: URL
+  public let userNetProxyBinaryURL: URL?
 
   public init(
     utmCustomAppPath: String = "/Applications/UTM-Custom.app",
@@ -47,7 +48,8 @@ public struct UnifiedOrchestratorConfiguration: Sendable {
     containerControlBinaryURL: URL? = nil,
     guestAgentReadinessTimeout: TimeInterval = 90,
     runtimePythonURL: URL? = nil,
-    playableSelectionStorageURL: URL? = nil
+    playableSelectionStorageURL: URL? = nil,
+    userNetProxyBinaryURL: URL? = nil
   ) {
     self.utmCustomAppPath = utmCustomAppPath
     self.utmAppPath = utmAppPath
@@ -68,6 +70,7 @@ public struct UnifiedOrchestratorConfiguration: Sendable {
     self.runtimePythonURL = runtimePythonURL
     self.playableSelectionStorageURL = playableSelectionStorageURL
       ?? PlayableContainerSelection.defaultStorageURL(fileManager: .default)
+    self.userNetProxyBinaryURL = userNetProxyBinaryURL
   }
 }
 
@@ -89,6 +92,8 @@ public final class UnifiedRuntimeOrchestrator: ObservableObject, @unchecked Send
   private let runtimeSettingsCapabilityProbe: @Sendable (String) -> Bool
   private let appShellSessionBridge: AppShellSessionBridge
   private let helperIdentityProbe: @Sendable (String) async -> String?
+  private let managedUserNetProxy: ManagedUserNetProxyService
+  private let vmnetStatusProbe: @Sendable () -> NativeVMNetStatus
 
   public init(
     libraryStore: UnifiedGameLibraryStore = UnifiedGameLibraryStore(),
@@ -98,7 +103,9 @@ public final class UnifiedRuntimeOrchestrator: ObservableObject, @unchecked Send
     helperRunningProbe: (@Sendable (String) async -> Bool)? = nil,
     runtimeSettingsCapabilityProbe: (@Sendable (String) -> Bool)? = nil,
     appShellSessionBridge: AppShellSessionBridge = AppShellSessionBridge(),
-    helperIdentityProbe: (@Sendable (String) async -> String?)? = nil
+    helperIdentityProbe: (@Sendable (String) async -> String?)? = nil,
+    managedUserNetProxy: ManagedUserNetProxyService = ManagedUserNetProxyService(),
+    vmnetStatusProbe: (@Sendable () -> NativeVMNetStatus)? = nil
   ) {
     self.libraryStore = libraryStore
     self.configuration = configuration
@@ -108,6 +115,13 @@ public final class UnifiedRuntimeOrchestrator: ObservableObject, @unchecked Send
     self.runtimeSettingsCapabilityProbe = runtimeSettingsCapabilityProbe ?? Self.supportsRuntimeSettings
     self.appShellSessionBridge = appShellSessionBridge
     self.helperIdentityProbe = helperIdentityProbe ?? Self.containerHelperIdentity
+    self.managedUserNetProxy = managedUserNetProxy
+    self.vmnetStatusProbe = vmnetStatusProbe ?? { UnifiedRuntimeDiscovery.detectNativeVMNetStatus() }
+  }
+
+  deinit {
+    let proxy = managedUserNetProxy
+    Task { await proxy.stop() }
   }
 
   public func resolvedRuntimePaths() -> ResolvedRuntimePaths {
@@ -115,7 +129,7 @@ public final class UnifiedRuntimeOrchestrator: ObservableObject, @unchecked Send
   }
 
   public func nativeVMNetStatus() -> NativeVMNetStatus {
-    UnifiedRuntimeDiscovery.detectNativeVMNetStatus(fileManager: fileManager)
+    vmnetStatusProbe()
   }
 
   @MainActor
@@ -319,14 +333,18 @@ public final class UnifiedRuntimeOrchestrator: ObservableObject, @unchecked Send
       "kiosk_shell_script_ready": kioskScriptReady,
       "playable_vm_discovered": playableVMDiscovered,
       "vmnet_kernel_direct_ready": vmnetStatus.socketActive,
+      "managed_user_net_proxy_bundled": resolved.userNetProxyBinaryPath != nil,
+      "non_slirp_network_ready": vmnetStatus.socketActive || resolved.userNetProxyBinaryPath != nil,
       "library_store_writable": storeWritable,
       "anti_cheat_vm_ready": utmCustomReady && playableVMDiscovered && kioskScriptReady
         && controlReady && settingsContractReady
     ]
   }
+}
 
+public extension UnifiedRuntimeOrchestrator {
   /// Constructs the native WhiskyKit Wine launch environment with DXMT/D3DMetal/DXVK/WINEDLLPATH routing.
-  public func buildWineEnvironment(
+  func buildWineEnvironment(
     for bottleURL: URL, settings: UnifiedLaunchSettings? = nil
   ) -> [String: String] {
     let bottle = Bottle(bottleUrl: bottleURL, readOnly: true)
@@ -344,6 +362,14 @@ public final class UnifiedRuntimeOrchestrator: ObservableObject, @unchecked Send
       libraryFolder: libraryFolder
     )
     return (settings ?? UnifiedLaunchSettings.load()).applyingWineCachePolicy(to: wineEnv)
+  }
+
+  func activeManagedUserNetProxyEndpoint() async -> ManagedUserNetProxyEndpoint? {
+    await managedUserNetProxy.activeEndpoint()
+  }
+
+  func stopManagedUserNetProxy() async {
+    await managedUserNetProxy.stop()
   }
 }
 
@@ -683,6 +709,18 @@ extension UnifiedRuntimeOrchestrator {
       }
       return binding
     }
+    return try await launchFreshContainerHelper(
+      resolved: resolved, helper: helper, vmPath: vmPath, title: title, settings: settings
+    )
+  }
+
+  fileprivate func launchFreshContainerHelper(
+    resolved: ResolvedRuntimePaths, helper: String, vmPath: String, title: String, settings: UnifiedLaunchSettings
+  ) async throws -> AppShellBinding {
+    let identifier = try ContainerGuestDispatcher.vmIdentifier(bundlePath: vmPath)
+    _ = try await prepareManagedNetworkTransport(
+      resolved: resolved, vmPath: vmPath, vmIdentifier: identifier
+    )
     let stateFile = try await createAppShellBinding(vmPath: vmPath, helper: helper, title: title)
     let args = [
       "--app-shell-vm", vmPath, "--window-title", title,
@@ -695,10 +733,36 @@ extension UnifiedRuntimeOrchestrator {
     let result = try await commandRunner(helper, args, environment)
     guard result.exitCode == 0 else {
       await appShellSessionBridge.invalidate(bindingID: stateFile.id)
+      await managedUserNetProxy.stop()
       throw UnifiedOrchestrationError.commandFailed("容器引擎未能启动，请检查容器配置和系统虚拟化支持。")
     }
     await appShellSessionBridge.recordHelperIdentity(await helperIdentityProbe(helper), bindingID: stateFile.id)
     return stateFile
+  }
+
+  fileprivate func prepareManagedNetworkTransport(
+    resolved: ResolvedRuntimePaths, vmPath: String, vmIdentifier: String
+  ) async throws -> ContainerNetworkMode {
+    if nativeVMNetStatus().socketActive {
+      await managedUserNetProxy.stop()
+      return .vmnetKernelDirect
+    }
+    guard let proxyBinary = resolved.userNetProxyBinaryPath,
+          fileManager.isExecutableFile(atPath: proxyBinary) else {
+      return .notVerified
+    }
+    let endpoint = try await managedUserNetProxy.ensureRunning(
+      binaryPath: proxyBinary, vmIdentifier: vmIdentifier
+    )
+    do {
+      try ManagedUserNetConfigRewriter.applyUnixSocketStream(
+        bundlePath: vmPath, socketPath: endpoint.socketPath, fileManager: fileManager
+      )
+    } catch {
+      await managedUserNetProxy.stop()
+      throw error
+    }
+    return .zeroPrivilegeNativeTCPUDP
   }
 
   fileprivate func createAppShellBinding(

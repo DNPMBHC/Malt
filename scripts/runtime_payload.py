@@ -24,7 +24,14 @@ MANIFEST_RELATIVE = 'Contents/Resources/runtime-payload.json'
 SCHEMA = 'runtime-payload-v1'
 HELPER_SETTINGS_CONTRACT_KEY = 'UTMRuntimeSettingsContractVersion'
 MIN_HELPER_SETTINGS_CONTRACT_VERSION = 1
-SCRIPT_NAMES = ('golden_guest_manager.py', 'kiosk-app-shell.ps1')
+SCRIPT_NAMES = (
+    'golden_guest_manager.py',
+    'kiosk-app-shell.ps1',
+    'apply-optimizer.ps1',
+    'rollback-optimizer.ps1',
+    'anticheat-minimal-win11-arm64.json',
+)
+USER_NET_PROXY_RELATIVE = 'Contents/Helpers/malt-net-proxy'
 BLOCKED_DIRECTORIES = {'site-packages', '__pycache__', 'test', 'tests', 'idlelib',
                        'tkinter', 'turtledemo', 'ensurepip', 'include'}
 MACHO_MAGIC = {b'\xfe\xed\xfa\xce', b'\xce\xfa\xed\xfe', b'\xfe\xed\xfa\xcf',
@@ -474,13 +481,57 @@ def source_layout(workspace):
         raise PayloadError('workspace must contain a manager and exactly one application source repository')
     modules = repos[0] / 'Modules'
     kiosk = list(modules.glob('*/scripts/kiosk-app-shell.ps1'))
+    apply_opt = list(modules.glob('*/scripts/apply-optimizer.ps1'))
+    rollback_opt = list(modules.glob('*/scripts/rollback-optimizer.ps1'))
+    profile_opt = list(modules.glob('*/profiles/anticheat-minimal-win11-arm64.json'))
     daemons = list(modules.glob('*/vmnet-bridge/SMAppService.plist'))
-    if len(kiosk) != 1 or len(daemons) != 1:
-        raise PayloadError('required guest script or service manifest is missing or ambiguous')
+    proxy_go = repos[0] / 'scripts/malt_net_proxy.go'
+    if (len(kiosk) != 1 or len(apply_opt) != 1 or len(rollback_opt) != 1
+            or len(profile_opt) != 1 or len(daemons) != 1 or not proxy_go.is_file()):
+        raise PayloadError('required guest script, proxy source, or service manifest is missing or ambiguous')
     sources = list(daemons[0].parent.glob('*.c'))
     if len(sources) != 1:
         raise PayloadError('exactly one native network bridge source is required')
-    return manager, kiosk[0], daemons[0], sources[0]
+    return (manager, kiosk[0], apply_opt[0], rollback_opt[0], profile_opt[0],
+            daemons[0], sources[0], proxy_go)
+
+
+def resolve_go_binary():
+    found = shutil.which('go')
+    if found:
+        return found
+    for candidate in ('/opt/homebrew/bin/go', '/usr/local/go/bin/go'):
+        if Path(candidate).is_file() and os.access(candidate, os.X_OK):
+            return candidate
+    raise PayloadError('Go toolchain is required to build the zero-privilege TCP/UDP network proxy')
+
+
+def embed_user_net_proxy(app, go_source, identity):
+    (go_bytes,) = read_stable_files([go_source])
+    target = contained_path(app, USER_NET_PROXY_RELATIVE)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    go_bin = resolve_go_binary()
+    with tempfile.TemporaryDirectory(prefix='runtime-net-proxy-build-') as temporary:
+        stable_source = Path(temporary) / 'malt_net_proxy.go'
+        stable_source.write_bytes(go_bytes)
+        build_env = os.environ.copy()
+        build_env['CGO_ENABLED'] = '1'
+        build_env['GOARCH'] = 'arm64'
+        build_env['GOCACHE'] = str(Path(temporary) / 'go-cache')
+        build_env['GOPATH'] = str(Path(temporary) / 'go-path')
+        run([go_bin, 'build', '-trimpath', '-ldflags=-s -w', '-o', target, stable_source],
+            env=build_env, timeout=180)
+    target.chmod(0o755)
+    sign(target, identity)
+    run(['codesign', '--verify', '--strict', target])
+    check_raw = run([target, '--self-check'], timeout=15)
+    try:
+        check = json.loads(check_raw.strip())
+    except ValueError as error:
+        raise PayloadError('bundled zero-privilege network proxy self-check returned invalid JSON') from error
+    if not (check.get('passed') is True and check.get('qosUserInteractive') is True):
+        raise PayloadError('bundled zero-privilege network proxy self-check failed')
+    return target.relative_to(app).as_posix()
 
 
 def read_stable_files(paths):
@@ -683,15 +734,19 @@ def verify_manifest(app, manifest):
     if not isinstance(files, dict) or not files or not isinstance(required, dict):
         return problems + ['missing_inventory_or_requirements']
     expected_keys = {'helperBinary', 'helperInfo', 'containerControlBinary', 'pythonExecutable', 'pythonLicense',
-                     'managerScript', 'kioskScript', 'provisioningGuide', 'provisioningGuideChinese', 'networkHelper', 'networkService'}
+                     'managerScript', 'kioskScript', 'optimizerApplyScript', 'optimizerRollbackScript',
+                     'optimizerProfile', 'provisioningGuide', 'provisioningGuideChinese',
+                     'networkHelper', 'networkService', 'userNetProxy'}
     if set(required) != expected_keys:
         problems.append('incomplete_required_resources')
+    executable_keys = ('helperBinary', 'containerControlBinary', 'pythonExecutable',
+                       'networkHelper', 'userNetProxy')
     for key, relative in required.items():
         try:
             path = contained_path(app, relative)
             if relative not in files or not path.is_file():
                 problems.append('missing_required_' + key)
-            elif key in ('helperBinary', 'containerControlBinary', 'pythonExecutable', 'networkHelper') and not os.access(path, os.X_OK):
+            elif key in executable_keys and not os.access(path, os.X_OK):
                 problems.append('not_executable_' + key)
         except (PayloadError, TypeError):
             problems.append('unsafe_required_' + str(key))
@@ -743,16 +798,18 @@ def embed(app, workspace, python_source=None, sign_identity='-'):
         raise PayloadError('embedding requires macOS system build and signing tools')
     helper, helper_binary = select_helper(app)
     helper_signing = resign_nested_code(helper, sign_identity, include_root=True)
-    manager, kiosk, service, bridge = source_layout(workspace)
+    manager, kiosk, apply_opt, rollback_opt, profile_opt, service, bridge, proxy_go = source_layout(workspace)
     prefix = official_python_prefix(python_source)
     scripts = app / 'Contents/Resources/RuntimeScripts'
     scripts.mkdir(parents=True, exist_ok=True)
-    for source, content in zip((manager, kiosk), read_stable_files([manager, kiosk])):
+    script_sources = (manager, kiosk, apply_opt, rollback_opt, profile_opt)
+    for source, content in zip(script_sources, read_stable_files(script_sources)):
         (scripts / source.name).write_bytes(content)
     (scripts / 'PROVISIONING.md').write_text(PROVISIONING, encoding='utf-8')
     (scripts / 'PROVISIONING.zh-Hans.md').write_text(PROVISIONING_ZH, encoding='utf-8')
     interpreter, version = embed_python(app, prefix, sign_identity)
     network_binary, network_service = embed_bridge(app, service, bridge, sign_identity)
+    user_net_proxy = embed_user_net_proxy(app, proxy_go, sign_identity)
     required = {
         'helperBinary': helper_binary.relative_to(app).as_posix(),
         'helperInfo': (helper / 'Contents/Info.plist').relative_to(app).as_posix(),
@@ -761,14 +818,18 @@ def embed(app, workspace, python_source=None, sign_identity='-'):
         'pythonLicense': f'Contents/Frameworks/Python.framework/Versions/{version}/Resources/LICENSE.txt',
         'managerScript': 'Contents/Resources/RuntimeScripts/' + SCRIPT_NAMES[0],
         'kioskScript': 'Contents/Resources/RuntimeScripts/' + SCRIPT_NAMES[1],
+        'optimizerApplyScript': 'Contents/Resources/RuntimeScripts/' + SCRIPT_NAMES[2],
+        'optimizerRollbackScript': 'Contents/Resources/RuntimeScripts/' + SCRIPT_NAMES[3],
+        'optimizerProfile': 'Contents/Resources/RuntimeScripts/' + SCRIPT_NAMES[4],
         'provisioningGuide': 'Contents/Resources/RuntimeScripts/PROVISIONING.md',
         'provisioningGuideChinese': 'Contents/Resources/RuntimeScripts/PROVISIONING.zh-Hans.md',
         'networkHelper': network_binary,
         'networkService': network_service,
+        'userNetProxy': user_net_proxy,
     }
     python_checks = verify_python(app, interpreter, required['managerScript'])
     roots = ['Contents/Frameworks/Python.framework', 'Contents/Resources/RuntimeScripts',
-             helper.relative_to(app).as_posix(), network_binary, network_service]
+             helper.relative_to(app).as_posix(), network_binary, network_service, user_net_proxy]
     pollution = audit_payload_tree(app, roots, [Path.home(), workspace.resolve()])
     if pollution:
         raise PayloadError('payload contains development artifacts or private build paths')
@@ -809,6 +870,7 @@ def verify(app, check_signatures=True):
                 run(['codesign', '--verify', '--deep', '--strict', helper])
                 run(['codesign', '--verify', '--deep', '--strict', app / 'Contents/Frameworks/Python.framework'])
                 run(['codesign', '--verify', '--strict', contained_path(app, required['networkHelper'])])
+                run(['codesign', '--verify', '--strict', contained_path(app, required['userNetProxy'])])
                 signature_checks = True
                 dependency_checks = verify_payload_dependencies(app, manifest['managedRoots'])
                 verify_python_dependencies(app)

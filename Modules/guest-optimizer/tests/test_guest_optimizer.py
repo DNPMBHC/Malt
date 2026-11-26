@@ -234,6 +234,13 @@ class GuestOptimizerProfileTests(unittest.TestCase):
             "Restore-KioskDesktop",
             "Save-DesktopState",
             "ProtectedProcessPrefixes",
+            "Win32_Process",
+            "ParentProcessId",
+            "CreationDate",
+            "IsWindowFullscreen",
+            "GetWindowRect",
+            "Resolve-ProcessLineageChain",
+            "lineage_chain",
         ):
             self.assertIn(required, kiosk_text)
 
