@@ -16,7 +16,6 @@
 		A3B000022B1B0EA4007A625A /* ComplianceDisclaimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B000012B1B0EA4007A625A /* ComplianceDisclaimerView.swift */; };
 		A3B000042B1B0EA4007A625A /* compatibility-matrix.json in Resources */ = {isa = PBXBuildFile; fileRef = A3B000032B1B0EA4007A625A /* compatibility-matrix.json */; };
 		A4D000022B1B0EA4007A625A /* runtime-manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = A4D000012B1B0EA4007A625A /* runtime-manifest.json */; };
-		6E064B1229DD32A200D9A2D2 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 6E064B1129DD32A200D9A2D2 /* Sparkle */; };
 		6E064B1429DD331F00D9A2D2 /* SparkleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E064B1329DD331F00D9A2D2 /* SparkleView.swift */; };
 		6E17B6462AF3FDC100831173 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E17B6452AF3FDC100831173 /* PinView.swift */; };
 		6E17B6492AF4118F00831173 /* EnvironmentArgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E17B6482AF4118F00831173 /* EnvironmentArgView.swift */; };
@@ -33,6 +32,7 @@
 		A13B00062D13B0000013B006 /* UnifiedInstallerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13B00052D13B0000013B005 /* UnifiedInstallerView.swift */; };
 		A13B00082D13B0000013B008 /* UnifiedPerformanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13B00072D13B0000013B007 /* UnifiedPerformanceView.swift */; };
 		A13B000A2D13B0000013B00A /* UnifiedRuntimeStorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13B00092D13B0000013B009 /* UnifiedRuntimeStorageView.swift */; };
+		434DFAD47BD44C46BEC748A5 /* NativeNetworkControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C0A525E5E249B9BA6FCA44 /* NativeNetworkControls.swift */; };
 		A13B000C2D13B0000013B00C /* FirstRunOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13B000B2D13B0000013B00B /* FirstRunOnboardingView.swift */; };
 		6E40495A29CCA19C006E3F1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E40495929CCA19C006E3F1B /* Assets.xcassets */; };
 		6E40495D29CCA19C006E3F1B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E40495C29CCA19C006E3F1B /* Preview Assets.xcassets */; };
@@ -145,6 +145,7 @@
 		A13B00052D13B0000013B005 /* UnifiedInstallerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedInstallerView.swift; sourceTree = "<group>"; };
 		A13B00072D13B0000013B007 /* UnifiedPerformanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedPerformanceView.swift; sourceTree = "<group>"; };
 		A13B00092D13B0000013B009 /* UnifiedRuntimeStorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedRuntimeStorageView.swift; sourceTree = "<group>"; };
+		70C0A525E5E249B9BA6FCA44 /* NativeNetworkControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeNetworkControls.swift; sourceTree = "<group>"; };
 		A13B000B2D13B0000013B00B /* FirstRunOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRunOnboardingView.swift; sourceTree = "<group>"; };
 		6E40495929CCA19C006E3F1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6E40495C29CCA19C006E3F1B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -188,7 +189,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C2AEFC82AED79B700CB568F /* WhiskyKit in Frameworks */,
-				6E064B1229DD32A200D9A2D2 /* Sparkle in Frameworks */,
 				EB58FB552A499896002DC184 /* SemanticVersion in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -246,6 +246,7 @@
 				A13B00052D13B0000013B005 /* UnifiedInstallerView.swift */,
 				A13B00072D13B0000013B007 /* UnifiedPerformanceView.swift */,
 				A13B00092D13B0000013B009 /* UnifiedRuntimeStorageView.swift */,
+				70C0A525E5E249B9BA6FCA44 /* NativeNetworkControls.swift */,
 				A13B000B2D13B0000013B00B /* FirstRunOnboardingView.swift */,
 			);
 			path = Unified;
@@ -452,7 +453,6 @@
 			);
 			name = Whisky;
 			packageProductDependencies = (
-				6E064B1129DD32A200D9A2D2 /* Sparkle */,
 				EB58FB542A499896002DC184 /* SemanticVersion */,
 				8C2AEFC72AED79B700CB568F /* WhiskyKit */,
 			);
@@ -556,7 +556,6 @@
 			);
 			mainGroup = 6E40494929CCA19C006E3F1B;
 			packageReferences = (
-				6E064B1029DD32A200D9A2D2 /* XCRemoteSwiftPackageReference "Sparkle" */,
 				EB58FB532A499896002DC184 /* XCRemoteSwiftPackageReference "SemanticVersion" */,
 				6E5967682A9A421800D64F70 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
 				6E95F66E2AB3F33C00D585D1 /* XCRemoteSwiftPackageReference "SwiftyTextTable" */,
@@ -633,6 +632,7 @@
 				A13B00062D13B0000013B006 /* UnifiedInstallerView.swift in Sources */,
 				A13B00082D13B0000013B008 /* UnifiedPerformanceView.swift in Sources */,
 				A13B000A2D13B0000013B00A /* UnifiedRuntimeStorageView.swift in Sources */,
+				434DFAD47BD44C46BEC748A5 /* NativeNetworkControls.swift in Sources */,
 				A13B000C2D13B0000013B00C /* FirstRunOnboardingView.swift in Sources */,
 				67D278512BC5907E006F9A1E /* ActionView.swift in Sources */,
 				A3B000022B1B0EA4007A625A /* ComplianceDisclaimerView.swift in Sources */,
@@ -1071,14 +1071,6 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		6E064B1029DD32A200D9A2D2 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sparkle-project/Sparkle";
-			requirement = {
-				branch = 2.x;
-				kind = branch;
-			};
-		};
 		6E5967682A9A421800D64F70 /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
@@ -1114,11 +1106,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		6E064B1129DD32A200D9A2D2 /* Sparkle */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6E064B1029DD32A200D9A2D2 /* XCRemoteSwiftPackageReference "Sparkle" */;
-			productName = Sparkle;
-		};
 		6E59676A2A9A424900D64F70 /* ArgumentParser */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6E5967682A9A421800D64F70 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;

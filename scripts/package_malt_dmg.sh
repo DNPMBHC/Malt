@@ -18,8 +18,13 @@ DERIVED_DATA_PATH=""
 MANIFEST_OUTPUT=""
 KOSMICKRISP_DIR=""
 INCLUDE_KOSMICKRISP=1
+BUNDLE_EMBEDDED_RUNTIME=1
+EMBEDDED_RUNTIME_SOURCE=""
+SIGN_IDENTITY=""
+SIGN_IDENTITY_KIND="adhoc"
 DRY_RUN=0
 SKIP_DMG=0
+REQUIRE_DISTRIBUTABLE=0
 
 eval "$(python3 - "$TASK07_DIR" "$WORKSPACE_ROOT" <<'PY'
 import hashlib, json, pathlib, shlex, sys
@@ -64,6 +69,11 @@ Options:
   --manifest-output <file>         Write redacted packaging manifest JSON to file
   --kosmickrisp-dir <dir>          Directory containing lib/libvulkan.1.dylib and lib/libvulkan_kosmickrisp.dylib
   --without-kosmickrisp            Skip bundling KosmicKrisp (explicit MoltenVK fallback)
+  --app-only                      Explicitly build a minimal app without container tools
+  --bundle-embedded-runtime        Embed MaltContainerHelper.app (LSUIElement=true) and RuntimeScripts/; guest and Wine require separate setup
+  --embedded-runtime-source <app>  Explicit path to UTM-Custom.app to embed (implies --bundle-embedded-runtime)
+  --sign-identity <id>             Explicit codesign identity (default: auto-select valid keychain certificate, otherwise ad-hoc)
+  --require-distributable          Require Developer ID, Team ID, secure timestamp and notarization
   --skip-dmg                       Build and verify .app only without creating .dmg
   --dry-run                        Print planned commands and exit without building
   -h, --help                       Show this help message
@@ -95,6 +105,27 @@ while [ $# -gt 0 ]; do
             ;;
         --without-kosmickrisp)
             INCLUDE_KOSMICKRISP=0
+            shift
+            ;;
+        --app-only)
+            BUNDLE_EMBEDDED_RUNTIME=0
+            shift
+            ;;
+        --bundle-embedded-runtime)
+            BUNDLE_EMBEDDED_RUNTIME=1
+            shift
+            ;;
+        --embedded-runtime-source)
+            EMBEDDED_RUNTIME_SOURCE="$2"
+            BUNDLE_EMBEDDED_RUNTIME=1
+            shift 2
+            ;;
+        --sign-identity)
+            SIGN_IDENTITY="$2"
+            shift 2
+            ;;
+        --require-distributable)
+            REQUIRE_DISTRIBUTABLE=1
             shift
             ;;
         --skip-dmg)
@@ -208,8 +239,8 @@ DMG_FILENAME="Malt.dmg"
 DMG_PATH="$OUTPUT_DIR/$DMG_FILENAME"
 
 if [ "$DRY_RUN" -eq 1 ]; then
-    printf '[dry-run] configuration=%s hardened_runtime=%s skip_dmg=%d\n' \
-        "$CONFIGURATION" "$HARDENED_RUNTIME_SETTING" "$SKIP_DMG"
+    printf '[dry-run] configuration=%s hardened_runtime=%s embedded_runtime=%d skip_dmg=%d\n' \
+        "$CONFIGURATION" "$HARDENED_RUNTIME_SETTING" "$BUNDLE_EMBEDDED_RUNTIME" "$SKIP_DMG"
     printf '[dry-run] build_command: %s build\n' "${XCODE_BASE[*]}"
     printf '[dry-run] app_bundle: %s\n' "$APP_PATH"
     printf '[dry-run] dmg_path: %s\n' "$DMG_PATH"
@@ -246,35 +277,112 @@ print(int(json.load(open(sys.argv[1]))['bundled']))
 PYB
 )
 
+# Resolve an optional certificate while preserving ad-hoc signing as the fallback.
+eval "$(python3 - "$SIGN_IDENTITY" <<'PYSIGN'
+import re, shlex, subprocess, sys
+
+explicit = sys.argv[1].strip()
+if explicit:
+    kind = 'adhoc' if explicit == '-' else 'explicit'
+    print(f'SIGN_IDENTITY={shlex.quote(explicit)}')
+    print(f'SIGN_IDENTITY_KIND={shlex.quote(kind)}')
+    raise SystemExit(0)
+
+proc = subprocess.run(['security', 'find-identity', '-v', '-p', 'codesigning'], capture_output=True, text=True)
+identities = []
+for line in proc.stdout.splitlines():
+    m = re.match(r'^\s*\d+\)\s+([0-9A-F]{40})\s+"([^"]+)"', line)
+    if m:
+        identities.append((m.group(1), m.group(2)))
+
+selected_id = '-'
+selected_kind = 'adhoc'
+for prefix, kind in (('Developer ID Application:', 'developer_id'),
+                     ('Apple Development:', 'apple_development')):
+    match = next((h for h, name in identities if name.startswith(prefix)), None)
+    if match:
+        selected_id = match
+        selected_kind = kind
+        break
+else:
+    if identities:
+        selected_id = identities[0][0]
+        selected_kind = 'local_certificate'
+
+print(f'SIGN_IDENTITY={shlex.quote(selected_id)}')
+print(f'SIGN_IDENTITY_KIND={shlex.quote(selected_kind)}')
+PYSIGN
+)"
+echo "[malt-package] Signing identity mode: $SIGN_IDENTITY_KIND"
+SIGN_TIMESTAMP_ARGS=(--timestamp=none)
+if [ "$SIGN_IDENTITY" != "-" ]; then
+    SIGN_TIMESTAMP_ARGS=(--timestamp)
+fi
+
+# Container helper and production management dependencies; --app-only is an explicit opt-out.
+EMBEDDED_HELPER_BUNDLED=0
+EMBEDDED_SCRIPTS_BUNDLED=0
+EMBEDDED_RUNTIME_NOTE="disabled"
+EMBEDDED_HELPER_APP="$STAGED_APP/Contents/Helpers/MaltContainerHelper.app"
+EMBEDDED_SCRIPTS_DIR="$STAGED_APP/Contents/Resources/RuntimeScripts"
+
+if [ "$BUNDLE_EMBEDDED_RUNTIME" -eq 1 ]; then
+    RESOLVED_RUNTIME_SOURCE="$EMBEDDED_RUNTIME_SOURCE"
+    if [ -z "$RESOLVED_RUNTIME_SOURCE" ]; then
+        for candidate in \
+            "${TMPDIR:-/tmp}/utm-custom-build/UTM-Custom.app" \
+            "/Applications/UTM-Custom.app"
+        do
+            if [ -d "$candidate" ] && [ -x "$candidate/Contents/MacOS/UTM" ]; then
+                RESOLVED_RUNTIME_SOURCE="$candidate"
+                break
+            fi
+        done
+    fi
+
+    mkdir -p "$EMBEDDED_SCRIPTS_DIR"
+    # Runtime scripts are mandatory and verified by the payload builder below.
+
+    if [ -n "$RESOLVED_RUNTIME_SOURCE" ] && [ -d "$RESOLVED_RUNTIME_SOURCE" ]; then
+        # Reject stale helper builds before copying, changing metadata, or signing.
+        python3 "$SCRIPT_DIR/runtime_payload.py" check-helper-settings --helper-app "$RESOLVED_RUNTIME_SOURCE"
+        echo "[malt-package] Embedding container helper into Malt.app/Contents/Helpers/MaltContainerHelper.app (LSUIElement=true)..."
+        mkdir -p "$STAGED_APP/Contents/Helpers"
+        rm -rf "$EMBEDDED_HELPER_APP"
+        ditto "$RESOLVED_RUNTIME_SOURCE" "$EMBEDDED_HELPER_APP"
+
+        python3 - "$EMBEDDED_HELPER_APP/Contents/Info.plist" <<'PYP'
+import pathlib, plistlib, sys
+plist_path = pathlib.Path(sys.argv[1])
+data = plistlib.loads(plist_path.read_bytes())
+data['LSUIElement'] = True
+plist_path.write_bytes(plistlib.dumps(data, fmt=plistlib.FMT_XML))
+PYP
+
+        # Payload embedding signs all helper code inside-out while preserving entitlements.
+        EMBEDDED_HELPER_BUNDLED=1
+        EMBEDDED_RUNTIME_NOTE="embedded_helper_and_scripts"
+    else
+        echo "error: embedded container runtime is required; provide --embedded-runtime-source or explicitly choose --app-only" >&2
+        exit 1
+    fi
+fi
+
+if [ "$BUNDLE_EMBEDDED_RUNTIME" -eq 1 ]; then
+    python3 "$SCRIPT_DIR/runtime_payload.py" embed --app "$STAGED_APP" --workspace "$WORKSPACE_ROOT" --sign-identity "$SIGN_IDENTITY"
+    EMBEDDED_SCRIPTS_BUNDLED=1
+fi
+
 ENTITLEMENTS_FILE="$REPO_DIR/Whisky/Whisky.entitlements"
 if [ ! -f "$ENTITLEMENTS_FILE" ]; then
     echo "error: entitlements file missing at $ENTITLEMENTS_FILE" >&2
     exit 1
 fi
 
-# Sign nested frameworks, plug-ins, CLI binary, and main Malt.app inside-out with Hardened Runtime.
-SPARKLE_VER_B="$STAGED_APP/Contents/Frameworks/Sparkle.framework/Versions/B"
-if [ -d "$SPARKLE_VER_B" ]; then
-    for nested_item in \
-        "$SPARKLE_VER_B/XPCServices/Downloader.xpc" \
-        "$SPARKLE_VER_B/XPCServices/Installer.xpc" \
-        "$SPARKLE_VER_B/Updater.app" \
-        "$SPARKLE_VER_B/Autoupdate" \
-        "$STAGED_APP/Contents/Frameworks/Sparkle.framework"
-    do
-        if [ -e "$nested_item" ]; then
-            codesign --force --sign - --options runtime --timestamp=none \
-                "$nested_item" >>"$STAGING_BASE/sign-nested.log" 2>&1
-        fi
-    done
-fi
-if [ -d "$STAGED_APP/Contents/PlugIns/WhiskyThumbnail.appex" ]; then
-    codesign --force --sign - --options runtime --timestamp=none \
-        "$STAGED_APP/Contents/PlugIns/WhiskyThumbnail.appex" >>"$STAGING_BASE/sign-nested.log" 2>&1
-fi
-codesign --force --sign - --options runtime --timestamp=none \
-    "$STAGED_APP/Contents/Resources/${EXECUTABLE_NAME}Cmd" 2>"$STAGING_BASE/sign-cli.log"
-codesign --force --sign - --options runtime --entitlements "$ENTITLEMENTS_FILE" --timestamp=none \
+# Sign remaining application code inside-out. Payload-managed code is already signed
+# and its hashes must remain stable. Locked optional drivers retain source signatures.
+python3 "$SCRIPT_DIR/runtime_payload.py" sign-nested --app "$STAGED_APP" --sign-identity "$SIGN_IDENTITY"
+codesign --force --sign "$SIGN_IDENTITY" --options runtime --entitlements "$ENTITLEMENTS_FILE" "${SIGN_TIMESTAMP_ARGS[@]}" \
     "$STAGED_APP" 2>"$STAGING_BASE/sign-app.log"
 
 codesign --verify --deep --strict "$STAGED_APP" 2>"$STAGING_BASE/codesign-deep-strict.log"
@@ -288,6 +396,28 @@ pathlib.Path(sys.argv[3]).write_text(json.dumps(result, indent=2) + '\n')
 if not result['passed']:
     raise SystemExit('error: Hardened Runtime signature validation failed')
 PYB
+
+if [ "$BUNDLE_EMBEDDED_RUNTIME" -eq 1 ]; then
+    python3 "$SCRIPT_DIR/runtime_payload.py" verify --app "$STAGED_APP" --output "$STAGING_BASE/runtime-payload-verification.json"
+fi
+
+# Require independent Developer ID, Team ID, timestamp and notarization evidence.
+# Local ad-hoc packages remain valid testing artifacts and report distribution=false.
+if [ "$REQUIRE_DISTRIBUTABLE" -eq 1 ]; then
+    python3 "$SCRIPT_DIR/runtime_payload.py" assess-distribution --app "$STAGED_APP" \
+        --output "$STAGING_BASE/distribution-assessment.json" --require-distributable
+else
+    python3 "$SCRIPT_DIR/runtime_payload.py" assess-distribution --app "$STAGED_APP" \
+        --output "$STAGING_BASE/distribution-assessment.json"
+fi
+
+# Reject stale updater dependencies and require four seconds of healthy process survival.
+python3 "$SCRIPT_DIR/package_launch_gate.py" \
+    --app "$STAGED_APP" \
+    --executable-name "$EXECUTABLE_NAME" \
+    --output "$STAGING_BASE/launch-smoke.json" --isolated-user-data
+LAUNCH_SMOKE_PASSED=1
+echo "[package] Launch dyld smoke test (4s survival): passed"
 
 if [ "$SKIP_DMG" -eq 0 ]; then
     echo "[malt-package] Creating compressed read-only Malt.dmg at $DMG_PATH ..."
@@ -303,7 +433,8 @@ fi
 
 python3 - "$REPO_DIR" "$STAGED_APP" "$EXECUTABLE_NAME" "$CONFIGURATION" "$MARKETING_VERSION" \
     "$HARDENED_RUNTIME_SETTING" "$SKIP_DMG" "$DMG_PATH" "$MANIFEST_OUTPUT" "$KOSMICKRISP_BUNDLED" \
-    "$STAGING_BASE" <<'PY'
+    "$STAGING_BASE" "$BUNDLE_EMBEDDED_RUNTIME" "$EMBEDDED_HELPER_BUNDLED" "$EMBEDDED_SCRIPTS_BUNDLED" \
+    "$EMBEDDED_RUNTIME_NOTE" "$SIGN_IDENTITY_KIND" "$LAUNCH_SMOKE_PASSED" <<'PY'
 import datetime, hashlib, json, pathlib, plistlib, subprocess, sys
 
 repo = pathlib.Path(sys.argv[1])
@@ -317,6 +448,20 @@ dmg_path = pathlib.Path(sys.argv[8])
 manifest_out = sys.argv[9]
 kk_bundled = int(sys.argv[10]) == 1
 staging_base = pathlib.Path(sys.argv[11])
+embedded_requested = int(sys.argv[12]) == 1
+embedded_helper_bundled = int(sys.argv[13]) == 1
+embedded_scripts_bundled = int(sys.argv[14]) == 1
+embedded_runtime_note = sys.argv[15]
+sign_identity_kind = sys.argv[16]
+launch_smoke_passed = int(sys.argv[17]) == 1
+
+def artifact_manifest_location(path: pathlib.Path, workspace: pathlib.Path) -> dict:
+    """Keep artifact locations accurate without disclosing external absolute paths."""
+    try:
+        relative = path.resolve().relative_to(workspace.resolve())
+    except ValueError:
+        return {'relativePath': path.name, 'pathScope': 'filename-only'}
+    return {'relativePath': relative.as_posix(), 'pathScope': 'workspace-relative'}
 
 def sha256_file(path: pathlib.Path) -> str:
     h = hashlib.sha256()
@@ -394,13 +539,46 @@ if found_forbidden:
 
 # Assert bundle purity (no WhiskyKit source, .build cache, dev logs, or git metadata).
 forbidden_tokens = ('whiskykit', '.build', 'graphics-lab', 'windowsprobe', 'module-a', '.dev-logs', 'handoff', '.git')
+allowed_embedded_scripts = {
+    'contents/resources/runtimescripts/golden_guest_manager.py',
+    'contents/resources/runtimescripts/kiosk-app-shell.ps1',
+}
 leaked = []
 for entry in app.rglob('*'):
     rel_lower = str(entry.relative_to(app)).lower()
+    if embedded_requested and (
+        rel_lower.startswith('contents/helpers/maltcontainerhelper.app')
+        or rel_lower in allowed_embedded_scripts
+        or rel_lower.startswith('contents/frameworks/python.framework/')
+        or rel_lower.startswith('contents/resources/runtimescripts/')
+    ):
+        continue
     if any(tok in rel_lower for tok in forbidden_tokens) or entry.suffix.lower() in {'.swift', '.pcm', '.o', '.py', '.cpp', '.c'}:
         leaked.append(rel_lower)
 if leaked:
     raise SystemExit(f'error: forbidden development/source files leaked into .app bundle: {leaked[:5]}')
+
+embedded_info = {
+    'requested': embedded_requested,
+    'helperBundled': embedded_helper_bundled,
+    'scriptsBundled': embedded_scripts_bundled,
+    'note': embedded_runtime_note,
+    'lsuiElementEnabled': False,
+    'helperBinarySHA256': None,
+    'bundledScripts': [],
+}
+if embedded_helper_bundled:
+    helper_plist = plistlib.loads((app / 'Contents/Helpers/MaltContainerHelper.app/Contents/Info.plist').read_bytes())
+    if helper_plist.get('LSUIElement') is not True:
+        raise SystemExit('error: embedded MaltContainerHelper.app must have LSUIElement=true')
+    embedded_info['lsuiElementEnabled'] = True
+    helper_bin = app / 'Contents/Helpers/MaltContainerHelper.app/Contents/MacOS/UTM'
+    if not helper_bin.is_file():
+        raise SystemExit('error: embedded MaltContainerHelper binary missing')
+    embedded_info['helperBinarySHA256'] = sha256_file(helper_bin)
+if embedded_scripts_bundled:
+    scripts_dir = app / 'Contents/Resources/RuntimeScripts'
+    embedded_info['bundledScripts'] = sorted(p.name for p in scripts_dir.iterdir() if p.is_file())
 
 dmg_info = None
 if skip_dmg == 0:
@@ -408,11 +586,12 @@ if skip_dmg == 0:
         raise SystemExit('error: Malt.dmg missing or empty')
     size_bytes = dmg_path.stat().st_size
     size_mib = round(size_bytes / (1024 * 1024), 3)
-    if size_bytes >= 20 * 1024 * 1024:
-        raise SystemExit(f'error: Malt.dmg exceeds 20 MiB target ({size_mib} MiB)')
+    max_mib = 2048 if embedded_helper_bundled else 20
+    if size_bytes >= max_mib * 1024 * 1024:
+        raise SystemExit(f'error: Malt.dmg exceeds {max_mib} MiB target ({size_mib} MiB)')
     dmg_info = {
         'filename': dmg_path.name,
-        'relativePath': 'Whisky/build/release/Malt.dmg',
+        **artifact_manifest_location(dmg_path, repo.parent),
         'sizeBytes': size_bytes,
         'sizeMiB': size_mib,
         'sha256': sha256_file(dmg_path),
@@ -421,7 +600,7 @@ if skip_dmg == 0:
     }
 
 report = {
-    'schema': 'phase-14b-malt-release-dmg-v1',
+    'schema': 'phase-15b-malt-embedded-dmg-v1' if embedded_requested else 'phase-14b-malt-release-dmg-v1',
     'owner': '@DNPMBHC',
     'capturedAt': datetime.datetime.now(datetime.timezone.utc).isoformat(),
     'brand': 'Malt',
@@ -430,12 +609,23 @@ report = {
     'architecture': 'arm64',
     'marketingVersion': marketing_version,
     'hardenedRuntimeEnabled': hardened == 'YES',
+    'codesignIdentityKind': sign_identity_kind,
     'codesignVerifyDeepStrictPassed': True,
+    'launchSmokeTestPassed': launch_smoke_passed,
+    'launchSmokeVerification': json.loads((staging_base / 'launch-smoke.json').read_text()),
     'entitlements': entitlements_dict,
     'forbiddenEntitlementsFound': found_forbidden,
     'hardenedRuntimeVerification': json.loads((staging_base / 'hardened-runtime.json').read_text()),
     'bundlePurityPassed': True,
     'requiredResourcesVerified': True,
+    'embeddedRuntime': embedded_info,
+    'runtimePayload': json.loads((staging_base / 'runtime-payload-verification.json').read_text()) if embedded_requested else None,
+    'externalSetupRequired': True,
+    'gameLaunchVerified': False,
+    'distributionAssessment': json.loads((staging_base / 'distribution-assessment.json').read_text()),
+    'cleanMachineGameLaunchVerified': False,
+    'distributionReady': json.loads((staging_base / 'distribution-assessment.json').read_text())['distributable'],
+    'notarizationVerified': json.loads((staging_base / 'distribution-assessment.json').read_text())['notarizationVerified'],
     'vulkanBackend': kk_info,
     'artifacts': {
         'appBinarySHA256': sha256_file(required['app_binary']),

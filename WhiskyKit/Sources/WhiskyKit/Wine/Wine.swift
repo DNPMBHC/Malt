@@ -370,6 +370,7 @@ extension Wine {
     }
 
     public static func changeDpiResolution(bottle: Bottle, dpi: Int) async throws {
+        let dpi = try WineDPIConfigurationPolicy.validatedDPI(dpi)
         try await Wine.addRegistryKey(
             bottle: bottle, key: RegistryKey.desktop.rawValue, name: "LogPixels", data: String(dpi),
             type: .dword

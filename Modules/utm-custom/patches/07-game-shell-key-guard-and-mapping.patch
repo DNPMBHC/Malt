@@ -2,14 +2,17 @@ diff --git a/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift b/P
 index 1e4c926..6a3dbf3 100644
 --- a/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
 +++ b/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
-@@ -697,6 +697,21 @@ extension VMDisplayQemuMetalWindowController: VMMetalViewInputDelegate {
+@@ -697,6 +697,24 @@ extension VMDisplayQemuMetalWindowController: VMMetalViewInputDelegate {
              metalView.keyDown(with: event)
              return true
          }
 +        let isGameShell = CommandLine.arguments.contains("--game-shell-vm")
++            || CommandLine.arguments.contains("--app-shell-vm")
 +            || ProcessInfo.processInfo.environment["UTM_GAME_SHELL_VM"] != nil
-+        let guardEnabled = (isGameShell && isFullScreen)
-+            || ProcessInfo.processInfo.environment["UTM_GAME_SHELL_KEY_GUARD"] == "1"
++            || ProcessInfo.processInfo.environment["UTM_APP_SHELL_VM"] != nil
++        let guardEnabled = isGameShell && isFullScreen
++            && (ProcessInfo.processInfo.environment["UTM_GAME_SHELL_KEY_GUARD"]
++                .map { $0 == "1" } ?? true)
 +        if guardEnabled && (event.type == .keyDown || event.type == .keyUp) {
 +            let flags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
 +            if flags.contains(.command) && !flags.contains(.option) && !flags.contains(.control) {
@@ -28,20 +31,23 @@ diff --git a/Platform/macOS/Display/VMMetalView.swift b/Platform/macOS/Display/V
 index 8b14a04..dafbd5a 100644
 --- a/Platform/macOS/Display/VMMetalView.swift
 +++ b/Platform/macOS/Display/VMMetalView.swift
-@@ -206,6 +206,40 @@ class VMMetalView: MTKView {
+@@ -206,6 +206,43 @@ class VMMetalView: MTKView {
          lastKeyDown = nil
          inputDelegate?.keyUp(scanCode: getScanCodeForEvent(event))
      }
 +
 +    private var isGameShellFullScreenActive: Bool {
 +        let isGameShell = CommandLine.arguments.contains("--game-shell-vm")
++            || CommandLine.arguments.contains("--app-shell-vm")
 +            || ProcessInfo.processInfo.environment["UTM_GAME_SHELL_VM"] != nil
++            || ProcessInfo.processInfo.environment["UTM_APP_SHELL_VM"] != nil
 +        return isGameShell && (window?.styleMask.contains(.fullScreen) == true)
 +    }
 +
 +    private var shouldGuardGameShellShortcuts: Bool {
 +        isGameShellFullScreenActive
-+            || ProcessInfo.processInfo.environment["UTM_GAME_SHELL_KEY_GUARD"] == "1"
++            && (ProcessInfo.processInfo.environment["UTM_GAME_SHELL_KEY_GUARD"]
++                .map { $0 == "1" } ?? true)
 +    }
 +
 +    private var shouldBlockLeftWinKey: Bool {
@@ -69,7 +75,7 @@ index 8b14a04..dafbd5a 100644
      
      override func flagsChanged(with event: NSEvent) {
          let modifiers = event.modifierFlags
-@@ -244,21 +278,26 @@ class VMMetalView: MTKView {
+@@ -244,21 +281,26 @@ class VMMetalView: MTKView {
              }
          }
          if !modifier.isDisjoint(with: [.command, .leftCommand, .rightCommand]) {
@@ -114,7 +120,7 @@ diff --git a/Platform/macOS/Info.plist b/Platform/macOS/Info.plist
 index e7ed6e5..e3f4a18 100644
 --- a/Platform/macOS/Info.plist
 +++ b/Platform/macOS/Info.plist
-@@ -53,7 +53,11 @@
+@@ -53,7 +53,13 @@
  	<key>ITSAppUsesNonExemptEncryption</key>
  	<false/>
  	<key>LSApplicationCategoryType</key>
@@ -124,6 +130,8 @@ index e7ed6e5..e3f4a18 100644
 +	<true/>
 +	<key>GCSupportsGameMode</key>
 +	<true/>
++	<key>UTMRuntimeSettingsContractVersion</key>
++	<integer>1</integer>
  	<key>LSMinimumSystemVersion</key>
  	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
  	<key>UTExportedTypeDeclarations</key>

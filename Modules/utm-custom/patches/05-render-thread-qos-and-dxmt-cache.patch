@@ -65,30 +65,36 @@ diff --git a/Services/UTMQemuSystem.m b/Services/UTMQemuSystem.m
 index 5ae060c..922bc61 100644
 --- a/Services/UTMQemuSystem.m
 +++ b/Services/UTMQemuSystem.m
-@@ -139,6 +139,22 @@ - (void)setDirectXDriver:(UTMQEMUDirectXDriver)directXDriver {
+@@ -139,6 +139,28 @@ - (void)setDirectXDriver:(UTMQEMUDirectXDriver)directXDriver {
          self.mutableEnvironment[@"NPT_D3D12_LIBRARY_PATH"] = library.path;
          self.mutableEnvironment[@"NPT_DXGI_LIBRARY_PATH"] = library.path;
          self.mutableEnvironment[@"NPT_BACKEND"] = backend;
 +        if (directXDriver == kQEMUDirectXDriverDXMT) {
-+            NSString *overrideCache = NSProcessInfo.processInfo.environment[@"UTM_DXMT_SHADER_CACHE_PATH"];
-+            NSURL *cacheURL = nil;
-+            if (overrideCache.length > 0) {
-+                cacheURL = [NSURL fileURLWithPath:overrideCache isDirectory:YES];
++            NSString *cacheEnabled = NSProcessInfo.processInfo.environment[@"UTM_DXMT_SHADER_CACHE_ENABLED"];
++            if ([cacheEnabled isEqualToString:@"0"]) {
++                self.mutableEnvironment[@"DXMT_SHADER_CACHE"] = @"0";
++                [self.mutableEnvironment removeObjectForKey:@"DXMT_SHADER_CACHE_PATH"];
 +            } else {
-+                NSURL *cachesRoot = [NSFileManager.defaultManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask].firstObject;
-+                cacheURL = [cachesRoot URLByAppendingPathComponent:@"dxmt-shader-cache" isDirectory:YES];
-+            }
-+            if (cacheURL) {
-+                [NSFileManager.defaultManager createDirectoryAtURL:cacheURL withIntermediateDirectories:YES attributes:nil error:nil];
-+                self.mutableEnvironment[@"DXMT_SHADER_CACHE"] = @"1";
-+                self.mutableEnvironment[@"DXMT_SHADER_CACHE_PATH"] = cacheURL.path;
-+                self.resources = [self.resources arrayByAddingObject:cacheURL];
++                NSString *overrideCache = NSProcessInfo.processInfo.environment[@"UTM_DXMT_SHADER_CACHE_PATH"];
++                NSURL *cacheURL = nil;
++                if (overrideCache.length > 0) {
++                    cacheURL = [NSURL fileURLWithPath:overrideCache isDirectory:YES];
++                } else {
++                    NSURL *cachesRoot = [NSFileManager.defaultManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask].firstObject;
++                    cacheURL = [cachesRoot URLByAppendingPathComponent:@"dxmt-shader-cache" isDirectory:YES];
++                }
++                if (cacheURL) {
++                    [NSFileManager.defaultManager createDirectoryAtURL:cacheURL withIntermediateDirectories:YES attributes:nil error:nil];
++                    self.mutableEnvironment[@"DXMT_SHADER_CACHE"] = @"1";
++                    self.mutableEnvironment[@"DXMT_SHADER_CACHE_PATH"] = cacheURL.path;
++                    self.resources = [self.resources arrayByAddingObject:cacheURL];
++                }
 +            }
 +        }
          if (directXDriver == kQEMUDirectXDriverD3DMetal) {
              self.mutableEnvironment[@"NPT_CAPSET_D3D12"] = @"1";
          }
-@@ -151,6 +167,8 @@ - (void)setDirectXDriver:(UTMQEMUDirectXDriver)directXDriver {
+@@ -151,6 +173,8 @@ - (void)setDirectXDriver:(UTMQEMUDirectXDriver)directXDriver {
          [self.mutableEnvironment removeObjectForKey:@"NPT_BACKEND"];
          [self.mutableEnvironment removeObjectForKey:@"NPT_CAPSET_D3D12"];
          [self.mutableEnvironment removeObjectForKey:@"D3DMETAL_FRAMEWORK_PATH"];

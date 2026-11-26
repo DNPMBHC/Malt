@@ -29,7 +29,7 @@ Options:
   --build-root <dir>  External directory for DerivedData & UTM-Custom.app (default: $TMPDIR/utm-custom-build)
   --output-app <path> Output .app path outside repo (default: <build-root>/UTM-Custom.app)
   --build             Build and ad-hoc sign UTM-Custom.app out of repo (Path A)
-  --check-only        Run compliance audit and standalone+stacked git apply --check only (default)
+  --check-only        Run compliance audit and ordered git apply --check only (default)
   -h, --help          Show this help message
 EOF
 }
@@ -103,7 +103,8 @@ git -C "$UTM_DIR" reset --hard v5.0.9 >/dev/null 2>&1 || git -C "$UTM_DIR" reset
 git -C "$UTM_DIR" clean -fd -e sysroot-macOS-arm64 >/dev/null 2>&1 || true
 SPICE_BASE_REV="e239fab0828ebafc3a5a973fa84039400d7ac703"
 if git -C "$SPICE_DIR" cat-file -e "${SPICE_BASE_REV}^{commit}" 2>/dev/null; then
-    git -C "$SPICE_DIR" checkout -B main "$SPICE_BASE_REV" >/dev/null 2>&1 || git -C "$SPICE_DIR" reset --hard "$SPICE_BASE_REV" >/dev/null
+    git -C "$SPICE_DIR" checkout -B main "$SPICE_BASE_REV" >/dev/null 2>&1
+    git -C "$SPICE_DIR" reset --hard "$SPICE_BASE_REV" >/dev/null
 else
     git -C "$SPICE_DIR" reset --hard HEAD >/dev/null
 fi
@@ -118,18 +119,21 @@ UTM_PATCHES=(
     "$PATCHES_DIR/06-high-polling-mouse-coalescing.patch"
     "$PATCHES_DIR/07-game-shell-key-guard-and-mapping.patch"
     "$PATCHES_DIR/08-seamless-app-shell-window.patch"
+    "$PATCHES_DIR/09-iosurface-direct-present-and-virtio-input.patch"
+    "$PATCHES_DIR/10-automation-permission-feedback.patch"
 )
 SPICE_PATCHES=(
     "$PATCHES_DIR/02-cocoaspice-cursor-overlay.patch"
     "$PATCHES_DIR/05-cocoaspice-frame-backpressure.patch"
+    "$PATCHES_DIR/09-cocoaspice-iosurface-direct-present.patch"
 )
 
-python3 -B "$REPO_ROOT/graphics-lab/utm_custom_patch_verify.py" \
+python3 -B "$SCRIPT_DIR/verify_engine_patches.py" \
     --patches-dir "$PATCHES_DIR" \
     --utm-repo "$UTM_DIR" \
     --cocoaspice-repo "$SPICE_DIR" >/dev/null
 
-echo "[utm-custom] Compliance + standalone/stacked git apply --check passed (8 UTM + 2 CocoaSpice patches)."
+echo "[utm-custom] Compliance + ordered git apply --check passed (10 UTM + 3 CocoaSpice patches)."
 
 if [ "$CHECK_ONLY" -eq 1 ]; then
     echo "[utm-custom] Check-only completed successfully."
@@ -162,7 +166,7 @@ PY
     fi
 fi
 git -C "$SPICE_DIR" add -A
-git -C "$SPICE_DIR" -c user.name="utm-custom-builder" -c user.email="utm-custom@local" \
+git -C "$SPICE_DIR" -c user.name="@DNPMBHC" -c user.email="DNPMBHC@users.noreply.github.com" \
     commit -m "Apply Phase 11B CocoaSpice cursor overlay & backpressure patches" >/dev/null
 SPICE_CUSTOM_REV=$(git -C "$SPICE_DIR" rev-parse HEAD)
 echo "[utm-custom] Patched CocoaSpice revision: $SPICE_CUSTOM_REV"

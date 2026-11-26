@@ -18,7 +18,7 @@
 
 ---
 
-## 2. 七组精准源码改造点（9 份独立且可堆叠补丁）
+## 2. 九组精准源码改造点（12 份独立且可堆叠补丁）
 
 ### 位置 1：默认图形后端锁定 `dxmt-native`（`01-default-dxmt-backend.patch`）
 - **目标文件**：
@@ -105,11 +105,24 @@
   - **游戏前景自动无缝切全屏**：通过轮询 `--app-shell-state-file`（支持纯文本或 JSON 状态）及监听分布式通知 `com.utmapp.utm.appShellStateChanged`，感知 Guest 内游戏主进程进入前景后自动切入无边框原生全屏、设置 `[.fullScreen, .autoHideMenuBar, .autoHideDock]` 触发 macOS Game Mode、自动捕获纯相对鼠标并启用 `Cmd+W/Q/H/M` 防误触拦截；
   - **优雅退出**：收到退出信号或 VM 进入 `.stopped` 状态时自动关闭应用壳，全程零 UTM 管理窗曝光。
 
+### 位置 9：`IOSurface` 零拷贝直出、1:1 Blit Fast Path 与全链路去模拟化开关（`09-iosurface-direct-present-and-virtio-input.patch` + `09-cocoaspice-iosurface-direct-present.patch`）
+- **目标文件**：
+  - `UTM/Configuration/UTMQemuConfiguration+Arguments.swift`
+  - `UTM/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift`
+  - `CocoaSpice/Sources/CocoaSpice/CSDisplay.m`
+  - `CocoaSpice/Sources/CocoaSpiceRenderer/CSMetalRenderer.m`
+- **改造内容**：
+  - **WHQL `virtio-mouse-pci` 开关 + 彻底移除残余 `usb-redir` 与多余 `qemu-xhci`**：读取 `config.plist` 的 `Input.VirtioMouse` / `Input.DisableUsbRedir`（兼容 `--virtio-mouse` / `--usb-mouse-fallback` / `--no-usb-redir` 及 `UTM_VIRTIO_MOUSE` / `UTM_DISABLE_USB_REDIR` 环境变量）；开启 `VirtioMouse` 时注入 `-device virtio-mouse-pci` 替代模拟 `usb-mouse`（保留 `usb-mouse` 回退，全程 `Secure Boot = True`）；当 `!input.hasUsbSharing || input.maximumUsbShare <= 0 || DisableUsbRedir` 时将 `maxDevices` 归零，从源头消除 3 条残余 `spicevmc,name=usbredir` / `usb-redir` 通道与多余 `qemu-xhci` 控制器；
+  - **`IOSurface` 零拷贝直出（消除 SPICE 4K 31.64 MiB 二次拷贝且永不阻塞 TDR）**：在 `CSDisplay.m` 中（默认开启，可设 `UTM_IOSURFACE_DIRECT_PRESENT=0` 或 `--disable-iosurface-direct-present` 做 A/B 对照）跳过私有 `shadowTexture` 分配与 `glTexture → shadowTexture` 二次 Blit 拷贝，直接向 `CSMetalRenderer` 递交零拷贝 `IOSurface`-backed `glTexture`，并通过与 `CAMetalDisplayLink` 解耦的 0 字节 FIFO 空 Fence `MTLCommandBuffer` 完成顺序同步后发回 `spice_display_channel_gl_draw_done`（既彻底免除 4K 二次显存拷贝，又杜绝切屏/后台过渡期憋死 `QEMURenderServer` 触发 Windows `viogpu3d` TDR）；
+  - **1:1 零 Shader Metal Blit Fast Path 与 `FPSLimit=120` 固化**：在 `VMDisplayQemuMetalWindowController.swift` 中为 `CAMetalLayer` 开启 `framebufferOnly = false` + 三重缓冲（`maximumDrawableCount = 3`）并守护默认 `QEMURendererFPSLimit = 120`；在 `CSMetalRenderer.m` 中当源 `IOSurface` 纹理与目标 drawable 尺寸/格式 1:1 匹配、无缩放偏移且无软件光标叠加时，使用 `MTLBlitCommandEncoder` 跳过 Fragment Shader 采样直写 drawable，其余情况无缝回退标准 Render Pass。
+- **配套原生内核 `vmnet` 守护进程桥接（`Whisky/Modules/utm-custom/vmnet-bridge/`）**：
+  - 提供极简 C 版 `malt_vmnet_bridge.c`、`com.malt.vmnet-bridge.plist.template` 与 `install_vmnet_bridge.sh`：无需付费 Apple Developer ID 签名、无需关闭 SIP，用户一次标准管理员密码授权后即可经由 Unix Socket（`-netdev stream,addr.type=unix`）让任意 ad-hoc 签名 QEMU 实例直通 macOS 内核 `vmnet.framework`（完整 TCP/UDP/ICMP）；未授权时自动无缝回落零特权完整 TCP+UDP+ICMP 高 QoS 异步代理。
+
 ---
 
 ## 3. 自动化合规与白名单门禁
 
-所有 10 份补丁必须通过 `graphics-lab/utm_custom_patch_verify.py` 的：
-1. **严格白名单文件范围检查**（仅允许上述 14 个宿主机/渲染层源码与 `Info.plist` 文件）；
+所有 12 份补丁必须通过 `graphics-lab/utm_custom_patch_verify.py` 的：
+1. **严格白名单文件范围检查**（仅允许上述 15 个宿主机/渲染层源码与 `Info.plist` 文件）；
 2. **5 类违规模式黑名单拦截**（CPUID/Hypervisor 伪装、SMBIOS/ACPI 伪装、TPM/Secure Boot 篡改、Windows 内核/驱动修改、反作弊/游戏篡改）；
 3. **独立与全量堆叠 `git apply --check` 校验**（0 冲突）。

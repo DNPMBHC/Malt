@@ -1,0 +1,53 @@
+diff --git a/utmctl/Info.plist b/utmctl/Info.plist
+index 23dee14..a1f4258 100644
+--- a/utmctl/Info.plist
++++ b/utmctl/Info.plist
+@@ -24,5 +24,7 @@
+ 	<false/>
+ 	<key>NSHumanReadableCopyright</key>
+ 	<string>Copyright © 2022 osy. All rights reserved.</string>
++	<key>NSAppleEventsUsageDescription</key>
++	<string>This control tool needs permission to communicate with the bundled runtime engine to start and manage your selected containers.</string>
+ </dict>
+ </plist>
+diff --git a/utmctl/UTMCtl.swift b/utmctl/UTMCtl.swift
+index fa8e951..ba9ec71 100644
+--- a/utmctl/UTMCtl.swift
++++ b/utmctl/UTMCtl.swift
+@@ -159,8 +159,8 @@ extension UTMCtl {
+             if let user = error.userInfo["ErrorString"] as? String {
+                 FileHandle.standardError.write(user)
+             }
+-            if error.domain == NSOSStatusErrorDomain && error.code == errAEEventNotPermitted {
+-                FileHandle.standardError.write("NOTE: utmctl does not work from SSH sessions or before logging in.")
++            if error.domain == NSOSStatusErrorDomain && (error.code == errAEEventNotPermitted || error.code == -1744) {
++                FileHandle.standardError.write("\nAUTOMATION_PERMISSION_DENIED (\(error.code)): Allow this app to control the bundled runtime engine in System Settings > Privacy & Security > Automation, then retry from the local logged-in desktop.\n")
+             }
+             return nil
+         }
+diff --git a/utmctl/utmctl-unsigned.entitlements b/utmctl/utmctl-unsigned.entitlements
+index 65ed916..c48c20a 100644
+--- a/utmctl/utmctl-unsigned.entitlements
++++ b/utmctl/utmctl-unsigned.entitlements
+@@ -2,6 +2,8 @@
+ <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+ <plist version="1.0">
+ <dict>
++	<key>com.apple.security.automation.apple-events</key>
++	<true/>
+ 	<key>com.apple.security.app-sandbox</key>
+ 	<true/>
+ 	<key>com.apple.security.network.client</key>
+diff --git a/utmctl/utmctl.entitlements b/utmctl/utmctl.entitlements
+index 8760fa9..15e4883 100644
+--- a/utmctl/utmctl.entitlements
++++ b/utmctl/utmctl.entitlements
+@@ -2,6 +2,8 @@
+ <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+ <plist version="1.0">
+ <dict>
++	<key>com.apple.security.automation.apple-events</key>
++	<true/>
+ 	<key>com.apple.security.application-groups</key>
+ 	<array>
+ 		<string>$(TeamIdentifierPrefix)$(PRODUCT_BUNDLE_PREFIX:default=com.utmapp).UTM</string>

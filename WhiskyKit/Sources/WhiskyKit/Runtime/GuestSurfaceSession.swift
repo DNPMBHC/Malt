@@ -56,7 +56,8 @@ public actor GuestSurfaceSession {
   private var cursorReleaseVerified = true
   private var windowPixelSize: CGSize?
   private var activeConfiguration: RuntimeGuestConfiguration?
-  private var displayUpdate: Task<GuestDisplaySyncSnapshot, Error>?
+  private var displayUpdate: Task<GuestDisplayMode?, Error>?
+  private var pendingDisplayMode: GuestDisplayMode?
 
   public init(
     provider: any WindowsGuestProvider, displaySync: any GuestDisplaySynchronizing,
@@ -78,22 +79,65 @@ public actor GuestSurfaceSession {
   }
 
   public func synchronizeWindowPixelSize(_ size: CGSize) async throws -> GuestDisplayMode? {
+    guard let task = try enqueueWindowPixelSize(size) else { return nil }
+    // Cancelling an obsolete debounce waiter must not cancel a newer size sharing this worker.
+    // Session cancellation and teardown own cancellation of the display operation itself.
+    let appliedMode = try await task.value
+    try Task.checkCancellation()
+    return appliedMode
+  }
+
+  func enqueueWindowPixelSize(_ size: CGSize) throws -> Task<GuestDisplayMode?, Error>? {
+    try Task.checkCancellation()
     updateWindowPixelSize(size)
     guard configuration.resolutionPreset == .followWindow, state == .running,
-      let config = activeConfiguration, displayUpdate == nil
+      !cancellationRequested, let config = activeConfiguration
     else { return nil }
-    let mode = try GuestDisplayResolutionPolicy.resolve(
+    pendingDisplayMode = try GuestDisplayResolutionPolicy.resolve(
       preset: .followWindow, hostDisplay: configuration.hostDisplay, windowPixelSize: size)
-    let task = Task { try await displaySync.applyGuestDisplayMode(mode, configuration: config) }
-    displayUpdate = task
-    do {
-      let snapshot = try await task.value
-      displayUpdate = nil
-      return state == .running ? snapshot.appliedMode : nil
-    } catch {
-      displayUpdate = nil
-      throw error
+    let task: Task<GuestDisplayMode?, Error>
+    if let existingUpdate = displayUpdate {
+      task = existingUpdate
+    } else {
+      let currentGeneration = generation
+      task = Task {
+        try await self.applyPendingDisplayModes(configuration: config, generation: currentGeneration)
+      }
+      displayUpdate = task
     }
+    return task
+  }
+
+  private func applyPendingDisplayModes(
+    configuration config: RuntimeGuestConfiguration, generation expectedGeneration: UInt64
+  ) async throws -> GuestDisplayMode? {
+    defer {
+      if generation == expectedGeneration {
+        displayUpdate = nil
+        pendingDisplayMode = nil
+      }
+    }
+    var appliedMode: GuestDisplayMode?
+    var lastRequestedMode: GuestDisplayMode?
+    while state == .running, generation == expectedGeneration, !cancellationRequested {
+      try Task.checkCancellation()
+      guard let mode = pendingDisplayMode else { return appliedMode }
+      pendingDisplayMode = nil
+      if mode == lastRequestedMode { continue }
+      do {
+        let snapshot = try await displaySync.applyGuestDisplayMode(mode, configuration: config)
+        try Task.checkCancellation()
+        appliedMode = snapshot.appliedMode
+        lastRequestedMode = mode
+      } catch {
+        try Task.checkCancellation()
+        // A superseded request may fail while a newer valid size is waiting.
+        guard state == .running, generation == expectedGeneration,
+          !cancellationRequested, pendingDisplayMode != nil
+        else { throw error }
+      }
+    }
+    return nil
   }
 
   public func run(_ request: RuntimeLaunchRequest) async throws -> GuestSurfaceSessionResult {
@@ -183,6 +227,8 @@ public actor GuestSurfaceSession {
 
   public func cancel() async {
     cancellationRequested = true
+    pendingDisplayMode = nil
+    displayUpdate?.cancel()
     await endPresentation()
     await activeRuntimeSession?.cancel()
   }
@@ -214,8 +260,10 @@ public actor GuestSurfaceSession {
     state = .tearingDown
     activeRuntimeSession = nil
     await endPresentation()
-    displayUpdate?.cancel()
-    _ = try? await displayUpdate?.value
+    pendingDisplayMode = nil
+    let pendingUpdate = displayUpdate
+    pendingUpdate?.cancel()
+    _ = try? await pendingUpdate?.value
     displayUpdate = nil
     activeConfiguration = nil
     continuation?.finish()

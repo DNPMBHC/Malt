@@ -2,7 +2,7 @@ diff --git a/Platform/macOS/AppDelegate.swift b/Platform/macOS/AppDelegate.swift
 index 78f1d08..527c071 100644
 --- a/Platform/macOS/AppDelegate.swift
 +++ b/Platform/macOS/AppDelegate.swift
-@@ -39,6 +39,71 @@ enum UTMQuitPolicy: Int {
+@@ -39,6 +39,95 @@ enum UTMQuitPolicy: Int {
      private var powerDownAttemptID: UUID?
      private var isPowerDownRequestComplete = false
      private var arePowerDownCandidatesStopped = false
@@ -42,9 +42,33 @@ index 78f1d08..527c071 100644
 +                }
 +            }
 +            if vm == nil {
-+                let candidateURL = URL(fileURLWithPath: target)
++                let candidateURL = URL(fileURLWithPath: target).standardizedFileURL.resolvingSymlinksInPath()
 +                if FileManager.default.fileExists(atPath: candidateURL.path) {
-+                    vm = try? VMData(url: candidateURL)
++                    do {
++                        let candidate = try VMData(url: candidateURL)
++                        if let existing = data.virtualMachines.first(where: {
++                            $0.isLoaded && $0.pathUrl.standardizedFileURL.resolvingSymlinksInPath() == candidateURL
++                        }) {
++                            guard existing.id == candidate.id else {
++                                NSLog("[UTM-Custom] Refusing a stale VM registry identifier")
++                                return
++                            }
++                            vm = existing
++                        } else {
++                            guard !data.virtualMachines.contains(where: { $0.isLoaded && $0.id == candidate.id }) else {
++                                NSLog("[UTM-Custom] Refusing duplicate VM identifier from a different package")
++                                return
++                            }
++                            try await data.importUTM(from: candidateURL, asShortcut: true)
++                            vm = data.virtualMachines.first(where: {
++                                $0.isLoaded && $0.id == candidate.id &&
++                                $0.pathUrl.standardizedFileURL.resolvingSymlinksInPath() == candidateURL
++                            })
++                        }
++                    } catch {
++                        NSLog("[UTM-Custom] Unable to register shell VM: %@", error.localizedDescription)
++                        return
++                    }
 +                }
 +            }
 +            guard let resolvedVM = vm else {
@@ -74,7 +98,7 @@ index 78f1d08..527c071 100644
      
      private var runningVirtualMachines: [VMData] {
          guard let vmList = data?.vmWindows.keys else {
-@@ -73,13 +138,19 @@ enum UTMQuitPolicy: Int {
+@@ -73,13 +162,19 @@ enum UTMQuitPolicy: Int {
      }
      
      func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
@@ -95,7 +119,7 @@ index 78f1d08..527c071 100644
          guard !isNoQuitConfirmation else {
              return .terminateNow
          }
-@@ -325,6 +396,9 @@ enum UTMQuitPolicy: Int {
+@@ -325,6 +420,9 @@ enum UTMQuitPolicy: Int {
          if isDockIconHidden {
              NSApp.setActivationPolicy(.accessory)
          }

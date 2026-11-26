@@ -10,7 +10,7 @@ index 78f1d08..9639e53 100644
      }
      
      func applicationDidFinishLaunching(_ notification: Notification) {
-@@ -336,3 +337,107 @@ enum UTMQuitPolicy: Int {
+@@ -336,3 +337,134 @@ enum UTMQuitPolicy: Int {
          }
      }
  }
@@ -82,22 +82,40 @@ index 78f1d08..9639e53 100644
 +                }
 +            }
 +            if vm == nil {
-+                let candidateURL = URL(fileURLWithPath: target)
++                let candidateURL = URL(fileURLWithPath: target).standardizedFileURL.resolvingSymlinksInPath()
 +                if FileManager.default.fileExists(atPath: candidateURL.path) {
-+                    vm = try? VMData(url: candidateURL)
++                    do {
++                        let candidate = try VMData(url: candidateURL)
++                        if let existing = data.virtualMachines.first(where: {
++                            $0.isLoaded && $0.pathUrl.standardizedFileURL.resolvingSymlinksInPath() == candidateURL
++                        }) {
++                            guard existing.id == candidate.id else {
++                                NSLog("[UTM-Custom] Refusing a stale VM registry identifier")
++                                return
++                            }
++                            vm = existing
++                        } else {
++                            guard !data.virtualMachines.contains(where: { $0.isLoaded && $0.id == candidate.id }) else {
++                                NSLog("[UTM-Custom] Refusing duplicate VM identifier from a different package")
++                                return
++                            }
++                            try await data.importUTM(from: candidateURL, asShortcut: true)
++                            vm = data.virtualMachines.first(where: {
++                                $0.isLoaded && $0.id == candidate.id &&
++                                $0.pathUrl.standardizedFileURL.resolvingSymlinksInPath() == candidateURL
++                            })
++                        }
++                    } catch {
++                        NSLog("[UTM-Custom] Unable to register shell VM: %@", error.localizedDescription)
++                        return
++                    }
 +                }
 +            }
 +            guard let resolvedVM = vm else {
 +                NSLog("[UTM-Custom] App shell target not found: %@", target)
 +                return
 +            }
-+            NSLog("[UTM-Custom] Launching app shell VM: %@", resolvedVM.id.uuidString)
 +            self.hasStarted = false
-+            data.run(vm: resolvedVM)
-+            self.hideNonDisplayWindows(closeWindows: false)
-+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-+                self?.hideNonDisplayWindows(closeWindows: true)
-+            }
 +            self.stopObserver = resolvedVM.$state
 +                .sink { [weak self] state in
 +                    guard let self = self else { return }
@@ -109,6 +127,15 @@ index 78f1d08..9639e53 100644
 +                        }
 +                    }
 +                }
++            if CommandLine.arguments.contains("--app-shell-prepare-only") {
++                return
++            }
++            NSLog("[UTM-Custom] Launching app shell VM: %@", resolvedVM.id.uuidString)
++            data.run(vm: resolvedVM)
++            self.hideNonDisplayWindows(closeWindows: false)
++            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
++                self?.hideNonDisplayWindows(closeWindows: true)
++            }
 +        }
 +    }
 +}
@@ -146,7 +173,7 @@ index 1e4c926..1b82fff 100644
          super.enterSuspended(isBusy: busy)
      }
  
-@@ -790,6 +793,272 @@ extension VMDisplayQemuMetalWindowController {
+@@ -790,6 +793,277 @@ extension VMDisplayQemuMetalWindowController {
      }
  }
  
@@ -389,7 +416,12 @@ index 1e4c926..1b82fff 100644
 +        guard runtime.keyGuardMonitor == nil else {
 +            return
 +        }
-+        runtime.keyGuardMonitor = NSEvent.addLocalMonitorForEvents(matching: [.keyDown, .keyUp]) { event in
++        runtime.keyGuardMonitor = NSEvent.addLocalMonitorForEvents(matching: [.keyDown, .keyUp]) { [weak self] event in
++            let guardEnabled = ProcessInfo.processInfo.environment["UTM_GAME_SHELL_KEY_GUARD"]
++                .map { $0 == "1" } ?? true
++            guard guardEnabled, self?.window?.styleMask.contains(.fullScreen) == true else {
++                return event
++            }
 +            let flags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
 +            if flags.contains(.command) && !flags.contains(.option) && !flags.contains(.control) {
 +                switch Int(event.keyCode) {
@@ -433,4 +465,20 @@ index ea82729..b1b5b02 100644
 +        }
          guard !isSecondary else {
              return true
+         }
+diff --git a/Scripting/UTMScriptingVirtualMachineImpl.swift b/Scripting/UTMScriptingVirtualMachineImpl.swift
+--- a/Scripting/UTMScriptingVirtualMachineImpl.swift
++++ b/Scripting/UTMScriptingVirtualMachineImpl.swift
+@@ -392,9 +392,11 @@
+         withScriptCommand(command) { [self] in
+             guard !isInstalling else {
+                 throw ScriptingError.installInProgress
+             }
+-            guard vm.state == .stopped else {
++            guard vm.state == .stopped,
++                  !vm.registryEntry.isSuspended,
++                  try UTMSnapshotManifest.load(from: vm.pathUrl)?.suspendIdentifier == nil else {
+                 throw ScriptingError.notStopped
+             }
+             try data.discardChanges(for: box)
          }

@@ -16,11 +16,14 @@ param(
     [string]$Mode = 'Enter',
     [string]$TargetExecutable = '',
     [string]$TargetArguments = '',
+    [string]$TargetWorkingDirectory = '',
     [string[]]$GameProcessNames = @('VALORANT-Win64-Shipping', 'DeltaForceClient-Win64-Shipping', 'd3d11_probe'),
     [int]$PollIntervalMs = 500,
     [int]$MaxWaitSeconds = 0,
     [string]$StatePath = 'C:\graphics-lab\guest-optimizer\kiosk-shell-state.json',
+    [string]$LaunchReceiptPath = '',
     [string]$SignalOutputPath = 'C:\graphics-lab\guest-optimizer\kiosk-shell-signal.json',
+    [switch]$PreserveDesktopState,
     [switch]$KeepKioskOnExit
 )
 
@@ -268,22 +271,28 @@ function Write-HostSignal([hashtable]$Payload) {
     $Payload | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $SignalOutputPath -Encoding UTF8
 }
 
-function Start-TargetApp([string]$ExePath, [string]$ArgsText) {
+function Start-TargetApp([string]$ExePath, [string]$ArgsText, [string]$WorkingDirectory) {
     if ([string]::IsNullOrWhiteSpace($ExePath)) {
         return $null
     }
     if (-not (Test-Path -LiteralPath $ExePath)) {
         throw "Target executable not found: $ExePath"
     }
+    if ([string]::IsNullOrWhiteSpace($WorkingDirectory)) {
+        $WorkingDirectory = [System.IO.Path]::GetDirectoryName($ExePath)
+    }
+    if (-not (Test-Path -LiteralPath $WorkingDirectory -PathType Container)) {
+        throw 'Target working directory is unavailable.'
+    }
     $ext = [System.IO.Path]::GetExtension($ExePath).ToLowerInvariant()
     if ($ext -eq '.msi') {
         $msiArgs = "/i `"$ExePath`" $ArgsText".Trim()
-        return Start-Process -FilePath 'msiexec.exe' -ArgumentList $msiArgs -PassThru
+        return Start-Process -FilePath 'msiexec.exe' -ArgumentList $msiArgs -WorkingDirectory $WorkingDirectory -PassThru
     }
     if ([string]::IsNullOrWhiteSpace($ArgsText)) {
-        return Start-Process -FilePath $ExePath -PassThru
+        return Start-Process -FilePath $ExePath -WorkingDirectory $WorkingDirectory -PassThru
     }
-    return Start-Process -FilePath $ExePath -ArgumentList $ArgsText -PassThru
+    return Start-Process -FilePath $ExePath -ArgumentList $ArgsText -WorkingDirectory $WorkingDirectory -PassThru
 }
 
 function Get-ForegroundProcessInfo {
@@ -328,13 +337,40 @@ if ($Mode -eq 'Exit') {
     exit 0
 }
 
-$enterInfo = Enter-KioskDesktop
+function Write-LaunchReceipt {
+    param([string]$State, [int]$TargetPid = 0)
+    if ([string]::IsNullOrWhiteSpace($LaunchReceiptPath)) { return }
+    $parent = Split-Path -Parent $LaunchReceiptPath
+    if (-not [string]::IsNullOrWhiteSpace($parent)) {
+        New-Item -ItemType Directory -Path $parent -Force | Out-Null
+    }
+    $receipt = [ordered]@{
+        schema_version = 1
+        state = $State
+        pid = $TargetPid
+        targetExecutable = $TargetExecutable
+    }
+    $temporaryReceipt = $LaunchReceiptPath + '.tmp'
+    $receipt | ConvertTo-Json -Depth 3 -Compress | Set-Content -LiteralPath $temporaryReceipt -Encoding UTF8
+    Move-Item -LiteralPath $temporaryReceipt -Destination $LaunchReceiptPath -Force
+}
+
+$enterInfo = $null
+if (-not $PreserveDesktopState) {
+    $enterInfo = Enter-KioskDesktop
+}
 $launchedProc = $null
 $detectedGameSignal = $null
 $windowCentered = $false
 
 try {
-    $launchedProc = Start-TargetApp -ExePath $TargetExecutable -ArgsText $TargetArguments
+    $launchedProc = Start-TargetApp -ExePath $TargetExecutable -ArgsText $TargetArguments -WorkingDirectory $TargetWorkingDirectory
+    if (-not [string]::IsNullOrWhiteSpace($LaunchReceiptPath)) {
+        if ($null -eq $launchedProc -or $launchedProc.Id -le 0) {
+            throw 'No target process was started.'
+        }
+        Write-LaunchReceipt -State 'started' -TargetPid ([int]$launchedProc.Id)
+    }
     if ($null -ne $launchedProc) {
         for ($i = 0; $i -lt 30; $i++) {
             $launchedProc.Refresh()
@@ -401,9 +437,12 @@ try {
         }
         Start-Sleep -Milliseconds ([Math]::Max(100, $PollIntervalMs))
     }
+} catch {
+    Write-LaunchReceipt -State 'failed'
+    throw
 } finally {
     $restoreInfo = $null
-    if (-not $KeepKioskOnExit) {
+    if (-not $PreserveDesktopState -and -not $KeepKioskOnExit) {
         $restoreInfo = Restore-KioskDesktop
     }
     $summary = [ordered]@{

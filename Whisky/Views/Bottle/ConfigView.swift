@@ -16,6 +16,9 @@
 //  If not, see https://www.gnu.org/licenses/.
 //
 
+// Keep this settings form and its closely related sections together.
+// swiftlint:disable file_length
+
 import SwiftUI
 import WhiskyKit
 
@@ -94,10 +97,16 @@ struct ConfigView: View {
                     }
                     .sheet(isPresented: $dpiSheetPresented) {
                         DPIConfigSheetView(
-                            dpiConfig: $dpiConfig,
-                            isRetinaMode: $retinaMode,
+                            dpiConfig: dpiConfig,
+                            isRetinaMode: retinaMode,
                             presented: $dpiSheetPresented
-                        )
+                        ) { newDPI in
+                            try await Wine.changeDpiResolution(bottle: bottle, dpi: newDPI)
+                            guard try await Wine.dpiResolution(bottle: bottle) == newDPI else {
+                                throw WineDPIConfigurationError.readbackMismatch
+                            }
+                            dpiConfig = newDPI
+                        }
                     }
                 }
                 if #available(macOS 15, *) {
@@ -195,12 +204,11 @@ struct ConfigView: View {
             }
             Task(priority: .userInitiated) {
                 do {
-                    dpiConfig = try await Wine.dpiResolution(bottle: bottle) ?? 0
+                    let loadedDPI = try await Wine.dpiResolution(bottle: bottle)
+                    dpiConfig = WineDPIConfigurationPolicy.loadedDPI(loadedDPI)
                     dpiConfigLoadingState = .success
                 } catch {
-                    print(error)
-                    // If DPI has not yet been edited, there will be no registry entry
-                    dpiConfigLoadingState = .success
+                    dpiConfigLoadingState = .failed
                 }
             }
         }
@@ -217,20 +225,6 @@ struct ConfigView: View {
                     } catch {
                         print(error)
                         winVersionLoadingState = .failed
-                    }
-                }
-            }
-        }
-        .onChange(of: dpiConfig) {
-            if dpiConfigLoadingState == .success {
-                Task(priority: .userInitiated) {
-                    dpiConfigLoadingState = .modifying
-                    do {
-                        try await Wine.changeDpiResolution(bottle: bottle, dpi: dpiConfig)
-                        dpiConfigLoadingState = .success
-                    } catch {
-                        print(error)
-                        dpiConfigLoadingState = .failed
                     }
                 }
             }
@@ -256,67 +250,98 @@ struct ConfigView: View {
 }
 
 struct DPIConfigSheetView: View {
-    @Binding var dpiConfig: Int
-    @Binding var isRetinaMode: Bool
+    let dpiConfig: Int
+    let isRetinaMode: Bool
     @Binding var presented: Bool
-    @State var stagedChanges: Float
-    @FocusState var textFocused: Bool
+    let onApply: (Int) async throws -> Void
+    @State private var stagedText: String
+    @State private var isApplying = false
+    @State private var applyFailed = false
+    @FocusState private var textFocused: Bool
 
-    init(dpiConfig: Binding<Int>, isRetinaMode: Binding<Bool>, presented: Binding<Bool>) {
-        self._dpiConfig = dpiConfig
-        self._isRetinaMode = isRetinaMode
+    init(dpiConfig: Int, isRetinaMode: Bool, presented: Binding<Bool>,
+         onApply: @escaping (Int) async throws -> Void) {
+        self.dpiConfig = WineDPIConfigurationPolicy.loadedDPI(dpiConfig)
+        self.isRetinaMode = isRetinaMode
         self._presented = presented
-        self.stagedChanges = Float(dpiConfig.wrappedValue)
+        self.onApply = onApply
+        self._stagedText = State(initialValue: String(WineDPIConfigurationPolicy.loadedDPI(dpiConfig)))
+    }
+
+    private var validatedDraft: Int? {
+        guard let value = Int(stagedText.trimmingCharacters(in: .whitespacesAndNewlines)) else { return nil }
+        return try? WineDPIConfigurationPolicy.validatedDPI(value)
+    }
+
+    private var sliderValue: Binding<Double> {
+        Binding(get: { Double(validatedDraft ?? dpiConfig) }, set: { value in
+            if let integer = try? WineDPIConfigurationPolicy.validatedDPI(value) { stagedText = String(integer) }
+        })
     }
 
     var body: some View {
-        VStack {
-            HStack {
-                Text("configDpi.title")
-                    .fontWeight(.bold)
-                Spacer()
-            }
+        VStack(alignment: .leading, spacing: 12) {
+            Text("configDpi.title").fontWeight(.bold)
             Divider()
             GroupBox(label: Label("configDpi.preview", systemImage: "text.magnifyingglass")) {
-                VStack {
-                    HStack {
-                        Text("configDpi.previewText")
-                            .padding(16)
-                            .font(.system(size:
-                                (10 * CGFloat(stagedChanges)) / 72 *
-                                          (isRetinaMode ? 0.5 : 1)
-                            ))
-                        Spacer()
-                    }
+                HStack {
+                    Text("configDpi.previewText")
+                        .padding(16)
+                        .font(.system(size: (10 * CGFloat(validatedDraft ?? dpiConfig)) / 72 *
+                                      (isRetinaMode ? 0.5 : 1)))
                     Spacer()
                 }
-                .frame(maxWidth: .infinity, maxHeight: 80)
+                .frame(maxWidth: .infinity, minHeight: 80, alignment: .topLeading)
             }
             HStack {
-                Slider(value: $stagedChanges, in: 96...480, step: 24, onEditingChanged: { _ in
+                Slider(value: sliderValue, in: 96...480, step: 24, onEditingChanged: { _ in
                     textFocused = false
                 })
-                TextField(String(), value: $stagedChanges, format: .number)
-                    .frame(width: 40)
+                .accessibilityLabel(Text("configDpi.dpi"))
+                TextField("configDpi.dpi", text: $stagedText)
+                    .frame(width: 50)
                     .focused($textFocused)
                 Text("configDpi.dpi")
             }
-            Spacer()
+            .disabled(isApplying)
+            if validatedDraft == nil {
+                Text("请输入 96–480 之间的整数 DPI。")
+                    .font(.caption).foregroundStyle(.red)
+            }
+            if applyFailed {
+                Text("未能确认修改，仍显示上次确认的值。请重试。")
+                    .font(.caption).foregroundStyle(.red)
+            }
+            Text("影响兼容环境中的界面缩放；部分程序需要重新打开。")
+                .font(.caption).foregroundStyle(.secondary)
             HStack {
                 Spacer()
-                Button("create.cancel") {
-                    presented = false
-                }
-                .keyboardShortcut(.cancelAction)
-                Button("button.ok") {
-                    dpiConfig = Int(stagedChanges)
-                    presented = false
+                Button("create.cancel") { presented = false }
+                    .keyboardShortcut(.cancelAction)
+                    .disabled(isApplying)
+                Button(isApplying ? "正在应用…" : String(localized: "button.ok")) {
+                    guard let value = validatedDraft, !isApplying else { return }
+                    isApplying = true
+                    applyFailed = false
+                    textFocused = false
+                    Task { @MainActor in
+                        do {
+                            try await onApply(value)
+                            presented = false
+                        } catch {
+                            stagedText = String(dpiConfig)
+                            applyFailed = true
+                        }
+                        isApplying = false
+                    }
                 }
                 .keyboardShortcut(.defaultAction)
+                .disabled(validatedDraft == nil || isApplying)
             }
         }
         .padding()
-        .frame(width: ViewWidth.medium, height: 240)
+        .frame(width: ViewWidth.medium)
+        .interactiveDismissDisabled(isApplying)
     }
 }
 

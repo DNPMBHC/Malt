@@ -17,6 +17,7 @@
 //
 
 import SwiftUI
+#if canImport(Sparkle)
 import Sparkle
 
 struct SparkleView: View {
@@ -43,3 +44,4 @@ final class CheckForUpdatesViewModel: ObservableObject {
             .assign(to: &$canCheckForUpdates)
     }
 }
+#endif

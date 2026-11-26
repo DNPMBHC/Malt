@@ -1,0 +1,118 @@
+diff --git a/Sources/CocoaSpice/CSDisplay.m b/Sources/CocoaSpice/CSDisplay.m
+index 656fc1d..74fa96f 100644
+--- a/Sources/CocoaSpice/CSDisplay.m
++++ b/Sources/CocoaSpice/CSDisplay.m
+@@ -522,12 +522,28 @@ - (void)rebuildScanoutTextureWithSurface:(IOSurfaceRef)surface width:(NSUInteger
+     self.canvasArea = CGRectMake(0, 0, width, height);
+     self.glTexture = [self.device newTextureWithDescriptor:textureDescriptor iosurface:surface plane:0];
+     CFRelease(surface);
++    if ([CSDisplay isIOSurfaceDirectPresentEnabled]) {
++        // Zero-copy IOSurface direct present: skip allocating and blitting into a
++        // full-sized private shadow texture (saves ~31.64 MiB/frame bandwidth at 4K).
++        self.shadowTexture = nil;
++        self.presentTexture = nil;
++        self.shadowNeedsFullCopy = NO;
++        return;
++    }
+     [self rebuildShadowTextureWithWidth:width height:height];
+     // the damage rects that follow describe changes against the previous
+     // scanout, so the first copy out of a new one has to be whole
+     self.shadowNeedsFullCopy = YES;
+ }
+ 
+++ (BOOL)isIOSurfaceDirectPresentEnabled {
++    NSString *env = NSProcessInfo.processInfo.environment[@"UTM_IOSURFACE_DIRECT_PRESENT"];
++    if (env.length > 0 && [env isEqualToString:@"0"]) {
++        return NO;
++    }
++    return ![NSProcessInfo.processInfo.arguments containsObject:@"--disable-iosurface-direct-present"];
++}
++
+ /// Allocate the private texture the scanout is copied into. See
+ /// `copyScanoutRect:withCompletion:` for why the copy exists.
+ - (void)rebuildShadowTextureWithWidth:(NSUInteger)width height:(NSUInteger)height {
+@@ -579,8 +595,26 @@ - (void)rebuildShadowTextureWithWidth:(NSUInteger)width height:(NSUInteger)heigh
+ - (void)copyScanoutRect:(CGRect)rect withCompletion:(nonnull completionCallback_t)completion {
+     g_assert(CSMain.sharedInstance.isCurrentContextMain);
+     id<MTLTexture> source = self.glTexture;
+-    id<MTLTexture> destination = self.shadowTexture;
+     id<MTLCommandQueue> queue = self.renderers.firstObject.commandQueue;
++    if ([CSDisplay isIOSurfaceDirectPresentEnabled] && self.ready && source) {
++        // Zero-copy IOSurface direct present: omit the 32 MiB shadowTexture blit
++        // entirely, and synchronize with any prior queued Metal draw via a zero-byte
++        // FIFO fence command buffer so gl_draw_done never stalls on DisplayLink/TDR.
++        self.presentTexture = nil;
++        id<MTLCommandBuffer> fenceBuffer = queue ? [queue commandBuffer] : nil;
++        if (fenceBuffer != nil) {
++            fenceBuffer.label = @"IOSurface Direct Present Zero-Copy Fence";
++            [fenceBuffer addCompletedHandler:^(id<MTLCommandBuffer> completed) {
++                (void)completed;
++                [CSMain.sharedInstance asyncWith:completion];
++            }];
++            [fenceBuffer commit];
++        } else {
++            completion();
++        }
++        return;
++    }
++    id<MTLTexture> destination = self.shadowTexture;
+     id<MTLCommandBuffer> commandBuffer = nil;
+     id<MTLBlitCommandEncoder> blitEncoder = nil;
+ 
+diff --git a/Sources/CocoaSpiceRenderer/CSMetalRenderer.m b/Sources/CocoaSpiceRenderer/CSMetalRenderer.m
+index 9c7bad9..f1673ee 100644
+--- a/Sources/CocoaSpiceRenderer/CSMetalRenderer.m
++++ b/Sources/CocoaSpiceRenderer/CSMetalRenderer.m
+@@ -395,6 +395,42 @@ - (BOOL)_renderCommand:(id<MTLCommandBuffer>)commandBuffer
+           viewportSize:(vector_uint2)viewportSize
+                sampler:(id<MTLSamplerState>)sampler
+   renderPassDescriptor:(MTLRenderPassDescriptor *)renderPassDescriptor {
++    NSString *directEnv = NSProcessInfo.processInfo.environment[@"UTM_IOSURFACE_DIRECT_PRESENT"];
++    BOOL directEnabled = !(directEnv.length > 0 && [directEnv isEqualToString:@"0"])
++        && ![NSProcessInfo.processInfo.arguments containsObject:@"--disable-iosurface-direct-present"];
++    id<MTLTexture> dstTexture = renderPassDescriptor.colorAttachments[0].texture;
++    id<MTLTexture> srcTexture = source.texture;
++    CGPoint origin = CGPointMake(viewportOrigin.x + source.offset.x * viewportScale,
++                                 viewportOrigin.y + source.offset.y * viewportScale);
++    if (directEnabled
++        && source.isVisible
++        && !source.cursorSource.isVisible
++        && !source.isInverted
++        && srcTexture != nil
++        && dstTexture != nil
++        && fabs(viewportScale - 1.0) < 0.001
++        && fabs(origin.x) < 0.5
++        && fabs(origin.y) < 0.5
++        && srcTexture.width == dstTexture.width
++        && srcTexture.height == dstTexture.height
++        && srcTexture.pixelFormat == dstTexture.pixelFormat) {
++        id<MTLBlitCommandEncoder> directBlit = [commandBuffer blitCommandEncoder];
++        if (directBlit != nil) {
++            directBlit.label = @"IOSurface Direct Blit Present";
++            [directBlit copyFromTexture:srcTexture
++                            sourceSlice:0
++                            sourceLevel:0
++                           sourceOrigin:MTLOriginMake(0, 0, 0)
++                             sourceSize:MTLSizeMake(srcTexture.width, srcTexture.height, 1)
++                              toTexture:dstTexture
++                       destinationSlice:0
++                       destinationLevel:0
++                      destinationOrigin:MTLOriginMake(0, 0, 0)];
++            [directBlit endEncoding];
++            return YES;
++        }
++    }
++
+     id<MTLRenderCommandEncoder> renderEncoder =
+         [commandBuffer renderCommandEncoderWithDescriptor:renderPassDescriptor];
+     renderEncoder.label = @"View Presentation";
+@@ -403,9 +439,6 @@ - (BOOL)_renderCommand:(id<MTLCommandBuffer>)commandBuffer
+ 
+     NSAssert(source.isVisible, @"Screen should be visible at this point!");
+ 
+-    CGPoint origin = CGPointMake(viewportOrigin.x + source.offset.x * viewportScale,
+-                                 viewportOrigin.y + source.offset.y * viewportScale);
+-
+     [self _renderEncoder:renderEncoder
+             drawAtOrigin:origin
+                    scale:viewportScale

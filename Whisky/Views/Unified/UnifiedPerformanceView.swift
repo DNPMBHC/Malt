@@ -1,13 +1,15 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Performance presets, hardware profile snapshot, and one-click auto-tuning view.
+// Minimalist performance presets, safe GiB memory selector, and collapsible advanced options.
 
 import SwiftUI
 import WhiskyKit
 
 struct UnifiedPerformanceView: View {
+    @ObservedObject var orchestrator: UnifiedRuntimeOrchestrator
     @ObservedObject var preferences: UnifiedPreferencesModel
 
     @State private var hardware: HardwareProfileSnapshot = HardwareAutoTuner().detectHardwareProfile()
+    @State private var vmnetStatus: NativeVMNetStatus = UnifiedRuntimeDiscovery.detectNativeVMNetStatus()
     @State private var latestRecommendation: AutoTuneRecommendation?
     @State private var isBenchmarking: Bool = false
     @State private var benchmarkProgress: Double = 0
@@ -16,230 +18,315 @@ struct UnifiedPerformanceView: View {
 
     private let tuner = HardwareAutoTuner()
 
+    private var safeMemoryOptions: [Int] { UnifiedLaunchSettings.supportedContainerMemoryOptionsGiB(for: hardware) }
+    private var recommendedMemoryGiB: Int {
+        safeMemoryOptions.min(by: {
+            abs($0 - HardwareAutoTuner.recommendedMemoryGiB(for: hardware))
+                < abs($1 - HardwareAutoTuner.recommendedMemoryGiB(for: hardware))
+        }) ?? 0
+    }
+    private var safeVCPUOptions: [Int] { HardwareAutoTuner.safeVCPUOptions(for: hardware) }
+
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                headerSection
-                hardwareProfileCard
-                autoTuneCard
-                presetTierSection
-                coreSwitchesCard
-                advancedOptionsSection
-            }
-            .padding(24)
-            .frame(maxWidth: 820, alignment: .leading)
+        AppPage(
+            title: "性能设置",
+            subtitle: "全局默认设置。单个游戏可在游戏库中覆盖资源预设。",
+            maxWidth: 920
+        ) {
+            hardwareAndRecommendationSection
+            resourceSection
+            displayOptionsSection
+            compatibilityOptionsSection
+            advancedOptionsSection
+            AppStatusLabel(
+                text: "设置自动保存。容器相关设置需正常关闭 Windows，并完全退出容器引擎后重新打开；仅重启游戏或恢复挂起状态不会应用新设置。",
+                systemImage: "info.circle"
+            )
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .onAppear {
             hardware = tuner.detectHardwareProfile()
+            vmnetStatus = orchestrator.nativeVMNetStatus()
         }
     }
+}
 
-    private var headerSection: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text("性能与智能适配")
-                .font(.title2.bold())
-            Text("自动识别 Apple Silicon 算力与内存，一键校准帧率与输入响应")
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-        }
-    }
-
-    private var hardwareProfileCard: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Label("本机硬件画像", systemImage: "cpu.fill")
-                .font(.headline)
-            HStack(spacing: 16) {
-                hardwareMetricTile(title: "芯片", value: hardware.chipName)
-                hardwareMetricTile(
-                    title: "CPU 核心",
-                    value: "\(hardware.totalCores) 核（\(hardware.performanceCores)P + \(hardware.efficiencyCores)E）"
-                )
-                hardwareMetricTile(title: "统一内存", value: "\(hardware.physicalMemoryGiB) GB")
-                hardwareMetricTile(title: "屏幕刷新率", value: "\(hardware.displayRefreshRateHz) Hz")
-            }
-        }
-        .padding(16)
-        .background(Color(nsColor: .controlBackgroundColor), in: RoundedRectangle(cornerRadius: 12))
-    }
-
-    private func hardwareMetricTile(title: String, value: String) -> some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text(title)
-                .font(.caption)
-                .foregroundStyle(.secondary)
-            Text(value)
-                .font(.subheadline.weight(.semibold))
-                .lineLimit(2)
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(10)
-        .background(Color.primary.opacity(0.04), in: RoundedRectangle(cornerRadius: 8))
-    }
-
-    private var autoTuneCard: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("智能性能校准")
-                        .font(.headline)
-                    Text("约 11 秒完成多核与磁盘微基准，自动生成最优档位与输入参数")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+extension UnifiedPerformanceView {
+    private var hardwareAndRecommendationSection: some View {
+        AppSection {
+            AppAdaptiveRow {
+                VStack(alignment: .leading, spacing: 6) {
+                    Text(hardware.chipName).font(.headline)
+                    Text(
+                        """
+                        \(hardware.totalCores) 核 CPU · \(hardware.physicalMemoryGiB) GB 内存 · \
+                        \(hardware.displayRefreshRateHz) Hz
+                        """
+                    )
+                        .font(.caption).foregroundStyle(.secondary)
+                    Text("约 11 秒检测 CPU 与磁盘表现，生成资源建议。")
+                        .font(.caption).foregroundStyle(.secondary)
                 }
-                Spacer()
+            } trailing: {
                 Button(action: runAutoTuneBenchmark) {
                     HStack(spacing: 6) {
-                        if isBenchmarking {
-                            ProgressView().controlSize(.small)
-                        } else {
-                            Image(systemName: "wand.and.stars")
-                        }
-                        Text(isBenchmarking ? "正在测速优化…" : "自动性能测试并优化")
-                            .fontWeight(.semibold)
+                        if isBenchmarking { ProgressView().controlSize(.small) }
+                        Text(isBenchmarking ? "正在检测…" : "检测资源建议")
                     }
                 }
-                .buttonStyle(.borderedProminent)
-                .controlSize(.large)
+                .buttonStyle(.bordered)
                 .disabled(isBenchmarking)
             }
-
             if isBenchmarking {
-                ProgressView(value: benchmarkProgress, total: 1.0)
-                    .progressViewStyle(.linear)
+                ProgressView(value: benchmarkProgress, total: 1).progressViewStyle(.linear)
             }
-
-            if let rec = latestRecommendation {
-                HStack(spacing: 12) {
-                    Image(systemName: "sparkles")
-                        .foregroundStyle(Color.accentColor)
-                    VStack(alignment: .leading, spacing: 2) {
+            if let recommendation = latestRecommendation {
+                Divider()
+                let resources = preferences.recommendedResources(for: recommendation)
+                AppAdaptiveRow {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("推荐「\(recommendation.recommendedTier.displayName)」").font(.subheadline.weight(.medium))
                         Text(
-                            "综合评分 \(Int(rec.benchmarkScore)) · 推荐「\(rec.recommendedTier.displayName)」"
+                            """
+                            \(resources.virtualCPUCount) vCPU / \(resources.memoryMiB / 1024) GiB 内存 · \
+                            评分 \(Int(recommendation.benchmarkScore))
+                            """
                         )
-                        .font(.subheadline.weight(.semibold))
-                        Text(
-                            "\(rec.recommendedVCPU) vCPU / \(rec.recommendedRAMMiB / 1024) GB RAM / "
-                                + "\(rec.recommendedResolution)（耗时 \(String(format: "%.1f", rec.durationSeconds))s）"
-                        )
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+                            .font(.caption).foregroundStyle(.secondary)
                     }
-                    Spacer()
-                    Button("套用推荐配置") {
-                        preferences.apply(recommendation: rec)
-                        appliedBannerText = "已套用「\(rec.recommendedTier.displayName)」推荐配置。"
+                } trailing: {
+                    Button("应用资源建议") {
+                        preferences.apply(recommendation: recommendation)
+                        appliedBannerText = "资源建议已保存，将在完全退出容器引擎后重新打开时应用。"
                     }
-                    .buttonStyle(.bordered)
+                    .buttonStyle(.borderedProminent)
                 }
-                .padding(12)
-                .background(Color.accentColor.opacity(0.08), in: RoundedRectangle(cornerRadius: 10))
             }
-
             if let banner = appliedBannerText {
-                Label(banner, systemImage: "checkmark.circle.fill")
-                    .font(.caption)
-                    .foregroundStyle(.green)
+                AppStatusLabel(text: banner, systemImage: "checkmark.circle", tint: .green)
             }
         }
-        .padding(16)
-        .background(Color(nsColor: .controlBackgroundColor), in: RoundedRectangle(cornerRadius: 12))
     }
 
-    private var presetTierSection: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("三档性能模式")
-                .font(.headline)
-            HStack(spacing: 12) {
-                ForEach(PerformancePresetTier.allCases, id: \.self) { tier in
-                    PerformanceTierOptionCard(
-                        tier: tier,
-                        isSelected: preferences.selectedTier == tier,
-                        onSelect: { preferences.selectedTier = tier }
+    private var resourceSection: some View {
+        AppSection(
+            title: preferences.hasCustomPerformanceSettings ? "容器资源 · 自定义" : "容器资源",
+            subtitle: "资源预设只调整 CPU 与内存配额，不改变游戏画质。"
+        ) {
+            ViewThatFits(in: .horizontal) {
+                HStack(alignment: .top, spacing: 8) { presetButtons }
+                VStack(spacing: 8) { presetButtons }
+            }
+            Divider()
+            VStack(alignment: .leading, spacing: 10) {
+                Text("内存配额").font(.subheadline.weight(.medium))
+                Text(preferences.hasMemoryOverride ? "已保存，正常关闭容器后应用。" : "当前沿用运行环境配置。")
+                    .font(.caption).foregroundStyle(.secondary)
+                if preferences.hasMemoryOverride && !safeMemoryOptions.contains(preferences.selectedMemoryGiB) {
+                    AppStatusLabel(
+                        text: "原配额不受当前环境支持，请重新选择或恢复运行环境配置。",
+                        systemImage: "exclamationmark.triangle", tint: .orange
                     )
                 }
+                HStack(spacing: 8) {
+                    ForEach(safeMemoryOptions, id: \.self) { memoryGiB in
+                        MemoryTierOptionButton(
+                            memoryGiB: memoryGiB,
+                            isRecommended: memoryGiB == recommendedMemoryGiB,
+                            isSelected: preferences.hasMemoryOverride && preferences.selectedMemoryGiB == memoryGiB,
+                            onSelect: { preferences.selectedMemoryGiB = memoryGiB }
+                        )
+                    }
+                }
             }
         }
     }
 
-    private var coreSwitchesCard: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("核心体验开关")
-                .font(.headline)
-            Toggle("启用 macOS 游戏模式（全屏自动优先调度 GPU / CPU）", isOn: $preferences.enableGameMode)
-            Divider()
-            Toggle("启用高回报率电竞鼠标无损合批（降低高 Hz 中断抖动）", isOn: $preferences.enableMouseCoalescing)
-            Divider()
-            Toggle("游戏全屏防误触屏蔽（拦截 Cmd+W / Cmd+Q / Cmd+H / Cmd+M）", isOn: $preferences.blockAccidentalShortcuts)
+    private var presetButtons: some View {
+        ForEach(PerformancePresetTier.allCases, id: \.self) { tier in
+            PerformanceTierOptionCard(
+                tier: tier,
+                isSelected: !preferences.hasCustomPerformanceSettings
+                    && (preferences.hasMemoryOverride || preferences.hasCPUOverride)
+                    && preferences.selectedTier == tier,
+                onSelect: { preferences.applyPreset(tier, hardware: hardware) }
+            )
         }
-        .padding(16)
-        .background(Color(nsColor: .controlBackgroundColor), in: RoundedRectangle(cornerRadius: 12))
+    }
+
+    private var displayOptionsSection: some View {
+        AppSection(title: "显示") {
+            AppAdaptiveRow {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("容器输出分辨率").font(.subheadline)
+                    Text("自动模式保留运行环境当前设置。").font(.caption).foregroundStyle(.secondary)
+                }
+            } trailing: {
+                Picker("容器输出分辨率", selection: $preferences.displayModeRaw) {
+                    Text("自动").tag("automatic")
+                    Text("固定").tag("fixed")
+                }
+                .pickerStyle(.segmented).labelsHidden().frame(width: 220)
+            }
+            if preferences.displayModeRaw == "fixed" {
+                AppAdaptiveRow {
+                    Text("输出尺寸").font(.subheadline)
+                } trailing: {
+                    Picker("输出尺寸", selection: $preferences.recommendedResolution) {
+                        ForEach(resolutionOptions, id: \.self) { resolution in
+                            Text(resolution.replacingOccurrences(of: "x", with: " × ")).tag(resolution)
+                        }
+                    }
+                    .labelsHidden().frame(width: 220)
+                }
+                Text("启动时验证显示驱动是否支持该尺寸；游戏内部渲染分辨率仍由游戏决定。")
+                    .font(.caption).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
+            }
+            Text("原生转译游戏请在游戏内调整分辨率。")
+                .font(.caption).foregroundStyle(.secondary)
+        }
+    }
+
+    private var resolutionOptions: [String] {
+        var options = ["1280x720", "1280x800", "1920x1080", "1920x1200", "2560x1440", "2560x1600", "3840x2160"]
+        if UnifiedDisplayPolicy.fixedResolution(preferences.recommendedResolution) != nil,
+           !options.contains(preferences.recommendedResolution) { options.append(preferences.recommendedResolution) }
+        return options
+    }
+
+    private var compatibilityOptionsSection: some View {
+        AppSection(title: "兼容与输入") {
+            AppToggleRow(
+                title: "高回报率鼠标传输优化",
+                detail: "改善容器内高频鼠标输入的传输稳定性，策略由内核管理。",
+                isOn: $preferences.enableMouseCoalescing
+            )
+            Divider()
+            AppToggleRow(
+                title: "全屏防误触保护",
+                detail: "在容器全屏时保护关闭、退出、隐藏和最小化快捷键。",
+                isOn: $preferences.blockAccidentalShortcuts
+            )
+            Divider()
+            AppToggleRow(
+                title: "屏蔽左 Command 触发开始菜单",
+                isOn: $preferences.enableKeyMapping
+            )
+            Divider()
+            AppToggleRow(
+                title: "持久化着色器缓存",
+                detail: "减少重复编译；关闭不会删除已有的 DXMT / DXVK 缓存。",
+                isOn: $preferences.enablePersistentCache
+            )
+        }
     }
 
     private var advancedOptionsSection: some View {
-        DisclosureGroup("高级选项（底层算力与输入参数）", isExpanded: $showAdvancedOptions) {
-            VStack(alignment: .leading, spacing: 12) {
-                Stepper(
-                    "虚拟 CPU 核心数：\(preferences.recommendedVCPU) vCPU",
-                    value: $preferences.recommendedVCPU,
-                    in: 2...max(4, hardware.totalCores)
-                )
-                Stepper(
-                    "沙盒内存配额：\(preferences.recommendedRAMMiB) MiB",
-                    value: $preferences.recommendedRAMMiB,
-                    in: 4096...max(8192, hardware.physicalMemoryGiB * 1024),
-                    step: 1024
-                )
-                Stepper(
-                    "鼠标合批窗口：\(preferences.mouseCoalesceMicros) μs",
-                    value: $preferences.mouseCoalesceMicros,
-                    in: 0...4000,
-                    step: 250
-                )
-                HStack {
-                    Text("目标渲染分辨率")
-                    Spacer()
-                    Picker("分辨率", selection: $preferences.recommendedResolution) {
-                        Text("1280x720").tag("1280x720")
-                        Text("1920x1080").tag("1920x1080")
-                        Text("2560x1440").tag("2560x1440")
+        AppSection {
+            DisclosureGroup("高级选项", isExpanded: $showAdvancedOptions) {
+                VStack(alignment: .leading, spacing: 16) {
+                    AppAdaptiveRow {
+                        Text("容器 vCPU").font(.subheadline)
+                    } trailing: {
+                        Picker("容器 vCPU", selection: Binding(
+                            get: { preferences.hasCPUOverride ? preferences.recommendedVCPU : 0 },
+                            set: { preferences.setVirtualCPUCount($0) }
+                        )) {
+                            Text("沿用运行环境配置").tag(0)
+                            ForEach(safeVCPUOptions, id: \.self) { cores in Text("\(cores) 核").tag(cores) }
+                            if preferences.hasCPUOverride && !safeVCPUOptions.contains(preferences.recommendedVCPU) {
+                                Text("旧配置需重新选择").tag(preferences.recommendedVCPU).disabled(true)
+                            }
+                        }
+                        .labelsHidden().frame(width: 220)
                     }
-                    .labelsHidden()
-                    .frame(width: 140)
+                    Button("恢复运行环境的资源配置") { preferences.clearResourceOverrides() }
+                        .disabled(!preferences.hasMemoryOverride && !preferences.hasCPUOverride)
+                    Text("资源更改仅在正常关闭容器后更新；从挂起恢复或仅重启游戏不会修改配额。")
+                        .font(.caption).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
+                    Divider()
+                    vmnetDirectRow
                 }
+                .padding(.top, 16)
             }
-            .padding(.top, 10)
+            .font(.subheadline.weight(.medium))
         }
-        .padding(16)
-        .background(Color(nsColor: .controlBackgroundColor), in: RoundedRectangle(cornerRadius: 12))
     }
 
-    private func runAutoTuneBenchmark() {
+    private var vmnetDirectRow: some View {
+        AppAdaptiveRow {
+            VStack(alignment: .leading, spacing: 4) {
+                Text("原生网络直通").font(.subheadline)
+                AppStatusLabel(
+                    text: vmnetStatus.statusSummary,
+                    systemImage: vmnetStatus.socketActive ? "checkmark.circle" : "info.circle",
+                    tint: vmnetStatus.socketActive ? .green : .secondary
+                )
+            }
+        } trailing: {
+            Button(vmnetStatus.socketActive ? "刷新状态" : "打开系统授权") {
+                if vmnetStatus.socketActive {
+                    vmnetStatus = orchestrator.nativeVMNetStatus()
+                } else {
+                    UnifiedPreferencesModel.openVMNetSystemAuthorization()
+                }
+            }
+            .buttonStyle(.bordered)
+        }
+    }
+
+    func runAutoTuneBenchmark() {
         isBenchmarking = true
         benchmarkProgress = 0.08
         appliedBannerText = nil
-
         let progressTask = Task {
             for step in 1...18 {
                 try? await Task.sleep(for: .milliseconds(550))
                 if Task.isCancelled { return }
-                await MainActor.run {
-                    benchmarkProgress = min(0.92, Double(step) * 0.05)
-                }
+                await MainActor.run { benchmarkProgress = min(0.92, Double(step) * 0.05) }
             }
         }
-
         Task {
             let recommendation = await tuner.runQuickBenchmarkAndRecommend()
             progressTask.cancel()
             await MainActor.run {
                 benchmarkProgress = 1.0
                 latestRecommendation = recommendation
-                preferences.apply(recommendation: recommendation)
-                appliedBannerText = "校准完成并已自动套用「\(recommendation.recommendedTier.displayName)」配置。"
+                appliedBannerText = "已生成建议，当前设置未更改。"
                 isBenchmarking = false
             }
         }
+    }
+}
+
+private struct MemoryTierOptionButton: View {
+    let memoryGiB: Int
+    let isRecommended: Bool
+    let isSelected: Bool
+    let onSelect: () -> Void
+
+    var body: some View {
+        Button(action: onSelect) {
+            VStack(spacing: 4) {
+                Text("\(memoryGiB) GiB").font(.subheadline.weight(.medium))
+                if isRecommended { Text("推荐").font(.caption2).foregroundStyle(.secondary) }
+            }
+            .frame(maxWidth: .infinity, minHeight: 34).padding(.vertical, 10)
+            .background(
+                isSelected ? Color.accentColor.opacity(0.08) : Color.clear,
+                in: RoundedRectangle(cornerRadius: 8)
+            )
+            .overlay {
+                RoundedRectangle(cornerRadius: 8)
+                    .strokeBorder(
+                        isSelected ? Color.accentColor : Color(nsColor: .separatorColor).opacity(0.5),
+                        lineWidth: 1
+                    )
+            }
+            .contentShape(RoundedRectangle(cornerRadius: 8))
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("\(memoryGiB) GiB\(isRecommended ? "，推荐" : "")")
+        .accessibilityValue(isSelected ? "已选择" : "未选择")
     }
 }
 
@@ -250,46 +337,41 @@ private struct PerformanceTierOptionCard: View {
 
     var body: some View {
         Button(action: onSelect) {
-            VStack(alignment: .leading, spacing: 6) {
-                HStack {
-                    Text(tier.displayName)
-                        .font(.headline)
-                    Spacer()
-                    if isSelected {
-                        Image(systemName: "checkmark.circle.fill")
-                            .foregroundStyle(Color.accentColor)
-                    }
+            HStack(alignment: .top, spacing: 8) {
+                VStack(alignment: .leading, spacing: 6) {
+                    Text(tier.displayName).font(.subheadline.weight(.medium))
+                    Text(subtitle).font(.caption).foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
-                Text(subtitle)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.leading)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
+                    .foregroundStyle(isSelected ? Color.accentColor : Color.secondary.opacity(0.5))
+                    .accessibilityHidden(true)
             }
-            .padding(14)
-            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(12)
+            .frame(minWidth: 172, maxWidth: .infinity, minHeight: 82, alignment: .topLeading)
             .background(
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(isSelected ? Color.accentColor.opacity(0.12) : Color(nsColor: .controlBackgroundColor))
+                isSelected ? Color.accentColor.opacity(0.08) : Color.clear,
+                in: RoundedRectangle(cornerRadius: 8)
             )
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(
-                        isSelected ? Color.accentColor : Color.primary.opacity(0.08),
-                        lineWidth: isSelected ? 1.5 : 1
+            .overlay {
+                RoundedRectangle(cornerRadius: 8)
+                    .strokeBorder(
+                        isSelected ? Color.accentColor : Color(nsColor: .separatorColor).opacity(0.5),
+                        lineWidth: 1
                     )
-            )
+            }
+            .contentShape(RoundedRectangle(cornerRadius: 8))
         }
         .buttonStyle(.plain)
+        .accessibilityValue(isSelected ? "已选择" : "未选择")
     }
 
     private var subtitle: String {
         switch tier {
-        case .competitiveHighFPS:
-            return "最低输入延迟与最高帧率，适合 FPS 与竞技网游"
-        case .balancedRecommended:
-            return "画质与稳帧兼顾，默认推荐日常畅玩"
-        case .nativeQuality:
-            return "高分辨率与清晰画质优先，适合大内存机型"
+        case .maxPerformance: return "更高的 CPU 与内存配额"
+        case .balanced: return "为 macOS 保留资源余量"
+        case .lowSpecCompatible: return "减少容器资源占用"
         }
     }
 }

@@ -57,6 +57,7 @@ struct ContentView: View {
     @State private var newlyCreatedBottleURL: URL?
     @State private var openedFileURL: URL?
     @State private var refreshAnimation: Angle = .degrees(0)
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     init(showSetup: Binding<Bool>) {
         self._showSetup = showSetup
@@ -71,6 +72,7 @@ struct ContentView: View {
         } detail: {
             detail
         }
+        .navigationSplitViewStyle(.balanced)
         .navigationTitle("Malt")
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
@@ -78,22 +80,26 @@ struct ContentView: View {
                     selectedSection = .install
                 } label: {
                     Image(systemName: "plus")
-                        .help("一键安装游戏")
+                        .help("安装游戏")
+                        .accessibilityLabel("安装游戏")
                 }
             }
             ToolbarItem(placement: .primaryAction) {
                 Button {
                     bottleVM.loadBottles()
                     libraryStore.load()
-                    withAnimation(.default) {
-                        refreshAnimation = .degrees(360)
-                    } completion: {
-                        refreshAnimation = .degrees(0)
+                    if !reduceMotion {
+                        withAnimation(.easeInOut(duration: 0.3)) {
+                            refreshAnimation = .degrees(360)
+                        } completion: {
+                            refreshAnimation = .degrees(0)
+                        }
                     }
                 } label: {
                     Image(systemName: "arrow.triangle.2.circlepath")
                         .help("button.refresh")
                         .rotationEffect(refreshAnimation)
+                        .accessibilityLabel("刷新游戏库与运行环境")
                 }
             }
         }
@@ -200,15 +206,15 @@ struct ContentView: View {
 
     var sidebar: some View {
         List(selection: $selectedSection) {
-            Section("Malt") {
-                ForEach(UnifiedSidebarSection.allCases) { section in
-                    Label(section.title, systemImage: section.systemImage)
-                        .tag(section)
-                }
+            ForEach(UnifiedSidebarSection.allCases) { section in
+                Label(section.title, systemImage: section.systemImage)
+                    .font(.system(size: 13, weight: .medium))
+                    .padding(.vertical, 5)
+                    .tag(section)
             }
         }
         .listStyle(.sidebar)
-        .navigationSplitViewColumnWidth(min: 190, ideal: 210, max: 250)
+        .navigationSplitViewColumnWidth(min: 164, ideal: 184, max: 220)
     }
 
     @ViewBuilder
@@ -218,16 +224,18 @@ struct ContentView: View {
             UnifiedGameLibraryView(
                 libraryStore: libraryStore,
                 orchestrator: orchestrator,
+                preferences: preferences,
                 onOpenInstaller: { selectedSection = .install }
             )
         case .install:
             UnifiedInstallerView(
                 libraryStore: libraryStore,
                 orchestrator: orchestrator,
+                preferences: preferences,
                 onInstallCompleted: { selectedSection = .library }
             )
         case .performance:
-            UnifiedPerformanceView(preferences: preferences)
+            UnifiedPerformanceView(orchestrator: orchestrator, preferences: preferences)
         case .runtimes:
             UnifiedRuntimeStorageView(
                 orchestrator: orchestrator,

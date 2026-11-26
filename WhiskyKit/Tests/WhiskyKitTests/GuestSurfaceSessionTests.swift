@@ -1,4 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+// Shared session fixtures and lifecycle regression tests form one focused suite.
+// swiftlint:disable file_length
 
 import Foundation
 import XCTest
@@ -284,8 +286,142 @@ extension GuestSurfaceSessionTests {
     XCTAssertEqual(restores[0].previousMode.height, 720)
   }
 
+  func testConcurrentLiveResizesApplyTheLatestPendingSizeWithoutOverlappingOperations() async throws {
+    let (config, request) = makeConfigAndRequest()
+    let exit = GuestSurfaceExitGate()
+    let display = ControlledResizeDisplaySync()
+    let session = makeFollowingSession(config, gate: exit, display: display)
+    let run = Task { try await session.run(request) }
+    try await waitUntilRunning(session)
+    let firstUpdate = try await session.enqueueWindowPixelSize(CGSize(width: 1600, height: 900))
+    let first = try XCTUnwrap(firstUpdate)
+    await display.waitForBlockedResize()
+    let middleUpdate = try await session.enqueueWindowPixelSize(CGSize(width: 1760, height: 990))
+    let middle = try XCTUnwrap(middleUpdate)
+    let latestUpdate = try await session.enqueueWindowPixelSize(CGSize(width: 1920, height: 1080))
+    let latest = try XCTUnwrap(latestUpdate)
+    await display.releaseBlockedResize()
+    let firstResult = try await first.value
+    let middleResult = try await middle.value
+    let latestResult = try await latest.value
+    XCTAssertEqual(firstResult?.width, 1920)
+    XCTAssertEqual(middleResult, latestResult)
+    XCTAssertEqual(latestResult?.height, 1080)
+    let modes = await display.appliedModes
+    let maximumConcurrentApplies = await display.maximumConcurrentApplies
+    XCTAssertEqual(modes.map(\.width), [2560, 1600, 1920])
+    XCTAssertEqual(maximumConcurrentApplies, 1)
+    await exit.complete()
+    let result = try await run.value
+    XCTAssertTrue(result.displayRestored)
+    let restoredMode = await display.currentMode
+    XCTAssertEqual(restoredMode, GuestDisplayMode(width: 1280, height: 720, refreshRateHz: 60))
+  }
+
+  func testRepeatedPendingSizeDoesNotReapplyTheSameDisplayMode() async throws {
+    let (config, request) = makeConfigAndRequest()
+    let exit = GuestSurfaceExitGate()
+    let display = ControlledResizeDisplaySync()
+    let session = makeFollowingSession(config, gate: exit, display: display)
+    let run = Task { try await session.run(request) }
+    try await waitUntilRunning(session)
+    let first = try await session.enqueueWindowPixelSize(CGSize(width: 1600, height: 900))
+    await display.waitForBlockedResize()
+    let duplicate = try await session.enqueueWindowPixelSize(CGSize(width: 1600, height: 900))
+    await display.releaseBlockedResize()
+    _ = try await first?.value
+    _ = try await duplicate?.value
+    let modes = await display.appliedModes
+    XCTAssertEqual(modes.map(\.width), [2560, 1600])
+    await exit.complete()
+    _ = try await run.value
+  }
+
+  func testCancellingObsoleteResizeWaiterDoesNotDiscardLatestPendingSize() async throws {
+    let (config, request) = makeConfigAndRequest()
+    let exit = GuestSurfaceExitGate()
+    let display = ControlledResizeDisplaySync()
+    let session = makeFollowingSession(config, gate: exit, display: display)
+    let run = Task { try await session.run(request) }
+    try await waitUntilRunning(session)
+    let obsolete = Task {
+      try await session.synchronizeWindowPixelSize(CGSize(width: 1600, height: 900))
+    }
+    await display.waitForBlockedResize()
+    let latestUpdate = try await session.enqueueWindowPixelSize(CGSize(width: 1920, height: 1080))
+    let latest = try XCTUnwrap(latestUpdate)
+    obsolete.cancel()
+    await display.releaseBlockedResize()
+    do {
+      _ = try await obsolete.value
+      XCTFail("Expected obsolete waiter cancellation")
+    } catch is CancellationError {}
+    let applied = try await latest.value
+    XCTAssertEqual(applied?.width, 1920)
+    let modes = await display.appliedModes
+    XCTAssertEqual(modes.map(\.width), [2560, 1600, 1920])
+    await exit.complete()
+    _ = try await run.value
+  }
+
+  func testSupersededResizeFailureStillAppliesLatestPendingSize() async throws {
+    let (config, request) = makeConfigAndRequest()
+    let exit = GuestSurfaceExitGate()
+    let display = ControlledResizeDisplaySync(failFirstResize: true)
+    let session = makeFollowingSession(config, gate: exit, display: display)
+    let run = Task { try await session.run(request) }
+    try await waitUntilRunning(session)
+    let first = try await session.enqueueWindowPixelSize(CGSize(width: 1600, height: 900))
+    await display.waitForBlockedResize()
+    let latestUpdate = try await session.enqueueWindowPixelSize(CGSize(width: 1920, height: 1080))
+    let latest = try XCTUnwrap(latestUpdate)
+    await display.releaseBlockedResize()
+    _ = try await first?.value
+    let applied = try await latest.value
+    XCTAssertEqual(applied?.width, 1920)
+    await exit.complete()
+    let result = try await run.value
+    XCTAssertTrue(result.displayRestored)
+  }
+
+  func testExitDiscardsPendingResizeAndWaitsForInflightApplyBeforeRestoringBaseline() async throws {
+    let (config, request) = makeConfigAndRequest()
+    let exit = GuestSurfaceExitGate()
+    let display = ControlledResizeDisplaySync()
+    let session = makeFollowingSession(config, gate: exit, display: display)
+    let run = Task { try await session.run(request) }
+    try await waitUntilRunning(session)
+    let first = try await session.enqueueWindowPixelSize(CGSize(width: 1600, height: 900))
+    await display.waitForBlockedResize()
+    let latest = try await session.enqueueWindowPixelSize(CGSize(width: 1920, height: 1080))
+    await exit.complete()
+    for _ in 0..<200 {
+      if await session.state == .tearingDown { break }
+      try await Task.sleep(for: .milliseconds(1))
+    }
+    let beforeRelease = await display.restoredSnapshots
+    XCTAssertTrue(beforeRelease.isEmpty)
+    await display.releaseBlockedResize()
+    let result = try await run.value
+    do {
+      _ = try await first?.value
+      XCTFail("Expected inflight resize cancellation")
+    } catch is CancellationError {}
+    do {
+      _ = try await latest?.value
+      XCTFail("Expected pending resize cancellation")
+    } catch is CancellationError {}
+    let modes = await display.appliedModes
+    let restores = await display.restoredSnapshots
+    let current = await display.currentMode
+    XCTAssertEqual(modes.map(\.width), [2560, 1600])
+    XCTAssertEqual(restores.count, 1)
+    XCTAssertEqual(current, GuestDisplayMode(width: 1280, height: 720, refreshRateHz: 60))
+    XCTAssertTrue(result.displayRestored)
+  }
+
   private func makeFollowingSession(
-    _ config: RuntimeGuestConfiguration, gate: GuestSurfaceExitGate, display: MockDisplaySync
+    _ config: RuntimeGuestConfiguration, gate: GuestSurfaceExitGate, display: any GuestDisplaySynchronizing
   ) -> GuestSurfaceSession {
     GuestSurfaceSession(
       provider: MockGuestProviderForShell(configuration: config, exitGate: gate), displaySync: display,
@@ -347,3 +483,65 @@ actor FakeDisplaySyncUTMTransport: UTMGuestTransport {
     return try JSONSerialization.data(withJSONObject: response)
   }
 }
+
+private actor ControlledResizeDisplaySync: GuestDisplaySynchronizing {
+  private(set) var appliedModes: [GuestDisplayMode] = []
+  private(set) var restoredSnapshots: [GuestDisplaySyncSnapshot] = []
+  private(set) var currentMode = GuestDisplayMode(width: 1280, height: 720, refreshRateHz: 60)
+  private(set) var maximumConcurrentApplies = 0
+  private var concurrentApplies = 0
+  private var blockedResize: CheckedContinuation<Void, Never>?
+  private var resizeStarted: CheckedContinuation<Void, Never>?
+  private let failFirstResize: Bool
+
+  init(failFirstResize: Bool = false) {
+    self.failFirstResize = failFirstResize
+  }
+
+  func queryGuestDisplayMode(configuration: RuntimeGuestConfiguration) async throws -> GuestDisplayMode {
+    currentMode
+  }
+
+  func applyGuestDisplayMode(
+    _ targetMode: GuestDisplayMode, configuration: RuntimeGuestConfiguration
+  ) async throws -> GuestDisplaySyncSnapshot {
+    concurrentApplies += 1
+    maximumConcurrentApplies = max(maximumConcurrentApplies, concurrentApplies)
+    defer { concurrentApplies -= 1 }
+    let previous = currentMode
+    appliedModes.append(targetMode)
+    let isFirstResize = appliedModes.count == 2
+    if isFirstResize {
+      await withCheckedContinuation { continuation in
+        blockedResize = continuation
+        resizeStarted?.resume()
+        resizeStarted = nil
+      }
+    }
+    // Deliberately finish even after cancellation: teardown must await an uncooperative driver.
+    currentMode = targetMode
+    if isFirstResize, failFirstResize {
+      throw GuestDisplaySyncError.changeDisplaySettingsFailed(-2)
+    }
+    return GuestDisplaySyncSnapshot(previousMode: previous, appliedMode: targetMode)
+  }
+
+  func restoreGuestDisplayMode(
+    _ snapshot: GuestDisplaySyncSnapshot, configuration: RuntimeGuestConfiguration
+  ) async throws -> GuestDisplayMode {
+    restoredSnapshots.append(snapshot)
+    currentMode = snapshot.previousMode
+    return currentMode
+  }
+
+  func waitForBlockedResize() async {
+    if blockedResize != nil { return }
+    await withCheckedContinuation { resizeStarted = $0 }
+  }
+
+  func releaseBlockedResize() {
+    blockedResize?.resume()
+    blockedResize = nil
+  }
+}
+// swiftlint:enable file_length

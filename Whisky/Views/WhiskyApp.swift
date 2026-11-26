@@ -17,14 +17,34 @@
 //
 
 import SwiftUI
+#if canImport(Sparkle)
 import Sparkle
+#endif
 import WhiskyKit
 
 @main
+@MainActor
+enum ApplicationEntryPoint {
+    static func main() {
+        if ProcessInfo.processInfo.environment["RUNTIME_DYLD_SMOKE_ONLY"] == "1" {
+            FileHandle.standardOutput.write(Data("runtime-dyld-smoke:foundation-only\n".utf8))
+            let deadline = Date().addingTimeInterval(5)
+            let timer = Timer(fire: deadline, interval: 0, repeats: false) { _ in }
+            RunLoop.current.add(timer, forMode: .default)
+            RunLoop.current.run(until: deadline)
+            timer.invalidate()
+            return
+        }
+        WhiskyApp.main()
+    }
+}
+
 struct WhiskyApp: App {
     @State var showSetup: Bool = false
+    @State private var isClearingShaderCaches = false
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @Environment(\.openURL) var openURL
+    #if canImport(Sparkle)
     private let updaterController: SPUStandardUpdaterController
 
     init() {
@@ -32,11 +52,12 @@ struct WhiskyApp: App {
                                                          updaterDelegate: nil,
                                                          userDriverDelegate: nil)
     }
+    #endif
 
     var body: some Scene {
         WindowGroup {
             ContentView(showSetup: $showSetup)
-                .frame(minWidth: ViewWidth.large, minHeight: 316)
+                .frame(minWidth: 720, minHeight: 480)
                 .environmentObject(BottleVM.shared)
                 .onAppear {
                     NSWindow.allowsAutomaticWindowTabbing = false
@@ -46,12 +67,15 @@ struct WhiskyApp: App {
                     }
                 }
         }
+        .defaultSize(width: 1080, height: 720)
         // Don't ask me how this works, it just does
         .handlesExternalEvents(matching: ["{same path of URL?}"])
         .commands {
+            #if canImport(Sparkle)
             CommandGroup(after: .appInfo) {
                 SparkleView(updater: updaterController.updater)
             }
+            #endif
             CommandGroup(before: .systemServices) {
                 Divider()
                 Button("open.setup") {
@@ -92,9 +116,14 @@ struct WhiskyApp: App {
                 }
                 .keyboardShortcut("K", modifiers: [.command, .shift])
                 Button("wine.clearShaderCaches") {
-                    WhiskyApp.killBottles() // Better not make things more complicated for ourselves
-                    WhiskyApp.wipeShaderCaches()
+                    guard !isClearingShaderCaches else { return }
+                    isClearingShaderCaches = true
+                    Task { @MainActor in
+                        defer { isClearingShaderCaches = false }
+                        await Self.wipeShaderCaches()
+                    }
                 }
+                .disabled(isClearingShaderCaches)
             }
             CommandGroup(replacing: .help) {
                 Button("help.website") {
@@ -165,36 +194,59 @@ struct WhiskyApp: App {
         }
     }
 
-    static func wipeShaderCaches() {
-        let getconf = Process()
-        getconf.executableURL = URL(fileURLWithPath: "/usr/bin/getconf")
-        getconf.arguments = ["DARWIN_USER_CACHE_DIR"]
-        let pipe = Pipe()
-        getconf.standardOutput = pipe
-        do {
-            try getconf.run()
-        } catch {
-            return
-        }
-        getconf.waitUntilExit()
-        let getconfOutput = {() -> Data in
-            if #available(macOS 10.15, *) {
-                do {
-                    return try pipe.fileHandleForReading.readToEnd() ?? Data()
-                } catch {
-                    return Data()
-                }
-            } else {
-                return pipe.fileHandleForReading.readDataToEndOfFile()
+    @MainActor
+    static func wipeShaderCaches() async {
+        let confirmation = NSAlert()
+        confirmation.messageText = "清理已知着色器缓存？"
+        confirmation.informativeText = "包括共享 D3DMetal、DXMT 以及已知兼容容器的 DXMT/DXVK 缓存，下次启动时重新生成。不会结束任何进程；"
+            + "检测到游戏或容器运行、或无法确认运行状态时，将停止清理。"
+        confirmation.alertStyle = .warning
+        confirmation.addButton(withTitle: "清理缓存")
+        confirmation.addButton(withTitle: "取消")
+        guard confirmation.runModal() == .alertFirstButtonReturn else { return }
+
+        let orchestrator = UnifiedRuntimeOrchestrator()
+        orchestrator.libraryStore.load()
+        var bottleURLs = BottleVM.shared.bottles.map(\.url)
+        bottleURLs += orchestrator.libraryStore.entries.compactMap(\.bottleURL)
+        if let fallback = orchestrator.configuration.defaultBottleURL { bottleURLs.append(fallback) }
+        let targets = ShaderCacheService().targets(bottleURLs: bottleURLs)
+        let helperNames = [orchestrator.resolvedRuntimePaths().containerHelperBinaryPath]
+            .compactMap { $0 }.map { URL(filePath: $0).lastPathComponent }
+        let (result, summary) = await Task.detached(priority: .utility) {
+            let service = ShaderCacheService()
+            let result = service.clear(targets: targets) {
+                ShaderCacheService.processActivity(additionalExecutableNames: helperNames)
             }
-        }()
-        guard let getconfOutputString = String(data: getconfOutput, encoding: .utf8) else {return}
-        let d3dmPath = URL(fileURLWithPath: getconfOutputString.trimmingCharacters(in: .whitespacesAndNewlines))
-            .appending(path: "d3dm").path
-        do {
-            try FileManager.default.removeItem(atPath: d3dmPath)
-        } catch {
-            return
+            return (result, service.measure(targets: targets))
+        }.value
+
+        let failures = result.failures + summary.failures
+        let feedback = NSAlert()
+        feedback.messageText = "着色器缓存清理结果"
+        feedback.alertStyle = result.wasBlocked || !failures.isEmpty ? .warning : .informational
+        var messages: [String] = []
+        if result.wasBlocked {
+            messages.append(result.removedCount == 0
+                ? "检测到游戏或容器运行，或无法确认运行状态，未清理缓存。请关闭相关程序后重试。"
+                : "运行状态发生变化，已停止继续清理。请关闭相关程序后重试。")
+        } else if !failures.isEmpty {
+            messages.append("部分缓存未能清理，请查看下方说明。")
+        } else if result.removedCount == 0 {
+            messages.append("没有需要清理的已知缓存。")
         }
+        if result.removedCount > 0 {
+            let size = ByteCountFormatter.string(fromByteCount: result.removedBytes, countStyle: .file)
+            messages.append("已清理 \(result.removedCount) 处缓存（\(size)），下次启动时重新生成。")
+        }
+        messages += failures.map { "\($0.label)：\($0.message)" }
+        if summary.failures.isEmpty {
+            let remaining = ByteCountFormatter.string(fromByteCount: summary.byteCount, countStyle: .file)
+            messages.append("同一统计范围的剩余缓存：\(remaining)。")
+        }
+        feedback.informativeText = messages.joined(separator: "\n")
+        feedback.addButton(withTitle: "好")
+        feedback.runModal()
     }
+
 }

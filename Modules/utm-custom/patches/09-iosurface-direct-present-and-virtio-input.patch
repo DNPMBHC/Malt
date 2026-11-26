@@ -1,0 +1,85 @@
+diff --git a/Configuration/UTMQemuConfiguration+Arguments.swift b/Configuration/UTMQemuConfiguration+Arguments.swift
+index eec2af0..b53b11d 100644
+--- a/Configuration/UTMQemuConfiguration+Arguments.swift
++++ b/Configuration/UTMQemuConfiguration+Arguments.swift
+@@ -1114,14 +1114,48 @@ import Virtualization // for getting network interfaces
+             f("-device")
+             f("usb-tablet,bus=usb-bus.0")
+         }
++        let plistInputFlags: (virtioMouse: Bool, disableUsbRedir: Bool) = {
++            for drive in drives {
++                if let imgUrl = drive.imageURL {
++                    let cfgUrl = imgUrl.deletingLastPathComponent().deletingLastPathComponent().appendingPathComponent("config.plist")
++                    if let data = try? Data(contentsOf: cfgUrl),
++                       let root = try? PropertyListSerialization.propertyList(from: data, format: nil) as? [String: Any],
++                       let inp = root["Input"] as? [String: Any] {
++                        let vm = (inp["VirtioMouse"] as? Bool) ?? false
++                        let du = (inp["DisableUsbRedir"] as? Bool) ?? false
++                        return (vm, du)
++                    }
++                }
++            }
++            return (false, false)
++        }()
++        let envVirtioMouse = ProcessInfo.processInfo.environment["UTM_VIRTIO_MOUSE"]
++        let forceUsbMouseFallback = envVirtioMouse == "0"
++            || CommandLine.arguments.contains("--usb-mouse-fallback")
++        let useVirtioMouse = !forceUsbMouseFallback
++            && !isClassicMacNewWorld
++            && !isClassicMacM68K
++            && (envVirtioMouse == "1"
++                || CommandLine.arguments.contains("--virtio-mouse")
++                || plistInputFlags.virtioMouse)
+         if !qemu.hasPS2Controller {
+-            f("-device")
+-            f("usb-mouse,bus=usb-bus.0")
++            if useVirtioMouse {
++                f("-device")
++                f("virtio-mouse-pci")
++            } else {
++                f("-device")
++                f("usb-mouse,bus=usb-bus.0")
++            }
+             f("-device")
+             f("usb-kbd,bus=usb-bus.0")
+         }
+         #if WITH_USB
+-        let maxDevices = input.maximumUsbShare
++        let disableUsbRedir = !input.hasUsbSharing
++            || input.maximumUsbShare <= 0
++            || plistInputFlags.disableUsbRedir
++            || CommandLine.arguments.contains("--no-usb-redir")
++            || ProcessInfo.processInfo.environment["UTM_DISABLE_USB_REDIR"] == "1"
++        let maxDevices = disableUsbRedir ? 0 : input.maximumUsbShare
+         let buses = (maxDevices + 2) / 3
+         if input.usbBusSupport == .usb3_0 {
+             var controller = "qemu-xhci"
+diff --git a/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift b/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
+index 1e4c926..d6da1aa 100644
+--- a/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
++++ b/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
+@@ -124,6 +124,24 @@ class VMDisplayQemuMetalWindowController: VMDisplayQemuWindowController {
+             }
+         }
+ 
++        // Phase 15A: enable zero-copy IOSurface direct present + 1:1 Metal blit fast path
++        // and guard default QEMURendererFPSLimit = 120 + triple buffering.
++        let directDisabled = ProcessInfo.processInfo.environment["UTM_IOSURFACE_DIRECT_PRESENT"] == "0"
++            || CommandLine.arguments.contains("--disable-iosurface-direct-present")
++        if !directDisabled {
++            metalView.framebufferOnly = false
++            if let layer = metalView.layer as? CAMetalLayer {
++                layer.framebufferOnly = false
++                if layer.maximumDrawableCount < 3 {
++                    layer.maximumDrawableCount = 3
++                }
++            }
++        }
++        if ProcessInfo.processInfo.environment["UTM_RENDER_FPS_LIMIT"] == nil && rendererFpsLimit <= 0 {
++            rendererFpsLimit = 120
++            updateFrameRate()
++        }
++
+         if isSecondary && isDisplaySizeDynamic, let window = window {
+             restoreDynamicResolution(for: window)
+         }

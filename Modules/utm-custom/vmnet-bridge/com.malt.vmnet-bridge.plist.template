@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.malt.vmnet-bridge</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>__BINARY_PATH__</string>
+        <string>--socket</string>
+        <string>__SOCKET_PATH__</string>
+        <string>--mode</string>
+        <string>0600</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>ProcessType</key>
+    <string>Interactive</string>
+    <key>StandardOutPath</key>
+    <string>/var/log/malt-vmnet-bridge.log</string>
+    <key>StandardErrorPath</key>
+    <string>/var/log/malt-vmnet-bridge.err.log</string>
+</dict>
+</plist>

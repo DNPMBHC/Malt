@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Apple Silicon hardware probing and lightweight auto-tuning benchmark.
+// Apple Silicon hardware probing, safe tuning bounds, and non-blocking lightweight benchmark.
 
 import AppKit
 import Darwin
@@ -47,6 +47,10 @@ public struct AutoTuneRecommendation: Codable, Equatable, Sendable {
     public let benchmarkScore: Double
     public let durationSeconds: Double
 
+    public var recommendedRAMGiB: Int {
+        max(4, recommendedRAMMiB / 1024)
+    }
+
     public init(
         hardware: HardwareProfileSnapshot,
         recommendedTier: PerformancePresetTier,
@@ -72,7 +76,7 @@ public struct AutoTuneRecommendation: Codable, Equatable, Sendable {
     }
 }
 
-/// Detects host hardware and runs a 10–15s micro-benchmark to recommend VM and Wine settings.
+/// Detects host hardware and runs a non-blocking micro-benchmark to recommend VM and Wine settings.
 public final class HardwareAutoTuner: Sendable {
     private let benchmarkDurationSeconds: Double
 
@@ -101,6 +105,87 @@ public final class HardwareAutoTuner: Sendable {
         )
     }
 
+    /// Returns safe selectable container memory options in whole GiB for the detected Mac.
+    public static func safeMemoryOptionsGiB(for hardware: HardwareProfileSnapshot) -> [Int] {
+        switch hardware.physicalMemoryGiB {
+        case 32...:
+            return [8, 12, 16, 20]
+        case 24..<32:
+            return [8, 12, 16]
+        case 16..<24:
+            return [6, 8, 10, 12]
+        case 12..<16:
+            return [4, 6, 8]
+        default:
+            return [4, 6]
+        }
+    }
+
+    /// Returns the highlighted default memory tier in whole GiB for the detected Mac.
+    public static func recommendedMemoryGiB(for hardware: HardwareProfileSnapshot) -> Int {
+        switch hardware.physicalMemoryGiB {
+        case 32...:
+            return 16
+        case 24..<32:
+            return 12
+        case 16..<24:
+            return 10
+        default:
+            return 6
+        }
+    }
+
+    /// Clamps any persisted or requested GiB memory choice into the hardware's safe GiB choices.
+    public static func clampedMemoryGiB(
+        _ requestedGiB: Int,
+        for hardware: HardwareProfileSnapshot
+    ) -> Int {
+        let options = safeMemoryOptionsGiB(for: hardware)
+        if options.contains(requestedGiB) {
+            return requestedGiB
+        }
+        return options.min(by: { abs($0 - requestedGiB) < abs($1 - requestedGiB) })
+            ?? recommendedMemoryGiB(for: hardware)
+    }
+
+    /// Returns safe selectable vCPU core counts leaving host macOS headroom.
+    public static func safeVCPUOptions(for hardware: HardwareProfileSnapshot) -> [Int] {
+        let maxSafe: Int
+        if hardware.totalCores >= 12 {
+            maxSafe = min(10, hardware.totalCores - 2)
+        } else if hardware.totalCores >= 6 {
+            maxSafe = hardware.totalCores - 2
+        } else {
+            maxSafe = max(2, hardware.totalCores - 1)
+        }
+
+        let minSafe = min(4, maxSafe)
+        var candidates: [Int] = []
+        var value = minSafe
+        while value <= maxSafe {
+            candidates.append(value)
+            value += 2
+        }
+        let recommended = recommendedVCPUCount(for: hardware)
+        if !candidates.contains(recommended) && recommended <= maxSafe {
+            candidates.append(recommended)
+        }
+        if !candidates.contains(maxSafe) {
+            candidates.append(maxSafe)
+        }
+        return Array(Set(candidates)).sorted()
+    }
+
+    /// Clamps any persisted vCPU count into the hardware's safe vCPU options.
+    public static func clampedVCPU(_ requestedVCPU: Int, for hardware: HardwareProfileSnapshot) -> Int {
+        let options = safeVCPUOptions(for: hardware)
+        if options.contains(requestedVCPU) {
+            return requestedVCPU
+        }
+        return options.min(by: { abs($0 - requestedVCPU) < abs($1 - requestedVCPU) })
+            ?? recommendedVCPUCount(for: hardware)
+    }
+
     public func runQuickBenchmarkAndRecommend() async -> AutoTuneRecommendation {
         let profile = detectHardwareProfile()
         let start = CFAbsoluteTimeGetCurrent()
@@ -108,33 +193,31 @@ public final class HardwareAutoTuner: Sendable {
             workerCount: max(2, min(profile.totalCores, 8)),
             durationSeconds: benchmarkDurationSeconds * 0.72
         )
-        let ioScore = Self.runDiskIOBenchmark(durationSeconds: benchmarkDurationSeconds * 0.28)
+        let ioScore = await Self.runDiskIOBenchmark(durationSeconds: benchmarkDurationSeconds * 0.28)
         let elapsed = max(0.01, CFAbsoluteTimeGetCurrent() - start)
         let compositeScore = ((cpuScore * 0.7) + (ioScore * 0.3)).rounded()
         return Self.recommend(for: profile, benchmarkScore: compositeScore, durationSeconds: elapsed)
     }
 
-    /// Deterministic recommendation engine grounded in Phase 11–12 empirical VM benchmarks.
+    /// Deterministic recommendation engine grounded in Phase 11–14 empirical VM benchmarks.
     public static func recommend(
         for hardware: HardwareProfileSnapshot,
         benchmarkScore: Double,
         durationSeconds: Double
     ) -> AutoTuneRecommendation {
-        let recommendedRAMMiB: Int
+        let recommendedGiB = recommendedMemoryGiB(for: hardware)
+        let recommendedRAMMiB = recommendedGiB * 1024
         let recommendedTier: PerformancePresetTier
         let recommendedResolution: String
 
         if hardware.physicalMemoryGiB >= 24 {
-            recommendedRAMMiB = hardware.physicalMemoryGiB >= 32 ? 16384 : 12288
-            recommendedTier = benchmarkScore >= 65.0 ? .nativeQuality : .balancedRecommended
+            recommendedTier = benchmarkScore >= 65.0 ? .maxPerformance : .balanced
             recommendedResolution = hardware.physicalMemoryGiB >= 32 ? "2560x1440" : "1920x1080"
         } else if hardware.physicalMemoryGiB >= 16 {
-            recommendedRAMMiB = 10240
-            recommendedTier = benchmarkScore >= 40.0 ? .balancedRecommended : .competitiveHighFPS
+            recommendedTier = benchmarkScore >= 25.0 ? .balanced : .lowSpecCompatible
             recommendedResolution = "1920x1080"
         } else {
-            recommendedRAMMiB = 6144
-            recommendedTier = .competitiveHighFPS
+            recommendedTier = .lowSpecCompatible
             recommendedResolution = "1280x720"
         }
 
@@ -147,14 +230,14 @@ public final class HardwareAutoTuner: Sendable {
             recommendedRAMMiB: recommendedRAMMiB,
             recommendedResolution: recommendedResolution,
             enableGameMode: true,
-            mouseCoalesceMicros: hardware.displayRefreshRateHz >= 120 ? 1500 : 2000,
+            mouseCoalesceMicros: 1500,
             blockAccidentalShortcuts: true,
             benchmarkScore: max(1.0, benchmarkScore),
             durationSeconds: roundedDuration
         )
     }
 
-    private static func recommendedVCPUCount(for hardware: HardwareProfileSnapshot) -> Int {
+    public static func recommendedVCPUCount(for hardware: HardwareProfileSnapshot) -> Int {
         if hardware.totalCores >= 12 {
             return min(10, hardware.totalCores - 2)
         }
@@ -164,7 +247,7 @@ public final class HardwareAutoTuner: Sendable {
         if hardware.totalCores >= 8 {
             return 6
         }
-        return max(4, hardware.totalCores - 1)
+        return max(2, hardware.totalCores - 1)
     }
 
     private static func runMulticoreCPUBenchmark(
@@ -198,29 +281,34 @@ public final class HardwareAutoTuner: Sendable {
         }
     }
 
-    private static func runDiskIOBenchmark(durationSeconds: Double) -> Double {
-        let tempDir = FileManager.default.temporaryDirectory
-        let probeFile = tempDir.appending(path: "whisky-autotune-\(UUID().uuidString).tmp")
-        defer { try? FileManager.default.removeItem(at: probeFile) }
+    /// Runs disk I/O micro-benchmark off the caller actor so UI animations never stall.
+    private static func runDiskIOBenchmark(durationSeconds: Double) async -> Double {
+        await Task.detached(priority: .utility) {
+            let tempDir = FileManager.default.temporaryDirectory
+            let probeFile = tempDir.appending(path: "whisky-autotune-\(UUID().uuidString).tmp")
+            defer { try? FileManager.default.removeItem(at: probeFile) }
 
-        let payload = Data(repeating: 0x5A, count: 1_048_576)
-        let deadline = CFAbsoluteTimeGetCurrent() + durationSeconds
-        var completedMiB: Double = 0
+            let payload = Data(repeating: 0x5A, count: 1_048_576)
+            let deadline = CFAbsoluteTimeGetCurrent() + durationSeconds
+            var completedMiB: Double = 0
 
-        while CFAbsoluteTimeGetCurrent() < deadline {
-            do {
-                try payload.write(to: probeFile, options: .atomic)
-                _ = try Data(contentsOf: probeFile)
-                completedMiB += 2.0
-            } catch {
-                break
+            while CFAbsoluteTimeGetCurrent() < deadline {
+                do {
+                    try payload.write(to: probeFile, options: .atomic)
+                    _ = try Data(contentsOf: probeFile)
+                    completedMiB += 2.0
+                } catch {
+                    break
+                }
             }
-        }
-        let throughputMBps = completedMiB / max(0.05, durationSeconds)
-        return min(100.0, max(10.0, (throughputMBps / 800.0) * 100.0))
+            let throughputMBps = completedMiB / max(0.05, durationSeconds)
+            return min(100.0, max(10.0, (throughputMBps / 800.0) * 100.0))
+        }.value
     }
+}
 
-    private static func sysctlString(_ name: String) -> String? {
+private extension HardwareAutoTuner {
+    static func sysctlString(_ name: String) -> String? {
         var size: Int = 0
         guard sysctlbyname(name, nil, &size, nil, 0) == 0, size > 1 else {
             return nil
@@ -233,7 +321,7 @@ public final class HardwareAutoTuner: Sendable {
         return String(bytes: bytes, encoding: .utf8)
     }
 
-    private static func sysctlInt(_ name: String) -> Int? {
+    static func sysctlInt(_ name: String) -> Int? {
         var value: Int32 = 0
         var size = MemoryLayout<Int32>.size
         guard sysctlbyname(name, &value, &size, nil, 0) == 0 else {
@@ -242,7 +330,7 @@ public final class HardwareAutoTuner: Sendable {
         return Int(value)
     }
 
-    private static func detectDisplayRefreshRateHz() -> Int {
+    static func detectDisplayRefreshRateHz() -> Int {
         guard Thread.isMainThread else {
             return 120
         }
@@ -252,7 +340,7 @@ public final class HardwareAutoTuner: Sendable {
         return max(60, rate)
     }
 
-    private static func detectRecommendedStoragePath() -> String {
+    static func detectRecommendedStoragePath() -> String {
         let fileManager = FileManager.default
         let volumesURL = URL(filePath: "/Volumes")
         let skipped = Set(["Macintosh HD", "Recovery", "Preboot", "VM", "Update", "DATA"])

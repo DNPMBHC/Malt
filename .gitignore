@@ -90,3 +90,11 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+
+# Local diagnostics and interpreter caches
+__pycache__/
+*.py[cod]
+*.log
+*.jsonl
+*.ndjson
+.dev-logs/
