@@ -1,0 +1,117 @@
+{
+  "owner": "@DNPMBHC",
+  "scope": "Read-only disk image, relocated app, payload integrity, isolated main-process launch; no real guest, game, network or second-Mac execution",
+  "checks": {
+    "dmg-verify": {
+      "exitCode": 0,
+      "passed": true
+    },
+    "dmg-app-copy": {
+      "exitCode": 0,
+      "passed": true
+    },
+    "relocated-codesign": {
+      "exitCode": 0,
+      "passed": true
+    },
+    "dmg-runtime-payload-check": {
+      "exitCode": 0,
+      "passed": true
+    },
+    "dmg-cli-help": {
+      "exitCode": 0,
+      "passed": true
+    },
+    "dmg-network-self-check": {
+      "exitCode": 0,
+      "passed": true
+    },
+    "dmg-isolated-launch-check": {
+      "exitCode": 0,
+      "passed": true
+    },
+    "dmg-distribution-check": {
+      "exitCode": 0,
+      "passed": true
+    }
+  },
+  "passed": true,
+  "diskImage": {
+    "sizeBytes": 378545920,
+    "sizeMiB": 361.01,
+    "sha256": "6892cdea32b72489d600584fc24b5bf576a17fed09d84fcb170d4d50fcb7d8c6"
+  },
+  "applicationsLinkVerified": true,
+  "runtimePayload": {
+    "schema": "runtime-payload-v1-verification",
+    "owner": "@DNPMBHC",
+    "resourceCount": 1479,
+    "problems": [],
+    "requiredResourcesVerified": true,
+    "signatureChecksPassed": true,
+    "pythonChecks": {
+      "isolatedEnvironment": true,
+      "standardLibraryImportsPassed": true,
+      "managerHelpPassed": true
+    },
+    "dependencyChecks": {
+      "machOCount": 164,
+      "externalAbsoluteDependencyCount": 0,
+      "systemOrRelativeDependenciesOnly": true
+    },
+    "prerequisites": {
+      "externalSetupRequired": true,
+      "guestImageBundled": false,
+      "nativeNetworkDistributionRequiresNotarization": true,
+      "wineRuntimeBundled": false
+    },
+    "daemonInstalledOrRegistered": false,
+    "gameLaunchVerified": false,
+    "cleanMachineVerified": false,
+    "passed": true
+  },
+  "helperContract": {
+    "uuidRegistrationMarker": true,
+    "automationDenialToken": true,
+    "automationEntitlement": true,
+    "embeddedAutomationUsageDescription": true
+  },
+  "platform": {
+    "minimumSystemVersion": "14.0",
+    "builtArchitecture": "arm64"
+  },
+  "isolatedLaunch": {
+    "updaterRemoval": {
+      "loadCommandsChecked": true,
+      "sparkleLinked": false,
+      "sparkleBundled": false,
+      "passed": true
+    },
+    "launch": {
+      "requiredSurvivalSeconds": 4,
+      "observedSeconds": 4.004,
+      "survived": true,
+      "exitCodeDuringObservation": null,
+      "dyldErrorCount": 0,
+      "passed": true
+    },
+    "passed": true,
+    "isolatedUserData": true,
+    "scope": "Main application process survival; no guest or game execution claim"
+  },
+  "distributionAssessment": {
+    "gatekeeperAccepted": false,
+    "assessmentExitCode": 3,
+    "developerIDAuthorityVerified": false,
+    "deepStrictSignatureVerified": true,
+    "teamIdentifierPresent": false,
+    "secureTimestampPresent": false,
+    "stapledNotarizationValidated": false,
+    "gatekeeperNotarizedSource": false,
+    "notarizationVerified": false,
+    "distributable": false,
+    "scope": "Build-host policy and signing evidence; no other physical Mac verification",
+    "passed": true
+  },
+  "adhocDistributionBlocked": true
+}

@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "owner": "@DNPMBHC",
+  "golden_id": "golden-win11-arm64-v1",
+  "status": "sealed_readonly",
+  "captured_at_utc": "2026-11-24T11:00:57.709563+00:00",
+  "bundle_alias": "golden-win11-arm64-v1.utm",
+  "guest_os": {
+    "name": "Windows 11 ARM64",
+    "build": "26100",
+    "architecture": "aarch64"
+  },
+  "qemu_profile": {
+    "backend": "QEMU",
+    "display_hardware": "virtio-ramfb-gl",
+    "display_args_expected": "virtio-ramfb-gl,hostmem=8G,blob=true,venus=true,neptune=true,refresh_rate=120000",
+    "cpu_count": 6,
+    "memory_mib": 6144,
+    "uefi_boot": true,
+    "tpm_device": true,
+    "directory_share_mode": "None",
+    "clipboard_sharing": false,
+    "usb_sharing": false
+  },
+  "qemu_checks": {
+    "backend_is_qemu": true,
+    "display_hardware_ok": true,
+    "cpu_count_ok": true,
+    "memory_mib_ok": true,
+    "uefi_boot_enabled": true,
+    "tpm_device_enabled": true,
+    "hypervisor_enabled": true,
+    "additional_arguments_empty": true,
+    "directory_share_disabled": true,
+    "clipboard_sharing_disabled": true,
+    "usb_sharing_disabled": true,
+    "writable_disks_contained": true
+  },
+  "graphics_driver": {
+    "provider": "Turing Software, LLC",
+    "source": "UTM 5.0.9 Guest Tools ISO (Drivers/viogpu3d/w11/ARM64)",
+    "driver_version": "100.6.101.58000",
+    "adapter_description": "Red Hat VirtIO GPU 3D controller",
+    "whql_ready": true,
+    "all_components_present": true,
+    "feature_level": "11_1",
+    "max_channel_error_lsb": 0,
+    "byte_exact_match": true
+  },
+  "security_invariants": {
+    "qga_service_running": true,
+    "prism_signatures_valid": true,
+    "tpm_ready": true,
+    "prism_files": [
+      {
+        "relative_path": "System32\\xtajit.dll",
+        "signature_status": "Valid",
+        "exists": true
+      },
+      {
+        "relative_path": "System32\\xtajit64.dll",
+        "signature_status": "Valid",
+        "exists": true
+      },
+      {
+        "relative_path": "System32\\wow64.dll",
+        "signature_status": "Valid",
+        "exists": true
+      },
+      {
+        "relative_path": "System32\\wow64win.dll",
+        "signature_status": "Valid",
+        "exists": true
+      }
+    ],
+    "prism_files_verified": true,
+    "secure_boot_enabled": true,
+    "bcd_safe": true,
+    "tpm_present": true,
+    "tpm_enabled": true,
+    "nointegritychecks_disabled": true,
+    "test_signing_disabled": true
+  },
+  "optimizer": {
+    "profile_id": "anticheat-minimal-win11-arm64",
+    "rollback_snapshot_present": true
+  },
+  "commercial_residue": {
+    "zero_commercial_residue": true,
+    "found_services": [],
+    "found_paths": []
+  },
+  "fingerprints": {
+    "sealed_readonly": true,
+    "golden_config_sha256": "5e3b775ca4fd05a81ae9e1f2c5d61abe576334340bd51b851b6d65ab89cff390",
+    "golden_bundle_sha256": "784ba01e8c45bc0e32fb81849a359b909a3d87b15cb8486db49df6467bcf4947",
+    "golden_total_bytes": 29547908107,
+    "golden_file_count": 8,
+    "primary_vm_a_config_sha256": "10793d07678f8621e1d75ada73443b3f14e272036dde4f90b277267c2e1033b7",
+    "primary_vm_a_bundle_sha256": "ccd2d2de4981b8b0ca7705824ee6cc4166828651a03f198fd518ba81771caae5",
+    "primary_vm_a_total_bytes": 29391222047
+  },
+  "smoke_metrics": {
+    "ephemeral_clone_seconds": 0.0074,
+    "vm_started_seconds": 2.825,
+    "qga_ready_seconds": 27.898,
+    "idle_host_rss_mib": 2289.62,
+    "probe_exit_code": 0,
+    "adapter_description": "Red Hat VirtIO GPU 3D controller",
+    "vendor_id": 6900,
+    "device_id": 4176,
+    "adapter_is_software": false,
+    "feature_level": "11_1",
+    "d3d11_probe_fps": 123.609,
+    "mean_frame_ms": 8.09,
+    "p95_frame_ms": 11.71,
+    "max_channel_error_lsb": 0,
+    "over_threshold_pixels": 0,
+    "byte_exact_match": true
+  },
+  "lifecycle_verification": {
+    "action": "destroy-ephemeral",
+    "clone_name": "ephemeral-p6a-smoke",
+    "ephemeral_deleted": true,
+    "golden_zero_drift": true,
+    "primary_zero_drift": true
+  }
+}

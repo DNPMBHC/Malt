@@ -1,0 +1,39 @@
+{
+  "driver_state": "Running",
+  "tpm_activated": true,
+  "tpm_enabled": true,
+  "tpm_owned": true,
+  "secure_boot": true,
+  "tpm_tool": "\r\n-TPM Present: True\r\n-TPM Version: 2.0\r\n-TPM Manufacturer ID: IBM\r\n-TPM Manufacturer Full Name: IBM\r\n-TPM Manufacturer Version: 8217.4131.22.13878\r\n-PPI Version: \r\n-Is Initialized: True\r\n-Ready For Storage: True\r\n-Ready For Attestation: False\r\n-Information Flags Description:\r\n\tINFORMATION_EK_CERTIFICATE\r\n-Is Capable For Attestation: False\r\n-Clear Needed To Recover: False\r\n-Clear Possible: True\r\n-TPM Has Vulnerable Firmware: False\r\n-Bitlocker PCR7 Binding State: Binding Possible\r\n-Maintenance Task Complete: True\r\n-TPM Spec Version: 1.64\r\n-TPM Errata Date: Tuesday, March 16, 2021\r\n-PC Client Version: 0.164\r\n-Lockout Information: \r\n\t-Is Locked Out: False\r\n\t-Lockout Counter: 0\r\n\t-Max Auth Fail: 31\r\n\t-Lockout Interval: 600s\r\n\t-Lockout Recovery: 86400s\r\n",
+  "volumes": [
+    {
+      "free_bytes": 4104826880,
+      "drive": "C:",
+      "size_bytes": 37925941248,
+      "filesystem": "NTFS"
+    },
+    {
+      "free_bytes": 106764054528,
+      "drive": "R:",
+      "size_bytes": 107356352512,
+      "filesystem": "NTFS"
+    }
+  ],
+  "disks": [
+    {
+      "number": 1,
+      "is_offline": false,
+      "is_readonly": false,
+      "size_bytes": 107374182400,
+      "partition_style": "GPT"
+    },
+    {
+      "number": 0,
+      "is_offline": false,
+      "is_readonly": false,
+      "size_bytes": 38654705664,
+      "partition_style": "GPT"
+    }
+  ],
+  "tpm_spec": "2.0, 0, 1.64"
+}

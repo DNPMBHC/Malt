@@ -1,0 +1,32 @@
+{
+  "schema": "phase-15b-launch-gate-tests-v1",
+  "owner": "@DNPMBHC",
+  "capturedAt": "2026-11-26T00:44:27.913995+00:00",
+  "command": [
+    "python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "scripts",
+    "-p",
+    "test_package_launch_gate.py",
+    "-v"
+  ],
+  "testsRun": 8,
+  "durationSeconds": 10.098,
+  "exitCode": 0,
+  "passed": true,
+  "coverage": [
+    "normal_four_second_survival_and_process_cleanup",
+    "delayed_exit_after_2_6_seconds",
+    "clean_early_exit_rejected",
+    "delayed_dyld_message_while_alive",
+    "signature_error_without_dyld_prefix",
+    "stale_Sparkle_load_command",
+    "stale_Sparkle_framework",
+    "system_only_dependencies"
+  ],
+  "shellSyntaxPassed": true,
+  "log": "launch-gate-tests.log"
+}

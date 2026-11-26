@@ -1,0 +1,42 @@
+{
+  "schema_version": 2,
+  "owner": "@DNPMBHC",
+  "phase": "phase-12-window-12b",
+  "verified_at_utc": "2026-11-25T06:46:45.287913+00:00",
+  "app_path": "<TMPDIR>/utm-custom-build/UTM-Custom.app",
+  "outside_repository": true,
+  "main_binary_exists": true,
+  "helper_binary_exists": true,
+  "launcher_binary_exists": true,
+  "render_server_binary_exists": true,
+  "dxmt_framework_exists": true,
+  "main_binary_arch": "<TMPDIR>/utm-custom-build/UTM-Custom.app/Contents/MacOS/UTM: Mach-O 64-bit executable arm64",
+  "codesign_deep_verify_ok": true,
+  "codesign_stderr": "",
+  "game_mode_plist": {
+    "LSApplicationCategoryType": "public.app-category.games",
+    "LSSupportsGameMode": true,
+    "GCSupportsGameMode": true
+  },
+  "game_mode_plist_valid": true,
+  "patch_markers": {
+    "dxmt_shader_cache_dir": true,
+    "pure_relative_mouse_flag": true,
+    "pure_relative_mouse_plist": true,
+    "game_shell_vm_env": true,
+    "dxmt_shader_cache_path": true,
+    "cursor_inhibit_env": true,
+    "cursor_debug_env": true,
+    "cursor_relative_fallback_sel": true,
+    "mouse_coalesce_env": true,
+    "game_shell_key_guard_env": true,
+    "block_win_key_env": true,
+    "render_fps_limit_env": true,
+    "metal_drawable_count_env": true,
+    "max_inflight_frames_env": true,
+    "has_pending_render_update_sel": true
+  },
+  "all_patch_markers_present": true,
+  "helper_verified": true,
+  "original_utm_untouched": true
+}

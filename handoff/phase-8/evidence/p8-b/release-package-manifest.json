@@ -1,0 +1,51 @@
+{
+  "schema": "task-07-release-package-v2",
+  "owner": "@DNPMBHC",
+  "capturedAt": "2026-11-24T12:47:22.099271+00:00",
+  "configuration": "Release",
+  "architecture": "arm64",
+  "marketingVersion": "2.3.5",
+  "hardenedRuntimeEnabled": true,
+  "codeSigningAllowed": false,
+  "localAdHocSigned": true,
+  "hardenedRuntimeVerification": {
+    "app": {
+      "signatureVerified": true,
+      "runtimeFlagVerified": true
+    },
+    "cli": {
+      "signatureVerified": true,
+      "runtimeFlagVerified": true
+    },
+    "passed": true
+  },
+  "bundlePurityPassed": true,
+  "requiredResourcesVerified": true,
+  "vulkanBackend": {
+    "bundled": true,
+    "x86_64SliceVerified": true,
+    "universalLoaderVerified": true,
+    "relativeICDPathVerified": true,
+    "features": {
+      "geometryShader": true,
+      "fillModeNonSolid": true,
+      "apiVersion": 4211056,
+      "driverVersion": 109457507
+    },
+    "vulkanLoaderSHA256": "0bcd62c6b3bcba4ef7c82344da3eb058892bb00b56b75ac6a6e7c8765a208c85",
+    "driverSHA256": "ed4615a26f74c7bece748cfb6bb3930fee379a2dcf3a634ca4e57c59a4bfdf63",
+    "icdManifestSHA256": "1aa4f7ed99d7ce2d69e3e4e6402d11d3f0fbe1dce1fb200054177904a9dadf9d"
+  },
+  "artifacts": {
+    "appBinarySHA256": "95a649091ea8dfca6a09f639a3b57a86d5b77479576e4d1d9a489fc761e47fc0",
+    "cliBinarySHA256": "666b6cc3c5974c8cfc4ab509090de1af73b15539bbc388585bbcd5831d479f90",
+    "compatibilityMatrixSHA256": "0545f3c83c69d3cb3b81ef2b18f742446bf3ce2b5a45e8a084b7cfee71c3c34a",
+    "runtimeManifestSHA256": "d304bf46376750a8a8e3881823e7be97e8840a8ceb817351f68e336587e7f446",
+    "dmg": {
+      "filename": "demo-app.dmg",
+      "sizeBytes": 13736524,
+      "sha256": "e2f6f1f5890ed018681b306c36a5119e33f354d01875a415b13be7bf9af6d0f6"
+    }
+  },
+  "passed": true
+}

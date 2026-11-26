@@ -1,0 +1,77 @@
+{
+  "schema": "startup-fix-verification-summary-v1",
+  "owner": "@DNPMBHC",
+  "capturedAt": "2026-11-26T08:48:44.478607+08:00",
+  "timezone": "Asia/Shanghai",
+  "gateCount": 9,
+  "passedGateCount": 9,
+  "gates": [
+    {
+      "owner": "@DNPMBHC",
+      "gate": "swift-tests",
+      "capturedAt": "2026-11-26T00:42:41.764377+00:00",
+      "exitCode": 0,
+      "durationSeconds": 14.171,
+      "testCount": 267,
+      "failureCount": 0,
+      "passed": true,
+      "passedTestCount": 257,
+      "skippedTestCount": 10,
+      "skippedReasons": {
+        "optInGPUBenchmark": 1,
+        "metalAPIValidationEnvironment": 1,
+        "realGuestConfiguration": 8
+      }
+    },
+    {
+      "owner": "@DNPMBHC",
+      "gate": "swiftlint",
+      "capturedAt": "2026-11-26T00:42:27.906872+00:00",
+      "exitCode": 0,
+      "durationSeconds": 0.314,
+      "violationCount": 0,
+      "passed": true
+    },
+    {
+      "owner": "@DNPMBHC",
+      "gate": "format",
+      "capturedAt": "2026-11-26T00:42:29.481822+00:00",
+      "exitCode": 0,
+      "durationSeconds": 1.888,
+      "inputCount": 6,
+      "inputsStableDuringRun": true,
+      "passed": true
+    },
+    {
+      "owner": "@DNPMBHC",
+      "gate": "hardening",
+      "capturedAt": "2026-11-26T00:42:28.667363+00:00",
+      "exitCode": 0,
+      "durationSeconds": 1.075,
+      "productionSourceCount": 143,
+      "negativeSelfTestsPassed": 6,
+      "passed": true
+    },
+    {
+      "gate": "debug-restart",
+      "passed": true
+    },
+    {
+      "gate": "release-embedded-package",
+      "passed": true
+    },
+    {
+      "gate": "launch-gate-tests",
+      "passed": true
+    },
+    {
+      "gate": "installed-release-launch",
+      "passed": true
+    },
+    {
+      "gate": "workspace-and-privacy",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

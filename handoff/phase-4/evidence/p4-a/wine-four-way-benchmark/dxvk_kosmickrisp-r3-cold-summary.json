@@ -1,0 +1,222 @@
+{
+  "backend_evidence": {
+    "arm": "dxvk_kosmickrisp",
+    "backend": "dxvk_kosmickrisp",
+    "cache_isolation": "isolated_dxvk_state_cache_and_disposable_prefix",
+    "cache_state": "cold",
+    "device_name_line": "info:    Device name:     : Apple M4",
+    "driver_version_line": "info:    Driver version   : 26.99.99",
+    "dxvk_log_detected": true,
+    "dxvk_state_cache_bytes_after": 219,
+    "dxvk_state_cache_bytes_before": 0,
+    "feature_level_line": "info:  D3D11CoreCreateDevice: Using feature level D3D_FEATURE_LEVEL_11_0",
+    "geometry_shader_line": "info:    geometryShader                         : 1",
+    "metalfx_preset": "off",
+    "robust_buffer_access2_line": "info:    robustBufferAccess2                    : 1",
+    "round": 3,
+    "vulkan_icd": "kosmickrisp"
+  },
+  "files": {
+    "csv": "dxvk_kosmickrisp-r3-cold.csv",
+    "csv_sha256": "b64c6ec7fab4094365c60310c8246f5a008d28443566488c26489960ea61a347",
+    "startup_json": "dxvk_kosmickrisp-r3-cold-startup.json",
+    "startup_json_sha256": "4d43f0351796e44ef4b0798cf37cc42c8491dc5a03a535cf0dc77456317d7d36"
+  },
+  "pass": "dxvk_kosmickrisp-r3-cold",
+  "schema_version": 1,
+  "startup": {
+    "exit_code": 0,
+    "probe_internal_initialization_ms": 1310.504,
+    "process_start_to_d3d_ready_ms": 5148.344542,
+    "ready": true,
+    "schema_version": 1
+  },
+  "summary": {
+    "environment_telemetry": {
+      "note": "Missing readings remain null and are not inferred.",
+      "power_w": {
+        "coverage": 0.0,
+        "max": null,
+        "mean": null,
+        "missing": 900,
+        "p50": null,
+        "p95": null,
+        "p99": null,
+        "sample_count": 0
+      },
+      "temperature_c": {
+        "coverage": 0.0,
+        "max": null,
+        "mean": null,
+        "missing": 900,
+        "p50": null,
+        "p95": null,
+        "p99": null,
+        "sample_count": 0
+      }
+    },
+    "frame_count": 900,
+    "memory": {
+      "device_memory_bytes": {
+        "coverage": 1.0,
+        "max": 366493696.0,
+        "mean": 366363497.81333333,
+        "missing": 0,
+        "p50": 366297088.0,
+        "p95": 366493696.0,
+        "p99": 366493696.0,
+        "sample_count": 900
+      },
+      "host_resident_bytes": {
+        "coverage": 0.0,
+        "max": null,
+        "mean": null,
+        "missing": 900,
+        "p50": null,
+        "p95": null,
+        "p99": null,
+        "sample_count": 0
+      },
+      "host_texture_bytes": {
+        "coverage": 0.0,
+        "max": null,
+        "mean": null,
+        "missing": 900,
+        "p50": null,
+        "p95": null,
+        "p99": null,
+        "sample_count": 0
+      },
+      "process_resident_bytes": {
+        "max": 108617728.0,
+        "mean": 107874554.31111111,
+        "p50": 107556864.0,
+        "p95": 108593561.6,
+        "p99": 108613632.0,
+        "sample_count": 900
+      }
+    },
+    "run": {
+      "initialization_ms": 1310.504,
+      "warmup_ms": 486.943
+    },
+    "schema_version": 1,
+    "timing": {
+      "cpu_frame_interval_ms": {
+        "max": 13.264,
+        "mean": 2.383372636262514,
+        "p50": 1.41,
+        "p95": 8.662499999999998,
+        "p99": 10.748059999999999,
+        "sample_count": 899
+      },
+      "cpu_submit_ms": {
+        "max": 13.157,
+        "mean": 2.263803333333333,
+        "p50": 1.3130000000000002,
+        "p95": 8.52545,
+        "p99": 10.50985,
+        "sample_count": 900
+      },
+      "derived_fps_from_mean_interval": 419.5735005031149,
+      "gpu_ms": {
+        "coverage": 1.0,
+        "max": 2.424708,
+        "mean": 0.5302997111111111,
+        "missing": 0,
+        "p50": 0.446479,
+        "p95": 0.9697086499999997,
+        "p99": 1.80072208,
+        "sample_count": 900
+      },
+      "host_gpu_ms": {
+        "coverage": 0.0,
+        "max": null,
+        "mean": null,
+        "missing": 900,
+        "p50": null,
+        "p95": null,
+        "p99": null,
+        "sample_count": 0
+      },
+      "host_receive_to_present_ms": {
+        "coverage": 0.0,
+        "max": null,
+        "mean": null,
+        "missing": 900,
+        "p50": null,
+        "p95": null,
+        "p99": null,
+        "sample_count": 0
+      },
+      "latency_note": "Synthetic frame-request-to-Present-return proxy; it is not physical input-to-photon latency.",
+      "process_cpu_ms": {
+        "max": 20.0,
+        "mean": 0.8555555555555555,
+        "p50": 0.0,
+        "p95": 10.0,
+        "p99": 10.0,
+        "sample_count": 900
+      },
+      "synthetic_input_to_present_return_ms": {
+        "max": 13.157,
+        "mean": 2.263803333333333,
+        "p50": 1.3130000000000002,
+        "p95": 8.52545,
+        "p99": 10.50985,
+        "sample_count": 900
+      }
+    },
+    "transfer": {
+      "command_bytes": {
+        "coverage": 1.0,
+        "per_frame_max": 0,
+        "per_frame_mean": 0.0,
+        "per_frame_min": 0,
+        "sample_count": 900,
+        "total": 0
+      },
+      "network_bytes_in": {
+        "coverage": 1.0,
+        "per_frame_max": 0,
+        "per_frame_mean": 0.0,
+        "per_frame_min": 0,
+        "sample_count": 900,
+        "total": 0
+      },
+      "network_bytes_out": {
+        "coverage": 1.0,
+        "per_frame_max": 0,
+        "per_frame_mean": 0.0,
+        "per_frame_min": 0,
+        "sample_count": 900,
+        "total": 0
+      },
+      "network_bytes_total": {
+        "coverage": 1.0,
+        "per_frame_max": 0,
+        "per_frame_mean": 0.0,
+        "per_frame_min": 0,
+        "sample_count": 900,
+        "total": 0
+      },
+      "resource_bytes": {
+        "coverage": 1.0,
+        "per_frame_max": 0,
+        "per_frame_mean": 0.0,
+        "per_frame_min": 0,
+        "sample_count": 900,
+        "total": 0
+      },
+      "transferred_bytes": {
+        "coverage": 1.0,
+        "per_frame_max": 0,
+        "per_frame_mean": 0.0,
+        "per_frame_min": 0,
+        "sample_count": 900,
+        "total": 0
+      }
+    },
+    "transport_mode": "direct_present"
+  }
+}

@@ -1,0 +1,756 @@
+{
+  "schema_version": 1,
+  "phase": "phase-11a",
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-25T02:13:35.403342+00:00",
+  "golden_id": "golden-win11-arm64-v1",
+  "golden_manifest_sha256": "1988c3217b4c97d53818ac72831360715bf0438543288cc1cb4001a9f00fa846",
+  "host_p_core_count": 4,
+  "utm_prefs_during_run": {
+    "QEMUDirectXDriver": 2,
+    "QEMURendererFPSLimit": 120,
+    "backup_saved": true
+  },
+  "workload": {
+    "probe": "d3d11_probe.exe",
+    "resolution": "1280x720",
+    "frames": 180,
+    "warmup": 30,
+    "commands_per_frame": 4096,
+    "resource_bytes_per_frame": 262144
+  },
+  "arms": {
+    "v2_baseline": {
+      "arm_id": "v2_baseline",
+      "clone_seconds": 0.0061,
+      "qga_ready_seconds": 19.897,
+      "trim_summary": {
+        "trim_hardware_applied": true,
+        "removed_empty_cdrom_slots": 2,
+        "dynamic_resolution_locked_false": true,
+        "usb_sharing_disabled": true,
+        "maximum_usb_shares": 0,
+        "sound_enabled": false,
+        "sound_devices": [],
+        "memory_mib": 6144,
+        "cpu_count": 6,
+        "balloon_device": true,
+        "pure_relative_mouse": false,
+        "directx_driver": 2,
+        "renderer_fps_limit": 120
+      },
+      "render_server_backend": {
+        "active_backend": "dxmt-native",
+        "dxmt_native_loaded": true,
+        "d3dmetal_native_loaded": false,
+        "virglrenderer_loaded": false,
+        "kosmickrisp_loaded": false,
+        "dxmt_evidence_count": 6,
+        "d3dmetal_evidence_count": 0
+      },
+      "probe": {
+        "frame_count": 179,
+        "fps": {
+          "mean": 50.997,
+          "p50": 50.125,
+          "p1_low": 36.427,
+          "p0_1_low": 22.406,
+          "min": 20.796,
+          "max": 78.113
+        },
+        "cpu_frame_ms": {
+          "mean": 19.609,
+          "p50": 19.95,
+          "p95": 24.614,
+          "p99": 27.452,
+          "p99_9": 44.63,
+          "min": 12.802,
+          "max": 48.086
+        },
+        "cpu_submit_ms": {
+          "mean": 19.555,
+          "p50": 19.883,
+          "p95": 24.549,
+          "p99": 27.361,
+          "p99_9": 44.564,
+          "min": 12.781,
+          "max": 48.035
+        },
+        "gpu_ms": {
+          "mean": 14.469,
+          "p50": 14.818,
+          "p95": 18.764,
+          "p99": 20.857,
+          "p99_9": 21.007,
+          "min": 8.474,
+          "max": 21.025
+        },
+        "done_marker": "exit=0",
+        "workload": {
+          "frames": 180,
+          "warmup": 30,
+          "width": 1280,
+          "height": 720,
+          "commands_per_frame": 4096,
+          "resource_bytes_per_frame": 262144
+        }
+      },
+      "host": {
+        "sample_count": 4,
+        "qemu_render_server_cpu": {
+          "mean": 6.825,
+          "p50": 6.6,
+          "p95": 13.23,
+          "p99": 13.926,
+          "p99_9": 14.083,
+          "min": 0.0,
+          "max": 14.1
+        },
+        "qemu_worker_cpu": {
+          "mean": 133.325,
+          "p50": 132.75,
+          "p95": 250.905,
+          "p99": 255.621,
+          "p99_9": 256.682,
+          "min": 11.0,
+          "max": 256.8
+        },
+        "total_hypervisor_rss_mib": {
+          "mean": 2596.5,
+          "p50": 2587.77,
+          "p95": 2796.194,
+          "p99": 2800.615,
+          "p99_9": 2801.609,
+          "min": 2408.74,
+          "max": 2801.72
+        }
+      },
+      "guest": {
+        "win32_priority_separation": 2,
+        "free_physical_memory_mib": 4149.65,
+        "sound_ready": false,
+        "pagefile_settings": [],
+        "interactive_locale": {
+          "culture": "en-US",
+          "ui": null,
+          "langs": [
+            {
+              "tag": "en-US",
+              "tips": [
+                "0409:00000409"
+              ]
+            }
+          ]
+        },
+        "sound_devices": [],
+        "update_services_paused": false,
+        "committed_mib": 1693.76,
+        "automatic_managed_pagefile": true,
+        "total_visible_memory_mib": 6134.75,
+        "system_locale": "en-US",
+        "memory_compression": false,
+        "page_faults_per_sec": 11,
+        "commit_limit_mib": 7798.75,
+        "event26_count": 0,
+        "update_services": [
+          {
+            "Name": "BITS",
+            "StartMode": "Auto",
+            "State": "Running"
+          },
+          {
+            "Name": "TrustedInstaller",
+            "StartMode": "Manual",
+            "State": "Running"
+          },
+          {
+            "Name": "UsoSvc",
+            "StartMode": "Auto",
+            "State": "Stopped"
+          },
+          {
+            "Name": "wuauserv",
+            "StartMode": "Manual",
+            "State": "Running"
+          }
+        ],
+        "zh_cn_ime_ready": false
+      }
+    },
+    "v3_memory_compression_preserve": {
+      "arm_id": "v3_memory_compression_preserve",
+      "clone_seconds": 0.008,
+      "qga_ready_seconds": 19.989,
+      "trim_summary": {
+        "trim_hardware_applied": true,
+        "removed_empty_cdrom_slots": 2,
+        "dynamic_resolution_locked_false": true,
+        "usb_sharing_disabled": true,
+        "maximum_usb_shares": 0,
+        "sound_enabled": true,
+        "sound_devices": [
+          "intel-hda"
+        ],
+        "memory_mib": 8192,
+        "cpu_count": 6,
+        "balloon_device": false,
+        "pure_relative_mouse": false,
+        "directx_driver": 2,
+        "renderer_fps_limit": 120
+      },
+      "render_server_backend": {
+        "active_backend": "dxmt-native",
+        "dxmt_native_loaded": true,
+        "d3dmetal_native_loaded": false,
+        "virglrenderer_loaded": false,
+        "kosmickrisp_loaded": false,
+        "dxmt_evidence_count": 6,
+        "d3dmetal_evidence_count": 0
+      },
+      "optimizer_apply_summary": {
+        "profile_revision": 3,
+        "security_invariants_passed": true,
+        "gaming_session": {
+          "update_pause_services": [
+            {
+              "name": "wuauserv",
+              "status": "paused_manual",
+              "running_after": false
+            },
+            {
+              "name": "UsoSvc",
+              "status": "paused_manual",
+              "running_after": false
+            },
+            {
+              "name": "BITS",
+              "status": "paused_manual",
+              "running_after": false
+            },
+            {
+              "name": "TrustedInstaller",
+              "status": "paused_manual",
+              "running_after": false
+            }
+          ],
+          "pagefile": {
+            "status": "error",
+            "message": "Value out of range "
+          },
+          "cpu_and_memory_tuning": {
+            "status": "applied",
+            "active_power_scheme": "<uuid>",
+            "disable_core_parking": true,
+            "disable_usb_selective_suspend": true,
+            "win32_priority_separation": 38,
+            "memory_compression_target": "preserve",
+            "memory_compression_actual": true
+          },
+          "locale_and_ime": {
+            "status": "applied",
+            "system_locale": "zh-CN",
+            "interactive_result": {
+              "culture": "en-US",
+              "ui": "zh-CN",
+              "langs": [
+                {
+                  "tag": "zh-Hans-CN",
+                  "tips": [
+                    "0804:{<uuid>}{<uuid>}"
+                  ]
+                },
+                {
+                  "tag": "en-US",
+                  "tips": [
+                    "0409:00000409"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      "probe": {
+        "frame_count": 179,
+        "fps": {
+          "mean": 49.566,
+          "p50": 49.101,
+          "p1_low": 39.903,
+          "p0_1_low": 38.725,
+          "min": 38.5,
+          "max": 75.386
+        },
+        "cpu_frame_ms": {
+          "mean": 20.175,
+          "p50": 20.366,
+          "p95": 24.277,
+          "p99": 25.061,
+          "p99_9": 25.823,
+          "min": 13.265,
+          "max": 25.974
+        },
+        "cpu_submit_ms": {
+          "mean": 20.106,
+          "p50": 20.306,
+          "p95": 24.239,
+          "p99": 25.033,
+          "p99_9": 25.778,
+          "min": 13.048,
+          "max": 25.929
+        },
+        "gpu_ms": {
+          "mean": 15.05,
+          "p50": 15.109,
+          "p95": 18.991,
+          "p99": 20.325,
+          "p99_9": 20.436,
+          "min": 9.086,
+          "max": 20.444
+        },
+        "done_marker": "exit=0",
+        "workload": {
+          "frames": 180,
+          "warmup": 30,
+          "width": 1280,
+          "height": 720,
+          "commands_per_frame": 4096,
+          "resource_bytes_per_frame": 262144
+        }
+      },
+      "host": {
+        "sample_count": 4,
+        "qemu_render_server_cpu": {
+          "mean": 3.3,
+          "p50": 0.3,
+          "p95": 10.785,
+          "p99": 12.237,
+          "p99_9": 12.564,
+          "min": 0.0,
+          "max": 12.6
+        },
+        "qemu_worker_cpu": {
+          "mean": 91.925,
+          "p50": 28.9,
+          "p95": 264.49,
+          "p99": 295.858,
+          "p99_9": 302.916,
+          "min": 6.2,
+          "max": 303.7
+        },
+        "total_hypervisor_rss_mib": {
+          "mean": 2587.457,
+          "p50": 2585.545,
+          "p95": 2672.708,
+          "p99": 2673.678,
+          "p99_9": 2673.896,
+          "min": 2504.82,
+          "max": 2673.92
+        }
+      },
+      "guest": {
+        "win32_priority_separation": 38,
+        "free_physical_memory_mib": 6114.41,
+        "sound_ready": true,
+        "pagefile_settings": [
+          {
+            "Name": "C:\\pagefile.sys",
+            "InitialSize": 0,
+            "MaximumSize": 0
+          }
+        ],
+        "interactive_locale": {
+          "culture": "zh-CN",
+          "ui": "zh-CN",
+          "langs": [
+            {
+              "tag": "zh-Hans-CN",
+              "tips": [
+                "0804:{<uuid>}{<uuid>}"
+              ]
+            },
+            {
+              "tag": "en-US",
+              "tips": [
+                "0409:00000409"
+              ]
+            }
+          ]
+        },
+        "sound_devices": [
+          {
+            "Name": "High Definition Audio Device",
+            "Status": "OK",
+            "Manufacturer": "Microsoft"
+          }
+        ],
+        "update_services_paused": false,
+        "committed_mib": 1917.1,
+        "automatic_managed_pagefile": false,
+        "total_visible_memory_mib": 8182.75,
+        "system_locale": "en-US",
+        "memory_compression": true,
+        "page_faults_per_sec": 6488,
+        "commit_limit_mib": 10102.75,
+        "event26_count": 0,
+        "update_services": [
+          {
+            "Name": "BITS",
+            "StartMode": "Auto",
+            "State": "Running"
+          },
+          {
+            "Name": "TrustedInstaller",
+            "StartMode": "Manual",
+            "State": "Stopped"
+          },
+          {
+            "Name": "UsoSvc",
+            "StartMode": "Manual",
+            "State": "Stopped"
+          },
+          {
+            "Name": "wuauserv",
+            "StartMode": "Manual",
+            "State": "Stopped"
+          }
+        ],
+        "zh_cn_ime_ready": true
+      }
+    },
+    "v3_memory_compression_disable": {
+      "arm_id": "v3_memory_compression_disable",
+      "trim_summary": {
+        "trim_hardware_applied": true,
+        "removed_empty_cdrom_slots": 2,
+        "dynamic_resolution_locked_false": true,
+        "usb_sharing_disabled": true,
+        "maximum_usb_shares": 0,
+        "sound_enabled": true,
+        "sound_devices": [
+          "intel-hda"
+        ],
+        "memory_mib": 8192,
+        "cpu_count": 6,
+        "balloon_device": false,
+        "pure_relative_mouse": false,
+        "directx_driver": 2,
+        "renderer_fps_limit": 120
+      },
+      "render_server_backend": {
+        "active_backend": "dxmt-native",
+        "dxmt_native_loaded": true,
+        "d3dmetal_native_loaded": false,
+        "virglrenderer_loaded": false,
+        "kosmickrisp_loaded": false,
+        "dxmt_evidence_count": 6,
+        "d3dmetal_evidence_count": 0
+      },
+      "optimizer_apply_summary": {
+        "profile_revision": 3,
+        "security_invariants_passed": true,
+        "gaming_session": {
+          "update_pause_services": [
+            {
+              "name": "wuauserv",
+              "status": "paused_manual",
+              "running_after": false
+            },
+            {
+              "name": "UsoSvc",
+              "status": "paused_manual",
+              "running_after": false
+            },
+            {
+              "name": "BITS",
+              "status": "paused_manual",
+              "running_after": false
+            },
+            {
+              "name": "TrustedInstaller",
+              "status": "paused_manual",
+              "running_after": false
+            }
+          ],
+          "pagefile": {
+            "status": "error",
+            "message": "Value out of range "
+          },
+          "cpu_and_memory_tuning": {
+            "status": "applied",
+            "active_power_scheme": "<uuid>",
+            "disable_core_parking": true,
+            "disable_usb_selective_suspend": true,
+            "win32_priority_separation": 38,
+            "memory_compression_target": "disable",
+            "memory_compression_actual": false
+          },
+          "locale_and_ime": {
+            "status": "applied",
+            "system_locale": "zh-CN",
+            "interactive_result": {
+              "culture": "zh-CN",
+              "ui": "zh-CN",
+              "langs": [
+                {
+                  "tag": "zh-Hans-CN",
+                  "tips": [
+                    "0804:{<uuid>}{<uuid>}"
+                  ]
+                },
+                {
+                  "tag": "en-US",
+                  "tips": [
+                    "0409:00000409"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      "probe": {
+        "frame_count": 179,
+        "fps": {
+          "mean": 46.816,
+          "p50": 47.268,
+          "p1_low": 38.282,
+          "p0_1_low": 37.481,
+          "min": 37.382,
+          "max": 63.739
+        },
+        "cpu_frame_ms": {
+          "mean": 21.36,
+          "p50": 21.156,
+          "p95": 24.801,
+          "p99": 26.122,
+          "p99_9": 26.68,
+          "min": 15.689,
+          "max": 26.751
+        },
+        "cpu_submit_ms": {
+          "mean": 21.303,
+          "p50": 21.128,
+          "p95": 24.775,
+          "p99": 26.089,
+          "p99_9": 26.649,
+          "min": 15.671,
+          "max": 26.721
+        },
+        "gpu_ms": {
+          "mean": 16.32,
+          "p50": 16.217,
+          "p95": 19.768,
+          "p99": 20.362,
+          "p99_9": 21.551,
+          "min": 11.51,
+          "max": 21.742
+        },
+        "done_marker": "exit=0",
+        "workload": {
+          "frames": 180,
+          "warmup": 30,
+          "width": 1280,
+          "height": 720,
+          "commands_per_frame": 4096,
+          "resource_bytes_per_frame": 262144
+        }
+      },
+      "host": {
+        "sample_count": 4,
+        "qemu_render_server_cpu": {
+          "mean": 7.925,
+          "p50": 7.75,
+          "p95": 11.62,
+          "p99": 12.004,
+          "p99_9": 12.09,
+          "min": 4.1,
+          "max": 12.1
+        },
+        "qemu_worker_cpu": {
+          "mean": 141.875,
+          "p50": 127.65,
+          "p95": 279.76,
+          "p99": 288.112,
+          "p99_9": 289.991,
+          "min": 22.0,
+          "max": 290.2
+        },
+        "total_hypervisor_rss_mib": {
+          "mean": 2573.295,
+          "p50": 2571.37,
+          "p95": 2735.609,
+          "p99": 2736.77,
+          "p99_9": 2737.031,
+          "min": 2413.38,
+          "max": 2737.06
+        }
+      },
+      "guest": {
+        "win32_priority_separation": 38,
+        "free_physical_memory_mib": 5994.15,
+        "sound_ready": true,
+        "pagefile_settings": [
+          {
+            "Name": "C:\\pagefile.sys",
+            "InitialSize": 0,
+            "MaximumSize": 0
+          }
+        ],
+        "interactive_locale": {
+          "culture": "zh-CN",
+          "ui": "zh-CN",
+          "langs": [
+            {
+              "tag": "zh-Hans-CN",
+              "tips": [
+                "0804:{<uuid>}{<uuid>}"
+              ]
+            },
+            {
+              "tag": "en-US",
+              "tips": [
+                "0409:00000409"
+              ]
+            }
+          ]
+        },
+        "sound_devices": [
+          {
+            "Name": "High Definition Audio Device",
+            "Status": "OK",
+            "Manufacturer": "Microsoft"
+          }
+        ],
+        "update_services_paused": false,
+        "committed_mib": 1932.73,
+        "automatic_managed_pagefile": false,
+        "total_visible_memory_mib": 8182.75,
+        "system_locale": "zh-CN",
+        "memory_compression": false,
+        "page_faults_per_sec": 1861,
+        "commit_limit_mib": 10102.75,
+        "event26_count": 0,
+        "update_services": [
+          {
+            "Name": "BITS",
+            "StartMode": "Manual",
+            "State": "Stopped"
+          },
+          {
+            "Name": "TrustedInstaller",
+            "StartMode": "Manual",
+            "State": "Stopped"
+          },
+          {
+            "Name": "UsoSvc",
+            "StartMode": "Manual",
+            "State": "Running"
+          },
+          {
+            "Name": "wuauserv",
+            "StartMode": "Manual",
+            "State": "Stopped"
+          }
+        ],
+        "zh_cn_ime_ready": true
+      }
+    }
+  },
+  "memory_compression_decision": {
+    "selected_mode": "preserve",
+    "reason": "preserve retained equal/better stability or lower peak RSS (disable P1 Low delta -4.06%, CPU submit delta +5.95%, peak RSS delta +2.36%)",
+    "preserve_p1_low_fps": 39.903,
+    "disable_p1_low_fps": 38.282,
+    "p1_low_delta_pct_disable_vs_preserve": -4.06,
+    "preserve_peak_host_rss_mib": 2673.92,
+    "disable_peak_host_rss_mib": 2737.06,
+    "peak_host_rss_delta_pct_disable_vs_preserve": 2.36,
+    "preserve_cpu_submit_mean_ms": 20.106,
+    "disable_cpu_submit_mean_ms": 21.303
+  },
+  "v2_vs_v3_comparison": {
+    "fps_mean_delta_pct": -2.81,
+    "fps_p50_delta_pct": -2.04,
+    "fps_p1_low_delta_pct": 9.54,
+    "fps_p0_1_low_delta_pct": 72.83,
+    "cpu_submit_mean_ms_delta_pct": 2.82,
+    "qemu_worker_cpu_mean_delta_pct": -31.05,
+    "qemu_render_server_cpu_mean_delta_pct": -51.65,
+    "host_rss_peak_mib_delta_pct": -4.56,
+    "v2_event26_count": 0,
+    "v3_event26_count": 0,
+    "v3_sound_ready": true,
+    "v3_zh_cn_ime_ready": true,
+    "v3_update_services_paused": false
+  },
+  "rollback_verification": {
+    "rollback_consistent": false,
+    "mismatch_count": 1,
+    "mismatches": [
+      "gaming_memory_compression"
+    ],
+    "security_invariants_passed": true,
+    "restored_gaming_session": {
+      "update_pause_services": [
+        {
+          "name": "wuauserv",
+          "expected_start_mode": "Manual",
+          "actual_start_mode": "Manual",
+          "matched": true
+        },
+        {
+          "name": "UsoSvc",
+          "expected_start_mode": "Auto",
+          "actual_start_mode": "Auto",
+          "matched": true
+        },
+        {
+          "name": "BITS",
+          "expected_start_mode": "Auto",
+          "actual_start_mode": "Auto",
+          "matched": true
+        },
+        {
+          "name": "TrustedInstaller",
+          "expected_start_mode": "Manual",
+          "actual_start_mode": "Manual",
+          "matched": true
+        }
+      ],
+      "pagefile": {
+        "expected_automatic": true,
+        "actual_automatic": true,
+        "matched": true
+      },
+      "power_scheme_guid": {
+        "expected": "<uuid>",
+        "actual": "<uuid>",
+        "matched": true
+      },
+      "win32_priority_separation": {
+        "expected": 2,
+        "actual": 2,
+        "matched": true
+      },
+      "memory_compression": {
+        "expected": false,
+        "actual": true,
+        "matched": false
+      },
+      "locale_and_ime": {
+        "matched": true,
+        "system_locale": "en-US"
+      }
+    }
+  },
+  "zero_drift_verification": {
+    "utm_defaults_restored": true,
+    "golden_readonly": true,
+    "golden_config_sha256": "5e3b775ca4fd05a81ae9e1f2c5d61abe576334340bd51b851b6d65ab89cff390",
+    "golden_bundle_sha256": "784ba01e8c45bc0e32fb81849a359b909a3d87b15cb8486db49df6467bcf4947",
+    "golden_zero_drift": true,
+    "primary_vm_a_config_sha256": "10793d07678f8621e1d75ada73443b3f14e272036dde4f90b277267c2e1033b7",
+    "primary_vm_a_bundle_sha256": "ccd2d2de4981b8b0ca7705824ee6cc4166828651a03f198fd518ba81771caae5",
+    "primary_zero_drift": true
+  }
+}

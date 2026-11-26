@@ -1,0 +1,1746 @@
+{
+  "owner": "@DNPMBHC",
+  "captured_at_utc": "2026-11-24T05:03:48.179664+00:00",
+  "scope": "present owned deliveries, evidence and sources; historical attempts retain their original timestamps and are not current success claims",
+  "alias_resolution": {
+    "A1": "bench_real3d_capture.real_run_dir()",
+    "p5-a": "bench_real3d_support.EVIDENCE",
+    "graphics-lab": "workspace graphics-lab directory"
+  },
+  "excluded_root_records": [
+    "delivery-manifest.json",
+    "final-integrity-check.json"
+  ],
+  "files": [
+    {
+      "artifact_ref": "A1/ace-mechanism-analysis.md",
+      "size_bytes": 10505,
+      "sha256": "5d656723f2b75583e4cd6a19889436d044a5774de4bd323ecd99dcc22cdcee49"
+    },
+    {
+      "artifact_ref": "A1/after-kernel-inventory.json",
+      "size_bytes": 630080,
+      "sha256": "7ec1c6783461c4457ee476309ed2e36d4bb8830569d33f67f4afd8c39d7d7b6d"
+    },
+    {
+      "artifact_ref": "A1/backup-stage-sys-dll-inventory.json",
+      "size_bytes": 71135,
+      "sha256": "b28f2ce311bf881c526f25e83bd35cfa7f2baf4b72c183b86127b9f8a13f54d0"
+    },
+    {
+      "artifact_ref": "A1/before-kernel-inventory-initial.json",
+      "size_bytes": 486342,
+      "sha256": "1fe1ffacadf994ea8ebf25c2a50b0b6ff2c2088753f956dd0fa1661c9cfb1f9b"
+    },
+    {
+      "artifact_ref": "A1/before-kernel-inventory.json",
+      "size_bytes": 616508,
+      "sha256": "abcf0047a8c4b13218c138ca995f8879e61605738bad90ad3901def4f54309d9"
+    },
+    {
+      "artifact_ref": "A1/d3dmetal-retry.stderr.log",
+      "size_bytes": 3655630,
+      "sha256": "1b63568811e0408237e3b2d9a4446a9d4e9a4bcf4934e3b1adc6e4b3e9ed8f34"
+    },
+    {
+      "artifact_ref": "A1/d3dmetal-retry.stdout.log",
+      "size_bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "artifact_ref": "A1/diagnostic-kernel-inventory.json",
+      "size_bytes": 627203,
+      "sha256": "588d4294db858742ab9398abee747bc722b494b38ca61bfe7044eb7a11ae8535"
+    },
+    {
+      "artifact_ref": "A1/first-game-launch-events.json",
+      "size_bytes": 205654,
+      "sha256": "e4c53d287b7b9ff3d5c044af17ed54bbed294cb78b08ed4d7ebc6f83716677df"
+    },
+    {
+      "artifact_ref": "A1/guest-before-commercial-events.json",
+      "size_bytes": 1568,
+      "sha256": "8e6c66a8acad79aeb6901db7c16f4a94b216bbb2807b5df3f83cfa2fc020adc8"
+    },
+    {
+      "artifact_ref": "A1/guest-black-screen-cutoff.json",
+      "size_bytes": 494,
+      "sha256": "cfcb579a87b328cf661bf41e57ad800e4d5c8cb9266d2112bc9e173a6426ad20"
+    },
+    {
+      "artifact_ref": "A1/guest-client-live-processes.json",
+      "size_bytes": 930,
+      "sha256": "15d41ac3e4e530ce03c9183852392e21a854af5e35a66054be5fad6e5ff4698d"
+    },
+    {
+      "artifact_ref": "A1/guest-client-recognized-visible.json",
+      "size_bytes": 470,
+      "sha256": "059d0dafd87a97fd3b29bd32e0152b06e31bf321e9cdf5899c0affb479bf7512"
+    },
+    {
+      "artifact_ref": "A1/guest-display-after-launch.json",
+      "size_bytes": 167,
+      "sha256": "d2e4c70bf2565c4048a72acb2917fe923ab66638d747d4374fb5d73a294c25b1"
+    },
+    {
+      "artifact_ref": "A1/guest-existing-launcher-registry.json",
+      "size_bytes": 297,
+      "sha256": "4d3fac70f0f30a8e567745e7516d0557be14af89326b812a6ffd2556d435c887"
+    },
+    {
+      "artifact_ref": "A1/guest-game-lifecycle-current.json",
+      "size_bytes": 2238,
+      "sha256": "3a90a5a5645d03981c370b3609c4f6f370c6ca1f2740efba482ee9cd1c1787f4"
+    },
+    {
+      "artifact_ref": "A1/guest-game-lifecycle-final.json",
+      "size_bytes": 2238,
+      "sha256": "3a90a5a5645d03981c370b3609c4f6f370c6ca1f2740efba482ee9cd1c1787f4"
+    },
+    {
+      "artifact_ref": "A1/guest-game-log-metadata-and-codes.json",
+      "size_bytes": 281,
+      "sha256": "c604c7ed9498727c0cee1b631b7e0e96a3df99115748132f76bc93146bb0be3b"
+    },
+    {
+      "artifact_ref": "A1/guest-installer-launch.json",
+      "size_bytes": 300,
+      "sha256": "6fcddf8b19770b293ee6f57e2e6e2ac800548bd130d626a10c1c94f4dbc7429c"
+    },
+    {
+      "artifact_ref": "A1/guest-installer-no-window-events.json",
+      "size_bytes": 21022,
+      "sha256": "db49a650f0b7674f5a40b09dd0ad90e7a00a3fa3fd1704a0701f21e51ec73ca5"
+    },
+    {
+      "artifact_ref": "A1/guest-installer-processes.json",
+      "size_bytes": 280,
+      "sha256": "004694071008d3a313df854d3277b306a4fb88e0c9a47318528682f2994ed0c8"
+    },
+    {
+      "artifact_ref": "A1/guest-installer-restored-visible.json",
+      "size_bytes": 760,
+      "sha256": "f6dab9fed33239ab7e795d712881ef03657d63c61dddca6dbbeb2bb6a5485267"
+    },
+    {
+      "artifact_ref": "A1/guest-installer-task-status.json",
+      "size_bytes": 108,
+      "sha256": "e9eb4a383fdf037970e6948203b45c5d7f96734eded7dce9fb5a545212069ad2"
+    },
+    {
+      "artifact_ref": "A1/guest-installer-visible-prompt.json",
+      "size_bytes": 520,
+      "sha256": "8489c64872b4c4ac89bac4a5323dc5bc20f170d8f0ddc9ee53702c9fa2a5f6b4"
+    },
+    {
+      "artifact_ref": "A1/guest-launcher-install-complete.json",
+      "size_bytes": 799,
+      "sha256": "167f637c0f837cb0d8a39432335f5c253939f523ecae04ee7e2133a7bee18313"
+    },
+    {
+      "artifact_ref": "A1/guest-retry-interruption.json",
+      "size_bytes": 683,
+      "sha256": "ffa5e63f14dd4bd7544a545286e4c1ccea4d9ac51800655162abc7950f3ad19c"
+    },
+    {
+      "artifact_ref": "A1/guest-retry-lifecycle.json",
+      "size_bytes": 475,
+      "sha256": "786ec71523f582aab330c29c997d559537616d362452746eeb1bb0ec4497e1f0"
+    },
+    {
+      "artifact_ref": "A1/installer.stderr.log",
+      "size_bytes": 10300036,
+      "sha256": "0a6e7d98cc172e25274fae88753b23af38923d1f11b7b01e1be278b6e5646698"
+    },
+    {
+      "artifact_ref": "A1/installer.stdout.log",
+      "size_bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "artifact_ref": "A1/native-ace-full-tree-sys-dll-inventory.json",
+      "size_bytes": 1656,
+      "sha256": "9a11c58c8c81eaf0ceceeff5e3f4a670dab060ec11a6aa9bb73287e158c2c499"
+    },
+    {
+      "artifact_ref": "A1/native-ace-origin.json",
+      "size_bytes": 610,
+      "sha256": "7150d0f5bbe5fa9e3d09b096aeb3edff039dda767ebea0218af9e28a13b6a1a6"
+    },
+    {
+      "artifact_ref": "A1/native-ace-runtime-sys-dll-inventory.json",
+      "size_bytes": 1656,
+      "sha256": "06a9bc0f05951e12dd55d2b3b5a710c3f5f7916808b922d714c0cc81a2a332d0"
+    },
+    {
+      "artifact_ref": "A1/new-native-driver-attribution.json",
+      "size_bytes": 530,
+      "sha256": "b0ebd85c0f5a5256bfb77bcfb3745766df89cd5f5cadc8c94a929b107af35927"
+    },
+    {
+      "artifact_ref": "A1/post-game-launch-scm-status.json",
+      "size_bytes": 131479,
+      "sha256": "ec599ac889f9989314c327f5805e7dcd17fd31804b496485c2d7dda95d7d1241"
+    },
+    {
+      "artifact_ref": "A1/post-online-client-sys-dll-inventory.json",
+      "size_bytes": 214424,
+      "sha256": "2737fa7b253f0df2c26dcdb9631a04c6647a6fa77251fc69d34731a0a9b70a38"
+    },
+    {
+      "artifact_ref": "A1/post-recovery-final-events.json",
+      "size_bytes": 432231,
+      "sha256": "e8f82c9e6fabf2b145a2b6deeb0a3601ccf29b66b8b2071c67bfde97b6227ff5"
+    },
+    {
+      "artifact_ref": "A1/post-recovery-kernel-inventory.json",
+      "size_bytes": 627203,
+      "sha256": "588d4294db858742ab9398abee747bc722b494b38ca61bfe7044eb7a11ae8535"
+    },
+    {
+      "artifact_ref": "A1/pre-cold-recovery-events.json",
+      "size_bytes": 286047,
+      "sha256": "87be6c3a22771a460254fd07d2396bc11c10f1e7732fd91ab0cf5cf782d8bc90"
+    },
+    {
+      "artifact_ref": "A1/real-run-report.json",
+      "size_bytes": 22982,
+      "sha256": "2e46f2e434ba0e0be54a39610b81935978803aaa747db51178be9973acab5f87"
+    },
+    {
+      "artifact_ref": "A1/server.log",
+      "size_bytes": 65,
+      "sha256": "e8253b4d12cc561d641041bcfa5212e984d7b6731f750b0c4da89b31d9787c0a"
+    },
+    {
+      "artifact_ref": "A1/software-retry.stderr.log",
+      "size_bytes": 2098124,
+      "sha256": "cd5001be1a0bbc2b908c05348f8e9a4e330f175107548e4c7b8dd2505ce3f74c"
+    },
+    {
+      "artifact_ref": "A1/software-retry.stdout.log",
+      "size_bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "artifact_ref": "A1/summary.md",
+      "size_bytes": 4322,
+      "sha256": "a3eec8109a9d2de1b8e9591fca778ac08ae28bcc80bbcf845094e48a77c226b4"
+    },
+    {
+      "artifact_ref": "A1/wine-commercial-dxmt-installer.stderr.log",
+      "size_bytes": 10168846,
+      "sha256": "cd7fba0ef328c0773c7e6b63635d55673294660854748a5da788518dd3830e2b"
+    },
+    {
+      "artifact_ref": "A1/wine-commercial-dxmt-installer.stdout.log",
+      "size_bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "artifact_ref": "A1/wine-commercial-dxmt-lifecycle.json",
+      "size_bytes": 680,
+      "sha256": "7d82bac6bed8530f25e82120f50bf93a4e6a4c86471a8010b8d95b8b1781de37"
+    },
+    {
+      "artifact_ref": "A1/wine-commercial-dxmt-server.log",
+      "size_bytes": 65,
+      "sha256": "e8253b4d12cc561d641041bcfa5212e984d7b6731f750b0c4da89b31d9787c0a"
+    },
+    {
+      "artifact_ref": "A1/wine-d3dmetal-log-codes.json",
+      "size_bytes": 2145,
+      "sha256": "fc7554546d0945b0d2ca83e27f39212e01cb3bd8727850527572bc66bc200c0e"
+    },
+    {
+      "artifact_ref": "A1/wine-d3dmetal-retry-lifecycle.json",
+      "size_bytes": 691,
+      "sha256": "13c2be88cce0589b3c1507e998843feecae0552b81fb8588dcbfa38ebf62bec4"
+    },
+    {
+      "artifact_ref": "A1/wine-d3dmetal-visible-observation.json",
+      "size_bytes": 321,
+      "sha256": "e6a00328b1dc0a65d66bba6209b7ff3861049726ab91459bed45940acfda90ca"
+    },
+    {
+      "artifact_ref": "A1/wine-dxmt-visible-observation.json",
+      "size_bytes": 523,
+      "sha256": "c95ffe57cf4d36ea4e995e71a752cabcf876e8e467540f8b64420237e5c3a8eb"
+    },
+    {
+      "artifact_ref": "A1/wine-final-log-manifest.json",
+      "size_bytes": 2685,
+      "sha256": "39414292c04ad9deb4212b56d5836a838379523842049946f89827a4632a22a2"
+    },
+    {
+      "artifact_ref": "A1/wine-fresh-chromium-error-category-snapshot.json",
+      "size_bytes": 420,
+      "sha256": "49b8670208e5ddc8d368025060bad208a158b649c36d1b524360d6419efe885d"
+    },
+    {
+      "artifact_ref": "A1/wine-fresh-chromium-lifecycle.json",
+      "size_bytes": 916,
+      "sha256": "fdcc5509961d61fee3a6ef5b4074a727e0aaf99ce0fc5b2c596dc402f25cc07c"
+    },
+    {
+      "artifact_ref": "A1/wine-fresh-chromium-log-summary.json",
+      "size_bytes": 4750,
+      "sha256": "db86befb192ab6e9ffcc59d6bfc8883accb256f8c12bd466c1024e4219c230bd"
+    },
+    {
+      "artifact_ref": "A1/wine-fresh-d3d-diagnostic-functions.json",
+      "size_bytes": 541,
+      "sha256": "c1fd3d327522e63963fbdea6fa7be5a9ae578322c9e88b2856ff413206cd9272"
+    },
+    {
+      "artifact_ref": "A1/wine-fresh-final-error-categories.json",
+      "size_bytes": 401,
+      "sha256": "1e23bc8b8cede90513c948f0bba5a36a2e0d21658a09f38955937f327fff5eb0"
+    },
+    {
+      "artifact_ref": "A1/wine-fresh-final-log-manifest.json",
+      "size_bytes": 1196,
+      "sha256": "566fb72edc1c7f9de54e523325593bd3cecc7b52eac6f491d822c39e27c3c689"
+    },
+    {
+      "artifact_ref": "A1/wine-fresh-installed-sys-dll-inventory.json",
+      "size_bytes": 338369,
+      "sha256": "d7aa34676f51f6757c816e8789e4b8c3f3a0565bf5e285202b8c2ce09651f5b1"
+    },
+    {
+      "artifact_ref": "A1/wine-fresh-visible-observation.json",
+      "size_bytes": 497,
+      "sha256": "5df91409bec8034691336a3561621bc78f6577cf735dfd86a2b8d46559ab7780"
+    },
+    {
+      "artifact_ref": "A1/wine-installed-sys-dll-inventory.json",
+      "size_bytes": 226646,
+      "sha256": "f03aeaddf4a22e8e786e2a587b0a21205ac70b82fecfa19a3f49c3d87616fc87"
+    },
+    {
+      "artifact_ref": "A1/wine-official-package-exe-architectures.json",
+      "size_bytes": 11781,
+      "sha256": "22273aca8652ed8d6c86027a7ab7d045b521fbc9839d64fc36067707a474711c"
+    },
+    {
+      "artifact_ref": "A1/wine-render-retry-current-log-summary.json",
+      "size_bytes": 1943,
+      "sha256": "376e76e1fec1eb2a9c0a44d3569b13a8b9cbcae242529d4de7bd99b324948e47"
+    },
+    {
+      "artifact_ref": "A1/wine-render-retry-installer-lifecycle.json",
+      "size_bytes": 1176,
+      "sha256": "e79f90d7602aea9184c5453f7a0de2bac875a68ff7c67bc791079e509df7f4f5"
+    },
+    {
+      "artifact_ref": "A1/wine-render-retry-no-window.json",
+      "size_bytes": 319,
+      "sha256": "60f054f6b07587309798e80788ec2d8de0a5bf79c2815fbfb1c2e6e2c77ad27c"
+    },
+    {
+      "artifact_ref": "A1/wine-render-route-readonly-audit.json",
+      "size_bytes": 21797,
+      "sha256": "c39d06822428ec4547cbbe0c06d884aa3a92661e5c6a6cab33f7681fd46adb5d"
+    },
+    {
+      "artifact_ref": "A1/wine-software-presentation-lifecycle.json",
+      "size_bytes": 961,
+      "sha256": "1032121580f0cb517dda1a16c1d2ebb602171ba2cfc2a0c493463da968a21e2f"
+    },
+    {
+      "artifact_ref": "A1/wine-software-visible-observation.json",
+      "size_bytes": 410,
+      "sha256": "833a19fc9b3e9738997e28998810fc0e2c4dc34e9cc14be76dfcf17f116a78ad"
+    },
+    {
+      "artifact_ref": "A1/wine-visible-installation-current.json",
+      "size_bytes": 961,
+      "sha256": "87e47b20f5c30ef5c1aa3886676899b369cb0518d16c215c8f5c637131e3fa8f"
+    },
+    {
+      "artifact_ref": "A1/wine-visible-installer-lifecycle.json",
+      "size_bytes": 652,
+      "sha256": "58a004a4392c9258039e1055f8727a69faaccf225afa35d4a195abf16413a759"
+    },
+    {
+      "artifact_ref": "A1/wine-visible-installer-log-summary.json",
+      "size_bytes": 5714,
+      "sha256": "a691ceff4f96f2226958f42e21b094456254d59b1de84d72569f7ddfe6623ab9"
+    },
+    {
+      "artifact_ref": "p5-a/backup-client-discovery.json",
+      "size_bytes": 1617,
+      "sha256": "c1700a06f8d0c3860a36df7377f8610ba27f8d8cc599b1157e887ebf6b0a89cf"
+    },
+    {
+      "artifact_ref": "p5-a/baseline-revalidation-current.json",
+      "size_bytes": 339,
+      "sha256": "8e3cb128b5d15b16c61f1f7902755ba65f923eebba26121d5f4ac484fe799a83"
+    },
+    {
+      "artifact_ref": "p5-a/checkpoint-status.json",
+      "size_bytes": 732,
+      "sha256": "68c07c8e7f5d278db756970fec998fd64ff948fc4a4fa8e5e363dd14e96270e0"
+    },
+    {
+      "artifact_ref": "p5-a/client-backup-attachment.json",
+      "size_bytes": 753,
+      "sha256": "4e360b9479f17fed6b3c7f72d6d4febc7dc660e12b8140d1bf65d9a72dc41685"
+    },
+    {
+      "artifact_ref": "p5-a/client-backup-final-proof.json",
+      "size_bytes": 488,
+      "sha256": "3b964dfb7913bfdacc44f5eca68f05d43ee999b7f143ae98b3a5b1b8510836b1"
+    },
+    {
+      "artifact_ref": "p5-a/client-backup-header.json",
+      "size_bytes": 475,
+      "sha256": "8a7ef28a3b5fc0f17e5bb202484e777be146eabf06b979d81364351996b69205"
+    },
+    {
+      "artifact_ref": "p5-a/delivery-current.json",
+      "size_bytes": 2207,
+      "sha256": "00914ae18f9f5484fb8e14707265b173332d7e3de505a9c1c2cff71f4d4be551"
+    },
+    {
+      "artifact_ref": "p5-a/diff-current.json",
+      "size_bytes": 292,
+      "sha256": "4fe8ba54e11d62c8f0df83ac820c186b5b5a15700b53765f7feb18d6ae9209e8"
+    },
+    {
+      "artifact_ref": "p5-a/external-access-current.json",
+      "size_bytes": 931,
+      "sha256": "04bcf902351e12dd795de749f4a4e86b4490545085c8a762df822228b06a11c8"
+    },
+    {
+      "artifact_ref": "p5-a/gate-input-consistency-current.json",
+      "size_bytes": 1225,
+      "sha256": "182ac43b4ea7481dcd702df1f8ff252e1b9c3ff003e3c7ef38963429eb1e7bfb"
+    },
+    {
+      "artifact_ref": "p5-a/gate-mount-location-probe.json",
+      "size_bytes": 381,
+      "sha256": "73eab8509641fd068ea70376415d6a2849f9912ad77189d1afd322622cf9e30d"
+    },
+    {
+      "artifact_ref": "p5-a/gate-native-output/build-binding.json",
+      "size_bytes": 2881,
+      "sha256": "5f317502de9cb1d93da5bf01ae7c05795e0200ea4f36fe690d900628c018ceeb"
+    },
+    {
+      "artifact_ref": "p5-a/gate-native-output/efi-consumer-roundtrip.swift",
+      "size_bytes": 7544,
+      "sha256": "260ea6494e5eeda91f05e09561cfd355e8151a884b6b503040876bc64bad3dc9"
+    },
+    {
+      "artifact_ref": "p5-a/gate-native-output/efi-downstream-consumer-roundtrip.json",
+      "size_bytes": 7088,
+      "sha256": "464a5d7a3ed5009b776574135e41099a197a0ef88280d7d8bed208ed0090cb8f"
+    },
+    {
+      "artifact_ref": "p5-a/gate-native-output/efi-guest-external-consumer.json",
+      "size_bytes": 2851,
+      "sha256": "fc5331cb80540554292f9397d9f5ee3f32860d7e7fdb73cf88354efc20d7aa88"
+    },
+    {
+      "artifact_ref": "p5-a/gate-native-output/native-compile.log",
+      "size_bytes": 37,
+      "sha256": "d1cc9ac1df38494f0df366978e41b67107f215b7fc9b4bbbfac7637124a92ddc"
+    },
+    {
+      "artifact_ref": "p5-a/gate-native-output/producer-library-binding.json",
+      "size_bytes": 1952,
+      "sha256": "5b4445fbd55c169a4daf487a88c6e5123ae08b8455131c2730cb56ab4ad4544a"
+    },
+    {
+      "artifact_ref": "p5-a/guest-a3-complete.json",
+      "size_bytes": 275,
+      "sha256": "d1a6123b55a1756f5fba16c3c7414a44a31eb143bf998ca9732181b1045a0e99"
+    },
+    {
+      "artifact_ref": "p5-a/guest-after-cold-start.json",
+      "size_bytes": 320,
+      "sha256": "42a36b2794f1584db8dbf8e86c14e9b7c4c76bd2bed60403f4ae88d9df7f9952"
+    },
+    {
+      "artifact_ref": "p5-a/guest-backup-disk-current.json",
+      "size_bytes": 1585,
+      "sha256": "5dfec03a70e9c84376ab8f156e8760bd36e000f7f126e292f4953eac9cfbfb52"
+    },
+    {
+      "artifact_ref": "p5-a/guest-backup-disk-reloaded.json",
+      "size_bytes": 875,
+      "sha256": "91ecd48877563458d0bb3537d66de94e363345ad4fd418f0eb1e3280dcb2e795"
+    },
+    {
+      "artifact_ref": "p5-a/guest-clock-and-ci-current.json",
+      "size_bytes": 385,
+      "sha256": "7fe3f2c5ca223fdce155c22d0135885a43064fdd53a0946bc73e83a104868bd5"
+    },
+    {
+      "artifact_ref": "p5-a/guest-cold-recovery.json",
+      "size_bytes": 360,
+      "sha256": "768e3a7481975fbc84ffea8873d8803103373bc9ab21880dc1dcbb2ce5169f6e"
+    },
+    {
+      "artifact_ref": "p5-a/guest-final-stop-request.json",
+      "size_bytes": 173,
+      "sha256": "ac9d6f758b02a642fad8f55228af09a3e2030400d5167c3b647e30d6669ea560"
+    },
+    {
+      "artifact_ref": "p5-a/guest-handoff-to-5c.md",
+      "size_bytes": 8741,
+      "sha256": "8c03568a8bdc8c586b678b8eb71a0e3fef2258c4c9863d3dd22ac2eb2124ebc2"
+    },
+    {
+      "artifact_ref": "p5-a/guest-heavy-formal/guest-qemu-r1.csv",
+      "size_bytes": 31460,
+      "sha256": "0d227c27d9b668614df765aa2b8fe80d13892c60fe30f479a00dd1f43d0dad0b"
+    },
+    {
+      "artifact_ref": "p5-a/guest-heavy-formal/guest-qemu-r1.json",
+      "size_bytes": 30641,
+      "sha256": "dc71bcee100694f865a27254ba1ad75fae6204f098457b77077541499021a31f"
+    },
+    {
+      "artifact_ref": "p5-a/guest-heavy-formal/guest-qemu-r1.stderr.log",
+      "size_bytes": 239,
+      "sha256": "aca8f6c5a4fc055aee3ee352218fb190b909eef8513ed867e0951d7b78fe02d6"
+    },
+    {
+      "artifact_ref": "p5-a/guest-heavy-formal/guest-qemu-r1.stdout.log",
+      "size_bytes": 743,
+      "sha256": "81b4dc7fb07b30edbc787a3fae7602e30c820d6599a3235a696a54f9c9ae52eb"
+    },
+    {
+      "artifact_ref": "p5-a/guest-heavy-formal/guest-qemu-r2.csv",
+      "size_bytes": 31460,
+      "sha256": "26a0353b1db13cbc512c9d3475bacfd21238deda252f85e41fdb51212d04a6de"
+    },
+    {
+      "artifact_ref": "p5-a/guest-heavy-formal/guest-qemu-r2.json",
+      "size_bytes": 30957,
+      "sha256": "3c75c050eb7205e216b351859ab1f528f0730ed4c1eb05e466c5152e3d1c21b6"
+    },
+    {
+      "artifact_ref": "p5-a/guest-heavy-formal/guest-qemu-r2.stderr.log",
+      "size_bytes": 239,
+      "sha256": "aca8f6c5a4fc055aee3ee352218fb190b909eef8513ed867e0951d7b78fe02d6"
+    },
+    {
+      "artifact_ref": "p5-a/guest-heavy-formal/guest-qemu-r2.stdout.log",
+      "size_bytes": 743,
+      "sha256": "a435878589ddfc4dba1eab64bc4b3c5320f7348db4ae81056f6e964cf6fe5835"
+    },
+    {
+      "artifact_ref": "p5-a/guest-heavy-formal/guest-qemu-r3.csv",
+      "size_bytes": 31464,
+      "sha256": "44486f6a4397a1b8e2852f98970af724ca8a1fb72fb1aa14070078556af49cde"
+    },
+    {
+      "artifact_ref": "p5-a/guest-heavy-formal/guest-qemu-r3.json",
+      "size_bytes": 31131,
+      "sha256": "815114ac1e5c3a2039424a6784e64c577d5aed9780ca635b30cf2b8b2269cd60"
+    },
+    {
+      "artifact_ref": "p5-a/guest-heavy-formal/guest-qemu-r3.stderr.log",
+      "size_bytes": 239,
+      "sha256": "aca8f6c5a4fc055aee3ee352218fb190b909eef8513ed867e0951d7b78fe02d6"
+    },
+    {
+      "artifact_ref": "p5-a/guest-heavy-formal/guest-qemu-r3.stdout.log",
+      "size_bytes": 743,
+      "sha256": "bb17251b470c7e5fff69144692dbfec76304e0bd81cb9e6ffa6e5bc9130d3dbe"
+    },
+    {
+      "artifact_ref": "p5-a/guest-heavy-formal/guest-runs.json",
+      "size_bytes": 105098,
+      "sha256": "d095c296cc488c55cff3f0058063553fcaae8657fcfe0eccefae0c93f9927a0c"
+    },
+    {
+      "artifact_ref": "p5-a/guest-heavy-pilot/guest-qemu-r1.csv",
+      "size_bytes": 4164,
+      "sha256": "a25a8b6765b716a202633bda931f2a7539eb6f98c560b5ff8bab3da3be9a23d1"
+    },
+    {
+      "artifact_ref": "p5-a/guest-heavy-pilot/guest-qemu-r1.json",
+      "size_bytes": 6605,
+      "sha256": "fcee51866f3381045417db26a1236f4d1ba1dfb2d2d2da57a414b4a8c28ada52"
+    },
+    {
+      "artifact_ref": "p5-a/guest-heavy-pilot/guest-qemu-r1.stderr.log",
+      "size_bytes": 239,
+      "sha256": "aca8f6c5a4fc055aee3ee352218fb190b909eef8513ed867e0951d7b78fe02d6"
+    },
+    {
+      "artifact_ref": "p5-a/guest-heavy-pilot/guest-qemu-r1.stdout.log",
+      "size_bytes": 740,
+      "sha256": "bd126054421df433f030f333415d6380c527b26d537a3368e2879bd786371bc8"
+    },
+    {
+      "artifact_ref": "p5-a/guest-heavy-pilot/guest-runs.json",
+      "size_bytes": 7644,
+      "sha256": "b218d6e8ad70ca445f9df208147db016f5f168d9eda3549a117a1a818f18e1b7"
+    },
+    {
+      "artifact_ref": "p5-a/guest-hvci-config-current.json",
+      "size_bytes": 179,
+      "sha256": "5aac4adf34cbf0c40a50985db6f10e710525a35d9d255f69512ed48efdfd0135"
+    },
+    {
+      "artifact_ref": "p5-a/guest-pre-commercial-current.json",
+      "size_bytes": 120,
+      "sha256": "b9aed6c8b87f955293c237dce533800ff9702790d8af2fa4a4ed5ec669287d5d"
+    },
+    {
+      "artifact_ref": "p5-a/guest-preflight.json",
+      "size_bytes": 660,
+      "sha256": "fd8a85785cb3af65fc93b795512ac736d34ba22c182458e21d6184226344d854"
+    },
+    {
+      "artifact_ref": "p5-a/guest-qemu-current-fault.json",
+      "size_bytes": 317,
+      "sha256": "537d79d3e48589f5703f829a9e7045c0a0bd862159255fe4d8dee9470eccb386"
+    },
+    {
+      "artifact_ref": "p5-a/guest-restored-preflight.json",
+      "size_bytes": 528,
+      "sha256": "253f3c4d785d01fb912c0a6b944869392989fcd35cc4925d9a051e83095c91be"
+    },
+    {
+      "artifact_ref": "p5-a/guest-tpm-tool.json",
+      "size_bytes": 833,
+      "sha256": "83f5dc0efd440962d51e06bf3cf21d18b436fe21ed7efa50f70f845d3b0bf7e0"
+    },
+    {
+      "artifact_ref": "p5-a/guest-whql-loaded.json",
+      "size_bytes": 377,
+      "sha256": "4692c5f8a8e53db8448f91ce18d25f34736f5acfa62b715e9eff189915f2024f"
+    },
+    {
+      "artifact_ref": "p5-a/guest-whql-package.json",
+      "size_bytes": 3140,
+      "sha256": "8f32dc7f3f911aa4f1e6376ad0cd6ae695fbff1b85777914aebbada65f9337c5"
+    },
+    {
+      "artifact_ref": "p5-a/handoff-supplement-current.json",
+      "size_bytes": 595,
+      "sha256": "096216af717c86631662f3dee7f6a16c029e6839ebee6f4b6d434a98d4b90551"
+    },
+    {
+      "artifact_ref": "p5-a/host-baseline-isolation.json",
+      "size_bytes": 248,
+      "sha256": "9acc24e33aedfbec76413035ecf2068ac2ba3931940b66055c1f713787900278"
+    },
+    {
+      "artifact_ref": "p5-a/host-cpu-calibration.json",
+      "size_bytes": 206,
+      "sha256": "1f4222a08faff910774d289f6e5e98d0a48fcadccdff3d34a5c2e54c39c56022"
+    },
+    {
+      "artifact_ref": "p5-a/host-runtime-isolation-restored.json",
+      "size_bytes": 358,
+      "sha256": "26134c978f3b47f4f13ab8cec329ad6b30abeeb05c673e5d3737d10e3a816254"
+    },
+    {
+      "artifact_ref": "p5-a/host-wine-final-stop.json",
+      "size_bytes": 287,
+      "sha256": "2023ca44b58a651065ba46c1cef4771c56c2abba99848f48d33b87ccfad98bbc"
+    },
+    {
+      "artifact_ref": "p5-a/host-wine-fresh-final-stop.json",
+      "size_bytes": 378,
+      "sha256": "6c856288f6d9382fe485a9f8b5ad3e0e8e91b01a1f47d106fc24d8636f6a8947"
+    },
+    {
+      "artifact_ref": "p5-a/interface-proposal.md",
+      "size_bytes": 1050,
+      "sha256": "79df485e225e6679c4caa446612149d3f73de03ce5b1583b974c3d3707b90151"
+    },
+    {
+      "artifact_ref": "p5-a/official-download-center-current.json",
+      "size_bytes": 1016,
+      "sha256": "5de9de54b92946ea786d34ca4dec880b6e4b4ac267c2638c8d81184fc86e0bc0"
+    },
+    {
+      "artifact_ref": "p5-a/official-download-center-restored.json",
+      "size_bytes": 1016,
+      "sha256": "97137a7e7c8133ee1cec49fd986f5e13b108c8d9220df16d6d7d949170e2ae5b"
+    },
+    {
+      "artifact_ref": "p5-a/official-download-center.json",
+      "size_bytes": 990,
+      "sha256": "1ae83609efe63526343e879fbc1164728da45b74d81e12ea3d788a810d7168dc"
+    },
+    {
+      "artifact_ref": "p5-a/official-installer-guest-trust.json",
+      "size_bytes": 317,
+      "sha256": "05313b6966a83f9f75d1dbfcde6a21b66b9fd3e85ea2333519ac5e31441cb172"
+    },
+    {
+      "artifact_ref": "p5-a/official-installer.json",
+      "size_bytes": 545,
+      "sha256": "13bd0e24eb4a59febe43d5a64b5533f9d04ea554c08dfb80d9aa70127b209e48"
+    },
+    {
+      "artifact_ref": "p5-a/primary-source-retrieval.json",
+      "size_bytes": 1923,
+      "sha256": "045f5afe3030a4818911add950c9b0e201bee5c66bf7cb96fdabd5619b343819"
+    },
+    {
+      "artifact_ref": "p5-a/privacy-current.json",
+      "size_bytes": 334,
+      "sha256": "ac0f11431b92d2212d5c09f8797f5090fd70d9ddf1e99ecfeb425c4de5cc603d"
+    },
+    {
+      "artifact_ref": "p5-a/privacy-preflight.json",
+      "size_bytes": 201,
+      "sha256": "c1782e29c73758171c868c758aa7e82c6a59355e40ec70f0f574884fe428b71f"
+    },
+    {
+      "artifact_ref": "p5-a/real3d-baseline-report.md",
+      "size_bytes": 1616,
+      "sha256": "e8b9da0dd19d5e197ebf5a121a66206a67c84a5f6d992cf11d95e0fa6d9fe5d0"
+    },
+    {
+      "artifact_ref": "p5-a/real3d-baseline-wine.json",
+      "size_bytes": 27875,
+      "sha256": "d636d50d436d1d1e40023a8b28d2f735c8f4bba723b99a76dae0ff6f58c3c506"
+    },
+    {
+      "artifact_ref": "p5-a/real3d-baseline.json",
+      "size_bytes": 273160,
+      "sha256": "b394b99a4df769ee153fec368076272eeed9137f08b195f55028c34a5779a618"
+    },
+    {
+      "artifact_ref": "p5-a/real3d-rejected/guest-qemu-r1.done",
+      "size_bytes": 4,
+      "sha256": "5b677464f4941a4c274964d723bf47e3cd7cdcb5d53379a3b7176f0c456cf9a0"
+    },
+    {
+      "artifact_ref": "p5-a/real3d-rejected/guest-qemu-r1.stderr.log",
+      "size_bytes": 265,
+      "sha256": "10dca59fc80dca5f45e383af4bddc390e08ebc11d892ffdf1a8bd7123cf78dd6"
+    },
+    {
+      "artifact_ref": "p5-a/real3d-rejected/guest-qemu-r1.stdout.log",
+      "size_bytes": 425,
+      "sha256": "448d553c4e3cf67e86206ad39cd6e2d32fa870780a4148a9b502d03aac74b561"
+    },
+    {
+      "artifact_ref": "p5-a/real3d-runs/wine_d3dmetal-r1.csv",
+      "size_bytes": 7344,
+      "sha256": "1761e7509cd68b7e06524d40e2a9e7f13e259e950261581f73c6dd32d8ab785c"
+    },
+    {
+      "artifact_ref": "p5-a/real3d-runs/wine_d3dmetal-r2.csv",
+      "size_bytes": 7348,
+      "sha256": "1cf92d3e0a03d95e4698bb8bc381680eb079e4acf38e878769d4722ae8f78a76"
+    },
+    {
+      "artifact_ref": "p5-a/real3d-runs/wine_d3dmetal-r3.csv",
+      "size_bytes": 7346,
+      "sha256": "eb40dcba2442b3bf1e30ec70a933aab2b55e96b70fda95f23c015f2d45d09409"
+    },
+    {
+      "artifact_ref": "p5-a/real3d-runs/wine_dxmt-r1.csv",
+      "size_bytes": 7358,
+      "sha256": "dc6410d885743c6c111709cd60ea7827f2dec0d8a0b3d7a58e3c29bea5ea2ffc"
+    },
+    {
+      "artifact_ref": "p5-a/real3d-runs/wine_dxmt-r2.csv",
+      "size_bytes": 7354,
+      "sha256": "424b05fd71788e8880f88d668f3dbfe476e00b10416c34407c56bcc5f86d97ca"
+    },
+    {
+      "artifact_ref": "p5-a/real3d-runs/wine_dxmt-r3.csv",
+      "size_bytes": 7384,
+      "sha256": "33a8cb15a7f391f52510086ea813019d1b5de30653a2f40e4e6bea329f13a669"
+    },
+    {
+      "artifact_ref": "p5-a/real3d-runs/wine_dxvk_kosmickrisp-r1.csv",
+      "size_bytes": 7538,
+      "sha256": "443284e77fa6c21d096574a185c5bcac488af248d5879179b2031ac55d7cf682"
+    },
+    {
+      "artifact_ref": "p5-a/real3d-runs/wine_dxvk_kosmickrisp-r2.csv",
+      "size_bytes": 7530,
+      "sha256": "1a6bb53f558102c081e09315afbd1411442c63353a16bc9c2f1c06bbaa4a32f4"
+    },
+    {
+      "artifact_ref": "p5-a/real3d-runs/wine_dxvk_kosmickrisp-r3.csv",
+      "size_bytes": 7526,
+      "sha256": "54557e4d8846505e6644b5064f7e3388e66065d600a6608a8c886580776dea60"
+    },
+    {
+      "artifact_ref": "p5-a/real3d-runs/wine_dxvk_moltenvk-r1.csv",
+      "size_bytes": 7544,
+      "sha256": "63a1c2033c76d0fac5ee57ebaf74e90ac26f7e56c4a35b887f566e89248e7da5"
+    },
+    {
+      "artifact_ref": "p5-a/real3d-runs/wine_dxvk_moltenvk-r2.csv",
+      "size_bytes": 7344,
+      "sha256": "e181c1e07abef7c3edba2d22f0f0fcf8bf9a3f1992130646ea65ca0282c33446"
+    },
+    {
+      "artifact_ref": "p5-a/real3d-runs/wine_dxvk_moltenvk-r3.csv",
+      "size_bytes": 7526,
+      "sha256": "c00c212a1a637c4456cf05c3abc707fe1a44258d1c8711721eb12c27b2249c37"
+    },
+    {
+      "artifact_ref": "p5-a/safety-current.json",
+      "size_bytes": 313,
+      "sha256": "4f5a96ce61101de4bbe0beae228cccbbda04c4992564a53aef3387435b5bc1eb"
+    },
+    {
+      "artifact_ref": "p5-a/safety-current.log",
+      "size_bytes": 86,
+      "sha256": "5ecb4625085c36f86cc5a2db891ce34b09492f2a7dc941a45bcb4924481b63da"
+    },
+    {
+      "artifact_ref": "p5-a/safety-invocation-path-attempt.json",
+      "size_bytes": 220,
+      "sha256": "089e659a34dbef64cd9dd2e44ef04481c3f0aa3c0cd93b23e84bf6fb471681c6"
+    },
+    {
+      "artifact_ref": "p5-a/safety-invocation-path-attempt.log",
+      "size_bytes": 204,
+      "sha256": "f87a8ff0fe6705d65414a0b3366af0c12127dc7abb5aec48f9c8ead98ab786c9"
+    },
+    {
+      "artifact_ref": "p5-a/unittest-current.json",
+      "size_bytes": 644,
+      "sha256": "036f860b9665cc01d35af5d0b6af19735cb02106f01792fc25ad8dbddcc79905"
+    },
+    {
+      "artifact_ref": "p5-a/unittest-current.log",
+      "size_bytes": 37118,
+      "sha256": "7e710c9ce91f84bb38057e72ca6cacbbe2789952ccc4837b9ffbaf5911cd9f01"
+    },
+    {
+      "artifact_ref": "p5-a/unittest-external-mount-attempt.json",
+      "size_bytes": 138,
+      "sha256": "fe4200b6a5c3282516b6a6629d20d1aafea46407cb15aadbb6e141bb73f4958c"
+    },
+    {
+      "artifact_ref": "p5-a/unittest-external-mount-attempt.log",
+      "size_bytes": 40154,
+      "sha256": "07b5041ce03ad7d3a114d4fd8f0f98847acc376b43483f25994ff5d8efbff0a9"
+    },
+    {
+      "artifact_ref": "p5-a/unittest-focused-current.log",
+      "size_bytes": 114,
+      "sha256": "f92c8717b7c2d285937b11d59574412e02a4fd7a912a1aafc257d1043299cfc8"
+    },
+    {
+      "artifact_ref": "p5-a/unittest-initial.log",
+      "size_bytes": 30377,
+      "sha256": "e040fe36cf2a172df4f4c7d9d3ec8874caaff1588e4c2f91a68d5cbe4990df5d"
+    },
+    {
+      "artifact_ref": "p5-a/unittest-long-socket-attempt.json",
+      "size_bytes": 644,
+      "sha256": "75861d38bb369332d5c6e17eb253cccec37c9ed17baf33b4703ea8430c02970d"
+    },
+    {
+      "artifact_ref": "p5-a/unittest-long-socket-attempt.log",
+      "size_bytes": 37159,
+      "sha256": "5b8a9d8e478dd3c18426488388a5f5fdfb1e592582d526fa6253f4b2b978df8d"
+    },
+    {
+      "artifact_ref": "p5-a/unittest-source-drift-attempt.json",
+      "size_bytes": 644,
+      "sha256": "d249e7704fdd97a6c8d38935ad8e85fb8bd24cfe6f3998900b8ed4aa3ecf0634"
+    },
+    {
+      "artifact_ref": "p5-a/unittest-source-drift-attempt.log",
+      "size_bytes": 37847,
+      "sha256": "8d87112781d7123eb1777e7b8ef7e24d8122b0bb327350bce66e7e199afe61ed"
+    },
+    {
+      "artifact_ref": "p5-a/validation/validate-hardware.json",
+      "size_bytes": 911,
+      "sha256": "154823c0bfe57da18eb94b35da4cc61a3ee6402822904e8f4c5e9dd495411826"
+    },
+    {
+      "artifact_ref": "p5-a/validation/validate-hardware.rgba",
+      "size_bytes": 3686400,
+      "sha256": "0c660f2bd3eff3150dd0040789abe2291613b9af319df870203d4f77a4913a5f"
+    },
+    {
+      "artifact_ref": "p5-a/validation/validate-hardware.stderr.log",
+      "size_bytes": 239,
+      "sha256": "aca8f6c5a4fc055aee3ee352218fb190b909eef8513ed867e0951d7b78fe02d6"
+    },
+    {
+      "artifact_ref": "p5-a/validation/validate-hardware.stdout.log",
+      "size_bytes": 688,
+      "sha256": "698bcce092ea5e399c1c621267d5f0f7cb54f2cd51bc5e0d0345190a50fa9e9c"
+    },
+    {
+      "artifact_ref": "p5-a/validation/validate-warp.json",
+      "size_bytes": 902,
+      "sha256": "b230899912480a045fbe45eddc01bf134dfedc06e5f4ac6fc00ed75816821e9e"
+    },
+    {
+      "artifact_ref": "p5-a/validation/validate-warp.rgba",
+      "size_bytes": 3686400,
+      "sha256": "0c660f2bd3eff3150dd0040789abe2291613b9af319df870203d4f77a4913a5f"
+    },
+    {
+      "artifact_ref": "p5-a/validation/validate-warp.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/validation/validate-warp.stdout.log",
+      "size_bytes": 678,
+      "sha256": "1c992c30358f0498f016971a13480a4499c81ad31a9284f0253f8920a916131c"
+    },
+    {
+      "artifact_ref": "p5-a/validation-v3/validation-v3-hardware.json",
+      "size_bytes": 186,
+      "sha256": "f702a91a1afb0086b4442ce87ef2ea741563cef3b828243546ba65b2170abdeb"
+    },
+    {
+      "artifact_ref": "p5-a/validation-v3/validation-v3-hardware.stderr.log",
+      "size_bytes": 265,
+      "sha256": "10dca59fc80dca5f45e383af4bddc390e08ebc11d892ffdf1a8bd7123cf78dd6"
+    },
+    {
+      "artifact_ref": "p5-a/validation-v3/validation-v3-hardware.stdout.log",
+      "size_bytes": 425,
+      "sha256": "9a033e1c82918d9cd3ba2fd6db97450fd88e11ff8e9929f3af5025ac129a5ae1"
+    },
+    {
+      "artifact_ref": "p5-a/visible-vm-unavailable-current.json",
+      "size_bytes": 331,
+      "sha256": "6d1e447b1dc4cc875fb49f08f6b7a474d91c5756b0f801d1015262d67cf5576b"
+    },
+    {
+      "artifact_ref": "p5-a/vm-cleanup-proof.json",
+      "size_bytes": 930,
+      "sha256": "a6837d4b9a6e1ea77ba2cfd1f15f08ca099217f495c7abb86ca401f3081c03ba"
+    },
+    {
+      "artifact_ref": "p5-a/vm-inventory-current.json",
+      "size_bytes": 208,
+      "sha256": "741df0fe6ceecda1b12782bc0c50cf2a48bbe514cd3afd3d488ec1942c38b0dd"
+    },
+    {
+      "artifact_ref": "p5-a/vm-lease.json",
+      "size_bytes": 930,
+      "sha256": "a6837d4b9a6e1ea77ba2cfd1f15f08ca099217f495c7abb86ca401f3081c03ba"
+    },
+    {
+      "artifact_ref": "p5-a/vm-source-after.json",
+      "size_bytes": 1683,
+      "sha256": "e8626c06c54108231c2678192d2103bcef62173a3eb7a90fc6a4aca57a4907f2"
+    },
+    {
+      "artifact_ref": "p5-a/vm-source-before.json",
+      "size_bytes": 1683,
+      "sha256": "e8626c06c54108231c2678192d2103bcef62173a3eb7a90fc6a4aca57a4907f2"
+    },
+    {
+      "artifact_ref": "p5-a/vm-source-checkpoint.json",
+      "size_bytes": 279,
+      "sha256": "3b63fda88524f3f19628aec1e07d4c6ffabb5168c91e05fcb5d6a896d26a8887"
+    },
+    {
+      "artifact_ref": "p5-a/vm-source-recovery.json",
+      "size_bytes": 2063,
+      "sha256": "e239c38a616f063442423734c49ff02bb61bc7d9f65f8b1e513769e37384f56b"
+    },
+    {
+      "artifact_ref": "p5-a/wine-baseline-current-before-cpu-freeze-repair.json",
+      "size_bytes": 297198,
+      "sha256": "ac200c58d76582549b59cbdad36b8e35b5ff333c6f318acd2d41520a75120bc6"
+    },
+    {
+      "artifact_ref": "p5-a/wine-baseline-current.json",
+      "size_bytes": 295082,
+      "sha256": "cf87f1e85cd3752948a062d5e31f0af21d785906728cd3a6ef6f87833b29a213"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/manifest.json",
+      "size_bytes": 163016,
+      "sha256": "18bdfe8dc12c8ecd2b899abc4df97d0f0f99461811b012f180c659eb14ae13df"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_d3dmetal-r1.csv",
+      "size_bytes": 37764,
+      "sha256": "6e6fedfb9a28dd73902d68afa560f77ef118d2ccc948673e474551a35754eb67"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_d3dmetal-r1.json",
+      "size_bytes": 8480,
+      "sha256": "92eca3ef38d14d0d593c0ab63c3fcf2cc501c69ee308a23c93c89bf1f66b59cf"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_d3dmetal-r1.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_d3dmetal-r1.stdout.log",
+      "size_bytes": 730,
+      "sha256": "50feb0959ea6442cb0633a8c65e5396e605e50d4df69f123552975d5693d72f4"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_d3dmetal-r2.csv",
+      "size_bytes": 37764,
+      "sha256": "c5ee03a662acde5fe02fe3465b39aedc8345d9e94c8c431e800b2fce0e8d3625"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_d3dmetal-r2.json",
+      "size_bytes": 7744,
+      "sha256": "2da1eabd3fff64ef74a3b851e3d4fc53ddfe9764d1fde0f9eccda583e473ffba"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_d3dmetal-r2.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_d3dmetal-r2.stdout.log",
+      "size_bytes": 729,
+      "sha256": "5007219f5b2c303eaa4d377876cc2dc32a55bb75abf260b0c55e1b22f66924ac"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_d3dmetal-r3.csv",
+      "size_bytes": 37772,
+      "sha256": "0bec80ed7167fd4cc86df2d9a0b2572272cae1bfac0de007db97bbb1ba742976"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_d3dmetal-r3.json",
+      "size_bytes": 8654,
+      "sha256": "b6f97a3e77f47ec1cfd852bfb1ceca0b066c77e6aa8e8693772443b0a063578e"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_d3dmetal-r3.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_d3dmetal-r3.stdout.log",
+      "size_bytes": 730,
+      "sha256": "fa60dfbf32d552e95e25374506c1962bd040e4b29b8b4133b655356cf9c2c94b"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxmt-r1-bench_real3d_probe-heavy_d3d11.log",
+      "size_bytes": 2899,
+      "sha256": "d8059deab3949c9bf4c006d142c194295290f31725181da533357b01d18f80a4"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxmt-r1.csv",
+      "size_bytes": 37766,
+      "sha256": "6fd997d813aa7061375db681bac1eb272cc9bd467825761a9d5bc8de64a9273e"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxmt-r1.json",
+      "size_bytes": 8803,
+      "sha256": "81400012d0d335efc17587ff62799d7a6578908d07e8dcb97881fc2d1aa642a6"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxmt-r1.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxmt-r1.stdout.log",
+      "size_bytes": 712,
+      "sha256": "84f5e8e002003027cf1c29c3346af6e954f54d7bb44f0c6a00b762d75d5a5663"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxmt-r2-bench_real3d_probe-heavy_d3d11.log",
+      "size_bytes": 6132,
+      "sha256": "4cf667de5b8bccad630ff6be761676ea71017463bcafac35f7d3502cea808196"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxmt-r2.csv",
+      "size_bytes": 37768,
+      "sha256": "cb55f63bdca43bc58e98c67eabe511f9ed15d9e24f8add2f7f5997d8939953f4"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxmt-r2.json",
+      "size_bytes": 8588,
+      "sha256": "a1db98ce6ef8712acded12d0e277646e6be0066bd77df359aad433f7a2132847"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxmt-r2.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxmt-r2.stdout.log",
+      "size_bytes": 711,
+      "sha256": "ef97e56e1cec1f4f6cb7140d85e1e98c018d2f72d3a911a384b3f9b7144e1cd8"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxmt-r3-bench_real3d_probe-heavy_d3d11.log",
+      "size_bytes": 9347,
+      "sha256": "759d7737c5c73196a4bdd44ec91739fa08672d34aa74e0f0393cae701589b5dc"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxmt-r3.csv",
+      "size_bytes": 37772,
+      "sha256": "a82a32d256fb6f0020adf4233ed730705c5dc6416fb690c23c8885da9054bfb7"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxmt-r3.json",
+      "size_bytes": 9501,
+      "sha256": "d8c2069ae13b6d626d1e60dc005c07b176fc61e7b611c9f3a2054996afd7f18b"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxmt-r3.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxmt-r3.stdout.log",
+      "size_bytes": 711,
+      "sha256": "7ea5aa5ace897fbf68c5450e29ec4a313e500f3e4fb24c4f0441656dd901e157"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_kosmickrisp-r1-bench_real3d_probe-heavy_d3d11.log",
+      "size_bytes": 5319,
+      "sha256": "ffb2d938a9aa8a09faf669197514d301519320e6fd5936acc7842636e5338c22"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_kosmickrisp-r1.csv",
+      "size_bytes": 38021,
+      "sha256": "1e21b12a3a810a27de759c096e532855350c456f7054cc922cba848f32334b5b"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_kosmickrisp-r1.json",
+      "size_bytes": 21873,
+      "sha256": "890b72aa2c84e51eaa2ba1f6ec35f34eb7ff5519b39b444604d6bb74701dd663"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_kosmickrisp-r1.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_kosmickrisp-r1.stdout.log",
+      "size_bytes": 726,
+      "sha256": "5c652397d83246b7f7581b94b2eba79abc7e57d7eea1222f8efef739e62afa82"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_kosmickrisp-r2-bench_real3d_probe-heavy_d3d11.log",
+      "size_bytes": 5319,
+      "sha256": "ffb2d938a9aa8a09faf669197514d301519320e6fd5936acc7842636e5338c22"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_kosmickrisp-r2.csv",
+      "size_bytes": 37812,
+      "sha256": "4d64eea88837514ab32190d47442b4b33a2b78269c5943387612da7eeaf554b3"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_kosmickrisp-r2.json",
+      "size_bytes": 21155,
+      "sha256": "224d4f30e695003aa2b927b3e1aba7bb924ac20a817969bd6d2ce1545fc813ff"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_kosmickrisp-r2.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_kosmickrisp-r2.stdout.log",
+      "size_bytes": 724,
+      "sha256": "09826a512b1ffc6a293dbdfc40883e85f3f3e48436a2a4a1df4204b6d769361a"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_kosmickrisp-r3-bench_real3d_probe-heavy_d3d11.log",
+      "size_bytes": 5319,
+      "sha256": "ffb2d938a9aa8a09faf669197514d301519320e6fd5936acc7842636e5338c22"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_kosmickrisp-r3.csv",
+      "size_bytes": 37952,
+      "sha256": "16ec210bb64142777bb87b54f88468513769ed7a63b963c86919336e13ae3766"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_kosmickrisp-r3.json",
+      "size_bytes": 20821,
+      "sha256": "49124b197591c5cb6d9e8a021c21eabd4778a76a0734030ceb179b52f012a0e9"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_kosmickrisp-r3.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_kosmickrisp-r3.stdout.log",
+      "size_bytes": 726,
+      "sha256": "d8d3320e8cb45f63ba8cfa928130413647acb3aeace1820f729c818e69ad87b4"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_moltenvk-r1-bench_real3d_probe-heavy_d3d11.log",
+      "size_bytes": 5380,
+      "sha256": "3bdc5f04dd15d5e54bca00d26fb2b3c08b9e6ec465bfd3a9473d27ce645df4a5"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_moltenvk-r1.csv",
+      "size_bytes": 37764,
+      "sha256": "b4797f9f5a24673f78463fa40167f984a2084e72bdf0ea5140c2fcb51f2845b3"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_moltenvk-r1.json",
+      "size_bytes": 8859,
+      "sha256": "24eda9cadb7bceedce55ecac349be7694d1715ef6082f68ed0aca68e9a7984d0"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_moltenvk-r1.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_moltenvk-r1.stdout.log",
+      "size_bytes": 714,
+      "sha256": "b44dba904084e40a128cab8029ef52d505b9a405a6158456327ca0ff578553a4"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_moltenvk-r2-bench_real3d_probe-heavy_d3d11.log",
+      "size_bytes": 5380,
+      "sha256": "3bdc5f04dd15d5e54bca00d26fb2b3c08b9e6ec465bfd3a9473d27ce645df4a5"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_moltenvk-r2.csv",
+      "size_bytes": 37764,
+      "sha256": "ac7d75efdc0d416fe93553a7dc5df931ab1666fce66c13ac948d8898b742c79f"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_moltenvk-r2.json",
+      "size_bytes": 7932,
+      "sha256": "ca520bef523217e17579bc7f63bfad16e9b3583445bdc06b69a7a05407eea030"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_moltenvk-r2.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_moltenvk-r2.stdout.log",
+      "size_bytes": 714,
+      "sha256": "c034eef2eca8fdbb3a5bdd6f03ff9dec57742b112b839bee8dbfa9779daf53c7"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_moltenvk-r3-bench_real3d_probe-heavy_d3d11.log",
+      "size_bytes": 5380,
+      "sha256": "3bdc5f04dd15d5e54bca00d26fb2b3c08b9e6ec465bfd3a9473d27ce645df4a5"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_moltenvk-r3.csv",
+      "size_bytes": 37772,
+      "sha256": "fa2615b193b4ba1e665f601e7beb8adc7fb9dec14c1f7d4b9438a75565dea766"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_moltenvk-r3.json",
+      "size_bytes": 9582,
+      "sha256": "72561c6a1c0d7b4084a2e06e41a45b95fd2892ebd561714cc446fd4ac58ef736"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_moltenvk-r3.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-formal/wine_dxvk_moltenvk-r3.stdout.log",
+      "size_bytes": 714,
+      "sha256": "e9f1f2c014a694aa4e125c36ad6c3caff3a16886703f59b3775fc39925ebd2ac"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-pilot/wine_d3dmetal-r1.csv",
+      "size_bytes": 5006,
+      "sha256": "8f3f57225388f315bc2579bff2788a275642e2a2c368fc926af82d1226a208fc"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-pilot/wine_d3dmetal-r1.json",
+      "size_bytes": 3772,
+      "sha256": "c2f950f088e5c55e8991f40a72fdd7cc6944417deb809126911bd155ca2b9b42"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-pilot/wine_d3dmetal-r1.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-pilot/wine_d3dmetal-r1.stdout.log",
+      "size_bytes": 728,
+      "sha256": "0663f3acc9f0f5d45794c8a3849c77d730ec164d27a14de234e881a68fd1ce80"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-pilot/wine_dxmt-r1-bench_real3d_probe-heavy_d3d11.log",
+      "size_bytes": 1702,
+      "sha256": "ef08a84a0a2992cf405e53ef4eb0cf3c1091c519f401489f6597ebfa3365a6fb"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-pilot/wine_dxmt-r1.csv",
+      "size_bytes": 5004,
+      "sha256": "1f1814a1f68eca177c5b37cfab51adebf4c4895b58bafc36b0316c88f85cf485"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-pilot/wine_dxmt-r1.json",
+      "size_bytes": 3557,
+      "sha256": "e7f518f9534c7ff17fba85af0ef3dd470ec6bccdb5a47280344160a425a49d50"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-pilot/wine_dxmt-r1.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-pilot/wine_dxmt-r1.stdout.log",
+      "size_bytes": 709,
+      "sha256": "6cd200cf336c87e95e1eeb9bd900b3454d53b83458f50bc4cf86ea956cb1fe59"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-pilot/wine_dxvk_kosmickrisp-r1-bench_real3d_probe-heavy_d3d11.log",
+      "size_bytes": 5319,
+      "sha256": "ffb2d938a9aa8a09faf669197514d301519320e6fd5936acc7842636e5338c22"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-pilot/wine_dxvk_kosmickrisp-r1.csv",
+      "size_bytes": 5028,
+      "sha256": "0c8600271b47112ba388885a49bae666456b3dbd90159b4b4d5c0b3858cc993a"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-pilot/wine_dxvk_kosmickrisp-r1.json",
+      "size_bytes": 5452,
+      "sha256": "cbfd8c4b2e3d96d022837ec5d66179e489824bb5f1f920d09c1668b0d6667b9c"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-pilot/wine_dxvk_kosmickrisp-r1.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-pilot/wine_dxvk_kosmickrisp-r1.stdout.log",
+      "size_bytes": 724,
+      "sha256": "1284c03714b27a96f1a965e48c2ee8a73080961bc0559161ce93d45e2b3e1968"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-pilot/wine_dxvk_moltenvk-r1-bench_real3d_probe-heavy_d3d11.log",
+      "size_bytes": 5380,
+      "sha256": "3bdc5f04dd15d5e54bca00d26fb2b3c08b9e6ec465bfd3a9473d27ce645df4a5"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-pilot/wine_dxvk_moltenvk-r1.csv",
+      "size_bytes": 5004,
+      "sha256": "d985d7eb2f0dc4eb4e552a2c75050564e767dcf05b95f11f71426bc43bf756c6"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-pilot/wine_dxvk_moltenvk-r1.json",
+      "size_bytes": 3798,
+      "sha256": "95230b2c05a4c393bcb7a323d95a133350359203d5b50a24c6bda5c8c0930b12"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-pilot/wine_dxvk_moltenvk-r1.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-pilot/wine_dxvk_moltenvk-r1.stdout.log",
+      "size_bytes": 712,
+      "sha256": "4c5ae7aeb2881bae447ab4e5d4d344e97207a56f195dbb82e9b1854d0d7bcc88"
+    },
+    {
+      "artifact_ref": "p5-a/wine-heavy-pilot.json",
+      "size_bytes": 24204,
+      "sha256": "071821b18d4e1b007c74043771676e40bbda68c7c953697f633d720ae1d0fdf6"
+    },
+    {
+      "artifact_ref": "p5-a/wine-route-inspector-source.json",
+      "size_bytes": 683,
+      "sha256": "908adb9859c75f853bd01b71f407036269aeded307d12aabf808ed29075e5238"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_d3dmetal-r1.csv",
+      "size_bytes": 36866,
+      "sha256": "e54644ea49d11b0cfe4b255cc4a9840ce80154f7a1712e40bbd35b41d6df7d13"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_d3dmetal-r1.json",
+      "size_bytes": 21698,
+      "sha256": "d27cfa1cbdc63f8272e51d46110a2d43d514c85d8f70c3b42e362864b52ae774"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_d3dmetal-r1.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_d3dmetal-r1.stdout.log",
+      "size_bytes": 684,
+      "sha256": "809ed577ff8efb337c65601d9d003861d979f6330c184940ec161fc308f7a25d"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_d3dmetal-r2.csv",
+      "size_bytes": 36866,
+      "sha256": "9a761d15680caa3ab781f7244500144199cf2c446289f838c045b70679fd5c92"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_d3dmetal-r2.json",
+      "size_bytes": 20658,
+      "sha256": "b7a8490514b0258db1d9015b552969742ebdfcfdbcd3c297ff8aa8d80fd4d2a3"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_d3dmetal-r2.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_d3dmetal-r2.stdout.log",
+      "size_bytes": 683,
+      "sha256": "fe7a2af5849501b9fc3d01c42fc5e7d1e3f439071e34b594d92b63fbc3724f5f"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_d3dmetal-r3.csv",
+      "size_bytes": 36864,
+      "sha256": "74ca789436259ace8a14be214c269cdd917feafc47ad29b366547a1ed174c742"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_d3dmetal-r3.json",
+      "size_bytes": 20506,
+      "sha256": "1f3bbf96e81ee182f453ea91d21974809fb50f38dfdee28c46234680cb2f7fa6"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_d3dmetal-r3.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_d3dmetal-r3.stdout.log",
+      "size_bytes": 683,
+      "sha256": "a40d896fa8ef61fd9f5dee3faed4fb07043ef86331a3d66a6dc3aafae77c1449"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxmt-r1-bench_real3d_probe_d3d11.log",
+      "size_bytes": 165482,
+      "sha256": "4e07304e8cda6a0b7b280e72f540140f70a4772d0441b56ef54f2c3f2e80b37f"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxmt-r1.csv",
+      "size_bytes": 36884,
+      "sha256": "1a42800f651a82c746c93cc5a45b34f417fdda004622731030c56578e19d1a29"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxmt-r1.json",
+      "size_bytes": 20606,
+      "sha256": "84f984707e085cdfee2401e1b2e569d507c8cfc62660791b668b0f0d59d2c1b6"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxmt-r1.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxmt-r1.stdout.log",
+      "size_bytes": 666,
+      "sha256": "dc2ea75ca0b0fc87cb4af29bf27a9c3050aac47079d56e0e8569f7b0d1d59457"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxmt-r2-bench_real3d_probe_d3d11.log",
+      "size_bytes": 157416,
+      "sha256": "b0fdd20050ee8315b19109c16a4c8653b0b67ba3e1604382f2b0766fbd796939"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxmt-r2.csv",
+      "size_bytes": 36866,
+      "sha256": "f4862cd1ea8db46e05f747eb4589cdaad0f52fd56e93e22685e0a71c934b148c"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxmt-r2.json",
+      "size_bytes": 21523,
+      "sha256": "0ba2afd2163e2c8dfb095995e37631ba87d5666ca54bf2451a3b4366d8b9e7b8"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxmt-r2.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxmt-r2.stdout.log",
+      "size_bytes": 666,
+      "sha256": "a6eb89e0cc35643ad0b6e177037608d960bfc48ecc1a1b97c1eade59a92af1e5"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxmt-r3-bench_real3d_probe_d3d11.log",
+      "size_bytes": 150325,
+      "sha256": "7d7ae3909763addb00110351c635bd1b67e032831ee48ad28a361a6e73a12d26"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxmt-r3.csv",
+      "size_bytes": 36864,
+      "sha256": "60a1f8c3ad439f68cc1e6d946991e601f4fc97098a701771d1f06a6d5dc2df8e"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxmt-r3.json",
+      "size_bytes": 20641,
+      "sha256": "1a124493bfc2eb71fce50fe0fed522d70db0fda495d8225e82360b92cc5903fe"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxmt-r3.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxmt-r3.stdout.log",
+      "size_bytes": 666,
+      "sha256": "75b5cda6e45da5dbb07b9b36b03e8e752bece892a4c83bcfc535fd1475b92f8e"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_kosmickrisp-r1-bench_real3d_probe_d3d11.log",
+      "size_bytes": 5313,
+      "sha256": "777c34ad3d84232bd3f5c54068ddffe3a0d8cb648b646fcf223ecadc5fa6a6bd"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_kosmickrisp-r1.csv",
+      "size_bytes": 37764,
+      "sha256": "985d17686bbc0a3ad038bbc328ee09d092d8dd8ec050a9623cab8975c2a12338"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_kosmickrisp-r1.json",
+      "size_bytes": 21971,
+      "sha256": "73e4dbbf99dab849ef9bb9614135aa0fdc5320599c9acb836e4a4ce42b5258b4"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_kosmickrisp-r1.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_kosmickrisp-r1.stdout.log",
+      "size_bytes": 677,
+      "sha256": "872ca04c89ad9c4e1ef4148dd0859e39fa5fe184b92cb42f18d3543de736ea2f"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_kosmickrisp-r2-bench_real3d_probe_d3d11.log",
+      "size_bytes": 5313,
+      "sha256": "777c34ad3d84232bd3f5c54068ddffe3a0d8cb648b646fcf223ecadc5fa6a6bd"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_kosmickrisp-r2.csv",
+      "size_bytes": 37764,
+      "sha256": "df65dc93d6a8c01356ef12c88dcc6cc36cbfaa6ef6ad526170a86a3fe5dc6df5"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_kosmickrisp-r2.json",
+      "size_bytes": 21980,
+      "sha256": "7bf3cf3e5b1bf200aec9b497d7128bc3e7eb79c9d616adddaff6e098d801a662"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_kosmickrisp-r2.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_kosmickrisp-r2.stdout.log",
+      "size_bytes": 677,
+      "sha256": "3d688f601bc0de6d4a0fa2a34546f743081841b71717d9c3867e46acd3650606"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_kosmickrisp-r3-bench_real3d_probe_d3d11.log",
+      "size_bytes": 5313,
+      "sha256": "777c34ad3d84232bd3f5c54068ddffe3a0d8cb648b646fcf223ecadc5fa6a6bd"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_kosmickrisp-r3.csv",
+      "size_bytes": 37764,
+      "sha256": "f24ac10bd8fc9ba3b2df7a3f112d6e5da058e8659757a9b65a2f1b6262d58e4a"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_kosmickrisp-r3.json",
+      "size_bytes": 20487,
+      "sha256": "6f3f27b5845a39d50360c1682ccf06a0121df27e86b374072824c400dabb206a"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_kosmickrisp-r3.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_kosmickrisp-r3.stdout.log",
+      "size_bytes": 677,
+      "sha256": "54d710e982aab15dff88b59084d0e58ac088478f85d89f4b474de7b739eb62df"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_moltenvk-r1-bench_real3d_probe_d3d11.log",
+      "size_bytes": 5374,
+      "sha256": "7b9a8570dacf6d503cab7fb50df0c1d14c633cfcfc070414fce559edb747c08e"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_moltenvk-r1.csv",
+      "size_bytes": 36864,
+      "sha256": "e6f9a29714f27b5dcc77dbe3d3e835f385bbcff8ffa05c6526327833a1801629"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_moltenvk-r1.json",
+      "size_bytes": 22077,
+      "sha256": "255d171ba1c1c8f99f20da12e8af5d14af85f7c4b77abcfd268b8af402ef9792"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_moltenvk-r1.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_moltenvk-r1.stdout.log",
+      "size_bytes": 669,
+      "sha256": "c29e3637c0c18aefc21844a35cd0fcfbc46393325c3d707ec93e4c0240968724"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_moltenvk-r2-bench_real3d_probe_d3d11.log",
+      "size_bytes": 5374,
+      "sha256": "0e76b29f73eeb539a5e91dc096786d491883321add9445c3418f9a2c84b3c14c"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_moltenvk-r2.csv",
+      "size_bytes": 36883,
+      "sha256": "091a141885ee5b0001cd5fe19c72fdae742f63e636444ff18727c87f6240297d"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_moltenvk-r2.json",
+      "size_bytes": 22113,
+      "sha256": "34a8d13b3879d03f4384b9d29410399e5e6218a29a7b65761a37979a9b22de2d"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_moltenvk-r2.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_moltenvk-r2.stdout.log",
+      "size_bytes": 669,
+      "sha256": "b0246843f89e6e1c146ef5ca4d5aba1a23f2385f7d26cb5515a1cdfcfec9955f"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_moltenvk-r3-bench_real3d_probe_d3d11.log",
+      "size_bytes": 5374,
+      "sha256": "0e76b29f73eeb539a5e91dc096786d491883321add9445c3418f9a2c84b3c14c"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_moltenvk-r3.csv",
+      "size_bytes": 36988,
+      "sha256": "4a0aa308e1b8edb7a2c8c365f67ff1f56cfacde3f400c84e09a8df3f68c76021"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_moltenvk-r3.json",
+      "size_bytes": 20515,
+      "sha256": "b180572bfe13a7e4ef436ce20eab2c12627e784d826a04c9563d7000a5c96b2d"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_moltenvk-r3.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_ref": "p5-a/wine-runs-v3/wine_dxvk_moltenvk-r3.stdout.log",
+      "size_bytes": 669,
+      "sha256": "8468ce4d4bb26063e56efcaf2e8add9859754876f5043729a6a49913da2df274"
+    },
+    {
+      "artifact_ref": "graphics-lab/bench_real3d_ace_arch_watch.py",
+      "size_bytes": 13512,
+      "sha256": "f8957357791cc783cd82101c6ca6b824737a525eaff99cccf923de4177a08c08"
+    },
+    {
+      "artifact_ref": "graphics-lab/bench_real3d_ace_capture.ps1",
+      "size_bytes": 39369,
+      "sha256": "b81bb41f01686330294f0a379bff55f11ab3600f9b9383e269d5c5a2cf883ace"
+    },
+    {
+      "artifact_ref": "graphics-lab/bench_real3d_capture.py",
+      "size_bytes": 7963,
+      "sha256": "d0f4cb3d580ad5a121c7cb32b61c28e4e0ef421eb18884521f3c35ac5758142a"
+    },
+    {
+      "artifact_ref": "graphics-lab/bench_real3d_commercial.py",
+      "size_bytes": 5856,
+      "sha256": "3c6057b06134fa7bb6b5e5502eedc331944df11e5bdd4b101f22611d40a961ca"
+    },
+    {
+      "artifact_ref": "graphics-lab/bench_real3d_cpu.py",
+      "size_bytes": 4695,
+      "sha256": "49fb869ebcd1286247b2a336b6741a1d8be6f06b7a2db5554f357758126d59d6"
+    },
+    {
+      "artifact_ref": "graphics-lab/bench_real3d_events.ps1",
+      "size_bytes": 4752,
+      "sha256": "e844a20810132421e0a4a891d6957aa756f0eaa1c6b19ff330c257befb3e0971"
+    },
+    {
+      "artifact_ref": "graphics-lab/bench_real3d_gate.py",
+      "size_bytes": 2727,
+      "sha256": "49c4da711a2c8ae0aec2cecb68b3a5909558e3c0d8808bcc1f33385140713c47"
+    },
+    {
+      "artifact_ref": "graphics-lab/bench_real3d_guest.py",
+      "size_bytes": 7623,
+      "sha256": "d4c0fe3f2623efdeb6af54bf8b3957b84c01be216933164eb52debaf0618c4ae"
+    },
+    {
+      "artifact_ref": "graphics-lab/bench_real3d_lifecycle.ps1",
+      "size_bytes": 3458,
+      "sha256": "5fa69df2d3269764199eaf19438070f4aac20c1fa3f38695c44d6cef8d23c58a"
+    },
+    {
+      "artifact_ref": "graphics-lab/bench_real3d_probe.cpp",
+      "size_bytes": 33400,
+      "sha256": "f4cde3967783774d4f8aa7923889b29b8018f19dc4733427d8225a0631e82e7c"
+    },
+    {
+      "artifact_ref": "graphics-lab/bench_real3d_probe_heavy.cpp",
+      "size_bytes": 33918,
+      "sha256": "ad51f28df7a48ad61e000624ca8b661445913122fe16d87a3d83931e067cdc7d"
+    },
+    {
+      "artifact_ref": "graphics-lab/bench_real3d_report.py",
+      "size_bytes": 6510,
+      "sha256": "ae3a09b5e1645dcdf6791875fdea848732e257440ec6a3853c1bc3c5d65b5ad7"
+    },
+    {
+      "artifact_ref": "graphics-lab/bench_real3d_runner.py",
+      "size_bytes": 18802,
+      "sha256": "cffcfeb93fb7e4715fb77efe79631e384ccaee00abc5427d14ff079677f8abb9"
+    },
+    {
+      "artifact_ref": "graphics-lab/bench_real3d_support.py",
+      "size_bytes": 17371,
+      "sha256": "1a83779e75181068b91f2d0aec22f9365357f5a516e4e1eb3c2b677345a6d39a"
+    },
+    {
+      "artifact_ref": "graphics-lab/bench_real3d_wine_diagnostics.py",
+      "size_bytes": 3690,
+      "sha256": "a6dadd1d7c72e0acc8fba42ded0fddf9dc6a210bfdbbabcd89c77a10f8bc1c61"
+    },
+    {
+      "artifact_ref": "graphics-lab/test_real3d_ace_arch_watch.py",
+      "size_bytes": 5565,
+      "sha256": "724ce842077464c4555543cf0de168f4f6793308b78a17d0b048cba8a42cbae2"
+    },
+    {
+      "artifact_ref": "graphics-lab/test_real3d_cpu.py",
+      "size_bytes": 2038,
+      "sha256": "b0667a7ad64ac9795d5d32e256d0e71e639e81e3f3aaddc97ea99c83f2ab1e0b"
+    },
+    {
+      "artifact_ref": "graphics-lab/test_real3d_runner.py",
+      "size_bytes": 5735,
+      "sha256": "40250a465083280b166542fd24c3d2d5235298e0d24b00db66bdb9014324f84e"
+    },
+    {
+      "artifact_ref": "graphics-lab/test_real3d_support.py",
+      "size_bytes": 4452,
+      "sha256": "c43a63ace81aefc598d56e0c58c23856b2114a78a1e1709b4f32ff01f8760be8"
+    },
+    {
+      "artifact_ref": "graphics-lab/test_real3d_wine_diagnostics.py",
+      "size_bytes": 2735,
+      "sha256": "8a5a01e58cc40c9954a7ae5ad0cba4d7411b3103d0fc2bc3ee78c79077a6cff8"
+    }
+  ]
+}

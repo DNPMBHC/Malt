@@ -1,0 +1,7 @@
+{
+  "owner": "@DNPMBHC",
+  "complete": true,
+  "passed": false,
+  "reason": "DXVK comparisons failed; the test environment file hash used Python realpath instead of the production Foundation canonical URL. Exact native hash mismatch confirmed separately. Original results retained without removing samples.",
+  "nextChange": "Use native Foundation/CryptoKit identity helper for every test program override."
+}

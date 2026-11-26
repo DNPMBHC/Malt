@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "owner": "@DNPMBHC",
+  "verified_at_utc": "2026-11-25T04:08:21.207833+00:00",
+  "app_path": "/private<TMPDIR>/utm-custom-build/UTM-Custom.app",
+  "outside_repository": true,
+  "main_binary_exists": true,
+  "helper_binary_exists": true,
+  "launcher_binary_exists": true,
+  "render_server_binary_exists": true,
+  "dxmt_framework_exists": true,
+  "main_binary_arch": "/private<TMPDIR>/utm-custom-build/UTM-Custom.app/Contents/MacOS/UTM: Mach-O 64-bit executable arm64",
+  "codesign_deep_verify_ok": true,
+  "codesign_stderr": "",
+  "patch_markers": {
+    "dxmt_shader_cache_dir": true,
+    "pure_relative_mouse_flag": true,
+    "pure_relative_mouse_plist": true,
+    "game_shell_vm_env": true,
+    "dxmt_shader_cache_path": true,
+    "cursor_inhibit_env": true,
+    "cursor_debug_prefix": true,
+    "cursor_relative_fallback_sel": true
+  },
+  "all_patch_markers_present": true,
+  "helper_verified": true,
+  "original_utm_untouched": true
+}

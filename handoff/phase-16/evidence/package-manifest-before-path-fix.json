@@ -1,0 +1,144 @@
+{
+  "schema": "phase-15b-module-x-embedded-dmg-v1",
+  "owner": "@DNPMBHC",
+  "capturedAt": "2026-11-26T02:01:09.679631+00:00",
+  "brand": "demo-app",
+  "cfBundleDisplayName": "demo-app",
+  "configuration": "Release",
+  "architecture": "arm64",
+  "marketingVersion": "2.3.5",
+  "hardenedRuntimeEnabled": true,
+  "codesignIdentityKind": "adhoc",
+  "codesignVerifyDeepStrictPassed": true,
+  "launchSmokeTestPassed": true,
+  "launchSmokeVerification": {
+    "updaterRemoval": {
+      "loadCommandsChecked": true,
+      "sparkleLinked": false,
+      "sparkleBundled": false,
+      "passed": true
+    },
+    "launch": {
+      "requiredSurvivalSeconds": 4,
+      "observedSeconds": 4.006,
+      "survived": true,
+      "exitCodeDuringObservation": null,
+      "dyldErrorCount": 0,
+      "passed": true
+    },
+    "passed": true,
+    "isolatedUserData": true,
+    "scope": "Main application process survival; no guest or game execution claim"
+  },
+  "entitlements": {
+    "com.apple.security.automation.apple-events": true,
+    "com.apple.security.device.audio-input": true,
+    "com.apple.security.device.camera": true
+  },
+  "forbiddenEntitlementsFound": [],
+  "hardenedRuntimeVerification": {
+    "app": {
+      "signatureVerified": true,
+      "runtimeFlagVerified": true
+    },
+    "cli": {
+      "signatureVerified": true,
+      "runtimeFlagVerified": true
+    },
+    "passed": true
+  },
+  "bundlePurityPassed": true,
+  "requiredResourcesVerified": true,
+  "embeddedRuntime": {
+    "requested": true,
+    "helperBundled": true,
+    "scriptsBundled": true,
+    "note": "embedded_helper_and_scripts",
+    "lsuiElementEnabled": true,
+    "helperBinarySHA256": "aa5fd76fda66579e7ef6d87d63280e1fe41b74f20efa02436444c1b65e95e064",
+    "bundledScripts": [
+      "PROVISIONING.md",
+      "PROVISIONING.zh-Hans.md",
+      "golden_guest_manager.py",
+      "kiosk-app-shell.ps1"
+    ]
+  },
+  "runtimePayload": {
+    "schema": "runtime-payload-v1-verification",
+    "owner": "@DNPMBHC",
+    "resourceCount": 1479,
+    "problems": [],
+    "requiredResourcesVerified": true,
+    "signatureChecksPassed": true,
+    "pythonChecks": {
+      "isolatedEnvironment": true,
+      "standardLibraryImportsPassed": true,
+      "managerHelpPassed": true
+    },
+    "dependencyChecks": {
+      "machOCount": 164,
+      "externalAbsoluteDependencyCount": 0,
+      "systemOrRelativeDependenciesOnly": true
+    },
+    "prerequisites": {
+      "externalSetupRequired": true,
+      "guestImageBundled": false,
+      "nativeNetworkDistributionRequiresNotarization": true,
+      "wineRuntimeBundled": false
+    },
+    "daemonInstalledOrRegistered": false,
+    "gameLaunchVerified": false,
+    "cleanMachineVerified": false,
+    "passed": true
+  },
+  "externalSetupRequired": true,
+  "gameLaunchVerified": false,
+  "distributionAssessment": {
+    "gatekeeperAccepted": false,
+    "assessmentExitCode": 3,
+    "developerIDAuthorityVerified": false,
+    "deepStrictSignatureVerified": true,
+    "teamIdentifierPresent": false,
+    "secureTimestampPresent": false,
+    "stapledNotarizationValidated": false,
+    "gatekeeperNotarizedSource": false,
+    "notarizationVerified": false,
+    "distributable": false,
+    "scope": "Build-host policy and signing evidence; no other physical Mac verification",
+    "passed": true
+  },
+  "cleanMachineGameLaunchVerified": false,
+  "distributionReady": false,
+  "notarizationVerified": false,
+  "vulkanBackend": {
+    "bundled": true,
+    "x86_64SliceVerified": true,
+    "universalLoaderVerified": true,
+    "relativeICDPathVerified": true,
+    "features": {
+      "geometryShader": true,
+      "fillModeNonSolid": true,
+      "apiVersion": 4211056,
+      "driverVersion": 109457507
+    },
+    "vulkanLoaderSHA256": "0bcd62c6b3bcba4ef7c82344da3eb058892bb00b56b75ac6a6e7c8765a208c85",
+    "driverSHA256": "ed4615a26f74c7bece748cfb6bb3930fee379a2dcf3a634ca4e57c59a4bfdf63",
+    "icdManifestSHA256": "1aa4f7ed99d7ce2d69e3e4e6402d11d3f0fbe1dce1fb200054177904a9dadf9d"
+  },
+  "artifacts": {
+    "appBinarySHA256": "4f423d79ae093f798ddd92a95ff7ceddb2b123f1225f44af2b20b3e8488256cc",
+    "cliBinarySHA256": "217915b815f201038cae175e55b18dc20a24962a81aa2e8e8791a1fa14294639",
+    "compatibilityMatrixSHA256": "0545f3c83c69d3cb3b81ef2b18f742446bf3ce2b5a45e8a084b7cfee71c3c34a",
+    "runtimeManifestSHA256": "d304bf46376750a8a8e3881823e7be97e8840a8ceb817351f68e336587e7f446",
+    "dmg": {
+      "filename": "demo-app.dmg",
+      "relativePath": "demo-app/build/release/demo-app.dmg",
+      "sizeBytes": 378545920,
+      "sizeMiB": 361.01,
+      "sha256": "6892cdea32b72489d600584fc24b5bf576a17fed09d84fcb170d4d50fcb7d8c6",
+      "applicationsSymlinkPresent": true,
+      "readOnlyCompressedUDZO": true
+    }
+  },
+  "passed": true
+}

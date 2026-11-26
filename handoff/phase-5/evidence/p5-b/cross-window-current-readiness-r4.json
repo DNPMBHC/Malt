@@ -1,0 +1,60 @@
+{
+  "blocker_order": [
+    "Establish native Windows ARM64 boot with supported persistent vTPM and Secure Boot trust chain",
+    "Load unchanged official signed GPU driver and complete WDDM/Venus/Neptune protocol/resources/fences",
+    "Export actual application scanout as retained IOSurface with producer-ready and consumer-release timelines",
+    "Provide a legal focused Guest relative virtual HID queue and verify loss-of-focus/stop acknowledgements"
+  ],
+  "captured_at_utc": "2026-11-24T04:23:35.144283+00:00",
+  "code_changes": 0,
+  "consumer_contract_revision": 2,
+  "consumer_production_fingerprint": "0b566ec936c95093f998e4a7dd72a03e30a5ac6c785f383c8b7c085f4b96f0ed",
+  "consumer_production_frozen": false,
+  "consumer_snapshot_phase": "candidate",
+  "consumer_snapshot_revision": 4,
+  "consumer_sources_verified": 16,
+  "consumer_version_manifest_sha256": "2f2b1e92d594cb9080aa6a07f71f90134acef70fafeb7c26b05714a40fa2529f",
+  "efi_continuous_source": false,
+  "efi_diagnostic_entry": "ModuleX.EFIGuestProbe.run(disk:width:height:sharedMemoryBytes:onFrame:)",
+  "efi_origin": "uefi_diagnostic_guest_commands_not_Windows_application_scanout",
+  "owner": "@DNPMBHC",
+  "peer_clone_release_is_not_native_vz_boot_or_scanout_evidence": true,
+  "reports": {
+    "native-fullscreen-probe.json": {
+      "checks_per_run": [
+        32,
+        32
+      ],
+      "copy": "cross-window-native-fullscreen-r4.json",
+      "frames": 24,
+      "native_fullscreen_verified": true,
+      "origin": "host_synthetic_not_guest_scanout",
+      "passed": true,
+      "producer_source_hashes_match": true,
+      "real_guest_verified": false,
+      "source_evidence_sha256": "3f4803292a3e05926742620bbd021abdac26b3c024d3407ab7fc81f49a0a6940",
+      "verification": "readonly_source_hash_and_report_checks; execution_by_window_5c",
+      "virtual_hid_verified": false
+    },
+    "runtime-binary-roundtrip.json": {
+      "checks_per_run": [
+        18,
+        18
+      ],
+      "copy": "cross-window-runtime-roundtrip-r4.json",
+      "frames": 24,
+      "native_fullscreen_verified": false,
+      "origin": "host_synthetic_not_guest_scanout",
+      "passed": true,
+      "producer_source_hashes_match": true,
+      "real_guest_verified": false,
+      "source_evidence_sha256": "1139f925707841c26088e577f2346946c33dc142253ba91b18c6f7101db7aaef",
+      "verification": "readonly_source_hash_and_report_checks; execution_by_window_5c",
+      "virtual_hid_verified": false
+    }
+  },
+  "shared_vm_actions": 0,
+  "supports_real_guest_scanout": false,
+  "supports_signed_windows_vz_boot": false,
+  "supports_virtual_hid_sink": false
+}

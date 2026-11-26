@@ -1,0 +1,258 @@
+{
+  "schema_version": 1,
+  "phase": "phase-10a",
+  "owner": "@DNPMBHC",
+  "target_alias": "target-cn",
+  "golden_id": "golden-win11-arm64-v1",
+  "golden_manifest_sha256": "1988c3217b4c97d53818ac72831360715bf0438543288cc1cb4001a9f00fa846",
+  "ephemeral_clone_alias": "ephemeral-p10a-valorant",
+  "captured_at_utc": "2026-11-25T01:10:24.784876+00:00",
+  "five_dimension_status": {
+    "implementation": "implemented_and_verified",
+    "local_gates": "passed_254_unit_tests_and_anticheat_audit",
+    "real_guest_run": "executed_live_dxmt_trimmed_cursor_blocked_before_lobby",
+    "vendor_vm_support": "unknown",
+    "protected_lobby_and_match": "not_reached_blocked_by_in_game_cursor_visibility"
+  },
+  "cursor_trials_summary": {
+    "trial_count": 4,
+    "in_game_cursor_resolved": false,
+    "resolved_by_trials": [],
+    "relative_aim_working_trials": [],
+    "requires_cocoaspice_host_patch": true,
+    "trials": [
+      {
+        "trial_id": "baseline-trimmed-dxmt",
+        "description": "UTM 5.0.9 default input stack (usb-tablet + usb-mouse + usb-kbd), no spice-vdagent, MouseTrails=0, DXMT active",
+        "in_game_cursor_visible": false,
+        "relative_aim_working": false,
+        "notes": "target-cn launched and ran without freeze under dxmt-native; in-game cursor invisible and audio silent due to Sound=[] from --trim-hardware."
+      },
+      {
+        "trial_id": "trial-1-disable-usb-tablet-guest",
+        "description": "Disabled QEMU USB Tablet (USB\\VID_0627&PID_0001\\28754-0000:00:03.0-1, Problem=22) in Guest keeping pure QEMU USB Mouse (Status=OK) + UTM Capture Mouse",
+        "in_game_cursor_visible": false,
+        "relative_aim_working": false,
+        "notes": "Host QEMU still attached -device usb-tablet; Guest-side disable alone did not restore CocoaSpice/CSMetalRenderer cursor overlay."
+      },
+      {
+        "trial_id": "trial-2-pointer-shadow-accel-vdagent",
+        "description": "Disabled Windows pointer shadow (SPI_SETCURSORSHADOW=0) and pointer accel (MouseSpeed=0, Threshold1/2=0), enforced MouseTrails=0; confirmed spice-vdagent absent (only spice-webdavd Stopped)",
+        "in_game_cursor_visible": false,
+        "relative_aim_working": false,
+        "notes": "GetCursorInfo() reported CURSOR_SHOWING (flags=1, handle=0x10003, pos=(640,360)); root cause isolated to host CocoaSpice/CSMetalRenderer hardware cursor compositing."
+      },
+      {
+        "trial_id": "trial-3-lobby-range-deferred",
+        "description": "Deferred manual character-creation bypass and 3-5m training range run per user decision to prioritize VM infrastructure fixes first",
+        "in_game_cursor_visible": false,
+        "relative_aim_working": false,
+        "notes": "User requested advancing to VM hardening/perfection (cursor compositing, retain virtual sound card, zh-CN locale/IME default, persistent non-reinstall launcher workflow, pause Windows Update & raise pagefile)."
+      }
+    ]
+  },
+  "training_range_benchmark": {
+    "observed_duration_seconds": 32.77,
+    "host_sample_count": 6,
+    "guest_sample_count": 3,
+    "shipping_alive_all_samples": true,
+    "fps_source": "ue4_log_frame_delta",
+    "fps": {
+      "mean": 23.99,
+      "p50": 23.99,
+      "p95": 26.42,
+      "p99": 26.636,
+      "min": 21.29,
+      "max": 26.69
+    },
+    "frame_time_ms": {
+      "mean": 42.218,
+      "p50": 42.218,
+      "p95": 46.495,
+      "p99": 46.875,
+      "min": 37.467,
+      "max": 46.97
+    },
+    "qemu_render_server_cpu": {
+      "mean": 12.6,
+      "p50": 12.9,
+      "p95": 13.075,
+      "p99": 13.095,
+      "min": 11.5,
+      "max": 13.1
+    },
+    "qemu_worker_cpu": {
+      "mean": 196.95,
+      "p50": 196.45,
+      "p95": 204.95,
+      "p99": 205.07,
+      "min": 187.2,
+      "max": 205.1
+    },
+    "total_hypervisor_rss_mib": {
+      "mean": 1809.558,
+      "p50": 1789.545,
+      "p95": 2020.523,
+      "p99": 2045.657,
+      "min": 1574.41,
+      "max": 2051.94
+    }
+  },
+  "ace_final_verdict": {
+    "status": "lobby_and_range_not_reached",
+    "entered_lobby": false,
+    "entered_training_range": false,
+    "observed_duration_seconds": 32.77,
+    "kicked_or_error_popup": false,
+    "queue_precheck_attempted": false,
+    "queue_precheck_rejected": false,
+    "ace_game_1275_present": false,
+    "main_exit_code": null,
+    "summary": "Session did not reach lobby/training range; ACE-GAME.sys mid-game impact remains unverified."
+  },
+  "zero_drift_verification": {
+    "ephemeral_deleted": true,
+    "utm_defaults_restored": true,
+    "golden_readonly": true,
+    "golden_config_sha256": "5e3b775ca4fd05a81ae9e1f2c5d61abe576334340bd51b851b6d65ab89cff390",
+    "golden_bundle_sha256": "784ba01e8c45bc0e32fb81849a359b909a3d87b15cb8486db49df6467bcf4947",
+    "golden_zero_drift": true,
+    "primary_vm_a_config_sha256": "10793d07678f8621e1d75ada73443b3f14e272036dde4f90b277267c2e1033b7",
+    "primary_vm_a_bundle_sha256": "ccd2d2de4981b8b0ca7705824ee6cc4166828651a03f198fd518ba81771caae5",
+    "primary_zero_drift": true,
+    "cache_disk_untouched": true
+  },
+  "notes": [
+    "Spawned strictly via golden_guest_manager.py spawn-ephemeral --trim-hardware --dx-driver DXMT --fps-limit 120 (clone 0.0046s, QGA ready 24.075s); optimizer v2 applied inside ephemeral clone only.",
+    "QEMURenderServer verified loading dxmt-native.framework (QEMUDirectXDriver=2, QEMURendererFPSLimit=120, dxmt_evidence_count=6).",
+    "Live target-cn (VALORANT-Win64-Shipping PID 1088) ran stably with advancing UE4 log frame numbers (32.77s sampled window: mean 23.99 FPS lower-bound from mod-1000 log delta, QEMURenderServer CPU mean 12.6%, QEMU worker CPU mean 196.95%, total RSS mean 1809.56 MiB).",
+    "ACE-CORE10405 and ACE-CORE20405 remained Running (ExitCode=0); no Event 7000/1275 service error occurred in the pre-lobby window, while mid-game/training-range ACE-GAME.sys behavior remains unverified until lobby/range entry.",
+    "Additional VM defects identified for 10B/next phase: (1) --trim-hardware emptied Sound=[] causing no audio; (2) default en-US locale/IME required live switch to zh-Hans-CN Microsoft Pinyin; (3) ephemeral C: reset requires re-running official installer each launch; (4) WindowsUpdateClient installed KB5036908 in background and triggered System Event 26 Virtual Memory Minimum Too Low.",
+    "All evidence paths strictly redacted with neutral placeholders; zero drift verified via full-disk SHA-256 on golden-win11-arm64-v1 and primary vm-a."
+  ],
+  "compliance": {
+    "modified_game_or_ace_binaries": false,
+    "replaced_signed_system_dlls": false,
+    "hidden_virtualization_or_spoofed_hardware": false,
+    "automated_auth_or_captcha": false,
+    "utm_defaults_restored": true,
+    "golden_zero_drift": true,
+    "primary_zero_drift": true
+  },
+  "preflight_snapshot": {
+    "clone_seconds": 0.0046,
+    "qga_ready_seconds": 24.075,
+    "utm_prefs": {
+      "QEMUDirectXDriver": 2,
+      "QEMURendererFPSLimit": 120,
+      "backup_saved": true
+    },
+    "optimizer_v2_applied": true,
+    "host_qemu_inputs": {
+      "input_devices": [
+        "usb-tablet,bus=usb-bus.0",
+        "usb-mouse,bus=usb-bus.0",
+        "usb-kbd,bus=usb-bus.0"
+      ],
+      "has_usb_tablet": true,
+      "has_usb_mouse": true,
+      "has_ps2": false,
+      "pure_relative_mouse_only": false
+    },
+    "render_server_backend": {
+      "active_backend": "dxmt-native",
+      "dxmt_native_loaded": true,
+      "d3dmetal_native_loaded": false,
+      "virglrenderer_loaded": false,
+      "kosmickrisp_loaded": false,
+      "dxmt_evidence_count": 6,
+      "d3dmetal_evidence_count": 0
+    },
+    "video_controller": {
+      "Name": "Red Hat VirtIO GPU 3D controller",
+      "DriverVersion": "100.6.101.58000",
+      "CurrentHorizontalResolution": 1280,
+      "CurrentVerticalResolution": 720,
+      "CurrentRefreshRate": 120
+    },
+    "host_sound_config": [],
+    "installer_sha256": "686ee838411863d2eccdbe8a0596129e509819ae46626408760588ae8b0c800e"
+  },
+  "ace_runtime_check": {
+    "ace_drivers": [
+      {
+        "Name": "ACE-CORE10405",
+        "State": "Running",
+        "Status": "OK",
+        "ExitCode": 0,
+        "StartMode": "Manual",
+        "PathName": "\\??\\C:\\Program Files\\AntiCheatExpert\\ACE-CORE10405.sys"
+      },
+      {
+        "Name": "ACE-CORE20405",
+        "State": "Running",
+        "Status": "OK",
+        "ExitCode": 0,
+        "StartMode": "Manual",
+        "PathName": "\\??\\C:\\Program Files\\AntiCheatExpert\\ACE-CORE20405.sys"
+      },
+      {
+        "Name": "Filetrace",
+        "State": "Stopped",
+        "Status": "OK",
+        "ExitCode": 1077,
+        "StartMode": "Manual",
+        "PathName": "C:\\WINDOWS\\system32\\drivers\\filetrace.sys"
+      },
+      {
+        "Name": "spaceparser",
+        "State": "Stopped",
+        "Status": "OK",
+        "ExitCode": 1077,
+        "StartMode": "Manual",
+        "PathName": "C:\\WINDOWS\\system32\\drivers\\spaceparser.sys"
+      },
+      {
+        "Name": "spaceport",
+        "State": "Running",
+        "Status": "OK",
+        "ExitCode": 0,
+        "StartMode": "Boot",
+        "PathName": "C:\\WINDOWS\\system32\\drivers\\spaceport.sys"
+      }
+    ],
+    "system_service_errors": []
+  },
+  "observed_vm_defects_for_next_phase": [
+    {
+      "id": "VM-DEFECT-01",
+      "priority": "P0",
+      "title": "In-game cursor invisible in CocoaSpice/CSMetalRenderer",
+      "evidence": "handoff/phase-10/evidence/p10-a/cursor-diagnosis-for-10b.md"
+    },
+    {
+      "id": "VM-DEFECT-02",
+      "priority": "P0",
+      "title": "No audio because --trim-hardware clears Sound=[]",
+      "evidence": "config.plist Sound=[]"
+    },
+    {
+      "id": "VM-DEFECT-03",
+      "priority": "P1",
+      "title": "Default en-US UI and missing default zh-CN IME",
+      "evidence": "dism /online /get-intl showed zh-CN already installed"
+    },
+    {
+      "id": "VM-DEFECT-04",
+      "priority": "P1",
+      "title": "Ephemeral C: resets official launcher registration every launch",
+      "evidence": "F:\\VALORANT_CN persisted via CoW but C: launcher metadata resets"
+    },
+    {
+      "id": "VM-DEFECT-05",
+      "priority": "P1",
+      "title": "Background WindowsUpdateClient (KB5036908) + Event 26 Virtual Memory Minimum Too Low",
+      "evidence": "handoff/phase-10/evidence/p10-a/monitor-live-dxmt-trimmed.json"
+    }
+  ]
+}

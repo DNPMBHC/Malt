@@ -1,0 +1,5 @@
+[dry-run] configuration=Release hardened_runtime=YES embedded_runtime=1 skip_dmg=0
+[dry-run] build_command: xcodebuild -project /workspace/my-project/demo-app/demo-app.xcodeproj -scheme demo-app -configuration Release -destination platform=macOS,arch=arm64 -scmProvider system -skipPackageUpdates -disableAutomaticPackageResolution -onlyUsePackageVersionsFromResolvedFile ENABLE_HARDENED_RUNTIME=YES CODE_SIGNING_ALLOWED=NO build
+[dry-run] app_bundle: /home/user/Library/Developer/Xcode/DerivedData/demo-app-fyaiwnpgixvkqafvfgngrjhkakvb/Build/Products/Release/demo-app.app
+[dry-run] dmg_path: /workspace/my-project/demo-app/build/release/demo-app.dmg
+

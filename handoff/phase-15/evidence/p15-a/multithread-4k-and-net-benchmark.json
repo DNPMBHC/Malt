@@ -1,0 +1,959 @@
+{
+  "schema_version": 1,
+  "owner": "@DNPMBHC",
+  "phase": "15A",
+  "measured_at_utc": "2026-11-25T18:45:46.438389+00:00",
+  "device_tree_and_deemulation": {
+    "qemu_device_tree": {
+      "proxy_qos_user_interactive": true,
+      "device_count": 12,
+      "devices": [
+        "virtio-ramfb-gl,hostmem=8G,blob=true,venus=true,neptune=true,refresh_rate=120000",
+        "intel-hda",
+        "hda-duplex,audiodev=audio0",
+        "nec-usb-xhci,id=usb-bus",
+        "virtio-mouse-pci",
+        "usb-kbd,bus=usb-bus.0",
+        "virtio-blk-pci,drive=driveDE9BDC80-A8A8-4364-9319-D28A528FB316,serial=DE9BDC80A8A843649319,bootindex=0",
+        "virtio-serial",
+        "virtserialport,chardev=org.qemu.guest_agent,name=org.qemu.guest_agent.0",
+        "virtio-rng-pci",
+        "tpm-crb-device,tpmdev=tpm0",
+        "virtio-net-pci,netdev=net0,mac=6E:49:A9:80:B5:94,ioeventfd=on,rx_queue_size=1024"
+      ],
+      "netdevs": [
+        "stream,id=net0,server=off,addr.type=inet,addr.host=127.0.0.1,addr.port=52673"
+      ],
+      "has_virtio_mouse": true,
+      "has_usb_mouse": false,
+      "has_usb_tablet": false,
+      "usb_redir_device_count": 0,
+      "usb_redir_chardev_count": 0,
+      "extra_qemu_xhci_count": 0,
+      "has_virtio_balloon": false,
+      "has_slirp_user_net": false,
+      "has_intel_hda": true,
+      "has_virtio_sound": false,
+      "has_virtio_blk": true,
+      "has_virtio_gpu": true,
+      "deemulated_clean": true
+    },
+    "guest_security_and_audio": {
+      "secure_boot_enabled": true,
+      "whql_vioinput_present": true,
+      "whql_viosnd_present": false,
+      "audio_devices": [
+        {
+          "Name": "High Definition Audio Device",
+          "Manufacturer": "Microsoft",
+          "Status": "OK"
+        }
+      ],
+      "pointing_devices": [
+        {
+          "Name": "HID-compliant mouse",
+          "Description": "HID-compliant mouse",
+          "Status": "OK"
+        }
+      ]
+    },
+    "virtio_sound_evaluation": {
+      "whql_viosnd_available": false,
+      "retained_audio_device": "intel-hda",
+      "verdict": "No WHQL-signed viosnd/virtio-sound driver present in sealed Windows 11 ARM64 image; honestly retained intel-hda with Secure Boot=True."
+    },
+    "renderer_fps_limit_default": 120,
+    "triple_buffering_drawable_count": 3
+  },
+  "vmnet_bridge_daemon_audit": {
+    "build_ok": true,
+    "self_check": {
+      "ok": true,
+      "version": "1.0.0-p15a",
+      "uid": 501,
+      "vmnet_symbols_linked": true,
+      "default_socket": "/var/run/malt-vmnet-bridge.sock"
+    },
+    "plist_template_lint_ok": true,
+    "daemon_status": {
+      "daemon_label": "com.malt.vmnet-bridge",
+      "plist_installed": false,
+      "socket_path": "/var/run/malt-vmnet-bridge.sock",
+      "socket_active": false
+    },
+    "host_network_capabilities": {
+      "official_utm_vmnet_entitled": true,
+      "malt_vmnet_bridge_source_ready": true,
+      "malt_vmnet_bridge_plist_installed": false,
+      "malt_vmnet_bridge_socket_active": false,
+      "malt_vmnet_bridge_socket_path": null,
+      "socket_vmnet_installed": false,
+      "socket_vmnet_socket_active": false,
+      "socket_vmnet_socket_path": null,
+      "active_vmnet_daemon_socket": null,
+      "recommended_native_mode": "vmnet-shared",
+      "adhoc_recommended_mode": "socket-stream",
+      "adhoc_sandbox_compatible_mode": "socket-stream"
+    },
+    "note": "malt-vmnet-bridge compiled and LaunchDaemon template verified; not yet sudo-installed on this headless run, so ad-hoc UTM-Custom seamlessly falls back to the zero-privilege full TCP+UDP+ICMP high-QoS proxy."
+  },
+  "mixed_tcp_udp_network_benchmark": {
+    "duration_sec_per_arm": 60,
+    "arms": {
+      "full_tcp_udp_socket_stream": {
+        "label": "full-tcp-udp-stream",
+        "network_mode": "socket-stream",
+        "app_used": "utm_custom_adhoc",
+        "gateway_ip": "10.12.0.1",
+        "icmp_ping_ok": true,
+        "proxy_qos_user_interactive": true,
+        "proxy_stats": {
+          "qos_user_interactive": true,
+          "rx_frames": 15684,
+          "tx_frames": 18755,
+          "udp_fwd_packets": 7992,
+          "udp_ret_packets": 7680,
+          "icmp_echo_packets": 3,
+          "tcp_syn_count": 77,
+          "tcp_established_count": 73,
+          "tcp_guest_to_host_bytes": 7397376,
+          "tcp_host_to_guest_bytes": 7397376,
+          "tcp_retransmits": 0
+        },
+        "device_tree_audit": {
+          "device_count": 12,
+          "devices": [
+            "virtio-ramfb-gl,hostmem=8G,blob=true,venus=true,neptune=true,refresh_rate=120000",
+            "intel-hda",
+            "hda-duplex,audiodev=audio0",
+            "nec-usb-xhci,id=usb-bus",
+            "virtio-mouse-pci",
+            "usb-kbd,bus=usb-bus.0",
+            "virtio-blk-pci,drive=driveDE9BDC80-A8A8-4364-9319-D28A528FB316,serial=DE9BDC80A8A843649319,bootindex=0",
+            "virtio-serial",
+            "virtserialport,chardev=org.qemu.guest_agent,name=org.qemu.guest_agent.0",
+            "virtio-rng-pci",
+            "tpm-crb-device,tpmdev=tpm0",
+            "virtio-net-pci,netdev=net0,mac=62:E2:BC:B2:4F:91,ioeventfd=on,rx_queue_size=1024"
+          ],
+          "netdevs": [
+            "stream,id=net0,server=off,addr.type=inet,addr.host=127.0.0.1,addr.port=55005"
+          ],
+          "has_virtio_mouse": true,
+          "has_usb_mouse": false,
+          "has_usb_tablet": false,
+          "usb_redir_device_count": 0,
+          "usb_redir_chardev_count": 0,
+          "extra_qemu_xhci_count": 0,
+          "has_virtio_balloon": false,
+          "has_slirp_user_net": false,
+          "has_intel_hda": true,
+          "has_virtio_sound": false,
+          "has_virtio_blk": true,
+          "has_virtio_gpu": true,
+          "deemulated_clean": true
+        },
+        "host_cpu_loaded": {
+          "captured_at_utc": "2026-11-25T18:43:43.097289+00:00",
+          "elapsed_seconds": 28.0,
+          "qemu_main_thread_cpu": 5.7,
+          "qemu_thread_count": 57,
+          "qemu_render_server_cpu": 0.0,
+          "qemu_worker_cpu": 20.3,
+          "total_hypervisor_rss_mib": 5793.09
+        },
+        "ok": true,
+        "target_host": "10.12.0.1",
+        "target_udp_port": 53142,
+        "target_tcp_port": 54988,
+        "duration_sec": 60,
+        "udp": {
+          "sent": 7680,
+          "received": 7680,
+          "lost": 0,
+          "loss_pct": 0.0,
+          "burst_loss_ge3": 0,
+          "p50_rtt_ms": 0.5375,
+          "p99_rtt_ms": 3.7274,
+          "quiet_p99_rtt_ms": 1.7911,
+          "loaded_p50_rtt_ms": 0.38,
+          "loaded_p99_rtt_ms": 3.7996,
+          "mean_jitter_ms": 0.4391
+        },
+        "tcp": {
+          "connect_attempts": 73,
+          "connect_ok": 73,
+          "connect_success_pct": 100.0,
+          "ops_ok": 1806,
+          "ops_err": 0,
+          "verify_errors": 0,
+          "total_bytes": 14794752,
+          "p50_rtt_ms": 0.699,
+          "p99_rtt_ms": 3.8519,
+          "loaded_p99_rtt_ms": 3.9594
+        }
+      },
+      "vmnet_shared": {
+        "label": "vmnet-shared",
+        "network_mode": "vmnet-shared",
+        "app_used": "official_utm",
+        "gateway_ip": "192.168.64.1",
+        "icmp_ping_ok": true,
+        "proxy_qos_user_interactive": null,
+        "proxy_stats": null,
+        "device_tree_audit": {
+          "device_count": 13,
+          "devices": [
+            "virtio-net-pci,mac=22:DD:00:1C:1D:4F,netdev=net0",
+            "virtio-ramfb-gl,hostmem=8G,blob=true,venus=true,neptune=true,refresh_rate=120000",
+            "intel-hda",
+            "hda-duplex,audiodev=audio0",
+            "nec-usb-xhci,id=usb-bus",
+            "usb-tablet,bus=usb-bus.0",
+            "usb-mouse,bus=usb-bus.0",
+            "usb-kbd,bus=usb-bus.0",
+            "virtio-blk-pci,drive=driveDE9BDC80-A8A8-4364-9319-D28A528FB316,serial=DE9BDC80A8A843649319,bootindex=0",
+            "virtio-serial",
+            "virtserialport,chardev=org.qemu.guest_agent,name=org.qemu.guest_agent.0",
+            "virtio-rng-pci",
+            "tpm-crb-device,tpmdev=tpm0"
+          ],
+          "netdevs": [
+            "vmnet-shared,id=net0"
+          ],
+          "has_virtio_mouse": false,
+          "has_usb_mouse": true,
+          "has_usb_tablet": true,
+          "usb_redir_device_count": 0,
+          "usb_redir_chardev_count": 0,
+          "extra_qemu_xhci_count": 0,
+          "has_virtio_balloon": false,
+          "has_slirp_user_net": false,
+          "has_intel_hda": true,
+          "has_virtio_sound": false,
+          "has_virtio_blk": true,
+          "has_virtio_gpu": true,
+          "deemulated_clean": false
+        },
+        "host_cpu_loaded": {
+          "captured_at_utc": "2026-11-25T18:02:10.566714+00:00",
+          "elapsed_seconds": 28.0,
+          "qemu_main_thread_cpu": 2.8,
+          "qemu_thread_count": 71,
+          "qemu_render_server_cpu": 3.9,
+          "qemu_worker_cpu": 262.3,
+          "total_hypervisor_rss_mib": 4517.85
+        },
+        "ok": true,
+        "duration_sec": 60,
+        "udp": {
+          "sent": 7680,
+          "received": 7680,
+          "lost": 0,
+          "loss_pct": 0.0,
+          "burst_loss_ge3": 0,
+          "p50_rtt_ms": 0.4,
+          "p99_rtt_ms": 7.0742,
+          "quiet_p99_rtt_ms": 9.3309,
+          "loaded_p50_rtt_ms": 0.387,
+          "loaded_p99_rtt_ms": 5.3327,
+          "mean_jitter_ms": 0.7871
+        },
+        "tcp": {
+          "connect_attempts": 73,
+          "connect_ok": 73,
+          "connect_success_pct": 100.0,
+          "ops_ok": 1819,
+          "ops_err": 0,
+          "verify_errors": 0,
+          "total_bytes": 14901248,
+          "p50_rtt_ms": 0.432,
+          "p99_rtt_ms": 14.3227,
+          "loaded_p99_rtt_ms": 7.06
+        }
+      },
+      "slirp_emulated": {
+        "label": "slirp-emulated",
+        "network_mode": "emulated",
+        "app_used": "utm_custom_adhoc",
+        "gateway_ip": "10.0.2.2",
+        "icmp_ping_ok": true,
+        "proxy_qos_user_interactive": null,
+        "proxy_stats": null,
+        "device_tree_audit": {
+          "device_count": 12,
+          "devices": [
+            "virtio-net-pci,mac=D2:59:8D:BE:93:84,netdev=net0",
+            "virtio-ramfb-gl,hostmem=8G,blob=true,venus=true,neptune=true,refresh_rate=120000",
+            "intel-hda",
+            "hda-duplex,audiodev=audio0",
+            "nec-usb-xhci,id=usb-bus",
+            "virtio-mouse-pci",
+            "usb-kbd,bus=usb-bus.0",
+            "virtio-blk-pci,drive=driveDE9BDC80-A8A8-4364-9319-D28A528FB316,serial=DE9BDC80A8A843649319,bootindex=0",
+            "virtio-serial",
+            "virtserialport,chardev=org.qemu.guest_agent,name=org.qemu.guest_agent.0",
+            "virtio-rng-pci",
+            "tpm-crb-device,tpmdev=tpm0"
+          ],
+          "netdevs": [
+            "user,id=net0"
+          ],
+          "has_virtio_mouse": true,
+          "has_usb_mouse": false,
+          "has_usb_tablet": false,
+          "usb_redir_device_count": 0,
+          "usb_redir_chardev_count": 0,
+          "extra_qemu_xhci_count": 0,
+          "has_virtio_balloon": false,
+          "has_slirp_user_net": true,
+          "has_intel_hda": true,
+          "has_virtio_sound": false,
+          "has_virtio_blk": true,
+          "has_virtio_gpu": true,
+          "deemulated_clean": false
+        },
+        "host_cpu_loaded": {
+          "captured_at_utc": "2026-11-25T18:06:18.438298+00:00",
+          "elapsed_seconds": 28.0,
+          "qemu_main_thread_cpu": 2.9,
+          "qemu_thread_count": 74,
+          "qemu_render_server_cpu": 0.7,
+          "qemu_worker_cpu": 221.9,
+          "total_hypervisor_rss_mib": 6541.86
+        },
+        "ok": true,
+        "duration_sec": 60,
+        "udp": {
+          "sent": 7680,
+          "received": 7680,
+          "lost": 0,
+          "loss_pct": 0.0,
+          "burst_loss_ge3": 0,
+          "p50_rtt_ms": 0.412,
+          "p99_rtt_ms": 7.8212,
+          "quiet_p99_rtt_ms": 9.0249,
+          "loaded_p50_rtt_ms": 0.396,
+          "loaded_p99_rtt_ms": 7.0046,
+          "mean_jitter_ms": 0.8228
+        },
+        "tcp": {
+          "connect_attempts": 74,
+          "connect_ok": 74,
+          "connect_success_pct": 100.0,
+          "ops_ok": 1840,
+          "ops_err": 0,
+          "verify_errors": 0,
+          "total_bytes": 15073280,
+          "p50_rtt_ms": 0.4865,
+          "p99_rtt_ms": 9.3279,
+          "loaded_p99_rtt_ms": 6.88
+        }
+      }
+    },
+    "comparisons": {
+      "full_tcp_udp_socket_stream_vs_slirp": {
+        "candidate_label": "full-tcp-udp-stream",
+        "udp_zero_loss": true,
+        "udp_p50_delta_pct": 30.46,
+        "udp_p99_delta_pct": -52.34,
+        "udp_loaded_p99_delta_pct": -45.76,
+        "tcp_zero_verify_errors": true,
+        "tcp_connect_success_pct": 100.0,
+        "tcp_p50_delta_pct": 43.68,
+        "tcp_p99_delta_pct": -58.71,
+        "tcp_loaded_p99_delta_pct": -42.45
+      },
+      "vmnet_shared_vs_slirp": {
+        "candidate_label": "vmnet-shared",
+        "udp_zero_loss": true,
+        "udp_p50_delta_pct": -2.91,
+        "udp_p99_delta_pct": -9.55,
+        "udp_loaded_p99_delta_pct": -23.87,
+        "tcp_zero_verify_errors": true,
+        "tcp_connect_success_pct": 100.0,
+        "tcp_p50_delta_pct": -11.2,
+        "tcp_p99_delta_pct": 53.55,
+        "tcp_loaded_p99_delta_pct": 2.62
+      }
+    }
+  },
+  "multithread_graphics_1080p_4k": {
+    "d3d11": {
+      "1080p": {
+        "width": 1920,
+        "height": 1080,
+        "arms": [
+          {
+            "ok": true,
+            "api": "d3d11",
+            "adapter": "Red Hat VirtIO GPU 3D controller",
+            "driver_concurrent_creates": false,
+            "driver_command_lists": false,
+            "deferred_contexts_used": false,
+            "width": 1920,
+            "height": 1080,
+            "threads": 1,
+            "draws_per_frame": 2048,
+            "frames": 45,
+            "record_cpu_ms_mean": 0.18,
+            "submit_wait_ms_mean": 9.081,
+            "total_frame_ms_mean": 9.267,
+            "frame_ms_p50": 9.232,
+            "frame_ms_p99": 9.419,
+            "fps_mean": 107.912,
+            "fps_p1_low": 106.167
+          },
+          {
+            "ok": true,
+            "api": "d3d11",
+            "adapter": "Red Hat VirtIO GPU 3D controller",
+            "driver_concurrent_creates": false,
+            "driver_command_lists": false,
+            "deferred_contexts_used": true,
+            "width": 1920,
+            "height": 1080,
+            "threads": 4,
+            "draws_per_frame": 2048,
+            "frames": 45,
+            "record_cpu_ms_mean": 0.83,
+            "submit_wait_ms_mean": 9.56,
+            "total_frame_ms_mean": 10.411,
+            "frame_ms_p50": 10.22,
+            "frame_ms_p99": 11.796,
+            "fps_mean": 96.05,
+            "fps_p1_low": 84.777
+          },
+          {
+            "ok": true,
+            "api": "d3d11",
+            "adapter": "Red Hat VirtIO GPU 3D controller",
+            "driver_concurrent_creates": false,
+            "driver_command_lists": false,
+            "deferred_contexts_used": true,
+            "width": 1920,
+            "height": 1080,
+            "threads": 8,
+            "draws_per_frame": 2048,
+            "frames": 45,
+            "record_cpu_ms_mean": 1.304,
+            "submit_wait_ms_mean": 9.698,
+            "total_frame_ms_mean": 11.021,
+            "frame_ms_p50": 10.98,
+            "frame_ms_p99": 11.83,
+            "fps_mean": 90.736,
+            "fps_p1_low": 84.532
+          }
+        ],
+        "scaling": {
+          "api": "d3d11",
+          "resolution": "1920x1080",
+          "single_thread_record_cpu_ms": 0.18,
+          "single_thread_total_frame_ms": 9.267,
+          "single_thread_fps_mean": 107.912,
+          "mt_arms": [
+            {
+              "threads": 4,
+              "record_cpu_ms_mean": 0.83,
+              "record_cpu_speedup_x": 0.22,
+              "record_cpu_delta_pct": 361.11,
+              "total_frame_ms_mean": 10.411,
+              "total_frame_ms_delta_pct": 12.34,
+              "fps_mean": 96.05,
+              "fps_gain_pct": -10.99
+            },
+            {
+              "threads": 8,
+              "record_cpu_ms_mean": 1.304,
+              "record_cpu_speedup_x": 0.14,
+              "record_cpu_delta_pct": 624.44,
+              "total_frame_ms_mean": 11.021,
+              "total_frame_ms_delta_pct": 18.93,
+              "fps_mean": 90.736,
+              "fps_gain_pct": -15.92
+            }
+          ],
+          "best_mt_arm": {
+            "threads": 4,
+            "record_cpu_ms_mean": 0.83,
+            "record_cpu_speedup_x": 0.22,
+            "record_cpu_delta_pct": 361.11,
+            "total_frame_ms_mean": 10.411,
+            "total_frame_ms_delta_pct": 12.34,
+            "fps_mean": 96.05,
+            "fps_gain_pct": -10.99
+          }
+        }
+      },
+      "4k": {
+        "width": 3840,
+        "height": 2160,
+        "arms": [
+          {
+            "ok": true,
+            "api": "d3d11",
+            "adapter": "Red Hat VirtIO GPU 3D controller",
+            "driver_concurrent_creates": false,
+            "driver_command_lists": false,
+            "deferred_contexts_used": false,
+            "width": 3840,
+            "height": 2160,
+            "threads": 1,
+            "draws_per_frame": 2048,
+            "frames": 45,
+            "record_cpu_ms_mean": 0.366,
+            "submit_wait_ms_mean": 33.507,
+            "total_frame_ms_mean": 33.9,
+            "frame_ms_p50": 33.628,
+            "frame_ms_p99": 39.587,
+            "fps_mean": 29.499,
+            "fps_p1_low": 25.261
+          },
+          {
+            "ok": true,
+            "api": "d3d11",
+            "adapter": "Red Hat VirtIO GPU 3D controller",
+            "driver_concurrent_creates": false,
+            "driver_command_lists": false,
+            "deferred_contexts_used": true,
+            "width": 3840,
+            "height": 2160,
+            "threads": 4,
+            "draws_per_frame": 2048,
+            "frames": 45,
+            "record_cpu_ms_mean": 0.982,
+            "submit_wait_ms_mean": 33.989,
+            "total_frame_ms_mean": 35.012,
+            "frame_ms_p50": 34.585,
+            "frame_ms_p99": 44.782,
+            "fps_mean": 28.562,
+            "fps_p1_low": 22.331
+          },
+          {
+            "ok": true,
+            "api": "d3d11",
+            "adapter": "Red Hat VirtIO GPU 3D controller",
+            "driver_concurrent_creates": false,
+            "driver_command_lists": false,
+            "deferred_contexts_used": true,
+            "width": 3840,
+            "height": 2160,
+            "threads": 8,
+            "draws_per_frame": 2048,
+            "frames": 45,
+            "record_cpu_ms_mean": 1.481,
+            "submit_wait_ms_mean": 33.747,
+            "total_frame_ms_mean": 35.258,
+            "frame_ms_p50": 35.191,
+            "frame_ms_p99": 37.404,
+            "fps_mean": 28.362,
+            "fps_p1_low": 26.735
+          }
+        ],
+        "scaling": {
+          "api": "d3d11",
+          "resolution": "3840x2160",
+          "single_thread_record_cpu_ms": 0.366,
+          "single_thread_total_frame_ms": 33.9,
+          "single_thread_fps_mean": 29.499,
+          "mt_arms": [
+            {
+              "threads": 4,
+              "record_cpu_ms_mean": 0.982,
+              "record_cpu_speedup_x": 0.37,
+              "record_cpu_delta_pct": 168.31,
+              "total_frame_ms_mean": 35.012,
+              "total_frame_ms_delta_pct": 3.28,
+              "fps_mean": 28.562,
+              "fps_gain_pct": -3.18
+            },
+            {
+              "threads": 8,
+              "record_cpu_ms_mean": 1.481,
+              "record_cpu_speedup_x": 0.25,
+              "record_cpu_delta_pct": 304.64,
+              "total_frame_ms_mean": 35.258,
+              "total_frame_ms_delta_pct": 4.01,
+              "fps_mean": 28.362,
+              "fps_gain_pct": -3.85
+            }
+          ],
+          "best_mt_arm": {
+            "threads": 4,
+            "record_cpu_ms_mean": 0.982,
+            "record_cpu_speedup_x": 0.37,
+            "record_cpu_delta_pct": 168.31,
+            "total_frame_ms_mean": 35.012,
+            "total_frame_ms_delta_pct": 3.28,
+            "fps_mean": 28.562,
+            "fps_gain_pct": -3.18
+          }
+        }
+      }
+    },
+    "vulkan_virtio": {
+      "1080p": {
+        "width": 1920,
+        "height": 1080,
+        "arms": [
+          {
+            "ok": true,
+            "api": "vulkan",
+            "device_name": "Virtio-GPU Venus (Apple M4)",
+            "api_version": "1.3.334",
+            "driver_version": 109052003,
+            "width": 1920,
+            "height": 1080,
+            "threads": 1,
+            "draws_per_frame": 2048,
+            "frames": 45,
+            "record_cpu_ms_mean": 0.469,
+            "submit_wait_ms_mean": 16.143,
+            "total_frame_ms_mean": 16.613,
+            "frame_ms_p50": 15.816,
+            "frame_ms_p99": 34.606,
+            "fps_mean": 60.192,
+            "fps_p1_low": 28.896
+          },
+          {
+            "ok": true,
+            "api": "vulkan",
+            "device_name": "Virtio-GPU Venus (Apple M4)",
+            "api_version": "1.3.334",
+            "driver_version": 109052003,
+            "width": 1920,
+            "height": 1080,
+            "threads": 4,
+            "draws_per_frame": 2048,
+            "frames": 45,
+            "record_cpu_ms_mean": 0.835,
+            "submit_wait_ms_mean": 15.062,
+            "total_frame_ms_mean": 15.897,
+            "frame_ms_p50": 15.881,
+            "frame_ms_p99": 16.362,
+            "fps_mean": 62.903,
+            "fps_p1_low": 61.118
+          },
+          {
+            "ok": true,
+            "api": "vulkan",
+            "device_name": "Virtio-GPU Venus (Apple M4)",
+            "api_version": "1.3.334",
+            "driver_version": 109052003,
+            "width": 1920,
+            "height": 1080,
+            "threads": 8,
+            "draws_per_frame": 2048,
+            "frames": 45,
+            "record_cpu_ms_mean": 1.372,
+            "submit_wait_ms_mean": 14.456,
+            "total_frame_ms_mean": 15.829,
+            "frame_ms_p50": 15.84,
+            "frame_ms_p99": 17.246,
+            "fps_mean": 63.175,
+            "fps_p1_low": 57.984
+          }
+        ],
+        "scaling": {
+          "api": "vulkan",
+          "resolution": "1920x1080",
+          "single_thread_record_cpu_ms": 0.469,
+          "single_thread_total_frame_ms": 16.613,
+          "single_thread_fps_mean": 60.192,
+          "mt_arms": [
+            {
+              "threads": 4,
+              "record_cpu_ms_mean": 0.835,
+              "record_cpu_speedup_x": 0.56,
+              "record_cpu_delta_pct": 78.04,
+              "total_frame_ms_mean": 15.897,
+              "total_frame_ms_delta_pct": -4.31,
+              "fps_mean": 62.903,
+              "fps_gain_pct": 4.5
+            },
+            {
+              "threads": 8,
+              "record_cpu_ms_mean": 1.372,
+              "record_cpu_speedup_x": 0.34,
+              "record_cpu_delta_pct": 192.54,
+              "total_frame_ms_mean": 15.829,
+              "total_frame_ms_delta_pct": -4.72,
+              "fps_mean": 63.175,
+              "fps_gain_pct": 4.96
+            }
+          ],
+          "best_mt_arm": {
+            "threads": 8,
+            "record_cpu_ms_mean": 1.372,
+            "record_cpu_speedup_x": 0.34,
+            "record_cpu_delta_pct": 192.54,
+            "total_frame_ms_mean": 15.829,
+            "total_frame_ms_delta_pct": -4.72,
+            "fps_mean": 63.175,
+            "fps_gain_pct": 4.96
+          }
+        }
+      },
+      "4k": {
+        "width": 3840,
+        "height": 2160,
+        "arms": [
+          {
+            "ok": true,
+            "api": "vulkan",
+            "device_name": "Virtio-GPU Venus (Apple M4)",
+            "api_version": "1.3.334",
+            "driver_version": 109052003,
+            "width": 3840,
+            "height": 2160,
+            "threads": 1,
+            "draws_per_frame": 2048,
+            "frames": 45,
+            "record_cpu_ms_mean": 0.238,
+            "submit_wait_ms_mean": 15.542,
+            "total_frame_ms_mean": 15.781,
+            "frame_ms_p50": 15.798,
+            "frame_ms_p99": 17.398,
+            "fps_mean": 63.367,
+            "fps_p1_low": 57.479
+          },
+          {
+            "ok": true,
+            "api": "vulkan",
+            "device_name": "Virtio-GPU Venus (Apple M4)",
+            "api_version": "1.3.334",
+            "driver_version": 109052003,
+            "width": 3840,
+            "height": 2160,
+            "threads": 4,
+            "draws_per_frame": 2048,
+            "frames": 45,
+            "record_cpu_ms_mean": 0.917,
+            "submit_wait_ms_mean": 15.06,
+            "total_frame_ms_mean": 15.977,
+            "frame_ms_p50": 15.904,
+            "frame_ms_p99": 18.199,
+            "fps_mean": 62.591,
+            "fps_p1_low": 54.948
+          },
+          {
+            "ok": true,
+            "api": "vulkan",
+            "device_name": "Virtio-GPU Venus (Apple M4)",
+            "api_version": "1.3.334",
+            "driver_version": 109052003,
+            "width": 3840,
+            "height": 2160,
+            "threads": 8,
+            "draws_per_frame": 2048,
+            "frames": 45,
+            "record_cpu_ms_mean": 1.293,
+            "submit_wait_ms_mean": 14.634,
+            "total_frame_ms_mean": 15.927,
+            "frame_ms_p50": 15.896,
+            "frame_ms_p99": 17.705,
+            "fps_mean": 62.786,
+            "fps_p1_low": 56.481
+          }
+        ],
+        "scaling": {
+          "api": "vulkan",
+          "resolution": "3840x2160",
+          "single_thread_record_cpu_ms": 0.238,
+          "single_thread_total_frame_ms": 15.781,
+          "single_thread_fps_mean": 63.367,
+          "mt_arms": [
+            {
+              "threads": 4,
+              "record_cpu_ms_mean": 0.917,
+              "record_cpu_speedup_x": 0.26,
+              "record_cpu_delta_pct": 285.29,
+              "total_frame_ms_mean": 15.977,
+              "total_frame_ms_delta_pct": 1.24,
+              "fps_mean": 62.591,
+              "fps_gain_pct": -1.22
+            },
+            {
+              "threads": 8,
+              "record_cpu_ms_mean": 1.293,
+              "record_cpu_speedup_x": 0.18,
+              "record_cpu_delta_pct": 443.28,
+              "total_frame_ms_mean": 15.927,
+              "total_frame_ms_delta_pct": 0.93,
+              "fps_mean": 62.786,
+              "fps_gain_pct": -0.92
+            }
+          ],
+          "best_mt_arm": {
+            "threads": 8,
+            "record_cpu_ms_mean": 1.293,
+            "record_cpu_speedup_x": 0.18,
+            "record_cpu_delta_pct": 443.28,
+            "total_frame_ms_mean": 15.927,
+            "total_frame_ms_delta_pct": 0.93,
+            "fps_mean": 62.786,
+            "fps_gain_pct": -0.92
+          }
+        }
+      }
+    },
+    "d3d12_capset": {
+      "dxmt_native_probe": {
+        "ok": true,
+        "api": "d3d12",
+        "supported": false,
+        "adapter": "Red Hat VirtIO GPU 3D controller",
+        "hresult": "0x887a0004"
+      },
+      "d3dmetal_capset_1080p": {
+        "arms": [
+          {
+            "ok": true,
+            "api": "d3d12",
+            "supported": false,
+            "adapter": "Red Hat VirtIO GPU 3D controller",
+            "hresult": "0x887a0004"
+          }
+        ],
+        "scaling": null
+      },
+      "d3dmetal_capset_4k": {
+        "arms": [],
+        "scaling": null
+      }
+    }
+  },
+  "iosurface_direct_present_ab": {
+    "1080p": {
+      "shadow_copy_off": {
+        "width": 1920,
+        "height": 1080,
+        "frame_metrics": {
+          "count": 120,
+          "fps_mean": 58.165,
+          "fps_p50": 58.708,
+          "fps_p1_low": 52.45,
+          "fps_p0_1_low": 52.067,
+          "frame_ms_mean": 17.216,
+          "frame_ms_p50": 17.034,
+          "frame_ms_p99": 19.066,
+          "frame_ms_max": 19.225,
+          "frame_ms_jitter_p99_p50": 2.032,
+          "severe_drop_count": 0,
+          "severe_drop_pct": 0.0
+        },
+        "host_cpu": {
+          "captured_at_utc": "2026-11-25T17:50:50.470595+00:00",
+          "elapsed_seconds": 12.0,
+          "qemu_main_thread_cpu": 0.6,
+          "qemu_thread_count": 53,
+          "qemu_render_server_cpu": 0.0,
+          "qemu_worker_cpu": 83.6,
+          "total_hypervisor_rss_mib": 5914.42
+        }
+      },
+      "direct_present_on": {
+        "width": 1920,
+        "height": 1080,
+        "frame_metrics": {
+          "count": 120,
+          "fps_mean": 58.492,
+          "fps_p50": 58.78,
+          "fps_p1_low": 49.854,
+          "fps_p0_1_low": 48.957,
+          "frame_ms_mean": 17.126,
+          "frame_ms_p50": 17.012,
+          "frame_ms_p99": 20.066,
+          "frame_ms_max": 20.45,
+          "frame_ms_jitter_p99_p50": 3.054,
+          "severe_drop_count": 0,
+          "severe_drop_pct": 0.0
+        },
+        "host_cpu": {
+          "captured_at_utc": "2026-11-25T17:49:07.078920+00:00",
+          "elapsed_seconds": 12.0,
+          "qemu_main_thread_cpu": 0.1,
+          "qemu_thread_count": 70,
+          "qemu_render_server_cpu": 0.0,
+          "qemu_worker_cpu": 89.9,
+          "total_hypervisor_rss_mib": 5894.35
+        }
+      },
+      "comparison": {
+        "resolution": "1920x1080",
+        "fps_mean_delta_pct": 0.56,
+        "fps_p1_low_delta_pct": -4.95,
+        "frame_ms_p99_delta_pct": 5.24,
+        "jitter_p99_p50_delta_pct": 50.3,
+        "eliminated_shadow_copy_mib_per_frame": 7.91,
+        "estimated_saved_bandwidth_mib_per_sec": 462.67
+      }
+    },
+    "4k": {
+      "shadow_copy_off": {
+        "width": 3840,
+        "height": 2160,
+        "frame_metrics": {
+          "count": 120,
+          "fps_mean": 19.263,
+          "fps_p50": 19.263,
+          "fps_p1_low": 18.606,
+          "fps_p0_1_low": 17.78,
+          "frame_ms_mean": 51.925,
+          "frame_ms_p50": 51.914,
+          "frame_ms_p99": 53.745,
+          "frame_ms_max": 56.593,
+          "frame_ms_jitter_p99_p50": 1.831,
+          "severe_drop_count": 120,
+          "severe_drop_pct": 100.0
+        },
+        "host_cpu": {
+          "captured_at_utc": "2026-11-25T17:51:23.485540+00:00",
+          "elapsed_seconds": 12.0,
+          "qemu_main_thread_cpu": 0.1,
+          "qemu_thread_count": 63,
+          "qemu_render_server_cpu": 0.0,
+          "qemu_worker_cpu": 92.2,
+          "total_hypervisor_rss_mib": 5963.19
+        }
+      },
+      "direct_present_on": {
+        "width": 3840,
+        "height": 2160,
+        "frame_metrics": {
+          "count": 120,
+          "fps_mean": 19.195,
+          "fps_p50": 19.282,
+          "fps_p1_low": 15.348,
+          "fps_p0_1_low": 14.005,
+          "frame_ms_mean": 52.19,
+          "frame_ms_p50": 51.863,
+          "frame_ms_p99": 65.225,
+          "frame_ms_max": 72.163,
+          "frame_ms_jitter_p99_p50": 13.362,
+          "severe_drop_count": 120,
+          "severe_drop_pct": 100.0
+        },
+        "host_cpu": {
+          "captured_at_utc": "2026-11-25T17:49:39.228727+00:00",
+          "elapsed_seconds": 12.0,
+          "qemu_main_thread_cpu": 0.1,
+          "qemu_thread_count": 71,
+          "qemu_render_server_cpu": 0.0,
+          "qemu_worker_cpu": 74.5,
+          "total_hypervisor_rss_mib": 6042.95
+        }
+      },
+      "comparison": {
+        "resolution": "3840x2160",
+        "fps_mean_delta_pct": -0.35,
+        "fps_p1_low_delta_pct": -17.51,
+        "frame_ms_p99_delta_pct": 21.36,
+        "jitter_p99_p50_delta_pct": 629.77,
+        "eliminated_shadow_copy_mib_per_frame": 31.641,
+        "estimated_saved_bandwidth_mib_per_sec": 607.35
+      }
+    }
+  },
+  "zero_drift": true
+}

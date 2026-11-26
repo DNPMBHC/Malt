@@ -1,0 +1,56 @@
+{
+  "status": "ready_and_frozen",
+  "api": "@MainActor importPlayableContainer(at:confirmedStopped:) async throws -> ImportedPlayableContainer",
+  "public_result_fields": [
+    "bundlePath",
+    "vmIdentifier",
+    "alreadyManaged"
+  ],
+  "tests": {
+    "total": 76,
+    "failures": 0,
+    "native_network_permissions": 12,
+    "managed_container_import": 16,
+    "orchestration": 48
+  },
+  "strict_swiftlint": {
+    "files": 5,
+    "violations": 0,
+    "exit_code": 0
+  },
+  "scoped_diff_check_exit_code": 0,
+  "selection": {
+    "file_mode": "0600",
+    "directory_mode": "0700",
+    "uuid_and_private_marker_verified": true,
+    "stale_selection_fails_closed": true,
+    "user_symlinks_rejected": true,
+    "single_hardlink_required": true,
+    "only_verified_system_aliases_allowed": [
+      "/var -> /private/var",
+      "/tmp -> /private/tmp"
+    ]
+  },
+  "network_configuration_order": [
+    "prepare-only registration when helper is absent",
+    "exact stopped verification",
+    "existing safe reload rejects registry-only saved state before disk writes",
+    "manager verification and disk write",
+    "existing stopped-container configuration reload"
+  ],
+  "warm_unregistered_helper": "reject with close-and-retry guidance; no second helper",
+  "post_write_reload_failure": "explicitly states configuration was written and requests closing the control component before retry",
+  "actual_vm_or_game_launched": false,
+  "helper_rebuilt": false,
+  "commit_or_push_performed": false,
+  "evidence": [
+    "backend-managed-import-tests.log",
+    "backend-managed-import-swiftlint.json"
+  ],
+  "pre_write_reload_failure": "rejects running, suspended, or saved-state registry entries before invoking the manager; configuration remains unchanged",
+  "privacy_review": {
+    "source_scripts_and_bilingual_guides": "no newly found private home or workspace literals or private email",
+    "embedded_execution": "explicit selected instance and bundled control binary; no development profile prerequisite",
+    "ui_integration": "no newly found blocking wiring discrepancy"
+  }
+}

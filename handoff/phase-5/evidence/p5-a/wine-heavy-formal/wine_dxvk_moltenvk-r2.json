@@ -1,0 +1,256 @@
+{
+  "arm": "wine_dxvk_moltenvk",
+  "domain": "host_wine",
+  "backend": "dxvk_moltenvk",
+  "round": 2,
+  "metadata": {
+    "schema_version": 1,
+    "adapter_description": "Apple M4",
+    "vendor_id": 4203,
+    "device_id": 1009,
+    "adapter_flags": 0,
+    "adapter_is_software": false,
+    "selected_feature_level": "11_0",
+    "width": 1280,
+    "height": 720,
+    "draws_per_frame": 16384,
+    "cb_updates_per_frame": 4096,
+    "passes_per_frame": 2,
+    "dynamic_vertex_bytes_per_frame": 9436608,
+    "geometry_objects": 16383,
+    "scene_variant": "dense_configurable_grid",
+    "async_swapchain": true,
+    "initialization_ms": 164.045
+  },
+  "completion": {
+    "measured_frames": 900,
+    "warmup_ms": 307.739,
+    "measurement_wall_ms": 2024.883,
+    "gpu_drain_ms": 4.566,
+    "throughput_including_gpu_drain_fps": 444.470191,
+    "draws_per_frame": 16384,
+    "total_draw_calls": 14745600,
+    "async_swapchain": true
+  },
+  "csv_summary": {
+    "frame_count": 900,
+    "interval_sample_count": 899,
+    "derived_fps_from_intervals": 445.0865661190204,
+    "frame_interval_ms": {
+      "mean": 2.2467539488320356,
+      "p50": 2.2288,
+      "p95": 3.0025,
+      "p99": 3.101162
+    },
+    "cpu_submit_ms": {
+      "mean": 2.2319946666666666,
+      "p95": 2.9914650000000003,
+      "p99": 3.091514
+    },
+    "process_resident_mib_mean": 132.3077734375,
+    "device_memory_mib_mean": 236.359375
+  },
+  "host_cpu": {
+    "method": "libproc RUSAGE_INFO_V0 user+system counter deltas; PID family and creation-time binding",
+    "scope": "measurement phase only; roots and descendants",
+    "sample_count": 28,
+    "sample_errors": 0,
+    "covered_wall_seconds": 2.0274635839959956,
+    "cpu_seconds": 3.442185666666666,
+    "host_cpu_percent_mean": 169.77792813828734,
+    "host_cpu_percent_peak": 179.5663958026878,
+    "host_logical_cpu_count": 10,
+    "host_capacity_percent_mean": 16.977792813828735,
+    "units": "100 percent equals one logical CPU; zeros retained",
+    "samples": [
+      {
+        "wall_seconds": 0.08221349999803351,
+        "cpu_seconds": 0.1384186666666667,
+        "cpu_percent": 168.36488736032106,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07173704199522035,
+        "cpu_seconds": 0.12296637500000004,
+        "cpu_percent": 171.41266433621973,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07134087500162423,
+        "cpu_seconds": 0.12231320833333323,
+        "cpu_percent": 171.44898815797887,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07102395800029626,
+        "cpu_seconds": 0.12573983333333338,
+        "cpu_percent": 177.03861749412624,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.08308375000342494,
+        "cpu_seconds": 0.13849437499999986,
+        "cpu_percent": 166.692494012717,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07700625000143191,
+        "cpu_seconds": 0.132127375,
+        "cpu_percent": 171.58006654984905,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07104187499498948,
+        "cpu_seconds": 0.12343762499999997,
+        "cpu_percent": 173.75333211392,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07842433400219306,
+        "cpu_seconds": 0.14082374999999986,
+        "cpu_percent": 179.5663958026878,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07445241599634755,
+        "cpu_seconds": 0.12200008333333345,
+        "cpu_percent": 163.86316239800527,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07076966699969489,
+        "cpu_seconds": 0.12126354166666672,
+        "cpu_percent": 171.34960048235004,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07394145800208207,
+        "cpu_seconds": 0.12729866666666678,
+        "cpu_percent": 172.1614235184303,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07104566699854331,
+        "cpu_seconds": 0.12378545833333332,
+        "cpu_percent": 174.23364937353796,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07326287500472972,
+        "cpu_seconds": 0.12464012499999991,
+        "cpu_percent": 170.1272643094519,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07281312499981141,
+        "cpu_seconds": 0.12383191666666668,
+        "cpu_percent": 170.06812530980838,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.0747416250014794,
+        "cpu_seconds": 0.12977779166666667,
+        "cpu_percent": 173.63522891574527,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.0712447079931735,
+        "cpu_seconds": 0.12197891666666649,
+        "cpu_percent": 171.21119603487492,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07471041700046044,
+        "cpu_seconds": 0.12569791666666688,
+        "cpu_percent": 168.24684122147545,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07126495800184784,
+        "cpu_seconds": 0.12336908333333338,
+        "cpu_percent": 173.1132477902176,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07526141699781874,
+        "cpu_seconds": 0.12684349999999978,
+        "cpu_percent": 168.53722007875032,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.0740383330048644,
+        "cpu_seconds": 0.12706475000000012,
+        "cpu_percent": 171.62022001717924,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07249654200131772,
+        "cpu_seconds": 0.12746995833333313,
+        "cpu_percent": 175.82901861859315,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07348320799792418,
+        "cpu_seconds": 0.12469995833333339,
+        "cpu_percent": 169.69857703661498,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07827058400289388,
+        "cpu_seconds": 0.13221216666666666,
+        "cpu_percent": 168.91680105744246,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07986766599788098,
+        "cpu_seconds": 0.1378157499999998,
+        "cpu_percent": 172.55512387660892,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07099954199657077,
+        "cpu_seconds": 0.12171775000000032,
+        "cpu_percent": 171.43455658612447,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07051979200332426,
+        "cpu_seconds": 0.12144862500000006,
+        "cpu_percent": 172.21920477909953,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.07086895799875492,
+        "cpu_seconds": 0.12010529166666628,
+        "cpu_percent": 169.47517652055274,
+        "live_process_count": 2
+      },
+      {
+        "wall_seconds": 0.027539041999261826,
+        "cpu_seconds": 0.014843208333333413,
+        "cpu_percent": 53.89878244033064,
+        "live_process_count": 2
+      }
+    ],
+    "limitation": "Counter sampling can miss CPU between the final available counter and process exit"
+  },
+  "native_exit_code": 0,
+  "probe_sha256": "7a71fc3710fc13316c092f822a904e9558b7f7ad81bc52754717f8d1f797bec5",
+  "backend_binding": {
+    "dll_sha256": "7a0442591dfee7e3729d26a598d3b490f917fbe8ebf9da3bb75410e8d095d302",
+    "requested_backend": "dxvk_moltenvk",
+    "library_load_log": "wine_dxvk_moltenvk-r2.stderr.log",
+    "backend_logs": [
+      {
+        "file": "wine_dxvk_moltenvk-r2-bench_real3d_probe-heavy_d3d11.log",
+        "sha256": "3bdc5f04dd15d5e54bca00d26fb2b3c08b9e6ec465bfd3a9473d27ce645df4a5"
+      }
+    ]
+  },
+  "files": {
+    "csv": "wine_dxvk_moltenvk-r2.csv",
+    "csv_sha256": "ac7d75efdc0d416fe93553a7dc5df931ab1666fce66c13ac948d8898b742c79f",
+    "stdout": "wine_dxvk_moltenvk-r2.stdout.log",
+    "stderr": "wine_dxvk_moltenvk-r2.stderr.log"
+  }
+}
