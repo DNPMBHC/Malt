@@ -203,7 +203,10 @@ private extension ContainerAutoDeployService {
             )
             let beforeText = String(format: "%.1f", report.beforeGiB)
             let afterText = String(format: "%.1f", report.afterGiB)
-            return (report, "已卸载安装镜像并完成磁盘瘦身：\(beforeText) GiB → \(afterText) GiB。")
+            return (
+                report,
+                "已卸载安装镜像并瘦身：\(beforeText) GiB → \(afterText) GiB（英文原版镜像联网后可在游戏库一键补齐中文输入法）。"
+            )
         }
     }
     static func initialSteps() -> [AutoDeployStepReport] {
@@ -321,12 +324,11 @@ private extension ContainerAutoDeployService {
     }
 
     func triggerOpticalBootKeypresses() async {
-        let activate = "tell application \"System Events\" to set frontmost of process \"UTM\" to true"
-        let space = "tell application \"System Events\" to tell process \"UTM\" to key code 49"
-        _ = try? await commandRunner("/usr/bin/osascript", ["-e", activate], ["__DEMOAPP_TIMEOUT_SECONDS": "5"])
-        for _ in 0..<4 {
+        let safeSpace = "tell application \"System Events\" to if (name of first application process "
+            + "whose frontmost is true) is \"UTM\" then tell process \"UTM\" to key code 49"
+        for _ in 0..<8 {
             try? await Task.sleep(nanoseconds: 1_500_000_000)
-            _ = try? await commandRunner("/usr/bin/osascript", ["-e", space], ["__DEMOAPP_TIMEOUT_SECONDS": "5"])
+            _ = try? await commandRunner("/usr/bin/osascript", ["-e", safeSpace], ["__DEMOAPP_TIMEOUT_SECONDS": "5"])
         }
     }
 

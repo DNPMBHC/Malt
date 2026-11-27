@@ -886,6 +886,15 @@ foreach (`$it in `$rawL) {
                     $fdResult.winsxs_and_retrim = "error: $($_.Exception.Message)"
                 }
             }
+            # Safe Defender real-time scan exclusion for existing large game directories (keeps Defender active)
+            try {
+                $gameDirs = @('F:\VALORANT_CN', 'C:\Riot Games', 'F:\WeGameApps', 'D:\VALORANT_CN') |
+                    Where-Object { Test-Path -LiteralPath $_ }
+                foreach ($gDir in $gameDirs) {
+                    Add-MpPreference -ExclusionPath $gDir -ErrorAction SilentlyContinue
+                }
+                $fdResult.defender_game_exclusions = @($gameDirs)
+            } catch { }
             $gamingChanges.footprint_and_display_controls = [ordered]@{
                 status = 'applied'
                 details = $fdResult

@@ -228,11 +228,12 @@ enum ContainerProvisioningPipeline {
         """
         $ErrorActionPreference='Stop';
         $drivers=@(pnputil.exe /enum-drivers 2>$null);
-        $hasVioGpu=($drivers | Out-String) -match '(?i)viogpu3d\\.inf';
-        $adapter=(Get-CimInstance Win32_VideoController -ErrorAction SilentlyContinue | Select-Object -First 1).Name;
-        if (-not $hasVioGpu -and [string]$adapter -match '(?i)virtio|red hat|viogpu') { $hasVioGpu=$true };
+        $hasVioGpu3dInf=($drivers | Out-String) -match '(?i)viogpu3d\\.inf';
+        $adapter=[string](Get-CimInstance Win32_VideoController -EA SilentlyContinue | Select-Object -First 1).Name;
+        $isLegacyDod=$adapter -match '(?i)\\bDOD\\b|viogpudo';
+        $hasVioGpu=$hasVioGpu3dInf -and (-not $isLegacyDod);
         $sb=$false; try { $sb=[bool](Confirm-SecureBootUEFI) } catch { $sb=$false };
-        $report=@{ viogpu3dPresent=[bool]$hasVioGpu; driverName=[string]$adapter; secureBootEnabled=[bool]$sb };
+        $report=@{ viogpu3dPresent=[bool]$hasVioGpu; driverName=$adapter; secureBootEnabled=[bool]$sb };
         Write-Output ('MALT_GFX_PROBE_V1=' + ($report | ConvertTo-Json -Compress));
         """
     }

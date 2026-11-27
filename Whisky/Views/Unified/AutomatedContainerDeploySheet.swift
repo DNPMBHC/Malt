@@ -175,17 +175,23 @@ struct AutomatedContainerDeploySheet: View {
                     .disabled(deployService.isRunning)
             }
             HStack(spacing: 10) {
-                Text(driverDirectoryURL.map { "驱动包：\($0.lastPathComponent)" } ?? "可选：选择 VirtIO / viogpu3d / QGA 驱动目录")
+                Text(driverDirectoryURL.map { "驱动包：\($0.lastPathComponent)" } ?? "推荐：选择 VirtIO / viogpu3d 驱动包")
                     .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(driverDirectoryURL == nil ? .orange : .secondary)
                     .lineLimit(1)
                 Spacer()
                 if driverDirectoryURL != nil {
                     Button("清除") { driverDirectoryURL = nil }
                         .disabled(deployService.isRunning)
                 }
-                Button("选择驱动目录…", action: pickDriverDirectory)
+                Button("选择驱动包…", action: pickDriverDirectory)
                     .disabled(deployService.isRunning)
+            }
+            if driverDirectoryURL == nil {
+                Text("提示：未选择驱动包时，WinPE 将无法自动识别 VirtIO 虚拟盘或自动安装 3D 驱动与 QGA。")
+                    .font(.caption2)
+                    .foregroundStyle(.orange)
+                    .fixedSize(horizontal: false, vertical: true)
             }
         }
         .padding(12)
@@ -227,6 +233,19 @@ private extension AutomatedContainerDeploySheet {
         }
         if panel.runModal() == .OK, let url = panel.url {
             selectedISOURL = url
+            if driverDirectoryURL == nil {
+                driverDirectoryURL = discoverNearbyDriverISO(beside: url)
+            }
+        }
+    }
+
+    func discoverNearbyDriverISO(beside windowsISO: URL) -> URL? {
+        let parent = windowsISO.deletingLastPathComponent()
+        guard let items = try? FileManager.default.contentsOfDirectory(at: parent, includingPropertiesForKeys: nil)
+        else { return nil }
+        return items.first { item in
+            let lower = item.lastPathComponent.lowercased()
+            return lower.hasSuffix(".iso") && (lower.contains("utm-guest-tools") || lower.contains("virtio-win"))
         }
     }
 

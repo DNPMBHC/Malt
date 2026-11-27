@@ -243,6 +243,7 @@ enum ManagedUserNetConfigRewriter {
         var args = extractStringArguments(from: qemu)
         let netdevVal = netdevStreamValue(for: socketPath)
         let devVal = "virtio-net-pci,netdev=net0,mac=\(macAddress),ioeventfd=on"
+        args = removePair(args, flag: "-global", matchPrefix: "virtio-net-pci.rx_queue_size=")
         args = upsertPair(args, flag: "-netdev", value: netdevVal, matchPrefix: "stream,id=net0,")
         args = upsertPair(args, flag: "-device", value: devVal, matchPrefix: "virtio-net-pci,netdev=net0,")
         for token in args where token.hasPrefix("-") {
@@ -308,6 +309,20 @@ enum ManagedUserNetConfigRewriter {
             .filter { $0.isHexDigit }.uppercased()
         let chars = Array(uuid.padding(toLength: 10, withPad: "A", startingAt: 0))
         return "52:54:\(chars[0])\(chars[1]):\(chars[2])\(chars[3]):\(chars[4])\(chars[5]):\(chars[6])\(chars[7])"
+    }
+
+    private static func removePair(_ args: [String], flag: String, matchPrefix: String) -> [String] {
+        var out: [String] = []
+        var idx = 0
+        while idx < args.count {
+            if idx + 1 < args.count && args[idx] == flag && args[idx + 1].hasPrefix(matchPrefix) {
+                idx += 2
+                continue
+            }
+            out.append(args[idx])
+            idx += 1
+        }
+        return out
     }
 
     private static func upsertPair(_ args: [String], flag: String, value: String, matchPrefix: String) -> [String] {
