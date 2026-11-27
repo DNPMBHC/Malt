@@ -79,6 +79,13 @@ struct ContainerProvisioningPanel: View {
 
             actionsRow
 
+            ManagedContainerListSection(
+                orchestrator: orchestrator,
+                isBusy: isProvisioningBusy,
+                onFeedback: { msg, isError in finishFeedback(msg, isError: isError) },
+                onChanged: onContainerChanged
+            )
+
             if showCreationGuide {
                 creationGuideBox
             }

@@ -201,6 +201,10 @@ struct PlayableContainerImporter {
     do {
       try PlayableContainerSelection(schemaVersion: 1, bundlePath: path, vmIdentifier: verifiedID.uuidString)
         .save(to: selectionStorageURL, fileManager: fileManager)
+      try? ManagedContainerRegistry.upsert(
+        bundlePath: path, vmIdentifier: verifiedID.uuidString,
+        selectionURL: selectionStorageURL, fileManager: fileManager
+      )
     } catch {
       throw UnifiedOrchestrationError.commandFailed("容器元数据已核验，但无法保存运行环境选择，请检查应用数据目录的写入权限后重试。")
     }

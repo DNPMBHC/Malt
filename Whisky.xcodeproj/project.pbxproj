@@ -38,6 +38,7 @@
 		A13B000E2D13B0000013B00E /* InstalledGameDiscoverySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13B000D2D13B0000013B00D /* InstalledGameDiscoverySheet.swift */; };
 		A13B00102D13B0000013B010 /* ContainerProvisioningPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13B000F2D13B0000013B00F /* ContainerProvisioningPanel.swift */; };
 		A13B00122D13B0000013B012 /* AutomatedContainerDeploySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13B00112D13B0000013B011 /* AutomatedContainerDeploySheet.swift */; };
+		A13B00142D13B0000013B014 /* ManagedContainerListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13B00132D13B0000013B013 /* ManagedContainerListSection.swift */; };
 		6E40495A29CCA19C006E3F1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E40495929CCA19C006E3F1B /* Assets.xcassets */; };
 		6E40495D29CCA19C006E3F1B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E40495C29CCA19C006E3F1B /* Preview Assets.xcassets */; };
 		6E40498129CCA8B0006E3F1B /* BottleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E40498029CCA8B0006E3F1B /* BottleView.swift */; };
@@ -155,6 +156,7 @@
 		A13B000D2D13B0000013B00D /* InstalledGameDiscoverySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstalledGameDiscoverySheet.swift; sourceTree = "<group>"; };
 		A13B000F2D13B0000013B00F /* ContainerProvisioningPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerProvisioningPanel.swift; sourceTree = "<group>"; };
 		A13B00112D13B0000013B011 /* AutomatedContainerDeploySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomatedContainerDeploySheet.swift; sourceTree = "<group>"; };
+		A13B00132D13B0000013B013 /* ManagedContainerListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedContainerListSection.swift; sourceTree = "<group>"; };
 		6E40495929CCA19C006E3F1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6E40495C29CCA19C006E3F1B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6E40495E29CCA19C006E3F1B /* Whisky.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Whisky.entitlements; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				A13B000D2D13B0000013B00D /* InstalledGameDiscoverySheet.swift */,
 				A13B000F2D13B0000013B00F /* ContainerProvisioningPanel.swift */,
 				A13B00112D13B0000013B011 /* AutomatedContainerDeploySheet.swift */,
+				A13B00132D13B0000013B013 /* ManagedContainerListSection.swift */,
 			);
 			path = Unified;
 			sourceTree = "<group>";
@@ -650,6 +653,7 @@
 				A13B000E2D13B0000013B00E /* InstalledGameDiscoverySheet.swift in Sources */,
 				A13B00102D13B0000013B010 /* ContainerProvisioningPanel.swift in Sources */,
 				A13B00122D13B0000013B012 /* AutomatedContainerDeploySheet.swift in Sources */,
+				A13B00142D13B0000013B014 /* ManagedContainerListSection.swift in Sources */,
 				67D278512BC5907E006F9A1E /* ActionView.swift in Sources */,
 				A3B000022B1B0EA4007A625A /* ComplianceDisclaimerView.swift in Sources */,
 				6EF557982A410599001A4F09 /* SetupView.swift in Sources */,

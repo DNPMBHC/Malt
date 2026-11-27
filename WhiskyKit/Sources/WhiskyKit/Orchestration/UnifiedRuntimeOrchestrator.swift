@@ -370,9 +370,7 @@ public extension UnifiedRuntimeOrchestrator {
     let baseSettings = settings ?? UnifiedLaunchSettings.load()
     let effectiveSettings = entry.map { baseSettings.resolved(for: $0, hardware: hardware) } ?? baseSettings
     let resolved = resolvedRuntimePaths()
-    guard let vmPath = entry?.vmBundlePath ?? resolved.playableVMBundlePath,
-      UnifiedRuntimeDiscovery.isUsablePlayableVMBundle(vmPath, fileManager: fileManager)
-    else {
+    guard let vmPath = resolveUsableVMBundlePath(for: entry, resolved: resolved) else {
       throw UnifiedOrchestrationError.missingVMBundle(entry?.vmBundlePath ?? "")
     }
     let windowTitle = title ?? entry?.name ?? "Windows 11 容器"
@@ -1090,7 +1088,72 @@ extension UnifiedRuntimeOrchestrator {
       resolved: resolvedRuntimePaths(), selectionStorageURL: configuration.playableSelectionStorageURL,
       fileManager: fileManager, commandRunner: commandRunner)
     let result = try await importer.run(at: url, confirmedStopped: confirmedStopped)
+    rebindStaleGameEntries(to: result.bundlePath)
     lastStatusMessage = "已导入所选容器。可继续配置运行环境或选择游戏主程序。"
     return result
+  }
+
+  /// Lists all registered managed containers alongside which one is currently active.
+  public func listManagedContainers() -> [ManagedContainerItem] {
+    ManagedContainerRegistry.listItems(
+      selectionURL: configuration.playableSelectionStorageURL, fileManager: fileManager
+    )
+  }
+
+  /// Switches the active managed container to an already-registered playable `.utm` bundle.
+  @MainActor
+  public func selectManagedContainer(at bundlePath: String) throws -> ImportedPlayableContainer {
+    let selected = try ManagedContainerRegistry.select(
+      bundlePath: bundlePath,
+      selectionURL: configuration.playableSelectionStorageURL,
+      fileManager: fileManager
+    )
+    rebindStaleGameEntries(to: selected.bundlePath)
+    lastStatusMessage = "已切换当前受管容器为「\(URL(filePath: selected.bundlePath).lastPathComponent)」。"
+    return selected
+  }
+
+  /// Removes a container from the registry and optionally deletes its `.utm` bundle from disk
+  /// after verifying it is stopped and not a protected golden master or cold backup.
+  @MainActor
+  @discardableResult
+  public func deleteManagedContainer(at bundlePath: String, deleteFilesOnDisk: Bool) async throws -> String? {
+    let nextActive = try await ManagedContainerRegistry.remove(
+      bundlePath: bundlePath,
+      deleteFilesOnDisk: deleteFilesOnDisk,
+      selectionURL: configuration.playableSelectionStorageURL,
+      fileManager: fileManager,
+      commandRunner: commandRunner
+    )
+    if let nextActive { rebindStaleGameEntries(to: nextActive) }
+    let name = URL(filePath: bundlePath).lastPathComponent
+    lastStatusMessage = deleteFilesOnDisk ? "已删除容器「\(name)」并释放磁盘空间。" : "已从列表移除容器「\(name)」（磁盘文件已保留）。"
+    return nextActive
+  }
+
+  @MainActor
+  private func rebindStaleGameEntries(to activeBundlePath: String) {
+    for var entry in libraryStore.entries where entry.engineKind == .antiCheatVM {
+      if let existing = entry.vmBundlePath,
+         UnifiedRuntimeDiscovery.isUsablePlayableVMBundle(existing, fileManager: fileManager) {
+        continue
+      }
+      entry.vmBundlePath = activeBundlePath
+      libraryStore.upsert(entry)
+    }
+  }
+
+  fileprivate func resolveUsableVMBundlePath(
+    for entry: UnifiedGameEntry?, resolved: ResolvedRuntimePaths
+  ) -> String? {
+    if let explicit = entry?.vmBundlePath, !explicit.isEmpty,
+       UnifiedRuntimeDiscovery.isUsablePlayableVMBundle(explicit, fileManager: fileManager) {
+      return explicit
+    }
+    if let active = resolved.playableVMBundlePath,
+       UnifiedRuntimeDiscovery.isUsablePlayableVMBundle(active, fileManager: fileManager) {
+      return active
+    }
+    return nil
   }
 }
