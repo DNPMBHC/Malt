@@ -116,13 +116,6 @@ enum WindowsUnattendXMLBuilder {
         $vol = Get-Volume | Where-Object { $_.FileSystemLabel -eq 'MALTBOOT' } | Select-Object -First 1
         if ($vol) {
             $root = $vol.DriveLetter + ':'
-            foreach ($dir in @($root + '\\Drivers', $root + '\\PostDrivers')) {
-                if (Test-Path $dir) {
-                    Get-ChildItem $dir -Recurse -Filter '*.inf' -ErrorAction SilentlyContinue | ForEach-Object {
-                        pnputil.exe /add-driver $_.FullName /install | Out-Null
-                    }
-                }
-            }
             $exe = Get-ChildItem $root -Recurse -Filter 'utm-guest-tools*.exe' -EA SilentlyContinue |
                 Select-Object -First 1
             if ($exe) { Start-Process $exe.FullName -ArgumentList '/S' -Wait }
@@ -131,6 +124,17 @@ enum WindowsUnattendXMLBuilder {
             if ($msi) {
                 $msiArg = '"' + $msi.FullName + '"'
                 Start-Process msiexec.exe -ArgumentList '/i', $msiArg, '/qn', '/norestart' -Wait
+            }
+            if (Test-Path ($root + '\\PostDrivers')) {
+                $dod = pnputil.exe /enum-drivers | Select-String -Pattern 'viogpudo\\.inf' -Context 1,0
+                foreach ($hit in $dod) {
+                    if ($hit.Context.PreContext -match '(oem\\d+\\.inf)') {
+                        pnputil.exe /delete-driver $Matches[1] /uninstall /force | Out-Null
+                    }
+                }
+                Get-ChildItem ($root + '\\PostDrivers') -Recurse -Filter '*.inf' -EA SilentlyContinue | ForEach-Object {
+                    pnputil.exe /add-driver $_.FullName /install | Out-Null
+                }
             }
             sc.exe config 'QEMU Guest Agent' start= auto | Out-Null
             Start-Service 'QEMU Guest Agent' -ErrorAction SilentlyContinue

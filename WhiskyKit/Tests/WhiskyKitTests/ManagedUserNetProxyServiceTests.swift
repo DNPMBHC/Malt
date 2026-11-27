@@ -97,7 +97,7 @@ final class ManagedUserNetProxyServiceTests: XCTestCase {
         let qemu = try XCTUnwrap(plist["QEMU"] as? [String: Any])
         let args = qemu["AdditionalArguments"] as? [String] ?? []
         XCTAssertTrue(args.contains("stream,id=net0,server=off,addr.type=unix,path=/tmp/malt-net-test/p-11111111.sock"))
-        XCTAssertTrue(args.contains("virtio-net-pci,netdev=net0,mac=52:54:00:12:34:56,ioeventfd=on,rx_queue_size=1024"))
+        XCTAssertTrue(args.contains("virtio-net-pci,netdev=net0,mac=52:54:00:12:34:56,ioeventfd=on"))
 
         // Verify loopback endpoint rewriting for sandboxed QEMUHelper.xpc
         let changedInet = try ManagedUserNetConfigRewriter.applyUnixSocketStream(

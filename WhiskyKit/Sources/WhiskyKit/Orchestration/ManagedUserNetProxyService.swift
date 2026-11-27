@@ -242,7 +242,7 @@ enum ManagedUserNetConfigRewriter {
         var qemu = config["QEMU"] as? [String: Any] ?? [:]
         var args = extractStringArguments(from: qemu)
         let netdevVal = netdevStreamValue(for: socketPath)
-        let devVal = "virtio-net-pci,netdev=net0,mac=\(macAddress),ioeventfd=on,rx_queue_size=1024"
+        let devVal = "virtio-net-pci,netdev=net0,mac=\(macAddress),ioeventfd=on"
         args = upsertPair(args, flag: "-netdev", value: netdevVal, matchPrefix: "stream,id=net0,")
         args = upsertPair(args, flag: "-device", value: devVal, matchPrefix: "virtio-net-pci,netdev=net0,")
         for token in args where token.hasPrefix("-") {
