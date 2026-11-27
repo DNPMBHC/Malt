@@ -1,5 +1,5 @@
 diff --git a/Sources/CocoaSpice/CSCursor.m b/Sources/CocoaSpice/CSCursor.m
-index e1030ab..8f8bb97 100644
+index e1030ab..00eeed8 100644
 --- a/Sources/CocoaSpice/CSCursor.m
 +++ b/Sources/CocoaSpice/CSCursor.m
 @@ -29,6 +29,7 @@ @interface CSCursor ()
@@ -10,7 +10,7 @@ index e1030ab..8f8bb97 100644
  @property (nonatomic) CGPoint mouseGuest;
  
  @property (nonatomic, nullable, readwrite) id<MTLTexture> texture;
-@@ -39,6 +40,31 @@ @interface CSCursor ()
+@@ -39,6 +40,60 @@ @interface CSCursor ()
  
  @implementation CSCursor
  
@@ -23,6 +23,35 @@ index e1030ab..8f8bb97 100644
 +        enabled = (flag != NULL && flag[0] != '\0' && flag[0] != '0');
 +    });
 +    return enabled;
++}
++
++static void cs_cursor_log_probe(NSString *line)
++{
++    NSDictionary<NSString *, NSString *> *env = NSProcessInfo.processInfo.environment;
++    NSString *logPath = env[@"UTM_NEPTUNE_PROFILE_LOG"];
++    if (logPath.length == 0 && env[@"UTM_NPT_PROFILE_PERIOD_MS"].integerValue <= 0 && !cs_cursor_debug_enabled()) {
++        return;
++    }
++    NSURL *cachesRoot = [NSFileManager.defaultManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask].firstObject;
++    NSString *fallbackPath = cachesRoot ? [cachesRoot URLByAppendingPathComponent:@"neptune-latest.log"].path : nil;
++    NSString *primaryPath = logPath.length > 0 ? logPath : fallbackPath;
++    if (primaryPath.length == 0 || line.length == 0) {
++        return;
++    }
++    NSData *payload = [[line stringByAppendingString:@"\n"] dataUsingEncoding:NSUTF8StringEncoding];
++    if (payload.length == 0) {
++        return;
++    }
++    dispatch_async(dispatch_get_global_queue(QOS_CLASS_UTILITY, 0), ^{
++        FILE *fp = fopen(primaryPath.fileSystemRepresentation, "a");
++        if (!fp && fallbackPath.length > 0 && ![fallbackPath isEqualToString:primaryPath]) {
++            fp = fopen(fallbackPath.fileSystemRepresentation, "a");
++        }
++        if (fp) {
++            fwrite(payload.bytes, 1, payload.length, fp);
++            fclose(fp);
++        }
++    });
 +}
 +
 +static BOOL cs_keep_cursor_visible_on_inhibit(void)
@@ -42,33 +71,62 @@ index e1030ab..8f8bb97 100644
  #pragma mark - Cursor events
  
  static void cs_cursor_invalidate(CSCursor *self)
-@@ -63,13 +89,36 @@ static void cs_cursor_set(SpiceCursorChannel *channel,
+@@ -63,13 +118,64 @@ static void cs_cursor_set(SpiceCursorChannel *channel,
      
      CGPoint hotspot = CGPointMake(cursor_shape->hot_spot_x, cursor_shape->hot_spot_y);
      CGSize newSize = CGSizeMake(cursor_shape->width, cursor_shape->height);
 -    if (!CGSizeEqualToSize(newSize, self.cursorSize) || !CGPointEqualToPoint(hotspot, self.cursorHotspot)) {
++    const uint32_t *pixels = (const uint32_t *)cursor_shape->data;
++    NSUInteger total = (NSUInteger)cursor_shape->width * (NSUInteger)cursor_shape->height;
++    NSUInteger opaqueCount = 0;
++    NSUInteger nonZeroRGBCount = 0;
++    if (pixels != NULL) {
++        for (NSUInteger i = 0; i < total; i++) {
++            uint32_t px = pixels[i];
++            if ((px & 0xFF000000u) != 0) {
++                opaqueCount++;
++            }
++            if ((px & 0x00FFFFFFu) != 0) {
++                nonZeroRGBCount++;
++            }
++        }
++    }
++    cs_cursor_log_probe([NSString stringWithFormat:@"[Malt-Cursor] event=set size=%dx%d hot=(%d,%d) alpha=%lu rgb=%lu/%lu dev=%d tex=%d pos=(%.1f,%.1f) srvMove=%d",
++                         cursor_shape->width, cursor_shape->height,
++                         cursor_shape->hot_spot_x, cursor_shape->hot_spot_y,
++                         (unsigned long)opaqueCount, (unsigned long)nonZeroRGBCount, (unsigned long)total,
++                         self.device != nil, self.texture != nil,
++                         self.mouseGuest.x, self.mouseGuest.y, self.hasServerCursorMove]);
++    if (pixels != NULL && total > 0 && opaqueCount == 0 && nonZeroRGBCount == 0 && self.hasCursor && self.texture != nil) {
++        // Preserve last valid cursor texture if Guest emits an all-zero placeholder frame.
++        g_boxed_free(SPICE_TYPE_CURSOR_SHAPE, cursor_shape);
++        self.cursorHidden = NO;
++        cs_cursor_invalidate(self);
++        return;
++    }
 +    if (!self.texture || !self.vertices ||
 +        !CGSizeEqualToSize(newSize, self.cursorSize) ||
 +        !CGPointEqualToPoint(hotspot, self.cursorHotspot)) {
          [self rebuildCursorWithSize:newSize center:hotspot];
      }
-+    if (cs_cursor_debug_enabled()) {
-+        const uint32_t *pixels = (const uint32_t *)cursor_shape->data;
-+        NSUInteger total = (NSUInteger)cursor_shape->width * (NSUInteger)cursor_shape->height;
-+        NSUInteger opaqueCount = 0;
-+        for (NSUInteger i = 0; i < total; i++) {
-+            if ((pixels[i] & 0xFF000000u) != 0) {
-+                opaqueCount++;
+-    [self drawCursor:cursor_shape->data];
++    if (pixels != NULL && total > 0 && opaqueCount == 0 && nonZeroRGBCount > 0) {
++        // Windows/SPICE xRGB cursor with zero alpha channel: restore opaque alpha for visible RGB pixels
++        // so Metal alpha blending never turns the fullscreen hardware cursor invisible.
++        uint32_t *fixedPixels = (uint32_t *)malloc(total * sizeof(uint32_t));
++        if (fixedPixels != NULL) {
++            for (NSUInteger i = 0; i < total; i++) {
++                uint32_t px = pixels[i];
++                fixedPixels[i] = ((px & 0x00FFFFFFu) != 0) ? (px | 0xFF000000u) : 0u;
 +            }
++            [self drawCursor:fixedPixels];
++            free(fixedPixels);
++        } else {
++            [self drawCursor:cursor_shape->data];
 +        }
-+        NSLog(@"[UTM-Custom Cursor] set %dx%d hotspot=(%d,%d) nonZeroAlpha=%lu/%lu hasDevice=%d hasTexture=%d pos=(%.1f,%.1f)",
-+              cursor_shape->width, cursor_shape->height,
-+              cursor_shape->hot_spot_x, cursor_shape->hot_spot_y,
-+              (unsigned long)opaqueCount, (unsigned long)total,
-+              self.device != nil, self.texture != nil,
-+              self.mouseGuest.x, self.mouseGuest.y);
++    } else {
++        [self drawCursor:cursor_shape->data];
 +    }
-     [self drawCursor:cursor_shape->data];
      // this has to be after drawCursor: which runs in the same serial queue
      g_boxed_free(SPICE_TYPE_CURSOR_SHAPE, cursor_shape);
      self.cursorHidden = NO;
@@ -80,7 +138,7 @@ index e1030ab..8f8bb97 100644
      cs_cursor_invalidate(self);
  }
  
-@@ -77,12 +126,16 @@ static void cs_cursor_move(SpiceCursorChannel *channel, gint x, gint y, gpointer
+@@ -77,12 +183,16 @@ static void cs_cursor_move(SpiceCursorChannel *channel, gint x, gint y, gpointer
  {
      CSCursor *self = (__bridge CSCursor *)data;
      
@@ -97,28 +155,24 @@ index e1030ab..8f8bb97 100644
      
      cs_cursor_invalidate(self);
  }
-@@ -92,6 +145,9 @@ static void cs_cursor_hide(SpiceCursorChannel *channel, gpointer data)
+@@ -92,6 +202,7 @@ static void cs_cursor_hide(SpiceCursorChannel *channel, gpointer data)
      CSCursor *self = (__bridge CSCursor *)data;
      
      self.cursorHidden = YES;
-+    if (cs_cursor_debug_enabled()) {
-+        NSLog(@"[UTM-Custom Cursor] hide");
-+    }
++    cs_cursor_log_probe([NSString stringWithFormat:@"[Malt-Cursor] event=hide has=%d pos=(%.1f,%.1f)", self.hasCursor, self.mouseGuest.x, self.mouseGuest.y]);
      cs_cursor_invalidate(self);
  }
  
-@@ -100,6 +156,10 @@ static void cs_cursor_reset(SpiceCursorChannel *channel, gpointer data)
+@@ -100,6 +211,8 @@ static void cs_cursor_reset(SpiceCursorChannel *channel, gpointer data)
      CSCursor *self = (__bridge CSCursor *)data;
      
      SPICE_DEBUG("[CocoaSpice] %s",  __FUNCTION__);
 +    self.hasServerCursorMove = NO;
-+    if (cs_cursor_debug_enabled()) {
-+        NSLog(@"[UTM-Custom Cursor] reset");
-+    }
++    cs_cursor_log_probe(@"[Malt-Cursor] event=reset");
      [self destroyCursor];
      cs_cursor_invalidate(self);
  }
-@@ -115,7 +175,19 @@ static void cs_update_mouse_mode(SpiceChannel *channel, gpointer data)
+@@ -115,7 +228,17 @@ static void cs_update_mouse_mode(SpiceChannel *channel, gpointer data)
      SPICE_DEBUG("[CocoaSpice] mouse mode %u", mouse_mode);
      
      if (mouse_mode == SPICE_MOUSE_MODE_SERVER) {
@@ -132,14 +186,12 @@ index e1030ab..8f8bb97 100644
 +            }
 +        }
 +        cs_cursor_invalidate(self);
-+    }
-+    if (cs_cursor_debug_enabled()) {
-+        NSLog(@"[UTM-Custom Cursor] mouse_mode=%u pos=(%.1f,%.1f) hasCursor=%d visible=%d",
-+              mouse_mode, self.mouseGuest.x, self.mouseGuest.y, self.hasCursor, self.isVisible);
      }
++    cs_cursor_log_probe([NSString stringWithFormat:@"[Malt-Cursor] event=mode mouse_mode=%u pos=(%.1f,%.1f) has=%d vis=%d",
++                         mouse_mode, self.mouseGuest.x, self.mouseGuest.y, self.hasCursor, self.isVisible]);
  }
  
-@@ -139,7 +211,18 @@ - (void)setSpiceMain:(SpiceMainChannel *)spiceMain {
+@@ -139,7 +262,18 @@ - (void)setSpiceMain:(SpiceMainChannel *)spiceMain {
  
  - (void)setDisplay:(CSDisplay *)display {
      _display = display;
@@ -159,7 +211,7 @@ index e1030ab..8f8bb97 100644
  }
  
  - (id<MTLDevice>)device {
-@@ -147,7 +230,13 @@ - (void)setDisplay:(CSDisplay *)display {
+@@ -147,7 +281,13 @@ - (void)setDisplay:(CSDisplay *)display {
  }
  
  - (BOOL)isVisible {
@@ -174,7 +226,7 @@ index e1030ab..8f8bb97 100644
  }
  
  - (BOOL)isInverted {
-@@ -268,7 +357,7 @@ - (void)destroyCursor {
+@@ -268,7 +408,7 @@ - (void)destroyCursor {
  
  - (void)drawCursor:(const void *)buffer {
      CGSize cursorSize = self.cursorSize;
@@ -183,7 +235,7 @@ index e1030ab..8f8bb97 100644
          return;
      }
      const NSInteger pixelSize = 4;
-@@ -289,4 +378,27 @@ - (void)moveTo:(CGPoint)point {
+@@ -289,4 +429,27 @@ - (void)moveTo:(CGPoint)point {
      }];
  }
  

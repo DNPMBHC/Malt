@@ -32,6 +32,8 @@ final class GameTelemetryCollectorTests: XCTestCase {
         )
         let resolved = enabled.resolved(for: entry, hardware: hardware)
         XCTAssertTrue(resolved.enablePerformanceTelemetryLogging)
+        XCTAssertEqual(resolved.containerEnvironment["UTM_METAL_DRAWABLE_COUNT"], "3")
+        XCTAssertEqual(resolved.containerEnvironment["UTM_MAX_INFLIGHT_FRAMES"], "3")
     }
 
     func testDistributionComputesPercentiles() {
@@ -94,10 +96,12 @@ final class GameTelemetryCollectorTests: XCTestCase {
         [2026.11.26-12.00.04] Stat: FPS: 3.1 Work: 290.0ms Slack: 12.0ms Slop: 1.5ms
         [2026.11.26-12.00.05] Net: Burst Loss detected, Ping: 245ms, 256-packet ack backlog
         [2026.11.26-12.00.06] Stat: FPS: 60.0 Work: 9.0ms Slack: 7.0ms Slop: 0.2ms
+        Avg.Frametime (ms): 16.51
+        Avg.Frametime (ms): 0.00
         """
         let parsed = GameTelemetryLogParser.parseShooterGameLog(logText, homeDirectory: "/Users/bob")
         XCTAssertEqual(parsed.fpsMetrics.source, "ShooterGame.log")
-        XCTAssertEqual(parsed.fpsMetrics.fps.count, 3)
+        XCTAssertEqual(parsed.fpsMetrics.fps.count, 4)
         XCTAssertEqual(parsed.fpsMetrics.criticalDropCount, 1)
         XCTAssertEqual(parsed.fpsMetrics.criticalDropsSample.count, 1)
         XCTAssertEqual(parsed.fpsMetrics.workMs.count, 3)
@@ -139,6 +143,66 @@ final class GameTelemetryCollectorTests: XCTestCase {
         XCTAssertTrue(report.displayInputSnapshot.keepCursorVisibleOnInhibit)
         XCTAssertEqual(report.hardwareFingerprint.allocatedVCPU, 8)
         XCTAssertEqual(report.hardwareFingerprint.allocatedRAMMiB, 10240)
+    }
+
+    func testLowLevelGraphicsBackendAndPresentModeEnvironmentPropagation() throws {
+        let suiteName = "malt.lowlevel.settings.\(UUID().uuidString)"
+        let defaults = try XCTUnwrap(UserDefaults(suiteName: suiteName))
+        defer { defaults.removePersistentDomain(forName: suiteName) }
+
+        defaults.set(
+            ContainerGraphicsBackend.dxmtMetalFXPerformance.rawValue,
+            forKey: "unifiedContainerGraphicsBackend"
+        )
+        defaults.set(
+            ContainerDisplayPresentMode.immediateZeroCopy.rawValue,
+            forKey: "unifiedContainerDisplayPresentMode"
+        )
+        defaults.set(true, forKey: "unifiedEnableHVFTSO")
+        defaults.set(true, forKey: "unifiedEnableNeptuneProfiler")
+
+        let loaded = UnifiedLaunchSettings.load(defaults: defaults)
+        XCTAssertEqual(loaded.graphicsBackend, .dxmtMetalFXPerformance)
+        XCTAssertEqual(loaded.displayPresentMode, .immediateZeroCopy)
+        XCTAssertTrue(loaded.enableHVFTSO)
+        XCTAssertTrue(loaded.enableNeptuneProfiler)
+
+        let env = loaded.containerEnvironment
+        XCTAssertEqual(env["UTM_DIRECTX_BACKEND"], "dxmt")
+        XCTAssertEqual(env["UTM_DXMT_METALFX_FACTOR"], "1.50")
+        XCTAssertNil(env["UTM_DXMT_IGNORE_MAP_NOWAIT"])
+        XCTAssertEqual(env["UTM_RAW_MOUSE_INPUT"], "1")
+        XCTAssertEqual(env["UTM_MOUSE_COALESCE_US"], "0")
+        XCTAssertEqual(env["UTM_DISPLAY_PRESENT_MODE"], "immediate")
+        XCTAssertEqual(env["UTM_HVF_TSO"], "1")
+        XCTAssertEqual(env["UTM_HVF_KERNEL_IRQCHIP"], "1")
+        XCTAssertEqual(env["UTM_DISABLE_USB_REDIR"], "1")
+        XCTAssertEqual(env["UTM_NPT_PROFILE_PERIOD_MS"], "5000")
+        XCTAssertTrue(env["UTM_NEPTUNE_PROFILE_LOG"]?.hasSuffix("neptune-latest.log") == true)
+
+        defaults.set(ContainerGraphicsBackend.d3dMetal.rawValue, forKey: "unifiedContainerGraphicsBackend")
+        let d3dEnv = UnifiedLaunchSettings.load(defaults: defaults).containerEnvironment
+        XCTAssertEqual(d3dEnv["UTM_DIRECTX_BACKEND"], "d3dmetal")
+        XCTAssertEqual(d3dEnv["UTM_DXMT_METALFX_FACTOR"], "0")
+    }
+
+    func testNeptuneAndPresentTelemetryLogParser() {
+        let sampleLog = """
+        [Malt-Present] mode=ring scanout_fps=118.40 ack_us_avg=85.2 frames=592
+        [Malt-Renderer] present_fps=119.80 direct_blit_pct=94.5 frames=599
+        [Malt-Present] mode=ring scanout_fps=121.20 ack_us_avg=92.8 frames=606
+        [Malt-Renderer] present_fps=120.00 direct_blit_pct=100.0 frames=600
+        NPT profile: draw_calls=1420 encode_us=1120 path=/Users/alice/cache/shaders.db
+        """
+        let summary = GameTelemetryLogParser.parseNeptuneProfileLog(sampleLog, homeDirectory: "/Users/alice")
+        XCTAssertNotNil(summary)
+        XCTAssertEqual(summary?.presentMode, "ring")
+        XCTAssertEqual(summary?.scanoutFps.mean ?? 0, 119.8, accuracy: 0.01)
+        XCTAssertEqual(summary?.presentFps.mean ?? 0, 119.9, accuracy: 0.01)
+        XCTAssertEqual(summary?.ackMicros.mean ?? 0, 89.0, accuracy: 0.01)
+        XCTAssertEqual(summary?.directBlitPercentMean ?? 0, 97.25, accuracy: 0.01)
+        XCTAssertEqual(summary?.neptuneHotspotTail.count, 1)
+        XCTAssertTrue(summary?.neptuneHotspotTail.first?.contains("~/cache/shaders.db") == true)
     }
 
     private func makeMockCollector(logsDir: URL) -> GameTelemetryCollector {

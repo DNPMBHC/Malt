@@ -70,7 +70,7 @@ Options:
   --kosmickrisp-dir <dir>          Directory containing lib/libvulkan.1.dylib and lib/libvulkan_kosmickrisp.dylib
   --without-kosmickrisp            Skip bundling KosmicKrisp (explicit MoltenVK fallback)
   --app-only                      Explicitly build a minimal app without container tools
-  --bundle-embedded-runtime        Embed MaltContainerHelper.app (LSUIElement=true) and RuntimeScripts/; guest and Wine require separate setup
+  --bundle-embedded-runtime        Embed MaltContainerHelper.app (visible Dock/Cmd+Tab window) and RuntimeScripts/; guest and Wine require separate setup
   --embedded-runtime-source <app>  Explicit path to UTM-Custom.app to embed (implies --bundle-embedded-runtime)
   --sign-identity <id>             Explicit codesign identity (default: auto-select valid keychain certificate, otherwise ad-hoc)
   --require-distributable          Require Developer ID, Team ID, secure timestamp and notarization
@@ -349,7 +349,7 @@ if [ "$BUNDLE_EMBEDDED_RUNTIME" -eq 1 ]; then
     if [ -n "$RESOLVED_RUNTIME_SOURCE" ] && [ -d "$RESOLVED_RUNTIME_SOURCE" ]; then
         # Reject stale helper builds before copying, changing metadata, or signing.
         python3 "$SCRIPT_DIR/runtime_payload.py" check-helper-settings --helper-app "$RESOLVED_RUNTIME_SOURCE"
-        echo "[malt-package] Embedding container helper into Malt.app/Contents/Helpers/MaltContainerHelper.app (LSUIElement=true)..."
+        echo "[malt-package] Embedding container helper into Malt.app/Contents/Helpers/MaltContainerHelper.app (LSUIElement=false, Dock visible)..."
         mkdir -p "$STAGED_APP/Contents/Helpers"
         rm -rf "$EMBEDDED_HELPER_APP"
         ditto "$RESOLVED_RUNTIME_SOURCE" "$EMBEDDED_HELPER_APP"
@@ -358,7 +358,7 @@ if [ "$BUNDLE_EMBEDDED_RUNTIME" -eq 1 ]; then
 import pathlib, plistlib, sys
 plist_path = pathlib.Path(sys.argv[1])
 data = plistlib.loads(plist_path.read_bytes())
-data['LSUIElement'] = True
+data['LSUIElement'] = False
 plist_path.write_bytes(plistlib.dumps(data, fmt=plistlib.FMT_XML))
 PYP
 
@@ -576,9 +576,9 @@ embedded_info = {
 }
 if embedded_helper_bundled:
     helper_plist = plistlib.loads((app / 'Contents/Helpers/MaltContainerHelper.app/Contents/Info.plist').read_bytes())
-    if helper_plist.get('LSUIElement') is not True:
-        raise SystemExit('error: embedded MaltContainerHelper.app must have LSUIElement=true')
-    embedded_info['lsuiElementEnabled'] = True
+    embedded_info['lsuiElementEnabled'] = bool(helper_plist.get('LSUIElement', False))
+    if embedded_info['lsuiElementEnabled']:
+        raise SystemExit('error: embedded MaltContainerHelper.app must keep LSUIElement=false so Dock and Cmd+Tab stay visible')
     helper_bin = app / 'Contents/Helpers/MaltContainerHelper.app/Contents/MacOS/UTM'
     if not helper_bin.is_file():
         raise SystemExit('error: embedded MaltContainerHelper binary missing')

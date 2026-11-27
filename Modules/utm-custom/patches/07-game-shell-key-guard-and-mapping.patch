@@ -1,8 +1,8 @@
 diff --git a/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift b/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
-index 1e4c926..6a3dbf3 100644
+index 34e64da..21b4871 100644
 --- a/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
 +++ b/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
-@@ -697,6 +697,24 @@ extension VMDisplayQemuMetalWindowController: VMMetalViewInputDelegate {
+@@ -859,6 +859,24 @@ extension VMDisplayQemuMetalWindowController: VMMetalViewInputDelegate {
              metalView.keyDown(with: event)
              return true
          }
@@ -28,10 +28,10 @@ index 1e4c926..6a3dbf3 100644
      }
      
 diff --git a/Platform/macOS/Display/VMMetalView.swift b/Platform/macOS/Display/VMMetalView.swift
-index 8b14a04..dafbd5a 100644
+index 4562f67..ce19773 100644
 --- a/Platform/macOS/Display/VMMetalView.swift
 +++ b/Platform/macOS/Display/VMMetalView.swift
-@@ -206,6 +206,43 @@ class VMMetalView: MTKView {
+@@ -354,6 +354,50 @@ class VMMetalView: MTKView {
          lastKeyDown = nil
          inputDelegate?.keyUp(scanCode: getScanCodeForEvent(event))
      }
@@ -58,8 +58,15 @@ index 8b14a04..dafbd5a 100644
 +    }
 +
 +    override func performKeyEquivalent(with event: NSEvent) -> Bool {
++        let flags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
++        if event.type == .keyDown,
++           flags.contains([.control, .command]),
++           !flags.contains(.option),
++           Int(event.keyCode) == kVK_ANSI_F {
++            window?.toggleFullScreen(nil)
++            return true
++        }
 +        if shouldGuardGameShellShortcuts {
-+            let flags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
 +            if flags.contains(.command) && !flags.contains(.option) && !flags.contains(.control) {
 +                switch Int(event.keyCode) {
 +                case kVK_ANSI_W, kVK_ANSI_Q, kVK_ANSI_H, kVK_ANSI_M:
@@ -75,7 +82,7 @@ index 8b14a04..dafbd5a 100644
      
      override func flagsChanged(with event: NSEvent) {
          let modifiers = event.modifierFlags
-@@ -244,21 +281,26 @@ class VMMetalView: MTKView {
+@@ -392,21 +436,26 @@ class VMMetalView: MTKView {
              }
          }
          if !modifier.isDisjoint(with: [.command, .leftCommand, .rightCommand]) {
@@ -117,10 +124,10 @@ index 8b14a04..dafbd5a 100644
          }
          if !modifier.isDisjoint(with: [.control, .leftControl, .rightControl]) {
 diff --git a/Platform/macOS/Info.plist b/Platform/macOS/Info.plist
-index e7ed6e5..e3f4a18 100644
+index e7ed6e5..feed479 100644
 --- a/Platform/macOS/Info.plist
 +++ b/Platform/macOS/Info.plist
-@@ -53,7 +53,13 @@
+@@ -53,7 +53,15 @@
  	<key>ITSAppUsesNonExemptEncryption</key>
  	<false/>
  	<key>LSApplicationCategoryType</key>
@@ -129,6 +136,8 @@ index e7ed6e5..e3f4a18 100644
 +	<key>LSSupportsGameMode</key>
 +	<true/>
 +	<key>GCSupportsGameMode</key>
++	<true/>
++	<key>NSAppSleepDisabled</key>
 +	<true/>
 +	<key>UTMRuntimeSettingsContractVersion</key>
 +	<integer>1</integer>

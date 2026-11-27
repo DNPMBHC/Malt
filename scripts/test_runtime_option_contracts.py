@@ -73,17 +73,50 @@ class RuntimeOptionContracts(unittest.TestCase):
         self.assertIn('{ [weak self] event in', monitor)
 
     def test_shortcut_filters_keep_escape_combinations_and_only_block_expected_keys(self):
-        for prefix, expected_count in (("07", 2), ("08", 1)):
+        for prefix, expected_guarded, expected_control_checks, expected_option_checks in (
+            ("07", 2, 2, 3),
+            ("08", 1, 2, 2),
+        ):
             source = added_source(prefix)
-            self.assertEqual(source.count("!flags.contains(.option)"), expected_count)
-            self.assertEqual(source.count("!flags.contains(.control)"), expected_count)
+            self.assertEqual(source.count("!flags.contains(.option)"), expected_option_checks)
+            self.assertEqual(source.count("!flags.contains(.control)"), expected_control_checks)
             guarded_cases = re.findall(r"case (kVK_ANSI_W[^:]+):", source)
-            self.assertEqual(len(guarded_cases), expected_count)
+            self.assertEqual(len(guarded_cases), expected_guarded)
             for keys in guarded_cases:
                 self.assertEqual(
                     [key.strip() for key in keys.split(",")],
                     ["kVK_ANSI_W", "kVK_ANSI_Q", "kVK_ANSI_H", "kVK_ANSI_M"]
                 )
+
+    def test_phase_a_and_b_engine_and_mailbox_contracts(self):
+        p01 = added_source("01-default-dxmt-backend")
+        self.assertIn('UTM_DIRECTX_BACKEND', p01)
+        p05 = added_source("05-render-thread-qos-and-dxmt-cache")
+        self.assertIn('DXMT_METALFX_SPATIAL_SWAPCHAIN', p05)
+        self.assertIn('NPT_PROFILE_PERIOD_MS', p05)
+        self.assertIn('QOS_CLASS_USER_INTERACTIVE', p05)
+        self.assertIn('NSActivityLatencyCritical', p05)
+        self.assertIn('.latencyCritical', p05)
+        p07 = added_source("07-game-shell-key-guard-and-mapping")
+        self.assertIn('NSAppSleepDisabled', p07)
+        p09_utm = added_source("09-iosurface-direct-present-and-virtio-input")
+        self.assertIn('UTM_HVF_TSO', p09_utm)
+        self.assertIn('kernel-irqchip=on', p09_utm)
+        p09_spice = added_source("09-cocoaspice-iosurface-direct-present")
+        self.assertIn('UTM_DISPLAY_PRESENT_MODE', p09_spice)
+        self.assertIn('UTM_NEPTUNE_PROFILE_LOG', p09_spice)
+        self.assertIn('mailboxCopyQueue', p09_spice)
+        self.assertIn('ringTextures', p09_spice)
+        self.assertIn('ring_bypass', p09_spice)
+        self.assertIn('[Malt-Present]', p09_spice)
+        self.assertIn('[Malt-Renderer]', p09_spice)
+        p05_spice = added_source("05-cocoaspice-frame-backpressure")
+        self.assertIn('QOS_CLASS_USER_INTERACTIVE', p05_spice)
+        self.assertIn('_residual_dx', p05_spice)
+        p06_utm = added_source("06-high-polling-mouse-coalescing")
+        self.assertIn('GCMouse', p06_utm)
+        self.assertIn('isMouseCoalescingEnabled = false', p06_utm)
+        self.assertIn('UTM_RAW_MOUSE_INPUT', p06_utm)
 
     def test_left_command_guard_still_accepts_explicit_off(self):
         source = added_source("07")
@@ -139,8 +172,64 @@ class RuntimeOptionContracts(unittest.TestCase):
         self.assertIn("throw ScriptingError.notStopped", source)
         self.assertNotIn("try?", source)
 
+    def test_periodic_screenshot_disabled_and_neptune_profiler_wired(self):
+        patch05 = patch_text("05-render-thread-qos-and-dxmt-cache")
+        patch08 = patch_text("08")
+        patch09 = patch_text("09-cocoaspice-iosurface-direct-present")
+        settings = (ROOT / "WhiskyKit/Sources/WhiskyKit/Orchestration/UnifiedLaunchSettings.swift").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn('self.mutableEnvironment[@"NPT_DEBUG"] = @"profile";', patch05)
+        self.assertIn('self.mutableEnvironment[@"VIRGL_LOG_FILE"] = profileLogURL.path;', patch05)
+        self.assertIn('UserDefaults.standard.set(true, forKey: "NoScreenshot")', patch08)
+        self.assertIn('UTM_DISABLE_SCREENSHOT', patch09)
+        self.assertIn('"UTM_DISABLE_SCREENSHOT": "1"', settings)
+
+    def test_fullscreen_resilience_cursor_and_dxmt_fidelity_contracts(self):
+        patch02 = patch_text("02-cursor-and-fps-capture")
+        patch03 = patch_text("03-clean-fullscreen-game-shell")
+        patch05 = patch_text("05-render-thread-qos-and-dxmt-cache")
+        patch06 = patch_text("06-high-polling-mouse-coalescing")
+        patch08 = patch_text("08")
+        patch02_cs = patch_text("02-cocoaspice-cursor-overlay")
+        patch09_cs = patch_text("09-cocoaspice-iosurface-direct-present")
+        self.assertIn('CommandLine.arguments.contains("--app-shell-vm")', patch02)
+        self.assertIn("shouldAutoCaptureInShellOrRelativeMode || metalView?.isMouseCaptured == true", patch03)
+        self.assertIn('@"dxgi.handleAltTab=False"', patch05)
+        self.assertIn('@"d3d11.sampleNaNToZero=True"', patch05)
+        self.assertIn('@"d3d11.defuseFma=True"', patch05)
+        self.assertIn("display?.cursor?.applyRelativeFallback(delta: delta)", patch06)
+        self.assertIn("flags.contains([.option, .command])", patch08)
+        self.assertIn("self?.window?.performClose(nil)", patch08)
+        self.assertIn("[Malt-Cursor] event=set", patch02_cs)
+        self.assertIn("[Malt-Cursor-Render]", patch09_cs)
+
+    def test_performance_architecture_storage_and_memory_contracts(self):
+        patch09 = patch_text("09-iosurface-direct-present-and-virtio-input")
+        settings = (ROOT / "WhiskyKit/Sources/WhiskyKit/Orchestration/UnifiedLaunchSettings.swift").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn('UTM_VIRGL_HOSTMEM', patch09)
+        self.assertIn('iothread=malt_io_\\(busindex)', patch09)
+        self.assertIn('queue-size=256', patch09)
+        self.assertIn('l2-cache-size=16777216', patch09)
+        self.assertIn('refcount-cache-size=4194304', patch09)
+        self.assertIn('"UTM_VIRGL_HOSTMEM": hostmemSize', settings)
+        self.assertIn('"UTM_QCOW2_L2_CACHE": "1"', settings)
+        self.assertIn('"UTM_PER_DISK_IOTHREAD": "1"', settings)
+
     def test_modified_patch_hunk_counts_remain_valid(self):
-        for prefix in ("05-render-thread-qos-and-dxmt-cache", "07", "08"):
+        for prefix in (
+            "02-cursor-and-fps-capture",
+            "03-clean-fullscreen-game-shell",
+            "05-render-thread-qos-and-dxmt-cache",
+            "06-high-polling-mouse-coalescing",
+            "07",
+            "08",
+            "09-iosurface-direct-present-and-virtio-input",
+            "02-cocoaspice-cursor-overlay",
+            "09-cocoaspice-iosurface-direct-present",
+        ):
             lines = patch_text(prefix).splitlines()
             for index, line in enumerate(lines):
                 match = re.match(r"@@ -(\d+),(\d+) \+(\d+),(\d+) @@", line)

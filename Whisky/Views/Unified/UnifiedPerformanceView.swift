@@ -18,7 +18,6 @@ struct UnifiedPerformanceView: View {
     @State private var appliedBannerText: String?
 
     private let tuner = HardwareAutoTuner()
-
     private var safeMemoryOptions: [Int] { UnifiedLaunchSettings.supportedContainerMemoryOptionsGiB(for: hardware) }
     private var recommendedMemoryGiB: Int {
         safeMemoryOptions.min(by: {
@@ -57,12 +56,8 @@ extension UnifiedPerformanceView {
             AppAdaptiveRow {
                 VStack(alignment: .leading, spacing: 6) {
                     Text(hardware.chipName).font(.headline)
-                    Text(
-                        """
-                        \(hardware.totalCores) 核 CPU · \(hardware.physicalMemoryGiB) GB 内存 · \
-                        \(hardware.displayRefreshRateHz) Hz
-                        """
-                    )
+                    let specs = "\(hardware.totalCores) 核 CPU · \(hardware.physicalMemoryGiB) GB 内存"
+                    Text("\(specs) · \(hardware.displayRefreshRateHz) Hz")
                         .font(.caption).foregroundStyle(.secondary)
                     Text("约 11 秒检测 CPU 与磁盘表现，生成资源建议。")
                         .font(.caption).foregroundStyle(.secondary)
@@ -221,29 +216,41 @@ extension UnifiedPerformanceView {
         }
     }
 
+    private var vcpuPickerSection: some View {
+        AppAdaptiveRow {
+            VStack(alignment: .leading, spacing: 2) {
+                Text("容器 vCPU").font(.subheadline)
+                Text("本机共 \(hardware.performanceCores) 大核 + \(hardware.efficiencyCores) 小核；反作弊网游建议 6–8 核防加载饥饿。")
+                    .font(.caption).foregroundStyle(.secondary)
+            }
+        } trailing: {
+            Picker("容器 vCPU", selection: Binding(
+                get: { preferences.hasCPUOverride ? preferences.recommendedVCPU : 0 },
+                set: { preferences.setVirtualCPUCount($0) }
+            )) {
+                Text("沿用运行环境配置").tag(0)
+                ForEach(safeVCPUOptions, id: \.self) { cores in
+                    Text(cores == safeVCPUOptions.last ? "\(cores) 核（推荐稳定）" : "\(cores) 核").tag(cores)
+                }
+                if preferences.hasCPUOverride && !safeVCPUOptions.contains(preferences.recommendedVCPU) {
+                    Text("旧配置需重新选择").tag(preferences.recommendedVCPU).disabled(true)
+                }
+            }
+            .labelsHidden().frame(width: 240)
+        }
+    }
+
     private var advancedOptionsSection: some View {
         AppSection {
             DisclosureGroup("高级选项", isExpanded: $showAdvancedOptions) {
                 VStack(alignment: .leading, spacing: 16) {
-                    AppAdaptiveRow {
-                        Text("容器 vCPU").font(.subheadline)
-                    } trailing: {
-                        Picker("容器 vCPU", selection: Binding(
-                            get: { preferences.hasCPUOverride ? preferences.recommendedVCPU : 0 },
-                            set: { preferences.setVirtualCPUCount($0) }
-                        )) {
-                            Text("沿用运行环境配置").tag(0)
-                            ForEach(safeVCPUOptions, id: \.self) { cores in Text("\(cores) 核").tag(cores) }
-                            if preferences.hasCPUOverride && !safeVCPUOptions.contains(preferences.recommendedVCPU) {
-                                Text("旧配置需重新选择").tag(preferences.recommendedVCPU).disabled(true)
-                            }
-                        }
-                        .labelsHidden().frame(width: 220)
-                    }
+                    vcpuPickerSection
                     Button("恢复运行环境的资源配置") { preferences.clearResourceOverrides() }
                         .disabled(!preferences.hasMemoryOverride && !preferences.hasCPUOverride)
                     Text("资源更改仅在正常关闭容器后更新；从挂起恢复或仅重启游戏不会修改配额。")
                         .font(.caption).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
+                    Divider()
+                    ContainerLowLevelEngineSection(preferences: preferences)
                     Divider()
                     vmnetDirectRow
                     Divider()
@@ -259,14 +266,14 @@ extension UnifiedPerformanceView {
         VStack(alignment: .leading, spacing: 12) {
             AppToggleRow(
                 title: "开启游戏 FPS 与性能遥测日志采集（用于迭代分析）",
-                detail: "启动游戏后自动只读记录 FPS、Work/Slack/Slop 卡顿归因、宿主机分进程 CPU/内存、网络与缓存增量，已自动脱敏路径，不注入或修改游戏进程。",
+                detail: "启动后只读记录 FPS、Work/Slack/Slop、宿主机分进程 CPU/内存与呈现管线指标，不注入游戏进程。",
                 isOn: $preferences.enablePerformanceTelemetryLogging
             )
             AppAdaptiveRow {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("遥测日志目录").font(.subheadline)
                     let latest = orchestrator.latestTelemetryLogURL ?? GameTelemetryCollector.latestTelemetryLogURL()
-                    Text(latest.map { "最近记录：\($0.lastPathComponent)" } ?? "开启后启动游戏将自动生成 JSON 报告（每 30 秒落盘）。")
+                    Text(latest.map { "最近记录：\($0.lastPathComponent)" } ?? "开启后启动容器将自动生成 JSON 报告。")
                         .font(.caption).foregroundStyle(.secondary)
                 }
             } trailing: {
@@ -274,8 +281,7 @@ extension UnifiedPerformanceView {
                     let directory = GameTelemetryCollector.telemetryLogsDirectoryURL()
                     try? FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
                     NSWorkspace.shared.open(directory)
-                }
-                .buttonStyle(.bordered)
+                }.buttonStyle(.bordered)
             }
         }
     }
@@ -283,29 +289,27 @@ extension UnifiedPerformanceView {
     private var vmnetDirectRow: some View {
         AppAdaptiveRow {
             VStack(alignment: .leading, spacing: 4) {
-                Text("原生网络直通").font(.subheadline)
+                Text("原生网络直通（vmnet）").font(.subheadline)
                 AppStatusLabel(
                     text: vmnetStatus.statusSummary,
                     systemImage: vmnetStatus.socketActive ? "checkmark.circle" : "info.circle",
                     tint: vmnetStatus.socketActive ? .green : .secondary
                 )
+                Text("完整授权路径：左侧「环境与存储 → 容器网络设置」（支持系统审批或开源自签终端一键安装）。")
+                    .font(.caption).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
             }
         } trailing: {
             Button(vmnetStatus.socketActive ? "刷新状态" : "打开系统授权") {
                 if vmnetStatus.socketActive {
                     vmnetStatus = orchestrator.nativeVMNetStatus()
-                } else {
-                    UnifiedPreferencesModel.openVMNetSystemAuthorization()
-                }
+                } else { UnifiedPreferencesModel.openVMNetSystemAuthorization() }
             }
             .buttonStyle(.bordered)
         }
     }
 
     func runAutoTuneBenchmark() {
-        isBenchmarking = true
-        benchmarkProgress = 0.08
-        appliedBannerText = nil
+        isBenchmarking = true; benchmarkProgress = 0.08; appliedBannerText = nil
         let progressTask = Task {
             for step in 1...18 {
                 try? await Task.sleep(for: .milliseconds(550))
@@ -317,10 +321,8 @@ extension UnifiedPerformanceView {
             let recommendation = await tuner.runQuickBenchmarkAndRecommend()
             progressTask.cancel()
             await MainActor.run {
-                benchmarkProgress = 1.0
-                latestRecommendation = recommendation
-                appliedBannerText = "已生成建议，当前设置未更改。"
-                isBenchmarking = false
+                benchmarkProgress = 1.0; latestRecommendation = recommendation
+                appliedBannerText = "已生成建议，当前设置未更改。"; isBenchmarking = false
             }
         }
     }
@@ -334,14 +336,13 @@ private struct MemoryTierOptionButton: View {
 
     var body: some View {
         Button(action: onSelect) {
+            let fill = isSelected ? Color.accentColor.opacity(0.08) : Color.clear
             VStack(spacing: 4) {
                 Text("\(memoryGiB) GiB").font(.subheadline.weight(.medium))
                 if isRecommended { Text("推荐").font(.caption2).foregroundStyle(.secondary) }
             }
             .frame(maxWidth: .infinity, minHeight: 34).padding(.vertical, 10)
-            .background(
-                isSelected ? Color.accentColor.opacity(0.08) : Color.clear, in: RoundedRectangle(cornerRadius: 8)
-            )
+            .background(fill, in: RoundedRectangle(cornerRadius: 8))
             .overlay {
                 RoundedRectangle(cornerRadius: 8).strokeBorder(
                     isSelected ? Color.accentColor : Color(nsColor: .separatorColor).opacity(0.5), lineWidth: 1
@@ -362,22 +363,21 @@ private struct PerformanceTierOptionCard: View {
 
     var body: some View {
         Button(action: onSelect) {
+            let fill = isSelected ? Color.accentColor.opacity(0.08) : Color.clear
             HStack(alignment: .top, spacing: 8) {
                 VStack(alignment: .leading, spacing: 6) {
                     Text(tier.displayName).font(.subheadline.weight(.medium))
                     Text(subtitle)
-                        .font(.caption).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
+                        .font(.caption).foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                     .foregroundStyle(isSelected ? Color.accentColor : Color.secondary.opacity(0.5))
                     .accessibilityHidden(true)
             }
-            .padding(12)
-            .frame(minWidth: 172, maxWidth: .infinity, minHeight: 82, alignment: .topLeading)
-            .background(
-                isSelected ? Color.accentColor.opacity(0.08) : Color.clear, in: RoundedRectangle(cornerRadius: 8)
-            )
+            .padding(12).frame(minWidth: 172, maxWidth: .infinity, minHeight: 82, alignment: .topLeading)
+            .background(fill, in: RoundedRectangle(cornerRadius: 8))
             .overlay {
                 RoundedRectangle(cornerRadius: 8).strokeBorder(
                     isSelected ? Color.accentColor : Color(nsColor: .separatorColor).opacity(0.5), lineWidth: 1

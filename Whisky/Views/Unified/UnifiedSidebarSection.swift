@@ -218,6 +218,21 @@ final class UnifiedPreferencesModel: ObservableObject {
             defaults.set(enablePerformanceTelemetryLogging, forKey: "unifiedEnablePerformanceTelemetryLogging")
         }
     }
+    @Published var graphicsBackendRaw: String {
+        didSet { defaults.set(graphicsBackendRaw, forKey: "unifiedContainerGraphicsBackend") }
+    }
+    @Published var displayPresentModeRaw: String {
+        didSet { defaults.set(displayPresentModeRaw, forKey: "unifiedContainerDisplayPresentMode") }
+    }
+    @Published var enableHVFTSO: Bool {
+        didSet { defaults.set(enableHVFTSO, forKey: "unifiedEnableHVFTSO") }
+    }
+    @Published var enableNeptuneProfiler: Bool {
+        didSet { defaults.set(enableNeptuneProfiler, forKey: "unifiedEnableNeptuneProfiler") }
+    }
+    @Published var enableRawMouseInput: Bool {
+        didSet { defaults.set(enableRawMouseInput, forKey: "unifiedEnableRawMouseInput") }
+    }
     @Published var recommendedVCPU: Int { didSet { defaults.set(recommendedVCPU, forKey: "unifiedRecommendedVCPU") } }
     @Published var recommendedRAMMiB: Int {
         didSet { defaults.set(recommendedRAMMiB, forKey: "unifiedRecommendedRAMMiB") }
@@ -257,6 +272,13 @@ final class UnifiedPreferencesModel: ObservableObject {
         enablePerformanceTelemetryLogging = defaults.object(
             forKey: "unifiedEnablePerformanceTelemetryLogging"
         ) as? Bool ?? false
+        graphicsBackendRaw = defaults.string(forKey: "unifiedContainerGraphicsBackend")
+            ?? ContainerGraphicsBackend.dxmt.rawValue
+        displayPresentModeRaw = defaults.string(forKey: "unifiedContainerDisplayPresentMode")
+            ?? ContainerDisplayPresentMode.ringMailbox.rawValue
+        enableHVFTSO = defaults.object(forKey: "unifiedEnableHVFTSO") as? Bool ?? false
+        enableNeptuneProfiler = defaults.object(forKey: "unifiedEnableNeptuneProfiler") as? Bool ?? false
+        enableRawMouseInput = defaults.object(forKey: "unifiedEnableRawMouseInput") as? Bool ?? true
         recommendedVCPU = defaults.object(forKey: "unifiedRecommendedVCPU") as? Int ?? 8
         recommendedRAMMiB = defaults.object(forKey: "unifiedRecommendedRAMMiB") as? Int ?? 10240
         recommendedResolution = defaults.string(forKey: "unifiedRecommendedResolution") ?? "1920x1080"

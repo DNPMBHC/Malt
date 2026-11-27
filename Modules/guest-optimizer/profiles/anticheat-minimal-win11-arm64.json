@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "profile_revision": 4,
-  "profile_version": "3.1",
+  "profile_revision": 5,
+  "profile_version": "3.2",
   "profile_id": "anticheat-minimal-win11-arm64",
   "owner": "@DNPMBHC",
   "target_os": {
@@ -470,6 +470,15 @@
       "win32_priority_separation": 38,
       "memory_compression": "preserve",
       "reason": "Maximize foreground game quantum (0x26), disable core parking jitter, and control memory compression"
+    },
+    "footprint_and_display_controls": {
+      "enabled": true,
+      "remove_onedrive": true,
+      "disable_hibernation": true,
+      "enable_compact_os": true,
+      "cleanup_winsxs_and_retrim": true,
+      "disable_dwm_mpo_overlay": true,
+      "reason": "Remove OneDrive cloud sync bloat, reclaim 8-12 GiB via hiberfil/WinSxS/CompactOS/ReTrim, and disable DWM MPO bypass to preserve fullscreen cursor and crisp non-hover text"
     }
   }
 }

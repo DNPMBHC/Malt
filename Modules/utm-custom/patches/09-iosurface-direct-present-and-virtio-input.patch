@@ -1,8 +1,116 @@
 diff --git a/Configuration/UTMQemuConfiguration+Arguments.swift b/Configuration/UTMQemuConfiguration+Arguments.swift
-index eec2af0..b53b11d 100644
+index fab94cb..960dbd0 100644
 --- a/Configuration/UTMQemuConfiguration+Arguments.swift
 +++ b/Configuration/UTMQemuConfiguration+Arguments.swift
-@@ -1114,14 +1114,48 @@ import Virtualization // for getting network interfaces
+@@ -309,14 +309,21 @@ import Virtualization // for getting network interfaces
+                     if display.hardware.rawValue.lowercased().contains("vga") && isClassicMacNewWorld {
+                         "edid=on"
+                     }
++                    let hostmemSize: String = {
++                        if let raw = ProcessInfo.processInfo.environment["UTM_VIRGL_HOSTMEM"]?
++                            .trimmingCharacters(in: .whitespacesAndNewlines), !raw.isEmpty {
++                            return raw
++                        }
++                        return ProcessInfo.processInfo.physicalMemory <= 20_000_000_000 ? "4G" : "8G"
++                    }()
+                     if display.isGLSupported && isVulkanSupported {
+-                        "hostmem=8G"
++                        "hostmem=\(hostmemSize)"
+                         "blob=true"
+                         "venus=true"
+                     }
+                     if display.isGLSupported && isNeptuneSupported {
+                         if !isVulkanSupported {
+-                            "hostmem=8G"
++                            "hostmem=\(hostmemSize)"
+                             "blob=true"
+                         }
+                         "neptune=true"
+@@ -363,6 +370,19 @@ import Virtualization // for getting network interfaces
+     }
+ 
+     private var directXDriver: UTMQEMUDirectXDriver {
++        if let envBackend = ProcessInfo.processInfo.environment["UTM_DIRECTX_BACKEND"]?
++            .trimmingCharacters(in: .whitespacesAndNewlines).lowercased(), !envBackend.isEmpty {
++            switch envBackend {
++            case "d3dmetal", "d3dmetal-native":
++                return .qemuDirectXDriverD3DMetal
++            case "dxmt", "dxmt-native":
++                return .qemuDirectXDriverDXMT
++            case "disabled", "off", "none":
++                return .qemuDirectXDriverDisabled
++            default:
++                break
++            }
++        }
+         let rawValue = UserDefaults.standard.integer(forKey: "QEMUDirectXDriver")
+         return UTMQEMUDirectXDriver(rawValue: rawValue) ?? .qemuDirectXDriverDefault
+     }
+@@ -638,9 +658,17 @@ import Virtualization // for getting network interfaces
+         system.target
+         f(machineProperties)
+         if isHypervisorUsed {
++            let envTSO = ProcessInfo.processInfo.environment["UTM_HVF_TSO"]
++            let effectiveTSO = envTSO == "1" || (envTSO != "0" && isTSOUsed)
++            let envKernelIrqchip = ProcessInfo.processInfo.environment["UTM_HVF_KERNEL_IRQCHIP"]
+             f("-accel")
+             "hvf"
+-            if isTSOUsed {
++            if envKernelIrqchip != "0" {
++                "kernel-irqchip=on"
++            } else {
++                "kernel-irqchip=off"
++            }
++            if effectiveTSO && system.architecture.hasTSOSupport {
+                 "tso=on"
+             }
+             if isVulkanSupported {
+@@ -993,6 +1021,13 @@ import Virtualization // for getting network interfaces
+             bootindex += 1
+             f()
+         } else if drive.interface == .virtio {
++            let usePerDiskIOThread = system.architecture != .s390x
++                && system.architecture != .m68k
++                && ProcessInfo.processInfo.environment["UTM_PER_DISK_IOTHREAD"] != "0"
++            if usePerDiskIOThread {
++                f("-object")
++                f("iothread,id=malt_io_\(busindex)")
++            }
+             f("-device")
+             if system.architecture == .s390x {
+                 "virtio-blk-ccw"
+@@ -1003,10 +1038,17 @@ import Virtualization // for getting network interfaces
+             }
+             "drive=drive\(drive.id)"
+             "serial=\(drive.serial)"
++            if usePerDiskIOThread {
++                "iothread=malt_io_\(busindex)"
++                "num-queues=4"
++                "queue-size=256"
++                "write-cache=on"
++            }
+             if !disableBootIndex {
+                 "bootindex=\(bootindex)"
+             }
+             bootindex += 1
++            busindex += 1
+             f()
+         } else if drive.interface == .nvme {
+             f("-device")
+@@ -1096,6 +1138,12 @@ import Virtualization // for getting network interfaces
+         } else {
+             "discard=unmap"
+             "detect-zeroes=unmap"
++            if drive.imageURL?.pathExtension.lowercased() == "qcow2",
++               ProcessInfo.processInfo.environment["UTM_QCOW2_L2_CACHE"] != "0" {
++                "l2-cache-size=16777216"
++                "refcount-cache-size=4194304"
++                "cache-clean-interval=0"
++            }
+         }
+         if !isUseFileLock && (!isCd || drive.imageURL != nil) {
+             "file.locking=off"
+@@ -1117,14 +1165,48 @@ import Virtualization // for getting network interfaces
              f("-device")
              f("usb-tablet,bus=usb-bus.0")
          }
@@ -55,10 +163,10 @@ index eec2af0..b53b11d 100644
          if input.usbBusSupport == .usb3_0 {
              var controller = "qemu-xhci"
 diff --git a/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift b/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
-index 1e4c926..d6da1aa 100644
+index 777cac1..90e3bf7 100644
 --- a/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
 +++ b/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
-@@ -124,6 +124,24 @@ class VMDisplayQemuMetalWindowController: VMDisplayQemuWindowController {
+@@ -164,6 +164,24 @@ class VMDisplayQemuMetalWindowController: VMDisplayQemuWindowController {
              }
          }
  

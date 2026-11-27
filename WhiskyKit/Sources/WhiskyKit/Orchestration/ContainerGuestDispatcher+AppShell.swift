@@ -10,7 +10,7 @@ extension ContainerGuestDispatcher {
     let script = GuestAppShellScripts.readEnvelope(for: session, challenge: challenge)
     let result = try await commandRunner(
       controlBinaryPath,
-      ["exec", "--hide", vmIdentifier, "--cmd", "powershell.exe", "-NoProfile", "-EncodedCommand",
+      ["exec", vmIdentifier, "--cmd", "powershell.exe", "-NoProfile", "-EncodedCommand",
         Self.encodedPowerShell(script)],
       ["__DEMOAPP_TIMEOUT_SECONDS": "5"])
     try Self.requireAutomationAccess(result)
@@ -30,7 +30,7 @@ extension ContainerGuestDispatcher {
     let cleanup = Task.detached {
       _ = try? await commandRunner(
         controlBinaryPath,
-        ["exec", "--hide", vmIdentifier, "--cmd", "powershell.exe", "-NoProfile", "-EncodedCommand",
+        ["exec", vmIdentifier, "--cmd", "powershell.exe", "-NoProfile", "-EncodedCommand",
           Self.encodedPowerShell(script)], ["__DEMOAPP_TIMEOUT_SECONDS": "5"])
     }
     await cleanup.value

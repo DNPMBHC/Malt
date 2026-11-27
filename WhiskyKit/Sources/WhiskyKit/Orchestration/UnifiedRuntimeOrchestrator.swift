@@ -360,6 +360,120 @@ public extension UnifiedRuntimeOrchestrator {
     return snapshot
   }
 
+  /// Directly opens the playable Windows container desktop without hijacking a single guest executable.
+  func launchWindowsContainer(
+    entry: UnifiedGameEntry? = nil,
+    settings: UnifiedLaunchSettings? = nil,
+    title: String? = nil
+  ) async throws {
+    let hardware = HardwareAutoTuner().detectHardwareProfile()
+    let baseSettings = settings ?? UnifiedLaunchSettings.load()
+    let effectiveSettings = entry.map { baseSettings.resolved(for: $0, hardware: hardware) } ?? baseSettings
+    let resolved = resolvedRuntimePaths()
+    guard let vmPath = entry?.vmBundlePath ?? resolved.playableVMBundlePath,
+      UnifiedRuntimeDiscovery.isUsablePlayableVMBundle(vmPath, fileManager: fileManager)
+    else {
+      throw UnifiedOrchestrationError.missingVMBundle(entry?.vmBundlePath ?? "")
+    }
+    let windowTitle = title ?? entry?.name ?? "Windows 11 容器"
+    let dispatcher = try containerDispatcher(resolved: resolved, vmPath: vmPath)
+    if let entryID = entry?.id { activeEntryID = entryID }
+    defer { activeEntryID = nil }
+
+    try await applyContainerResources(
+      effectiveSettings, vmPath: vmPath, dispatcher: dispatcher, resolved: resolved, title: windowTitle)
+    if let helper = resolved.containerHelperBinaryPath, !(await helperRunningProbe(helper)) {
+      _ = try? VirtualUSBTransferService.ensureRemovableUSBSlot(in: vmPath, fileManager: fileManager)
+    }
+    let binding = try await startContainerHelper(
+      resolved: resolved, vmPath: vmPath, title: windowTitle, settings: effectiveSettings)
+    try? await appShellSessionBridge.resetCompact(bindingID: binding.id)
+    if let helper = resolved.containerHelperBinaryPath {
+      await Self.revealContainerHelperWindow(helper)
+    }
+    if effectiveSettings.enablePerformanceTelemetryLogging {
+      let telemetryEntry = entry ?? UnifiedGameEntry(
+        name: windowTitle,
+        executablePath: vmPath,
+        engineKind: .antiCheatVM,
+        presetTier: effectiveSettings.presetTier,
+        vmBundlePath: vmPath,
+        installationState: .ready
+      )
+      let logURL = await startTelemetrySession(
+        for: telemetryEntry, settings: effectiveSettings, hardware: hardware)
+      await MainActor.run { self.latestTelemetryLogURL = logURL }
+    }
+    if var updated = entry {
+      updated.lastPlayedAt = Date()
+      libraryStore.upsert(updated)
+    }
+    lastStatusMessage = "Windows 容器已打开，请直接在容器桌面中启动游戏或登录器。"
+  }
+
+  /// Packages host files into an ISO and hot-mounts it via the virtual removable USB drive slot.
+  func mountFilesViaVirtualUSB(_ sourceURLs: [URL]) async throws -> VirtualUSBTransferReceipt {
+    let resolved = resolvedRuntimePaths()
+    guard let vmPath = resolved.playableVMBundlePath,
+      UnifiedRuntimeDiscovery.isUsablePlayableVMBundle(vmPath, fileManager: fileManager)
+    else {
+      throw VirtualUSBTransferError.missingContainerBundle
+    }
+    let vmID = try ContainerGuestDispatcher.vmIdentifier(bundlePath: vmPath)
+    let isRunning: Bool
+    if let helper = resolved.containerHelperBinaryPath {
+      isRunning = await helperRunningProbe(helper)
+    } else {
+      isRunning = false
+    }
+    if !isRunning {
+      _ = try? VirtualUSBTransferService.ensureRemovableUSBSlot(in: vmPath, fileManager: fileManager)
+    }
+    return try await VirtualUSBTransferService.stageAndMountFiles(
+      sourceURLs,
+      vmBundlePath: vmPath,
+      vmIdentifier: vmID,
+      isContainerRunning: isRunning,
+      commandRunner: commandRunner,
+      fileManager: fileManager
+    )
+  }
+
+  /// Ejects the mounted virtual USB transfer drive and removes the temporary ISO.
+  func ejectVirtualUSB() throws {
+    let resolved = resolvedRuntimePaths()
+    guard let vmPath = resolved.playableVMBundlePath else {
+      throw VirtualUSBTransferError.missingContainerBundle
+    }
+    let vmID = try ContainerGuestDispatcher.vmIdentifier(bundlePath: vmPath)
+    VirtualUSBTransferService.eject(vmBundlePath: vmPath, vmIdentifier: vmID, fileManager: fileManager)
+  }
+
+  /// Temporarily enables Windows Update in the running guest to install zh-CN IME dictionaries & pack.
+  func repairGuestChineseIME() async throws -> String {
+    let resolved = resolvedRuntimePaths()
+    guard let vmPath = resolved.playableVMBundlePath,
+      let control = resolvedContainerControlBinary(resolved: resolved)
+    else {
+      throw UnifiedOrchestrationError.backendUnavailable("未找到正在运行的容器或来宾控制组件。")
+    }
+    let vmID = try ContainerGuestDispatcher.vmIdentifier(bundlePath: vmPath)
+    let script = VirtualUSBTransferService.guestChineseIMERepairPowerShell()
+    let encoded = ContainerGuestDispatcher.encodedPowerShell(script)
+    let result = try await commandRunner(
+      control,
+      ["exec", vmID, "--cmd", "powershell.exe", "-NoProfile", "-EncodedCommand", encoded],
+      ["__DEMOAPP_TIMEOUT_SECONDS": "300"]
+    )
+    try ContainerGuestDispatcher.requireAutomationAccess(result)
+    if result.stdout.contains("ZH_CN_IME_REPAIR_INSTALLED") {
+      return "简体中文语言包与微软拼音词库已安装完成，重启一次 Windows 即可彻底生效且不再弹窗。"
+    }
+    throw UnifiedOrchestrationError.commandFailed(
+      "简体中文词库尚未完成安装，请确认容器已联网且 C 盘留有至少 2 GiB 空间后重试。"
+    )
+  }
+
   /// Constructs the native WhiskyKit Wine launch environment with DXMT/D3DMetal/DXVK/WINEDLLPATH routing.
   func buildWineEnvironment(
     for bottleURL: URL, settings: UnifiedLaunchSettings? = nil
@@ -504,6 +618,9 @@ extension UnifiedRuntimeOrchestrator {
         kioskScriptPath: try requiredKioskScript(resolved: resolved),
         displayPolicy: settings.displayPolicy, appShellSession: session)
       try Task.checkCancellation()
+      if let helper = resolved.containerHelperBinaryPath {
+        await Self.revealContainerHelperWindow(helper)
+      }
       try await appShellSessionBridge.startMonitoring(session: session, bindingID: binding.id, dispatcher: dispatcher)
     } catch {
       try? await appShellSessionBridge.resetCompact(bindingID: binding.id)
@@ -848,6 +965,17 @@ extension UnifiedRuntimeOrchestrator {
     }
   }
 
+  private static func revealContainerHelperWindow(_ executable: String) async {
+    let expected = URL(filePath: executable).standardizedFileURL.resolvingSymlinksInPath()
+    await MainActor.run {
+      guard let application = NSWorkspace.shared.runningApplications.first(where: {
+        $0.executableURL?.standardizedFileURL.resolvingSymlinksInPath() == expected
+      }) else { return }
+      application.unhide()
+      application.activate(options: [.activateAllWindows])
+    }
+  }
+
   private static func isContainerHelperRunning(_ executable: String) async -> Bool {
     let expected = URL(filePath: executable).standardizedFileURL.resolvingSymlinksInPath()
     return await MainActor.run {
@@ -898,7 +1026,9 @@ extension UnifiedRuntimeOrchestrator {
       let result = try await commandRunner(helper, arguments, [
         "__DEMOAPP_DETACHED": "1",
         "UTM_KEEP_CURSOR_VISIBLE_ON_INHIBIT": "1",
-        "UTM_PURE_RELATIVE_MOUSE": "1"
+        "UTM_PURE_RELATIVE_MOUSE": "1",
+        "UTM_METAL_DRAWABLE_COUNT": "3",
+        "UTM_MAX_INFLIGHT_FRAMES": "3"
       ])
       guard result.exitCode == 0 else {
         throw UnifiedOrchestrationError.commandFailed("容器引擎未能登记所选容器，网络配置尚未修改，Windows 未启动。")

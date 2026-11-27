@@ -1,69 +1,388 @@
 diff --git a/Sources/CocoaSpice/CSDisplay.m b/Sources/CocoaSpice/CSDisplay.m
-index 656fc1d..74fa96f 100644
+index fbb8496..ac633d9 100644
 --- a/Sources/CocoaSpice/CSDisplay.m
 +++ b/Sources/CocoaSpice/CSDisplay.m
-@@ -522,12 +522,28 @@ - (void)rebuildScanoutTextureWithSurface:(IOSurfaceRef)surface width:(NSUInteger
+@@ -27,6 +27,9 @@
+ #import <spice/protocol.h>
+ #import <IOSurface/IOSurfaceRef.h>
+ #import <mach/vm_page_size.h>
++#import <QuartzCore/CABase.h>
++#include <fcntl.h>
++#include <unistd.h>
+ 
+ @interface CSDisplay ()
+ 
+@@ -54,10 +57,16 @@ @interface CSDisplay ()
+ @property (nonatomic) CGRect visibleArea;
+ @property (nonatomic, readwrite) CGSize displaySize;
+ 
+-// GL scanout shadow buffer, see `copyScanoutRect:withCompletion:`
++// GL scanout shadow buffer & Phase B 3-Slot Ring-Mailbox dedicated copy queue
+ @property (nonatomic, nullable) id<MTLTexture> shadowTexture;
+ @property (atomic, nullable) id<MTLTexture> presentTexture;
+ @property (nonatomic) BOOL shadowNeedsFullCopy;
++@property (nonatomic, nullable) id<MTLCommandQueue> mailboxCopyQueue;
++@property (nonatomic, nullable) NSArray<id<MTLTexture>> *ringTextures;
++@property (nonatomic) NSUInteger ringWriteIndex;
++@property (nonatomic) uint64_t telemetryScanoutCount;
++@property (nonatomic) uint64_t telemetryAckTotalMicros;
++@property (nonatomic) CFTimeInterval telemetryLastReportTime;
+ 
+ // CSRenderSource properties
+ @property (nonatomic, nullable, readwrite) id<MTLTexture> canvasTexture;
+@@ -110,6 +119,8 @@ static void cs_primary_destroy(SpiceDisplayChannel *channel, gpointer data) {
+     // the copy is only meaningful while there is a scanout to copy, and it is
+     // a full sized private allocation we would otherwise hold onto forever
+     self.shadowTexture = nil;
++    self.ringTextures = nil;
++    self.ringWriteIndex = 0;
+     self.presentTexture = nil;
+ }
+ 
+@@ -246,8 +257,11 @@ - (void)setDevice:(id<MTLDevice>)device {
+     }
+     [CSMain.sharedInstance asyncWith:^{
+         _device = device;
+-        // the shadow buffer belongs to the old device
++        // the shadow/ring buffers and mailbox queue belong to the old device
+         self.shadowTexture = nil;
++        self.ringTextures = nil;
++        self.mailboxCopyQueue = nil;
++        self.ringWriteIndex = 0;
+         self.presentTexture = nil;
+         if (self.isGLEnabled) {
+             if (self.delayedScanoutSurface) {
+@@ -278,6 +292,16 @@ - (SpiceChannel *)spiceChannel {
+     return SPICE_CHANNEL(self.channel);
+ }
+ 
+ - (void)screenshotWithCompletion:(screenshotCallback_t)completion {
++    NSDictionary<NSString *, NSString *> *env = NSProcessInfo.processInfo.environment;
++    NSArray<NSString *> *args = NSProcessInfo.processInfo.arguments;
++    if ([env[@"UTM_DISABLE_SCREENSHOT"] isEqualToString:@"1"]
++        || env[@"UTM_APP_SHELL_VM"].length > 0
++        || env[@"UTM_GAME_SHELL_VM"].length > 0
++        || [args containsObject:@"--app-shell-vm"]
++        || [args containsObject:@"--game-shell-vm"]) {
++        completion(nil);
++        return;
++    }
+     [CSMain.sharedInstance asyncWith:^{
+         CGImageRef img = NULL;
+@@ -522,12 +546,141 @@ - (void)rebuildScanoutTextureWithSurface:(IOSurfaceRef)surface width:(NSUInteger
      self.canvasArea = CGRectMake(0, 0, width, height);
      self.glTexture = [self.device newTextureWithDescriptor:textureDescriptor iosurface:surface plane:0];
      CFRelease(surface);
-+    if ([CSDisplay isIOSurfaceDirectPresentEnabled]) {
-+        // Zero-copy IOSurface direct present: skip allocating and blitting into a
-+        // full-sized private shadow texture (saves ~31.64 MiB/frame bandwidth at 4K).
++    NSInteger mode = [CSDisplay displayPresentMode];
++    if (mode == 2) {
++        // Immediate zero-copy mailbox: publish IOSurface directly with zero blit bandwidth.
 +        self.shadowTexture = nil;
-+        self.presentTexture = nil;
++        self.ringTextures = nil;
++        self.ringWriteIndex = 0;
++        self.presentTexture = self.glTexture;
 +        self.shadowNeedsFullCopy = NO;
 +        return;
 +    }
++    if (mode == 1) {
++        // Phase B default: 3-Slot private GPU ringbuffer on a dedicated copy queue,
++        // fully decoupled from MTKView/CAMetalDisplayLink FIFO presentation stalls.
++        self.shadowTexture = nil;
++        self.shadowNeedsFullCopy = NO;
++        [self rebuildRingTexturesWithWidth:width height:height];
++        return;
++    }
++    self.ringTextures = nil;
++    self.ringWriteIndex = 0;
      [self rebuildShadowTextureWithWidth:width height:height];
      // the damage rects that follow describe changes against the previous
      // scanout, so the first copy out of a new one has to be whole
      self.shadowNeedsFullCopy = YES;
  }
  
-++ (BOOL)isIOSurfaceDirectPresentEnabled {
-+    NSString *env = NSProcessInfo.processInfo.environment[@"UTM_IOSURFACE_DIRECT_PRESENT"];
-+    if (env.length > 0 && [env isEqualToString:@"0"]) {
-+        return NO;
++/// 0 = legacy single-shadow, 1 = ring (3-slot dedicated queue mailbox, default), 2 = immediate zero-copy.
+++ (NSInteger)displayPresentMode {
++    NSString *legacyFlag = NSProcessInfo.processInfo.environment[@"UTM_IOSURFACE_DIRECT_PRESENT"];
++    if ((legacyFlag.length > 0 && [legacyFlag isEqualToString:@"0"])
++        || [NSProcessInfo.processInfo.arguments containsObject:@"--disable-iosurface-direct-present"]) {
++        return 0;
 +    }
-+    return ![NSProcessInfo.processInfo.arguments containsObject:@"--disable-iosurface-direct-present"];
++    NSString *modeEnv = NSProcessInfo.processInfo.environment[@"UTM_DISPLAY_PRESENT_MODE"];
++    if (modeEnv.length > 0) {
++        NSString *lower = modeEnv.lowercaseString;
++        if ([lower isEqualToString:@"legacy"] || [lower isEqualToString:@"shadow"]) {
++            return 0;
++        }
++        if ([lower isEqualToString:@"immediate"] || [lower isEqualToString:@"direct"] || [lower isEqualToString:@"zerocopy"]) {
++            return 2;
++        }
++    }
++    return 1;
++}
++
+++ (nullable NSString *)resolvedTelemetryLogPath {
++    NSDictionary<NSString *, NSString *> *env = NSProcessInfo.processInfo.environment;
++    NSString *logPath = env[@"UTM_NEPTUNE_PROFILE_LOG"];
++    if (logPath.length == 0 && env[@"UTM_NPT_PROFILE_PERIOD_MS"].integerValue <= 0) {
++        return nil;
++    }
++    NSURL *cachesRoot = [NSFileManager.defaultManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask].firstObject;
++    NSString *sandboxPath = cachesRoot ? [cachesRoot URLByAppendingPathComponent:@"neptune-latest.log"].path : nil;
++    return logPath.length > 0 ? logPath : sandboxPath;
++}
++
+++ (void)appendPresentTelemetryLine:(NSString *)line {
++    NSString *logPath = [self resolvedTelemetryLogPath];
++    if (logPath.length == 0 || line.length == 0) {
++        return;
++    }
++    NSURL *cachesRoot = [NSFileManager.defaultManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask].firstObject;
++    NSString *fallbackPath = cachesRoot ? [cachesRoot URLByAppendingPathComponent:@"neptune-latest.log"].path : nil;
++    NSData *payload = [line dataUsingEncoding:NSUTF8StringEncoding];
++    if (payload.length == 0) {
++        return;
++    }
++    dispatch_async(dispatch_get_global_queue(QOS_CLASS_UTILITY, 0), ^{
++        int fd = open(logPath.fileSystemRepresentation, O_WRONLY | O_CREAT | O_APPEND, 0600);
++        if (fd < 0 && fallbackPath.length > 0 && ![fallbackPath isEqualToString:logPath]) {
++            fd = open(fallbackPath.fileSystemRepresentation, O_WRONLY | O_CREAT | O_APPEND, 0600);
++        }
++        if (fd >= 0) {
++            (void)write(fd, payload.bytes, payload.length);
++            close(fd);
++        }
++    });
++}
++
++- (void)recordPresentAckMicros:(uint64_t)ackMicros modeLabel:(NSString *)modeLabel {
++    self.telemetryScanoutCount += 1;
++    self.telemetryAckTotalMicros += ackMicros;
++    CFTimeInterval now = CACurrentMediaTime();
++    if (self.telemetryLastReportTime <= 0.0) {
++        self.telemetryLastReportTime = now;
++        return;
++    }
++    CFTimeInterval elapsed = now - self.telemetryLastReportTime;
++    if (elapsed >= 5.0 && self.telemetryScanoutCount > 0) {
++        double scanoutFps = (double)self.telemetryScanoutCount / elapsed;
++        double ackUsAvg = (double)self.telemetryAckTotalMicros / (double)self.telemetryScanoutCount;
++        NSString *line = [NSString stringWithFormat:@"[Malt-Present] mode=%@ scanout_fps=%.2f ack_us_avg=%.1f frames=%llu\n",
++                          modeLabel, scanoutFps, ackUsAvg, (unsigned long long)self.telemetryScanoutCount];
++        [CSDisplay appendPresentTelemetryLine:line];
++        self.telemetryScanoutCount = 0;
++        self.telemetryAckTotalMicros = 0;
++        self.telemetryLastReportTime = now;
++    }
++}
++
++- (void)rebuildRingTexturesWithWidth:(NSUInteger)width height:(NSUInteger)height {
++    MTLPixelFormat format = self.glTexture ? self.glTexture.pixelFormat : MTLPixelFormatBGRA8Unorm;
++    if (!self.mailboxCopyQueue && self.device) {
++        self.mailboxCopyQueue = [self.device newCommandQueue];
++        self.mailboxCopyQueue.label = @"Malt Direct IOSurface Mailbox Blit Queue";
++    }
++    if (self.ringTextures.count == 3) {
++        id<MTLTexture> first = self.ringTextures.firstObject;
++        if (first.width == width && first.height == height && first.pixelFormat == format) {
++            return;
++        }
++    }
++    MTLTextureDescriptor *desc = [[MTLTextureDescriptor alloc] init];
++    desc.pixelFormat = format;
++    desc.width = width;
++    desc.height = height;
++    desc.usage = MTLTextureUsageShaderRead;
++    desc.storageMode = MTLStorageModePrivate;
++    NSMutableArray<id<MTLTexture>> *slots = [NSMutableArray arrayWithCapacity:3];
++    for (NSUInteger i = 0; i < 3; i++) {
++        id<MTLTexture> tex = [self.device newTextureWithDescriptor:desc];
++        if (!tex) {
++            self.ringTextures = nil;
++            self.presentTexture = nil;
++            return;
++        }
++        tex.label = [NSString stringWithFormat:@"Malt Ring Slot %lu", (unsigned long)i];
++        [slots addObject:tex];
++    }
++    self.ringTextures = [slots copy];
++    self.ringWriteIndex = 0;
++    self.presentTexture = nil;
 +}
 +
  /// Allocate the private texture the scanout is copied into. See
  /// `copyScanoutRect:withCompletion:` for why the copy exists.
  - (void)rebuildShadowTextureWithWidth:(NSUInteger)width height:(NSUInteger)height {
-@@ -579,8 +595,26 @@ - (void)rebuildShadowTextureWithWidth:(NSUInteger)width height:(NSUInteger)heigh
+@@ -579,6 +732,77 @@ - (void)rebuildShadowTextureWithWidth:(NSUInteger)width height:(NSUInteger)heigh
  - (void)copyScanoutRect:(CGRect)rect withCompletion:(nonnull completionCallback_t)completion {
      g_assert(CSMain.sharedInstance.isCurrentContextMain);
      id<MTLTexture> source = self.glTexture;
--    id<MTLTexture> destination = self.shadowTexture;
-     id<MTLCommandQueue> queue = self.renderers.firstObject.commandQueue;
-+    if ([CSDisplay isIOSurfaceDirectPresentEnabled] && self.ready && source) {
-+        // Zero-copy IOSurface direct present: omit the 32 MiB shadowTexture blit
-+        // entirely, and synchronize with any prior queued Metal draw via a zero-byte
-+        // FIFO fence command buffer so gl_draw_done never stalls on DisplayLink/TDR.
-+        self.presentTexture = nil;
-+        id<MTLCommandBuffer> fenceBuffer = queue ? [queue commandBuffer] : nil;
-+        if (fenceBuffer != nil) {
-+            fenceBuffer.label = @"IOSurface Direct Present Zero-Copy Fence";
-+            [fenceBuffer addCompletedHandler:^(id<MTLCommandBuffer> completed) {
-+                (void)completed;
-+                [CSMain.sharedInstance asyncWith:completion];
-+            }];
-+            [fenceBuffer commit];
-+        } else {
-+            completion();
++    NSInteger mode = [CSDisplay displayPresentMode];
++    CFTimeInterval startTime = CACurrentMediaTime();
++
++    if (mode == 2) {
++        // Immediate zero-copy mailbox: ALWAYS acknowledge gl_draw_done immediately so
++        // virtio-ramfb-gl can never deadlock during resolution/fullscreen transitions.
++        if (self.ready && source) {
++            self.presentTexture = source;
 +        }
++        [self recordPresentAckMicros:1 modeLabel:@"immediate"];
++        completion();
 +        return;
 +    }
-+    id<MTLTexture> destination = self.shadowTexture;
++
++    if (mode == 1) {
++        if (self.ready && source) {
++            if (self.device && (self.ringTextures.count != 3 || !self.mailboxCopyQueue)) {
++                [self rebuildRingTexturesWithWidth:source.width height:source.height];
++            }
++            NSArray<id<MTLTexture>> *ring = self.ringTextures;
++            if (ring.count == 3 && self.mailboxCopyQueue) {
++                NSUInteger slotIndex = self.ringWriteIndex % ring.count;
++                self.ringWriteIndex = (slotIndex + 1) % ring.count;
++                id<MTLTexture> target = ring[slotIndex];
++                if (target.pixelFormat == source.pixelFormat) {
++                    id<MTLCommandBuffer> copyBuffer = [self.mailboxCopyQueue commandBuffer];
++                    id<MTLBlitCommandEncoder> copyBlit = copyBuffer ? [copyBuffer blitCommandEncoder] : nil;
++                    if (copyBlit != nil) {
++                        NSUInteger copyW = MIN(source.width, target.width);
++                        NSUInteger copyH = MIN(source.height, target.height);
++                        copyBuffer.label = @"Malt Mailbox Ring Blit";
++                        if (copyW > 0 && copyH > 0) {
++                            [copyBlit copyFromTexture:source
++                                          sourceSlice:0
++                                          sourceLevel:0
++                                         sourceOrigin:MTLOriginMake(0, 0, 0)
++                                           sourceSize:MTLSizeMake(copyW, copyH, 1)
++                                            toTexture:target
++                                     destinationSlice:0
++                                     destinationLevel:0
++                                    destinationOrigin:MTLOriginMake(0, 0, 0)];
++                        }
++                        [copyBlit endEncoding];
++                        __weak typeof(self) weakSelf = self;
++                        [copyBuffer addCompletedHandler:^(id<MTLCommandBuffer> completed) {
++                            BOOL succeeded = (completed.error == nil);
++                            uint64_t ackMicros = (uint64_t)MAX(0.0, (CACurrentMediaTime() - startTime) * 1000000.0);
++                            __strong typeof(self) strongSelf = weakSelf;
++                            [CSMain.sharedInstance asyncWith:^{
++                                if (strongSelf) {
++                                    if (succeeded && [strongSelf.ringTextures containsObject:target]) {
++                                        strongSelf.presentTexture = target;
++                                    }
++                                    [strongSelf recordPresentAckMicros:ackMicros modeLabel:@"ring"];
++                                }
++                                completion();
++                            }];
++                        }];
++                        [copyBuffer commit];
++                        return;
++                    }
++                }
++            }
++        }
++        // Fail-safe guaranteed gl_draw_done delivery: NEVER park gl_draw_done on MTKView
++        // invalidateWithCompletion: during fullscreen/resolution switches or hidden windows.
++        [self recordPresentAckMicros:1 modeLabel:@"ring_bypass"];
++        completion();
++        return;
++    }
++
+     id<MTLTexture> destination = self.shadowTexture;
+     id<MTLCommandQueue> queue = self.renderers.firstObject.commandQueue;
      id<MTLCommandBuffer> commandBuffer = nil;
-     id<MTLBlitCommandEncoder> blitEncoder = nil;
- 
 diff --git a/Sources/CocoaSpiceRenderer/CSMetalRenderer.m b/Sources/CocoaSpiceRenderer/CSMetalRenderer.m
-index 9c7bad9..f1673ee 100644
+index 32e0c74..bc283ce 100644
 --- a/Sources/CocoaSpiceRenderer/CSMetalRenderer.m
 +++ b/Sources/CocoaSpiceRenderer/CSMetalRenderer.m
-@@ -395,6 +395,42 @@ - (BOOL)_renderCommand:(id<MTLCommandBuffer>)commandBuffer
+@@ -24,6 +24,9 @@
+ // Header shared between C code here, which executes Metal API commands, and .metal files, which
+ //   uses these types as inputs to the shaders
+ #import "CSShaderTypes.h"
++#import <QuartzCore/CABase.h>
++#include <fcntl.h>
++#include <unistd.h>
+ 
+ NS_ASSUME_NONNULL_BEGIN
+ 
+@@ -112,8 +115,12 @@ @implementation CSMetalRenderer
+     // The command Queue from which we'll obtain command buffers
+     id<MTLCommandQueue> _commandQueue;
+ 
+-    // Configurable in-flight frame backpressure semaphore (default 2) to minimize present slack while preventing GPU queue buildup
++    // Configurable in-flight frame backpressure semaphore (default 3) to minimize present slack while preventing GPU queue buildup
+     dispatch_semaphore_t _inFlightFramesSemaphore;
++    uint64_t _telemetryPresentFrames;
++    uint64_t _telemetryDirectBlitFrames;
++    uint64_t _telemetryCursorDrawnFrames;
++    CFTimeInterval _telemetryLastReportTime;
+ }
+ 
+ @synthesize device = _device;
+@@ -429,6 +436,64 @@ - (void)disableRender {
+     });
+ }
+ 
++- (void)_recordRendererTelemetryWithDirectBlit:(BOOL)usedDirectBlit
++                                   cursorDrawn:(BOOL)cursorDrawn
++                                  cursorSource:(nullable id<CSRenderSource>)cursorSource
++                                  cursorOrigin:(CGPoint)cursorOrigin
++                                         scale:(CGFloat)viewportScale
++                                  viewportSize:(vector_uint2)viewportSize {
++    NSDictionary<NSString *, NSString *> *env = NSProcessInfo.processInfo.environment;
++    NSString *logPath = env[@"UTM_NEPTUNE_PROFILE_LOG"];
++    if (logPath.length == 0 && env[@"UTM_NPT_PROFILE_PERIOD_MS"].integerValue <= 0) {
++        return;
++    }
++    NSURL *cachesRoot = [NSFileManager.defaultManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask].firstObject;
++    NSString *fallbackPath = cachesRoot ? [cachesRoot URLByAppendingPathComponent:@"neptune-latest.log"].path : nil;
++    NSString *primaryPath = logPath.length > 0 ? logPath : fallbackPath;
++    if (primaryPath.length == 0) {
++        return;
++    }
++    _telemetryPresentFrames += 1;
++    if (usedDirectBlit) {
++        _telemetryDirectBlitFrames += 1;
++    }
++    if (cursorDrawn) {
++        _telemetryCursorDrawnFrames += 1;
++    }
++    CFTimeInterval now = CACurrentMediaTime();
++    if (_telemetryLastReportTime <= 0.0) {
++        _telemetryLastReportTime = now;
++        return;
++    }
++    CFTimeInterval elapsed = now - _telemetryLastReportTime;
++    if (elapsed >= 5.0 && _telemetryPresentFrames > 0) {
++        double presentFps = (double)_telemetryPresentFrames / elapsed;
++        double directPct = ((double)_telemetryDirectBlitFrames * 100.0) / (double)_telemetryPresentFrames;
++        NSString *line = [NSString stringWithFormat:@"[Malt-Renderer] present_fps=%.2f direct_blit_pct=%.1f frames=%llu\n"
++                          @"[Malt-Cursor-Render] drawn=%llu/%llu vis=%d tex=%d vert=%lu origin=(%.1f,%.1f) scale=%.2f vp=%ux%u\n",
++                          presentFps, directPct, (unsigned long long)_telemetryPresentFrames,
++                          (unsigned long long)_telemetryCursorDrawnFrames, (unsigned long long)_telemetryPresentFrames,
++                          cursorSource.isVisible ? 1 : 0, cursorSource.texture != nil ? 1 : 0,
++                          (unsigned long)cursorSource.numVertices, cursorOrigin.x, cursorOrigin.y,
++                          viewportScale, viewportSize.x, viewportSize.y];
++        NSData *payload = [line dataUsingEncoding:NSUTF8StringEncoding];
++        dispatch_async(dispatch_get_global_queue(QOS_CLASS_UTILITY, 0), ^{
++            int fd = open(primaryPath.fileSystemRepresentation, O_WRONLY | O_CREAT | O_APPEND, 0600);
++            if (fd < 0 && fallbackPath.length > 0 && ![fallbackPath isEqualToString:primaryPath]) {
++                fd = open(fallbackPath.fileSystemRepresentation, O_WRONLY | O_CREAT | O_APPEND, 0600);
++            }
++            if (fd >= 0 && payload.length > 0) {
++                (void)write(fd, payload.bytes, payload.length);
++                close(fd);
++            }
++        });
++        _telemetryPresentFrames = 0;
++        _telemetryDirectBlitFrames = 0;
++        _telemetryCursorDrawnFrames = 0;
++        _telemetryLastReportTime = now;
++    }
++}
++
+ - (BOOL)_renderCommand:(id<MTLCommandBuffer>)commandBuffer
+             drawSource:(id<CSRenderSource>)source
+         viewportOrigin:(CGPoint)viewportOrigin
+@@ -436,6 +501,55 @@ - (BOOL)_renderCommand:(id<MTLCommandBuffer>)commandBuffer
            viewportSize:(vector_uint2)viewportSize
                 sampler:(id<MTLSamplerState>)sampler
    renderPassDescriptor:(MTLRenderPassDescriptor *)renderPassDescriptor {
@@ -72,11 +391,23 @@ index 9c7bad9..f1673ee 100644
 +        && ![NSProcessInfo.processInfo.arguments containsObject:@"--disable-iosurface-direct-present"];
 +    id<MTLTexture> dstTexture = renderPassDescriptor.colorAttachments[0].texture;
 +    id<MTLTexture> srcTexture = source.texture;
++    id<CSRenderSource> cursorSource = source.cursorSource;
++    if ([source isKindOfClass:[_CSRendererSourceData class]]) {
++        id<CSRenderSource> liveSource = ((_CSRendererSourceData *)source).liveSource;
++        id<MTLTexture> latest = liveSource.texture;
++        if (latest != nil) {
++            srcTexture = latest;
++        }
++        id<CSRenderSource> liveCursor = liveSource.cursorSource;
++        if (liveCursor != nil) {
++            cursorSource = liveCursor;
++        }
++    }
 +    CGPoint origin = CGPointMake(viewportOrigin.x + source.offset.x * viewportScale,
 +                                 viewportOrigin.y + source.offset.y * viewportScale);
 +    if (directEnabled
 +        && source.isVisible
-+        && !source.cursorSource.isVisible
++        && !cursorSource.isVisible
 +        && !source.isInverted
 +        && srcTexture != nil
 +        && dstTexture != nil
@@ -99,6 +430,7 @@ index 9c7bad9..f1673ee 100644
 +                       destinationLevel:0
 +                      destinationOrigin:MTLOriginMake(0, 0, 0)];
 +            [directBlit endEncoding];
++            [self _recordRendererTelemetryWithDirectBlit:YES cursorDrawn:NO cursorSource:cursorSource cursorOrigin:CGPointZero scale:viewportScale viewportSize:viewportSize];
 +            return YES;
 +        }
 +    }
@@ -106,7 +438,7 @@ index 9c7bad9..f1673ee 100644
      id<MTLRenderCommandEncoder> renderEncoder =
          [commandBuffer renderCommandEncoderWithDescriptor:renderPassDescriptor];
      renderEncoder.label = @"View Presentation";
-@@ -403,9 +439,6 @@ - (BOOL)_renderCommand:(id<MTLCommandBuffer>)commandBuffer
+@@ -444,9 +555,6 @@ - (BOOL)_renderCommand:(id<MTLCommandBuffer>)commandBuffer
  
      NSAssert(source.isVisible, @"Screen should be visible at this point!");
  
@@ -116,3 +448,47 @@ index 9c7bad9..f1673ee 100644
      [self _renderEncoder:renderEncoder
              drawAtOrigin:origin
                     scale:viewportScale
+@@ -454,28 +562,33 @@ - (BOOL)_renderCommand:(id<MTLCommandBuffer>)commandBuffer
+             numVerticies:source.numVertices
+                 hasAlpha:source.hasAlpha
+               isInverted:source.isInverted
+-                 texture:source.texture
++                 texture:srcTexture
+             viewportSize:viewportSize
+                  sampler:sampler];
+ 
+-    // Draw cursor
+-    if (source.cursorSource.isVisible) {
+-        CGPoint cursorOrigin = CGPointMake(viewportOrigin.x + (source.offset.x + source.cursorSource.offset.x) * viewportScale,
+-                                           viewportOrigin.y + (source.offset.y + source.cursorSource.offset.y) * viewportScale);
++    // Draw cursor using live cursorSource so fullscreen transitions and rapid frame rates never drop the cursor
++    BOOL cursorDrawn = NO;
++    CGPoint cursorOrigin = CGPointZero;
++    if (cursorSource.isVisible && cursorSource.texture != nil && cursorSource.vertices != nil && cursorSource.numVertices > 0) {
++        cursorOrigin = CGPointMake(viewportOrigin.x + (source.offset.x + cursorSource.offset.x) * viewportScale,
++                                   viewportOrigin.y + (source.offset.y + cursorSource.offset.y) * viewportScale);
+         // Next render the cursor
+         [self _renderEncoder:renderEncoder
+                 drawAtOrigin:cursorOrigin
+                        scale:viewportScale
+-                    vertices:source.cursorSource.vertices
+-                numVerticies:source.cursorSource.numVertices
+-                    hasAlpha:source.cursorSource.hasAlpha
+-                  isInverted:source.cursorSource.isInverted
+-                     texture:source.cursorSource.texture
++                    vertices:cursorSource.vertices
++                numVerticies:cursorSource.numVertices
++                    hasAlpha:cursorSource.hasAlpha
++                  isInverted:cursorSource.isInverted
++                     texture:cursorSource.texture
+                 viewportSize:viewportSize
+                      sampler:sampler];
++        cursorDrawn = YES;
+     }
+ 
+     [renderEncoder endEncoding];
++    [self _recordRendererTelemetryWithDirectBlit:NO cursorDrawn:cursorDrawn cursorSource:cursorSource cursorOrigin:cursorOrigin scale:viewportScale viewportSize:viewportSize];
++    return YES;
+ }
+ 
+ - (void)_renderEncoder:(id<MTLRenderCommandEncoder>)renderEncoder

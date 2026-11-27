@@ -1,5 +1,5 @@
 diff --git a/Platform/macOS/AppDelegate.swift b/Platform/macOS/AppDelegate.swift
-index 78f1d08..527c071 100644
+index 78f1d08..b0deca5 100644
 --- a/Platform/macOS/AppDelegate.swift
 +++ b/Platform/macOS/AppDelegate.swift
 @@ -39,6 +39,95 @@ enum UTMQuitPolicy: Int {
@@ -130,10 +130,10 @@ index 78f1d08..527c071 100644
      
      func application(_ sender: NSApplication, delegateHandlesKey key: String) -> Bool {
 diff --git a/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift b/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
-index 1e4c926..720b611 100644
+index f091629..be380d2 100644
 --- a/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
 +++ b/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
-@@ -72,6 +72,19 @@ class VMDisplayQemuMetalWindowController: VMDisplayQemuWindowController {
+@@ -81,6 +81,19 @@ class VMDisplayQemuMetalWindowController: VMDisplayQemuWindowController {
      @Setting("IsNumLockForced") private var isNumLockForced: Bool = false
      @Setting("InvertScroll") private var isInvertScroll: Bool = false
      @Setting("QEMURendererFPSLimit") private var rendererFpsLimit: Int = 0
@@ -153,12 +153,12 @@ index 1e4c926..720b611 100644
      
      // MARK: - Init
      
-@@ -92,6 +105,14 @@ class VMDisplayQemuMetalWindowController: VMDisplayQemuWindowController {
+@@ -101,6 +114,14 @@ class VMDisplayQemuMetalWindowController: VMDisplayQemuWindowController {
              return
          }
          displayView.addSubview(metalView)
 +        if isGameShellMode, let window = window {
-+            window.toolbar?.isVisible = false
++            window.toolbar?.isVisible = true
 +            window.titleVisibility = .hidden
 +            window.titlebarAppearsTransparent = true
 +            window.styleMask.insert(.fullSizeContentView)
@@ -168,7 +168,7 @@ index 1e4c926..720b611 100644
          (window as? VMDisplayWindow)?.isCameraHousingAreaAllowed = true
          renderer = CSMetalRenderer.init(metalKitView: metalView)
          guard let renderer = self.renderer else {
-@@ -192,6 +213,16 @@ class VMDisplayQemuMetalWindowController: VMDisplayQemuWindowController {
+@@ -217,6 +238,16 @@ class VMDisplayQemuMetalWindowController: VMDisplayQemuWindowController {
              link.isPaused = false
          }
          setControl(.resize, isEnabled: false) // disable item
@@ -185,7 +185,7 @@ index 1e4c926..720b611 100644
          if isWindowFocusAutoCapture {
              captureMouse()
          }
-@@ -408,7 +439,14 @@ extension VMDisplayQemuMetalWindowController {
+@@ -433,7 +464,14 @@ extension VMDisplayQemuMetalWindowController {
          let targetContentSize = window.contentRect(forFrameRect: CGRect(origin: .zero, size: frameSize)).size
          let targetScaleX = targetContentSize.width * currentScreenScale / displaySize.width
          let targetScaleY = targetContentSize.height * currentScreenScale / displaySize.height
@@ -201,7 +201,7 @@ index 1e4c926..720b611 100644
          let scaledSize = CGSize(width: displaySize.width * targetScale / currentScreenScale, height: displaySize.height * targetScale / currentScreenScale)
          let targetFrameSize = window.frameRect(forContentRect: CGRect(origin: .zero, size: scaledSize)).size
          renderer.viewportScale = targetScale
-@@ -475,13 +513,22 @@ extension VMDisplayQemuMetalWindowController {
+@@ -500,13 +538,25 @@ extension VMDisplayQemuMetalWindowController {
      
      func windowDidEnterFullScreen(_ notification: Notification) {
          isFullScreen = true
@@ -211,6 +211,9 @@ index 1e4c926..720b611 100644
 +        }
 +        if isGameShellMode {
 +            NSApp.presentationOptions = [.fullScreen, .autoHideMenuBar, .autoHideDock]
++        }
++        if let window = window, let metalView = metalView {
++            window.makeFirstResponder(metalView)
 +        }
 +        if isFullScreenAutoCapture || shouldAutoCaptureInShellOrRelativeMode {
              captureMouse()
@@ -222,10 +225,11 @@ index 1e4c926..720b611 100644
 +        if isGameShellMode {
 +            NSApp.presentationOptions = []
 +        }
-         if isFullScreenAutoCapture {
+-        if isFullScreenAutoCapture {
++        if isFullScreenAutoCapture || shouldAutoCaptureInShellOrRelativeMode || metalView?.isMouseCaptured == true {
              releaseMouse()
          }
-@@ -491,8 +538,15 @@ extension VMDisplayQemuMetalWindowController {
+@@ -516,8 +566,15 @@ extension VMDisplayQemuMetalWindowController {
          // Do not capture mouse if user did not clicked inside the metalView because the window will be draged if user hold the mouse button.
          guard let window = window,
                window.mouseLocationOutsideOfEventStream.y < metalView.frame.height,
@@ -243,7 +247,7 @@ index 1e4c926..720b611 100644
              return
          }
          captureMouse()
-@@ -503,6 +557,9 @@ extension VMDisplayQemuMetalWindowController {
+@@ -528,6 +585,9 @@ extension VMDisplayQemuMetalWindowController {
      }
      
      override func windowDidBecomeKey(_ notification: Notification) {
@@ -253,7 +257,7 @@ index 1e4c926..720b611 100644
          if isFullScreen && isFullScreenAutoCapture {
              captureMouse()
          }
-@@ -510,6 +567,9 @@ extension VMDisplayQemuMetalWindowController {
+@@ -535,6 +595,9 @@ extension VMDisplayQemuMetalWindowController {
      }
      
      override func windowDidResignKey(_ notification: Notification) {

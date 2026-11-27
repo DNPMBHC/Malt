@@ -38,13 +38,8 @@ public struct TelemetryFPSMetrics: Codable, Equatable, Sendable {
     public let criticalDropsSample: [TelemetryCriticalDrop]
 
     public static let unavailable = TelemetryFPSMetrics(
-        source: "unavailable",
-        fps: .empty,
-        workMs: .empty,
-        slackMs: .empty,
-        slopMs: .empty,
-        criticalDropCount: 0,
-        criticalDropsSample: []
+        source: "unavailable", fps: .empty, workMs: .empty, slackMs: .empty,
+        slopMs: .empty, criticalDropCount: 0, criticalDropsSample: []
     )
 }
 
@@ -100,6 +95,11 @@ public struct TelemetryDisplayInputSnapshot: Codable, Equatable, Sendable {
     public let blockAccidentalShortcuts: Bool
     public let blockLeftCommandKey: Bool
     public let persistentCacheEnabled: Bool
+    public var graphicsBackend: String?
+    public var metalFXUpscaleFactor: String?
+    public var displayPresentMode: String?
+    public var hvfTSOEnabled: Bool?
+    public var neptuneProfilerEnabled: Bool?
 }
 
 /// Dimension 6: Host hardware, allocated VM resources, and build fingerprint.
@@ -133,6 +133,7 @@ public struct GameTelemetryReport: Codable, Equatable, Sendable {
     public let cacheAndGuestMetrics: TelemetryCacheAndGuestMetrics
     public let displayInputSnapshot: TelemetryDisplayInputSnapshot
     public let hardwareFingerprint: TelemetryHardwareFingerprint
+    public var neptunePresentSummary: TelemetryNeptunePresentSummary?
 }
 
 /// Pure statistical helpers for telemetry series.
@@ -373,19 +374,19 @@ public enum GameTelemetryLogParser {
 
     private static func parseFPS(from line: String) -> Double? {
         if let fps = firstCaptureDouble(in: line, pattern: #"(?i)\bfps[:=\s]+(\d+(?:\.\d+)?)"#),
-           fps >= 0, fps <= 1000 {
-            return fps
+           fps >= 0, fps <= 1000 { return fps }
+        let avgPat = #"(?i)avg\.?\s*frametime\s*(?:\(ms\))?[:=\s]+(\d+(?:\.\d+)?)"#
+        if let avgMs = firstCaptureDouble(in: line, pattern: avgPat), avgMs > 0.5, avgMs < 10_000 {
+            return 1000.0 / avgMs
         }
-        if let frameMs = firstCaptureDouble(
-            in: line,
-            pattern: #"(?i)\bframetime[:=\s]+(\d+(?:\.\d+)?)\s*ms"#
-        ), frameMs > 0.5, frameMs < 10_000 {
+        let ftPat = #"(?i)\bframetime[:=\s]+(\d+(?:\.\d+)?)\s*ms"#
+        if let frameMs = firstCaptureDouble(in: line, pattern: ftPat), frameMs > 0.5, frameMs < 10_000 {
             return 1000.0 / frameMs
         }
         return nil
     }
 
-    private static func firstCaptureDouble(in line: String, pattern: String) -> Double? {
+    static func firstCaptureDouble(in line: String, pattern: String) -> Double? {
         guard let regex = try? NSRegularExpression(pattern: pattern) else { return nil }
         let range = NSRange(line.startIndex..., in: line)
         guard let match = regex.firstMatch(in: line, range: range),

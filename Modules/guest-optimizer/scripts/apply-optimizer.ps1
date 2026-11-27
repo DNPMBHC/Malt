@@ -779,6 +779,13 @@ if ($null -ne $profileData.gaming_session_controls) {
         if ($DryRun) {
             $gamingChanges.locale_and_ime = [ordered]@{ status = 'dry_run'; ui_language = [string]$loc.ui_language; preferred_languages = @($loc.preferred_languages) }
         } else {
+            $zhCap = Get-WindowsCapability -Online -Name 'Language.Basic~~~zh-CN*' -ErrorAction SilentlyContinue | Select-Object -First 1
+            if ($null -eq $zhCap -or $zhCap.State -ne 'Installed') {
+                $gamingChanges.locale_and_ime = [ordered]@{
+                    status = 'skipped_missing_zh_cn_ime_dictionary'
+                    capability_state = if ($null -ne $zhCap) { [string]$zhCap.State } else { 'unknown' }
+                }
+            } else {
             try { Set-WinSystemLocale -SystemLocale ([string]$loc.system_locale) -ErrorAction SilentlyContinue } catch { }
             $langCsv = (@($loc.preferred_languages) | ForEach-Object { "'" + [string]$_ + "'" }) -join ', '
             $uiLang = [string]$loc.ui_language
@@ -804,6 +811,84 @@ foreach (`$it in `$rawL) {
                 status = if ($null -ne $locRes) { 'applied' } else { 'applied_system_only_no_interactive_user' }
                 system_locale = [string]$loc.system_locale
                 interactive_result = $locRes
+            }
+            }
+        }
+    }
+
+    # 5. Footprint reduction (OneDrive removal, disable hibernation, CompactOS, WinSxS cleanup + ReTrim) & DWM MPO fix
+    if ($null -ne $gc.footprint_and_display_controls -and $gc.footprint_and_display_controls.enabled -eq $true) {
+        $fd = $gc.footprint_and_display_controls
+        if ($DryRun) {
+            $gamingChanges.footprint_and_display_controls = [ordered]@{
+                status = 'dry_run'
+                remove_onedrive = [bool]$fd.remove_onedrive
+                disable_hibernation = [bool]$fd.disable_hibernation
+                enable_compact_os = [bool]$fd.enable_compact_os
+                cleanup_winsxs_and_retrim = [bool]$fd.cleanup_winsxs_and_retrim
+                disable_dwm_mpo_overlay = [bool]$fd.disable_dwm_mpo_overlay
+            }
+        } else {
+            $fdResult = [ordered]@{}
+            if ($fd.remove_onedrive -eq $true) {
+                try {
+                    Get-Process -Name 'OneDrive' -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+                    $odSetups = @(
+                        (Join-Path $env:SystemRoot 'System32\OneDriveSetup.exe'),
+                        (Join-Path $env:SystemRoot 'SysWOW64\OneDriveSetup.exe')
+                    ) | Where-Object { Test-Path -LiteralPath $_ }
+                    foreach ($odExe in $odSetups) {
+                        & $odExe /uninstall 2>$null | Out-Null
+                    }
+                    # Prevent OneDrive auto-provisioning on future sign-ins (safe standard policy key)
+                    $odPolicy = 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\OneDrive'
+                    New-Item -Path $odPolicy -Force | Out-Null
+                    New-ItemProperty -Path $odPolicy -Name 'DisableFileSyncNGSC' -PropertyType DWord -Value 1 -Force | Out-Null
+                    $fdResult.onedrive = 'removed_and_disabled'
+                } catch {
+                    $fdResult.onedrive = "error: $($_.Exception.Message)"
+                }
+            }
+            if ($fd.disable_hibernation -eq $true) {
+                try {
+                    & powercfg.exe /h off 2>$null | Out-Null
+                    $fdResult.hibernation = 'disabled'
+                } catch {
+                    $fdResult.hibernation = "error: $($_.Exception.Message)"
+                }
+            }
+            if ($fd.disable_dwm_mpo_overlay -eq $true) {
+                try {
+                    $dwmPath = 'HKLM:\SOFTWARE\Microsoft\Windows\Dwm'
+                    New-Item -Path $dwmPath -Force | Out-Null
+                    New-ItemProperty -Path $dwmPath -Name 'OverlayTestMode' -PropertyType DWord -Value 5 -Force | Out-Null
+                    $fdResult.dwm_overlay_test_mode = 5
+                } catch {
+                    $fdResult.dwm_overlay_test_mode = "error: $($_.Exception.Message)"
+                }
+            }
+            if ($fd.enable_compact_os -eq $true) {
+                try {
+                    & compact.exe /CompactOS:always 2>$null | Out-Null
+                    $fdResult.compact_os = 'enabled'
+                } catch {
+                    $fdResult.compact_os = "error: $($_.Exception.Message)"
+                }
+            }
+            if ($fd.cleanup_winsxs_and_retrim -eq $true) {
+                try {
+                    & dism.exe /Online /Cleanup-Image /StartComponentCleanup /ResetBase 2>$null | Out-Null
+                    Remove-Item -Path (Join-Path $env:SystemRoot 'Temp\*') -Recurse -Force -ErrorAction SilentlyContinue
+                    Remove-Item -Path (Join-Path $env:SystemRoot 'SoftwareDistribution\Download\*') -Recurse -Force -ErrorAction SilentlyContinue
+                    Optimize-Volume -DriveLetter 'C' -ReTrim -ErrorAction SilentlyContinue | Out-Null
+                    $fdResult.winsxs_and_retrim = 'cleaned_and_trimmed'
+                } catch {
+                    $fdResult.winsxs_and_retrim = "error: $($_.Exception.Message)"
+                }
+            }
+            $gamingChanges.footprint_and_display_controls = [ordered]@{
+                status = 'applied'
+                details = $fdResult
             }
         }
     }

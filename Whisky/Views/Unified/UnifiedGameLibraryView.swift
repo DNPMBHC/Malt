@@ -15,6 +15,7 @@ struct UnifiedGameLibraryView: View {
     @State private var engineFilter: UnifiedEngineKind?
     @State private var launchErrorMessage: String?
     @State private var discoveryEntry: UnifiedGameEntry?
+    @State private var isOpeningContainer: Bool = false
 
     private let gridColumns = [
         GridItem(.adaptive(minimum: 240), spacing: 16, alignment: .top)
@@ -42,7 +43,9 @@ struct UnifiedGameLibraryView: View {
     }
 
     var body: some View {
-        AppPage(title: "游戏库", subtitle: "管理已添加的游戏与运行设置。") {
+        AppPage(title: "游戏库", subtitle: "原生转译游戏可直接启动；兼容反作弊游戏推荐直接打开 Windows 容器并在桌面中运行。") {
+            directContainerLaunchBanner
+            VirtualUSBTransferCard(orchestrator: orchestrator)
             if !libraryStore.entries.isEmpty { libraryToolbar }
 
             if filteredEntries.isEmpty {
@@ -93,6 +96,24 @@ struct UnifiedGameLibraryView: View {
             Button("确定", role: .cancel) { launchErrorMessage = nil }
         } message: {
             Text(launchErrorMessage ?? "")
+        }
+    }
+
+    private var directContainerLaunchBanner: some View {
+        AppSection {
+            AppAdaptiveRow {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Windows 11 硬件加速容器").font(.headline)
+                    Text("直接打开 Windows 桌面并保持 Dock 图标与顶栏可见，在容器内自由启动任意启动器与反作弊游戏。")
+                        .font(.caption).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
+                }
+            } trailing: {
+                Button(action: openWindowsContainer) {
+                    Label(isOpeningContainer ? "正在打开…" : "打开 Windows 容器", systemImage: "desktopcomputer")
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(isOpeningContainer)
+            }
         }
     }
 
@@ -167,16 +188,35 @@ struct UnifiedGameLibraryView: View {
             return InstalledGameDiscoverySection.redactedMessage(status)
         }
         if entry.engineKind == .antiCheatVM {
-            return "正在准备受管网络并启动无桌面应用壳…"
+            return "正在打开 Windows 容器并准备网络…"
         }
         return "正在准备原生转译环境…"
+    }
+
+    private func openWindowsContainer() {
+        let settings = preferences.runtimeSettings
+        isOpeningContainer = true
+        Task {
+            defer { Task { @MainActor in isOpeningContainer = false } }
+            do {
+                try await orchestrator.launchWindowsContainer(settings: settings)
+            } catch {
+                await MainActor.run {
+                    launchErrorMessage = InstalledGameDiscoverySection.redactedMessage(error.localizedDescription)
+                }
+            }
+        }
     }
 
     private func launchGame(_ entry: UnifiedGameEntry) {
         let settings = preferences.runtimeSettings
         Task {
             do {
-                try await orchestrator.launch(entry: entry, settings: settings)
+                if entry.engineKind == .antiCheatVM {
+                    try await orchestrator.launchWindowsContainer(entry: entry, settings: settings, title: entry.name)
+                } else {
+                    try await orchestrator.launch(entry: entry, settings: settings)
+                }
             } catch {
                 await MainActor.run {
                     launchErrorMessage = InstalledGameDiscoverySection.redactedMessage(error.localizedDescription)
@@ -234,13 +274,9 @@ private struct UnifiedGameCard: View {
     let onRemove: () -> Void
 
     private var isPendingRegistration: Bool {
-        entry.installationState == .installerRequested
+        entry.engineKind == .nativeWine && entry.installationState == .installerRequested
     }
-
-    private var engineTitle: String {
-        entry.engineKind == .antiCheatVM ? "硬件加速容器" : "原生转译"
-    }
-
+    private var engineTitle: String { entry.engineKind == .antiCheatVM ? "硬件加速容器" : "原生转译" }
     private var performanceTitle: String {
         if entry.engineKind == .nativeWine { return "性能在游戏内设置" }
         return entry.inheritsGlobalPerformanceSettings != false ? "继承全局设置" : entry.presetTier.displayName
@@ -251,49 +287,29 @@ private struct UnifiedGameCard: View {
             VStack(alignment: .leading, spacing: 16) {
                 HStack(alignment: .top, spacing: 12) {
                     gameIconView
-                    Text(entry.name)
-                        .font(.headline)
-                        .lineLimit(2)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Menu {
-                        gameActions
-                    } label: {
-                        Image(systemName: "ellipsis")
-                    }
-                    .menuStyle(.borderlessButton)
-                    .menuIndicator(.hidden)
-                    .fixedSize()
-                    .help("更多游戏操作")
-                    .accessibilityLabel("更多游戏操作")
+                    Text(entry.name).font(.headline).lineLimit(2).frame(maxWidth: .infinity, alignment: .leading)
+                    Menu { gameActions } label: { Image(systemName: "ellipsis") }
+                        .menuStyle(.borderlessButton).menuIndicator(.hidden).fixedSize()
+                        .help("更多游戏操作").accessibilityLabel("更多游戏操作")
                 }
-
                 VStack(alignment: .leading, spacing: 6) {
                     AppStatusLabel(
                         text: engineTitle,
                         systemImage: entry.engineKind == .antiCheatVM ? "square.stack.3d.up" : "cpu"
                     )
-                    Text(performanceTitle)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+                    Text(performanceTitle).font(.caption).foregroundStyle(.secondary)
                     if isPendingRegistration {
                         AppStatusLabel(
-                            text: "安装器已启动 · 待扫描登记入口",
-                            systemImage: "exclamationmark.circle",
-                            tint: .orange
+                            text: "安装器已启动 · 待设置入口", systemImage: "exclamationmark.circle", tint: .orange
                         )
                     } else if isLaunching, let stage = launchStageText {
                         AppStatusLabel(text: stage, systemImage: "play.circle", tint: .accentColor)
                             .fixedSize(horizontal: false, vertical: true)
                     }
                 }
-
                 Spacer(minLength: 0)
-
                 Text(entry.lastPlayedAt.map { "上次游玩：\($0.formatted(date: .abbreviated, time: .shortened))" } ?? "尚未运行")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(1)
-
+                    .font(.caption).foregroundStyle(.secondary).lineLimit(1)
                 Button(action: isPendingRegistration ? onScanExecutable : onLaunch) {
                     HStack(spacing: 8) {
                         if isLaunching {
@@ -301,14 +317,13 @@ private struct UnifiedGameCard: View {
                         } else {
                             Image(systemName: isPendingRegistration ? "magnifyingglass" : "play.fill")
                         }
-                        Text(isLaunching ? "启动中…" : (isPendingRegistration ? "扫描游戏入口" : "开始游戏"))
+                        let readyTitle = entry.engineKind == .antiCheatVM ? "打开容器" : "开始游戏"
+                        Text(isLaunching ? "启动中…" : (isPendingRegistration ? "扫描游戏入口" : readyTitle))
                             .fontWeight(.semibold)
                     }
                     .frame(maxWidth: .infinity)
                 }
-                .buttonStyle(.borderedProminent)
-                .controlSize(.large)
-                .disabled(isLaunching)
+                .buttonStyle(.borderedProminent).controlSize(.large).disabled(isLaunching)
             }
             .frame(maxWidth: .infinity, minHeight: 218, alignment: .topLeading)
         }

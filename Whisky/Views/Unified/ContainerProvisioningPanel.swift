@@ -19,8 +19,10 @@ struct ContainerProvisioningPanel: View {
     @State private var showImportConfirmation = false
     @State private var showRollbackConfirmation = false
     @State private var showCreationGuide = false
+    @State private var showAutoDeploySheet = false
     @State private var isImporting = false
     @State private var isRollingBack = false
+    @State private var isCompactingDisk = false
     @State private var feedbackMessage: String?
     @State private var feedbackIsError = false
 
@@ -54,7 +56,7 @@ struct ContainerProvisioningPanel: View {
     }
 
     private var isProvisioningBusy: Bool {
-        isImporting || isRollingBack || provisioningService.isRunning
+        isImporting || isRollingBack || isCompactingDisk || provisioningService.isRunning
     }
 
     var body: some View {
@@ -87,7 +89,9 @@ struct ContainerProvisioningPanel: View {
                     provisioningService: provisioningService,
                     isBusy: isProvisioningBusy,
                     isRollingBack: isRollingBack,
+                    isCompactingDisk: isCompactingDisk,
                     onApplyOptimization: { runProvisioning(at: containerPath) },
+                    onCompactDisk: { runDiskCompaction(at: containerPath) },
                     onRequestRollback: { showRollbackConfirmation = true }
                 )
             }
@@ -115,24 +119,37 @@ struct ContainerProvisioningPanel: View {
         } message: {
             Text("将容器配置与来宾优化还原至注入前备份状态；请确保容器已完全关闭。")
         }
+        .sheet(isPresented: $showAutoDeploySheet) {
+            AutomatedContainerDeploySheet(orchestrator: orchestrator, preferences: preferences) { report in
+                feedbackIsError = !report.allPassed
+                feedbackMessage = "已完成新建容器部署并登记：\(URL(filePath: report.containerPath).lastPathComponent)。"
+                onContainerChanged()
+            }
+        }
     }
 
     private var actionsRow: some View {
         AppAdaptiveRow {
-            Button(action: pickContainerBundle) {
-                HStack(spacing: 6) {
-                    if isImporting {
-                        ProgressView().controlSize(.small)
-                    } else {
-                        Image(systemName: "folder.badge.plus")
-                    }
-                    Text(isImporting ? "正在导入…" : "导入已有受管容器（.utm）")
+            HStack(spacing: 8) {
+                Button { showAutoDeploySheet = true } label: {
+                    Label("一键创建并精简 Win11 容器", systemImage: "sparkles")
                 }
+                .buttonStyle(.borderedProminent)
+                .disabled(isProvisioningBusy)
+
+                Button(action: pickContainerBundle) {
+                    HStack(spacing: 6) {
+                        if isImporting { ProgressView().controlSize(.small) } else {
+                            Image(systemName: "folder.badge.plus")
+                        }
+                        Text(isImporting ? "正在导入…" : "导入已有容器（.utm）")
+                    }
+                }
+                .buttonStyle(.bordered)
+                .disabled(isProvisioningBusy)
             }
-            .buttonStyle(.borderedProminent)
-            .disabled(isProvisioningBusy)
         } trailing: {
-            Button(showCreationGuide ? "收起创建指南" : "从本地合法 Windows 镜像创建指南") {
+            Button(showCreationGuide ? "收起指引" : "官方镜像指引") {
                 showCreationGuide.toggle()
             }
             .buttonStyle(.bordered)
@@ -159,20 +176,15 @@ struct ContainerProvisioningPanel: View {
         .background(Color.secondary.opacity(0.06), in: RoundedRectangle(cornerRadius: 8))
     }
 
-    private func statusRow(
-        title: String, ready: Bool, readyText: String, missingText: String
-    ) -> some View {
+    private func statusRow(title: String, ready: Bool, readyText: String, missingText: String) -> some View {
         AppAdaptiveRow {
-            Text(title)
-                .font(.subheadline)
-                .fixedSize(horizontal: false, vertical: true)
+            Text(title).font(.subheadline).fixedSize(horizontal: false, vertical: true)
         } trailing: {
             AppStatusLabel(
                 text: ready ? readyText : missingText,
                 systemImage: ready ? "checkmark.circle" : "circle.dashed",
                 tint: ready ? .green : .secondary
-            )
-            .fixedSize(horizontal: false, vertical: true)
+            ).fixedSize(horizontal: false, vertical: true)
         }
     }
 }
@@ -191,6 +203,12 @@ private extension ContainerProvisioningPanel {
         showImportConfirmation = true
     }
 
+    func finishFeedback(_ message: String, isError: Bool, refresh: Bool = false) {
+        feedbackIsError = isError
+        feedbackMessage = isError ? InstalledGameDiscoverySection.redactedMessage(message) : message
+        if refresh { onContainerChanged() }
+    }
+
     func performImport() {
         guard let url = selectedImportURL else { return }
         selectedImportURL = nil
@@ -199,18 +217,12 @@ private extension ContainerProvisioningPanel {
         Task {
             do {
                 let imported = try await orchestrator.importPlayableContainer(at: url, confirmedStopped: true)
-                await MainActor.run {
-                    isImporting = false
-                    feedbackIsError = false
-                    feedbackMessage = "已关联受管容器「\(URL(filePath: imported.bundlePath).lastPathComponent)」。"
-                    onContainerChanged()
-                }
+                let name = URL(filePath: imported.bundlePath).lastPathComponent
+                isImporting = false
+                finishFeedback("已关联受管容器「\(name)」。", isError: false, refresh: true)
             } catch {
-                await MainActor.run {
-                    isImporting = false
-                    feedbackIsError = true
-                    feedbackMessage = InstalledGameDiscoverySection.redactedMessage(error.localizedDescription)
-                }
+                isImporting = false
+                finishFeedback(error.localizedDescription, isError: true)
             }
         }
     }
@@ -223,18 +235,32 @@ private extension ContainerProvisioningPanel {
                 let report = try await provisioningService.provisionAndOptimize(
                     containerPath: containerPath, settings: settings
                 )
-                await MainActor.run {
-                    feedbackIsError = !report.allPassed
-                    feedbackMessage = report.allPassed
-                        ? "4 步性能精简与优化注入已完成并核验通过。"
-                        : "部分步骤未完成，请查看下方逐项回执并重试。"
-                    onContainerChanged()
-                }
+                let msg = report.allPassed
+                    ? "4 步性能精简与优化注入已完成并核验通过。"
+                    : "部分步骤未完成，请查看下方逐项回执并重试。"
+                finishFeedback(msg, isError: !report.allPassed, refresh: true)
             } catch {
-                await MainActor.run {
-                    feedbackIsError = true
-                    feedbackMessage = InstalledGameDiscoverySection.redactedMessage(error.localizedDescription)
-                }
+                finishFeedback(error.localizedDescription, isError: true)
+            }
+        }
+    }
+
+    func runDiskCompaction(at containerPath: String) {
+        isCompactingDisk = true
+        feedbackMessage = nil
+        let service = ContainerAutoDeployService(configuration: orchestrator.configuration)
+        Task {
+            do {
+                let report = try await service.compactExistingContainer(at: containerPath)
+                let msg = String(
+                    format: "容器磁盘瘦身完成：%.1f GiB → %.1f GiB（释放 %.1f GiB）。",
+                    report.beforeGiB, report.afterGiB, report.reclaimedGiB
+                )
+                isCompactingDisk = false
+                finishFeedback(msg, isError: false, refresh: true)
+            } catch {
+                isCompactingDisk = false
+                finishFeedback(error.localizedDescription, isError: true)
             }
         }
     }
@@ -245,18 +271,11 @@ private extension ContainerProvisioningPanel {
         Task {
             do {
                 try await provisioningService.rollbackOptimization(containerPath: containerPath)
-                await MainActor.run {
-                    isRollingBack = false
-                    feedbackIsError = false
-                    feedbackMessage = "已无损回滚容器优化配置。"
-                    onContainerChanged()
-                }
+                isRollingBack = false
+                finishFeedback("已无损回滚容器优化配置。", isError: false, refresh: true)
             } catch {
-                await MainActor.run {
-                    isRollingBack = false
-                    feedbackIsError = true
-                    feedbackMessage = InstalledGameDiscoverySection.redactedMessage(error.localizedDescription)
-                }
+                isRollingBack = false
+                finishFeedback(error.localizedDescription, isError: true)
             }
         }
     }
@@ -267,7 +286,9 @@ private struct ContainerOptimizationSection: View {
     @ObservedObject var provisioningService: ContainerProvisioningService
     let isBusy: Bool
     let isRollingBack: Bool
+    let isCompactingDisk: Bool
     let onApplyOptimization: () -> Void
+    let onCompactDisk: () -> Void
     let onRequestRollback: () -> Void
 
     private var completedStepsCount: Int {
@@ -290,7 +311,7 @@ private struct ContainerOptimizationSection: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("一键精简优化与成果注入")
                         .font(.subheadline.weight(.medium))
-                    Text("自动配置多队列硬件管线、guest-optimizer v3.1 中文/免更新稳帧优化、WHQL 图形与网络通道。")
+                    Text("自动配置多队列硬件管线、guest-optimizer v3.2（移除云同步/禁休眠/CompactOS/MPO 修复）与磁盘瘦身。")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
@@ -299,18 +320,27 @@ private struct ContainerOptimizationSection: View {
                 HStack(spacing: 8) {
                     Button(action: onApplyOptimization) {
                         HStack(spacing: 6) {
-                            if provisioningService.isRunning {
-                                ProgressView().controlSize(.small)
-                            } else {
+                            if provisioningService.isRunning { ProgressView().controlSize(.small) } else {
                                 Image(systemName: "wand.and.stars")
                             }
-                            Text(provisioningService.isRunning ? "正在注入…" : "一键应用性能精简与优化注入")
+                            Text(provisioningService.isRunning ? "正在注入…" : "应用 v3.2 精简优化")
                         }
                     }
                     .buttonStyle(.borderedProminent)
                     .disabled(isBusy)
 
-                    Button(isRollingBack ? "回滚中…" : "一键回滚优化", role: .destructive, action: onRequestRollback)
+                    Button(action: onCompactDisk) {
+                        HStack(spacing: 5) {
+                            if isCompactingDisk { ProgressView().controlSize(.small) } else {
+                                Image(systemName: "arrow.down.right.and.arrow.up.left")
+                            }
+                            Text(isCompactingDisk ? "瘦身中…" : "容器磁盘瘦身")
+                        }
+                    }
+                    .buttonStyle(.bordered)
+                    .disabled(isBusy)
+
+                    Button(isRollingBack ? "回滚中…" : "回滚优化", role: .destructive, action: onRequestRollback)
                         .buttonStyle(.bordered)
                         .disabled(isBusy)
                 }

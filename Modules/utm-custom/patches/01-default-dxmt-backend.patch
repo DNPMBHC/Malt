@@ -11,13 +11,29 @@ index 5ae060c..c8bbd58 100644
          case kQEMUDirectXDriverD3DMetal:
              backend = @"d3dmetal";
 diff --git a/Services/UTMQemuVirtualMachine.swift b/Services/UTMQemuVirtualMachine.swift
-index 86b45b2..c3046a1 100644
+index 86b45b2..1a4ce71 100644
 --- a/Services/UTMQemuVirtualMachine.swift
 +++ b/Services/UTMQemuVirtualMachine.swift
-@@ -260,8 +260,14 @@ extension UTMQemuVirtualMachine {
+@@ -260,8 +260,30 @@ extension UTMQemuVirtualMachine {
  
      private var directXDriver: UTMQEMUDirectXDriver {
          get {
++            if let envBackend = ProcessInfo.processInfo.environment["UTM_DIRECTX_BACKEND"]?
++                .trimmingCharacters(in: .whitespacesAndNewlines).lowercased(), !envBackend.isEmpty {
++                switch envBackend {
++                case "d3dmetal", "d3dmetal-native":
++                    return Self.canRunD3DMetal ? .qemuDirectXDriverD3DMetal : .qemuDirectXDriverDXMT
++                case "dxmt", "dxmt-native":
++                    return .qemuDirectXDriverDXMT
++                case "disabled", "off", "none":
++                    return .qemuDirectXDriverDisabled
++                default:
++                    break
++                }
++            }
++            if CommandLine.arguments.contains("--d3dmetal-native") {
++                return Self.canRunD3DMetal ? .qemuDirectXDriverD3DMetal : .qemuDirectXDriverDXMT
++            }
 +            if CommandLine.arguments.contains("--dxmt-native") {
 +                return .qemuDirectXDriverDXMT
 +            }

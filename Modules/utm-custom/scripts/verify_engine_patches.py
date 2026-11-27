@@ -29,6 +29,7 @@ ALLOWED_TARGET_PREFIXES = (
     "Configuration/UTMQemuConfiguration+Arguments.swift",
     "Configuration/UTMQemuConfigurationInput.swift",
     "QEMUHelper/QEMUHelper.m",
+    "QEMULauncher/Bootstrap.c",
     "Platform/macOS/Info.plist",
     "Platform/macOS/AppDelegate.swift",
     "Platform/macOS/Display/VMDisplayWindowController.swift",
@@ -37,6 +38,8 @@ ALLOWED_TARGET_PREFIXES = (
     "Sources/CocoaSpice/include/CSCursor.h",
     "Sources/CocoaSpice/CSCursor.m",
     "Sources/CocoaSpice/CSDisplay.m",
+    "Sources/CocoaSpice/CSInput.m",
+    "Sources/CocoaSpice/CSMain.m",
     "Sources/CocoaSpiceRenderer/include/CSMetalRenderer.h",
     "Sources/CocoaSpiceRenderer/CSMetalRenderer.m",
 )

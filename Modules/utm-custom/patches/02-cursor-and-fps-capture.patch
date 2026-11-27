@@ -161,13 +161,15 @@ diff --git a/Platform/macOS/Display/VMMetalView.swift b/Platform/macOS/Display/V
 index 8b14a04..a396dda 100644
 --- a/Platform/macOS/Display/VMMetalView.swift
 +++ b/Platform/macOS/Display/VMMetalView.swift
-@@ -389,7 +389,11 @@ extension VMMetalView {
+@@ -389,7 +389,13 @@ extension VMMetalView {
          CGWarpMouseCursorPosition(screenCenter ?? .zero)
          isMouseCaptured = true
          NSCursor.tryHide()
 -        CGSSetGlobalHotKeyOperatingMode(CGSMainConnectionID(), .disable)
 +        let keepHostHotKeys = CommandLine.arguments.contains("--game-shell-vm")
 +            || ProcessInfo.processInfo.environment["UTM_GAME_SHELL_VM"] != nil
++            || CommandLine.arguments.contains("--app-shell-vm")
++            || ProcessInfo.processInfo.environment["UTM_APP_SHELL_VM"] != nil
 +        if !keepHostHotKeys {
 +            CGSSetGlobalHotKeyOperatingMode(CGSMainConnectionID(), .disable)
 +        }

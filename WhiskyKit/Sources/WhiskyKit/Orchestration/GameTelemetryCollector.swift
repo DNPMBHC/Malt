@@ -99,6 +99,15 @@ public actor GameTelemetryCollector {
             .appending(path: "TelemetryLogs", directoryHint: .isDirectory)
     }
 
+    public static func neptuneProfileLogURL(fileManager: FileManager = .default) -> URL {
+        let sandboxCaches = fileManager.homeDirectoryForCurrentUser
+            .appending(path: "Library/Containers/com.utmapp.UTM/Data/Library/Caches", directoryHint: .isDirectory)
+        if fileManager.fileExists(atPath: sandboxCaches.path(percentEncoded: false)) {
+            return sandboxCaches.appending(path: "neptune-latest.log")
+        }
+        return telemetryLogsDirectoryURL(fileManager: fileManager).appending(path: "neptune-latest.log")
+    }
+
     public static func latestTelemetryLogURL(
         in directory: URL? = nil,
         fileManager: FileManager = .default
@@ -214,14 +223,6 @@ public actor GameTelemetryCollector {
     }
 
     private func flushHeartbeat(sessionID: UUID) async {
-        guard let session = activeSession, session.id == sessionID else { return }
-        if session.context.engineKind == .antiCheatVM,
-           let snapshot = await collectGuestSnapshot(for: session.context, since: session.startedAt) {
-            if var updated = activeSession, updated.id == sessionID {
-                updated.lastGuestSnapshot = snapshot
-                activeSession = updated
-            }
-        }
         guard let latest = activeSession, latest.id == sessionID else { return }
         let vmStatNow = await readVMStat()
         let report = buildReport(for: latest, endedAt: Date(), status: "recording", vmStatEnd: vmStatNow)
@@ -258,7 +259,7 @@ private extension GameTelemetryCollector {
         let encoded = ContainerGuestDispatcher.encodedPowerShell(script)
         let result = try? await commandRunner(
             control,
-            ["exec", "--hide", vmID, "--cmd", "powershell.exe", "-NoProfile", "-EncodedCommand", encoded],
+            ["exec", vmID, "--cmd", "powershell.exe", "-NoProfile", "-EncodedCommand", encoded],
             ["__DEMOAPP_TIMEOUT_SECONDS": "12"]
         )
         guard let stdout = result?.stdout, result?.exitCode == 0,
@@ -322,8 +323,30 @@ private extension GameTelemetryCollector {
             networkMetrics: networkMetrics,
             cacheAndGuestMetrics: cacheGuest,
             displayInputSnapshot: GameTelemetryCollectorHelpers.displaySnapshot(from: session.context),
-            hardwareFingerprint: GameTelemetryCollectorHelpers.hardwareFingerprint(from: session.context)
+            hardwareFingerprint: GameTelemetryCollectorHelpers.hardwareFingerprint(from: session.context),
+            neptunePresentSummary: readNeptunePresentSummary()
         )
+    }
+
+    func readNeptunePresentSummary() -> TelemetryNeptunePresentSummary? {
+        let candidates = [
+            logsDirectoryURL.appending(path: "neptune-latest.log"),
+            Self.neptuneProfileLogURL()
+        ]
+        guard let url = candidates.first(where: {
+            FileManager.default.fileExists(atPath: $0.path(percentEncoded: false))
+        }), let handle = try? FileHandle(forReadingFrom: url) else { return nil }
+        defer { try? handle.close() }
+        let fileSize = (try? handle.seekToEnd()) ?? 0
+        let maxReadBytes: UInt64 = 65_536
+        if fileSize > maxReadBytes {
+            try? handle.seek(toOffset: fileSize - maxReadBytes)
+        } else {
+            try? handle.seek(toOffset: 0)
+        }
+        guard let data = try? handle.readToEnd(),
+              let text = String(data: data, encoding: .utf8) else { return nil }
+        return GameTelemetryLogParser.parseNeptuneProfileLog(text)
     }
 
     func processStats(

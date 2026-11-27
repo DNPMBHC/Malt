@@ -164,8 +164,8 @@ public final class ContainerProvisioningService: ObservableObject, @unchecked Se
         try await executeResumableStage(
             ResumableStageSpec(
                 stage: .applyGuestOptimization, containerPath: containerPath,
-                skippedDetail: "断点续跑：来宾精简优化 v3.1 已核验生效。",
-                runningDetail: "正在通过 QGA 注入并核验 guest-optimizer v3.1…"),
+                skippedDetail: "断点续跑：来宾精简优化 v3.2 已核验生效。",
+                runningDetail: "正在通过 QGA 注入并核验 guest-optimizer v3.2…"),
             checkpoint: &checkpoint, steps: &currentSteps
         ) {
             try await self.guestExecutor.runGuestOptimization(

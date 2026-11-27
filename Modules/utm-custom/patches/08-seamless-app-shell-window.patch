@@ -10,7 +10,7 @@ index 78f1d08..9639e53 100644
      }
      
      func applicationDidFinishLaunching(_ notification: Notification) {
-@@ -336,3 +337,134 @@ enum UTMQuitPolicy: Int {
+@@ -336,3 +337,141 @@ enum UTMQuitPolicy: Int {
          }
      }
  }
@@ -37,6 +37,13 @@ index 78f1d08..9639e53 100644
 +    }
 +
 +    func register(delegate: AppDelegate) {
++        let disableScreenshot = ProcessInfo.processInfo.environment["UTM_DISABLE_SCREENSHOT"] == "1"
++            || Self.requestedAppShellTarget != nil
++            || CommandLine.arguments.contains("--game-shell-vm")
++            || ProcessInfo.processInfo.environment["UTM_GAME_SHELL_VM"] != nil
++        if disableScreenshot {
++            UserDefaults.standard.set(true, forKey: "NoScreenshot")
++        }
 +        guard Self.requestedAppShellTarget != nil else {
 +            return
 +        }
@@ -173,7 +180,7 @@ index 1e4c926..1b82fff 100644
          super.enterSuspended(isBusy: busy)
      }
  
-@@ -790,6 +793,277 @@ extension VMDisplayQemuMetalWindowController {
+@@ -790,6 +793,342 @@ extension VMDisplayQemuMetalWindowController {
      }
  }
  
@@ -192,6 +199,7 @@ index 1e4c926..1b82fff 100644
 +    var currentPhase: UTMAppShellPhase = .compact
 +    var statePollTimer: Timer?
 +    var distributedObserver: NSObjectProtocol?
++    var usbTransferObserver: NSObjectProtocol?
 +    var keyGuardMonitor: Any?
 +    var lastObservedRawState: String = ""
 +
@@ -279,13 +287,14 @@ index 1e4c926..1b82fff 100644
 +        guard UTMAppShellRuntimeState.isAppShellMode, let window = window else {
 +            return
 +        }
-+        window.toolbar?.isVisible = false
++        window.toolbar?.isVisible = true
 +        window.title = UTMAppShellRuntimeState.windowTitle
 +        window.titleVisibility = .visible
 +        window.setContentSize(UTMAppShellRuntimeState.windowSize)
 +        window.center()
 +        window.makeKeyAndOrderFront(nil)
 +        NSApp.activate(ignoringOtherApps: true)
++        installAppShellKeyGuardIfNeeded()
 +        startAppShellStateMonitoring()
 +    }
 +
@@ -313,6 +322,20 @@ index 1e4c926..1b82fff 100644
 +            }
 +        }
 +
++        if let observer = runtime.usbTransferObserver {
++            DistributedNotificationCenter.default().removeObserver(observer)
++        }
++        runtime.usbTransferObserver = DistributedNotificationCenter.default().addObserver(
++            forName: Notification.Name("com.malt.virtualUsbTransfer"),
++            object: nil,
++            queue: .main
++        ) { [weak self] notification in
++            guard let payload = notification.object as? String else { return }
++            Task { @MainActor [weak self] in
++                await self?.handleVirtualUSBTransferNotification(payload)
++            }
++        }
++
 +        runtime.statePollTimer?.invalidate()
 +        if UTMAppShellRuntimeState.stateFilePath != nil {
 +            runtime.statePollTimer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true) { [weak self] _ in
@@ -331,9 +354,38 @@ index 1e4c926..1b82fff 100644
 +            DistributedNotificationCenter.default().removeObserver(observer)
 +            runtime.distributedObserver = nil
 +        }
++        if let observer = runtime.usbTransferObserver {
++            DistributedNotificationCenter.default().removeObserver(observer)
++            runtime.usbTransferObserver = nil
++        }
 +        if let monitor = runtime.keyGuardMonitor {
 +            NSEvent.removeMonitor(monitor)
 +            runtime.keyGuardMonitor = nil
++        }
++    }
++
++    func handleVirtualUSBTransferNotification(_ payload: String) async {
++        let parts = payload.split(separator: "|", omittingEmptySubsequences: false).map(String.init)
++        guard parts.count >= 2,
++              parts[1].caseInsensitiveCompare(qemuVM.id.uuidString) == .orderedSame else {
++            return
++        }
++        guard let removableDrive = qemuVM.config.drives.first(where: { $0.isExternal }) else {
++            logger.warning("Virtual USB transfer skipped: no removable drive slot configured")
++            return
++        }
++        switch parts[0] {
++        case "mount":
++            guard parts.count >= 3 else { return }
++            let filename = parts[2]
++            guard !filename.isEmpty, !filename.contains("/"), !filename.contains("..") else { return }
++            let isoURL = qemuVM.pathUrl.appendingPathComponent("Data").appendingPathComponent(filename)
++            guard FileManager.default.isReadableFile(atPath: isoURL.path) else { return }
++            try? await qemuVM.changeMedium(removableDrive, to: isoURL)
++        case "eject":
++            try? await qemuVM.eject(removableDrive)
++        default:
++            break
 +        }
 +    }
 +
@@ -374,9 +426,9 @@ index 1e4c926..1b82fff 100644
 +        guard let window = window else {
 +            return
 +        }
-+        window.toolbar?.isVisible = false
-+        window.titleVisibility = .hidden
-+        window.titlebarAppearsTransparent = true
++        window.toolbar?.isVisible = true
++        window.titleVisibility = .visible
++        window.titlebarAppearsTransparent = false
 +        window.styleMask.insert(.fullSizeContentView)
 +        window.backgroundColor = .black
 +        metalView.clearColor = MTLClearColor(red: 0, green: 0, blue: 0, alpha: 1)
@@ -386,7 +438,7 @@ index 1e4c926..1b82fff 100644
 +        if !window.styleMask.contains(.fullScreen) {
 +            window.toggleFullScreen(nil)
 +        }
-+        NSApp.presentationOptions = [.fullScreen, .autoHideMenuBar, .autoHideDock]
++        NSApp.presentationOptions = [.fullScreen]
 +        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) { [weak self] in
 +            self?.captureMouse()
 +        }
@@ -417,12 +469,32 @@ index 1e4c926..1b82fff 100644
 +            return
 +        }
 +        runtime.keyGuardMonitor = NSEvent.addLocalMonitorForEvents(matching: [.keyDown, .keyUp]) { [weak self] event in
++            let flags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
++            if event.type == .keyDown,
++               flags.contains([.control, .command]),
++               !flags.contains(.option),
++               Int(event.keyCode) == kVK_ANSI_F {
++                DispatchQueue.main.async { [weak self] in
++                    self?.releaseMouse()
++                    self?.window?.toggleFullScreen(nil)
++                }
++                return nil
++            }
++            if event.type == .keyDown,
++               flags.contains([.option, .command]),
++               !flags.contains(.control),
++               Int(event.keyCode) == kVK_ANSI_Q {
++                DispatchQueue.main.async { [weak self] in
++                    self?.releaseMouse()
++                    self?.window?.performClose(nil)
++                }
++                return nil
++            }
 +            let guardEnabled = ProcessInfo.processInfo.environment["UTM_GAME_SHELL_KEY_GUARD"]
 +                .map { $0 == "1" } ?? true
 +            guard guardEnabled, self?.window?.styleMask.contains(.fullScreen) == true else {
 +                return event
 +            }
-+            let flags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
 +            if flags.contains(.command) && !flags.contains(.option) && !flags.contains(.control) {
 +                switch Int(event.keyCode) {
 +                case kVK_ANSI_W, kVK_ANSI_Q, kVK_ANSI_H, kVK_ANSI_M:

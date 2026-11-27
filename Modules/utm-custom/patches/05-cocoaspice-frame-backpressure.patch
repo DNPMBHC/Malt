@@ -1,8 +1,162 @@
+diff --git a/Sources/CocoaSpice/CSInput.m b/Sources/CocoaSpice/CSInput.m
+index ae10d95..b390b28 100644
+--- a/Sources/CocoaSpice/CSInput.m
++++ b/Sources/CocoaSpice/CSInput.m
+@@ -20,6 +20,8 @@
+ #import <glib.h>
+ #import <spice-client.h>
+ #import <spice/protocol.h>
++#include <math.h>
++#include <os/lock.h>
+ 
+ @interface CSInput ()
+ 
+@@ -31,6 +33,13 @@ @implementation CSInput {
+     CGFloat                 _scroll_delta_y;
+     
+     uint32_t                _key_state[512 / 32];
++    os_unfair_lock          _motion_lock;
++    double                  _pending_dx;
++    double                  _pending_dy;
++    double                  _residual_dx;
++    double                  _residual_dy;
++    CSInputButton           _pending_button_mask;
++    BOOL                    _motion_flush_scheduled;
+ }
+ 
+ #pragma mark - Properties
+@@ -90,6 +99,7 @@ - (void)sendKey:(CSInputKey)type code:(int)scancode {
+     g_return_if_fail(i < SPICE_N_ELEMENTS(self->_key_state));
+     
+     [CSMain.sharedInstance asyncWith:^{
++        [self _flushPendingMotionOnMainContext];
+         SpiceInputsChannel *inputs = self.channel;
+         switch (type) {
+             case kCSInputKeyPress:
+@@ -216,22 +226,63 @@ static int cs_button_to_spice(CSInputButton button)
+     return spice;
+ }
+ 
++- (void)_flushPendingMotionOnMainContext {
++    double dx = 0.0;
++    double dy = 0.0;
++    CSInputButton mask = kCSInputButtonNone;
++    os_unfair_lock_lock(&_motion_lock);
++    dx = _pending_dx;
++    dy = _pending_dy;
++    mask = _pending_button_mask;
++    _pending_dx = 0.0;
++    _pending_dy = 0.0;
++    _motion_flush_scheduled = NO;
++    os_unfair_lock_unlock(&_motion_lock);
++
++    if (!self.channel || self.disableInputs) {
++        return;
++    }
++    if (!self.serverModeCursor) {
++        _residual_dx = 0.0;
++        _residual_dy = 0.0;
++        SPICE_DEBUG("[CocoaSpice] %s:%d ignoring mouse motion event since we are in client mode", __FUNCTION__, __LINE__);
++        return;
++    }
++    double totalX = dx + _residual_dx;
++    double totalY = dy + _residual_dy;
++    gint sendX = (gint)trunc(totalX);
++    gint sendY = (gint)trunc(totalY);
++    _residual_dx = totalX - (double)sendX;
++    _residual_dy = totalY - (double)sendY;
++    if (sendX != 0 || sendY != 0) {
++        spice_inputs_channel_motion(self.channel, sendX, sendY, cs_button_mask_to_spice(mask));
++    }
++}
++
+ - (void)sendMouseMotion:(CSInputButton)buttonMask relativePoint:(CGPoint)relativePoint forMonitorID:(NSInteger)monitorID {
+-    if (!self.channel) {
++    (void)monitorID;
++    if (!self.channel || self.disableInputs) {
+         return;
+     }
+-    if (self.disableInputs) {
++    if (relativePoint.x == 0.0 && relativePoint.y == 0.0) {
+         return;
+     }
+-    
+-    [CSMain.sharedInstance asyncWith:^{
+-        if (!self.serverModeCursor) {
+-            SPICE_DEBUG("[CocoaSpice] %s:%d ignoring mouse motion event since we are in client mode", __FUNCTION__, __LINE__);
+-        } else {
+-            spice_inputs_channel_motion(self.channel, relativePoint.x, relativePoint.y,
+-                                        cs_button_mask_to_spice(buttonMask));
+-        }
+-    }];
++    BOOL shouldDispatch = NO;
++    os_unfair_lock_lock(&_motion_lock);
++    _pending_dx += (double)relativePoint.x;
++    _pending_dy += (double)relativePoint.y;
++    _pending_button_mask = buttonMask;
++    if (!_motion_flush_scheduled) {
++        _motion_flush_scheduled = YES;
++        shouldDispatch = YES;
++    }
++    os_unfair_lock_unlock(&_motion_lock);
++
++    if (shouldDispatch) {
++        [CSMain.sharedInstance asyncWith:^{
++            [self _flushPendingMotionOnMainContext];
++        }];
++    }
+ }
+ 
+ - (void)sendMouseMotion:(CSInputButton)buttonMask relativePoint:(CGPoint)relativePoint {
+@@ -316,6 +367,7 @@ - (void)sendMouseButton:(CSInputButton)button mask:(CSInputButton)mask pressed:(
+     }
+     
+     [CSMain.sharedInstance asyncWith:^{
++        [self _flushPendingMotionOnMainContext];
+         SpiceInputsChannel *inputs = self.channel;
+         if (pressed) {
+             spice_inputs_channel_button_press(inputs,
+diff --git a/Sources/CocoaSpice/CSMain.m b/Sources/CocoaSpice/CSMain.m
+index bbee095..8071084 100644
+--- a/Sources/CocoaSpice/CSMain.m
++++ b/Sources/CocoaSpice/CSMain.m
+@@ -18,6 +18,7 @@
+ #import <glib.h>
+ #import <spice-client.h>
+ #import <pthread.h>
++#include <pthread/qos.h>
+ #import "gst_ios_init.h"
+ 
+ @interface CSMain ()
+@@ -91,6 +92,7 @@ static void logHandler(const gchar *log_domain, GLogLevelFlags log_level,
+     CSMain *self = (__bridge_transfer CSMain *)args;
+     
+     pthread_setname_np("SPICE Main Loop");
++    pthread_set_qos_class_self_np(QOS_CLASS_USER_INTERACTIVE, 0);
+     gst_ios_init();
+     
+     g_main_context_ref(self->_main_context);
 diff --git a/Sources/CocoaSpiceRenderer/CSMetalRenderer.m b/Sources/CocoaSpiceRenderer/CSMetalRenderer.m
-index 9c7bad9..202124d 100644
+index 9c7bad9..32e0c74 100644
 --- a/Sources/CocoaSpiceRenderer/CSMetalRenderer.m
 +++ b/Sources/CocoaSpiceRenderer/CSMetalRenderer.m
-@@ -109,6 +109,9 @@ @implementation CSMetalRenderer
+@@ -34,6 +34,7 @@ @interface _CSRendererSourceData : NSObject<CSRenderSource>
+ @property (nonatomic, readonly) id<MTLBuffer> vertices;
+ @property (nonatomic, readonly) NSUInteger numVertices;
+ @property (nonatomic, readonly) id<MTLTexture> texture;
++@property (nonatomic, weak, readonly, nullable) id<CSRenderSource> liveSource;
+ @property (nonatomic, readonly) BOOL hasAlpha;
+ @property (nonatomic, readonly) BOOL isInverted;
+ @property (nonatomic, readonly) BOOL isVisible;
+@@ -69,6 +70,7 @@ - (nullable instancetype)initWithRenderSource:(id<CSRenderSource>)renderSource a
+         _vertices = renderSource.vertices;
+         _numVertices = renderSource.numVertices;
+         _texture = renderSource.texture;
++        _liveSource = renderSource;
+         _hasAlpha = renderSource.hasAlpha;
+         _isInverted = renderSource.isInverted;
+         _isVisible = renderSource.isVisible;
+@@ -109,6 +111,9 @@ @implementation CSMetalRenderer
  
      // The command Queue from which we'll obtain command buffers
      id<MTLCommandQueue> _commandQueue;
@@ -12,11 +166,11 @@ index 9c7bad9..202124d 100644
  }
  
  @synthesize device = _device;
-@@ -167,6 +170,15 @@ - (nonnull instancetype)initWithMetalKitView:(nonnull MTKView *)mtkView
+@@ -167,6 +172,15 @@ - (nonnull instancetype)initWithMetalKitView:(nonnull MTKView *)mtkView
  
          // Create the command queue
          _commandQueue = [_device newCommandQueue];
-+        NSInteger maxInFlight = 2;
++        NSInteger maxInFlight = 3;
 +        NSString *envInFlight = NSProcessInfo.processInfo.environment[@"UTM_MAX_INFLIGHT_FRAMES"];
 +        if (envInFlight.length > 0) {
 +            NSInteger parsed = [envInFlight integerValue];
@@ -28,7 +182,7 @@ index 9c7bad9..202124d 100644
  
          // Sampler
          [self _initializeUpscaler:MTLSamplerMinMagFilterLinear downscaler:MTLSamplerMinMagFilterLinear];
-@@ -271,21 +283,34 @@ static matrix_float4x4 matrix_scale_translate(CGFloat scale, CGPoint translate)
+@@ -271,20 +285,34 @@ static matrix_float4x4 matrix_scale_translate(CGFloat scale, CGPoint translate)
      return m;
  }
  
@@ -58,7 +212,6 @@ index 9c7bad9..202124d 100644
 +    }
  
 -    if (!self.renderNeedsUpdate || !sourceData.isVisible) {
--        [self _completeDraw];
 +    // Obtain a renderPassDescriptor generated from the view's drawable textures
 +    MTLRenderPassDescriptor *renderPassDescriptor = view.currentRenderPassDescriptor;
 +    id<CAMetalDrawable> currentDrawable = view.currentDrawable;
@@ -67,10 +220,10 @@ index 9c7bad9..202124d 100644
 +        if (inFlightSemaphore) {
 +            dispatch_semaphore_signal(inFlightSemaphore);
 +        }
+         [self _completeDraw];
          return;
      }
- 
-@@ -296,6 +321,13 @@ - (void)drawInMTKView:(nonnull MTKView *)view
+@@ -296,6 +324,14 @@ - (void)drawInMTKView:(nonnull MTKView *)view
  
      // synchronize with rendererQueue in order to access currentCommandBuffer
      id<MTLCommandBuffer> commandBuffer = [_commandQueue commandBuffer];
@@ -79,12 +232,13 @@ index 9c7bad9..202124d 100644
 +        if (inFlightSemaphore) {
 +            dispatch_semaphore_signal(inFlightSemaphore);
 +        }
++        [self _completeDraw];
 +        return;
 +    }
      commandBuffer.label = @"Draw Frame";
  
      [self _renderCommand:commandBuffer
-@@ -308,7 +340,11 @@ - (void)drawInMTKView:(nonnull MTKView *)view
+@@ -308,7 +344,11 @@ - (void)drawInMTKView:(nonnull MTKView *)view
  
      [commandBuffer presentDrawable:currentDrawable];
  
@@ -97,6 +251,14 @@ index 9c7bad9..202124d 100644
          dispatch_async(dispatch_get_main_queue(), ^{
              [self _completeDraw];
          });
+@@ -385,6 +425,7 @@ - (void)disableRender {
+     dispatch_async(dispatch_get_main_queue(), ^{
+         self.renderSourceData = nil;
+         self.renderNeedsUpdate = NO;
++        [self _completeDraw];
+     });
+ }
+ 
 diff --git a/Sources/CocoaSpiceRenderer/include/CSMetalRenderer.h b/Sources/CocoaSpiceRenderer/include/CSMetalRenderer.h
 index 3c71dbf..67b4807 100644
 --- a/Sources/CocoaSpiceRenderer/include/CSMetalRenderer.h

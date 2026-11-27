@@ -87,16 +87,31 @@ struct NativeNetworkControls: View {
                     .foregroundStyle(.orange)
                     .fixedSize(horizontal: false, vertical: true)
             }
+            if orchestrator.nativeNetworkPermissionState?.state == .signingRequired {
+                Text("当前为本地开源自签构建，macOS 不允许通过 SMAppService 注册系统服务。可点下方「复制终端安装命令」在终端执行一次管理员授权安装，或直接继续使用零权限内置代理。")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            } else {
+                Text("权限获取路径：1. 点击「申请原生网络授权」→ 2. 打开「系统设置 → 通用 → 登录项与扩展 → 允许在后台」开启开关 → 3. 返回点击「应用网络配置」。")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
         }
     }
 
     private var serviceActions: some View {
         AppAdaptiveRow {
             HStack(spacing: 8) {
-                Button(authorizationButtonTitle) {
-                    _ = orchestrator.requestNativeNetworkAuthorization()
+                if orchestrator.nativeNetworkPermissionState?.state == .signingRequired {
+                    Button("复制终端安装命令", action: copyVMNetInstallCommand)
+                } else {
+                    Button(authorizationButtonTitle) {
+                        _ = orchestrator.requestNativeNetworkAuthorization()
+                    }
+                    .disabled(!canRequestAuthorization)
                 }
-                .disabled(!canRequestAuthorization)
                 Button("系统批准设置") { orchestrator.openNativeNetworkApprovalSettings() }
             }
         } trailing: {
@@ -180,8 +195,10 @@ struct NativeNetworkControls: View {
         default: return .secondary
         }
     }
+}
 
-    private func pollWhileStarting() async {
+private extension NativeNetworkControls {
+    func pollWhileStarting() async {
         guard isStartingState else { return }
         for _ in 0..<20 {
             try? await Task.sleep(for: .seconds(1))
@@ -191,12 +208,20 @@ struct NativeNetworkControls: View {
         }
     }
 
-    private func refresh() {
+    func refresh() {
         _ = orchestrator.refreshNativeNetworkStatus()
         if containerPath == nil { containerPath = orchestrator.resolvedRuntimePaths().playableVMBundlePath }
     }
 
-    private func selectContainer() {
+    func copyVMNetInstallCommand() {
+        let cmd = "sudo bash Whisky/Modules/utm-custom/vmnet-bridge/install_vmnet_bridge.sh --install"
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.setString(cmd, forType: .string)
+        feedbackIsError = false
+        feedback = "已复制管理员安装命令：请在项目根目录终端粘贴运行，完成后点击「刷新」即可应用原生 vmnet 网络。"
+    }
+
+    func selectContainer() {
         let panel = NSOpenPanel()
         panel.title = "选择已有 Windows ARM64 容器"
         panel.message = "选择已安装来宾工具的容器；仅会导入为受管实例，不会启动或改写磁盘内容。"
@@ -209,7 +234,7 @@ struct NativeNetworkControls: View {
         showImportConfirmation = true
     }
 
-    private func importContainer() {
+    func importContainer() {
         guard let url = selectedImportURL else { return }
         selectedImportURL = nil
         isBusy = true
@@ -229,7 +254,7 @@ struct NativeNetworkControls: View {
         }
     }
 
-    private func revokeAuthorization() {
+    func revokeAuthorization() {
         isBusy = true
         feedback = nil
         Task { @MainActor in
@@ -245,12 +270,12 @@ struct NativeNetworkControls: View {
         }
     }
 
-    private func confirmConfiguration(restore: Bool) {
+    func confirmConfiguration(restore: Bool) {
         restoreConfiguration = restore
         showConfigurationConfirmation = true
     }
 
-    private func configureContainer() {
+    func configureContainer() {
         guard let containerPath else { return }
         let entry = UnifiedGameEntry(
             name: "容器网络配置", executablePath: "", engineKind: .antiCheatVM,

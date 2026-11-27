@@ -1,8 +1,106 @@
+diff --git a/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift b/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
+index e2f320b..9725380 100644
+--- a/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
++++ b/Platform/macOS/Display/VMDisplayQemuMetalWindowController.swift
+@@ -323,6 +323,7 @@ extension VMDisplayQemuMetalWindowController {
+     override func spiceDidCreateInput(_ input: CSInput) {
+         if vmInput == nil {
+             vmInput = input
++            metalView?.configureRawMouseInput(input: vmInput, display: vmDisplay)
+         }
+         super.spiceDidCreateInput(input)
+     }
+@@ -330,6 +331,7 @@ extension VMDisplayQemuMetalWindowController {
+     override func spiceDidDestroyInput(_ input: CSInput) {
+         if vmInput == input {
+             vmInput = nil
++            metalView?.configureRawMouseInput(input: nil, display: vmDisplay)
+         }
+         super.spiceDidDestroyInput(input)
+     }
+@@ -337,6 +339,7 @@ extension VMDisplayQemuMetalWindowController {
+     override func spiceDidCreateDisplay(_ display: CSDisplay) {
+         if !isSecondary && vmDisplay == nil && display.isPrimaryDisplay {
+             vmDisplay = display
++            metalView?.configureRawMouseInput(input: vmInput, display: vmDisplay)
+             displaySizeDidChange(size: display.displaySize)
+         } else {
+             super.spiceDidCreateDisplay(display)
 diff --git a/Platform/macOS/Display/VMMetalView.swift b/Platform/macOS/Display/VMMetalView.swift
-index 8b14a04..35ff596 100644
+index a396dda..4562f67 100644
 --- a/Platform/macOS/Display/VMMetalView.swift
 +++ b/Platform/macOS/Display/VMMetalView.swift
-@@ -29,6 +29,20 @@ class VMMetalView: MTKView {
+@@ -15,6 +15,69 @@
+ //
+ 
+ import Carbon.HIToolbox
++import CocoaSpice
++import GameController
++import os.lock
++
++private final class MaltRawMouseBridge: @unchecked Sendable {
++    private var lock = os_unfair_lock()
++    private weak var spiceInput: CSInput?
++    private weak var spiceDisplay: CSDisplay?
++    private var monitorID: Int = 0
++    private var buttonMask: CSInputButton = []
++    private var isCaptured: Bool = false
++    private var isRawActive: Bool = false
++
++    func configure(input: CSInput?, display: CSDisplay?) {
++        os_unfair_lock_lock(&lock)
++        spiceInput = input
++        spiceDisplay = display
++        monitorID = display?.monitorID ?? 0
++        os_unfair_lock_unlock(&lock)
++    }
++
++    func setCaptured(_ captured: Bool) {
++        os_unfair_lock_lock(&lock)
++        isCaptured = captured
++        if !captured { isRawActive = false; buttonMask = [] }
++        os_unfair_lock_unlock(&lock)
++    }
++
++    func setRawActive(_ active: Bool) {
++        os_unfair_lock_lock(&lock)
++        isRawActive = active
++        os_unfair_lock_unlock(&lock)
++    }
++
++    func getRawActive() -> Bool {
++        os_unfair_lock_lock(&lock)
++        let active = isRawActive
++        os_unfair_lock_unlock(&lock)
++        return active
++    }
++
++    func updateButtonMask(_ mask: CSInputButton) {
++        os_unfair_lock_lock(&lock)
++        buttonMask = mask
++        os_unfair_lock_unlock(&lock)
++    }
++
++    func dispatchRawDelta(dx: Float, dy: Float) {
++        guard dx != 0 || dy != 0 else { return }
++        os_unfair_lock_lock(&lock)
++        let captured = isCaptured
++        let input = spiceInput
++        let display = spiceDisplay
++        let monitor = display?.monitorID ?? monitorID
++        let mask = buttonMask
++        os_unfair_lock_unlock(&lock)
++        guard captured, let input = input else { return }
++        // GCMouse deltaY is positive upward; Windows/SPICE Y-axis is positive downward.
++        let delta = CGPoint(x: CGFloat(dx), y: CGFloat(-dy))
++        input.sendMouseMotion(mask, relativePoint: delta, forMonitorID: monitor)
++        display?.cursor?.applyRelativeFallback(delta: delta)
++    }
++}
+ 
+ class VMMetalView: MTKView {
+     weak var inputDelegate: VMMetalViewInputDelegate?
+@@ -29,6 +92,77 @@ class VMMetalView: MTKView {
      @Setting("IsCmdOptSwapped") private var isCmdOptSwapped = false
      @Setting("IsISOKeySwapped") private var isISOKeySwapped = false
      @Setting("IsCapsLockKey") private var isCapsLockKey: Bool = false
@@ -11,6 +109,63 @@ index 8b14a04..35ff596 100644
 +    private var pendingRelativeButtonMask: CSInputButton = []
 +    private var lastRelativeMotionSendNs: UInt64 = 0
 +    private var relativeMotionFlushTimer: DispatchSourceTimer?
++    private let rawMouseBridge = MaltRawMouseBridge()
++    private let rawMouseQueue = DispatchQueue(label: "com.malt.raw-mouse-input", qos: .userInteractive)
++    private var activeRawMouse: GCMouse?
++    private var rawMouseConnectToken: Any?
++    private var rawMouseDisconnectToken: Any?
++    private var isRawMouseInputEnabled: Bool {
++        ProcessInfo.processInfo.environment["UTM_RAW_MOUSE_INPUT"] != "0"
++    }
++
++    func configureRawMouseInput(input: CSInput?, display: CSDisplay?) {
++        rawMouseBridge.configure(input: input, display: display)
++    }
++
++    private func attachRawMouseIfAvailable() {
++        guard isRawMouseInputEnabled, isMouseCaptured else {
++            detachRawMouse()
++            return
++        }
++        if rawMouseConnectToken == nil {
++            rawMouseConnectToken = NotificationCenter.default.addObserver(
++                forName: .GCMouseDidBecomeCurrent,
++                object: nil,
++                queue: .main
++            ) { [weak self] _ in
++                self?.attachRawMouseIfAvailable()
++            }
++        }
++        if rawMouseDisconnectToken == nil {
++            rawMouseDisconnectToken = NotificationCenter.default.addObserver(
++                forName: .GCMouseDidStopBeingCurrent,
++                object: nil,
++                queue: .main
++            ) { [weak self] _ in
++                self?.detachRawMouse()
++            }
++        }
++        guard let mouse = GCMouse.current, let mouseInput = mouse.mouseInput else {
++            rawMouseBridge.setRawActive(false)
++            return
++        }
++        if activeRawMouse !== mouse {
++            activeRawMouse?.mouseInput?.mouseMovedHandler = nil
++            activeRawMouse = mouse
++        }
++        mouse.handlerQueue = rawMouseQueue
++        let bridge = rawMouseBridge
++        mouseInput.mouseMovedHandler = { _, deltaX, deltaY in
++            bridge.dispatchRawDelta(dx: deltaX, dy: deltaY)
++        }
++        rawMouseBridge.setRawActive(true)
++    }
++
++    private func detachRawMouse() {
++        activeRawMouse?.mouseInput?.mouseMovedHandler = nil
++        activeRawMouse = nil
++        rawMouseBridge.setRawActive(false)
++    }
 +    private lazy var mouseCoalesceWindowNs: UInt64 = {
 +        let raw = ProcessInfo.processInfo.environment["UTM_MOUSE_COALESCE_US"]
 +        let defaultUs = 1500
@@ -23,20 +178,26 @@ index 8b14a04..35ff596 100644
  
      /// Drawable supplied by a display link for the frame being drawn, used instead of one
      /// acquired from the layer.
-@@ -148,18 +162,21 @@ class VMMetalView: MTKView {
+@@ -148,18 +282,25 @@ class VMMetalView: MTKView {
      
      override func mouseDown(with event: NSEvent) {
          logger.trace("mouse down: \(event.buttonNumber)")
 +        flushPendingRelativeMotion()
          sendAbsolutePosition(for: event)
-         inputDelegate?.mouseDown(button: .left, mask: NSEvent.pressedMouseButtons.inputButtons())
+-        inputDelegate?.mouseDown(button: .left, mask: NSEvent.pressedMouseButtons.inputButtons())
++        let mask = NSEvent.pressedMouseButtons.inputButtons()
++        rawMouseBridge.updateButtonMask(mask)
++        inputDelegate?.mouseDown(button: .left, mask: mask)
      }
      
      override func rightMouseDown(with event: NSEvent) {
          logger.trace("right mouse down: \(event.buttonNumber)")
 +        flushPendingRelativeMotion()
          sendAbsolutePosition(for: event)
-         inputDelegate?.mouseDown(button: .right, mask: NSEvent.pressedMouseButtons.inputButtons())
+-        inputDelegate?.mouseDown(button: .right, mask: NSEvent.pressedMouseButtons.inputButtons())
++        let mask = NSEvent.pressedMouseButtons.inputButtons()
++        rawMouseBridge.updateButtonMask(mask)
++        inputDelegate?.mouseDown(button: .right, mask: mask)
      }
      
      override func otherMouseDown(with event: NSEvent) {
@@ -45,18 +206,24 @@ index 8b14a04..35ff596 100644
          sendAbsolutePosition(for: event)
          switch event.buttonNumber {
          case 2: inputDelegate?.mouseDown(button: .middle, mask: NSEvent.pressedMouseButtons.inputButtons())
-@@ -171,16 +188,19 @@ class VMMetalView: MTKView {
+@@ -171,16 +312,23 @@ class VMMetalView: MTKView {
      
      override func mouseUp(with event: NSEvent) {
          logger.trace("mouse up: \(event.buttonNumber)")
+-        inputDelegate?.mouseUp(button: .left, mask: NSEvent.pressedMouseButtons.inputButtons())
 +        flushPendingRelativeMotion()
-         inputDelegate?.mouseUp(button: .left, mask: NSEvent.pressedMouseButtons.inputButtons())
++        let mask = NSEvent.pressedMouseButtons.inputButtons()
++        rawMouseBridge.updateButtonMask(mask)
++        inputDelegate?.mouseUp(button: .left, mask: mask)
      }
      
      override func rightMouseUp(with event: NSEvent) {
          logger.trace("right mouse up: \(event.buttonNumber)")
+-        inputDelegate?.mouseUp(button: .right, mask: NSEvent.pressedMouseButtons.inputButtons())
 +        flushPendingRelativeMotion()
-         inputDelegate?.mouseUp(button: .right, mask: NSEvent.pressedMouseButtons.inputButtons())
++        let mask = NSEvent.pressedMouseButtons.inputButtons()
++        rawMouseBridge.updateButtonMask(mask)
++        inputDelegate?.mouseUp(button: .right, mask: mask)
      }
      
      override func otherMouseUp(with event: NSEvent) {
@@ -65,7 +232,7 @@ index 8b14a04..35ff596 100644
          switch event.buttonNumber {
          case 2: inputDelegate?.mouseUp(button: .middle, mask: NSEvent.pressedMouseButtons.inputButtons())
          case 3: inputDelegate?.mouseUp(button: .side, mask: NSEvent.pressedMouseButtons.inputButtons())
-@@ -317,11 +337,58 @@ class VMMetalView: MTKView {
+@@ -317,11 +465,61 @@ class VMMetalView: MTKView {
          mouseMoved(with: event)
      }
      
@@ -120,25 +287,51 @@ index 8b14a04..35ff596 100644
          if isMouseCaptured {
 -            inputDelegate?.mouseMove(relativePoint: CGPoint(x: event.deltaX, y: -event.deltaY),
 -                                     buttonMask: NSEvent.pressedMouseButtons.inputButtons())
++            if rawMouseBridge.getRawActive() {
++                return
++            }
 +            enqueueRelativeMotion(dx: event.deltaX,
 +                                  dy: -event.deltaY,
 +                                  buttonMask: NSEvent.pressedMouseButtons.inputButtons())
          } else {
              let location = event.locationInWindow
              let converted = convert(location, from: nil)
-@@ -333,6 +400,7 @@ class VMMetalView: MTKView {
+@@ -333,7 +531,16 @@ class VMMetalView: MTKView {
      override func scrollWheel(with event: NSEvent) {
          guard event.deltaY != 0 else { return }
          logger.trace("scroll: \(event.deltaY)")
+-        inputDelegate?.mouseScroll(dy: event.deltaY,
 +        flushPendingRelativeMotion()
-         inputDelegate?.mouseScroll(dy: event.deltaY,
++        let effectiveDy: CGFloat
++        if !event.hasPreciseScrollingDeltas {
++            // Physical notched mouse wheels can emit sub-unit deltaY (0.1..0.3) under macOS acceleration;
++            // guarantee at least 1 discrete detent per tick so CocoaSpice never swallows wheel steps.
++            effectiveDy = event.deltaY > 0 ? max(1.0, ceil(event.deltaY)) : min(-1.0, floor(event.deltaY))
++        } else {
++            effectiveDy = event.deltaY
++        }
++        inputDelegate?.mouseScroll(dy: effectiveDy,
                                     buttonMask: NSEvent.pressedMouseButtons.inputButtons())
      }
-@@ -397,6 +465,7 @@ extension VMMetalView {
+ 
+@@ -388,6 +595,9 @@ extension VMMetalView {
+         CGAssociateMouseAndMouseCursorPosition(0)
+         CGWarpMouseCursorPosition(screenCenter ?? .zero)
+         isMouseCaptured = true
++        NSEvent.isMouseCoalescingEnabled = false
++        rawMouseBridge.setCaptured(true)
++        attachRawMouseIfAvailable()
+         NSCursor.tryHide()
+         let keepHostHotKeys = CommandLine.arguments.contains("--game-shell-vm")
+             || ProcessInfo.processInfo.environment["UTM_GAME_SHELL_VM"] != nil
+@@ -403,6 +613,10 @@ extension VMMetalView {
      
      func releaseMouse() {
          logger.trace("release cursor")
 +        flushPendingRelativeMotion()
++        detachRawMouse()
++        rawMouseBridge.setCaptured(false)
++        NSEvent.isMouseCoalescingEnabled = true
          CGAssociateMouseAndMouseCursorPosition(1)
          isMouseCaptured = false
          if !isMouseInWindow {

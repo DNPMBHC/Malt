@@ -58,7 +58,7 @@ struct ContainerProvisioningGuestExecutor: Sendable {
               fileManager.isReadableFile(atPath: applyScript),
               fileManager.isReadableFile(atPath: profilePath) else {
             throw UnifiedOrchestrationError.backendUnavailable(
-                "缺少 guest-optimizer v3.1 脚本或配置文件，请重新安装完整应用。"
+                "缺少 guest-optimizer v3.2 脚本或配置文件，请重新安装完整应用。"
             )
         }
         try await waitForGuestReady(controlBinary: control, vmIdentifier: vmIdentifier)
@@ -72,7 +72,7 @@ struct ContainerProvisioningGuestExecutor: Sendable {
             scriptGuestPath: guestApply, profileGuestPath: guestProfile, marker: "MALT_OPT_APPLY_V1="
         )
         let output = try await execGuestPowerShell(
-            controlBinary: control, vmIdentifier: vmIdentifier, script: runScript, timeout: 180
+            controlBinary: control, vmIdentifier: vmIdentifier, script: runScript, timeout: 600
         )
         let report = try parseJSONReport(
             ContainerGuestOptimizationReport.self, from: output, marker: "MALT_OPT_APPLY_V1="
@@ -81,7 +81,7 @@ struct ContainerProvisioningGuestExecutor: Sendable {
             throw UnifiedOrchestrationError.commandFailed("来宾优化核验检测到安全或 Prism 签名不变量异常，请立即回滚。")
         }
         let lang = report.uiLanguage ?? "zh-CN"
-        return "已注入并核验 guest-optimizer v3.1（\(lang)、暂停后台更新、安全动态页文件、禁用 spice-webdavd 与突发稳帧）。"
+        return "已注入并核验 guest-optimizer v3.2（\(lang)、移除云同步、禁用休眠、CompactOS 瘦身、MPO 修复与突发稳帧）。"
     }
 
     func runGuestRollback(
